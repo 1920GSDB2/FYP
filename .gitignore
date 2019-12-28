@@ -7,5 +7,6 @@
 /Library/
 /Packages/
 /ProjectSettings/
+/Temp/
 *.sln
 *.csproj
