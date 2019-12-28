@@ -1571,6 +1571,8 @@ MonoBehaviour:
   - {fileID: 3910431118531152814, guid: 8f40a91e1f17eb34ba542b3a0460ed98, type: 3}
   heroes: []
   buffList: {fileID: 1846200868}
+  HeroList: {fileID: 0}
+  GameBoard: {fileID: 0}
 --- !u!4 &355347618
 Transform:
   m_ObjectHideFlags: 0
@@ -2813,7 +2815,7 @@ GameObject:
   - component: {fileID: 617320310}
   m_Layer: 0
   m_Name: Hero List
-  m_TagString: Untagged
+  m_TagString: HeroList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12379,8 +12381,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2113805228}
   m_Layer: 0
-  m_Name: Game Broad
-  m_TagString: Untagged
+  m_Name: Game Board
+  m_TagString: GameBoard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

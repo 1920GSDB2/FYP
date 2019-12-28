@@ -10,17 +10,36 @@ public class TFTGameManager : MonoBehaviour
     public Dictionary<HeroClass, int> classValue = new Dictionary<HeroClass, int>();
     public Dictionary<HeroRace, int> rareValue = new Dictionary<HeroRace, int>();
     public BuffList buffList;
+    [SerializeField]
+    GameObject HeroList, GameBoard;
     private BuffersManager buffersManager;
 
     void Start()
     {
         buffersManager = GetComponent<BuffersManager>();
+        HeroList = GameObject.FindGameObjectWithTag("HeroList");
+        GameBoard = GameObject.FindGameObjectWithTag("GameBoard");
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public bool BuyHero(Hero _hero)
+    {
+        for(int i = 0; i< HeroList.transform.childCount; i++)
+        {
+            if (HeroList.transform.GetChild(i).childCount == 0)
+            {
+                heroes.Add(_hero);
+                _hero.gameObject.transform.parent = HeroList.transform.GetChild(i);
+                return true;
+            }
+        }
+        DestroyImmediate(_hero.gameObject);
+        return false;
     }
 
     public void HeroUpgrade()

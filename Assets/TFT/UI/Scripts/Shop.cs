@@ -57,13 +57,17 @@ public class Shop : MonoBehaviour
     {
         if (asset.AssetValue >= heroUi.BasicInfo.price)
         {
-            asset.AssetValue -= heroUi.BasicInfo.price;
-            heroUi.gameObject.SetActive(false);
+            
             Hero newHero = (Instantiate(heroUi.Hero.gameObject) as GameObject).GetComponent<Hero>();
             newHero.name = heroUi.Hero.name;
             //gameManager.AddHeroBuff(newHero);
             //gameManager.HeroUpgrade();
-            gameManager.heroes.Add(newHero);
+            //gameManager.heroes.Add(newHero);
+            if (gameManager.BuyHero(newHero))
+            {
+                asset.AssetValue -= heroUi.BasicInfo.price;
+                heroUi.gameObject.SetActive(false);
+            }
         }
     }
 }
