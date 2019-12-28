@@ -1,0 +1,11 @@
+!/Assets/
+/Backup/
+/Export/
+/Library/
+/Logs/
+/obj/
+/Library/
+/Packages/
+/ProjectSettings/
+*.sln
+*.csproj
