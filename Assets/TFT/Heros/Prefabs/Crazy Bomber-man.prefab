@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2044099201925630212}
   - component: {fileID: 2044099201925630235}
+  - component: {fileID: 5162250091634261234}
   m_Layer: 0
   m_Name: Crazy Bomber-man
   m_TagString: Untagged
@@ -44,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MouseSelect: {fileID: 0}
   Rarity: 2
   HeroClasses: 03000000
   HeroRaces: 05000000
@@ -55,6 +57,19 @@ MonoBehaviour:
   BasicSkillPower: 5
   BasicPhysicalDefense: 4
   BasicMagicDefense: 4
+--- !u!65 &5162250091634261234
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044099201925630234}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 3, z: 1.5}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &6067690246882199841
 GameObject:
   m_ObjectHideFlags: 0

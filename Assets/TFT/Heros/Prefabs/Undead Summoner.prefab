@@ -5979,6 +5979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7353492059728343626}
   - component: {fileID: 7353492059728343627}
+  - component: {fileID: 6460941090475133376}
   m_Layer: 0
   m_Name: Undead Summoner
   m_TagString: Untagged
@@ -6013,6 +6014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MouseSelect: {fileID: 0}
   Rarity: 1
   HeroClasses: 06000000
   HeroRaces: 01000000
@@ -6024,3 +6026,16 @@ MonoBehaviour:
   BasicSkillPower: 5
   BasicPhysicalDefense: 5
   BasicMagicDefense: 5
+--- !u!65 &6460941090475133376
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7353492059728343620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 3, z: 1.5}
+  m_Center: {x: 0, y: 1.5, z: 0}

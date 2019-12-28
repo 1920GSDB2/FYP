@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
+    public MouseSelect MouseSelect;
     public Rarity Rarity;
     public HeroClass[] HeroClasses;
     public HeroRace[] HeroRaces;
@@ -33,12 +34,23 @@ public class Hero : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        MouseSelect = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MouseSelect>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void OnMouseEnter()
+    {
+        Debug.Log("Mouse Enter");
+        MouseSelect.SelectedHero = this;
+    }
+
+    private void OnMouseExit()
+    {
+        MouseSelect.SelectedHero = null;
     }
 }

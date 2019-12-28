@@ -1106,6 +1106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8761755023450044583}
   - component: {fileID: 8761755023450044504}
+  - component: {fileID: 4949484980057757309}
   m_Layer: 0
   m_Name: Heavy Crossbowman
   m_TagString: Untagged
@@ -1140,6 +1141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MouseSelect: {fileID: 0}
   Rarity: 1
   HeroClasses: 03000000
   HeroRaces: 05000000
@@ -1151,3 +1153,16 @@ MonoBehaviour:
   BasicSkillPower: 7
   BasicPhysicalDefense: 4
   BasicMagicDefense: 4
+--- !u!65 &4949484980057757309
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8761755023450044505}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 3, z: 1.5}
+  m_Center: {x: 0, y: 1.5, z: 0}

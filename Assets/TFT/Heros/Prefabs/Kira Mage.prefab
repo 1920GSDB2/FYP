@@ -985,6 +985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3781009245937362576}
   - component: {fileID: 3781009245937362577}
+  - component: {fileID: 3950419788356003188}
   m_Layer: 0
   m_Name: Kira Mage
   m_TagString: Untagged
@@ -1019,6 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MouseSelect: {fileID: 0}
   Rarity: 1
   HeroClasses: 06000000
   HeroRaces: 05000000
@@ -1030,3 +1032,16 @@ MonoBehaviour:
   BasicSkillPower: 7
   BasicPhysicalDefense: 4
   BasicMagicDefense: 5
+--- !u!65 &3950419788356003188
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3781009245937362578}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 3, z: 1.5}
+  m_Center: {x: 0, y: 1.5, z: 0}
