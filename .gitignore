@@ -1,12 +1,12 @@
 !/Assets/
+/.vs/
 /Backup/
 /Export/
 /Library/
-/Logs/
+!/Logs/
 /obj/
-/Library/
-/Packages/
-/ProjectSettings/
+!/Packages/
+!/ProjectSettings/
 /Temp/
 *.sln
 *.csproj

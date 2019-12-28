@@ -194,91 +194,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9775328}
   m_CullTransparentMesh: 0
---- !u!1001 &26053659
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 617320310}
-    m_Modifications:
-    - target: {fileID: 2741955354850255229, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_Name
-      value: Square
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.4600002
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.15000005
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.15000005
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b58f177c6ae9c1d4e8a24e4f933e3943, type: 3}
---- !u!4 &26053660 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
-    type: 3}
-  m_PrefabInstance: {fileID: 26053659}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &26897017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,7 +1100,7 @@ PrefabInstance:
     - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
         type: 3}
@@ -1656,6 +1571,8 @@ MonoBehaviour:
   - {fileID: 3910431118531152814, guid: 8f40a91e1f17eb34ba542b3a0460ed98, type: 3}
   heroes: []
   buffList: {fileID: 1846200868}
+  HeroList: {fileID: 0}
+  GameBoard: {fileID: 0}
 --- !u!4 &355347618
 Transform:
   m_ObjectHideFlags: 0
@@ -2660,7 +2577,7 @@ PrefabInstance:
     - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
         type: 3}
@@ -2897,8 +2814,8 @@ GameObject:
   m_Component:
   - component: {fileID: 617320310}
   m_Layer: 0
-  m_Name: Hero Standby
-  m_TagString: Untagged
+  m_Name: Hero List
+  m_TagString: HeroList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2917,13 +2834,12 @@ Transform:
   - {fileID: 4059044102381510046}
   - {fileID: 2017111718}
   - {fileID: 1319227211}
-  - {fileID: 591494573}
-  - {fileID: 978613420}
-  - {fileID: 1958172871}
-  - {fileID: 2040642250}
   - {fileID: 286953235}
+  - {fileID: 2040642250}
+  - {fileID: 1958172871}
+  - {fileID: 978613420}
+  - {fileID: 591494573}
   - {fileID: 320741131}
-  - {fileID: 26053660}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5091,7 +5007,7 @@ PrefabInstance:
     - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
         type: 3}
@@ -11924,7 +11840,7 @@ PrefabInstance:
     - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7567705498636484481, guid: b58f177c6ae9c1d4e8a24e4f933e3943,
         type: 3}
@@ -12465,8 +12381,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2113805228}
   m_Layer: 0
-  m_Name: Game Broad
-  m_TagString: Untagged
+  m_Name: Game Board
+  m_TagString: GameBoard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
