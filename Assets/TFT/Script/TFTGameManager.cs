@@ -35,6 +35,7 @@ public class TFTGameManager : MonoBehaviour
             {
                 heroes.Add(_hero);
                 _hero.gameObject.transform.parent = HeroList.transform.GetChild(i);
+                _hero.gameObject.transform.localPosition = Vector3.zero;
                 return true;
             }
         }
