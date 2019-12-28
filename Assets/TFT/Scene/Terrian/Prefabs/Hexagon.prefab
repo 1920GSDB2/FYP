@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1742539634653316415}
   - component: {fileID: 1742539634653316412}
+  - component: {fileID: 4750711691525899887}
+  - component: {fileID: 5631989128100998243}
   m_Layer: 0
   m_Name: Hexagon
   m_TagString: HeroPlace
@@ -80,6 +82,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4750711691525899887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742539634653316414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+--- !u!65 &5631989128100998243
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742539634653316414}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 17.300003, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3880242933395365815
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +120,7 @@ GameObject:
   - component: {fileID: 3682164390628526497}
   - component: {fileID: 2519758378246174977}
   - component: {fileID: 3086401865332314256}
+  - component: {fileID: 2437429122721031047}
   m_Layer: 0
   m_Name: Hexagon
   m_TagString: Untagged
@@ -172,3 +201,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: -6730188882212674202, guid: 0788c7277821cc14d9504e040c8603c4, type: 3}
+--- !u!114 &2437429122721031047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3880242933395365815}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}

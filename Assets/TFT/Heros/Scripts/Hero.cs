@@ -40,12 +40,11 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnMouseEnter()
     {
-        Debug.Log("Mouse Enter");
         MouseSelect.SelectedHero = this;
     }
 
