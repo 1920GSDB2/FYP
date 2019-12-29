@@ -2,36 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class HeroPlace : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
+    MouseSelect MouseSelect;
     // Start is called before the first frame update
     void Start()
     {
-        if (GetComponent<SpriteRenderer>() != null)
-        {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        }
-        else
-        {
-            spriteRenderer = transform.parent.gameObject.GetComponent<SpriteRenderer>();
-        }
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        MouseSelect = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MouseSelect>();
     }
 
-    private void OnMouseEnter()
+    private void OnMouseOver()
     {
-        spriteRenderer.color = Color.yellow;
+        spriteRenderer.color = Color.black;
+        if (MouseSelect.DragHero != null)
+        {
+            MouseSelect.SelectPlace = this;
+        }
     }
 
     private void OnMouseExit()
     {
         spriteRenderer.color = Color.white;
+        MouseSelect.SelectPlace = null;
     }
 }
