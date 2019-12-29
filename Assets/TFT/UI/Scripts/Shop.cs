@@ -6,12 +6,12 @@ public class Shop : MonoBehaviour
 {
     public Asset asset;
     public HeroUI[] heroUis = new HeroUI[5];
-    public TFTGameManager gameManager;
+    TFTGameManager gameManager;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TFTGameManager>();
     }
 
     // Update is called once per frame
@@ -61,12 +61,11 @@ public class Shop : MonoBehaviour
             Hero newHero = (Instantiate(heroUi.Hero.gameObject) as GameObject).GetComponent<Hero>();
             newHero.name = heroUi.Hero.name;
             //gameManager.AddHeroBuff(newHero);
-            //gameManager.HeroUpgrade();
-            //gameManager.heroes.Add(newHero);
             if (gameManager.BuyHero(newHero))
             {
                 asset.AssetValue -= heroUi.BasicInfo.price;
                 heroUi.gameObject.SetActive(false);
+                gameManager.HeroUpgrade();
             }
         }
     }

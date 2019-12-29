@@ -5,20 +5,22 @@ using UnityEngine;
 
 public class TFTGameManager : MonoBehaviour
 {
-    public List<Hero> heroTypes = new List<Hero>();
-    public List<Hero> heroes = new List<Hero>();
-    public Dictionary<HeroClass, int> classValue = new Dictionary<HeroClass, int>();
-    public Dictionary<HeroRace, int> rareValue = new Dictionary<HeroRace, int>();
-    public BuffList buffList;
+    public List<Hero> heroTypes = new List<Hero>();                             //List of total heroes
+    public List<Hero> gbHero = new List<Hero>();                                //List of gameboard's heroes
+    List<Hero> heroes = new List<Hero>();                                       //List of player's Heroes
+    Dictionary<HeroClass, int> classValue = new Dictionary<HeroClass, int>();   //Number of class in gameboard hero
+    Dictionary<HeroRace, int> raceValue = new Dictionary<HeroRace, int>();      //Number of race in gameboard hero
+
     [SerializeField]
-    GameObject HeroList, GameBoard;
-    private BuffersManager buffersManager;
+    BuffList BuffList;
+    Transform HeroList, GameBoard;
+    BuffersManager buffersManager;
 
     void Start()
     {
         buffersManager = GetComponent<BuffersManager>();
-        HeroList = GameObject.FindGameObjectWithTag("HeroList");
-        GameBoard = GameObject.FindGameObjectWithTag("GameBoard");
+        HeroList = GameObject.FindGameObjectWithTag("HeroList").transform;
+        GameBoard = GameObject.FindGameObjectWithTag("GameBoard").transform;
     }
 
     // Update is called once per frame
@@ -27,14 +29,19 @@ public class TFTGameManager : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Check whether player can buy a hero.
+    /// </summary>
+    /// <param name="_hero"></param>
+    /// <returns></returns>
     public bool BuyHero(Hero _hero)
     {
-        for(int i = 0; i< HeroList.transform.childCount; i++)
+        foreach(Transform child in HeroList)
         {
-            if (HeroList.transform.GetChild(i).childCount == 0)
+            if (child.childCount == 0)
             {
                 heroes.Add(_hero);
-                _hero.gameObject.transform.parent = HeroList.transform.GetChild(i);
+                _hero.gameObject.transform.parent = child;
                 _hero.gameObject.transform.localPosition = Vector3.zero;
                 return true;
             }
@@ -43,6 +50,9 @@ public class TFTGameManager : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Check the number same level hero, if it reachs specified number, the hero will level up.
+    /// </summary>
     public void HeroUpgrade()
     {
         foreach(Hero heroType in heroTypes)
@@ -81,6 +91,12 @@ public class TFTGameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Process of hero level up.
+    /// </summary>
+    /// <param name="heroLevel"></param>
+    /// <param name="nextLevel"></param>
+    /// <returns></returns>
     private Hero HeroLevelUp(List<Hero> heroLevel, HeroLevel nextLevel)
     {
         Hero temp = null;
@@ -94,10 +110,14 @@ public class TFTGameManager : MonoBehaviour
         return temp;
     }
 
+    /// <summary>
+    /// When hero is added into gameboard, the buff of hero will be added into the buff list.
+    /// </summary>
+    /// <param name="hero"></param>
     public void AddHeroBuff(Hero hero)
     {
         bool sameType = false;
-        foreach(Hero heroType in heroes)
+        foreach (Hero heroType in gbHero)
         {
             if (heroType != null && heroType.name.Equals(hero.name))
             {
@@ -113,7 +133,7 @@ public class TFTGameManager : MonoBehaviour
                 if (classValue.ContainsKey(heroClass))
                 {
                     classValue[heroClass]++;
-                    buffList.UpgradeBuff(heroClass.ToString());
+                    BuffList.UpgradeBuff(heroClass.ToString());
                 }
                 else
                 {
@@ -122,30 +142,51 @@ public class TFTGameManager : MonoBehaviour
                     {
                         if (buffers.heroClass == heroClass)
                         {
-                            buffList.AddBuff(buffers, heroClass.ToString());
+                            BuffList.AddBuff(buffers, heroClass.ToString());
                         }
                     }
                 }
             }
             foreach (HeroRace heroRare in hero.HeroRaces)
             {
-                if (rareValue.ContainsKey(heroRare))
+                if (raceValue.ContainsKey(heroRare))
                 {
-                    rareValue[heroRare]++;
-                    buffList.UpgradeBuff(heroRare.ToString());
+                    raceValue[heroRare]++;
+                    BuffList.UpgradeBuff(heroRare.ToString());
                 }
                 else
                 {
-                    rareValue.Add(heroRare, 1);
+                    raceValue.Add(heroRare, 1);
                     foreach (Buffers buffers in buffersManager.buffersClass)
                     {
                         if (buffers.heroRare == heroRare)
                         {
-                            buffList.AddBuff(buffers, heroRare.ToString());
+                            BuffList.AddBuff(buffers, heroRare.ToString());
                         }
                     }
                 }
 
+            }
+        }
+    }
+
+    public void ResetBuffList()
+    {
+        classValue.Clear();
+        raceValue.Clear();
+        BuffList.ClearBuff();
+        StartCoroutine(AddBuffBack());
+    }
+
+    //Destroy in bufflist not fast enough, it causes some bugs.
+    IEnumerator AddBuffBack()
+    {
+        yield return 0.0001;
+        foreach (Transform child in GameBoard)
+        {
+            if (child.childCount != 0)
+            {
+                AddHeroBuff(child.GetChild(0).GetComponent<Hero>());
             }
         }
     }

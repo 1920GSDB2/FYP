@@ -8,6 +8,7 @@ TagManager:
   - HeroList
   - HeroPlace
   - GameManager
+  - BufferList
   layers:
   - Default
   - TransparentFX

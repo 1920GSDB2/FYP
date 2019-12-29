@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 59053517}
   m_Layer: 0
   m_Name: Game Board (1)
-  m_TagString: GameBoard
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2279,10 +2279,8 @@ MonoBehaviour:
   - {fileID: 3374238844570507511, guid: 116e2e24b37f2e740870a4a144c73fa3, type: 3}
   - {fileID: 7353492059728343627, guid: 7d652645723b02b4e80a1fae6cb4c7f8, type: 3}
   - {fileID: 3910431118531152814, guid: 8f40a91e1f17eb34ba542b3a0460ed98, type: 3}
-  heroes: []
-  buffList: {fileID: 1846200868}
-  HeroList: {fileID: 0}
-  GameBoard: {fileID: 0}
+  gbHero: []
+  BuffList: {fileID: 1846200868}
 --- !u!4 &355347618
 Transform:
   m_ObjectHideFlags: 0
@@ -2391,7 +2389,7 @@ MonoBehaviour:
   SelectedHero: {fileID: 0}
   DragHero: {fileID: 0}
   SelectPlace: {fileID: 0}
-  fixedDistance: 2
+  fixedDistance: 1
 --- !u!1 &357755994
 GameObject:
   m_ObjectHideFlags: 0
@@ -13037,10 +13035,9 @@ GameObject:
   - component: {fileID: 1846200871}
   - component: {fileID: 1846200870}
   - component: {fileID: 1846200868}
-  - component: {fileID: 1846200872}
   m_Layer: 5
   m_Name: Buffer
-  m_TagString: Untagged
+  m_TagString: BufferList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13128,26 +13125,6 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
---- !u!114 &1846200872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846200866}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1
 --- !u!4 &1856513044 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1742539634653316415, guid: 10c1c548cd522784f940d5ffe292db97,
@@ -13621,7 +13598,6 @@ MonoBehaviour:
   - {fileID: 1589363938}
   - {fileID: 928180506}
   - {fileID: 1589330083}
-  gameManager: {fileID: 355347617}
 --- !u!4 &1913156306 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1742539634653316415, guid: 10c1c548cd522784f940d5ffe292db97,

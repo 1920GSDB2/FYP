@@ -33,7 +33,7 @@ public class MouseSelect : MonoBehaviour
         }
         else if (Input.GetMouseButton(0) && DragHero != null)
         {
-            if (SelectPlace != null)
+            if (SelectPlace != null && SelectPlace.transform.childCount == 0)
             {
                 DragHero.transform.parent = SelectPlace.transform;
             }
@@ -47,17 +47,15 @@ public class MouseSelect : MonoBehaviour
             { // finde the collision on movePlane
                 point = camRay.GetPoint(hitDist); // define the point on movePlane
                 t = -(fixedDistance - camRay.origin.y) / (camRay.origin.y - point.y); // the x,y or z plane you want to be fixed to
-                Debug.Log(t);
                 corPoint.x = camRay.origin.x + (point.x - camRay.origin.x) * t; // calculate the new point t futher along the ray
                 corPoint.y = camRay.origin.y + (point.y - camRay.origin.y) * t;
                 corPoint.z = camRay.origin.z + (point.z - camRay.origin.z) * t;
                 DragHero.transform.position = corPoint;
             }
-
-
         }
         else if (Input.GetMouseButtonUp(0) && DragHero!=null)
         {
+            DragHero.ChangeStatus();
             DragHero.GetComponent<Collider>().enabled = true;
             DragHero.transform.localPosition = Vector3.zero;
             DragHero = null;

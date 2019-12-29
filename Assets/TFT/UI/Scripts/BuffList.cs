@@ -19,8 +19,18 @@ public class BuffList : MonoBehaviour
         
     }
 
+    public void ClearBuff()
+    {
+        foreach(Transform child in buffList)
+        {
+            Destroy(child.gameObject);
+        }
+        buffList.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(75, 0);
+    }
+
     public void AddBuff(Buffers buffer, string name)
     {
+        //buffList.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(75, 0);
         Buff newBuff = (Instantiate(buff.gameObject) as GameObject).GetComponent<Buff>();
         newBuff.HeroClass = buffer.heroClass;
         newBuff.HeroRare = buffer.heroRare;
@@ -31,6 +41,7 @@ public class BuffList : MonoBehaviour
         newBuff.gameObject.GetComponent<RectTransform>().localScale = Vector3.one;
         buffList.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(75, 24 * buffList.gameObject.transform.childCount);
     }
+
     public void UpgradeBuff(string buffer)
     {
         Transform upgradeObject = buffList.Find(buffer);
