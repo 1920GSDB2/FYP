@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class MouseSelect : MonoBehaviour
 {
+    [HideInInspector]
     public Hero SelectedHero, DragHero;
+    [HideInInspector]
     public HeroPlace SelectPlace;
-    public bool isDrag;
+    bool isDrag;
 
     Plane movePlane;
     [SerializeField]
@@ -24,7 +26,7 @@ public class MouseSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && SelectedHero != null)
+        if (Input.GetMouseButtonDown(0) && SelectedHero != null && DragHero == null)
         {
             DragHero = SelectedHero;
             DragHero.GetComponent<Collider>().enabled = false;
@@ -32,7 +34,7 @@ public class MouseSelect : MonoBehaviour
             startPos = DragHero.transform.position; // save position in case draged to invalid place
             movePlane = new Plane(-Camera.main.transform.forward, DragHero.transform.position);
         }
-        else if (Input.GetMouseButtonUp(0) && DragHero!=null)
+        if (Input.GetMouseButtonUp(0) && DragHero!=null)
         {
             isDrag = !isDrag;
             if (!isDrag)
@@ -43,11 +45,13 @@ public class MouseSelect : MonoBehaviour
                 DragHero = null;
                 SelectPlace = null;
             }
+            
         }
-        if (isDrag && DragHero != null)
+        else if (isDrag && DragHero != null)
         {
             if (SelectPlace != null && SelectPlace.transform.childCount == 0)
             {
+                Debug.Log("Parent Null" +Time.time);
                 DragHero.transform.parent = SelectPlace.transform;
             }
             //Vector3 pos = Input.mousePosition;

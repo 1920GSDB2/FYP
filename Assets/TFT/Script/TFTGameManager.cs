@@ -122,7 +122,6 @@ public class TFTGameManager : MonoBehaviour
         {
             if (heroType != null && heroType.name.Equals(hero.name))
             {
-                Debug.Log("SameType");
                 sameType = true;
                 break;
             }
