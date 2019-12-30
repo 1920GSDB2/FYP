@@ -6,8 +6,8 @@ using UnityEngine;
 public class TFTGameManager : MonoBehaviour
 {
     public List<Hero> heroTypes = new List<Hero>();                             //List of total heroes
-    public List<Hero> gbHero = new List<Hero>();                                //List of gameboard's heroes
-    List<Hero> heroes = new List<Hero>();                                       //List of player's Heroes
+    List<Hero> gbHero = new List<Hero>();                                       //List of gameboard's heroes
+    public List<Hero> heroes = new List<Hero>();                                //List of player's Heroes
     Dictionary<HeroClass, int> classValue = new Dictionary<HeroClass, int>();   //Number of class in gameboard hero
     Dictionary<HeroRace, int> raceValue = new Dictionary<HeroRace, int>();      //Number of race in gameboard hero
 
@@ -100,13 +100,14 @@ public class TFTGameManager : MonoBehaviour
     private Hero HeroLevelUp(List<Hero> heroLevel, HeroLevel nextLevel)
     {
         Hero temp = null;
-        for (int i = 0; i < 2; i++)
+        for (int i = 1; i < 3; i++)
         {
             heroes.Remove(heroLevel[i]);
             Destroy(heroLevel[i].gameObject);
         }
-        temp = heroLevel[2];
+        temp = heroLevel[0];
         temp.HeroLevel = nextLevel;
+        ResetBuffList();
         return temp;
     }
 
@@ -121,6 +122,7 @@ public class TFTGameManager : MonoBehaviour
         {
             if (heroType != null && heroType.name.Equals(hero.name))
             {
+                Debug.Log("SameType");
                 sameType = true;
                 break;
             }
@@ -165,9 +167,9 @@ public class TFTGameManager : MonoBehaviour
                         }
                     }
                 }
-
             }
         }
+        gbHero.Add(hero);
     }
 
     public void ResetBuffList()
@@ -175,6 +177,7 @@ public class TFTGameManager : MonoBehaviour
         classValue.Clear();
         raceValue.Clear();
         BuffList.ClearBuff();
+        gbHero.Clear();
         StartCoroutine(AddBuffBack());
     }
 

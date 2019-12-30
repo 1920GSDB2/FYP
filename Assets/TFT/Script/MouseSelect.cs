@@ -6,6 +6,7 @@ public class MouseSelect : MonoBehaviour
 {
     public Hero SelectedHero, DragHero;
     public HeroPlace SelectPlace;
+    public bool isDrag;
 
     Plane movePlane;
     [SerializeField]
@@ -31,7 +32,19 @@ public class MouseSelect : MonoBehaviour
             startPos = DragHero.transform.position; // save position in case draged to invalid place
             movePlane = new Plane(-Camera.main.transform.forward, DragHero.transform.position);
         }
-        else if (Input.GetMouseButton(0) && DragHero != null)
+        else if (Input.GetMouseButtonUp(0) && DragHero!=null)
+        {
+            isDrag = !isDrag;
+            if (!isDrag)
+            {
+                DragHero.ChangeStatus();
+                DragHero.GetComponent<Collider>().enabled = true;
+                DragHero.transform.localPosition = Vector3.zero;
+                DragHero = null;
+                SelectPlace = null;
+            }
+        }
+        if (isDrag && DragHero != null)
         {
             if (SelectPlace != null && SelectPlace.transform.childCount == 0)
             {
@@ -52,14 +65,6 @@ public class MouseSelect : MonoBehaviour
                 corPoint.z = camRay.origin.z + (point.z - camRay.origin.z) * t;
                 DragHero.transform.position = corPoint;
             }
-        }
-        else if (Input.GetMouseButtonUp(0) && DragHero!=null)
-        {
-            DragHero.ChangeStatus();
-            DragHero.GetComponent<Collider>().enabled = true;
-            DragHero.transform.localPosition = Vector3.zero;
-            DragHero = null;
-            SelectPlace = null;
         }
     }
     
