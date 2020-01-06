@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hero : MonoBehaviour
 {
     public MouseSelect MouseSelect;
+    public HeroStatus HeroStatus;
     public Rarity Rarity;
     public HeroClass[] HeroClasses;
     public HeroRace[] HeroRaces;
@@ -31,16 +32,38 @@ public class Hero : MonoBehaviour
     public float PhysicalDefense { get; set; }
     public float MagicDefense { get; set; }
 
+    string lastTransform;
+    TFTGameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        MouseSelect = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MouseSelect>();
+        lastTransform = transform.parent.name;
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TFTGameManager>();
+        MouseSelect = gameManager.GetComponent<MouseSelect>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void ChangeStatus()
+    {
+        string currTransform = transform.parent.name;
+        if (!currTransform.Equals(lastTransform))
+        {
+            if (lastTransform.Equals("Hexagon"))
+            {
+                gameManager.ResetBuffList();
+            }
+            else
+            {
+                gameManager.AddHeroBuff(this);
+            }
+        }
+        lastTransform = currTransform;
     }
 
     private void OnMouseEnter()

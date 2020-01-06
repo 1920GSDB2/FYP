@@ -1,4 +1,9 @@
-﻿
+﻿public enum HeroStatus
+{
+    Standby,
+    Ready
+}
+
 public enum HeroClass
 {
     None,
