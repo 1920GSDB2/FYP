@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Networking;
 
 public class LoginUI : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class LoginUI : MonoBehaviour
     [SerializeField]
     RectTransform gameTextContainer;
     [SerializeField]
-    TextMeshProUGUI expandStatus, unText, pwText;
+    TextMeshProUGUI expandStatus;
+    [SerializeField]
+    TMP_InputField username, password;
     bool isExpand;
-    public string Username { get { return unText.text; } }
-    public string Password { get { return pwText.text; } }
+    public string Username { get { return username.text; } }
+    public string Password { get { return password.text; } }
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,8 @@ public class LoginUI : MonoBehaviour
 
     public void OnPressLogin()
     {
-        
+        DatabaseManager.VerifyAccount(Username, Password);
+        //StartCoroutine(LoginToDB());
     }
+    
 }
