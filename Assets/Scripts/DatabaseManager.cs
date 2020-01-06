@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class DatabaseManager : MonoBehaviour
 {
     public static DatabaseManager instance { get; private set; }
-    public ConnectManager connectManager;
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Awake()
     {
@@ -56,7 +57,7 @@ public class DatabaseManager : MonoBehaviour
         //WWW www = new WWW(connectManager.databaseIP, form);
         //yield return www;
         //Debug.Log(www.text);
-        UnityWebRequest www = UnityWebRequest.Post(connectManager.databaseIP, form);
+        UnityWebRequest www = UnityWebRequest.Post(gameManager.databaseIP, form);
         
         yield return www.SendWebRequest();
         if (www.isNetworkError || www.isHttpError)
@@ -65,7 +66,12 @@ public class DatabaseManager : MonoBehaviour
         }
         else
         {
-            Debug.Log(www.downloadHandler.text);
+            string jsonString = www.downloadHandler.text;
+            if (!jsonString.Equals("Verify Account Fail, Try Again!"))
+            {
+                gameManager.userData = JsonUtility.FromJson<UserData>(jsonString);
+                SceneManager.LoadScene(gameManager.lobbyScene);
+            }
         }   
     }
 }

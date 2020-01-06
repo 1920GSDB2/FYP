@@ -15,8 +15,24 @@ public class LoginUI : MonoBehaviour
     [SerializeField]
     TMP_InputField username, password;
     bool isExpand;
-    public string Username { get { return username.text; } }
-    public string Password { get { return password.text; } }
+    public string Username
+    {
+        get
+        {
+            string result = username.text;
+            username.text = "";
+            return result;
+        }
+    }
+    public string Password
+    {
+        get
+        {
+            string result = password.text;
+            password.text = "";
+            return result;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +61,6 @@ public class LoginUI : MonoBehaviour
     public void OnPressLogin()
     {
         DatabaseManager.VerifyAccount(Username, Password);
-        //StartCoroutine(LoginToDB());
     }
     
 }

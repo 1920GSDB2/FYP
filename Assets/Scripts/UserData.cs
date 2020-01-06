@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+[System.Serializable]
+public class UserData
 {
-    public static string playerId;
-
-    
+    public string id, pw, name, email;
 }
