@@ -18,7 +18,7 @@ public class PlayerNetwork : MonoBehaviour
         Instance = this;
         PhotonView = GetComponent<PhotonView>();
 
-        PlayerName = "Distul#" + Random.Range(1000, 9999);
+        PlayerName = "Player " + Random.Range(1000, 9999);
 
        // PhotonNetwork.sendRate = 60;
       //  PhotonNetwork.sendRateOnSerialize = 30;
