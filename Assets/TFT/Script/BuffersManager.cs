@@ -23,7 +23,7 @@ public class BuffersManager : MonoBehaviour
     public List<Buffers> buffersClass = new List<Buffers>();
 }
 
-
+#if UNITY_EDITOR 
 [CustomEditor (typeof(BuffersManager))]
 public class BuffersEditor : Editor
 {
@@ -72,3 +72,4 @@ public class BuffersEditor : Editor
         }
     }
 }
+#endif
