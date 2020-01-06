@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30c9442eaa82f542a94b18b7a00a49f, type: 3}
+  m_Name: Connect Manager
+  m_EditorClassIdentifier: 
+  databaseIP: https://script.google.com/macros/s/AKfycby9xgypoTEsywirNtCpzWB-x43PUoMRQ54AAiXjIFbv4aePYQ/exec
