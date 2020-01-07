@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MouseSelect: {fileID: 0}
+  HeroStatus: 0
   Rarity: 2
   HeroClasses: 01000000
   HeroRaces: 04000000

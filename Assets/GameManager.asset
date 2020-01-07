@@ -18,4 +18,4 @@ MonoBehaviour:
     pw: 
     name: 
     email: 
-  lobbyScene: sample scene
+  lobbyScene: Lobby

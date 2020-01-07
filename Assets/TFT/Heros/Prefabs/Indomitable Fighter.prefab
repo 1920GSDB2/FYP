@@ -613,7 +613,7 @@ Transform:
   m_GameObject: {fileID: 2245907555467798785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_Children:
   - {fileID: 2245907555467466851}
   - {fileID: 2245907555467517279}
@@ -911,6 +911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MouseSelect: {fileID: 0}
+  HeroStatus: 0
   Rarity: 0
   HeroClasses: 02000000
   HeroRaces: 05000000

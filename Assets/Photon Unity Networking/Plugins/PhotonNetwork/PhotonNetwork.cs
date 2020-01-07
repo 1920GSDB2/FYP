@@ -1054,6 +1054,7 @@ public static class PhotonNetwork
     /// This value does not affect TCP or WebSocket connections.
     /// </remarks>
     public static bool UseAlternativeUdpPorts { get; set; }
+    public static bool AutomaticallySyncScene { get; internal set; }
 
 
     /// <summary>
