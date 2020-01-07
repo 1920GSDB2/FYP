@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerNetwork : MonoBehaviour
 {
-
+    public GameManager gameManager;
     public static PlayerNetwork Instance;
     public string PlayerName { get; private set; }
     private PhotonView PhotonView;
@@ -18,10 +18,13 @@ public class PlayerNetwork : MonoBehaviour
         Instance = this;
         PhotonView = GetComponent<PhotonView>();
 
-        PlayerName = "Player " + Random.Range(1000, 9999);
+        if (gameManager.userData.name.Equals(""))
+            PlayerName = "Player " + Random.Range(1000, 9999);
+        else
+            PlayerName = gameManager.userData.name;
 
-       // PhotonNetwork.sendRate = 60;
-      //  PhotonNetwork.sendRateOnSerialize = 30;
+        // PhotonNetwork.sendRate = 60;
+        //  PhotonNetwork.sendRateOnSerialize = 30;
 
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
     }
