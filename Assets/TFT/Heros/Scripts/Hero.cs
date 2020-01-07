@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
+    public bool isEnemy;
     public MouseSelect MouseSelect;
     public HeroStatus HeroStatus;
     public Rarity Rarity;

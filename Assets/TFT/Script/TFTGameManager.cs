@@ -2,9 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
+public enum GameStatus
+{
+    Setup,
+    Playing,
+    Extra
+}
 public class TFTGameManager : MonoBehaviour
 {
+    public GameStatus gameStatus;
     public List<Hero> heroTypes = new List<Hero>();                             //List of total heroes
     List<Hero> gbHero = new List<Hero>();                                       //List of gameboard's heroes
     public List<Hero> heroes = new List<Hero>();                                //List of player's Heroes
