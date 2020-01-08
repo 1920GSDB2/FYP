@@ -12,8 +12,9 @@ public enum GameStatus
 }
 public class TFTGameManager : MonoBehaviour
 {
-    public GameStatus gameStatus;
-    public List<Hero> heroTypes = new List<Hero>();                             //List of total heroes
+    public GameStatus gameStatus, lastStatus;
+    public GameManager gameManager;
+    //public List<Hero> heroTypes = new List<Hero>();                             //List of total heroes
     List<Hero> gbHero = new List<Hero>();                                       //List of gameboard's heroes
     public List<Hero> heroes = new List<Hero>();                                //List of player's Heroes
     Dictionary<HeroClass, int> classValue = new Dictionary<HeroClass, int>();   //Number of class in gameboard hero
@@ -63,7 +64,7 @@ public class TFTGameManager : MonoBehaviour
     /// </summary>
     public void HeroUpgrade()
     {
-        foreach(Hero heroType in heroTypes)
+        foreach(Hero heroType in gameManager.heroTypes)
         {
             List<Hero> lv1 = new List<Hero>();
             List<Hero> lv2 = new List<Hero>();
