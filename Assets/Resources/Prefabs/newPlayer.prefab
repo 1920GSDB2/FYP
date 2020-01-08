@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 5877813300831111069}
   - component: {fileID: 5877813300831111070}
   - component: {fileID: 5877813300831111066}
-  - component: {fileID: 5877813300831111065}
   m_Layer: 0
-  m_Name: new player
+  m_Name: newPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,18 +120,6 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
---- !u!114 &5877813300831111065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5877813300831111071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7e29e0b96c27354bbf2210d81fb58d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5877813302455695004
 GameObject:
   m_ObjectHideFlags: 0
