@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hero : MonoBehaviour
 {
     public bool isEnemy;
+    public HeroPlace HeroPlace;
     public MouseSelect MouseSelect;
     public HeroStatus HeroStatus;
     public Rarity Rarity;
