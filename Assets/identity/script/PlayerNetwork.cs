@@ -15,7 +15,7 @@ public class PlayerNetwork : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
-        Instance = this;
+        Instance = this;    
         PhotonView = GetComponent<PhotonView>();
 
         if (gameManager.userData.name.Equals(""))

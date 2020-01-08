@@ -95,6 +95,7 @@ public class TFTGameManager : MonoBehaviour
         {
             List<Hero> lv1 = new List<Hero>();
             List<Hero> lv2 = new List<Hero>();
+            
 
             foreach (Hero hero in heroes)
             {
