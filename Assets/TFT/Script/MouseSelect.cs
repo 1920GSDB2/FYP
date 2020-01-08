@@ -5,7 +5,7 @@ using UnityEngine;
 public class MouseSelect : MonoBehaviour
 {
     [HideInInspector]
-    public Hero SelectedHero, DragHero;
+    public Hero SelectedHero, DragHero;     //Drag Hero is the hero of dragging
     [HideInInspector]
     public HeroPlace SelectPlace;
     bool isDrag;
@@ -67,6 +67,7 @@ public class MouseSelect : MonoBehaviour
                 corPoint.x = camRay.origin.x + (point.x - camRay.origin.x) * t; // calculate the new point t futher along the ray
                 corPoint.y = camRay.origin.y + (point.y - camRay.origin.y) * t;
                 corPoint.z = camRay.origin.z + (point.z - camRay.origin.z) * t;
+                DragHero.HeroPlace = SelectPlace;
                 DragHero.transform.position = corPoint;
             }
         }

@@ -22,15 +22,16 @@ public class Shop : MonoBehaviour
 
     public void RefreshShop()
     {
+        List<Hero> heroTypes = gameManager.gameManager.heroTypes;
         for (int i = 0; i < heroUis.Length; i++)
         {
-            int heroId = Random.Range(0, gameManager.heroTypes.Count);
+            int heroId = Random.Range(0, heroTypes.Count);
             //int heroId = Random.Range(0, 3);
-            heroUis[i].BasicInfo.name = gameManager.heroTypes[heroId].name;
-            heroUis[i].BasicInfo.rarity = gameManager.heroTypes[heroId].Rarity;
-            heroUis[i].HeroClasses = gameManager.heroTypes[heroId].HeroClasses;
-            heroUis[i].HeroRares = gameManager.heroTypes[heroId].HeroRaces;
-            heroUis[i].Hero = gameManager.heroTypes[heroId];
+            heroUis[i].BasicInfo.name = heroTypes[heroId].name;
+            heroUis[i].BasicInfo.rarity = heroTypes[heroId].Rarity;
+            heroUis[i].HeroClasses = heroTypes[heroId].HeroClasses;
+            heroUis[i].HeroRares = heroTypes[heroId].HeroRaces;
+            heroUis[i].Hero = heroTypes[heroId];
             heroUis[i].gameObject.SetActive(true);
         }
     }
