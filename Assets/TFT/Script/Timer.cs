@@ -16,18 +16,18 @@ public class Timer : MonoBehaviour
         {
             if (value <= 0)
             {
-                switch (TFTGameManager.gameStatus)
+                switch (TFTGameManager.GameStatus)
                 {
                     case GameStatus.Setup:
-                        TFTGameManager.gameStatus = GameStatus.Playing;
+                        TFTGameManager.GameStatus = GameStatus.Playing;
                         currentTime = TFTGameManager.gameManager.playtingTime;
                         break;
                     case GameStatus.Playing:
-                         TFTGameManager.gameStatus = GameStatus.Extra;
+                         TFTGameManager.GameStatus = GameStatus.Extra;
                         currentTime = TFTGameManager.gameManager.extraTime;
                         break;
                     case GameStatus.Extra:
-                        TFTGameManager.gameStatus = GameStatus.Setup;
+                        TFTGameManager.GameStatus = GameStatus.Setup;
                         currentTime = TFTGameManager.gameManager.setupTime;
                         //change timer count from countdown to countup
                         break;
@@ -48,24 +48,26 @@ public class Timer : MonoBehaviour
         TFTGameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TFTGameManager>();
         currentTime = TFTGameManager.gameManager.setupTime;
         CountTime = currentTime;
-        //StartCoroutine(TimerCount());
+        StartCoroutine(TimerCount());
     }
 
     // Update is called once per frame
     void Update()
     {
-        timerText.text = ((int)CountTime).ToString();
-        CountTime -= Time.deltaTime;
-        timerUI.fillAmount = CountTime / currentTime;
+        //timerText.text = ((int)CountTime).ToString();
+        //CountTime -= Time.deltaTime;
+        //timerUI.fillAmount = CountTime / currentTime;
     }
 
     IEnumerator TimerCount()
     {
         while (true)
         {
-            timerText.text = CountTime.ToString();
-            yield return new WaitForSeconds(1);
-            CountTime--;
+            timerText.text = ((int)CountTime).ToString();
+            CountTime -= Time.deltaTime;
+            timerUI.fillAmount = CountTime / currentTime;
+            yield return new WaitForSeconds(0.001f);
+            CountTime -= 0.001f;
         }
     }
 }

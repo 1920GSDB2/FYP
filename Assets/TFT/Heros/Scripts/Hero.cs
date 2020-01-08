@@ -70,7 +70,8 @@ public class Hero : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        MouseSelect.SelectedHero = this;
+        if (HeroStatus == HeroStatus.Standby)
+            MouseSelect.SelectedHero = this;
     }
 
     private void OnMouseExit()

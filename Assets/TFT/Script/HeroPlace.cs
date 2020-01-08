@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class HeroPlace : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
+    SpriteRenderer spriteRenderer;
     MouseSelect MouseSelect;
     // Start is called before the first frame update
     void Start()
@@ -21,10 +21,13 @@ public class HeroPlace : MonoBehaviour
 
     private void OnMouseOver()
     {
-        spriteRenderer.color = Color.black;
-        if (MouseSelect.DragHero != null)
+        if (!(MouseSelect.gameManager.GameStatus == GameStatus.Playing && name.Equals("Hexagon")))
         {
-            MouseSelect.SelectPlace = this;
+            spriteRenderer.color = Color.black;
+            if (MouseSelect.DragHero != null)
+            {
+                MouseSelect.SelectPlace = this;
+            }
         }
     }
 

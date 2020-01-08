@@ -9,6 +9,7 @@ public class MouseSelect : MonoBehaviour
     [HideInInspector]
     public HeroPlace SelectPlace;
     bool isDrag;
+    public TFTGameManager gameManager { get; private set; }
 
     Plane movePlane;
     [SerializeField]
@@ -20,12 +21,13 @@ public class MouseSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GetComponent<TFTGameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Take-up Hero
         if (Input.GetMouseButtonDown(0) && SelectedHero != null && DragHero == null)
         {
             DragHero = SelectedHero;
@@ -34,6 +36,7 @@ public class MouseSelect : MonoBehaviour
             startPos = DragHero.transform.position; // save position in case draged to invalid place
             movePlane = new Plane(-Camera.main.transform.forward, DragHero.transform.position);
         }
+        //Put-up Hero
         if (Input.GetMouseButtonUp(0) && DragHero!=null)
         {
             isDrag = !isDrag;
@@ -47,12 +50,15 @@ public class MouseSelect : MonoBehaviour
             }
             
         }
+        //Select Hero Place
         else if (isDrag && DragHero != null)
         {
             if (SelectPlace != null && SelectPlace.transform.childCount == 0)
             {
-                Debug.Log("Parent Null" +Time.time);
+                //Debug.Log("Parent Null" +Time.time);
+                //if (!(SelectPlace.name.Equals("Hexagon") && gameManager.GameStatus == GameStatus.Playing))
                 DragHero.transform.parent = SelectPlace.transform;
+
             }
             //Vector3 pos = Input.mousePosition;
             //pos.z = transform.position.z - Camera.main.transform.position.z;

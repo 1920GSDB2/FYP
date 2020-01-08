@@ -12,10 +12,37 @@ public enum GameStatus
 }
 public class TFTGameManager : MonoBehaviour
 {
-    public GameStatus gameStatus, lastStatus;
+    private GameStatus gameStatus;
+    public GameStatus GameStatus
+    {
+        get { return gameStatus; }
+        set
+        {
+            gameStatus = value;
+            switch (value)
+            {
+                case GameStatus.Setup:
+                    foreach(Hero gbHero in gbHeros)
+                    {
+                        gbHero.transform.parent = gbHero.HeroPlace.transform;
+                        gbHero.transform.localPosition = Vector3.zero;
+                        gbHero.transform.eulerAngles = Vector3.zero;
+                        gbHero.HeroStatus = HeroStatus.Standby;
+                    }
+                    break;
+                case GameStatus.Playing:
+                    foreach (Hero gbHero in gbHeros)
+                    {
+                        gbHero.transform.parent = null;
+                        gbHero.HeroStatus = HeroStatus.Fight;
+                    }
+                    break;
+            }
+        }
+    }
     public GameManager gameManager;
-    //public List<Hero> heroTypes = new List<Hero>();                             //List of total heroes
-    List<Hero> gbHero = new List<Hero>();                                       //List of gameboard's heroes
+    //public List<Hero> heroTypes = new List<Hero>();                           //List of total heroes
+    List<Hero> gbHeros = new List<Hero>();                                      //List of gameboard's heroes
     public List<Hero> heroes = new List<Hero>();                                //List of player's Heroes
     Dictionary<HeroClass, int> classValue = new Dictionary<HeroClass, int>();   //Number of class in gameboard hero
     Dictionary<HeroRace, int> raceValue = new Dictionary<HeroRace, int>();      //Number of race in gameboard hero
@@ -127,7 +154,7 @@ public class TFTGameManager : MonoBehaviour
     public void AddHeroBuff(Hero hero)
     {
         bool sameType = false;
-        foreach (Hero heroType in gbHero)
+        foreach (Hero heroType in gbHeros)
         {
             if (heroType != null && heroType.name.Equals(hero.name))
             {
@@ -177,7 +204,7 @@ public class TFTGameManager : MonoBehaviour
                 }
             }
         }
-        gbHero.Add(hero);
+        gbHeros.Add(hero);
     }
 
     public void ResetBuffList()
@@ -185,7 +212,7 @@ public class TFTGameManager : MonoBehaviour
         classValue.Clear();
         raceValue.Clear();
         BuffList.ClearBuff();
-        gbHero.Clear();
+        gbHeros.Clear();
         StartCoroutine(AddBuffBack());
     }
 

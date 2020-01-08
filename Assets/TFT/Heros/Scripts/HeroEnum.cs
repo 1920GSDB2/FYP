@@ -1,7 +1,8 @@
 ﻿public enum HeroStatus
 {
     Standby,
-    Ready
+    Fight,
+    Dead
 }
 
 public enum HeroClass
