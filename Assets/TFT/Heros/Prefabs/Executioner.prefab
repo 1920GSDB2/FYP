@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
+  HeroPlace: {fileID: 0}
   MouseSelect: {fileID: 0}
   HeroStatus: 0
   Rarity: 0
@@ -126,6 +127,18 @@ PrefabInstance:
     - target: {fileID: 4227196532487782, guid: afe27acb40e015c4389b7d20828e092c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227196532487782, guid: afe27acb40e015c4389b7d20828e092c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227196532487782, guid: afe27acb40e015c4389b7d20828e092c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227196532487782, guid: afe27acb40e015c4389b7d20828e092c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afe27acb40e015c4389b7d20828e092c, type: 3}

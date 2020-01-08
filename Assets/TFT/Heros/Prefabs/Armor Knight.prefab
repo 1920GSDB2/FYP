@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnemy: 0
+  HeroPlace: {fileID: 0}
   MouseSelect: {fileID: 0}
   HeroStatus: 0
   Rarity: 0
@@ -141,12 +143,12 @@ PrefabInstance:
     - target: {fileID: 4255537083997611297, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
         type: 3}
       propertyPath: m_AABB.m_Center.x
-      value: 0.0060601234
+      value: 0.006060362
       objectReference: {fileID: 0}
     - target: {fileID: 4255537083997611297, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
         type: 3}
       propertyPath: m_AABB.m_Center.y
-      value: 0.71227527
+      value: 0.7122753
       objectReference: {fileID: 0}
     - target: {fileID: 4255537083997611297, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
         type: 3}
@@ -156,12 +158,12 @@ PrefabInstance:
     - target: {fileID: 4255537083997611297, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
         type: 3}
       propertyPath: m_AABB.m_Extent.y
-      value: 0.434684
+      value: 0.43468395
       objectReference: {fileID: 0}
     - target: {fileID: 4255537083997611297, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
         type: 3}
       propertyPath: m_AABB.m_Extent.z
-      value: 0.29357475
+      value: 0.29357463
       objectReference: {fileID: 0}
     - target: {fileID: 4255537084011210832, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
         type: 3}

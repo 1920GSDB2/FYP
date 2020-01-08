@@ -2341,29 +2341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStatus: 0
-<<<<<<< HEAD
-  heroTypes:
-  - {fileID: 5930743233098492543, guid: 178907bd0a9632548a40e7281d7bcf41, type: 3}
-  - {fileID: 2368161567066149855, guid: adadc077eccbfaf4abc6baf426f5488b, type: 3}
-  - {fileID: 2044099201925630235, guid: 40f252f5a2534204d9830d121ff38951, type: 3}
-  - {fileID: 8676289404948478348, guid: ad0f62007ed0a734db4a93d0398ec957, type: 3}
-  - {fileID: 1694415606609498839, guid: b1f03ceabee81b644ba325ce84592215, type: 3}
-  - {fileID: 7224144585367575148, guid: 61b69f504f6544e44b9f763b9293c71b, type: 3}
-  - {fileID: 2177598673675532547, guid: 56c79effdb21ed44bb526a7756ab3e95, type: 3}
-  - {fileID: 811514005657618439, guid: c726c972c2a9e1645b78c207ab848e7c, type: 3}
-  - {fileID: 8761755023450044504, guid: 3e61484be554f6446a7dde5aea95f68c, type: 3}
-  - {fileID: 3322668236466147925, guid: fa68ce0e17786a744affecf0c5528384, type: 3}
-  - {fileID: 3781009245937362577, guid: d952f3b490b528e439490959cf47e0bc, type: 3}
-  - {fileID: 7566775792669253893, guid: 231e61f987d01d14e81a578eb7c442a1, type: 3}
-  - {fileID: 278330036816956973, guid: b95d4080c868ba64b989bd45f8af8fb9, type: 3}
-  - {fileID: 8727711525267944112, guid: f7107825370603f46aefd239f91271c9, type: 3}
-  - {fileID: 3374238844570507511, guid: 116e2e24b37f2e740870a4a144c73fa3, type: 3}
-  - {fileID: 7353492059728343627, guid: 7d652645723b02b4e80a1fae6cb4c7f8, type: 3}
-  - {fileID: 3910431118531152814, guid: 8f40a91e1f17eb34ba542b3a0460ed98, type: 3}
-=======
   lastStatus: 0
   gameManager: {fileID: 11400000, guid: 81ecca96d371141469ab785dc0afe819, type: 2}
->>>>>>> 61badbc1aa8cca3bbb07ece318eb85265413ee0a
   heroes: []
   BuffList: {fileID: 1846200868}
 --- !u!4 &355347618
