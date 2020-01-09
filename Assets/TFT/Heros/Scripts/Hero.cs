@@ -36,6 +36,7 @@ public class Hero : MonoBehaviour
 
     string lastTransform;
     TFTGameManager gameManager;
+    public Hero targetEnemy;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,22 @@ public class Hero : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private void FixedUpdate()
+    {
+        if (HeroStatus == HeroStatus.Fight && targetEnemy == null)
+        {
+            EnemyDetecter();
+        }
+    }
+
+    private void EnemyDetecter()
+    {
+        LayerMask mask = LayerMask.GetMask("Enemy");
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5, mask);
+        targetEnemy = hitColliders[0].GetComponent<Hero>();
+        //Debug.Log(hitColliders.Length);
     }
 
     public void ChangeStatus()
