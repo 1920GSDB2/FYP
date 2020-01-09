@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: [GameBoard, HeroList, HeroPlace, GameManager, BufferList]
+  tags:
+  - GameBoard
+  - HeroList
+  - HeroPlace
+  - GameManager
+  - BufferList
   layers:
   - Default
   - TransparentFX
@@ -13,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Game Chess
+  - Enemy
   - 
   - 
   - 
