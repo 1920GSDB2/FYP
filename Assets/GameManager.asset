@@ -18,7 +18,7 @@ MonoBehaviour:
     pw: 
     name: 
     email: 
-  lobbyScene: Lobby
+  lobbyScene: Create Room 1
   setupTime: 15
   playtingTime: 30
   extraTime: 10
