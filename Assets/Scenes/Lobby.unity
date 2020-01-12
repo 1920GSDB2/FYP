@@ -443,12 +443,18 @@ MonoBehaviour:
   JoinCustomButton: {fileID: 203295400}
   OkayButton: {fileID: 1686013774}
   BackLobbyButton: {fileID: 1909391999}
+  RoomStartButton: {fileID: 0}
+  RoomBackLoobyButton: {fileID: 0}
   StartPanel: {fileID: 2065688042}
   LobbyPanel: {fileID: 778074141}
   InformationPanel: {fileID: 977461206}
   MatchModePanel: {fileID: 1750367701}
   CreateCustomPanel: {fileID: 1060632434}
   JoinCustomPanel: {fileID: 1641659239}
+  GameRoomPanel: {fileID: 0}
+  RoomInfoPanel: {fileID: 0}
+  PlayerListPanel: {fileID: 0}
+  LobbyPlayer: {fileID: 0}
 --- !u!4 &159746826
 Transform:
   m_ObjectHideFlags: 0
