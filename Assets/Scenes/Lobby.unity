@@ -440,17 +440,17 @@ MonoBehaviour:
   StartButton: {fileID: 2056058965}
   LobbyButton: {fileID: 612929808}
   InformationButton: {fileID: 1110015247}
-  StartPanel: {fileID: 2065688042}
-  LobbyPanel: {fileID: 778074141}
-  InformationPanel: {fileID: 977461206}
   MatchButton: {fileID: 839414623}
   CreateCustomButton: {fileID: 864060747}
   JoinCustomButton: {fileID: 203295400}
+  OkayButton: {fileID: 1686013774}
+  BackLobbyButton: {fileID: 1909391999}
+  StartPanel: {fileID: 2065688042}
+  LobbyPanel: {fileID: 778074141}
+  InformationPanel: {fileID: 977461206}
   MatchModePanel: {fileID: 1750367701}
   CreateCustomPanel: {fileID: 1060632434}
   JoinCustomPanel: {fileID: 1641659239}
-  OkayButton: {fileID: 1686013774}
-  BackLobbyButton: {fileID: 1909391999}
 --- !u!4 &159746826
 Transform:
   m_ObjectHideFlags: 0
