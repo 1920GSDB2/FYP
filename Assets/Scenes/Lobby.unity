@@ -602,17 +602,12 @@ MonoBehaviour:
   BackLobbyButton: {fileID: 1909391999}
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 >>>>>>> parent of cf73574... Room
 =======
 >>>>>>> parent of b2ba6d9... a
 =======
 >>>>>>> parent of ae91807... .2
-=======
-  RoomStartButton: {fileID: 0}
-  RoomBackLoobyButton: {fileID: 0}
->>>>>>> parent of 3b8c2fe... .
   StartPanel: {fileID: 2065688042}
   LobbyPanel: {fileID: 778074141}
   InformationPanel: {fileID: 977461206}
@@ -623,17 +618,13 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 >>>>>>> parent of ae91807... .2
 =======
-=======
->>>>>>> parent of 3b8c2fe... .
   GameRoomPanel: {fileID: 0}
   RoomInfoPanel: {fileID: 970293723}
   PlayerListPanel: {fileID: 442375247}
   LobbyPlayer: {fileID: 0}
-<<<<<<< HEAD
 >>>>>>> parent of fff7cbf... Merge branch 'master' of https://github.com/1920GSDB2/FYPMobile
 <<<<<<< HEAD
 =======
@@ -644,8 +635,6 @@ MonoBehaviour:
 >>>>>>> parent of b2ba6d9... a
 =======
 >>>>>>> parent of ae91807... .2
-=======
->>>>>>> parent of 3b8c2fe... .
 --- !u!4 &159746826
 Transform:
   m_ObjectHideFlags: 0
