@@ -603,8 +603,11 @@ MonoBehaviour:
   JoinCustomButton: {fileID: 203295400}
   OkayButton: {fileID: 1686013774}
   BackLobbyButton: {fileID: 1909391999}
+<<<<<<< HEAD
 =======
 >>>>>>> parent of cf73574... Room
+=======
+>>>>>>> parent of b2ba6d9... a
   StartPanel: {fileID: 2065688042}
   LobbyPanel: {fileID: 778074141}
   InformationPanel: {fileID: 977461206}
@@ -614,6 +617,7 @@ MonoBehaviour:
   MatchModePanel: {fileID: 1750367701}
   CreateCustomPanel: {fileID: 1060632434}
   JoinCustomPanel: {fileID: 1641659239}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -626,6 +630,8 @@ MonoBehaviour:
   OkayButton: {fileID: 1686013774}
   BackLobbyButton: {fileID: 1909391999}
 >>>>>>> parent of cf73574... Room
+=======
+>>>>>>> parent of b2ba6d9... a
 --- !u!4 &159746826
 Transform:
   m_ObjectHideFlags: 0
