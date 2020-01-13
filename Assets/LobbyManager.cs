@@ -244,7 +244,7 @@ public class LobbyManager : MonoBehaviour
                 index = (LobbyRoomButtons.Count - 1);
             }
         }
-        if (index != 1) 
+        if (index != -1) 
         {
             LobbyRoom lobbyRoom = LobbyRoomButtons[index];
             lobbyRoom.setRoomName(room.Name);
