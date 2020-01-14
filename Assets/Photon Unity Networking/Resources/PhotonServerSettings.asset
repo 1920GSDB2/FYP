@@ -48,4 +48,6 @@ MonoBehaviour:
   - RPC_Test
   - TaggedPlayer
   - RPC_PlayerJoinRoom
+  - RPC_MasterLeftRoom
+  - test
   DisableAutoOpenWizard: 1

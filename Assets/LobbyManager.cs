@@ -112,6 +112,15 @@ public class LobbyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PhotonNetwork.isMasterClient)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                PhotonView.RPC("test", PhotonTargets.Others, "others");
+                PhotonView.RPC("test", PhotonTargets.All, "All");
+                PhotonView.RPC("test", PhotonTargets.OthersBuffered, "OthersBuffered");
+            }
+        }
     }
 
     public void SwitchFunctionPanel(FunctionPanelType _type)
@@ -225,6 +234,7 @@ public class LobbyManager : MonoBehaviour
         {
             RoomReceived(room);
         }
+        RemoveOldRooms();
     }
     
     private void RoomReceived(RoomInfo room)
@@ -306,11 +316,54 @@ public class LobbyManager : MonoBehaviour
         PlayerLeftRoom(photonPlayer);
     }
     private void OnClickLeftRoom() {
-        SwitchFunctionPanel(FunctionPanelType.LobbyPanel);
+        print("Leave room");
+        SwitchUsingPanel(UsingPanelType.JoinCustomPanel);
+        
+        if (PhotonNetwork.isMasterClient) {
+            print("i am master player left room");
+            PhotonView.RPC("RPC_MasterLeftRoom", PhotonTargets.Others);
+        }
+        
+        while (playerListings.Count != 0) {
+            Destroy(PlayerListings[0].gameObject);
+            PlayerListings.RemoveAt(0);
+        }
         PhotonNetwork.LeaveRoom();
     }
 
-   
+    private void RemoveOldRooms()
+    {
+        List<LobbyRoom> removeRooms = new List<LobbyRoom>();
+
+        foreach (LobbyRoom roomListing in LobbyRoomButtons)
+        {
+            if (!roomListing.Updated)
+                removeRooms.Add(roomListing);
+            else
+                roomListing.Updated = false;
+        }
+
+        foreach (LobbyRoom roomListing in removeRooms)
+        {
+            GameObject roomListingObj = roomListing.gameObject;
+            LobbyRoomButtons.Remove(roomListing);
+            Destroy(roomListingObj);
+
+        }
+    }
+
+    [PunRPC]
+    private void RPC_MasterLeftRoom()
+    {
+        print("Master Left Room");
+        OnClickLeftRoom();
+    }
+    [PunRPC]
+    private void test(string a)
+    {
+        print(a);
+        
+    }
 
     public void StartGame()
     {
