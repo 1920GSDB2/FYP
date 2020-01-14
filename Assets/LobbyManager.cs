@@ -62,6 +62,7 @@ public class LobbyManager : MonoBehaviour
     public GameObject LobbyRoomPrefab;
 
     UsingPanelType currentModeType = UsingPanelType.MatchModePanel;
+    PhotonView PhotonView;
     private List<LobbyRoom> _lobbyRoomButtons = new List<LobbyRoom>();
     private List<LobbyRoom> LobbyRoomButtons
     {
@@ -83,6 +84,7 @@ public class LobbyManager : MonoBehaviour
             print("Connecting to server..");
             PhotonNetwork.ConnectUsingSettings("0.0.0");
         }
+        PhotonView = GetComponent<PhotonView>();
         //Function Panels Manage
         FunctionPanelsArr[0] = StartPanel;
         FunctionPanelsArr[1] = LobbyPanel;
@@ -103,15 +105,13 @@ public class LobbyManager : MonoBehaviour
         OkayButton.onClick.AddListener(delegate { EnterRoom(); });
         BackLobbyButton.onClick.AddListener(delegate { SwitchFunctionPanel(FunctionPanelType.LobbyPanel); });
         RoomStartButton.onClick.AddListener(delegate { StartGame(); });
-        RoomBackLoobyButton.onClick.AddListener(delegate { SwitchFunctionPanel(FunctionPanelType.LobbyPanel); });
-
+        RoomBackLoobyButton.onClick.AddListener(delegate { OnClickLeftRoom(); });
         SwitchFunctionPanel(FunctionPanelType.LobbyPanel);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void SwitchFunctionPanel(FunctionPanelType _type)
@@ -221,7 +221,6 @@ public class LobbyManager : MonoBehaviour
     private void OnReceivedRoomListUpdate()
     {
         RoomInfo[] rooms = PhotonNetwork.GetRoomList();
-
         foreach (RoomInfo room in rooms)
         {
             RoomReceived(room);
@@ -248,6 +247,7 @@ public class LobbyManager : MonoBehaviour
         {
             LobbyRoom lobbyRoom = LobbyRoomButtons[index];
             lobbyRoom.setRoomName(room.Name);
+            lobbyRoom.setPlayerNumber(room.playerCount);
             lobbyRoom.Updated = true;
            
         }
@@ -256,17 +256,20 @@ public class LobbyManager : MonoBehaviour
     private void OnJoinedRoom()//called by photon .When player join room
     {
         SwitchUsingPanel(UsingPanelType.GameRoomPanel);
-       /* foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }*/
-      
+        
+        /* foreach (Transform child in transform)
+         {
+             Destroy(child.gameObject);
+         }*/
+
+        CurrentRoomName.text = CreateRoomNameText.text;
         PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
         for (int i = 0; i < photonPlayers.Length; i++)
         {
             PlayerJoinedRoom(photonPlayers[i]);
         }
-
+       
+        //PhotonView.RPC("RPC_PlayerJoinRoom", PhotonTargets.OthersBuffered);
     }
     private void PlayerJoinedRoom(PhotonPlayer photonPlayer)
     {
@@ -302,6 +305,13 @@ public class LobbyManager : MonoBehaviour
     {
         PlayerLeftRoom(photonPlayer);
     }
+    private void OnClickLeftRoom() {
+        SwitchFunctionPanel(FunctionPanelType.LobbyPanel);
+        PhotonNetwork.LeaveRoom();
+    }
+
+   
+
     public void StartGame()
     {
 

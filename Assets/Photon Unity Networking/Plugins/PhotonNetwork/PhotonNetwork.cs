@@ -1055,6 +1055,7 @@ public static class PhotonNetwork
     /// </remarks>
     public static bool UseAlternativeUdpPorts { get; set; }
     public static bool AutomaticallySyncScene { get; internal set; }
+   
 
 
     /// <summary>

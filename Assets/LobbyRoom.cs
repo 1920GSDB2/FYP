@@ -30,6 +30,9 @@ public class LobbyRoom : MonoBehaviour
     public void setRoomName(string roomName) {
         RoomName.text = roomName;
     }
+    public void setPlayerNumber(int number) {
+        PlayerNumber.text = number.ToString()+"/8";
+    }
     public void EnterRoom(string roomName)
     {
         if (PhotonNetwork.JoinRoom(roomName))
