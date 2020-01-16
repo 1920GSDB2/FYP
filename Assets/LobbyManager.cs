@@ -123,6 +123,7 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
+    #region Button Delegate
     public void SwitchFunctionPanel(FunctionPanelType _type)
     {
         foreach (GameObject panel in FunctionPanelsArr)
@@ -162,6 +163,7 @@ public class LobbyManager : MonoBehaviour
                 UsingPanelsArr[2].SetActive(true);
                 break;
             case UsingPanelType.GameRoomPanel:
+                FunctionPanelsArr[0].SetActive(false);
                 UsingPanelsArr[3].SetActive(true);                
                 break;
         }
@@ -185,6 +187,31 @@ public class LobbyManager : MonoBehaviour
                 break;
         }
     }
+
+    public void StartGame()
+    {
+
+    }
+    private void OnClickLeftRoom()
+    {
+        print("Leave room");
+        SwitchUsingPanel(UsingPanelType.JoinCustomPanel);
+
+        if (PhotonNetwork.isMasterClient)
+        {
+            print("i am master player left room");
+            PhotonView.RPC("RPC_MasterLeftRoom", PhotonTargets.Others);
+        }
+
+        while (playerListings.Count != 0)
+        {
+            Destroy(PlayerListings[0].gameObject);
+            PlayerListings.RemoveAt(0);
+        }
+        PhotonNetwork.LeaveRoom();
+    }
+    #endregion
+
     //When Player connect to Master called by photon
     private void OnConnectedToMaster()
     {
@@ -315,21 +342,7 @@ public class LobbyManager : MonoBehaviour
     {
         PlayerLeftRoom(photonPlayer);
     }
-    private void OnClickLeftRoom() {
-        print("Leave room");
-        SwitchUsingPanel(UsingPanelType.JoinCustomPanel);
-        
-        if (PhotonNetwork.isMasterClient) {
-            print("i am master player left room");
-            PhotonView.RPC("RPC_MasterLeftRoom", PhotonTargets.Others);
-        }
-        
-        while (playerListings.Count != 0) {
-            Destroy(PlayerListings[0].gameObject);
-            PlayerListings.RemoveAt(0);
-        }
-        PhotonNetwork.LeaveRoom();
-    }
+
 
     private void RemoveOldRooms()
     {
@@ -365,9 +378,5 @@ public class LobbyManager : MonoBehaviour
         
     }
 
-    public void StartGame()
-    {
-
-    }
 
 }
