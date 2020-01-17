@@ -19,6 +19,7 @@ public class LobbyManager : MonoBehaviour
         CreateCustomPanel,
         JoinCustomPanel
     }
+    public LobbyManager instance;
     public GameManager GameManager;
 
     [Header("Function Buttons")]
@@ -42,13 +43,13 @@ public class LobbyManager : MonoBehaviour
     public GameObject LobbyPanel;
     public GameObject InformationPanel;
     public GameObject GameRoomPanel;
-    GameObject[] FunctionPanelsArr = new GameObject[4];
+    static GameObject[] FunctionPanelsArr = new GameObject[4];
 
     [Header("Using Panels")]
     public GameObject MatchModePanel;
     public GameObject CreateCustomPanel;
     public GameObject JoinCustomPanel;
-    GameObject[] UsingPanelsArr = new GameObject[3];
+    static GameObject[] UsingPanelsArr = new GameObject[3];
 
     [Header("Room Panels")]
     public GameObject RoomListPanel;
@@ -63,15 +64,19 @@ public class LobbyManager : MonoBehaviour
     public GameObject LobbyPlayer;
     public GameObject LobbyRoomPrefab;
 
-    UsingPanelType currentModeType = UsingPanelType.MatchModePanel;
+    static UsingPanelType currentModeType = UsingPanelType.MatchModePanel;
     PhotonView PhotonView;
 
     public List<LobbyRoom> LobbyRoomButtons { get; private set; } = new List<LobbyRoom>();
-    public List<LobbyPlayer> PlayerListings { get; private set; } = new List<LobbyPlayer>();
+    public static List<LobbyPlayer> PlayerListings { get; private set; } = new List<LobbyPlayer>();
  
     // Start is called before the first frame update
     void Start()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
       
         //connect to server
         if (!PhotonNetwork.connected)
@@ -120,7 +125,7 @@ public class LobbyManager : MonoBehaviour
     }
 
     #region Button Delegate
-    public void SwitchFunctionPanel(FunctionPanelType _type)
+    public static void SwitchFunctionPanel(FunctionPanelType _type)
     {
         
         foreach (GameObject panel in FunctionPanelsArr)
@@ -147,7 +152,7 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
-    public void SwitchUsingPanel(UsingPanelType _type)
+    public static void SwitchUsingPanel(UsingPanelType _type)
     {
         if (PhotonNetwork.isMasterClient) return;
         currentModeType = _type;
@@ -193,7 +198,7 @@ public class LobbyManager : MonoBehaviour
     {
 
     }
-    public void OnClickLeftRoom()
+    public static void OnClickLeftRoom()
     {
         print("Leave room");
         
@@ -327,7 +332,7 @@ public class LobbyManager : MonoBehaviour
         PlayerListings.Add(playerListing);
 
     }
-    private void PlayerLeftRoom(PhotonPlayer photonPlayer)
+    private static void PlayerLeftRoom(PhotonPlayer photonPlayer)
     {
         int index = PlayerListings.FindIndex(a => a.PhotonPlayer == photonPlayer);
         if (index != -1)

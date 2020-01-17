@@ -46,7 +46,8 @@ public class LobbyPlayer : MonoBehaviour
 
     public void Kick()
     {
-
+        PhotonNetwork.CloseConnection(PhotonPlayer);
     }
+    
 
 }
