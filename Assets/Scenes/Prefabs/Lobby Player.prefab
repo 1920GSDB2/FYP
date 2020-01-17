@@ -519,6 +519,7 @@ MonoBehaviour:
   PlayerName: {fileID: 1823283792585758020}
   ReadyButton: {fileID: 1823283792191840457}
   KickButton: {fileID: 1823283790660889291}
+  ReadyButtonText: {fileID: 1823283790875109846}
 --- !u!1 &1823283791442265765
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class LobbyManager : MonoBehaviour
         CreateCustomPanel,
         JoinCustomPanel
     }
-    public LobbyManager instance;
+    public static LobbyManager instance;
     public GameManager GameManager;
 
     [Header("Function Buttons")]
@@ -65,10 +65,11 @@ public class LobbyManager : MonoBehaviour
     public GameObject LobbyRoomPrefab;
 
     static UsingPanelType currentModeType = UsingPanelType.MatchModePanel;
-    PhotonView PhotonView;
+    public static PhotonView PhotonView;
 
     public List<LobbyRoom> LobbyRoomButtons { get; private set; } = new List<LobbyRoom>();
     public static List<LobbyPlayer> PlayerListings { get; private set; } = new List<LobbyPlayer>();
+    bool isInRoom;
  
     // Start is called before the first frame update
     void Start()
@@ -122,6 +123,11 @@ public class LobbyManager : MonoBehaviour
                 PhotonView.RPC("test", PhotonTargets.OthersBuffered, "OthersBuffered");
             }
         }
+        //if (isInRoom != PhotonNetwork.inRoom && !PhotonNetwork.inRoom)
+        //{
+        //    OnClickLeftRoom();
+        //}
+        //isInRoom = PhotonNetwork.inRoom;
     }
 
     #region Button Delegate
@@ -196,7 +202,20 @@ public class LobbyManager : MonoBehaviour
 
     public void StartGame()
     {
-
+        if (PlayerListings.Count != (int)GameManager.MaxRoomPlayer) return;
+        bool isAllReady = true;
+        foreach (LobbyPlayer player in PlayerListings)
+        {
+            if (!player.IsReady)
+            {
+                isAllReady = false;
+                break;
+            }
+        }
+        if (isAllReady)
+        {
+            //Enter the Game Room
+        }
     }
     public static void OnClickLeftRoom()
     {
@@ -205,7 +224,7 @@ public class LobbyManager : MonoBehaviour
 
         if (PhotonNetwork.isMasterClient)
         {
-            print("i am master player left room");
+            //print("i am master player left room");
             if (PhotonNetwork.playerList.Length > 1)
                 PhotonNetwork.SetMasterClient(PhotonNetwork.masterClient.GetNext());
             //PhotonView.RPC("RPC_MasterLeftRoom", PhotonTargets.Others);
@@ -216,7 +235,7 @@ public class LobbyManager : MonoBehaviour
             Destroy(PlayerListings[0].gameObject);
             PlayerListings.RemoveAt(0);
         }
-        PhotonNetwork.LeaveRoom();
+        if (PhotonNetwork.inRoom) PhotonNetwork.LeaveRoom();
         SwitchFunctionPanel(FunctionPanelType.LobbyPanel);
     }
     #endregion
@@ -238,9 +257,10 @@ public class LobbyManager : MonoBehaviour
           //  MainCanvasManger.Instance.LobbyCanvas.transform.SetAsLastSibling();
     }
 
+    #region Create Room
     //Create A room
     private void CreateRoom() {
-        RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 8 };
+        RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = GameManager.MaxRoomPlayer };
         if (PhotonNetwork.CreateRoom(CreateRoomNameText.text, roomOptions, TypedLobby.Default))
         {
             print("create room successfully");
@@ -298,7 +318,9 @@ public class LobbyManager : MonoBehaviour
            
         }
     }
-    
+    #endregion
+
+    #region Join Room
     private void OnJoinedRoom()//called by photon .When player join room
     {
         SwitchFunctionPanel(FunctionPanelType.GameRoomPanel);
@@ -327,11 +349,19 @@ public class LobbyManager : MonoBehaviour
         playerListingObj.transform.SetParent(PlayerListPanel.transform, false);
 
         LobbyPlayer playerListing = playerListingObj.GetComponent<LobbyPlayer>();
-        playerListing.setPhotonPlayer(photonPlayer);//set information of player
+        playerListing.SetPhotonPlayer(photonPlayer);//set information of player
 
         PlayerListings.Add(playerListing);
 
     }
+
+    //called by photon
+    private void OnPhotonPlayerConnected(PhotonPlayer photonPlayer)
+    {
+        PlayerJoinedRoom(photonPlayer);
+    }
+    #endregion
+
     private static void PlayerLeftRoom(PhotonPlayer photonPlayer)
     {
         int index = PlayerListings.FindIndex(a => a.PhotonPlayer == photonPlayer);
@@ -341,11 +371,7 @@ public class LobbyManager : MonoBehaviour
             PlayerListings.RemoveAt(index);
         }
     }
-    //called by photon
-    private void OnPhotonPlayerConnected(PhotonPlayer photonPlayer)
-    {
-        PlayerJoinedRoom(photonPlayer);
-    }
+    
     //called by photon
     private void OnPhotonPlayerDisconnected(PhotonPlayer photonPlayer)
     {
@@ -375,9 +401,9 @@ public class LobbyManager : MonoBehaviour
     }
 
     [PunRPC]
-    private void RPC_MasterLeftRoom()
+    private void RPC_OnLeftRoom()
     {
-        print("Master Left Room");
+        print("Left Room");
         OnClickLeftRoom();
     }
     [PunRPC]
@@ -385,6 +411,17 @@ public class LobbyManager : MonoBehaviour
     {
         print(a);
         
+    }
+
+    [PunRPC]
+    void RPC_Ready(PhotonPlayer photonPlayer)
+    {
+        print("Ready");
+        int index = PlayerListings.FindIndex(a => a.PhotonPlayer == photonPlayer);
+        if (index != -1)
+        {
+           PlayerListings[index].Ready();
+        }
     }
 
 

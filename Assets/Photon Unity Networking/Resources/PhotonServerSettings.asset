@@ -50,4 +50,7 @@ MonoBehaviour:
   - RPC_PlayerJoinRoom
   - RPC_MasterLeftRoom
   - test
+  - RPC_ConLeftRoom
+  - RPC_OnLeftRoom
+  - RPC_Ready
   DisableAutoOpenWizard: 1

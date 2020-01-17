@@ -7,6 +7,7 @@ using UnityEngine;
 public class GameManager : ScriptableObject
 {
     public string databaseIP = "";
+    public byte MaxRoomPlayer;
     public UserData userData;
     public string lobbyScene;
     public float setupTime, playtingTime, extraTime;        //Sync to photon
