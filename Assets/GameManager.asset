@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GameManager
   m_EditorClassIdentifier: 
   databaseIP: https://script.google.com/macros/s/AKfycby9xgypoTEsywirNtCpzWB-x43PUoMRQ54AAiXjIFbv4aePYQ/exec
+  MaxRoomPlayer: 8
   userData:
     id: 
     pw: 
