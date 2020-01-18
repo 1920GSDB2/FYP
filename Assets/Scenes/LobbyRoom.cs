@@ -37,7 +37,7 @@ public class LobbyRoom : MonoBehaviour
     }
     public void EnterRoom(string roomId)
     {
-        LobbyManager.JoinRoom(roomId);
+        LobbyManager.instance.JoinRoom(roomId);
         //if(PhotonNetwork.GetRoomList()[0].n)
         //if (PhotonNetwork.JoinRoom(roomName))
         //{

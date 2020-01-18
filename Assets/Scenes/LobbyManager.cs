@@ -25,8 +25,8 @@ public class LobbyManager : MonoBehaviour
 
     #region Variable
     public GameManager GameManager;
-    public static PhotonView PhotonView;
     public static LobbyManager instance;
+    public static PhotonView PhotonView;
     public static UsingPanelType currentModeType = UsingPanelType.MatchModePanel;
     public static List<LobbyRoom> LobbyRooms { get; private set; } = new List<LobbyRoom>();
     public static List<LobbyPlayer> RoomPlayersList { get; private set; } = new List<LobbyPlayer>();
@@ -157,7 +157,7 @@ public class LobbyManager : MonoBehaviour
     }
 
     #region Switch Panels
-    public static void SwitchFunctionPanel(FunctionPanelType _type)
+    public void SwitchFunctionPanel(FunctionPanelType _type)
     {
         
         foreach (GameObject panel in FunctionPanelsArr)
@@ -184,10 +184,10 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
-    public static void SwitchUsingPanel(UsingPanelType _type)
+    public void SwitchUsingPanel(UsingPanelType _type)
     {
         if (PhotonNetwork.isMasterClient) return;
-        instance.RoomPasswordPanel.SetActive(false);
+        RoomPasswordPanel.SetActive(false);
         currentModeType = _type;
         foreach(GameObject panel in UsingPanelsArr)
         {
@@ -197,7 +197,6 @@ public class LobbyManager : MonoBehaviour
         {
             case UsingPanelType.MatchModePanel:
                 UsingPanelsArr[0].SetActive(true);
-                /*****/
                 break;
             case UsingPanelType.CreateCustomPanel:
                 UsingPanelsArr[1].SetActive(true);                
@@ -238,16 +237,18 @@ public class LobbyManager : MonoBehaviour
         roomOptions.MaxPlayers = GameManager.MaxRoomPlayer;
         roomOptions.CustomRoomProperties = new Hashtable()
         {
-            { "name", CreateRoomName.text }
+            {"NAME", CreateRoomName.text},
+            {"GAMEMODE", "CUSTOM" }
         };
 
-        roomOptions.CustomRoomPropertiesForLobby = new string[] {"name"};
+        roomOptions.CustomRoomPropertiesForLobby = new string[] { "NAME" };
         List<string> CustomRoomPropertiesForLobby = new List<string>();
-        CustomRoomPropertiesForLobby.Add("name");
+        CustomRoomPropertiesForLobby.Add("NAME");
+        CustomRoomPropertiesForLobby.Add("GAMEMODE");
         if (!CreateRoomPassord.text.Equals(""))
         {
-            roomOptions.CustomRoomProperties.Add("pw", CreateRoomPassord.text);
-            CustomRoomPropertiesForLobby.Add("pw");
+            roomOptions.CustomRoomProperties.Add("PASSWORD", CreateRoomPassord.text);
+            CustomRoomPropertiesForLobby.Add("PASSWORD");
         }
         roomOptions.CustomRoomPropertiesForLobby = CustomRoomPropertiesForLobby.ToArray();
         
@@ -281,7 +282,10 @@ public class LobbyManager : MonoBehaviour
         RoomInfo[] rooms = PhotonNetwork.GetRoomList();
         foreach (RoomInfo room in rooms)
         {
-            RoomReceived(room);
+            if (room.CustomProperties["GAMEMODE"].Equals("CUSTOM"))
+            {
+                RoomReceived(room);
+            }
         }
         RemoveOldRooms();
     }
@@ -305,7 +309,7 @@ public class LobbyManager : MonoBehaviour
         if (index != -1) 
         {
             LobbyRoom lobbyRoom = LobbyRooms[index];
-            lobbyRoom.SetRoom(room.Name, room.CustomProperties["name"].ToString(), room.PlayerCount);
+            lobbyRoom.SetRoom(room.Name, room.CustomProperties["NAME"].ToString(), room.PlayerCount);
             lobbyRoom.Updated = true;
            
         }
@@ -320,6 +324,7 @@ public class LobbyManager : MonoBehaviour
         {
             case UsingPanelType.MatchModePanel:
                 //...//
+                MatchRoom();
                 break;
             case UsingPanelType.CreateCustomPanel:
                 SwitchFunctionPanel(FunctionPanelType.GameRoomPanel);
@@ -346,21 +351,21 @@ public class LobbyManager : MonoBehaviour
         
     }
     //Normal Join Method, It is called by LoobyRoom.cs
-    public static void JoinRoom(string roomId)
+    public void JoinRoom(string roomId)
     {
         foreach(RoomInfo room in PhotonNetwork.GetRoomList())
         {
             if (room.Name.Equals(roomId))
             {
-                if (!room.CustomProperties.ContainsKey("pw"))
+                if (!room.CustomProperties.ContainsKey("PASSWORD"))
                 {
-                    instance.EnterRoom(roomId);
-                    instance.joinRoomId = "";
+                    EnterRoom(roomId);
+                    joinRoomId = "";
                 }
                 else
                 {
-                    instance.RoomPasswordPanel.SetActive(true);
-                    instance.joinRoomId = roomId;
+                    RoomPasswordPanel.SetActive(true);
+                    joinRoomId = roomId;
                 }
                 break;
             }
@@ -375,7 +380,7 @@ public class LobbyManager : MonoBehaviour
         {
             if (room.Name.Equals(joinRoomId))
             {
-                if (room.CustomProperties["pw"].Equals(PassordInputField.text))
+                if (room.CustomProperties["PASSWORD"].Equals(PassordInputField.text))
                 {
                     EnterRoom();
                     joinRoomId = "";
@@ -403,8 +408,11 @@ public class LobbyManager : MonoBehaviour
     private void OnJoinedRoom()
     {
         SwitchFunctionPanel(FunctionPanelType.GameRoomPanel);
-        
-        CurrentRoomName.text = PhotonNetwork.room.CustomProperties["name"].ToString();
+
+        if (PhotonNetwork.room.CustomProperties["GAMEMODE"].Equals("CUSTOM"))
+        {
+            CurrentRoomName.text = PhotonNetwork.room.CustomProperties["NAME"].ToString();
+        }
         PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
         for (int i = 0; i < photonPlayers.Length; i++)
         {
@@ -437,8 +445,52 @@ public class LobbyManager : MonoBehaviour
     }
     #endregion
 
+    #region Match Room
+    private void MatchRoom()
+    {
+        Hashtable CustomRoomProperties = new Hashtable() { { "GAMEMODE", "RANDOMMATCH" } };
+        //JoinMatchingRoom(CustomRoomProperties, GameManager.MaxRoomPlayer);
+        PhotonNetwork.JoinRandomRoom(CustomRoomProperties, GameManager.MaxRoomPlayer);
+    }
+    void JoinMatchingRoom(Hashtable CustomRoomProperties, byte MaxRoomPlayer)
+    {
+        foreach (RoomInfo room in PhotonNetwork.GetRoomList())
+        {
+            Hashtable roomCustomProperties = room.CustomProperties;
+            foreach (object key in CustomRoomProperties.Keys)
+            {
+                Debug.Log("Match Key: " + key);
+                Debug.Log("Match Value: '" + CustomRoomProperties[key].ToString() + "'");
+                Debug.Log("Room Key Value: '" + roomCustomProperties[key].ToString() + "'");
+                Debug.Log("Is Contain Key: " + roomCustomProperties.ContainsKey(key));
+                Debug.Log("Is Contain Value: " + roomCustomProperties[key].ToString().Equals(CustomRoomProperties[key].ToString()));
+
+                if (roomCustomProperties.ContainsKey(key) &&
+                    roomCustomProperties[key].ToString().Equals(CustomRoomProperties[key].ToString()) &&
+                    room.MaxPlayers == MaxRoomPlayer)
+                {
+                    EnterRoom(room.Name);
+                    return;
+                }
+            }
+        }
+        //OnMatchingJoinFailed();
+    }
+    void OnPhotonRandomJoinFailed()
+    {
+        print("Join Random Fail");
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.IsVisible = true;
+        roomOptions.IsOpen = true;
+        roomOptions.MaxPlayers = GameManager.MaxRoomPlayer;
+        roomOptions.CustomRoomProperties = new Hashtable() { { "GAMEMODE", "RANDOMMATCH" } };
+        roomOptions.CustomRoomPropertiesForLobby = new string[] { "GAMEMODE"};
+        PhotonNetwork.CreateRoom(null, roomOptions, null);
+    }
+    #endregion
+
     #region Leave Room
-    public static void OnClickLeftRoom()
+    public void OnClickLeftRoom()
     {
         print("Leave room");
         
@@ -483,7 +535,7 @@ public class LobbyManager : MonoBehaviour
 
     #region Remove Outdated Value
     //Remove Player who does not Exist in the Room;
-    private static void PlayerLeftRoom(PhotonPlayer photonPlayer)
+    private void PlayerLeftRoom(PhotonPlayer photonPlayer)
     {
         int index = RoomPlayersList.FindIndex(a => a.PhotonPlayer == photonPlayer);
         if (index != -1)
