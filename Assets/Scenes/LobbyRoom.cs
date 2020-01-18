@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+//using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 [RequireComponent(typeof(Button))]
 public class LobbyRoom : MonoBehaviour
 {
-
+    public string RoomId { get; private set; }
     public TextMeshProUGUI RoomName;
     public TextMeshProUGUI Owner;
     public TextMeshProUGUI GameMode;
     public TextMeshProUGUI PlayerNumber;
     public bool Updated { get; set; }
     Button EnterRoomButton;
+    //Hashtable customProperties = new Hashtable();
 
     // Start is called before the first frame update
     void Start()
     {
         EnterRoomButton = GetComponent<Button>();
-        EnterRoomButton.onClick.AddListener(delegate { EnterRoom(RoomName.text); });
+        EnterRoomButton.onClick.AddListener(delegate { EnterRoom(RoomId); });
     }
 
     // Update is called once per frame
@@ -27,22 +29,24 @@ public class LobbyRoom : MonoBehaviour
     {
         
     }
-    public void setRoomName(string roomName) {
-        RoomName.text = roomName;
-    }
-    public void setPlayerNumber(int number) {
-        PlayerNumber.text = number.ToString()+"/8";
-    }
-    public void EnterRoom(string roomName)
+    public void SetRoom(string roomId, string name, int playerNum)
     {
-        if (PhotonNetwork.JoinRoom(roomName))
-        {
-            print("Join room: "+roomName);          
-        }
-        else
-        {
-            print("Join room failed.");
-        }
+        RoomId = roomId;
+        RoomName.text = name;
+        PlayerNumber.text = playerNum.ToString() + "/8";
+    }
+    public void EnterRoom(string roomId)
+    {
+        LobbyManager.JoinRoom(roomId);
+        //if(PhotonNetwork.GetRoomList()[0].n)
+        //if (PhotonNetwork.JoinRoom(roomName))
+        //{
+        //    print("Join room: "+roomName);          
+        //}
+        //else
+        //{
+        //    print("Join room failed.");
+        //}
     }
     private void OnDestroy()
     {

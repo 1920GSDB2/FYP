@@ -9,9 +9,10 @@
 // ----------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using ExitGames.Client.Photon;
 using UnityEngine;
-
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 /// <summary>
 /// This class resembles a room that PUN joins (or joined).
@@ -32,6 +33,11 @@ public class Room : RoomInfo
         {
             this.nameField = value;
         }
+    }
+
+    internal void SetCustomProperties(System.Collections.Hashtable customProperties)
+    {
+        throw new NotImplementedException();
     }
 
     /// <summary>

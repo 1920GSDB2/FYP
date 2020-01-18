@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class LobbyManager : MonoBehaviour
 {
+    #region Enum
     public enum FunctionPanelType
     {
         StartPanel,
@@ -19,9 +21,19 @@ public class LobbyManager : MonoBehaviour
         CreateCustomPanel,
         JoinCustomPanel
     }
-    public static LobbyManager instance;
-    public GameManager GameManager;
+    #endregion
 
+    #region Variable
+    public GameManager GameManager;
+    public static PhotonView PhotonView;
+    public static LobbyManager instance;
+    public static UsingPanelType currentModeType = UsingPanelType.MatchModePanel;
+    public static List<LobbyRoom> LobbyRooms { get; private set; } = new List<LobbyRoom>();
+    public static List<LobbyPlayer> RoomPlayersList { get; private set; } = new List<LobbyPlayer>();
+    string joinRoomId;
+    #endregion
+
+    #region Buttons
     [Header("Function Buttons")]
     public Button StartButton;
     public Button LobbyButton;
@@ -38,6 +50,12 @@ public class LobbyManager : MonoBehaviour
     public Button RoomStartButton;
     public Button RoomBackLoobyButton;
 
+    [Header("Room Password Buttons")]
+    public Button JoinButton;
+    public Button CancelJoinButton;
+    #endregion
+
+    #region Panels
     [Header("Function Panels")]
     public GameObject StartPanel;
     public GameObject LobbyPanel;
@@ -56,36 +74,43 @@ public class LobbyManager : MonoBehaviour
     public GameObject RoomInfoPanel;
     public GameObject PlayerListPanel;
 
-    [Header("Input Text")]
-    public TextMeshProUGUI CreateRoomNameText;
+    [Header("Useful Panels")]
+    public GameObject RoomPasswordPanel;
+    #endregion
+
+    #region Text
+    [Header("Text")]
+    public TMP_InputField CreateRoomName;
+    public TMP_InputField CreateRoomPassord;
+    public TMP_InputField PassordInputField;
     public TextMeshProUGUI CurrentRoomName;
-    
-    [Header("Prefabs")]
+    #endregion
+
+    #region Instantiate Object
+    [Header("Instantiate Object")]
     public GameObject LobbyPlayer;
     public GameObject LobbyRoomPrefab;
+    #endregion
 
-    static UsingPanelType currentModeType = UsingPanelType.MatchModePanel;
-    public static PhotonView PhotonView;
-
-    public List<LobbyRoom> LobbyRoomButtons { get; private set; } = new List<LobbyRoom>();
-    public static List<LobbyPlayer> PlayerListings { get; private set; } = new List<LobbyPlayer>();
-    bool isInRoom;
- 
     // Start is called before the first frame update
     void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-      
+        #region Photon Connect
         //connect to server
         if (!PhotonNetwork.connected)
         {
             print("Connecting to server..");
             PhotonNetwork.ConnectUsingSettings("0.0.0");
         }
+        #endregion
+
+        #region Variable Initialize
+        if (instance == null)
+        {
+            instance = this;
+        }
         PhotonView = GetComponent<PhotonView>();
+
         //Function Panels Manage
         FunctionPanelsArr[0] = StartPanel;
         FunctionPanelsArr[1] = LobbyPanel;
@@ -96,7 +121,9 @@ public class LobbyManager : MonoBehaviour
         UsingPanelsArr[0] = MatchModePanel;
         UsingPanelsArr[1] = CreateCustomPanel;
         UsingPanelsArr[2] = JoinCustomPanel;
+        #endregion
 
+        #region AddListener
         //Add Listener of Buttons
         StartButton.onClick.AddListener(delegate { SwitchFunctionPanel(FunctionPanelType.StartPanel); SwitchUsingPanel(UsingPanelType.MatchModePanel); });
         LobbyButton.onClick.AddListener(delegate { SwitchFunctionPanel(FunctionPanelType.LobbyPanel); });
@@ -108,6 +135,10 @@ public class LobbyManager : MonoBehaviour
         BackLobbyButton.onClick.AddListener(delegate { SwitchFunctionPanel(FunctionPanelType.LobbyPanel); });
         RoomStartButton.onClick.AddListener(delegate { StartGame(); });
         RoomBackLoobyButton.onClick.AddListener(delegate { OnClickLeftRoom(); });
+        JoinButton.onClick.AddListener(delegate { JoinPrivateRoom(); });
+        CancelJoinButton.onClick.AddListener(delegate { CancelJoinRoom(); });
+        #endregion
+
         SwitchFunctionPanel(FunctionPanelType.LobbyPanel);
     }
 
@@ -123,14 +154,9 @@ public class LobbyManager : MonoBehaviour
                 PhotonView.RPC("test", PhotonTargets.OthersBuffered, "OthersBuffered");
             }
         }
-        //if (isInRoom != PhotonNetwork.inRoom && !PhotonNetwork.inRoom)
-        //{
-        //    OnClickLeftRoom();
-        //}
-        //isInRoom = PhotonNetwork.inRoom;
     }
 
-    #region Button Delegate
+    #region Switch Panels
     public static void SwitchFunctionPanel(FunctionPanelType _type)
     {
         
@@ -161,6 +187,7 @@ public class LobbyManager : MonoBehaviour
     public static void SwitchUsingPanel(UsingPanelType _type)
     {
         if (PhotonNetwork.isMasterClient) return;
+        instance.RoomPasswordPanel.SetActive(false);
         currentModeType = _type;
         foreach(GameObject panel in UsingPanelsArr)
         {
@@ -170,6 +197,7 @@ public class LobbyManager : MonoBehaviour
         {
             case UsingPanelType.MatchModePanel:
                 UsingPanelsArr[0].SetActive(true);
+                /*****/
                 break;
             case UsingPanelType.CreateCustomPanel:
                 UsingPanelsArr[1].SetActive(true);                
@@ -180,66 +208,9 @@ public class LobbyManager : MonoBehaviour
 
         }
     }
-
-    public void EnterRoom()
-    {
-        switch (currentModeType)
-        {
-            case UsingPanelType.MatchModePanel:
-                //...//
-                break;
-            case UsingPanelType.CreateCustomPanel:
-                SwitchFunctionPanel(FunctionPanelType.GameRoomPanel);
-                CreateRoom();
-                //Pass Room Data To Create Room//
-                break;
-            case UsingPanelType.JoinCustomPanel:
-                SwitchFunctionPanel(FunctionPanelType.GameRoomPanel);
-                //Get Room Data To Join Room//
-                break;
-        }
-    }
-
-    public void StartGame()
-    {
-        if (PlayerListings.Count != (int)GameManager.MaxRoomPlayer) return;
-        bool isAllReady = true;
-        foreach (LobbyPlayer player in PlayerListings)
-        {
-            if (!player.IsReady)
-            {
-                isAllReady = false;
-                break;
-            }
-        }
-        if (isAllReady)
-        {
-            //Enter the Game Room
-        }
-    }
-    public static void OnClickLeftRoom()
-    {
-        print("Leave room");
-        
-
-        if (PhotonNetwork.isMasterClient)
-        {
-            //print("i am master player left room");
-            if (PhotonNetwork.playerList.Length > 1)
-                PhotonNetwork.SetMasterClient(PhotonNetwork.masterClient.GetNext());
-            //PhotonView.RPC("RPC_MasterLeftRoom", PhotonTargets.Others);
-        }
-
-        while (PlayerListings.Count != 0)
-        {
-            Destroy(PlayerListings[0].gameObject);
-            PlayerListings.RemoveAt(0);
-        }
-        if (PhotonNetwork.inRoom) PhotonNetwork.LeaveRoom();
-        SwitchFunctionPanel(FunctionPanelType.LobbyPanel);
-    }
     #endregion
 
+    #region Connect Lobby
     //When Player connect to Master called by photon
     private void OnConnectedToMaster()
     {
@@ -256,32 +227,54 @@ public class LobbyManager : MonoBehaviour
       //  if (!PhotonNetwork.inRoom)
           //  MainCanvasManger.Instance.LobbyCanvas.transform.SetAsLastSibling();
     }
+    #endregion
 
     #region Create Room
-    //Create A room
-    private void CreateRoom() {
-        RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = GameManager.MaxRoomPlayer };
-        if (PhotonNetwork.CreateRoom(CreateRoomNameText.text, roomOptions, TypedLobby.Default))
+    //Create A Custom room
+    private void CreateCustomRoom() {
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.IsVisible = true;
+        roomOptions.IsOpen = true;
+        roomOptions.MaxPlayers = GameManager.MaxRoomPlayer;
+        roomOptions.CustomRoomProperties = new Hashtable()
+        {
+            { "name", CreateRoomName.text }
+        };
+
+        roomOptions.CustomRoomPropertiesForLobby = new string[] {"name"};
+        List<string> CustomRoomPropertiesForLobby = new List<string>();
+        CustomRoomPropertiesForLobby.Add("name");
+        if (!CreateRoomPassord.text.Equals(""))
+        {
+            roomOptions.CustomRoomProperties.Add("pw", CreateRoomPassord.text);
+            CustomRoomPropertiesForLobby.Add("pw");
+        }
+        roomOptions.CustomRoomPropertiesForLobby = CustomRoomPropertiesForLobby.ToArray();
+        
+        if (PhotonNetwork.CreateRoom(null, roomOptions, TypedLobby.Default))
         {
             print("create room successfully");
-            print(CreateRoomNameText.text);
-            CurrentRoomName.text = CreateRoomNameText.text;
+            CurrentRoomName.text = CreateRoomName.text;
         }
         else
         {
             print("create room failed");
         }
+        CreateRoomName.text = "";
+        CreateRoomPassord.text = "";
     }
-    //called by photon to check if fail to create room
+
+    //Called by photon to check if fail to create room
     private void OnPhotonCreateRoomFailed(object[] codeAndMessage)
     {
         print("create room failed: " + codeAndMessage[1]);
     }
-    //called by photon to check if successfully to create room
+    //Called by photon to check if successfully to create room
     private void OnCreateRoom()
     {
         print("Room Create successfully.");
     }
+
     //When receive a room that mean someone create a room. called by photon
     private void OnReceivedRoomListUpdate()
     {
@@ -295,7 +288,7 @@ public class LobbyManager : MonoBehaviour
     
     private void RoomReceived(RoomInfo room)
     {
-        int index = LobbyRoomButtons.FindIndex(x => x.RoomName.text == room.Name);//Find the room name equal to one of element in LobbyRoomButtons List
+        int index = LobbyRooms.FindIndex(x => x.RoomName.text == room.Name);//Find the room name equal to one of element in LobbyRoomButtons List
                                                                                    //if find succesfully will return the index of position in List
         if (index == -1)//cannot find the element
         {
@@ -305,15 +298,14 @@ public class LobbyManager : MonoBehaviour
                 LobbyRoomObj.transform.SetParent(RoomListPanel.transform, false);
 
                 LobbyRoom lobbyRoom = LobbyRoomObj.GetComponent<LobbyRoom>();
-                LobbyRoomButtons.Add(lobbyRoom);
-                index = (LobbyRoomButtons.Count - 1);
+                LobbyRooms.Add(lobbyRoom);
+                index = (LobbyRooms.Count - 1);
             }
         }
         if (index != -1) 
         {
-            LobbyRoom lobbyRoom = LobbyRoomButtons[index];
-            lobbyRoom.setRoomName(room.Name);
-            lobbyRoom.setPlayerNumber(room.playerCount);
+            LobbyRoom lobbyRoom = LobbyRooms[index];
+            lobbyRoom.SetRoom(room.Name, room.CustomProperties["name"].ToString(), room.PlayerCount);
             lobbyRoom.Updated = true;
            
         }
@@ -321,69 +313,202 @@ public class LobbyManager : MonoBehaviour
     #endregion
 
     #region Join Room
-    private void OnJoinedRoom()//called by photon .When player join room
+    //Button Click a Room to Join
+    public void EnterRoom()
+    {
+        switch (currentModeType)
+        {
+            case UsingPanelType.MatchModePanel:
+                //...//
+                break;
+            case UsingPanelType.CreateCustomPanel:
+                SwitchFunctionPanel(FunctionPanelType.GameRoomPanel);
+                CreateCustomRoom();
+                //Pass Room Data To Create Room//
+                break;
+            case UsingPanelType.JoinCustomPanel:
+                SwitchFunctionPanel(FunctionPanelType.GameRoomPanel);
+                //Get Room Data To Join Room//
+                break;
+        }
+    }
+    //Enter room
+    private void EnterRoom(string roomId)
+    {
+        if (PhotonNetwork.JoinRoom(roomId))
+        {
+            print("Join room: " + roomId);
+        }
+        else
+        {
+            print("Join room failed.");
+        }
+        
+    }
+    //Normal Join Method, It is called by LoobyRoom.cs
+    public static void JoinRoom(string roomId)
+    {
+        foreach(RoomInfo room in PhotonNetwork.GetRoomList())
+        {
+            if (room.Name.Equals(roomId))
+            {
+                if (!room.CustomProperties.ContainsKey("pw"))
+                {
+                    instance.EnterRoom(roomId);
+                    instance.joinRoomId = "";
+                }
+                else
+                {
+                    instance.RoomPasswordPanel.SetActive(true);
+                    instance.joinRoomId = roomId;
+                }
+                break;
+            }
+        }
+    }
+
+    //Join Private Room and Verify Password, It is called by JoinButton
+    public void JoinPrivateRoom()
+    {
+        print(joinRoomId);
+        foreach (RoomInfo room in PhotonNetwork.GetRoomList())
+        {
+            if (room.Name.Equals(joinRoomId))
+            {
+                if (room.CustomProperties["pw"].Equals(PassordInputField.text))
+                {
+                    EnterRoom();
+                    joinRoomId = "";
+                    break;
+                }
+                else
+                {
+                    print("Wrong Pw");
+                }
+                PassordInputField.text = "";
+                RoomPasswordPanel.SetActive(false);
+            }
+        }
+    }
+
+    //Cancel Join Private Room and Verify Password, It is called by CancelJoinButton
+    public void CancelJoinRoom()
+    {
+        PassordInputField.text = "";
+        RoomPasswordPanel.SetActive(false);
+        joinRoomId = "";
+    }
+
+    //Called by photon, When player join room
+    private void OnJoinedRoom()
     {
         SwitchFunctionPanel(FunctionPanelType.GameRoomPanel);
         
-        /* foreach (Transform child in transform)
-         {
-             Destroy(child.gameObject);
-         }*/
-
-        CurrentRoomName.text = CreateRoomNameText.text;
+        CurrentRoomName.text = PhotonNetwork.room.CustomProperties["name"].ToString();
         PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
         for (int i = 0; i < photonPlayers.Length; i++)
         {
-            PlayerJoinedRoom(photonPlayers[i]);
+            SetRoomPlayerList(photonPlayers[i]);
         }
        
         //PhotonView.RPC("RPC_PlayerJoinRoom", PhotonTargets.OthersBuffered);
     }
-    private void PlayerJoinedRoom(PhotonPlayer photonPlayer)
+
+    //Set List of Room Player 
+    private void SetRoomPlayerList(PhotonPlayer photonPlayer)
     {
         if (photonPlayer == null)
             return;
 
-        PlayerLeftRoom(photonPlayer);//check the player exist the room;
+        PlayerLeftRoom(photonPlayer);
         GameObject playerListingObj = Instantiate(LobbyPlayer);
         playerListingObj.transform.SetParent(PlayerListPanel.transform, false);
 
         LobbyPlayer playerListing = playerListingObj.GetComponent<LobbyPlayer>();
         playerListing.SetPhotonPlayer(photonPlayer);//set information of player
 
-        PlayerListings.Add(playerListing);
-
+        RoomPlayersList.Add(playerListing);
     }
 
-    //called by photon
+    //Called by photon
     private void OnPhotonPlayerConnected(PhotonPlayer photonPlayer)
     {
-        PlayerJoinedRoom(photonPlayer);
+        SetRoomPlayerList(photonPlayer);
     }
     #endregion
 
+    #region Leave Room
+    public static void OnClickLeftRoom()
+    {
+        print("Leave room");
+        
+        if (PhotonNetwork.isMasterClient)
+        {
+            //print("i am master player left room");
+            if (PhotonNetwork.playerList.Length > 1)
+                PhotonNetwork.SetMasterClient(PhotonNetwork.masterClient.GetNext());
+            //PhotonView.RPC("RPC_MasterLeftRoom", PhotonTargets.Others);
+        }
+
+        while (RoomPlayersList.Count != 0)
+        {
+            Destroy(RoomPlayersList[0].gameObject);
+            RoomPlayersList.RemoveAt(0);
+        }
+        if (PhotonNetwork.inRoom) PhotonNetwork.LeaveRoom();
+        SwitchFunctionPanel(FunctionPanelType.LobbyPanel);
+    }
+    #endregion
+
+    #region Start Game
+
+    public void StartGame()
+    {
+        if (RoomPlayersList.Count != (int)GameManager.MaxRoomPlayer) return;
+        bool isAllReady = true;
+        foreach (LobbyPlayer player in RoomPlayersList)
+        {
+            if (!player.IsReady)
+            {
+                isAllReady = false;
+                break;
+            }
+        }
+        if (isAllReady)
+        {
+            //Enter the Game Room
+        }
+    }
+    #endregion
+
+    #region Remove Outdated Value
+    //Remove Player who does not Exist in the Room;
     private static void PlayerLeftRoom(PhotonPlayer photonPlayer)
     {
-        int index = PlayerListings.FindIndex(a => a.PhotonPlayer == photonPlayer);
+        int index = RoomPlayersList.FindIndex(a => a.PhotonPlayer == photonPlayer);
         if (index != -1)
         {
-            Destroy(PlayerListings[index].gameObject);
-            PlayerListings.RemoveAt(index);
+            Destroy(RoomPlayersList[index].gameObject);
+            RoomPlayersList.RemoveAt(index);
         }
     }
     
-    //called by photon
+    //Called by photon, When player disconnected the room
     private void OnPhotonPlayerDisconnected(PhotonPlayer photonPlayer)
     {
         PlayerLeftRoom(photonPlayer);
+        foreach(LobbyPlayer player in RoomPlayersList)
+        {
+            player.SetKickButton();
+        }
     }
 
-
+    //Remove rooms which do not existed in photon server room list
     private void RemoveOldRooms()
     {
         List<LobbyRoom> removeRooms = new List<LobbyRoom>();
 
-        foreach (LobbyRoom roomListing in LobbyRoomButtons)
+        foreach (LobbyRoom roomListing in LobbyRooms)
         {
             if (!roomListing.Updated)
                 removeRooms.Add(roomListing);
@@ -394,35 +519,33 @@ public class LobbyManager : MonoBehaviour
         foreach (LobbyRoom roomListing in removeRooms)
         {
             GameObject roomListingObj = roomListing.gameObject;
-            LobbyRoomButtons.Remove(roomListing);
+            LobbyRooms.Remove(roomListing);
             Destroy(roomListingObj);
 
         }
     }
+    #endregion
 
+    #region PunRPC
     [PunRPC]
-    private void RPC_OnLeftRoom()
+    //"Was Left" Room (Kicked By Room Master)
+    void RPC_OnLeftRoom()
     {
         print("Left Room");
         OnClickLeftRoom();
     }
-    [PunRPC]
-    private void test(string a)
-    {
-        print(a);
-        
-    }
 
     [PunRPC]
+    //Player Ready Click Ready
     void RPC_Ready(PhotonPlayer photonPlayer)
     {
         print("Ready");
-        int index = PlayerListings.FindIndex(a => a.PhotonPlayer == photonPlayer);
+        int index = RoomPlayersList.FindIndex(a => a.PhotonPlayer == photonPlayer);
         if (index != -1)
         {
-           PlayerListings[index].Ready();
+           RoomPlayersList[index].Ready();
         }
     }
-
+    #endregion
 
 }

@@ -6,6 +6,7 @@ using TMPro;
 
 public class LobbyPlayer : MonoBehaviour
 {
+    public Image Crown;
     public TextMeshProUGUI PlayerLevel;
     public Image PlayerIcon;
     public TextMeshProUGUI PlayerName;
@@ -15,7 +16,6 @@ public class LobbyPlayer : MonoBehaviour
 
     public PhotonPlayer PhotonPlayer { get; private set; }
     public bool IsReady { get; private set; }
-    bool isLocal;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,16 +25,34 @@ public class LobbyPlayer : MonoBehaviour
         KickButton.onClick.AddListener(delegate { Kick(); });
 
     }
+
+    //Setup Lobby Player
     public void SetPhotonPlayer(PhotonPlayer photonPlayer)
     {
         PhotonPlayer = photonPlayer;
-        PlayerName.text = photonPlayer.NickName;
-        if (!PhotonNetwork.isMasterClient ||PhotonNetwork.masterClient == photonPlayer)
-            KickButton.gameObject.SetActive(false);
-        if (photonPlayer != PhotonNetwork.player)
+        PlayerName.text = PhotonPlayer.NickName;
+        
+        SetKickButton();
+
+        if (PhotonPlayer != PhotonNetwork.player)
             ReadyButton.enabled = false;
     }
 
+    //Enable or Disable Kick Player Button
+    public void SetKickButton()
+    {
+        if (!PhotonNetwork.isMasterClient || PhotonNetwork.masterClient == PhotonPlayer)
+            KickButton.gameObject.SetActive(false);
+        else 
+            KickButton.gameObject.SetActive(true);
+
+        if (PhotonPlayer.IsMasterClient)
+            Crown.enabled = true;
+        else
+            Crown.enabled = false;
+    }
+
+    //Press Ready Button
     public void Ready()
     {
         IsReady = !IsReady;
@@ -48,20 +66,10 @@ public class LobbyPlayer : MonoBehaviour
         }
     }
     
+    //Kick Player
     public void Kick()
     {
-        //LobbyManager.PhotonView.RPC("LobbyManagr.instance.RPC_OnLeftRoom", PhotonPlayer);
-        //PhotonNetwork.CloseConnection(PhotonPlayer);
         LobbyManager.PhotonView.RPC("RPC_OnLeftRoom", PhotonPlayer);
-    }
-    [PunRPC]
-    public void RPC_OnLeftRoom(PhotonPlayer _photonPlayer)
-    {
-        if(PhotonNetwork.player == _photonPlayer)
-        {
-            LobbyManager.OnClickLeftRoom();
-        }
-    }
-    
+    }    
 
 }
