@@ -31,6 +31,7 @@ public class LobbyManager : MonoBehaviour
     public static List<LobbyRoom> LobbyRooms { get; private set; } = new List<LobbyRoom>();
     public static List<LobbyPlayer> RoomPlayersList { get; private set; } = new List<LobbyPlayer>();
     string joinRoomId;
+    Coroutine matchTimerCoroutine;
     #endregion
 
     #region Buttons
@@ -53,6 +54,9 @@ public class LobbyManager : MonoBehaviour
     [Header("Room Password Buttons")]
     public Button JoinButton;
     public Button CancelJoinButton;
+
+    [Header("Useful Buttons")]
+    public Button CancelMatchButton;
     #endregion
 
     #region Panels
@@ -76,6 +80,8 @@ public class LobbyManager : MonoBehaviour
 
     [Header("Useful Panels")]
     public GameObject RoomPasswordPanel;
+    public GameObject MatchStatusPanel;
+    public MatchAcceptance MatchAcceptPanel;
     #endregion
 
     #region Text
@@ -84,6 +90,7 @@ public class LobbyManager : MonoBehaviour
     public TMP_InputField CreateRoomPassord;
     public TMP_InputField PassordInputField;
     public TextMeshProUGUI CurrentRoomName;
+    public TextMeshProUGUI MatchTimer;
     #endregion
 
     #region Instantiate Object
@@ -121,6 +128,8 @@ public class LobbyManager : MonoBehaviour
         UsingPanelsArr[0] = MatchModePanel;
         UsingPanelsArr[1] = CreateCustomPanel;
         UsingPanelsArr[2] = JoinCustomPanel;
+
+        MatchStatusPanel.SetActive(false);
         #endregion
 
         #region AddListener
@@ -137,6 +146,7 @@ public class LobbyManager : MonoBehaviour
         RoomBackLoobyButton.onClick.AddListener(delegate { OnClickLeftRoom(); });
         JoinButton.onClick.AddListener(delegate { JoinPrivateRoom(); });
         CancelJoinButton.onClick.AddListener(delegate { CancelJoinRoom(); });
+        CancelMatchButton.onClick.AddListener(delegate { OnClickLeftRoom(); });
         #endregion
 
         SwitchFunctionPanel(FunctionPanelType.LobbyPanel);
@@ -238,13 +248,13 @@ public class LobbyManager : MonoBehaviour
         roomOptions.CustomRoomProperties = new Hashtable()
         {
             {"NAME", CreateRoomName.text},
-            {"GAMEMODE", "CUSTOM" }
+            {"MATCHMODE", "CUSTOM" }
         };
 
         roomOptions.CustomRoomPropertiesForLobby = new string[] { "NAME" };
         List<string> CustomRoomPropertiesForLobby = new List<string>();
         CustomRoomPropertiesForLobby.Add("NAME");
-        CustomRoomPropertiesForLobby.Add("GAMEMODE");
+        CustomRoomPropertiesForLobby.Add("MATCHMODE");
         if (!CreateRoomPassord.text.Equals(""))
         {
             roomOptions.CustomRoomProperties.Add("PASSWORD", CreateRoomPassord.text);
@@ -282,7 +292,7 @@ public class LobbyManager : MonoBehaviour
         RoomInfo[] rooms = PhotonNetwork.GetRoomList();
         foreach (RoomInfo room in rooms)
         {
-            if (room.CustomProperties["GAMEMODE"].Equals("CUSTOM"))
+            if (room.CustomProperties["MATCHMODE"].Equals("CUSTOM"))
             {
                 RoomReceived(room);
             }
@@ -404,24 +414,6 @@ public class LobbyManager : MonoBehaviour
         joinRoomId = "";
     }
 
-    //Called by photon, When player join room
-    private void OnJoinedRoom()
-    {
-        SwitchFunctionPanel(FunctionPanelType.GameRoomPanel);
-
-        if (PhotonNetwork.room.CustomProperties["GAMEMODE"].Equals("CUSTOM"))
-        {
-            CurrentRoomName.text = PhotonNetwork.room.CustomProperties["NAME"].ToString();
-        }
-        PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
-        for (int i = 0; i < photonPlayers.Length; i++)
-        {
-            SetRoomPlayerList(photonPlayers[i]);
-        }
-       
-        //PhotonView.RPC("RPC_PlayerJoinRoom", PhotonTargets.OthersBuffered);
-    }
-
     //Set List of Room Player 
     private void SetRoomPlayerList(PhotonPlayer photonPlayer)
     {
@@ -438,17 +430,51 @@ public class LobbyManager : MonoBehaviour
         RoomPlayersList.Add(playerListing);
     }
 
+    private void OnMatchJoinRoom()
+    {
+        if (PhotonNetwork.playerList.Length >= GameManager.MaxRoomPlayer)
+        {
+            MatchAcceptPanel.InitialPanel();
+        }
+    }
+
+    //Called by photon, When player join room
+    private void OnJoinedRoom()
+    {
+
+        if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals("CUSTOM"))
+        {
+            SwitchFunctionPanel(FunctionPanelType.GameRoomPanel);
+            CurrentRoomName.text = PhotonNetwork.room.CustomProperties["NAME"].ToString();
+            PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
+            for (int i = 0; i < photonPlayers.Length; i++)
+            {
+                SetRoomPlayerList(photonPlayers[i]);
+            }
+        }
+        else if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals("MATCH"))
+        {
+            MatchStatusPanel.SetActive(true);
+            matchTimerCoroutine = StartCoroutine(FindGame());
+            OnMatchJoinRoom();
+        }
+        //PhotonView.RPC("RPC_PlayerJoinRoom", PhotonTargets.OthersBuffered);
+    }
+
     //Called by photon
     private void OnPhotonPlayerConnected(PhotonPlayer photonPlayer)
     {
         SetRoomPlayerList(photonPlayer);
+
+        if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals("MATCH"))
+            OnMatchJoinRoom();
     }
     #endregion
 
     #region Match Room
     private void MatchRoom()
     {
-        Hashtable CustomRoomProperties = new Hashtable() { { "GAMEMODE", "RANDOMMATCH" } };
+        Hashtable CustomRoomProperties = new Hashtable() { { "MATCHMODE", "MATCH" } };
         //JoinMatchingRoom(CustomRoomProperties, GameManager.MaxRoomPlayer);
         PhotonNetwork.JoinRandomRoom(CustomRoomProperties, GameManager.MaxRoomPlayer);
     }
@@ -483,8 +509,8 @@ public class LobbyManager : MonoBehaviour
         roomOptions.IsVisible = true;
         roomOptions.IsOpen = true;
         roomOptions.MaxPlayers = GameManager.MaxRoomPlayer;
-        roomOptions.CustomRoomProperties = new Hashtable() { { "GAMEMODE", "RANDOMMATCH" } };
-        roomOptions.CustomRoomPropertiesForLobby = new string[] { "GAMEMODE"};
+        roomOptions.CustomRoomProperties = new Hashtable() { { "MATCHMODE", "MATCH" } };
+        roomOptions.CustomRoomPropertiesForLobby = new string[] { "MATCHMODE" };
         PhotonNetwork.CreateRoom(null, roomOptions, null);
     }
     #endregion
@@ -501,12 +527,20 @@ public class LobbyManager : MonoBehaviour
                 PhotonNetwork.SetMasterClient(PhotonNetwork.masterClient.GetNext());
             //PhotonView.RPC("RPC_MasterLeftRoom", PhotonTargets.Others);
         }
-
-        while (RoomPlayersList.Count != 0)
+        if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals("CUSTOM"))
         {
-            Destroy(RoomPlayersList[0].gameObject);
-            RoomPlayersList.RemoveAt(0);
+            while (RoomPlayersList.Count != 0)
+            {
+                Destroy(RoomPlayersList[0].gameObject);
+                RoomPlayersList.RemoveAt(0);
+            }
         }
+        else if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals("MATCH"))
+        {
+            StopCoroutine(matchTimerCoroutine);
+            MatchStatusPanel.SetActive(false);
+        }
+
         if (PhotonNetwork.inRoom) PhotonNetwork.LeaveRoom();
         SwitchFunctionPanel(FunctionPanelType.LobbyPanel);
     }
@@ -580,6 +614,11 @@ public class LobbyManager : MonoBehaviour
 
     #region PunRPC
     [PunRPC]
+    void RPC_PlayerJoinRoom()
+    {
+
+    }
+    [PunRPC]
     //"Was Left" Room (Kicked By Room Master)
     void RPC_OnLeftRoom()
     {
@@ -600,4 +639,21 @@ public class LobbyManager : MonoBehaviour
     }
     #endregion
 
+    IEnumerator FindGame()
+    {
+        int countUpTime = 0;
+        while (true)
+        {
+            if (countUpTime % 60 < 10)
+            {
+                MatchTimer.text = countUpTime / 60 + " : 0" + (countUpTime % 60).ToString();
+            }
+            else
+            {
+                MatchTimer.text = countUpTime / 60 + " : " + (countUpTime % 60).ToString();
+            }
+            yield return new WaitForSeconds(1);
+            countUpTime++;
+        }
+    }
 }
