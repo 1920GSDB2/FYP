@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+
 
 public class LobbyPlayer : MonoBehaviour
 {
@@ -59,10 +61,18 @@ public class LobbyPlayer : MonoBehaviour
         if (IsReady)
         {
             ReadyButtonText.text = "IsReady";
+            PhotonPlayer.SetCustomProperties(new Hashtable
+            {
+                {"ReadyForStart", "Ready" }
+            });
         }
         else
         {
             ReadyButtonText.text = "Ready";
+            PhotonPlayer.SetCustomProperties(new Hashtable
+            {
+                {"ReadyForStart", "NotReady" }
+            });
         }
     }
     

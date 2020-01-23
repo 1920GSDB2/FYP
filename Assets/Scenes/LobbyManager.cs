@@ -23,6 +23,11 @@ public class LobbyManager : MonoBehaviour
     }
     #endregion
 
+    #region Const Variable
+    private const string Match = "MATCH";
+    private const string Custom = "CUSTOM";
+    #endregion
+
     #region Variable
     public GameManager GameManager;
     public static LobbyManager instance;
@@ -248,7 +253,7 @@ public class LobbyManager : MonoBehaviour
         roomOptions.CustomRoomProperties = new Hashtable()
         {
             {"NAME", CreateRoomName.text},
-            {"MATCHMODE", "CUSTOM" }
+            {"MATCHMODE", Custom }
         };
 
         roomOptions.CustomRoomPropertiesForLobby = new string[] { "NAME" };
@@ -292,7 +297,7 @@ public class LobbyManager : MonoBehaviour
         RoomInfo[] rooms = PhotonNetwork.GetRoomList();
         foreach (RoomInfo room in rooms)
         {
-            if (room.CustomProperties["MATCHMODE"].Equals("CUSTOM"))
+            if (room.CustomProperties["MATCHMODE"].Equals(Custom))
             {
                 RoomReceived(room);
             }
@@ -442,7 +447,7 @@ public class LobbyManager : MonoBehaviour
     private void OnJoinedRoom()
     {
 
-        if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals("CUSTOM"))
+        if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals(Custom))
         {
             SwitchFunctionPanel(FunctionPanelType.GameRoomPanel);
             CurrentRoomName.text = PhotonNetwork.room.CustomProperties["NAME"].ToString();
@@ -452,7 +457,7 @@ public class LobbyManager : MonoBehaviour
                 SetRoomPlayerList(photonPlayers[i]);
             }
         }
-        else if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals("MATCH"))
+        else if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals(Match))
         {
             MatchStatusPanel.SetActive(true);
             matchTimerCoroutine = StartCoroutine(FindGame());
@@ -466,7 +471,7 @@ public class LobbyManager : MonoBehaviour
     {
         SetRoomPlayerList(photonPlayer);
 
-        if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals("MATCH"))
+        if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals(Match))
             OnMatchJoinRoom();
     }
     #endregion
@@ -474,7 +479,7 @@ public class LobbyManager : MonoBehaviour
     #region Match Room
     private void MatchRoom()
     {
-        Hashtable CustomRoomProperties = new Hashtable() { { "MATCHMODE", "MATCH" } };
+        Hashtable CustomRoomProperties = new Hashtable() { { "MATCHMODE", Match } };
         //JoinMatchingRoom(CustomRoomProperties, GameManager.MaxRoomPlayer);
         PhotonNetwork.JoinRandomRoom(CustomRoomProperties, GameManager.MaxRoomPlayer);
     }
@@ -509,7 +514,7 @@ public class LobbyManager : MonoBehaviour
         roomOptions.IsVisible = true;
         roomOptions.IsOpen = true;
         roomOptions.MaxPlayers = GameManager.MaxRoomPlayer;
-        roomOptions.CustomRoomProperties = new Hashtable() { { "MATCHMODE", "MATCH" } };
+        roomOptions.CustomRoomProperties = new Hashtable() { { "MATCHMODE", Match } };
         roomOptions.CustomRoomPropertiesForLobby = new string[] { "MATCHMODE" };
         PhotonNetwork.CreateRoom(null, roomOptions, null);
     }
@@ -527,7 +532,7 @@ public class LobbyManager : MonoBehaviour
                 PhotonNetwork.SetMasterClient(PhotonNetwork.masterClient.GetNext());
             //PhotonView.RPC("RPC_MasterLeftRoom", PhotonTargets.Others);
         }
-        if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals("CUSTOM"))
+        if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals(Custom))
         {
             while (RoomPlayersList.Count != 0)
             {
@@ -535,7 +540,7 @@ public class LobbyManager : MonoBehaviour
                 RoomPlayersList.RemoveAt(0);
             }
         }
-        else if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals("MATCH"))
+        else if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals(Match))
         {
             StopCoroutine(matchTimerCoroutine);
             MatchStatusPanel.SetActive(false);
@@ -550,20 +555,34 @@ public class LobbyManager : MonoBehaviour
 
     public void StartGame()
     {
-        if (RoomPlayersList.Count != (int)GameManager.MaxRoomPlayer) return;
-        bool isAllReady = true;
-        foreach (LobbyPlayer player in RoomPlayersList)
-        {
-            if (!player.IsReady)
-            {
-                isAllReady = false;
-                break;
-            }
-        }
-        if (isAllReady)
+        
+        
+        if (CheckStartGame())
         {
             //Enter the Game Room
+            Debug.Log("Start Game");
         }
+    }
+    private bool CheckStartGame()
+    {
+        PhotonPlayer[] roomPlayers = PhotonNetwork.playerList;
+
+        if (roomPlayers.Length != GameManager.MaxRoomPlayer) return false;
+        foreach(PhotonPlayer roomPlayer in roomPlayers)
+        {
+            if (!roomPlayer.CustomProperties["ReadyForStart"].Equals("Ready"))
+                return false;
+        }
+        //bool isAllReady = true;
+        //foreach (LobbyPlayer player in RoomPlayersList)
+        //{
+        //    if (!player.IsReady)
+        //    {
+        //        isAllReady = false;
+        //        break;
+        //    }
+        //}
+        return true;
     }
     #endregion
 

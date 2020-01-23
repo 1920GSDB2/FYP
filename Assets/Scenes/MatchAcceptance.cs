@@ -85,6 +85,10 @@ public class MatchAcceptance : MonoBehaviour
         {
             button.enabled = false;
         }
+        PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable
+        {
+            {"ReadyForStart", "Ready" }
+        });
     }
 
     public void Decline()
@@ -94,6 +98,7 @@ public class MatchAcceptance : MonoBehaviour
         {
             button.enabled = false;
         }
+        LobbyManager.instance.OnClickLeftRoom();
     }
 
     public void InitialPanel()
@@ -118,5 +123,6 @@ public class MatchAcceptance : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         if (CurrStatus == AcceptanceStatus.WAIT) CurrStatus = AcceptanceStatus.DECLINE;
+        LobbyManager.instance.StartGame();
     }
 }
