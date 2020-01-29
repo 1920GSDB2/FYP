@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public enum GameStatus
 {
@@ -41,6 +42,7 @@ public class TFTGameManager : MonoBehaviour
         }
     }
     public GameManager gameManager;
+    public PlayerArena[] playerArenas = new PlayerArena[6];
     //public List<Hero> heroTypes = new List<Hero>();                           //List of total heroes
     List<Hero> gbHeros = new List<Hero>();                                      //List of gameboard's heroes
     public List<Hero> heroes = new List<Hero>();                                //List of player's Heroes
@@ -51,18 +53,40 @@ public class TFTGameManager : MonoBehaviour
     BuffList BuffList;
     Transform HeroList, GameBoard;
     BuffersManager buffersManager;
+    int[] rearrange;
 
     void Start()
     {
         buffersManager = GetComponent<BuffersManager>();
         HeroList = GameObject.FindGameObjectWithTag("HeroList").transform;
         GameBoard = GameObject.FindGameObjectWithTag("GameBoard").transform;
+        rearrange = RearrangePlayerQuene();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    /// <summary>
+    /// Rearrange player quene to devide player arena (It is accessed by Master Client only)
+    /// </summary>
+    /// <returns></returns>
+    public int[] RearrangePlayerQuene()
+    {
+        int[] data = new int[gameManager.MaxRoomPlayer];
+        for(int i = 0; i< data.Length; i++)
+        {
+            data[i] = i;
+        }
+        System.Random r = new System.Random(System.DateTime.Now.Millisecond);
+        data = data.OrderBy(x => r.Next()).ToArray();
+        foreach(int datas in data)
+        {
+            print(datas);
+        }
+        return data;
     }
 
     /// <summary>
