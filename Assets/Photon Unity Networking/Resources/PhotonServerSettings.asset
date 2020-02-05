@@ -53,4 +53,9 @@ MonoBehaviour:
   - RPC_ConLeftRoom
   - RPC_OnLeftRoom
   - RPC_Ready
+  - RPC_AddUsableHero
+  - RPC_RearrangeQueue
+  - RPC_SetPlayerHeroes
+  - RPC_SyncPlayerHeroes
+  - RPC_SetupPlayerPointer
   DisableAutoOpenWizard: 1

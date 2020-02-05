@@ -55,24 +55,23 @@ public class MouseSelect : MonoBehaviour
         {
             if (SelectPlace != null && SelectPlace.transform.childCount == 0)
             {
-                //Debug.Log("Parent Null" +Time.time);
-                //if (!(SelectPlace.name.Equals("Hexagon") && gameManager.GameStatus == GameStatus.Playing))
                 DragHero.transform.parent = SelectPlace.transform;
 
             }
-            //Vector3 pos = Input.mousePosition;
-            //pos.z = transform.position.z - Camera.main.transform.position.z;
-            //DragHero.transform.position = Camera.main.ScreenToWorldPoint(pos);
 
             camRay = Camera.main.ScreenPointToRay(Input.mousePosition); // shoot a ray at the obj from mouse screen point
 
+            // finde the collision on movePlane
             if (movePlane.Raycast(camRay, out hitDist))
-            { // finde the collision on movePlane
-                point = camRay.GetPoint(hitDist); // define the point on movePlane
-                t = -(fixedDistance - camRay.origin.y) / (camRay.origin.y - point.y); // the x,y or z plane you want to be fixed to
-                corPoint.x = camRay.origin.x + (point.x - camRay.origin.x) * t; // calculate the new point t futher along the ray
+            { 
+                point = camRay.GetPoint(hitDist);                                       // define the point on movePlane
+                t = -(fixedDistance - camRay.origin.y) / (camRay.origin.y - point.y);   // the x,y or z plane you want to be fixed to
+                #region calculate the new point t futher along the ray
+                corPoint.x = camRay.origin.x + (point.x - camRay.origin.x) * t;         
                 corPoint.y = camRay.origin.y + (point.y - camRay.origin.y) * t;
                 corPoint.z = camRay.origin.z + (point.z - camRay.origin.z) * t;
+                #endregion
+
                 DragHero.HeroPlace = SelectPlace;
                 DragHero.transform.position = corPoint;
             }

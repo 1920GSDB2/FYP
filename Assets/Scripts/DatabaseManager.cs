@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class DatabaseManager : MonoBehaviour
 {
     public static DatabaseManager instance { get; private set; }
-    public GameManager gameManager;
     // Start is called before the first frame update
     void Awake()
     {
@@ -57,7 +56,7 @@ public class DatabaseManager : MonoBehaviour
         //WWW www = new WWW(connectManager.databaseIP, form);
         //yield return www;
         //Debug.Log(www.text);
-        UnityWebRequest www = UnityWebRequest.Post(gameManager.databaseIP, form);
+        UnityWebRequest www = UnityWebRequest.Post(Main.GameManager.Instance.databaseIP, form);
         
         yield return www.SendWebRequest();
         if (www.isNetworkError || www.isHttpError)
@@ -69,8 +68,8 @@ public class DatabaseManager : MonoBehaviour
             string jsonString = www.downloadHandler.text;
             if (!jsonString.Equals("Verify Account Fail, Try Again!"))
             {
-                gameManager.userData = JsonUtility.FromJson<UserData>(jsonString);
-                SceneManager.LoadScene(gameManager.lobbyScene);
+                Main.GameManager.Instance.userData = JsonUtility.FromJson<UserData>(jsonString);
+                SceneManager.LoadScene(Main.GameManager.Instance.lobbyScene);
             }
         }   
     }

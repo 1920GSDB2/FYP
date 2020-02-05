@@ -9,6 +9,7 @@ TagManager:
   - HeroPlace
   - GameManager
   - BufferList
+  - PlayerArena
   layers:
   - Default
   - TransparentFX

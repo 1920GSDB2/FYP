@@ -2,24 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlaceType
+{
+    NonBoard,
+    OnBoard
+}
+
 [RequireComponent(typeof(SpriteRenderer))]
 public class HeroPlace : MonoBehaviour
 {
+    public PlaceType PlaceType { get; private set; }
+    public int PlaceId { get; private set; }
     SpriteRenderer spriteRenderer;
     MouseSelect MouseSelect;
+
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        HeroPlaceSetting();
     }
-
-    // Update is called once per frame
+    
+    void HeroPlaceSetting()
+    {
+        if (name.Equals("Hexagon")) PlaceType = PlaceType.OnBoard;
+        PlaceId = transform.GetSiblingIndex();
+    }
+    #region HoverEffect
     void Update()
     {
         MouseSelect = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MouseSelect>();
     }
 
-    private void OnMouseOver()
+    void OnMouseOver()
     {
         if (!(MouseSelect.gameManager.GameStatus == GameStatus.Playing && name.Equals("Hexagon")))
         {
@@ -31,9 +46,10 @@ public class HeroPlace : MonoBehaviour
         }
     }
 
-    private void OnMouseExit()
+    void OnMouseExit()
     {
         spriteRenderer.color = Color.white;
         MouseSelect.SelectPlace = null;
     }
+    #endregion
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerArena : MonoBehaviour
 {
     public GameObject FightArena;
-    public GameObject SelfArena, EnemyArena;
+    public GamePlace SelfArena, EnemyArena;
     Vector3 leftTop, rightTop, leftDown, rightDown;
     // Start is called before the first frame update
     void Start()

@@ -29,7 +29,6 @@ public class LobbyManager : MonoBehaviour
     #endregion
 
     #region Variable
-    public GameManager GameManager;
     public static LobbyManager instance;
     public static PhotonView PhotonView;
     public static UsingPanelType currentModeType = UsingPanelType.MatchModePanel;
@@ -249,7 +248,7 @@ public class LobbyManager : MonoBehaviour
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.IsVisible = true;
         roomOptions.IsOpen = true;
-        roomOptions.MaxPlayers = GameManager.MaxRoomPlayer;
+        roomOptions.MaxPlayers = Main.GameManager.Instance.MaxRoomPlayer;
         roomOptions.CustomRoomProperties = new Hashtable()
         {
             {"NAME", CreateRoomName.text},
@@ -437,7 +436,7 @@ public class LobbyManager : MonoBehaviour
 
     private void OnMatchJoinRoom()
     {
-        if (PhotonNetwork.playerList.Length >= GameManager.MaxRoomPlayer)
+        if (PhotonNetwork.playerList.Length >= Main.GameManager.Instance.MaxRoomPlayer)
         {
             MatchAcceptPanel.InitialPanel();
         }
@@ -481,7 +480,7 @@ public class LobbyManager : MonoBehaviour
     {
         Hashtable CustomRoomProperties = new Hashtable() { { "MATCHMODE", Match } };
         //JoinMatchingRoom(CustomRoomProperties, GameManager.MaxRoomPlayer);
-        PhotonNetwork.JoinRandomRoom(CustomRoomProperties, GameManager.MaxRoomPlayer);
+        PhotonNetwork.JoinRandomRoom(CustomRoomProperties, Main.GameManager.Instance.MaxRoomPlayer);
     }
     void JoinMatchingRoom(Hashtable CustomRoomProperties, byte MaxRoomPlayer)
     {
@@ -513,7 +512,7 @@ public class LobbyManager : MonoBehaviour
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.IsVisible = true;
         roomOptions.IsOpen = true;
-        roomOptions.MaxPlayers = GameManager.MaxRoomPlayer;
+        roomOptions.MaxPlayers = Main.GameManager.Instance.MaxRoomPlayer;
         roomOptions.CustomRoomProperties = new Hashtable() { { "MATCHMODE", Match } };
         roomOptions.CustomRoomPropertiesForLobby = new string[] { "MATCHMODE" };
         PhotonNetwork.CreateRoom(null, roomOptions, null);
@@ -567,7 +566,7 @@ public class LobbyManager : MonoBehaviour
     {
         PhotonPlayer[] roomPlayers = PhotonNetwork.playerList;
 
-        if (roomPlayers.Length != GameManager.MaxRoomPlayer) return false;
+        if (roomPlayers.Length != Main.GameManager.Instance.MaxRoomPlayer) return false;
         foreach(PhotonPlayer roomPlayer in roomPlayers)
         {
             if (!roomPlayer.CustomProperties["ReadyForStart"].Equals("Ready"))

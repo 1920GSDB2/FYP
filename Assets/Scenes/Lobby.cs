@@ -7,7 +7,6 @@ namespace Network
     public class Lobby : Photon.PunBehaviour
     {
         string gameVersion = "1";
-        public GameManager gameManager;
         public GameObject controlPanel;
         public GameObject progressLabel;
 
@@ -26,7 +25,7 @@ namespace Network
 
         public void Connect()
         {
-            PhotonNetwork.playerName = gameManager.userData.name;
+            PhotonNetwork.playerName = Main.GameManager.Instance.userData.name;
             PlayerPrefs.SetString("PlayerName", PhotonNetwork.playerName);
             progressLabel.SetActive(true);
             controlPanel.SetActive(false);

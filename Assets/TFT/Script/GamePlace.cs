@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TFTNetworkManager : MonoBehaviour
+public class GamePlace : MonoBehaviour
 {
+    public Transform GameBoard, HeroList;
     // Start is called before the first frame update
     void Start()
     {

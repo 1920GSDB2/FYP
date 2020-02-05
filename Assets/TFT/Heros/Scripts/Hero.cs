@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TFT;
 using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
     public bool isEnemy;
-    public HeroPlace HeroPlace;
-    public MouseSelect MouseSelect;
+    public HeroPlace HeroPlace;         //Current HeroPlace Position of Hero
+    public MouseSelect MouseSelect;     
     public HeroStatus HeroStatus;
     public Rarity Rarity;
     public HeroClass[] HeroClasses;
@@ -35,15 +36,15 @@ public class Hero : MonoBehaviour
     public float MagicDefense { get; set; }
 
     string lastTransform;
-    TFTGameManager gameManager;
+    //TFTGameManager gameManager;
     public Hero targetEnemy;
 
     // Start is called before the first frame update
     void Start()
     {
         lastTransform = transform.parent.name;
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TFTGameManager>();
-        MouseSelect = gameManager.GetComponent<MouseSelect>();
+        //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TFTGameManager>();
+        MouseSelect = GameManager.Instance.GetComponent<MouseSelect>();
     }
 
     // Update is called once per frame
@@ -56,7 +57,7 @@ public class Hero : MonoBehaviour
     {
         if (HeroStatus == HeroStatus.Fight && targetEnemy == null)
         {
-            EnemyDetecter();
+            //EnemyDetecter();
         }
     }
 
@@ -75,11 +76,11 @@ public class Hero : MonoBehaviour
         {
             if (lastTransform.Equals("Hexagon"))
             {
-                gameManager.ResetBuffList();
+                //GameManager.Instance.ResetBuffList();
             }
             else
             {
-                gameManager.AddHeroBuff(this);
+                //GameManager.Instance.AddHeroBuff(this);
             }
         }
         lastTransform = currTransform;
