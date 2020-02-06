@@ -7,15 +7,15 @@ namespace TFT
     [System.Serializable]
     public class HeroBuffList
     {
-        List<string> HeroType = new List<string>();
-        public Dictionary<HeroClass, int> classValue = new Dictionary<HeroClass, int>();   //Number of class in gameboard hero
-        public Dictionary<HeroRace, int> raceValue = new Dictionary<HeroRace, int>();      //Number of race in gameboard hero
+        List<string> HeroType = new List<string>();         //For verifing hero type
+        public Dictionary<HeroClass, int> ClassValue { get; private set; } = new Dictionary<HeroClass, int>();   //Number of class in gameboard hero
+        public Dictionary<HeroRace, int> RaceValue { get; private set; } = new Dictionary<HeroRace, int>();      //Number of race in gameboard hero
 
         /// <summary>
         /// Call the method, while adding hero to the gameboard
         /// </summary>
         /// <param name="addedHero"></param>
-        public void AddHero(ref Hero addedHero)
+        public void AddHeroBuff(ref Hero addedHero)
         {
             bool isSameType = false;
             for(int i =0; i< HeroType.Count; i++)
@@ -30,13 +30,13 @@ namespace TFT
             {
                 for(int i = 0; i< addedHero.HeroClasses.Length; i++)
                 {
-                    if (classValue.ContainsKey(addedHero.HeroClasses[i])) classValue[addedHero.HeroClasses[i]]++;
-                    else classValue.Add(addedHero.HeroClasses[i], 1);
+                    if (ClassValue.ContainsKey(addedHero.HeroClasses[i])) ClassValue[addedHero.HeroClasses[i]]++;
+                    else ClassValue.Add(addedHero.HeroClasses[i], 1);
                 }
                 for (int i = 0; i < addedHero.HeroRaces.Length; i++)
                 {
-                    if (raceValue.ContainsKey(addedHero.HeroRaces[i])) raceValue[addedHero.HeroRaces[i]]++;
-                    else raceValue.Add(addedHero.HeroRaces[i], 1);
+                    if (RaceValue.ContainsKey(addedHero.HeroRaces[i])) RaceValue[addedHero.HeroRaces[i]]++;
+                    else RaceValue.Add(addedHero.HeroRaces[i], 1);
                 }
             }
         }
@@ -45,19 +45,20 @@ namespace TFT
         /// Call the method, while removing hero from the gameboard
         /// </summary>
         /// <param name="removedHero"></param>
-        public void RemoveHero(ref Hero removedHero)
+        public void RemoveHeroBuff(ref Hero removedHero)
         {
             for (int i = 0; i < removedHero.HeroClasses.Length; i++)
             {
-                if (classValue[removedHero.HeroClasses[i]] > 1) classValue[removedHero.HeroClasses[i]]--;
-                else classValue.Remove(removedHero.HeroClasses[i]);
+                if (ClassValue[removedHero.HeroClasses[i]] > 1) ClassValue[removedHero.HeroClasses[i]]--;
+                else ClassValue.Remove(removedHero.HeroClasses[i]);
             }
             for (int i = 0; i < removedHero.HeroRaces.Length; i++)
             {
-                if (raceValue[removedHero.HeroRaces[i]] > 1) raceValue[removedHero.HeroRaces[i]]--;
-                else raceValue.Remove(removedHero.HeroRaces[i]);
+                if (RaceValue[removedHero.HeroRaces[i]] > 1) RaceValue[removedHero.HeroRaces[i]]--;
+                else RaceValue.Remove(removedHero.HeroRaces[i]);
             }
         }
+        
     }
 
     //This class is used for synchronizing netowrk data.
@@ -67,6 +68,26 @@ namespace TFT
         public List<Hero> UsableHeros = new List<Hero>();      //List of Player Bought Heros
         public List<Hero> GameBoardHeros = new List<Hero>();   //List of Heros Are into GameBoard
         public HeroBuffList BuffList;
+
+        /// <summary>
+        /// Add hero to gameboard.
+        /// </summary>
+        /// <param name="addedHero"></param>
+        public void GameboardAddHero(ref Hero addedHero)
+        {
+            GameBoardHeros.Add(addedHero);
+            BuffList.AddHeroBuff(ref addedHero);
+        }
+
+        /// <summary>
+        /// Remove hero from gameboard.
+        /// </summary>
+        /// <param name="removedHero"></param>
+        public void GameboardRemoveHero(ref Hero removedHero)
+        {
+            GameBoardHeros.Remove(removedHero);
+            BuffList.RemoveHeroBuff(ref removedHero);
+        }
     }
 }
 

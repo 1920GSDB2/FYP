@@ -15,6 +15,34 @@ namespace TFT
         public PlayerHero PlayerHero;
         public PlayerArena SelfPlayerArena;
         public int playerId;
+        private GameStatus gameStatus;
+        public GameStatus GameStatus
+        {
+            get { return gameStatus; }
+            set
+            {
+                gameStatus = value;
+                switch (value)
+                {
+                    case GameStatus.Setup:
+                        foreach (Hero gbHero in PlayerHero.GameBoardHeros)
+                        {
+                            gbHero.transform.parent = gbHero.HeroPlace.transform;
+                            gbHero.transform.localPosition = Vector3.zero;
+                            gbHero.transform.eulerAngles = Vector3.zero;
+                            gbHero.HeroStatus = HeroStatus.Standby;
+                        }
+                        break;
+                    case GameStatus.Playing:
+                        foreach (Hero gbHero in PlayerHero.GameBoardHeros)
+                        {
+                            gbHero.transform.parent = null;
+                            gbHero.HeroStatus = HeroStatus.Fight;
+                        }
+                        break;
+                }
+            }
+        }
         public static GameManager Instance;
 
 
@@ -36,7 +64,7 @@ namespace TFT
 
         private void PhotonNetworkSetup()
         {
-            PhotonView = LobbyManager.PhotonView;
+            //PhotonView = LobbyManager.PhotonView;
             for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
             {
                 if (PhotonNetwork.player == PhotonNetwork.playerList[i])
@@ -75,12 +103,8 @@ namespace TFT
         /// <returns></returns>
         public bool BuyHero(Hero _hero)
         {
-            Debug.Log("Buy Hero");
-
             foreach (Transform child in SelfPlayerArena.SelfArena.HeroList)
             {
-                Debug.Log(child.name);
-
                 //Check whether hero list empty
                 if (child.childCount == 0)
                 {
@@ -121,6 +145,23 @@ namespace TFT
                 }
             }
             return _hero;
+        }
+
+        /// <summary>
+        /// Put or take hero from the gameboard
+        /// </summary>
+        /// <param name="hero"></param>
+        public void ChangeHeroPos(ref Hero hero)
+        {
+            if (PlayerHero.GameBoardHeros.Contains(hero))
+            {
+                PlayerHero.GameboardRemoveHero(ref hero);
+            }
+            else
+            {
+                PlayerHero.GameboardAddHero(ref hero);
+            }
+            PhotonNetwork.RPC(PhotonView, "RPC_SyncPlayerHeroes", PhotonTargets.All, true, PlayerHero, playerId);
         }
 
         [PunRPC]

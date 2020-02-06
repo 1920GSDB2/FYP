@@ -14,15 +14,18 @@ public class HeroPlace : MonoBehaviour
     public PlaceType PlaceType { get; private set; }
     public int PlaceId { get; private set; }
     SpriteRenderer spriteRenderer;
-    MouseSelect MouseSelect;
+    //MouseSelect MouseSelect;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         HeroPlaceSetting();
+        //MouseSelect = TFT.GameManager.Instance.gameObject.GetComponent<MouseSelect>();
     }
-    
+
+
+
     void HeroPlaceSetting()
     {
         if (name.Equals("Hexagon")) PlaceType = PlaceType.OnBoard;
@@ -31,17 +34,16 @@ public class HeroPlace : MonoBehaviour
     #region HoverEffect
     void Update()
     {
-        MouseSelect = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MouseSelect>();
     }
 
     void OnMouseOver()
     {
-        if (!(MouseSelect.gameManager.GameStatus == GameStatus.Playing && name.Equals("Hexagon")))
+        if (!(TFT.GameManager.Instance.GameStatus == GameStatus.Playing && name.Equals("Hexagon")))
         {
             spriteRenderer.color = Color.black;
-            if (MouseSelect.DragHero != null)
+            if (MouseSelect.Instance.DragHero != null)
             {
-                MouseSelect.SelectPlace = this;
+                MouseSelect.Instance.SelectPlace = this;
             }
         }
     }
@@ -49,7 +51,7 @@ public class HeroPlace : MonoBehaviour
     void OnMouseExit()
     {
         spriteRenderer.color = Color.white;
-        MouseSelect.SelectPlace = null;
+        MouseSelect.Instance.SelectPlace = null;
     }
     #endregion
 }

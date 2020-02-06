@@ -58,4 +58,5 @@ MonoBehaviour:
   - RPC_SetPlayerHeroes
   - RPC_SyncPlayerHeroes
   - RPC_SetupPlayerPointer
+  - RPC_StartGame
   DisableAutoOpenWizard: 1

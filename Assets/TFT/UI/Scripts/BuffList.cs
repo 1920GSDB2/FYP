@@ -6,11 +6,12 @@ public class BuffList : MonoBehaviour
 {
     public Transform buffList;
     public Buff buff;
+    public static BuffList Instance;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Instance = this;
     }
 
     // Update is called once per frame

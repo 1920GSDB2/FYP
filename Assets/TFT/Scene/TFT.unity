@@ -7949,6 +7949,7 @@ GameObject:
   - component: {fileID: 355347619}
   - component: {fileID: 355347620}
   - component: {fileID: 355347621}
+  - component: {fileID: 355347622}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -8101,14 +8102,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPointer: 
   PlayerHeroes: []
-  PlayerArenas:
-  - {fileID: 1978762086}
-  PhotonView: {fileID: 0}
+  PlayerArenas: []
+  PhotonView: {fileID: 355347622}
   PlayerHero:
     UsableHeros: []
     GameBoardHeros: []
-  SelfPlayerArena: {fileID: 1978762088}
+  SelfPlayerArena: {fileID: 0}
   playerId: 0
+--- !u!114 &355347622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355347616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 1
+  instantiationId: 1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!4 &356606292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1742539634653316415, guid: 10c1c548cd522784f940d5ffe292db97,

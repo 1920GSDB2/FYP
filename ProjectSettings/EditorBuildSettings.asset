@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: a0d316793f4947545b6045d9ebb15f8f
+  - enabled: 1
+    path: Assets/TFT/Scene/TFT.unity
+    guid: ce20c2d5ff301df4f99b8d5798a8484d
   m_configObjects: {}

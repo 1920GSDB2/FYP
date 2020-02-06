@@ -154,6 +154,7 @@ public class LobbyManager : MonoBehaviour
         #endregion
 
         SwitchFunctionPanel(FunctionPanelType.LobbyPanel);
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
@@ -554,11 +555,10 @@ public class LobbyManager : MonoBehaviour
 
     public void StartGame()
     {
-        
-        
         if (CheckStartGame())
         {
             //Enter the Game Room
+            PhotonNetwork.RPC(PhotonView, "RPC_StartGame", PhotonTargets.All, true);
             Debug.Log("Start Game");
         }
     }
@@ -631,6 +631,14 @@ public class LobbyManager : MonoBehaviour
     #endregion
 
     #region PunRPC
+    [PunRPC]
+    //Start game
+    void RPC_StartGame()
+    {
+        PhotonNetwork.LoadLevel("TFT");
+
+    }
+
     [PunRPC]
     void RPC_PlayerJoinRoom()
     {

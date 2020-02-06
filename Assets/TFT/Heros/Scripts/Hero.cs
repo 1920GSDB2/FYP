@@ -68,15 +68,18 @@ public class Hero : MonoBehaviour
         targetEnemy = hitColliders[0].GetComponent<Hero>();
         //Debug.Log(hitColliders.Length);
     }
-
+    /// <summary>
+    /// Add buff or not, Called by MouseSelect
+    /// </summary>
     public void ChangeStatus()
     {
-        string currTransform = transform.parent.name;
+        string currTransform = transform.parent.name;   //Hero Place Name
         if (!currTransform.Equals(lastTransform))
         {
             if (lastTransform.Equals("Hexagon"))
             {
                 //GameManager.Instance.ResetBuffList();
+                //GameManager.Instance.PlayerHero.GameboardAddHero(ref gameObject.GetComponent<Hero>());
             }
             else
             {
