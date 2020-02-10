@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class DatabaseManager : MonoBehaviour
 {
-    public static DatabaseManager instance { get; private set; }
+    public static DatabaseManager Instance { get; private set; }
+    public Main.GameManager GameManager;
     // Start is called before the first frame update
     void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -22,10 +23,10 @@ public class DatabaseManager : MonoBehaviour
 
     private static void InstantiateObject()
     {
-        if (instance == null)
+        if (Instance == null)
         {
             GameObject obj = new GameObject("DatabaseManager");
-            instance = obj.AddComponent<DatabaseManager>();
+            Instance = obj.AddComponent<DatabaseManager>();
         }
     }
 
@@ -38,12 +39,12 @@ public class DatabaseManager : MonoBehaviour
     {
         try
         {
-            instance.StartCoroutine(instance.LoginToDB(id, pw));
+            Instance.StartCoroutine(Instance.LoginToDB(id, pw));
         }
         catch (Exception)
         {
             InstantiateObject();
-            instance.StartCoroutine(instance.LoginToDB(id, pw));
+            Instance.StartCoroutine(Instance.LoginToDB(id, pw));
         }
     }
 
@@ -56,7 +57,7 @@ public class DatabaseManager : MonoBehaviour
         //WWW www = new WWW(connectManager.databaseIP, form);
         //yield return www;
         //Debug.Log(www.text);
-        UnityWebRequest www = UnityWebRequest.Post(Main.GameManager.Instance.databaseIP, form);
+        UnityWebRequest www = UnityWebRequest.Post(GameManager.databaseIP, form);
         
         yield return www.SendWebRequest();
         if (www.isNetworkError || www.isHttpError)
@@ -68,8 +69,8 @@ public class DatabaseManager : MonoBehaviour
             string jsonString = www.downloadHandler.text;
             if (!jsonString.Equals("Verify Account Fail, Try Again!"))
             {
-                Main.GameManager.Instance.userData = JsonUtility.FromJson<UserData>(jsonString);
-                SceneManager.LoadScene(Main.GameManager.Instance.lobbyScene);
+                GameManager.userData = JsonUtility.FromJson<UserData>(jsonString);
+                SceneManager.LoadScene(GameManager.lobbyScene);
             }
         }   
     }

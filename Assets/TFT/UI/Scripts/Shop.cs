@@ -8,12 +8,14 @@ namespace TFT
     {
         public Asset asset;
         public HeroUI[] heroUis = new HeroUI[5];
+        Main.GameManager GameManager;
         //TFTGameManager gameManager;
 
         // Start is called before the first frame update
         void Start()
         {
             //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TFTGameManager>();
+            GameManager = TFT.GameManager.Instance.MainGameManager;
         }
 
         // Update is called once per frame
@@ -24,7 +26,7 @@ namespace TFT
 
         public void RefreshShop()
         {
-            List<Hero> heroTypes = Main.GameManager.Instance.heroTypes;
+            List<Hero> heroTypes = GameManager.heroTypes;
             for (int i = 0; i < heroUis.Length; i++)
             {
                 int heroId = Random.Range(0, heroTypes.Count);
@@ -64,7 +66,7 @@ namespace TFT
                 Hero newHero = (Instantiate(heroUi.Hero.gameObject) as GameObject).GetComponent<Hero>();
                 newHero.name = heroUi.Hero.name;
                 //gameManager.AddHeroBuff(newHero);
-                if (GameManager.Instance.BuyHero(newHero))
+                if (TFT.GameManager.Instance.BuyHero(newHero))
                 {
                     asset.AssetValue -= heroUi.BasicInfo.price;
                     heroUi.gameObject.SetActive(false);

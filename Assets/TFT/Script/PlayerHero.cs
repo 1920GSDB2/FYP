@@ -60,14 +60,37 @@ namespace TFT
         }
         
     }
+    [System.Serializable]
+    public class NetworkHero
+    {
+        public int position;
+        public string name;
+        public HeroLevel HeroLevel;
 
+        public NetworkHero(Hero _hero)
+        {
+            name = _hero.name;
+            position = _hero.HeroPlace.PlaceId;
+            HeroLevel = _hero.HeroLevel;
+        }
+        public NetworkHero(string _name, int _position, HeroLevel _heroLevel)
+        {
+            name = _name;
+            position = _position;
+            HeroLevel = _heroLevel;
+        }
+    }
     //This class is used for synchronizing netowrk data.
     [System.Serializable]
     public class PlayerHero
     {
-        public List<Hero> UsableHeros = new List<Hero>();      //List of Player Bought Heros
-        public List<Hero> GameBoardHeros = new List<Hero>();   //List of Heros Are into GameBoard
-        public HeroBuffList BuffList;
+        //public Hero[] UsableHeros = new Hero[0];      //List of Player Bought Heros
+        //public List<Hero> UsableHeros = new List<Hero>();      //List of Player Bought Heros
+        //public Hero[] GameBoardHeros = new Hero[0];      //List of Player Bought Heros
+        //public List<Hero> GameBoardHeros = new List<Hero>();   //List of Heros Are into GameBoard
+        public List<NetworkHero> UsableHeroes = new List<NetworkHero>();
+        public List<NetworkHero> GameBoardHeroes = new List<NetworkHero>();
+        //public HeroBuffList BuffList;
 
         /// <summary>
         /// Add hero to gameboard.
@@ -75,8 +98,10 @@ namespace TFT
         /// <param name="addedHero"></param>
         public void GameboardAddHero(ref Hero addedHero)
         {
-            GameBoardHeros.Add(addedHero);
-            BuffList.AddHeroBuff(ref addedHero);
+            //GameBoardHeros.Add(addedHero);
+            //AddHeroArray(Hero, ref GameBoardHeros);
+            //Dictionary<add>
+            //BuffList.AddHeroBuff(ref addedHero);
         }
 
         /// <summary>
@@ -85,9 +110,39 @@ namespace TFT
         /// <param name="removedHero"></param>
         public void GameboardRemoveHero(ref Hero removedHero)
         {
-            GameBoardHeros.Remove(removedHero);
-            BuffList.RemoveHeroBuff(ref removedHero);
+            //GameBoardHeros.Remove(removedHero);
+            //RemoveHeroArray(removedHero, ref GameBoardHeros);
+            //BuffList.RemoveHeroBuff(ref removedHero);
         }
+
+        //public void AddHeroArray(Hero hero, ref Hero[] heroArray)
+        //{
+        //    Hero[] newHeroGameArray = new Hero[heroArray.Length + 1];
+        //    for(int i = 0; i< heroArray.Length; i++)
+        //    {
+        //        newHeroGameArray[i] = heroArray[i];
+        //    }
+        //    newHeroGameArray[heroArray.Length] = hero;
+        //    heroArray = newHeroGameArray;
+        //}
+
+        //public void RemoveHeroArray(Hero hero, ref Hero[] heroArray)
+        //{
+        //    if (GameBoardHeros.Length - 1 > 0)
+        //    {
+        //        Hero[] newHeroGameArray = new Hero[heroArray.Length - 1];
+        //        for (int i = 0; i < newHeroGameArray.Length; i++)
+        //        {
+        //            newHeroGameArray[i] = heroArray[i];
+        //        }
+        //        heroArray = newHeroGameArray;
+
+        //    }
+        //    else
+        //    {
+        //        heroArray = new Hero[0];
+        //    }
+        //}
     }
 }
 

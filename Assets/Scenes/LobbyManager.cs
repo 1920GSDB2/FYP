@@ -34,6 +34,7 @@ public class LobbyManager : MonoBehaviour
     public static UsingPanelType currentModeType = UsingPanelType.MatchModePanel;
     public static List<LobbyRoom> LobbyRooms { get; private set; } = new List<LobbyRoom>();
     public static List<LobbyPlayer> RoomPlayersList { get; private set; } = new List<LobbyPlayer>();
+    public Main.GameManager GameManager;
     string joinRoomId;
     Coroutine matchTimerCoroutine;
     #endregion
@@ -154,18 +155,24 @@ public class LobbyManager : MonoBehaviour
         #endregion
 
         SwitchFunctionPanel(FunctionPanelType.LobbyPanel);
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (PhotonNetwork.isMasterClient)
+        //if (PhotonNetwork.isMasterClient)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                PhotonView.RPC("test", PhotonTargets.Others, "others");
-                PhotonView.RPC("test", PhotonTargets.All, "All");
+                // PhotonView.RPC("test", PhotonTargets.Others, "others");
+
+                for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+                {
+                    PhotonView.RPC("test", PhotonTargets.All, PhotonNetwork.playerList[i].NickName);
+
+                }
+
                 PhotonView.RPC("test", PhotonTargets.OthersBuffered, "OthersBuffered");
             }
         }
@@ -249,7 +256,7 @@ public class LobbyManager : MonoBehaviour
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.IsVisible = true;
         roomOptions.IsOpen = true;
-        roomOptions.MaxPlayers = Main.GameManager.Instance.MaxRoomPlayer;
+        roomOptions.MaxPlayers = GameManager.MaxRoomPlayer;
         roomOptions.CustomRoomProperties = new Hashtable()
         {
             {"NAME", CreateRoomName.text},
@@ -437,7 +444,7 @@ public class LobbyManager : MonoBehaviour
 
     private void OnMatchJoinRoom()
     {
-        if (PhotonNetwork.playerList.Length >= Main.GameManager.Instance.MaxRoomPlayer)
+        if (PhotonNetwork.playerList.Length >= GameManager.MaxRoomPlayer)
         {
             MatchAcceptPanel.InitialPanel();
         }
@@ -481,7 +488,7 @@ public class LobbyManager : MonoBehaviour
     {
         Hashtable CustomRoomProperties = new Hashtable() { { "MATCHMODE", Match } };
         //JoinMatchingRoom(CustomRoomProperties, GameManager.MaxRoomPlayer);
-        PhotonNetwork.JoinRandomRoom(CustomRoomProperties, Main.GameManager.Instance.MaxRoomPlayer);
+        PhotonNetwork.JoinRandomRoom(CustomRoomProperties, GameManager.MaxRoomPlayer);
     }
     void JoinMatchingRoom(Hashtable CustomRoomProperties, byte MaxRoomPlayer)
     {
@@ -513,7 +520,7 @@ public class LobbyManager : MonoBehaviour
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.IsVisible = true;
         roomOptions.IsOpen = true;
-        roomOptions.MaxPlayers = Main.GameManager.Instance.MaxRoomPlayer;
+        roomOptions.MaxPlayers = GameManager.MaxRoomPlayer;
         roomOptions.CustomRoomProperties = new Hashtable() { { "MATCHMODE", Match } };
         roomOptions.CustomRoomPropertiesForLobby = new string[] { "MATCHMODE" };
         PhotonNetwork.CreateRoom(null, roomOptions, null);
@@ -558,6 +565,8 @@ public class LobbyManager : MonoBehaviour
         if (CheckStartGame())
         {
             //Enter the Game Room
+            if (PhotonNetwork.isMasterClient)
+                //PhotonNetwork.LoadLevelAsync("TFT");
             PhotonNetwork.RPC(PhotonView, "RPC_StartGame", PhotonTargets.All, true);
             Debug.Log("Start Game");
         }
@@ -566,7 +575,7 @@ public class LobbyManager : MonoBehaviour
     {
         PhotonPlayer[] roomPlayers = PhotonNetwork.playerList;
 
-        if (roomPlayers.Length != Main.GameManager.Instance.MaxRoomPlayer) return false;
+        if (roomPlayers.Length != GameManager.MaxRoomPlayer) return false;
         foreach(PhotonPlayer roomPlayer in roomPlayers)
         {
             if (!roomPlayer.CustomProperties["ReadyForStart"].Equals("Ready"))
@@ -632,6 +641,12 @@ public class LobbyManager : MonoBehaviour
 
     #region PunRPC
     [PunRPC]
+    void test(string _string)
+    {
+        Debug.Log(_string);
+    }
+
+    [PunRPC]
     //Start game
     void RPC_StartGame()
     {
@@ -662,6 +677,12 @@ public class LobbyManager : MonoBehaviour
         {
            RoomPlayersList[index].Ready();
         }
+    }
+    [PunRPC]
+    public void RPC_SyncPlayerHeroes(int _playerId, string _name, int _heroPos, HeroLevel _heroLevel, TFT.SyncHeroMethod _syncMethod)
+    {
+        Debug.Log("RPC_SyncPlayerHeroes");
+        
     }
     #endregion
 

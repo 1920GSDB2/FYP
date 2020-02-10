@@ -45,6 +45,7 @@ public class Hero : MonoBehaviour
         lastTransform = transform.parent.name;
         //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TFTGameManager>();
         MouseSelect = GameManager.Instance.GetComponent<MouseSelect>();
+        HeroPlace = transform.parent.GetComponent<HeroPlace>();
     }
 
     // Update is called once per frame
