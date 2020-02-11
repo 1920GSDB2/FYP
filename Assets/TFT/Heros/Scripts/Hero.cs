@@ -6,7 +6,7 @@ using UnityEngine;
 public class Hero : MonoBehaviour
 {
     public bool isEnemy;
-    public HeroPlace HeroPlace;         //Current HeroPlace Position of Hero
+    public HeroPlace HeroPlace, LastHeroPlace;         //Current HeroPlace Position of Hero
     public MouseSelect MouseSelect;     
     public HeroStatus HeroStatus;
     public Rarity Rarity;

@@ -4,6 +4,17 @@ using UnityEngine;
 
 namespace TFT
 {
+    public class HeroClassRace
+    {
+        public HeroClass[] HeroClasses;
+        public HeroRace[] HeroRaces;
+        public HeroClassRace(HeroClass[] _heroClasses, HeroRace[] _heroRaces)
+        {
+            HeroClasses = _heroClasses;
+            HeroRaces = _heroRaces;
+        }
+    }
+
     [System.Serializable]
     public class HeroBuffList
     {
@@ -15,12 +26,13 @@ namespace TFT
         /// Call the method, while adding hero to the gameboard
         /// </summary>
         /// <param name="addedHero"></param>
-        public void AddHeroBuff(ref Hero addedHero)
+        public void AddHeroBuff(NetworkHero addedHero)
         {
+            HeroClassRace heroClassRace = GetClassRace(addedHero);
             bool isSameType = false;
-            for(int i =0; i< HeroType.Count; i++)
+            for (int j = 0; j < HeroType.Count; j++)
             {
-                if (HeroType[i].Equals(addedHero.name))
+                if (HeroType[j].Equals(addedHero.name))
                 {
                     isSameType = true;
                     break;
@@ -28,37 +40,57 @@ namespace TFT
             }
             if (!isSameType)
             {
-                for(int i = 0; i< addedHero.HeroClasses.Length; i++)
+                for (int i = 0; i < heroClassRace.HeroClasses.Length; i++)
                 {
-                    if (ClassValue.ContainsKey(addedHero.HeroClasses[i])) ClassValue[addedHero.HeroClasses[i]]++;
-                    else ClassValue.Add(addedHero.HeroClasses[i], 1);
+                    if (ClassValue.ContainsKey(heroClassRace.HeroClasses[i])) ClassValue[heroClassRace.HeroClasses[i]]++;
+                    else ClassValue.Add(heroClassRace.HeroClasses[i], 1);
                 }
-                for (int i = 0; i < addedHero.HeroRaces.Length; i++)
+                for (int i = 0; i < heroClassRace.HeroRaces.Length; i++)
                 {
-                    if (RaceValue.ContainsKey(addedHero.HeroRaces[i])) RaceValue[addedHero.HeroRaces[i]]++;
-                    else RaceValue.Add(addedHero.HeroRaces[i], 1);
+                    if (RaceValue.ContainsKey(heroClassRace.HeroRaces[i])) RaceValue[heroClassRace.HeroRaces[i]]++;
+                    else RaceValue.Add(heroClassRace.HeroRaces[i], 1);
                 }
             }
+            
         }
 
         /// <summary>
         /// Call the method, while removing hero from the gameboard
         /// </summary>
         /// <param name="removedHero"></param>
-        public void RemoveHeroBuff(ref Hero removedHero)
+        public void RemoveHeroBuff(NetworkHero removedHero)
         {
-            for (int i = 0; i < removedHero.HeroClasses.Length; i++)
+            HeroClassRace heroClassRace = GetClassRace(removedHero);
+            for (int i = 0; i < heroClassRace.HeroClasses.Length; i++)
             {
-                if (ClassValue[removedHero.HeroClasses[i]] > 1) ClassValue[removedHero.HeroClasses[i]]--;
-                else ClassValue.Remove(removedHero.HeroClasses[i]);
+                if (ClassValue[heroClassRace.HeroClasses[i]] > 1) ClassValue[heroClassRace.HeroClasses[i]]--;
+                else ClassValue.Remove(heroClassRace.HeroClasses[i]);
             }
-            for (int i = 0; i < removedHero.HeroRaces.Length; i++)
+            for (int i = 0; i < heroClassRace.HeroRaces.Length; i++)
             {
-                if (RaceValue[removedHero.HeroRaces[i]] > 1) RaceValue[removedHero.HeroRaces[i]]--;
-                else RaceValue.Remove(removedHero.HeroRaces[i]);
+                if (RaceValue[heroClassRace.HeroRaces[i]] > 1) RaceValue[heroClassRace.HeroRaces[i]]--;
+                else RaceValue.Remove(heroClassRace.HeroRaces[i]);
             }
         }
-        
+
+        /// <summary>
+        /// Get classes and races data of network hero
+        /// </summary>
+        /// <param name="_networkHero"></param>
+        /// <returns></returns>
+        public static HeroClassRace GetClassRace(NetworkHero _networkHero)
+        {
+            Hero[] heroList = TFT.GameManager.Instance.MainGameManager.heroTypes.ToArray();
+            for (int i = 0; i < heroList.Length; i++)
+            {
+                if (_networkHero.name.Equals(heroList[i].name))
+                {
+                    return new HeroClassRace(heroList[i].HeroClasses, heroList[i].HeroRaces);
+                }
+            }
+            return null;
+        }
+
     }
     [System.Serializable]
     public class NetworkHero
@@ -90,29 +122,28 @@ namespace TFT
         //public List<Hero> GameBoardHeros = new List<Hero>();   //List of Heros Are into GameBoard
         public List<NetworkHero> UsableHeroes = new List<NetworkHero>();
         public List<NetworkHero> GameBoardHeroes = new List<NetworkHero>();
-        //public HeroBuffList BuffList;
+        public HeroBuffList BuffList;
 
         /// <summary>
         /// Add hero to gameboard.
         /// </summary>
         /// <param name="addedHero"></param>
-        public void GameboardAddHero(ref Hero addedHero)
+        public void GameboardAddHero(NetworkHero addedHero)
         {
-            //GameBoardHeros.Add(addedHero);
+            GameBoardHeroes.Add(addedHero);
+            BuffList.AddHeroBuff(addedHero);
             //AddHeroArray(Hero, ref GameBoardHeros);
-            //Dictionary<add>
-            //BuffList.AddHeroBuff(ref addedHero);
         }
 
         /// <summary>
         /// Remove hero from gameboard.
         /// </summary>
         /// <param name="removedHero"></param>
-        public void GameboardRemoveHero(ref Hero removedHero)
+        public void GameboardRemoveHero(NetworkHero removedHero)
         {
-            //GameBoardHeros.Remove(removedHero);
+            GameBoardHeroes.Remove(removedHero);
+            BuffList.RemoveHeroBuff(removedHero);
             //RemoveHeroArray(removedHero, ref GameBoardHeros);
-            //BuffList.RemoveHeroBuff(ref removedHero);
         }
 
         //public void AddHeroArray(Hero hero, ref Hero[] heroArray)

@@ -35,6 +35,7 @@ public class MouseSelect : MonoBehaviour
         {
             DragHero = SelectedHero;
             DragHero.GetComponent<Collider>().enabled = false;
+            DragHero.LastHeroPlace = DragHero.HeroPlace;
 
             startPos = DragHero.transform.position; // save position in case draged to invalid place
             movePlane = new Plane(-Camera.main.transform.forward, DragHero.transform.position);
@@ -46,6 +47,8 @@ public class MouseSelect : MonoBehaviour
             if (!isDrag)
             {
                 //DragHero.ChangeStatus();
+                DragHero.HeroPlace = DragHero.transform.parent.GetComponent<HeroPlace>();
+
                 TFT.GameManager.Instance.ChangeHeroPos(ref DragHero);
                 DragHero.GetComponent<Collider>().enabled = true;
                 DragHero.transform.localPosition = Vector3.zero;
