@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 namespace TFT
 {
@@ -122,28 +120,42 @@ namespace TFT
         //public List<Hero> GameBoardHeros = new List<Hero>();   //List of Heros Are into GameBoard
         public List<NetworkHero> UsableHeroes = new List<NetworkHero>();
         public List<NetworkHero> GameBoardHeroes = new List<NetworkHero>();
-        public HeroBuffList BuffList;
+        public HeroBuffList BuffList = new HeroBuffList();
 
         /// <summary>
         /// Add hero to gameboard.
         /// </summary>
-        /// <param name="addedHero"></param>
-        public void GameboardAddHero(NetworkHero addedHero)
+        /// <param name="_addedHero"></param>
+        public void GameboardAddHero(NetworkHero _addedHero)
         {
-            GameBoardHeroes.Add(addedHero);
-            BuffList.AddHeroBuff(addedHero);
+            GameBoardHeroes.Add(_addedHero);
+            BuffList.AddHeroBuff(_addedHero);
             //AddHeroArray(Hero, ref GameBoardHeros);
         }
 
         /// <summary>
         /// Remove hero from gameboard.
         /// </summary>
-        /// <param name="removedHero"></param>
-        public void GameboardRemoveHero(NetworkHero removedHero)
+        /// <param name="_removedHero"></param>
+        public void GameboardRemoveHero(NetworkHero _removedHero)
         {
-            GameBoardHeroes.Remove(removedHero);
-            BuffList.RemoveHeroBuff(removedHero);
+            GameBoardHeroes.Remove(_removedHero);
+            BuffList.RemoveHeroBuff(_removedHero);
             //RemoveHeroArray(removedHero, ref GameBoardHeros);
+        }
+
+        /// <summary>
+        /// Move hero in same HeroPlace
+        /// </summary>
+        /// <param name="_movedHero"></param>
+        /// <param name="_newPos"></param>
+        public void MoveHero(NetworkHero _movedHero, int _newPos)
+        {
+            _movedHero.position = _newPos;
+            if (GameBoardHeroes.Contains(_movedHero))
+            {
+                //GameBoardHeroes
+            }
         }
 
         //public void AddHeroArray(Hero hero, ref Hero[] heroArray)

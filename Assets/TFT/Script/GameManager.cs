@@ -9,9 +9,14 @@ namespace TFT
     {
         AddHero,
         RemoveHero,
-        HeroUpgrade,
+        HeroUpgrade
+    }
+
+    public enum SyncMoveHero
+    {
         AddGameboard,
-        RemoveGameboard
+        RemoveGameboard,
+        MoveHero
     }
 
     public class GameManager : MonoBehaviour
@@ -201,36 +206,21 @@ namespace TFT
         public void ChangeHeroPos(ref Hero _hero)
         {
             //Debug.Log("Last Position: [" + _hero.LastHeroPlace.PlaceId + "], current position [" + _hero.HeroPlace.PlaceId + "].");
+            SyncMoveHero moveHeroMethod;
+            if (_hero.HeroPlace.gameObject.name.Equals(_hero.LastHeroPlace.gameObject.name))
+            {
+                moveHeroMethod = SyncMoveHero.MoveHero;
+            }
+            else if (_hero.HeroPlace.gameObject.name.Equals("Square"))
+            {
+                moveHeroMethod = SyncMoveHero.RemoveGameboard;
+            }
+            else
+            {
+                moveHeroMethod = SyncMoveHero.AddGameboard;
+            }
             PhotonView.RPC("RPC_SyncPlayerHeroPlace", PhotonTargets.All, posId,
-                playerId, _hero.name, _hero.LastHeroPlace.PlaceId, _hero.HeroLevel, _hero.HeroPlace.PlaceId);
-            //List<NetworkHero> ChangedHero = PlayerHero.UsableHeroes;
-            //for (int i = 0; i < ChangedHero.Count; i++)
-            //{
-            //    if (ChangedHero[i].name.Equals(_hero.name) &&
-            //        ChangedHero[i].position == _hero.LastHeroPlace.PlaceId &&
-            //        ChangedHero[i].HeroLevel == _hero.HeroLevel)
-            //    {
-            //        int lastPos = ChangedHero[i].position;
-            //        if (PlayerHero.GameBoardHeroes.Contains(ChangedHero[i]))
-            //        {
-            //            PlayerHero.GameboardRemoveHero(ChangedHero[i]);
-            //            ChangedHero[i].position = _hero.HeroPlace.PlaceId;
-            //            //Game Arena Update
-            //            PhotonView.RPC("RPC_SyncPlayerHeroes", PhotonTargets.All, posId,
-            //                playerId, ChangedHero[i].name, ChangedHero[i].position, ChangedHero[i].HeroLevel, lastPos);
-            //        }
-            //        else
-            //        {
-            //            ChangedHero[i].position = _hero.HeroPlace.PlaceId;
-            //            PlayerHero.GameboardAddHero(ChangedHero[i]);
-            //            //Game Arena Update
-            //            PhotonView.RPC("RPC_SyncPlayerHeroes", PhotonTargets.All, posId,
-            //                playerId, ChangedHero[i].name, ChangedHero[i].position, ChangedHero[i].HeroLevel, lastPos);
-            //        }
-            //        break;
-            //    }
-            //}
-
+                playerId, _hero.name, _hero.LastHeroPlace.PlaceId, _hero.HeroLevel, _hero.HeroPlace.PlaceId, moveHeroMethod);
         }
 
         /// <summary>
@@ -272,55 +262,101 @@ namespace TFT
         /// <param name="_heroLevel"></param>
         /// <param name="_newPos"></param>
         [PunRPC]
-        public void RPC_SyncPlayerHeroPlace(int _posId, int _playerId, string _name, int _heroPos, HeroLevel _heroLevel, int _newPos)
+        public void RPC_SyncPlayerHeroPlace(int _posId, int _playerId, string _name, int _heroPos, HeroLevel _heroLevel, int _newPos, SyncMoveHero _syncMoveHero)
         {
+            Debug.Log("Sync Move Hero Method: " + _syncMoveHero.ToString());
             List<NetworkHero> ChangedHero = PlayerHeroes[_playerId].UsableHeroes;
+            GamePlace enemyArena = PlayerArenas[_posId].GetComponent<PlayerArena>().EnemyArena;
+            Debug.Log("Player [" + _playerId + "] move the hero [" + _name + "] to place [" + _newPos + "]");
+            //The loop is used for finding the network hero which satisfied the passing value.
             for (int i = 0; i < ChangedHero.Count; i++)
             {
-                Debug.Log("Hero: "+ _name + ", id: "+ i);
-                Debug.Log("name: " + ChangedHero[i].name.Equals(_name));
-                Debug.Log("position: " + (ChangedHero[i].position == _heroPos));
-                Debug.Log("HeroLevel: " + (ChangedHero[i].HeroLevel == _heroLevel));
+                //Debug.Log("Hero: "+ _name + ", id: "+ i);
+                //Debug.Log("name: " + ChangedHero[i].name.Equals(_name));
+                //Debug.Log("position: " + (ChangedHero[i].position == _heroPos)+ " " + ChangedHero[i].position + ", " + _heroPos);
+                //Debug.Log("HeroLevel: " + (ChangedHero[i].HeroLevel == _heroLevel));
+
                 if (ChangedHero[i].name.Equals(_name) &&
                     ChangedHero[i].position == _heroPos &&
                     ChangedHero[i].HeroLevel == _heroLevel)
                 {
-                    Debug.Log("Player [" + _playerId + "] move the hero " + _name); 
                     int lastPos = ChangedHero[i].position;
-                    if (PlayerHero.GameBoardHeroes.Contains(ChangedHero[i]))
+                    switch (_syncMoveHero)
                     {
-                        PlayerHeroes[_playerId].GameboardRemoveHero(ChangedHero[i]);
-                        ChangedHero[i].position = _newPos;
-                        //Game Arena Update
-                        if(_playerId != playerId)
-                        {
-                            GamePlace enemyArena = PlayerArenas[i].GetComponent<PlayerArena>().EnemyArena;
-                            if (enemyArena.GameBoard.GetChild(_heroPos).childCount != 0)
+                        case SyncMoveHero.AddGameboard:
+                            ChangedHero[i].position = _newPos;
+                            PlayerHeroes[_playerId].GameboardAddHero(ChangedHero[i]);
+                            //Remote Player Game Arena Update
+                            if (_playerId != playerId)
                             {
-                                enemyArena.GameBoard.GetChild(_heroPos).SetParent(enemyArena.HeroList.GetChild(_newPos), false);
+                                //Check Selected Place Whether Null to Prevent Null Reference Exception
+                                if (enemyArena.HeroList.GetChild(_heroPos).childCount != 0)
+                                {
+                                    Debug.Log("Move the hero to Gameboard");
+                                    enemyArena.HeroList.GetChild(_heroPos).GetChild(0).parent = enemyArena.GameBoard.GetChild(_newPos);
+
+                                    Hero _newHeroPlacement = enemyArena.GameBoard.GetChild(_newPos).GetChild(0).GetComponent<Hero>();
+                                    _newHeroPlacement.transform.localPosition = Vector3.zero;
+                                    _newHeroPlacement.LastHeroPlace = _newHeroPlacement.HeroPlace;
+                                    _newHeroPlacement.HeroPlace = _newHeroPlacement.transform.parent.GetComponent<HeroPlace>();
+                                }
                             }
-                        }
-                    }
-                    else
-                    {
-                        Debug.Log("Move the hero to Gameboard");
-                        ChangedHero[i].position = _newPos;
-                        PlayerHeroes[_playerId].GameboardAddHero(ChangedHero[i]);
-                        //Game Arena Update
-                        if (_playerId != playerId)
-                        {
-                            GamePlace enemyArena = PlayerArenas[i].GetComponent<PlayerArena>().EnemyArena;
-                            if (enemyArena.HeroList.GetChild(_heroPos).childCount != 0)
+                            break;
+                        case SyncMoveHero.RemoveGameboard:
+                            PlayerHeroes[_playerId].GameboardRemoveHero(ChangedHero[i]);
+                            ChangedHero[i].position = _newPos;
+                            //Remote Player Game Arena Update
+                            if (_playerId != playerId)
                             {
-                                enemyArena.HeroList.GetChild(_heroPos).SetParent(enemyArena.GameBoard.GetChild(_newPos), false);
+                                //Check Selected Place Whether Null to Prevent Null Reference Exception
+                                if (enemyArena.GameBoard.GetChild(_heroPos).childCount != 0)
+                                {
+                                    Debug.Log("Move away the hero from Gameboard");
+                                    enemyArena.GameBoard.GetChild(_heroPos).GetChild(0).parent = enemyArena.HeroList.GetChild(_newPos);
+
+                                    Hero _newHeroPlacement = enemyArena.HeroList.GetChild(_newPos).GetChild(0).GetComponent<Hero>();
+                                    _newHeroPlacement.transform.localPosition = Vector3.zero;
+                                    _newHeroPlacement.LastHeroPlace = _newHeroPlacement.HeroPlace;
+                                    _newHeroPlacement.HeroPlace = _newHeroPlacement.transform.parent.GetComponent<HeroPlace>();
+                                }
                             }
-                        }
+                            break;
+                        case SyncMoveHero.MoveHero:
+                            PlayerHeroes[_playerId].MoveHero(ChangedHero[i], _newPos);
+                            //Remote Player Game Arena Update
+                            if (_playerId != playerId)
+                            {
+                                Transform _heroPlacement;
+                                //Set the Hero's Placement
+                                if (PlayerHeroes[_playerId].GameBoardHeroes.Contains(ChangedHero[i]))
+                                {
+                                    //Hero is in gameboard
+                                    _heroPlacement = enemyArena.GameBoard;
+                                    Debug.Log("Moved the hero in Gameboard");
+                                }
+                                else
+                                {
+                                    //Hero is not in gameboard
+                                    _heroPlacement = enemyArena.HeroList;
+                                    Debug.Log("Moved the hero in HeroList");
+                                }
+                                //Check Selected Place Whether Null to Prevent Null Reference Exception
+                                if (_heroPlacement.childCount != 0)
+                                {
+                                    _heroPlacement.GetChild(_heroPos).GetChild(0).parent = _heroPlacement.GetChild(_newPos);
+
+                                    Hero _newHeroPlacement = _heroPlacement.GetChild(_newPos).GetChild(0).GetComponent<Hero>();
+                                    _newHeroPlacement.transform.localPosition = Vector3.zero;
+                                    _newHeroPlacement.LastHeroPlace = _newHeroPlacement.HeroPlace;
+                                    _newHeroPlacement.HeroPlace = _newHeroPlacement.transform.parent.GetComponent<HeroPlace>();
+                                }
+                            }
+                            break;
                     }
                     break;
                 }
             }
             PlayerHero = PlayerHeroes[playerId];
-
         }
 
         /// <summary>
