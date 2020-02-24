@@ -59,12 +59,15 @@ namespace TFT
         }
         public Main.GameManager MainGameManager;
         public static GameManager Instance;
-        
 
+        private void Awake()
+        {
+            Instance = this;
+        }
         // Start is called before the first frame update
         void Start()
         {
-            Instance = this;
+            
             //PlayerArenas = GameObject.FindGameObjectsWithTag("PlayerArena");
             PlayerHero = new PlayerHero();
 

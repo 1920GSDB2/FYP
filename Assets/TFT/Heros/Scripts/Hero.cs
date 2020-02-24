@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TFT;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class Hero : MonoBehaviour
     public HeroRace[] HeroRaces;
     public HeroLevel HeroLevel;
     public HeroState HeroState;
-
+    public GridMap map;
     [Range(0, 10)]
     public int BasicHealth;
     [Range(0, 10)]

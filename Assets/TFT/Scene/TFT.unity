@@ -165,6 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &456563
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -373,6 +376,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &24754790
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -571,6 +577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &36819694
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -752,6 +761,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &45099282
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -858,6 +870,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &49760541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -964,6 +979,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &50820387
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1460,6 +1478,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &74682363
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1553,6 +1574,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &76687126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1673,6 +1697,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &82706220
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1906,6 +1933,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &91087046
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2185,7 +2215,7 @@ Transform:
   - {fileID: 885365092}
   - {fileID: 660996048}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &100183002
 GameObject:
@@ -2293,6 +2323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &103178886
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2569,6 +2602,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &114905379
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3050,6 +3086,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &138383121
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3932,6 +3971,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &183295754
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4190,6 +4232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &189724206
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4310,6 +4355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &198947778
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4593,6 +4641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &206373677
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4686,6 +4737,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &211606011
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4973,6 +5027,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &219842197
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5099,6 +5156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &222045481
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5218,6 +5278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &230991715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5311,6 +5374,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &233151243
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5417,6 +5483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &234112698
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5475,7 +5544,8 @@ Transform:
   m_LocalRotation: {x: 0.6830127, y: -0.18301274, z: -0.18301274, w: -0.6830127}
   m_LocalPosition: {x: -0.865, y: 0, z: -4.491}
   m_LocalScale: {x: 0.075, y: 0.075, z: 0.001}
-  m_Children: []
+  m_Children:
+  - {fileID: 1598355387}
   m_Father: {fileID: 2113805228}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 270, y: 30, z: 0}
@@ -5743,6 +5813,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &260498434
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6087,6 +6160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &270245019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6262,6 +6338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &271394571
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6382,6 +6461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &274077644
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6495,6 +6577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &275427167
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6696,6 +6781,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &294126391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6808,6 +6896,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &295073467
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6928,6 +7019,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &296053690
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6976,6 +7070,89 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &297687609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 297687612}
+  - component: {fileID: 297687611}
+  - component: {fileID: 297687610}
+  m_Layer: 0
+  m_Name: Main Camera (1)
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &297687610
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297687609}
+  m_Enabled: 1
+--- !u!20 &297687611
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297687609}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &297687612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297687609}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -12.8, y: 21.5, z: 22.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &307230746
 GameObject:
   m_ObjectHideFlags: 0
@@ -7113,6 +7290,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &308969446
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7678,6 +7858,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &342683743
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7757,6 +7940,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &343433698
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7883,6 +8069,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &347483015
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8129,6 +8318,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &353261130
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8232,7 +8424,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &355347619
 MonoBehaviour:
@@ -8353,8 +8545,9 @@ MonoBehaviour:
   PlayerHero:
     UsableHeroes: []
     GameBoardHeroes: []
-  SelfPlayerArena: {fileID: 0}
+  SelfPlayerArena: {fileID: 1978762088}
   playerId: 0
+  posId: 0
   MainGameManager: {fileID: 11400000, guid: 81ecca96d371141469ab785dc0afe819, type: 2}
 --- !u!114 &355347622
 MonoBehaviour:
@@ -8615,6 +8808,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &372910608
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8722,6 +8918,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &375613915
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8815,6 +9014,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &376959548
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9013,6 +9215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &385100939
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9106,6 +9311,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &385606748
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9226,6 +9434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &389502280
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9422,6 +9633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &392488904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9515,6 +9729,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &397262800
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9709,6 +9926,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &404059798
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9829,6 +10049,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &404200619
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9936,6 +10159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &408368591
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10101,6 +10327,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &417955122
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10361,6 +10590,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &429189580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10444,7 +10676,8 @@ Transform:
   m_LocalRotation: {x: 0.6830127, y: -0.18301274, z: -0.18301274, w: -0.6830127}
   m_LocalPosition: {x: 8.65, y: 0, z: 0}
   m_LocalScale: {x: 0.075, y: 0.075, z: 0.001}
-  m_Children: []
+  m_Children:
+  - {fileID: 1383153679}
   m_Father: {fileID: 2113805228}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 270, y: 30, z: 0}
@@ -10493,6 +10726,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &437605160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10613,6 +10849,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &439427745
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10720,6 +10959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &443446001
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11106,6 +11348,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &461398466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11226,6 +11471,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &468137904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11399,6 +11647,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &473071684
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11583,6 +11834,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &474510882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11939,6 +12193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &489316722
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12032,6 +12289,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &490318851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12144,6 +12404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &498561622
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12462,6 +12725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &509515462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12582,6 +12848,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &512940587
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12747,6 +13016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &514135970
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12854,6 +13126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &514227073
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13027,6 +13302,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &523165014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13147,6 +13425,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &529016352
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13260,6 +13541,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &539033862
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13353,6 +13637,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &540322162
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13706,6 +13993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &551474167
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13985,7 +14275,7 @@ PrefabInstance:
     - target: {fileID: 2044099201925630212, guid: 40f252f5a2534204d9830d121ff38951,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2044099201925630212, guid: 40f252f5a2534204d9830d121ff38951,
         type: 3}
@@ -14141,6 +14431,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &562409229
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14234,6 +14527,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &562758515
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14499,6 +14795,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &583381407
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14764,6 +15063,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &605400217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15056,6 +15358,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &621234610
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15254,6 +15559,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &621949935
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15361,6 +15669,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &627500871
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15621,6 +15932,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &639586716
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15808,6 +16122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &659694203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16065,6 +16382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &673696562
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16238,6 +16558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &680505255
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16331,6 +16654,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &681916087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16909,6 +17235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &707089924
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17076,6 +17405,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &713658584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17182,6 +17514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &724457448
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17452,6 +17787,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &737733224
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17572,6 +17910,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &738506555
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18020,6 +18361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &751424708
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18113,6 +18457,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &754537333
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18219,6 +18566,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &755434256
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18396,6 +18746,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &758018764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18695,6 +19048,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &772705662
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18801,6 +19157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &774275860
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18907,6 +19266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &776380323
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19013,6 +19375,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &779523413
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19133,6 +19498,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &784945608
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19226,6 +19594,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &785513960
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19826,6 +20197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &810468638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20029,6 +20403,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &814142466
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20122,6 +20499,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &816035456
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20378,6 +20758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &817095551
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20471,6 +20854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &820133593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20884,6 +21270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &828643776
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21298,6 +21687,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &844434426
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21573,6 +21965,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &862043698
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21771,6 +22166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &868799407
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21864,6 +22262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &869325575
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21971,6 +22372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &870010158
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22269,6 +22673,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &876114719
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22926,6 +23333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &888239028
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23113,6 +23523,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &896310023
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23294,6 +23707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &900200430
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23401,6 +23817,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &900348792
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23508,6 +23927,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &906874753
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23615,6 +24037,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &909161912
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23792,6 +24217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &914499660
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24006,6 +24434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &918363595
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24373,6 +24804,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &925817955
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24613,6 +25047,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &928260932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24733,6 +25170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &929391029
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25000,6 +25440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &942543930
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25279,6 +25722,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &954500699
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25372,6 +25818,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &958300308
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25478,6 +25927,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &959539439
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25591,6 +26043,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &962448160
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25840,6 +26295,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &977233232
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25960,6 +26418,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &979687368
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26080,6 +26541,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &982306773
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26173,6 +26637,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &984581405
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26279,6 +26746,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &988575097
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26372,6 +26842,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &988593868
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26484,6 +26957,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &990688952
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26590,6 +27066,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &992486530
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26710,6 +27189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &992590360
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26913,6 +27395,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &998721748
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27094,6 +27579,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1003088594
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27330,6 +27818,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1007646946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27423,6 +27914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1008210486
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27787,6 +28281,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1015668335
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27894,6 +28391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1016775284
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27999,6 +28499,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1033678200
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28442,6 +28945,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1043712545
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28843,6 +29349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1056749386
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29090,6 +29599,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1059616604
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29411,6 +29923,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1070289992
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29973,6 +30488,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1086858795
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30086,6 +30604,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1091412266
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30165,6 +30686,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1093672619
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30531,6 +31055,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1098750747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30712,6 +31239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1100342818
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30811,6 +31341,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1110504830
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30917,6 +31450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1112846299
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31196,6 +31732,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1120307950
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31289,6 +31828,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1123807808
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31382,6 +31924,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1128457610
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31563,6 +32108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1133310131
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31670,6 +32218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1135395456
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32234,6 +32785,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1154697172
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32522,6 +33076,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1173930672
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32642,6 +33199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1174445926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32794,6 +33354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1180177648
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32907,6 +33470,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1187452908
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33000,6 +33566,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1197022091
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33106,6 +33675,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1197787660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33312,6 +33884,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1203689710
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33796,6 +34371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1214451592
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34355,6 +34933,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1231695710
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34616,6 +35197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1248661966
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34803,6 +35387,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1252294283
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34949,6 +35536,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1260311518
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35273,6 +35863,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1270502603
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35379,6 +35972,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1277092983
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35713,6 +36309,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1283489425
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35819,6 +36418,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1285917921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36223,6 +36825,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1300587018
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36343,6 +36948,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1301144967
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36540,7 +37148,7 @@ PrefabInstance:
     - target: {fileID: 2177598673675532544, guid: 56c79effdb21ed44bb526a7756ab3e95,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2177598673675532544, guid: 56c79effdb21ed44bb526a7756ab3e95,
         type: 3}
@@ -36624,6 +37232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1310450295
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36809,6 +37420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1313695297
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36902,6 +37516,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1316249826
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37050,6 +37667,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1322530777
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37143,6 +37763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1326297251
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37263,6 +37886,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1328727987
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37356,6 +37982,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1329783299
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37690,6 +38319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1331607061
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38167,6 +38799,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1338421204
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38513,6 +39148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1349921480
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38626,6 +39264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1352551059
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38733,6 +39374,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1356634246
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39147,6 +39791,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1364402453
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39240,6 +39887,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1370914623
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39333,6 +39983,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1374522395
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39483,6 +40136,118 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1378147305}
   m_CullTransparentMesh: 0
+--- !u!1001 &1383153673
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 436815339}
+    m_Modifications:
+    - target: {fileID: 7566775792669253894, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_Name
+      value: Lonnie
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253893, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: MouseSelect
+      value: 
+      objectReference: {fileID: 355347620}
+    - target: {fileID: 7566775792669253893, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: HeroPlace
+      value: 
+      objectReference: {fileID: 724457447}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6830127
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.18301274
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.18301274
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.6830127
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 13.333332
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1000.00024
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 13.333334
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 231e61f987d01d14e81a578eb7c442a1, type: 3}
+--- !u!114 &1383153678 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7566775792669253893, guid: 231e61f987d01d14e81a578eb7c442a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1383153673}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1383153679 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7566775792669253892, guid: 231e61f987d01d14e81a578eb7c442a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1383153673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1386647075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39608,6 +40373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1387623728
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39798,6 +40566,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1398886910
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39891,6 +40662,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1399172191
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40111,6 +40885,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1400948843
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -40204,6 +40981,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1404727537
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40324,6 +41104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1406903794
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -40544,6 +41327,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1420902128
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40664,6 +41450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1420909587
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -40970,6 +41759,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1430882891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41139,6 +41931,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1440387092
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41658,6 +42453,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1480400416
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41778,6 +42576,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1480983583
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41885,6 +42686,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1481301666
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42041,6 +42845,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1486279371
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42148,6 +42955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1488162545
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42255,6 +43065,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1488273784
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42424,6 +43237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1501240136
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42530,6 +43346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1503910439
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42637,6 +43456,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1514062037
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -43491,6 +44313,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1545467220
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -43722,6 +44547,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1546421471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43848,6 +44676,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1551397051
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44033,6 +44864,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1555095874
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44146,6 +44980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1559949070
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44469,6 +45306,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1576343465
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44636,6 +45476,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1577109909
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44743,6 +45586,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1584383104
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45196,6 +46042,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1c548cd522784f940d5ffe292db97, type: 3}
+--- !u!1 &1598355384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 811514005657618432, guid: c726c972c2a9e1645b78c207ab848e7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1881546450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1598355385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598355384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f85a8a939c630b4c8bf5e4cb04f68b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  testHero: {fileID: 1383153678}
+--- !u!114 &1598355386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598355384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109205349c0362e438ce6f3d7a828bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerArena: {fileID: 0}
+  GridSizeX: 7
+  GridSizeY: 8
+--- !u!4 &1598355387 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1881546450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1599465377
 GameObject:
   m_ObjectHideFlags: 0
@@ -45255,6 +46142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1599465381
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45354,6 +46244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1601386120
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45486,6 +46379,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1616181474
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45940,6 +46836,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1635289709
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -46047,6 +46946,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1643552767
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -46518,6 +47420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1662739164
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -46617,6 +47522,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1671197230
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46879,7 +47787,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 148.7, y: -30, z: 0}
 --- !u!4 &1687881331 stripped
 Transform:
@@ -47198,6 +48106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1708137230
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47544,6 +48455,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1719044367
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47651,6 +48565,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1720121737
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47851,6 +48768,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1721409569
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47950,6 +48870,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1724334367
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -48049,6 +48972,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1726023113
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48254,6 +49180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1731214955
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48411,7 +49340,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1739986805 stripped
 Transform:
@@ -48464,6 +49393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1742100556
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48570,6 +49502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1748421775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48756,6 +49691,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1755223935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48882,6 +49820,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1756915201
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -49055,6 +49996,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1791210254
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -49148,6 +50092,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1791226434
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49374,6 +50321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1801379014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -49467,6 +50417,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1801386184
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -49574,6 +50527,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1803687203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -49899,6 +50855,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1827342544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50019,6 +50978,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1828476579
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -50314,6 +51276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1842093203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -50407,6 +51372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1844967987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50636,6 +51604,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1846346328
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -51297,6 +52268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1878446999
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -51351,6 +52325,100 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1041602327}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1881546450
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 234312291}
+    m_Modifications:
+    - target: {fileID: 811514005657618432, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_Name
+      value: God of Wizard
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618439, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: MouseSelect
+      value: 
+      objectReference: {fileID: 355347620}
+    - target: {fileID: 811514005657618439, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: HeroPlace
+      value: 
+      objectReference: {fileID: 1801386183}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6830127
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.18301274
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.18301274
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.6830127
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 13.333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1000.00073
+      objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 13.333338
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c726c972c2a9e1645b78c207ab848e7c, type: 3}
 --- !u!4 &1882822277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1742539634653316415, guid: 10c1c548cd522784f940d5ffe292db97,
@@ -51576,6 +52644,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1900875549
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -51669,6 +52740,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1904709397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52016,6 +53090,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1919071648
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52183,6 +53260,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1933032881
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52290,6 +53370,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1938226453
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52485,6 +53568,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1941134607
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52672,6 +53758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1948098872
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53015,6 +54104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &1956656396
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53550,6 +54642,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &1999640999
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53662,6 +54757,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &2008641200
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -54005,6 +55103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &2019903375
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -54098,6 +55199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &2022478002
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -54539,6 +55643,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &2030600835
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -54732,6 +55839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &2038145078
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -54931,6 +56041,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &2041003642
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55112,6 +56225,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &2046481243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55343,6 +56459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &2052889126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55546,6 +56665,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &2057028462
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55677,6 +56799,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &2062321282
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55748,7 +56873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &2069092768
 AudioListener:
   m_ObjectHideFlags: 0
@@ -55859,6 +56984,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &2071136869
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55979,6 +57107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &2074600101
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -56072,6 +57203,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &2075635854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56178,6 +57312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &2080732657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56341,7 +57478,7 @@ RectTransform:
   - {fileID: 1619401683}
   - {fileID: 1335357681}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -56451,6 +57588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &2087996136
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56738,6 +57878,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &2104799069
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57130,6 +58273,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &2115613223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57236,6 +58382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &2121938925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57354,6 +58503,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &2123416793
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57460,6 +58612,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &2125001399
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57719,6 +58874,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!65 &2131526867
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57845,6 +59003,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridX: 0
+  gridY: 0
+  isWalkable: 1
 --- !u!212 &2146691557
 SpriteRenderer:
   m_ObjectHideFlags: 0

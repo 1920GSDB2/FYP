@@ -14,8 +14,17 @@ public class HeroPlace : MonoBehaviour
     public PlaceType PlaceType { get; private set; }
     public int PlaceId { get; private set; }
     SpriteRenderer spriteRenderer;
+
+    public int gridX;
+    public int gridY;
+    public bool isWalkable = true;
     //MouseSelect MouseSelect;
 
+    public void setGridPosition(int x,int y) {
+        gridX = x;
+        gridY = y;
+    }
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -53,5 +62,8 @@ public class HeroPlace : MonoBehaviour
         spriteRenderer.color = Color.white;
         MouseSelect.Instance.SelectPlace = null;
     }
+    public void settColor(Color color) {
+        spriteRenderer.color = color;
+    } 
     #endregion
 }

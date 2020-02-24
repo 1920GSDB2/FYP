@@ -7,10 +7,13 @@ public class PlayerArena : MonoBehaviour
     public GameObject FightArena;
     public GamePlace SelfArena, EnemyArena;
     Vector3 leftTop, rightTop, leftDown, rightDown;
+    int GridSizeY = 8;
+    int GridSizeX = 7;
     // Start is called before the first frame update
     void Start()
     {
         SetCorner();
+        setGridPosition();
     }
 
     // Update is called once per frame
@@ -18,7 +21,27 @@ public class PlayerArena : MonoBehaviour
     {
         
     }
-
+    private void setGridPosition() {
+        int child =SelfArena.GameBoard.childCount-1;
+        for (int y = GridSizeY-1; y >= 0; y--)
+        {
+            for (int x = 0; x < GridSizeX; x++)
+            {
+                if (y > 3)
+                {
+                    EnemyArena.GameBoard.GetChild(child).GetComponent<HeroPlace>().setGridPosition(x, y);
+                    if(child!=0)
+                    child--;
+                }
+                else
+                {
+                    SelfArena.GameBoard.GetChild(child).GetComponent<HeroPlace>().setGridPosition(x, y);
+                    child++;
+                }
+                //Debug.Log("X " + x + " Y " + y+" child "+child);
+            }
+        }
+    }
     private void SetCorner()
     {
         Vector3 boundExtents = FightArena.GetComponent<Renderer>().bounds.extents * 2;
