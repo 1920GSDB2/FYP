@@ -15,8 +15,8 @@ public class HeroPlace : MonoBehaviour
     public int PlaceId { get; private set; }
     SpriteRenderer spriteRenderer;
 
-    public int gridX;
-    public int gridY;
+    public int gridX { get; private set; }
+    public int gridY { get; private set; }
     public bool isWalkable = true;
     //MouseSelect MouseSelect;
 

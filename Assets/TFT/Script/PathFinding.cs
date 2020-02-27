@@ -5,9 +5,7 @@ using UnityEngine;
 public class PathFinding : MonoBehaviour
 {
     GridMap gridMap;
-    Hero self;
-    public Hero target;
-    public Hero testHero;
+   // public List<Node> path = new List<Node>();
 
     private void Awake()
     {
@@ -15,26 +13,27 @@ public class PathFinding : MonoBehaviour
     }
     private void Start()
     {
-        self = GetComponent<Hero>();
     }
     private void Update()
     {
-         if (Input.GetKeyDown(KeyCode.K)) {
-            //Hero hero = GetComponent<Hero>();
-            //test(hero.HeroPlace);
-            target = testHero;
-        }
-        if (target != null) {
-            findPath(self.HeroPlace, target.HeroPlace);
-        }
-       
+         
+      /* if (path.Count != 0)
+        {
+            foreach (Node node in path)
+            {
+                node.heroPlace.settColor(Color.blue);
+            }
+            path = null;
+        }*/
+
     }
-    void findPath(HeroPlace startPoint,HeroPlace endPoint) {        
+    public List<Node> findPath(HeroPlace startPoint,HeroPlace endPoint) {        
         Node startNode = gridMap.getHeroPlaceGrid(startPoint);
         Node targetNode = gridMap.getHeroPlaceGrid(endPoint);
         List<Node> openSet = new List<Node>();
         HashSet<Node> closedSet = new HashSet<Node>();
         openSet.Add(startNode);
+        bool isFindPath = false;
         
         while (openSet.Count > 0) {
             Node currentNode = openSet[0];
@@ -46,9 +45,9 @@ public class PathFinding : MonoBehaviour
             openSet.Remove(currentNode);
             closedSet.Add(currentNode);
             if (currentNode == targetNode)
-            {
-                trackPath(startNode,targetNode);
-                return;
+            {               
+                isFindPath = true;
+                break;
             }
 
             foreach (Node neighbour in gridMap.getNeighbours(currentNode)) {
@@ -67,6 +66,13 @@ public class PathFinding : MonoBehaviour
                 }
             }
         }
+        if (isFindPath)
+        {
+            return trackPath(startNode, targetNode);
+        }
+        else
+            return null;
+
     }
     int GetDistance(Node nodeA,Node nodeB) {
         int disX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
@@ -82,7 +88,7 @@ public class PathFinding : MonoBehaviour
         }
        return totalDis+disX * 10;
     }
-    void trackPath(Node startNode,Node targetNode) {
+    List<Node> trackPath(Node startNode,Node targetNode) {
         List<Node> path = new List<Node>();
         Node currentNode = targetNode;
         while (currentNode!= startNode) {
@@ -91,8 +97,9 @@ public class PathFinding : MonoBehaviour
         }
         path.Reverse();
         path.RemoveAt(path.Count-1);
-    
-        gridMap.path = path;
-        target = null;
+
+        return path;
+      //  this.path = path;
+        //target = null;
     }
 }

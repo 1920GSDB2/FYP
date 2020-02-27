@@ -165,8 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &456563
 BoxCollider:
@@ -376,8 +374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &24754790
 BoxCollider:
@@ -577,8 +573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &36819694
 SpriteRenderer:
@@ -761,8 +755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &45099282
 BoxCollider:
@@ -870,8 +862,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &49760541
 BoxCollider:
@@ -979,8 +969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &50820387
 BoxCollider:
@@ -1478,8 +1466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &74682363
 SpriteRenderer:
@@ -1574,8 +1560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &76687126
 BoxCollider:
@@ -1697,8 +1681,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &82706220
 BoxCollider:
@@ -1933,8 +1915,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &91087046
 SpriteRenderer:
@@ -2323,8 +2303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &103178886
 SpriteRenderer:
@@ -2602,8 +2580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &114905379
 SpriteRenderer:
@@ -3086,8 +3062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &138383121
 SpriteRenderer:
@@ -3971,8 +3945,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &183295754
 BoxCollider:
@@ -4232,8 +4204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &189724206
 BoxCollider:
@@ -4355,8 +4325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &198947778
 SpriteRenderer:
@@ -4641,8 +4609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &206373677
 SpriteRenderer:
@@ -4737,8 +4703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &211606011
 BoxCollider:
@@ -5027,8 +4991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &219842197
 BoxCollider:
@@ -5156,8 +5118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &222045481
 SpriteRenderer:
@@ -5278,8 +5238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &230991715
 SpriteRenderer:
@@ -5374,8 +5332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &233151243
 BoxCollider:
@@ -5483,8 +5439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &234112698
 SpriteRenderer:
@@ -5813,8 +5767,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &260498434
 SpriteRenderer:
@@ -6160,8 +6112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &270245019
 BoxCollider:
@@ -6338,8 +6288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &271394571
 BoxCollider:
@@ -6461,8 +6409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &274077644
 SpriteRenderer:
@@ -6577,8 +6523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &275427167
 SpriteRenderer:
@@ -6781,8 +6725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &294126391
 BoxCollider:
@@ -6896,8 +6838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &295073467
 BoxCollider:
@@ -7019,8 +6959,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &296053690
 SpriteRenderer:
@@ -7290,8 +7228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &308969446
 SpriteRenderer:
@@ -7858,8 +7794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &342683743
 SpriteRenderer:
@@ -7940,8 +7874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &343433698
 BoxCollider:
@@ -8069,8 +8001,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &347483015
 SpriteRenderer:
@@ -8318,8 +8248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &353261130
 SpriteRenderer:
@@ -8808,8 +8736,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &372910608
 SpriteRenderer:
@@ -8918,8 +8844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &375613915
 SpriteRenderer:
@@ -9014,8 +8938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &376959548
 BoxCollider:
@@ -9215,8 +9137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &385100939
 SpriteRenderer:
@@ -9311,8 +9231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &385606748
 BoxCollider:
@@ -9434,8 +9352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &389502280
 SpriteRenderer:
@@ -9633,8 +9549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &392488904
 SpriteRenderer:
@@ -9729,8 +9643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &397262800
 BoxCollider:
@@ -9926,8 +9838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &404059798
 BoxCollider:
@@ -10049,8 +9959,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &404200619
 SpriteRenderer:
@@ -10159,8 +10067,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &408368591
 SpriteRenderer:
@@ -10327,8 +10233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &417955122
 BoxCollider:
@@ -10590,8 +10494,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &429189580
 BoxCollider:
@@ -10726,8 +10628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &437605160
 BoxCollider:
@@ -10849,8 +10749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &439427745
 SpriteRenderer:
@@ -10959,8 +10857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &443446001
 SpriteRenderer:
@@ -11348,8 +11244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &461398466
 BoxCollider:
@@ -11471,8 +11365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &468137904
 SpriteRenderer:
@@ -11647,8 +11539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &473071684
 BoxCollider:
@@ -11834,8 +11724,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &474510882
 BoxCollider:
@@ -12193,8 +12081,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &489316722
 SpriteRenderer:
@@ -12289,8 +12175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &490318851
 BoxCollider:
@@ -12404,8 +12288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &498561622
 BoxCollider:
@@ -12725,8 +12607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &509515462
 BoxCollider:
@@ -12848,8 +12728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &512940587
 SpriteRenderer:
@@ -13016,8 +12894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &514135970
 SpriteRenderer:
@@ -13126,8 +13002,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &514227073
 SpriteRenderer:
@@ -13302,8 +13176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &523165014
 BoxCollider:
@@ -13425,8 +13297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &529016352
 SpriteRenderer:
@@ -13541,8 +13411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &539033862
 SpriteRenderer:
@@ -13637,8 +13505,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &540322162
 BoxCollider:
@@ -13993,8 +13859,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &551474167
 SpriteRenderer:
@@ -14431,8 +14295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &562409229
 SpriteRenderer:
@@ -14527,8 +14389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &562758515
 BoxCollider:
@@ -14795,8 +14655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &583381407
 BoxCollider:
@@ -15063,8 +14921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &605400217
 SpriteRenderer:
@@ -15358,8 +15214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &621234610
 BoxCollider:
@@ -15559,8 +15413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &621949935
 SpriteRenderer:
@@ -15669,8 +15521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &627500871
 SpriteRenderer:
@@ -15932,8 +15782,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &639586716
 SpriteRenderer:
@@ -16122,8 +15970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &659694203
 SpriteRenderer:
@@ -16382,8 +16228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &673696562
 SpriteRenderer:
@@ -16558,8 +16402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &680505255
 SpriteRenderer:
@@ -16654,8 +16496,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &681916087
 BoxCollider:
@@ -17235,8 +17075,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &707089924
 SpriteRenderer:
@@ -17405,8 +17243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &713658584
 BoxCollider:
@@ -17514,8 +17350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &724457448
 SpriteRenderer:
@@ -17787,8 +17621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &737733224
 BoxCollider:
@@ -17910,8 +17742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &738506555
 SpriteRenderer:
@@ -18361,8 +18191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &751424708
 SpriteRenderer:
@@ -18457,8 +18285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &754537333
 BoxCollider:
@@ -18566,8 +18392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &755434256
 SpriteRenderer:
@@ -18746,8 +18570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &758018764
 SpriteRenderer:
@@ -19048,8 +18870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &772705662
 BoxCollider:
@@ -19157,8 +18977,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &774275860
 BoxCollider:
@@ -19266,8 +19084,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &776380323
 BoxCollider:
@@ -19375,8 +19191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &779523413
 BoxCollider:
@@ -19498,8 +19312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &784945608
 SpriteRenderer:
@@ -19594,8 +19406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &785513960
 BoxCollider:
@@ -20197,8 +20007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &810468638
 BoxCollider:
@@ -20403,8 +20211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &814142466
 SpriteRenderer:
@@ -20499,8 +20305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &816035456
 BoxCollider:
@@ -20758,8 +20562,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &817095551
 SpriteRenderer:
@@ -20854,8 +20656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &820133593
 BoxCollider:
@@ -21270,8 +21070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &828643776
 SpriteRenderer:
@@ -21687,8 +21485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &844434426
 SpriteRenderer:
@@ -21965,8 +21761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &862043698
 BoxCollider:
@@ -22166,8 +21960,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &868799407
 SpriteRenderer:
@@ -22262,8 +22054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &869325575
 SpriteRenderer:
@@ -22372,8 +22162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &870010158
 SpriteRenderer:
@@ -22673,8 +22461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &876114719
 SpriteRenderer:
@@ -23333,8 +23119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &888239028
 SpriteRenderer:
@@ -23523,8 +23307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &896310023
 SpriteRenderer:
@@ -23707,8 +23489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &900200430
 SpriteRenderer:
@@ -23817,8 +23597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &900348792
 SpriteRenderer:
@@ -23927,8 +23705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &906874753
 SpriteRenderer:
@@ -24037,8 +23813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &909161912
 SpriteRenderer:
@@ -24217,8 +23991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &914499660
 SpriteRenderer:
@@ -24434,8 +24206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &918363595
 BoxCollider:
@@ -24804,8 +24574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &925817955
 BoxCollider:
@@ -25047,8 +24815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &928260932
 BoxCollider:
@@ -25170,8 +24936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &929391029
 SpriteRenderer:
@@ -25440,8 +25204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &942543930
 SpriteRenderer:
@@ -25722,8 +25484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &954500699
 SpriteRenderer:
@@ -25818,8 +25578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &958300308
 BoxCollider:
@@ -25927,8 +25685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &959539439
 SpriteRenderer:
@@ -26043,8 +25799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &962448160
 SpriteRenderer:
@@ -26295,8 +26049,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &977233232
 BoxCollider:
@@ -26418,8 +26170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &979687368
 BoxCollider:
@@ -26541,8 +26291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &982306773
 SpriteRenderer:
@@ -26637,8 +26385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &984581405
 BoxCollider:
@@ -26746,8 +26492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &988575097
 SpriteRenderer:
@@ -26842,8 +26586,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &988593868
 BoxCollider:
@@ -26957,8 +26699,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &990688952
 BoxCollider:
@@ -27066,8 +26806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &992486530
 BoxCollider:
@@ -27189,8 +26927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &992590360
 SpriteRenderer:
@@ -27395,8 +27131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &998721748
 SpriteRenderer:
@@ -27579,8 +27313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1003088594
 SpriteRenderer:
@@ -27818,8 +27550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1007646946
 SpriteRenderer:
@@ -27914,8 +27644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1008210486
 BoxCollider:
@@ -28281,8 +28009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1015668335
 SpriteRenderer:
@@ -28391,8 +28117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1016775284
 SpriteRenderer:
@@ -28499,8 +28223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1033678200
 BoxCollider:
@@ -28945,8 +28667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1043712545
 SpriteRenderer:
@@ -29349,8 +29069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1056749386
 SpriteRenderer:
@@ -29599,8 +29317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1059616604
 SpriteRenderer:
@@ -29923,8 +29639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1070289992
 SpriteRenderer:
@@ -30488,8 +30202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1086858795
 SpriteRenderer:
@@ -30604,8 +30316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1091412266
 SpriteRenderer:
@@ -30686,8 +30396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1093672619
 BoxCollider:
@@ -31055,8 +30763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1098750747
 SpriteRenderer:
@@ -31239,8 +30945,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1100342818
 SpriteRenderer:
@@ -31341,8 +31045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1110504830
 BoxCollider:
@@ -31450,8 +31152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1112846299
 BoxCollider:
@@ -31732,8 +31432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1120307950
 SpriteRenderer:
@@ -31828,8 +31526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1123807808
 SpriteRenderer:
@@ -31924,8 +31620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1128457610
 SpriteRenderer:
@@ -32108,8 +31802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1133310131
 SpriteRenderer:
@@ -32218,8 +31910,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1135395456
 SpriteRenderer:
@@ -32785,8 +32475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1154697172
 SpriteRenderer:
@@ -33076,8 +32764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1173930672
 BoxCollider:
@@ -33199,8 +32885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1174445926
 SpriteRenderer:
@@ -33354,8 +33038,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1180177648
 SpriteRenderer:
@@ -33470,8 +33152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1187452908
 SpriteRenderer:
@@ -33566,8 +33246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1197022091
 BoxCollider:
@@ -33675,8 +33353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1197787660
 BoxCollider:
@@ -33884,8 +33560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1203689710
 SpriteRenderer:
@@ -34371,8 +34045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1214451592
 BoxCollider:
@@ -34933,8 +34605,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1231695710
 SpriteRenderer:
@@ -35197,8 +34867,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1248661966
 SpriteRenderer:
@@ -35387,8 +35055,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1252294283
 SpriteRenderer:
@@ -35536,8 +35202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1260311518
 SpriteRenderer:
@@ -35863,8 +35527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1270502603
 BoxCollider:
@@ -35972,8 +35634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1277092983
 BoxCollider:
@@ -36309,8 +35969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1283489425
 BoxCollider:
@@ -36418,8 +36076,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1285917921
 SpriteRenderer:
@@ -36825,8 +36481,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1300587018
 BoxCollider:
@@ -36948,8 +36602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1301144967
 SpriteRenderer:
@@ -37232,8 +36884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1310450295
 SpriteRenderer:
@@ -37420,8 +37070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1313695297
 SpriteRenderer:
@@ -37516,8 +37164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1316249826
 BoxCollider:
@@ -37667,8 +37313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1322530777
 SpriteRenderer:
@@ -37763,8 +37407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1326297251
 BoxCollider:
@@ -37886,8 +37528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1328727987
 SpriteRenderer:
@@ -37982,8 +37622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1329783299
 BoxCollider:
@@ -38319,8 +37957,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1331607061
 SpriteRenderer:
@@ -38799,8 +38435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1338421204
 BoxCollider:
@@ -39148,8 +38782,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1349921480
 SpriteRenderer:
@@ -39264,8 +38896,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1352551059
 SpriteRenderer:
@@ -39374,8 +39004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1356634246
 SpriteRenderer:
@@ -39791,8 +39419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1364402453
 SpriteRenderer:
@@ -39887,8 +39513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1370914623
 SpriteRenderer:
@@ -39983,8 +39607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1374522395
 BoxCollider:
@@ -40373,8 +39995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1387623728
 BoxCollider:
@@ -40566,8 +40186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1398886910
 SpriteRenderer:
@@ -40662,8 +40280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1399172191
 BoxCollider:
@@ -40885,8 +40501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1400948843
 SpriteRenderer:
@@ -40981,8 +40595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1404727537
 BoxCollider:
@@ -41104,8 +40716,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1406903794
 SpriteRenderer:
@@ -41327,8 +40937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1420902128
 BoxCollider:
@@ -41450,8 +41058,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1420909587
 SpriteRenderer:
@@ -41759,8 +41365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1430882891
 SpriteRenderer:
@@ -41931,8 +41535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1440387092
 BoxCollider:
@@ -42453,8 +42055,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1480400416
 BoxCollider:
@@ -42576,8 +42176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1480983583
 SpriteRenderer:
@@ -42686,8 +42284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1481301666
 SpriteRenderer:
@@ -42845,8 +42441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1486279371
 SpriteRenderer:
@@ -42955,8 +42549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1488162545
 SpriteRenderer:
@@ -43065,8 +42657,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1488273784
 SpriteRenderer:
@@ -43237,8 +42827,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1501240136
 BoxCollider:
@@ -43346,8 +42934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1503910439
 SpriteRenderer:
@@ -43456,8 +43042,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1514062037
 SpriteRenderer:
@@ -44313,8 +43897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1545467220
 SpriteRenderer:
@@ -44547,8 +44129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1546421471
 BoxCollider:
@@ -44676,8 +44256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1551397051
 SpriteRenderer:
@@ -44864,8 +44442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1555095874
 SpriteRenderer:
@@ -44980,8 +44556,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1559949070
 SpriteRenderer:
@@ -45306,8 +44880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1576343465
 SpriteRenderer:
@@ -45476,8 +45048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1577109909
 SpriteRenderer:
@@ -45586,8 +45156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1584383104
 SpriteRenderer:
@@ -46042,41 +45610,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1c548cd522784f940d5ffe292db97, type: 3}
---- !u!1 &1598355384 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 811514005657618432, guid: c726c972c2a9e1645b78c207ab848e7c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1881546450}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1598355385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1598355384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f85a8a939c630b4c8bf5e4cb04f68b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  testHero: {fileID: 1383153678}
---- !u!114 &1598355386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1598355384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 109205349c0362e438ce6f3d7a828bd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerArena: {fileID: 0}
-  GridSizeX: 7
-  GridSizeY: 8
 --- !u!4 &1598355387 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
@@ -46142,8 +45675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1599465381
 SpriteRenderer:
@@ -46244,8 +45775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1601386120
 BoxCollider:
@@ -46379,8 +45908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1616181474
 SpriteRenderer:
@@ -46836,8 +46363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1635289709
 SpriteRenderer:
@@ -46946,8 +46471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1643552767
 SpriteRenderer:
@@ -47420,8 +46943,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1662739164
 SpriteRenderer:
@@ -47522,8 +47043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1671197230
 BoxCollider:
@@ -48106,8 +47625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1708137230
 BoxCollider:
@@ -48455,8 +47972,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1719044367
 SpriteRenderer:
@@ -48565,8 +48080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1720121737
 SpriteRenderer:
@@ -48768,8 +48281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1721409569
 SpriteRenderer:
@@ -48870,8 +48381,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1724334367
 SpriteRenderer:
@@ -48972,8 +48481,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1726023113
 BoxCollider:
@@ -49180,8 +48687,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1731214955
 BoxCollider:
@@ -49393,8 +48898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1742100556
 BoxCollider:
@@ -49502,8 +49005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1748421775
 BoxCollider:
@@ -49691,8 +49192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1755223935
 BoxCollider:
@@ -49820,8 +49319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1756915201
 SpriteRenderer:
@@ -49996,8 +49493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1791210254
 SpriteRenderer:
@@ -50092,8 +49587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1791226434
 BoxCollider:
@@ -50321,8 +49814,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1801379014
 SpriteRenderer:
@@ -50417,8 +49908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1801386184
 SpriteRenderer:
@@ -50527,8 +50016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1803687203
 SpriteRenderer:
@@ -50855,8 +50342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1827342544
 BoxCollider:
@@ -50978,8 +50463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1828476579
 SpriteRenderer:
@@ -51276,8 +50759,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1842093203
 SpriteRenderer:
@@ -51372,8 +50853,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1844967987
 BoxCollider:
@@ -51604,8 +51083,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1846346328
 SpriteRenderer:
@@ -52268,8 +51745,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1878446999
 SpriteRenderer:
@@ -52337,16 +51812,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: God of Wizard
       objectReference: {fileID: 0}
-    - target: {fileID: 811514005657618439, guid: c726c972c2a9e1645b78c207ab848e7c,
-        type: 3}
-      propertyPath: MouseSelect
-      value: 
-      objectReference: {fileID: 355347620}
-    - target: {fileID: 811514005657618439, guid: c726c972c2a9e1645b78c207ab848e7c,
-        type: 3}
-      propertyPath: HeroPlace
-      value: 
-      objectReference: {fileID: 1801386183}
     - target: {fileID: 811514005657618438, guid: c726c972c2a9e1645b78c207ab848e7c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -52417,6 +51882,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.333338
       objectReference: {fileID: 0}
+    - target: {fileID: 811514005657618439, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: MouseSelect
+      value: 
+      objectReference: {fileID: 355347620}
+    - target: {fileID: 811514005657618439, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: HeroPlace
+      value: 
+      objectReference: {fileID: 1801386183}
+    - target: {fileID: 811514005657618439, guid: c726c972c2a9e1645b78c207ab848e7c,
+        type: 3}
+      propertyPath: testHero
+      value: 
+      objectReference: {fileID: 1383153678}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c726c972c2a9e1645b78c207ab848e7c, type: 3}
 --- !u!4 &1882822277 stripped
@@ -52425,6 +51905,78 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 787571594}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1890850771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1890850775}
+  - component: {fileID: 1890850774}
+  - component: {fileID: 1890850773}
+  - component: {fileID: 1890850772}
+  m_Layer: 0
+  m_Name: PathFindingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1890850772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890850771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f85a8a939c630b4c8bf5e4cb04f68b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1890850773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890850771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109205349c0362e438ce6f3d7a828bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerArena: {fileID: 0}
+  GridSizeX: 7
+  GridSizeY: 8
+--- !u!114 &1890850774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890850771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a9344980fab7b43ae57afa7f140d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1890850775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890850771}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.961862, y: -1.427206, z: 20.064648}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1890970311
 GameObject:
   m_ObjectHideFlags: 0
@@ -52644,8 +52196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1900875549
 SpriteRenderer:
@@ -52740,8 +52290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1904709397
 BoxCollider:
@@ -53090,8 +52638,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1919071648
 SpriteRenderer:
@@ -53260,8 +52806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1933032881
 SpriteRenderer:
@@ -53370,8 +52914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1938226453
 SpriteRenderer:
@@ -53568,8 +53110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1941134607
 SpriteRenderer:
@@ -53758,8 +53298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1948098872
 SpriteRenderer:
@@ -54104,8 +53642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &1956656396
 SpriteRenderer:
@@ -54642,8 +54178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &1999640999
 BoxCollider:
@@ -54757,8 +54291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &2008641200
 SpriteRenderer:
@@ -55103,8 +54635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &2019903375
 SpriteRenderer:
@@ -55199,8 +54729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &2022478002
 SpriteRenderer:
@@ -55643,8 +55171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &2030600835
 SpriteRenderer:
@@ -55839,8 +55365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &2038145078
 SpriteRenderer:
@@ -56041,8 +55565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &2041003642
 SpriteRenderer:
@@ -56225,8 +55747,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &2046481243
 SpriteRenderer:
@@ -56459,8 +55979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &2052889126
 BoxCollider:
@@ -56665,8 +56183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &2057028462
 SpriteRenderer:
@@ -56799,8 +56315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &2062321282
 SpriteRenderer:
@@ -56984,8 +56498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &2071136869
 BoxCollider:
@@ -57107,8 +56619,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &2074600101
 SpriteRenderer:
@@ -57203,8 +56713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &2075635854
 BoxCollider:
@@ -57312,8 +56820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &2080732657
 BoxCollider:
@@ -57588,8 +57094,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &2087996136
 BoxCollider:
@@ -57878,8 +57382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &2104799069
 BoxCollider:
@@ -58273,8 +57775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &2115613223
 BoxCollider:
@@ -58382,8 +57882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &2121938925
 BoxCollider:
@@ -58503,8 +58001,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &2123416793
 BoxCollider:
@@ -58612,8 +58108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &2125001399
 BoxCollider:
@@ -58874,8 +58368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!65 &2131526867
 BoxCollider:
@@ -59003,8 +58495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridX: 0
-  gridY: 0
   isWalkable: 1
 --- !u!212 &2146691557
 SpriteRenderer:

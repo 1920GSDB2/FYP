@@ -39,6 +39,7 @@ public class Hero : MonoBehaviour
     string lastTransform;
     //TFTGameManager gameManager;
     public Hero targetEnemy;
+    public Hero testHero;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +53,27 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
 
+            targetEnemy = testHero;
+        }
+        if (targetEnemy != null)
+        {
+            PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, onPathFind);
+            targetEnemy = null;
+        }
+
+    }
+    public void onPathFind(List<Node> path) {
+         if (path.Count != 0)
+        {
+            foreach (Node node in path)
+            {
+                node.heroPlace.settColor(Color.blue);
+            }
+            path = null;
+        }
     }
 
     private void FixedUpdate()

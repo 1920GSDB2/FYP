@@ -9,7 +9,7 @@ public class GridMap : MonoBehaviour
     public int GridSizeX = 7;
     public int GridSizeY = 8;
     public Node[,] grid;
-    public List<Node> path = new List<Node>();
+    //public List<Node> path = new List<Node>();
 
     void Start()
     {
@@ -20,13 +20,13 @@ public class GridMap : MonoBehaviour
     }
     private void Update()
     {
-        if (path.Count!=0) {
+       /* if (path.Count!=0) {
             foreach(Node node in path)
             {
                 node.heroPlace.settColor(Color.blue);
             }
             path = null;
-        }
+        }*/
     }
     public void createGrid() {
         grid = new Node[GridSizeX, GridSizeY];
