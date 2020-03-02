@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,21 +18,15 @@ public class PathFinding : MonoBehaviour
     private void Update()
     {
          
-      /* if (path.Count != 0)
-        {
-            foreach (Node node in path)
-            {
-                node.heroPlace.settColor(Color.blue);
-            }
-            path = null;
-        }*/
+      
 
     }
-    public List<Node> findPath(HeroPlace startPoint,HeroPlace endPoint) {        
+    public void findPath(HeroPlace startPoint,HeroPlace endPoint,Action<List<Node>, bool> callback) {        
         Node startNode = gridMap.getHeroPlaceGrid(startPoint);
         Node targetNode = gridMap.getHeroPlaceGrid(endPoint);
         List<Node> openSet = new List<Node>();
         HashSet<Node> closedSet = new HashSet<Node>();
+        List<Node> path=null;
         openSet.Add(startNode);
         bool isFindPath = false;
         
@@ -51,8 +46,10 @@ public class PathFinding : MonoBehaviour
             }
 
             foreach (Node neighbour in gridMap.getNeighbours(currentNode)) {
+                Debug.Log("Check "+(neighbour == targetNode)+" Ne "+neighbour.isWalkable+" Ta "+targetNode.isWalkable);
                 if (!neighbour.isWalkable || closedSet.Contains(neighbour))
                 {
+                    if(!(neighbour==targetNode))
                     continue;
                 }
                 int neighbourDis = currentNode.gCost + GetDistance(currentNode, neighbour);
@@ -68,12 +65,47 @@ public class PathFinding : MonoBehaviour
         }
         if (isFindPath)
         {
-            return trackPath(startNode, targetNode);
+            path = trackPath(startNode, targetNode);
         }
-        else
-            return null;
+
+        PathFindingManager.Instance.pathFinish(path, isFindPath, callback);
 
     }
+    public void findNextStep(HeroPlace startPoint, HeroPlace endPoint, Action<Node, bool> callback)
+    {
+        Node startNode = gridMap.getHeroPlaceGrid(startPoint);
+        Node targetNode = gridMap.getHeroPlaceGrid(endPoint);
+
+     
+        bool isStepFind = false;
+        Node currentNode = startNode;
+
+        List<Node> checkNode = new List<Node>();
+       
+        foreach (Node neighbour in gridMap.getNeighbours(currentNode))
+        {
+            if (!neighbour.isWalkable )
+            {
+                continue;
+            }
+               // neighbour.gCost = GetDistance(currentNode, neighbour);
+                neighbour.hCost = GetDistance(neighbour, targetNode);
+                checkNode.Add(neighbour);
+         //   Debug.Log("FCost " + neighbour.fCost + " " + currentNode.fCost + "s hCost " + neighbour.hCost + " " + currentNode.hCost+" X "+neighbour.gridX+" Y "+neighbour.gridY);         
+        }
+        currentNode = checkNode[0];
+        for (int i = 1; i < checkNode.Count; i++)
+        {
+            if (checkNode[i].fCost < currentNode.fCost || checkNode[i].fCost == currentNode.fCost && checkNode[i].hCost <= currentNode.hCost)
+            {
+                currentNode = checkNode[i];
+                isStepFind = true;
+            }
+        }
+
+        PathFindingManager.Instance.nextStepFinish(currentNode, isStepFind, callback);
+    }
+
     int GetDistance(Node nodeA,Node nodeB) {
         int disX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
         int disY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
@@ -88,6 +120,7 @@ public class PathFinding : MonoBehaviour
         }
        return totalDis+disX * 10;
     }
+
     List<Node> trackPath(Node startNode,Node targetNode) {
         List<Node> path = new List<Node>();
         Node currentNode = targetNode;

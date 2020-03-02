@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TFT;
 using UnityEngine;
 
+
 public class Hero : MonoBehaviour
 {
     public bool isEnemy;
@@ -15,7 +16,6 @@ public class Hero : MonoBehaviour
     public HeroRace[] HeroRaces;
     public HeroLevel HeroLevel;
     public HeroState HeroState;
-    public GridMap map;
     [Range(0, 10)]
     public int BasicHealth;
     [Range(0, 10)]
@@ -40,6 +40,7 @@ public class Hero : MonoBehaviour
     //TFTGameManager gameManager;
     public Hero targetEnemy;
     public Hero testHero;
+  //  List<Node> path;
 
     // Start is called before the first frame update
     void Start()
@@ -55,24 +56,52 @@ public class Hero : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-
             targetEnemy = testHero;
+            if (targetEnemy != null)
+            {
+                
+                Debug.Log(HeroStatus);
+                if (HeroStatus == HeroStatus.Standby)
+                {
+                    PathFindingManager.Instance.requestNextStep(HeroPlace, targetEnemy.HeroPlace, onStepFind);
+                }
+                targetEnemy = null;
+            }
         }
-        if (targetEnemy != null)
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, onPathFind);
-            targetEnemy = null;
+            targetEnemy = testHero;
+            if (targetEnemy != null)
+            {
+                PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, onPathFind);
+               
+               // targetEnemy = null;
+            }
         }
-
     }
-    public void onPathFind(List<Node> path) {
-         if (path.Count != 0)
+    //called by OathfindingManager when request a path
+    public void onPathFind(List<Node> path,bool isFindPath) {
+        if (isFindPath)
         {
             foreach (Node node in path)
             {
                 node.heroPlace.settColor(Color.blue);
+
             }
-            path = null;
+            // StartCoroutine(followPath());
+            if (path != null) 
+            StartCoroutine(followStep(path[0]));
+            //path = null;
+        }
+    }
+    //called by OathfindingManager when request next step
+    public void onStepFind(Node step, bool isFindStep)
+    {
+        if (isFindStep)
+        {
+            step.heroPlace.settColor(Color.blue);  
+            StartCoroutine(followStep(step));
+            
         }
     }
 
@@ -121,5 +150,51 @@ public class Hero : MonoBehaviour
     private void OnMouseExit()
     {
         MouseSelect.SelectedHero = null;
+    }
+    //a hero move to the heroplace;
+    public void moveToThePlace(Hero hero, HeroPlace newHeroPlace) {
+        HeroPlace.leavePlace();
+        newHeroPlace.setHeroOnPlace(hero);
+
+        LastHeroPlace = HeroPlace;
+        HeroPlace = newHeroPlace;
+        Debug.Log("change");
+    }
+    // Hero will follow the whole path and walk to the destination
+    IEnumerator followPath(List<Node> path) {
+        int index = 0;
+        Node currentNode = path[index];
+
+            while (true)
+            {
+            if (transform.position == currentNode.heroPlace.transform.position)
+            {
+                index++;
+                currentNode = path[index];
+               // moveToThePlace(this,path[index].heroPlace);
+            }
+            transform.position = Vector3.MoveTowards(transform.position, currentNode.heroPlace.transform.position, 5*Time.deltaTime);
+            yield return null;
+        }                    
+    }
+    //Hero will just move to the next step
+    IEnumerator followStep(Node step)
+    {
+        
+        while (true)
+        {
+            if (transform.position != step.heroPlace.transform.position)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, step.heroPlace.transform.position, 5 * Time.deltaTime);
+            }
+            else
+            {
+               moveToThePlace(this, step.heroPlace);
+               PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, onPathFind);
+               break;
+            }
+            yield return null;
+        }
+        
     }
 }

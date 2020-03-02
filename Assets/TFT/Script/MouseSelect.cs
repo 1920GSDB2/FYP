@@ -54,6 +54,7 @@ public class MouseSelect : MonoBehaviour
                 DragHero.transform.localPosition = Vector3.zero;
                 DragHero = null;
                 SelectPlace = null;
+
             }
             
         }

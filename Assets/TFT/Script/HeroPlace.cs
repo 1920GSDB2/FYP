@@ -43,6 +43,8 @@ public class HeroPlace : MonoBehaviour
     #region HoverEffect
     void Update()
     {
+        if (!isWalkable)
+            settColor(Color.green);
     }
 
     void OnMouseOver()
@@ -64,6 +66,13 @@ public class HeroPlace : MonoBehaviour
     }
     public void settColor(Color color) {
         spriteRenderer.color = color;
-    } 
+    }
+    public void setHeroOnPlace(Hero hero) {
+        hero.transform.parent = transform;
+        isWalkable = false;
+    }
+    public void leavePlace() {
+        isWalkable = true;
+    }
     #endregion
 }

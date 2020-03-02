@@ -208,7 +208,7 @@ namespace TFT
         /// <param name="hero"></param>
         public void ChangeHeroPos(ref Hero _hero)
         {
-            //Debug.Log("Last Position: [" + _hero.LastHeroPlace.PlaceId + "], current position [" + _hero.HeroPlace.PlaceId + "].");
+            Debug.Log("Last Position: [" + _hero.LastHeroPlace.PlaceId + "], current position [" + _hero.HeroPlace.PlaceId + "].");
             SyncMoveHero moveHeroMethod;
             if (_hero.HeroPlace.gameObject.name.Equals(_hero.LastHeroPlace.gameObject.name))
             {
@@ -302,6 +302,7 @@ namespace TFT
                                     _newHeroPlacement.transform.localPosition = Vector3.zero;
                                     _newHeroPlacement.LastHeroPlace = _newHeroPlacement.HeroPlace;
                                     _newHeroPlacement.HeroPlace = _newHeroPlacement.transform.parent.GetComponent<HeroPlace>();
+   
                                 }
                             }
                             break;
@@ -350,8 +351,9 @@ namespace TFT
 
                                     Hero _newHeroPlacement = _heroPlacement.GetChild(_newPos).GetChild(0).GetComponent<Hero>();
                                     _newHeroPlacement.transform.localPosition = Vector3.zero;
-                                    _newHeroPlacement.LastHeroPlace = _newHeroPlacement.HeroPlace;
-                                    _newHeroPlacement.HeroPlace = _newHeroPlacement.transform.parent.GetComponent<HeroPlace>();
+                                      _newHeroPlacement.LastHeroPlace = _newHeroPlacement.HeroPlace;
+                                      _newHeroPlacement.HeroPlace = _newHeroPlacement.transform.parent.GetComponent<HeroPlace>();
+                                    //_newHeroPlacement.moveToThePlace(_newHeroPlacement, _newHeroPlacement.transform.parent.GetComponent<HeroPlace>());
                                 }
                             }
                             break;

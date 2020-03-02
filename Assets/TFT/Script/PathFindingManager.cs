@@ -17,8 +17,18 @@ public class PathFindingManager : MonoBehaviour
         pathFindingTool = GetComponent<PathFinding>();
     }
 
-    public void requestPath(HeroPlace starPoint,HeroPlace endPoint,Action<List<Node>> callback) {
-        List<Node> path=pathFindingTool.findPath(starPoint, endPoint);
-        callback(path);
+    public void requestPath(HeroPlace starPoint,HeroPlace endPoint,Action<List<Node>,bool> callback) {
+       pathFindingTool.findPath(starPoint, endPoint,callback);    
+    }
+    public void requestNextStep(HeroPlace starPoint, HeroPlace endPoint, Action<Node, bool> callback)
+    {
+        pathFindingTool.findNextStep(starPoint, endPoint, callback);
+    }
+    public void pathFinish(List<Node> path,bool isPathFind, Action<List<Node>, bool> callback) {
+        callback(path,isPathFind);
+    }
+    public void nextStepFinish(Node step, bool isStepFind, Action<Node, bool> callback)
+    {
+        callback(step, isStepFind);
     }
 }
