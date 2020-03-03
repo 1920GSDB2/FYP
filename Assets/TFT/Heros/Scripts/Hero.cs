@@ -64,7 +64,8 @@ public class Hero : MonoBehaviour
                 if (HeroStatus == HeroStatus.Standby)
                 {
                     PathFindingManager.Instance.requestNextStep(HeroPlace, targetEnemy.HeroPlace, onStepFind);
-                }
+                    
+                }                
                 targetEnemy = null;
             }
         }
@@ -78,6 +79,7 @@ public class Hero : MonoBehaviour
                // targetEnemy = null;
             }
         }
+   
     }
     //called by OathfindingManager when request a path
     public void onPathFind(List<Node> path,bool isFindPath) {
@@ -89,8 +91,9 @@ public class Hero : MonoBehaviour
 
             }
             // StartCoroutine(followPath());
-            if (path != null) 
-            StartCoroutine(followStep(path[0]));
+            if (path != null)
+                StartCoroutine(followPath(path));
+            //  StartCoroutine(followStep(path[0]));
             //path = null;
         }
     }
@@ -140,7 +143,17 @@ public class Hero : MonoBehaviour
         }
         lastTransform = currTransform;
     }
-
+    void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info) {
+        if (stream.isWriting)
+        {
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
+        }
+        else {
+            transform.position = (Vector3)stream.ReceiveNext();
+            transform.rotation = (Quaternion)stream.ReceiveNext();
+        }
+    }
     private void OnMouseEnter()
     {
         if (HeroStatus == HeroStatus.Standby)
@@ -159,6 +172,15 @@ public class Hero : MonoBehaviour
         LastHeroPlace = HeroPlace;
         HeroPlace = newHeroPlace;
         Debug.Log("change");
+    }
+    [PunRPC]
+    public void RPC_MoveToThePlace(int placeId) {
+        /*   HeroPlace.leavePlace();
+           place.setHeroOnPlace(this);
+
+           LastHeroPlace = HeroPlace;
+           HeroPlace = place;*/
+        Debug.Log(placeId);
     }
     // Hero will follow the whole path and walk to the destination
     IEnumerator followPath(List<Node> path) {

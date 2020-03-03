@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace TFT
@@ -63,7 +64,9 @@ namespace TFT
             if (asset.AssetValue >= heroUi.BasicInfo.price)
             {
 
-                Hero newHero = (Instantiate(heroUi.Hero.gameObject) as GameObject).GetComponent<Hero>();
+               Hero newHero = (Instantiate(heroUi.Hero.gameObject) as GameObject).GetComponent<Hero>();
+              //  newHero.name = heroUi.Hero.name;
+              // Hero newHero = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", heroUi.Hero.name), Vector3.zero, Quaternion.identity, 0)).GetComponent<Hero>();
                 newHero.name = heroUi.Hero.name;
                 //gameManager.AddHeroBuff(newHero);
                 if (TFT.GameManager.Instance.BuyHero(newHero))

@@ -62,4 +62,6 @@ MonoBehaviour:
   - RPC_SetPlayerId
   - RPC_SetupPlayerPosition
   - RPC_SyncPlayerHeroPlace
+  - RPC_testHeroes
+  - RPC_MoveToThePlace
   DisableAutoOpenWizard: 1
