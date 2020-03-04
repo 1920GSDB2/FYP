@@ -16,6 +16,7 @@ public class Hero : MonoBehaviour
     public HeroRace[] HeroRaces;
     public HeroLevel HeroLevel;
     public HeroState HeroState;
+    PhotonView photonView;
     [Range(0, 10)]
     public int BasicHealth;
     [Range(0, 10)]
@@ -37,11 +38,17 @@ public class Hero : MonoBehaviour
     public float MagicDefense { get; set; }
 
     string lastTransform;
+    public Animator animator;
     //TFTGameManager gameManager;
     public Hero targetEnemy;
     public Hero testHero;
-  //  List<Node> path;
+    //  List<Node> path;
 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        photonView = GetComponent<PhotonView>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -49,25 +56,28 @@ public class Hero : MonoBehaviour
         //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TFTGameManager>();
         MouseSelect = GameManager.Instance.GetComponent<MouseSelect>();
         HeroPlace = transform.parent.GetComponent<HeroPlace>();
+       
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.K))
         {
-            targetEnemy = testHero;
-            if (targetEnemy != null)
-            {
-                
-                Debug.Log(HeroStatus);
-                if (HeroStatus == HeroStatus.Standby)
-                {
-                    PathFindingManager.Instance.requestNextStep(HeroPlace, targetEnemy.HeroPlace, onStepFind);
-                    
-                }                
-                targetEnemy = null;
-            }
+            /*  targetEnemy = testHero;
+              if (targetEnemy != null)
+              {
+
+                  if (HeroStatus == HeroStatus.Standby)
+                  {
+                      PathFindingManager.Instance.requestNextStep(HeroPlace, targetEnemy.HeroPlace, onStepFind);
+
+                  }                
+                  targetEnemy = null;
+              }*/
+            photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -80,6 +90,12 @@ public class Hero : MonoBehaviour
             }
         }
    
+    }
+    [PunRPC]
+    public void RPC_Animation()
+    {
+        animator.SetTrigger("Attack");
+        Debug.Log("anim");
     }
     //called by OathfindingManager when request a path
     public void onPathFind(List<Node> path,bool isFindPath) {
@@ -174,13 +190,18 @@ public class Hero : MonoBehaviour
         Debug.Log("change");
     }
     [PunRPC]
-    public void RPC_MoveToThePlace(int placeId) {
+    public void RPC_MoveToTheHeroPlace(int playerId,int placeId) {
         /*   HeroPlace.leavePlace();
            place.setHeroOnPlace(this);
 
            LastHeroPlace = HeroPlace;
-           HeroPlace = place;*/
-        Debug.Log(placeId);
+           HeroPlace = place;*/ 
+        //Debug.Log(placeId);
+        HeroPlace heroPlace= GameManager.Instance.getHeroPlace(playerId, placeId);
+        transform.parent = heroPlace.gameObject.transform;
+        transform.localPosition = Vector3.zero;
+        HeroPlace = heroPlace;
+        // enemyArena.GameBoard.GetChild(_heroPos).GetChild(0).parent = enemyArena.HeroList.GetChild(_newPos);
     }
     // Hero will follow the whole path and walk to the destination
     IEnumerator followPath(List<Node> path) {

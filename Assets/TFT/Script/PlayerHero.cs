@@ -77,7 +77,7 @@ namespace TFT
         /// <param name="_networkHero"></param>
         /// <returns></returns>
         public static HeroClassRace GetClassRace(NetworkHero _networkHero)
-        {
+        {   
             Hero[] heroList = TFT.GameManager.Instance.MainGameManager.heroTypes.ToArray();
             for (int i = 0; i < heroList.Length; i++)
             {
@@ -130,6 +130,7 @@ namespace TFT
         {
             GameBoardHeroes.Add(_addedHero);
             BuffList.AddHeroBuff(_addedHero);
+            
             //AddHeroArray(Hero, ref GameBoardHeros);
         }
 
