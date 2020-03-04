@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3758f8f58fdef43803eb9be1df0608, type: 3}
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
-  AppID: 80e86224-8f41-4672-b7c4-76d24b3b00d7
+  AppID: c82ff058-d290-4778-8fc3-0ef82bce260c
   VoiceAppID: 
   ChatAppID: 
   HostType: 4
-  PreferredRegion: 2
+  PreferredRegion: 0
   EnabledRegions: -1
-  Protocol: 1
-  ServerAddress: 127.0.0.1
+  Protocol: 0
+  ServerAddress: 
   ServerPort: 5055
   VoiceServerPort: 5055
   JoinLobby: 0
@@ -44,25 +44,18 @@ MonoBehaviour:
   - RequestForPickupTimes
   - RPC_CreatePlayer
   - RPC_LoadedGameScene
-  - RPC_LoadGameOthers
-  - RPC_Test
-  - TaggedPlayer
-  - RPC_PlayerJoinRoom
-  - RPC_MasterLeftRoom
-  - test
-  - RPC_ConLeftRoom
   - RPC_OnLeftRoom
+  - RPC_PlayerJoinRoom
   - RPC_Ready
-  - RPC_AddUsableHero
-  - RPC_RearrangeQueue
-  - RPC_SetPlayerHeroes
-  - RPC_SyncPlayerHeroes
-  - RPC_SetupPlayerPointer
-  - RPC_StartGame
   - RPC_SetPlayerId
   - RPC_SetupPlayerPosition
-  - RPC_SyncPlayerHeroPlace
-  - RPC_SyncGameStatus
-  - RPC_SyncRemainTIme
+  - RPC_StartGame
   - RPC_StartTimer
+  - RPC_SyncGameStatus
+  - RPC_SyncPlayerHeroes
+  - RPC_SyncPlayerHeroPlace
+  - RPC_SyncRemainTIme
+  - RPC_Test
+  - TaggedPlayer
+  - test
   DisableAutoOpenWizard: 1

@@ -102,7 +102,6 @@ namespace TFT
 
             PeriodTime = MainGameManager.readyingTime;
             RemainTime = PeriodTime;
-            PhotonView.RPC("RPC_StartTimer", PhotonTargets.All);
         }
 
         void FixedUpdate()
@@ -320,12 +319,6 @@ namespace TFT
                     //PlayerHeroes[playerId] = PlayerHero;
                 }
             }
-        }
-
-        [PunRPC]
-        public void RPC_StartTimer()
-        {
-            StartCoroutine(Timer.Instance.TimerCount());
         }
 
         #endregion
