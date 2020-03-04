@@ -101,7 +101,7 @@ namespace TFT
             PhotonNetworkSetup();
 
             PeriodTime = MainGameManager.readyingTime;
-            RemainTime = PeriodTime;
+            RemainTime = PeriodTime;    
         }
 
         void FixedUpdate()
