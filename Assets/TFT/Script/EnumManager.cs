@@ -1,4 +1,11 @@
-﻿public enum HeroStatus
+﻿public enum GameStatus
+{
+    Readying,
+    Playing,
+    Comping,
+    Transiting
+}
+public enum HeroStatus
 {
     Standby,
     Fight,

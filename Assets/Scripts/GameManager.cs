@@ -12,7 +12,7 @@ namespace Main
         public byte MaxRoomPlayer;
         public UserData userData;
         public string lobbyScene;
-        public float setupTime, playtingTime, extraTime;        //Sync to photon
+        public float readyingTime, playingTime, compingTime, transitionTime;        //Sync to photon
         public List<Hero> heroTypes = new List<Hero>();         //List of total heroes
         //public static GameManager Instance;
 

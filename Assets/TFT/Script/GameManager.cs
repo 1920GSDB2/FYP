@@ -29,13 +29,39 @@ namespace TFT
         public PlayerHero PlayerHero;
         public PlayerArena SelfPlayerArena;
         public int playerId, posId;
+
+        #region Game Time Period
+        public float PeriodTime;
+        private float remainTime;
+        public float RemainTime
+        {
+            get { return remainTime; }
+            set
+            {
+                if(!PhotonNetwork.connected || PhotonNetwork.isMasterClient)
+                {
+                    if (value <= 0)
+                    {
+                        ChangeStatus();
+                    }
+                    else
+                    {
+                        remainTime = value;
+                        PhotonView.RPC("RPC_SyncRemainTIme", PhotonTargets.Others, RemainTime);
+                    }
+                }
+            }
+        }
+        #endregion
+
+        public GameStatus LastGameStatus;
         private GameStatus gameStatus;
         public GameStatus GameStatus
         {
             get { return gameStatus; }
             set
             {
-                //gameStatus = value;
+                gameStatus = value;
                 //switch (value)
                 //{
                 //    case GameStatus.Setup:
@@ -64,6 +90,7 @@ namespace TFT
         {
             Instance = this;
         }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -72,6 +99,10 @@ namespace TFT
             PlayerHero = new PlayerHero();
 
             PhotonNetworkSetup();
+
+            PeriodTime = MainGameManager.readyingTime;
+            RemainTime = PeriodTime;
+            PhotonView.RPC("RPC_StartTimer", PhotonTargets.All);
         }
 
         void FixedUpdate()
@@ -89,6 +120,38 @@ namespace TFT
             //        }
             //    }
             //}
+        }
+
+        private void ChangeStatus()
+        {
+            if (GameStatus == GameStatus.Transiting)
+            {
+                switch (LastGameStatus)
+                {
+                    case GameStatus.Readying:
+                        PeriodTime = MainGameManager.playingTime;
+                        GameStatus = GameStatus.Playing;
+                        break;
+                    case GameStatus.Playing:
+                        PeriodTime = MainGameManager.compingTime;
+                        GameStatus = GameStatus.Comping;
+                        break;
+                    case GameStatus.Comping:
+                        PeriodTime = MainGameManager.readyingTime;
+                        GameStatus = GameStatus.Readying;
+                        //change timer count from countdown to countup
+                        break;
+                }
+            }
+            else
+            {
+                LastGameStatus = GameStatus;
+                PeriodTime = MainGameManager.transitionTime;
+                GameStatus = GameStatus.Transiting;
+
+            }
+            PhotonView.RPC("RPC_SyncGameStatus", PhotonTargets.Others, GameStatus, PeriodTime);
+            remainTime = PeriodTime;
         }
 
         private void PhotonNetworkSetup()
@@ -226,6 +289,9 @@ namespace TFT
                 playerId, _hero.name, _hero.LastHeroPlace.PlaceId, _hero.HeroLevel, _hero.HeroPlace.PlaceId, moveHeroMethod);
         }
 
+        #region PunRPC
+
+        #region Start
         /// <summary>
         ///Setting Lobby PhotonPlayer Array position,call by master client
         /// </summary>
@@ -235,7 +301,7 @@ namespace TFT
         {
             playerId = _id;
         }
-
+        
         /// <summary>
         ///Setting Lobby Player Arena Randam Positon,call by master client
         /// </summary>
@@ -255,6 +321,29 @@ namespace TFT
                 }
             }
         }
+
+        [PunRPC]
+        public void RPC_StartTimer()
+        {
+            StartCoroutine(Timer.Instance.TimerCount());
+        }
+
+        #endregion
+
+        [PunRPC]
+        public void RPC_SyncGameStatus(GameStatus _gameStatus, float _peroidTime)
+        {
+            GameStatus = _gameStatus;
+            PeriodTime = _peroidTime;
+            remainTime = PeriodTime;
+        }
+
+        [PunRPC]
+        public void RPC_SyncRemainTIme(float _remainTime)
+        {
+            remainTime = _remainTime;
+        }
+
         /// <summary>
         /// Setting all player's PlayerHeroes[] and remote player's GameArena Hero position, when player put or take hero form gameboard and herolist
         /// </summary>
@@ -445,7 +534,8 @@ namespace TFT
             }
             PlayerHero = PlayerHeroes[playerId];
         }
-        
+
+        #endregion
     }
 }
 
