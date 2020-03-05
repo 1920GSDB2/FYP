@@ -58,4 +58,6 @@ MonoBehaviour:
   - RPC_Test
   - TaggedPlayer
   - test
+  - RPC_Animation
+  - RPC_MoveToTheHeroPlace
   DisableAutoOpenWizard: 1

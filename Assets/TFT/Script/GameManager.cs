@@ -5,20 +5,6 @@ using UnityEngine;
 
 namespace TFT
 {
-    public enum SyncHeroMethod
-    {
-        AddHero,
-        RemoveHero,
-        HeroUpgrade
-    }
-
-    public enum SyncMoveHero
-    {
-        AddGameboard,
-        RemoveGameboard,
-        MoveHero
-    }
-
     public class GameManager : MonoBehaviour
     {
         public int[] playerPosition;
@@ -62,25 +48,25 @@ namespace TFT
             set
             {
                 gameStatus = value;
-                //switch (value)
-                //{
-                //    case GameStatus.Setup:
-                //        foreach (Hero gbHero in PlayerHero.GameBoardHeros)
-                //        {
-                //            gbHero.transform.parent = gbHero.HeroPlace.transform;
-                //            gbHero.transform.localPosition = Vector3.zero;
-                //            gbHero.transform.eulerAngles = Vector3.zero;
-                //            gbHero.HeroStatus = HeroStatus.Standby;
-                //        }
-                //        break;
-                //    case GameStatus.Playing:
-                //        foreach (Hero gbHero in PlayerHero.GameBoardHeros)
-                //        {
-                //            gbHero.transform.parent = null;
-                //            gbHero.HeroStatus = HeroStatus.Fight;
-                //        }
-                //        break;
-                //}
+                foreach (NetworkHero gbHero in PlayerHero.GameBoardHeroes)
+                {
+                    Hero modifyHero = GetPlayerHero(gbHero);
+                    switch (value)
+                    {
+                        case GameStatus.Readying:
+                        
+                            //modifyHero.transform.parent = modifyHero.HeroPlace.transform;
+                            //modifyHero.transform.localPosition = Vector3.zero;
+                            //modifyHero.transform.eulerAngles = Vector3.zero;
+                            modifyHero.HeroStatus = HeroStatus.Standby;
+                            break;
+                        case GameStatus.Playing:
+                            //modifyHero.transform.parent = null;
+                            modifyHero.HeroStatus = HeroStatus.Fight;
+                            break;
+                    }
+                }
+
             }
         }
         public Main.GameManager MainGameManager;
@@ -286,6 +272,11 @@ namespace TFT
             }
             PhotonView.RPC("RPC_SyncPlayerHeroPlace", PhotonTargets.All, posId,
                 playerId, _hero.name, _hero.LastHeroPlace.PlaceId, _hero.HeroLevel, _hero.HeroPlace.PlaceId, moveHeroMethod);
+        }
+
+        public Hero GetPlayerHero(NetworkHero _networkHero)
+        {
+            return SelfPlayerArena.SelfArena.GameBoard.GetChild(_networkHero.position).GetComponent<Hero>();
         }
 
         #region PunRPC

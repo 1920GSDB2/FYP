@@ -197,10 +197,10 @@ public class Hero : MonoBehaviour
            LastHeroPlace = HeroPlace;
            HeroPlace = place;*/ 
         //Debug.Log(placeId);
-        HeroPlace heroPlace= GameManager.Instance.getHeroPlace(playerId, placeId);
-        transform.parent = heroPlace.gameObject.transform;
+        //HeroPlace heroPlace= GameManager.Instance.getHeroPlace(playerId, placeId);
+        //transform.parent = heroPlace.gameObject.transform;
         transform.localPosition = Vector3.zero;
-        HeroPlace = heroPlace;
+        //HeroPlace = heroPlace;
         // enemyArena.GameBoard.GetChild(_heroPos).GetChild(0).parent = enemyArena.HeroList.GetChild(_newPos);
     }
     // Hero will follow the whole path and walk to the destination

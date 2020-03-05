@@ -5,6 +5,19 @@
     Comping,
     Transiting
 }
+public enum SyncHeroMethod
+{
+    AddHero,
+    RemoveHero,
+    HeroUpgrade
+}
+
+public enum SyncMoveHero
+{
+    AddGameboard,
+    RemoveGameboard,
+    MoveHero
+}
 public enum HeroStatus
 {
     Standby,
