@@ -48,6 +48,11 @@ namespace TFT
             set
             {
                 gameStatus = value;
+                if(value == GameStatus.Transiting && LastGameStatus == GameStatus.Readying)
+                {
+                    //Matching the component
+                    return;
+                }
                 foreach (NetworkHero gbHero in PlayerHero.GameBoardHeroes)
                 {
                     Hero modifyHero = GetPlayerHero(gbHero);
@@ -164,14 +169,7 @@ namespace TFT
             #endregion
 
             #region Set Player Random Position
-            int[] data = new int[PhotonNetwork.playerList.Length];
-            for (int i = 0; i < data.Length; i++)
-            {
-                data[i] = i;
-            }
-            System.Random r = new System.Random(System.DateTime.Now.Millisecond);
-            data = data.OrderBy(x => r.Next()).ToArray();
-            PhotonView.RPC("RPC_SetupPlayerPosition", PhotonTargets.All, data);
+            PhotonView.RPC("RPC_SetupPlayerPosition", PhotonTargets.All, GetRearrangeData(PhotonNetwork.playerList.Length));
             #endregion
         }
 
@@ -274,9 +272,36 @@ namespace TFT
                 playerId, _hero.name, _hero.LastHeroPlace.PlaceId, _hero.HeroLevel, _hero.HeroPlace.PlaceId, moveHeroMethod);
         }
 
+        /// <summary>
+        /// Compile the NetworkHero to Hero from PlayHero and GameBoard
+        /// </summary>
+        /// <param name="_networkHero"></param>
+        /// <returns></returns>
         public Hero GetPlayerHero(NetworkHero _networkHero)
         {
             return SelfPlayerArena.SelfArena.GameBoard.GetChild(_networkHero.position).GetComponent<Hero>();
+        }
+
+        public void SetPlayerComponent()
+        {
+            //Get the surival players list
+            int[] component = GetRearrangeData(PhotonNetwork.playerList.Length);
+        }
+
+        /// <summary>
+        /// Rearrange integer array data
+        /// </summary>
+        /// <param name="_length"></param>
+        /// <returns></returns>
+        public int[] GetRearrangeData(int _length)
+        {
+            int[] data = new int[_length];
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = i;
+            }
+            System.Random r = new System.Random(System.DateTime.Now.Millisecond);
+            return data.OrderBy(x => r.Next()).ToArray();
         }
 
         #region PunRPC
