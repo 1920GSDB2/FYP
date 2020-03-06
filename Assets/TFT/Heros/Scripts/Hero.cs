@@ -202,9 +202,9 @@ public class Hero : MonoBehaviour
         // enemyArena.GameBoard.GetChild(_heroPos).GetChild(0).parent = enemyArena.HeroList.GetChild(_newPos);
     }
     [PunRPC]
-    public void RPC_MoveToThePlayerHeroPlace(int posId, int placeId,bool isEnemy)
+    public void RPC_MoveToTheBattlePlace(int posId, int placeId)
     {
-        HeroPlace heroPlace = GameManager.Instance.getPlayerHeroPlace(posId, placeId,isEnemy);
+        HeroPlace heroPlace = GameManager.Instance.getBattleHeroPlace(posId, placeId);
         setHeroPlace(heroPlace);
         // Debug.Log( this.name + " become enemy? " + isEnemy+" Pos "+heroPlace.gridX+" "+heroPlace.gridY);
     }

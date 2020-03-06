@@ -123,20 +123,18 @@ namespace TFT
         {
             if (this.posId == posId)
             {
-                Debug.Log("Hero is me");
                 return SelfPlayerArena.SelfArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
             }
             else
             {
-                Debug.Log("Hero is not me");
                 return PlayerArenas[posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();              
 ;            }
         }
         #endregion
 
-        public HeroPlace getPlayerHeroPlace(int posId, int placeId, bool isEnemy)
+        public HeroPlace getBattleHeroPlace(int posId, int placeId)
         {
-            if (isEnemy)
+            if (this.posId==posId)
                 return PlayerArenas[posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
             else
                 return PlayerArenas[posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
@@ -587,20 +585,19 @@ namespace TFT
         }
 
         [PunRPC]
-        void RPC_Battle(int pos1Id, int pos2Id)
+        void RPC_Battle(int player1Id, int player2Id)
         {
-
-            camera[pos1Id].enabled = true;
-            camera[pos2Id].enabled = false;
-            List<Hero> hero;
-            foreach (NetworkHero networkHero in PlayerHeroes[pos2Id].GameBoardHeroes)
+            
+            if (playerId == player2Id)
             {
-                bool isEnemy = false;
-                Hero heroObject = SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
-                if (posId == pos1Id)
-                    isEnemy = true;
-
-                heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, pos1Id, networkHero.position, isEnemy);
+                camera[PlayerHeroes[player1Id].posId].enabled = true;
+                camera[PlayerHeroes[player2Id].posId].enabled = false;
+             
+                foreach (NetworkHero networkHero in PlayerHeroes[player2Id].GameBoardHeroes)
+                {
+                    Hero heroObject = SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
+                    heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToTheBattlePlace", PhotonTargets.All, PlayerHeroes[player1Id].posId, networkHero.position);
+                }
             }
 
         }

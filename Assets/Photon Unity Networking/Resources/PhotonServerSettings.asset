@@ -62,4 +62,5 @@ MonoBehaviour:
   - test
   - RPC_AddToHeroList
   - RPC_AddToGameBoard
+  - RPC_MoveToTheBattlePlace
   DisableAutoOpenWizard: 1
