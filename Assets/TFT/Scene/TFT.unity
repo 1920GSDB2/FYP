@@ -2196,7 +2196,11 @@ Transform:
   - {fileID: 660996048}
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 7
+=======
+  m_RootOrder: 8
+>>>>>>> parent of 58de95d... U
 =======
   m_RootOrder: 8
 >>>>>>> parent of 58de95d... U
@@ -8357,7 +8361,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 8
+=======
+  m_RootOrder: 9
+>>>>>>> parent of 58de95d... U
 =======
   m_RootOrder: 9
 >>>>>>> parent of 58de95d... U
@@ -47326,7 +47334,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 5
+=======
+  m_RootOrder: 6
+>>>>>>> parent of 58de95d... U
 =======
   m_RootOrder: 6
 >>>>>>> parent of 58de95d... U
@@ -48869,7 +48881,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 6
+=======
+  m_RootOrder: 7
+>>>>>>> parent of 58de95d... U
 =======
   m_RootOrder: 7
 >>>>>>> parent of 58de95d... U
@@ -52086,7 +52102,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 9
+=======
+  m_RootOrder: 10
+>>>>>>> parent of 58de95d... U
 =======
   m_RootOrder: 10
 >>>>>>> parent of 58de95d... U
@@ -57099,7 +57119,11 @@ RectTransform:
   - {fileID: 1335357681}
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 4
+=======
+  m_RootOrder: 5
+>>>>>>> parent of 58de95d... U
 =======
   m_RootOrder: 5
 >>>>>>> parent of 58de95d... U

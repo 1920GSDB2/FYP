@@ -41,6 +41,9 @@ namespace TFT
                 //gameStatus = value;
 =======
                 gameStatus = value;
+<<<<<<< HEAD
+>>>>>>> parent of 58de95d... U
+=======
 >>>>>>> parent of 58de95d... U
                 //switch (value)
                 //{
@@ -258,7 +261,10 @@ namespace TFT
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 58de95d... U
         #region PunRPC
 
         #region Start
