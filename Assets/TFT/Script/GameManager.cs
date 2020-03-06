@@ -6,20 +6,6 @@ using UnityEngine;
 
 namespace TFT
 {
-    public enum SyncHeroMethod
-    {
-        AddHero,
-        RemoveHero,
-        HeroUpgrade
-    }
-
-    public enum SyncMoveHero
-    {
-        AddGameboard,
-        RemoveGameboard,
-        MoveHero
-    }
-
     public class GameManager : MonoBehaviour
     {
         public int[] playerPosition;
@@ -67,11 +53,12 @@ namespace TFT
         public Main.GameManager MainGameManager;
         public static GameManager Instance;
         public HeroPlace[] place;
+
         private void Awake()
         {
             Instance = this;
         }
-        // Start is called before the first frame update
+       
         void Start()
         {
             
@@ -82,7 +69,8 @@ namespace TFT
           
             PhotonNetworkSetup();
         }
-        private void Update()
+
+        void Update()
         {
             if (Input.GetKeyDown(KeyCode.L))
             {
@@ -93,6 +81,7 @@ namespace TFT
                 PhotonView.RPC("RPC_Battle", PhotonTargets.All,0,1);
             }
         }
+
         void FixedUpdate()
         {
             ////Loop player's heroes
@@ -109,6 +98,7 @@ namespace TFT
             //    }
             //}
         }
+
         #region Get Hero place by id
         public HeroPlace getHeroPlace(int otherPlayerId,int placeId) {
             if (playerId== otherPlayerId)
@@ -117,6 +107,7 @@ namespace TFT
                 return PlayerArenas[otherPlayerId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
         }
         #endregion
+
         public HeroPlace getPlayerHeroPlace(int posId,int placeId,bool isEnemy) {
             if(isEnemy)
                 return PlayerArenas[posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
@@ -513,6 +504,7 @@ namespace TFT
             }
             PlayerHero = PlayerHeroes[playerId];
         }
+
         [PunRPC]
         void RPC_Battle(int pos1Id,int pos2Id) {
 
@@ -529,6 +521,7 @@ namespace TFT
                 }
             
         }
+
         [PunRPC]
         public void RPC_testHeroes() {
             Hero hero;
@@ -554,6 +547,6 @@ namespace TFT
             PlayerHeroes[playerId].GameboardAddHero(new NetworkHero(hero));
         }
 
+        #endregion
     }
 }
-#endregion
