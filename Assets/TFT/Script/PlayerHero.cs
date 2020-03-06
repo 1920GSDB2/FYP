@@ -121,6 +121,7 @@ namespace TFT
         public List<NetworkHero> UsableHeroes = new List<NetworkHero>();
         public List<NetworkHero> GameBoardHeroes = new List<NetworkHero>();
         public HeroBuffList BuffList = new HeroBuffList();
+        public int posId;
 
         /// <summary>
         /// Add hero to gameboard.

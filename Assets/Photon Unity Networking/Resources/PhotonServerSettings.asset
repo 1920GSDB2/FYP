@@ -60,4 +60,6 @@ MonoBehaviour:
   - RPC_testHeroes
   - TaggedPlayer
   - test
+  - RPC_AddToHeroList
+  - RPC_AddToGameBoard
   DisableAutoOpenWizard: 1

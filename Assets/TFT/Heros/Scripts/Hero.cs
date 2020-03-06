@@ -181,23 +181,23 @@ public class Hero : MonoBehaviour
         MouseSelect.SelectedHero = null;
     }
     //a hero move to the heroplace;
-    public void moveToThePlace(Hero hero, HeroPlace newHeroPlace) {
+    public void moveToThePlace(HeroPlace newHeroPlace) {
         HeroPlace.leavePlace();
-        newHeroPlace.setHeroOnPlace(hero);
+        newHeroPlace.setHeroOnPlace(this);
 
         LastHeroPlace = HeroPlace;
         HeroPlace = newHeroPlace;
         Debug.Log("change");
     }
     [PunRPC]
-    public void RPC_MoveToTheHeroPlace(int playerId,int placeId) {
+    public void RPC_AddToGameBoard(int playerId,int posId,int placeId) {
         /*   HeroPlace.leavePlace();
            place.setHeroOnPlace(this);
 
            LastHeroPlace = HeroPlace;
            HeroPlace = place;*/ 
         //Debug.Log(placeId);
-        HeroPlace heroPlace= GameManager.Instance.getHeroPlace(playerId, placeId);
+        HeroPlace heroPlace= GameManager.Instance.getHeroPlace(playerId,posId,placeId);
         transform.parent = heroPlace.gameObject.transform;
         transform.localPosition = Vector3.zero;
         HeroPlace = heroPlace;
@@ -211,6 +211,14 @@ public class Hero : MonoBehaviour
         transform.localPosition = Vector3.zero;
         HeroPlace = heroPlace;
        // Debug.Log( this.name + " become enemy? " + isEnemy+" Pos "+heroPlace.gridX+" "+heroPlace.gridY);
+    }
+    [PunRPC]
+    public void RPC_AddToHeroList(int posId, int placeId)
+    {
+        HeroPlace heroPlace = GameManager.Instance.getHeroListHeroPlace(posId, placeId);
+        transform.parent = heroPlace.gameObject.transform;
+        transform.localPosition = Vector3.zero;
+        HeroPlace = heroPlace;
     }
     // Hero will follow the whole path and walk to the destination
     IEnumerator followPath(List<Node> path) {
@@ -241,7 +249,7 @@ public class Hero : MonoBehaviour
             }
             else
             {
-               moveToThePlace(this, step.heroPlace);
+               moveToThePlace(step.heroPlace);
                PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, onPathFind);
                break;
             }
