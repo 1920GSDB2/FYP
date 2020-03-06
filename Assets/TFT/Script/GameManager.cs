@@ -119,12 +119,18 @@ namespace TFT
         }
 
         #region Get Hero place by id
-        public HeroPlace getHeroPlace(int PlayerId,int posId, int placeId)
+        public HeroPlace getHeroPlace(int posId, int placeId)
         {
-            if (playerId == PlayerId)
+            if (this.posId == posId)
+            {
+                Debug.Log("Hero is me");
                 return SelfPlayerArena.SelfArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
+            }
             else
-                return PlayerArenas[posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
+            {
+                Debug.Log("Hero is not me");
+                return PlayerArenas[posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();              
+;            }
         }
         #endregion
 
@@ -361,9 +367,10 @@ namespace TFT
                 {
                     SelfPlayerArena = PlayerArenas[i].GetComponent<PlayerArena>();
                     posId = i;
+                    Debug.Log("plaer ID " + playerId + " I " + i + " " + PlayerHeroes.Length+" Hero "+ PlayerHeroes[playerId]);
                     PlayerHeroes[playerId].posId = posId;
                     camera[posId].enabled = true;
-
+                    Debug.Log("Camera " + posId + " Open");
 
                     //PlayerHeroes[playerId] = PlayerHero;
                 }
@@ -413,13 +420,16 @@ namespace TFT
                                 if (enemyArena.HeroList.GetChild(_heroPos).childCount != 0)
                                 {
                                     Debug.Log("Move the hero to Gameboard");
-                                    enemyArena.HeroList.GetChild(_heroPos).GetChild(0).parent = enemyArena.GameBoard.GetChild(_newPos);
 
+                                    enemyArena.HeroList.GetChild(_heroPos).GetChild(0).parent = enemyArena.GameBoard.GetChild(_newPos);
                                     Hero _newHeroPlacement = enemyArena.GameBoard.GetChild(_newPos).GetChild(0).GetComponent<Hero>();
-                                    /*_newHeroPlacement.transform.localPosition = Vector3.zero;
+                                    _newHeroPlacement.transform.localPosition = Vector3.zero;
                                     _newHeroPlacement.LastHeroPlace = _newHeroPlacement.HeroPlace;
-                                    _newHeroPlacement.HeroPlace = _newHeroPlacement.transform.parent.GetComponent<HeroPlace>();*/
-                                    _newHeroPlacement.GetComponent<PhotonView>().RPC("RPC_AddToGameBoard", PhotonTargets.All, playerId, posId, _newPos);
+                                    _newHeroPlacement.HeroPlace = _newHeroPlacement.transform.parent.GetComponent<HeroPlace>();
+                                    #region For PhotoNetwork.instatiate
+                               //      Hero _newHeroPlacement = enemyArena.HeroList.GetChild(_heroPos).GetChild(0).GetComponent<Hero>();
+                               //     _newHeroPlacement.GetComponent<PhotonView>().RPC("RPC_AddToGameBoard", PhotonTargets.All, _posId, _newPos);
+                                    #endregion
 
                                 }
                             }
@@ -453,26 +463,36 @@ namespace TFT
                                 if (PlayerHeroes[_playerId].GameBoardHeroes.Contains(ChangedHero[i]))
                                 {
                                     //Hero is in gameboard
-                                    _heroPlacement = enemyArena.GameBoard;
+                                     _heroPlacement = enemyArena.GameBoard;
                                     Debug.Log("Moved the hero in Gameboard");
+                                    #region For PhotonNetwork.instatiate
+                                //   Hero _newHeroPlacement = enemyArena.GameBoard.GetChild(_heroPos).GetChild(0).GetComponent<Hero>();
+                                //   _newHeroPlacement.GetComponent<PhotonView>().RPC("RPC_AddToGameBoard", PhotonTargets.All, _posId, _newPos);
+                                    #endregion
+
                                 }
                                 else
                                 {
                                     //Hero is not in gameboard
-                                    _heroPlacement = enemyArena.HeroList;
+                                     _heroPlacement = enemyArena.HeroList;
                                     Debug.Log("Moved the hero in HeroList");
+                                    #region For PhotonNetwork.instatiate
+                                //   Hero _newHeroPlacement = enemyArena.HeroList.GetChild(_heroPos).GetChild(0).GetComponent<Hero>();
+                                  // _newHeroPlacement.GetComponent<PhotonView>().RPC("RPC_AddToHeroList", PhotonTargets.All, _posId, _newPos);
+                                    #endregion
+
                                 }
                                 //Check Selected Place Whether Null to Prevent Null Reference Exception
                                 if (_heroPlacement.childCount != 0)
-                                {
-                                    _heroPlacement.GetChild(_heroPos).GetChild(0).parent = _heroPlacement.GetChild(_newPos);
+                                 {
+                                     _heroPlacement.GetChild(_heroPos).GetChild(0).parent = _heroPlacement.GetChild(_newPos);
 
-                                    Hero _newHeroPlacement = _heroPlacement.GetChild(_newPos).GetChild(0).GetComponent<Hero>();
-                                    _newHeroPlacement.transform.localPosition = Vector3.zero;
-                                    _newHeroPlacement.LastHeroPlace = _newHeroPlacement.HeroPlace;
-                                    _newHeroPlacement.HeroPlace = _newHeroPlacement.transform.parent.GetComponent<HeroPlace>();
-                                    //_newHeroPlacement.moveToThePlace(_newHeroPlacement, _newHeroPlacement.transform.parent.GetComponent<HeroPlace>());
-                                }
+                                     Hero _newHeroPlacement = _heroPlacement.GetChild(_newPos).GetChild(0).GetComponent<Hero>();
+                                     _newHeroPlacement.transform.localPosition = Vector3.zero;
+                                     _newHeroPlacement.LastHeroPlace = _newHeroPlacement.HeroPlace;
+                                     _newHeroPlacement.HeroPlace = _newHeroPlacement.transform.parent.GetComponent<HeroPlace>();
+                                     //_newHeroPlacement.moveToThePlace(_newHeroPlacement, _newHeroPlacement.transform.parent.GetComponent<HeroPlace>());
+                                 }
                             }
                             break;
                     }

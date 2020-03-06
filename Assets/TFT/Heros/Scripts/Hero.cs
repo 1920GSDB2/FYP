@@ -190,34 +190,34 @@ public class Hero : MonoBehaviour
         Debug.Log("change");
     }
     [PunRPC]
-    public void RPC_AddToGameBoard(int playerId,int posId,int placeId) {
+    public void RPC_AddToGameBoard(int posId,int placeId) {
         /*   HeroPlace.leavePlace();
            place.setHeroOnPlace(this);
 
            LastHeroPlace = HeroPlace;
            HeroPlace = place;*/ 
         //Debug.Log(placeId);
-        HeroPlace heroPlace= GameManager.Instance.getHeroPlace(playerId,posId,placeId);
-        transform.parent = heroPlace.gameObject.transform;
-        transform.localPosition = Vector3.zero;
-        HeroPlace = heroPlace;
+        HeroPlace heroPlace= GameManager.Instance.getHeroPlace(posId,placeId);
+        setHeroPlace(heroPlace);
         // enemyArena.GameBoard.GetChild(_heroPos).GetChild(0).parent = enemyArena.HeroList.GetChild(_newPos);
     }
     [PunRPC]
     public void RPC_MoveToThePlayerHeroPlace(int posId, int placeId,bool isEnemy)
     {
         HeroPlace heroPlace = GameManager.Instance.getPlayerHeroPlace(posId, placeId,isEnemy);
-        transform.parent = heroPlace.gameObject.transform;
-        transform.localPosition = Vector3.zero;
-        HeroPlace = heroPlace;
-       // Debug.Log( this.name + " become enemy? " + isEnemy+" Pos "+heroPlace.gridX+" "+heroPlace.gridY);
+        setHeroPlace(heroPlace);
+        // Debug.Log( this.name + " become enemy? " + isEnemy+" Pos "+heroPlace.gridX+" "+heroPlace.gridY);
     }
     [PunRPC]
     public void RPC_AddToHeroList(int posId, int placeId)
     {
         HeroPlace heroPlace = GameManager.Instance.getHeroListHeroPlace(posId, placeId);
+        setHeroPlace(heroPlace);
+    }
+    void setHeroPlace(HeroPlace heroPlace) {
         transform.parent = heroPlace.gameObject.transform;
         transform.localPosition = Vector3.zero;
+        LastHeroPlace = heroPlace;
         HeroPlace = heroPlace;
     }
     // Hero will follow the whole path and walk to the destination
