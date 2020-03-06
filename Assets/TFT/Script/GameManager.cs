@@ -1,10 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
 namespace TFT
 {
+    public enum SyncHeroMethod
+    {
+        AddHero,
+        RemoveHero,
+        HeroUpgrade
+    }
+
+    public enum SyncMoveHero
+    {
+        AddGameboard,
+        RemoveGameboard,
+        MoveHero
+    }
+
     public class GameManager : MonoBehaviour
     {
         public int[] playerPosition;
@@ -15,33 +30,8 @@ namespace TFT
         public PlayerHero PlayerHero;
         public PlayerArena SelfPlayerArena;
         public int playerId, posId;
-
-        #region Game Time Period
-        public float PeriodTime;
-        private float remainTime;
-        public float RemainTime
-        {
-            get { return remainTime; }
-            set
-            {
-                if(!PhotonNetwork.connected || PhotonNetwork.isMasterClient)
-                {
-                    if (value <= 0)
-                    {
-                        ChangeStatus();
-                    }
-                    else
-                    {
-                        remainTime = value;
-                        PhotonView.RPC("RPC_SyncRemainTIme", PhotonTargets.Others, RemainTime);
-                    }
-                }
-            }
-        }
-        #endregion
-
-        public GameStatus LastGameStatus;
         private GameStatus gameStatus;
+        public Camera[] camera;
         public GameStatus GameStatus
         {
             get { return gameStatus; }
@@ -71,30 +61,38 @@ namespace TFT
                             break;
                     }
                 }
-
+                
             }
         }
         public Main.GameManager MainGameManager;
         public static GameManager Instance;
-
+        public HeroPlace[] place;
         private void Awake()
         {
             Instance = this;
         }
-
         // Start is called before the first frame update
         void Start()
         {
             
             //PlayerArenas = GameObject.FindGameObjectsWithTag("PlayerArena");
             PlayerHero = new PlayerHero();
-
+          
+            // Debug.Log(Path.Combine(s));
+          
             PhotonNetworkSetup();
-
-            PeriodTime = MainGameManager.readyingTime;
-            RemainTime = PeriodTime;    
         }
-
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                PhotonView.RPC("RPC_testHeroes", PhotonTargets.All);
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                PhotonView.RPC("RPC_Battle", PhotonTargets.All,0,1);
+            }
+        }
         void FixedUpdate()
         {
             ////Loop player's heroes
@@ -111,39 +109,20 @@ namespace TFT
             //    }
             //}
         }
-
-        private void ChangeStatus()
-        {
-            if (GameStatus == GameStatus.Transiting)
-            {
-                switch (LastGameStatus)
-                {
-                    case GameStatus.Readying:
-                        PeriodTime = MainGameManager.playingTime;
-                        GameStatus = GameStatus.Playing;
-                        break;
-                    case GameStatus.Playing:
-                        PeriodTime = MainGameManager.compingTime;
-                        GameStatus = GameStatus.Comping;
-                        break;
-                    case GameStatus.Comping:
-                        PeriodTime = MainGameManager.readyingTime;
-                        GameStatus = GameStatus.Readying;
-                        //change timer count from countdown to countup
-                        break;
-                }
-            }
-            else
-            {
-                LastGameStatus = GameStatus;
-                PeriodTime = MainGameManager.transitionTime;
-                GameStatus = GameStatus.Transiting;
-
-            }
-            PhotonView.RPC("RPC_SyncGameStatus", PhotonTargets.Others, GameStatus, PeriodTime);
-            remainTime = PeriodTime;
+        #region Get Hero place by id
+        public HeroPlace getHeroPlace(int otherPlayerId,int placeId) {
+            if (playerId== otherPlayerId)
+                return SelfPlayerArena.SelfArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
+            else              
+                return PlayerArenas[otherPlayerId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
         }
-
+        #endregion
+        public HeroPlace getPlayerHeroPlace(int posId,int placeId,bool isEnemy) {
+            if(isEnemy)
+                return PlayerArenas[posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
+            else
+                return PlayerArenas[posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
+        }
         private void PhotonNetworkSetup()
         { 
             PhotonView = GetComponent<PhotonView>();
@@ -153,7 +132,7 @@ namespace TFT
                 SetupNetworkPlayer();
             
         }
-
+   
         /// <summary>
         /// Rearrange player gameboard position, it is implemented by master client
         /// </summary>
@@ -192,8 +171,8 @@ namespace TFT
                     if (networkHero.HeroLevel == HeroLevel.Level1)
                     {
                         //PlayerHero.UsableHeroes.Add(networkHero);
-                        PhotonView.RPC("RPC_SyncPlayerHeroes", PhotonTargets.All, posId,
-                            playerId, networkHero.name, networkHero.position, networkHero.HeroLevel, SyncHeroMethod.AddHero);
+                            PhotonView.RPC("RPC_SyncPlayerHeroes", PhotonTargets.All, posId,
+                                playerId, networkHero.name, networkHero.position, networkHero.HeroLevel, SyncHeroMethod.AddHero);
                     }
                     else
                     {
@@ -271,7 +250,7 @@ namespace TFT
             PhotonView.RPC("RPC_SyncPlayerHeroPlace", PhotonTargets.All, posId,
                 playerId, _hero.name, _hero.LastHeroPlace.PlaceId, _hero.HeroLevel, _hero.HeroPlace.PlaceId, moveHeroMethod);
         }
-
+        
         /// <summary>
         /// Compile the NetworkHero to Hero from PlayHero and GameBoard
         /// </summary>
@@ -303,7 +282,7 @@ namespace TFT
             System.Random r = new System.Random(System.DateTime.Now.Millisecond);
             return data.OrderBy(x => r.Next()).ToArray();
         }
-
+        
         #region PunRPC
 
         #region Start
@@ -314,9 +293,9 @@ namespace TFT
         [PunRPC]
         public void RPC_SetPlayerId(int _id)
         {
-            playerId = _id;
+            playerId = _id;                 
         }
-        
+
         /// <summary>
         ///Setting Lobby Player Arena Randam Positon,call by master client
         /// </summary>
@@ -332,26 +311,15 @@ namespace TFT
                 {
                     SelfPlayerArena = PlayerArenas[i].GetComponent<PlayerArena>();
                     posId = i;
+                    camera[posId].enabled = true;
+
+                    
                     //PlayerHeroes[playerId] = PlayerHero;
                 }
             }
         }
 
         #endregion
-
-        [PunRPC]
-        public void RPC_SyncGameStatus(GameStatus _gameStatus, float _peroidTime)
-        {
-            GameStatus = _gameStatus;
-            PeriodTime = _peroidTime;
-            remainTime = PeriodTime;
-        }
-
-        [PunRPC]
-        public void RPC_SyncRemainTIme(float _remainTime)
-        {
-            remainTime = _remainTime;
-        }
 
         /// <summary>
         /// Setting all player's PlayerHeroes[] and remote player's GameArena Hero position, when player put or take hero form gameboard and herolist
@@ -487,14 +455,16 @@ namespace TFT
                         {
                             if (MainGameManager.heroTypes[i].name.Equals(_name))
                             {
-                                Debug.Log("Arena [" + _posId + "] added hero in HeroList [" + _heroPos + "].");
-                                Transform transformParent = PlayerArenas[_posId].GetComponent<PlayerArena>().EnemyArena.HeroList.GetChild(_heroPos);
-                                Hero remoteHero = (Instantiate(MainGameManager.heroTypes[i].gameObject) as GameObject).GetComponent<Hero>();
-                                remoteHero.name = MainGameManager.heroTypes[i].name;
-                                remoteHero.transform.parent = transformParent;
-                                //GameObject remoteHero = Instantiate(MainGameManager.heroTypes[i].gameObject, transformParent);
-                                remoteHero.gameObject.transform.localPosition = Vector3.zero;
-                                break;
+                                
+                                    Debug.Log("Arena [" + _posId + "] added hero in HeroList [" + _heroPos + "].");
+                                    Transform transformParent = PlayerArenas[_posId].GetComponent<PlayerArena>().EnemyArena.HeroList.GetChild(_heroPos);
+                                    Hero remoteHero = (Instantiate(MainGameManager.heroTypes[i].gameObject) as GameObject).GetComponent<Hero>();
+                                    remoteHero.name = MainGameManager.heroTypes[i].name;
+                                    remoteHero.transform.parent = transformParent;
+                                    //GameObject remoteHero = Instantiate(MainGameManager.heroTypes[i].gameObject, transformParent);
+                                    remoteHero.gameObject.transform.localPosition = Vector3.zero;
+                                    break;
+                                
                             }
                         }
                         #endregion
@@ -543,8 +513,47 @@ namespace TFT
             }
             PlayerHero = PlayerHeroes[playerId];
         }
+        [PunRPC]
+        void RPC_Battle(int pos1Id,int pos2Id) {
 
-        #endregion
+                camera[pos1Id].enabled = true;
+                camera[pos2Id].enabled = false;
+                List<Hero> hero;
+                foreach (NetworkHero networkHero in PlayerHeroes[pos2Id].GameBoardHeroes) {
+                bool isEnemy = false;
+                    Hero heroObject = SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
+                if (posId == pos1Id)
+                    isEnemy = true;
+
+                    heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, pos1Id, networkHero.position,isEnemy);
+                }
+            
+        }
+        [PunRPC]
+        public void RPC_testHeroes() {
+            Hero hero;
+            if (PhotonView.isMine)
+            {
+                Debug.Log("me SPAWN");
+                hero = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "God of Wizard"), transform.position, Quaternion.identity, 0)).GetComponent<Hero>();
+                 hero.GetComponent<PhotonView>().RPC("RPC_MoveToTheHeroPlace", PhotonTargets.All, posId,place[0].PlaceId);    
+              //  hero.transform.parent = SelfPlayerArena.SelfArena.GameBoard.GetChild(place[0].PlaceId).transform;               
+              //  hero.transform.localPosition = Vector3.forward;
+              //  hero.HeroPlace = place[0];
+            }
+            else {
+                Debug.Log("other spawm");
+                hero = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Lonnie"), transform.position, Quaternion.identity, 0)).GetComponent<Hero>();
+                 hero.GetComponent<PhotonView>().RPC("RPC_MoveToTheHeroPlace", PhotonTargets.All,posId,place[1].PlaceId);
+             //   hero.transform.parent = SelfPlayerArena.SelfArena.GameBoard.GetChild(place[1].PlaceId).transform;
+             //   hero.transform.localPosition = Vector3.zero;
+              //  hero.HeroPlace = place[1];
+            }
+          //  hero.transform.parent = SelfPlayerArena.SelfArena.GameBoard.GetChild(place[0].PlaceId).transform;
+           
+            PlayerHeroes[playerId].GameboardAddHero(new NetworkHero(hero));
+        }
+
     }
 }
-
+#endregion
