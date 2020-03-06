@@ -67,4 +67,5 @@ MonoBehaviour:
   - RPC_Battle
   - RPC_MoveToTheHeroPlace
   - RPC_Animation
+  - RPC_MoveToThePlayerHeroPlace
   DisableAutoOpenWizard: 1

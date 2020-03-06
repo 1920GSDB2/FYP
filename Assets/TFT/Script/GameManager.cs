@@ -83,7 +83,10 @@ namespace TFT
             {
                 PhotonView.RPC("RPC_testHeroes", PhotonTargets.All);
             }
-           
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                PhotonView.RPC("RPC_Battle", PhotonTargets.All,0,1);
+            }
         }
         void FixedUpdate()
         {
@@ -101,7 +104,7 @@ namespace TFT
             //    }
             //}
         }
-        #region Ge Hero place by id
+        #region Get Hero place by id
         public HeroPlace getHeroPlace(int otherPlayerId,int placeId) {
             if (playerId== otherPlayerId)
                 return SelfPlayerArena.SelfArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
@@ -109,6 +112,12 @@ namespace TFT
                 return PlayerArenas[otherPlayerId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
         }
         #endregion
+        public HeroPlace getPlayerHeroPlace(int posId,int placeId,bool isEnemy) {
+            if(isEnemy)
+                return PlayerArenas[posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
+            else
+                return PlayerArenas[posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
+        }
         private void PhotonNetworkSetup()
         { 
             PhotonView = GetComponent<PhotonView>();
@@ -251,8 +260,7 @@ namespace TFT
         [PunRPC]
         public void RPC_SetPlayerId(int _id)
         {
-            playerId = _id;
-            camera[playerId].enabled = true;
+            playerId = _id;                 
         }
 
         /// <summary>
@@ -270,6 +278,9 @@ namespace TFT
                 {
                     SelfPlayerArena = PlayerArenas[i].GetComponent<PlayerArena>();
                     posId = i;
+                    camera[posId].enabled = true;
+
+                    
                     //PlayerHeroes[playerId] = PlayerHero;
                 }
             }
@@ -467,8 +478,20 @@ namespace TFT
             PlayerHero = PlayerHeroes[playerId];
         }
         [PunRPC]
-        void RPC_Battle(int player1ID,int player2ID) {
+        void RPC_Battle(int pos1Id,int pos2Id) {
 
+                camera[pos1Id].enabled = true;
+                camera[pos2Id].enabled = false;
+                List<Hero> hero;
+                foreach (NetworkHero networkHero in PlayerHeroes[pos2Id].GameBoardHeroes) {
+                bool isEnemy = false;
+                    Hero heroObject = SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
+                if (posId == pos1Id)
+                    isEnemy = true;
+
+                    heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, pos1Id, networkHero.position,isEnemy);
+                }
+            
         }
         [PunRPC]
         public void RPC_testHeroes() {
@@ -477,7 +500,7 @@ namespace TFT
             {
                 Debug.Log("me SPAWN");
                 hero = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "God of Wizard"), transform.position, Quaternion.identity, 0)).GetComponent<Hero>();
-                 hero.GetComponent<PhotonView>().RPC("RPC_MoveToTheHeroPlace", PhotonTargets.All, playerId,place[0].PlaceId);    
+                 hero.GetComponent<PhotonView>().RPC("RPC_MoveToTheHeroPlace", PhotonTargets.All, posId,place[0].PlaceId);    
               //  hero.transform.parent = SelfPlayerArena.SelfArena.GameBoard.GetChild(place[0].PlaceId).transform;               
               //  hero.transform.localPosition = Vector3.forward;
               //  hero.HeroPlace = place[0];
@@ -485,7 +508,7 @@ namespace TFT
             else {
                 Debug.Log("other spawm");
                 hero = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Lonnie"), transform.position, Quaternion.identity, 0)).GetComponent<Hero>();
-                 hero.GetComponent<PhotonView>().RPC("RPC_MoveToTheHeroPlace", PhotonTargets.All,playerId,place[1].PlaceId);
+                 hero.GetComponent<PhotonView>().RPC("RPC_MoveToTheHeroPlace", PhotonTargets.All,posId,place[1].PlaceId);
              //   hero.transform.parent = SelfPlayerArena.SelfArena.GameBoard.GetChild(place[1].PlaceId).transform;
              //   hero.transform.localPosition = Vector3.zero;
               //  hero.HeroPlace = place[1];

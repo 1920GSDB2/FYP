@@ -77,7 +77,7 @@ public class Hero : MonoBehaviour
                   }                
                   targetEnemy = null;
               }*/
-            photonView.RPC("RPC_Animation", PhotonTargets.All);
+            //photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -202,6 +202,15 @@ public class Hero : MonoBehaviour
         transform.localPosition = Vector3.zero;
         HeroPlace = heroPlace;
         // enemyArena.GameBoard.GetChild(_heroPos).GetChild(0).parent = enemyArena.HeroList.GetChild(_newPos);
+    }
+    [PunRPC]
+    public void RPC_MoveToThePlayerHeroPlace(int posId, int placeId,bool isEnemy)
+    {
+        HeroPlace heroPlace = GameManager.Instance.getPlayerHeroPlace(posId, placeId,isEnemy);
+        transform.parent = heroPlace.gameObject.transform;
+        transform.localPosition = Vector3.zero;
+        HeroPlace = heroPlace;
+       // Debug.Log( this.name + " become enemy? " + isEnemy+" Pos "+heroPlace.gridX+" "+heroPlace.gridY);
     }
     // Hero will follow the whole path and walk to the destination
     IEnumerator followPath(List<Node> path) {
