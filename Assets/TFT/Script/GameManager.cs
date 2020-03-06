@@ -16,8 +16,27 @@ namespace TFT
         public PlayerHero PlayerHero;
         public PlayerArena SelfPlayerArena;
         public int playerId, posId;
-        private GameStatus gameStatus;
         public Camera[] camera;
+        public float PeriodTime;
+        private float remainTime;
+        public float RemainTime
+        {
+            get { return remainTime; }
+            set
+            {
+                if (value <= 0)
+                {
+                    ChangeStatus();
+
+                }
+                else
+                {
+                    remainTime = value;
+                }
+            }
+        }
+        public GameStatus LastGameStatus;
+        private GameStatus gameStatus;
         public GameStatus GameStatus
         {
             get { return gameStatus; }
@@ -273,7 +292,39 @@ namespace TFT
             System.Random r = new System.Random(System.DateTime.Now.Millisecond);
             return data.OrderBy(x => r.Next()).ToArray();
         }
-        
+
+        private void ChangeStatus()
+        {
+            if (GameStatus == GameStatus.Transiting)
+            {
+                switch (LastGameStatus)
+                {
+                    case GameStatus.Readying:
+                        PeriodTime = MainGameManager.playingTime;
+                        GameStatus = GameStatus.Playing;
+                        break;
+                    case GameStatus.Playing:
+                        PeriodTime = MainGameManager.compingTime;
+                        GameStatus = GameStatus.Comping;
+                        break;
+                    case GameStatus.Comping:
+                        PeriodTime = MainGameManager.readyingTime;
+                        GameStatus = GameStatus.Readying;
+                        //change timer count from countdown to countup
+                        break;
+                }
+            }
+            else
+            {
+                LastGameStatus = GameStatus;
+                PeriodTime = MainGameManager.transitionTime;
+                GameStatus = GameStatus.Transiting;
+
+            }
+            remainTime = PeriodTime;
+        }
+
+
         #region PunRPC
 
         #region Start
