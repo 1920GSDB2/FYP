@@ -323,8 +323,7 @@ namespace TFT
             }
             remainTime = PeriodTime;
         }
-
-
+        
         #region PunRPC
 
         #region Start
