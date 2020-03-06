@@ -1,6 +1,3 @@
-<<<<<<< HEAD:Assets/TFT/Heros/Scripts/HeroEnum.cs
-﻿public enum HeroStatus
-=======
 ﻿public enum GameStatus
 {
     Readying,
@@ -8,8 +5,20 @@
     Comping,
     Transiting
 }
+public enum SyncHeroMethod
+{
+    AddHero,
+    RemoveHero,
+    HeroUpgrade
+}
+
+public enum SyncMoveHero
+{
+    AddGameboard,
+    RemoveGameboard,
+    MoveHero
+}
 public enum HeroStatus
->>>>>>> parent of 58de95d... U:Assets/TFT/Script/EnumManager.cs
 {
     Standby,
     Fight,

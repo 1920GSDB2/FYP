@@ -37,7 +37,11 @@ namespace TFT
             get { return gameStatus; }
             set
             {
+<<<<<<< HEAD
                 //gameStatus = value;
+=======
+                gameStatus = value;
+>>>>>>> parent of 58de95d... U
                 //switch (value)
                 //{
                 //    case GameStatus.Setup:
@@ -253,6 +257,12 @@ namespace TFT
                 playerId, _hero.name, _hero.LastHeroPlace.PlaceId, _hero.HeroLevel, _hero.HeroPlace.PlaceId, moveHeroMethod);
         }
 
+<<<<<<< HEAD
+=======
+        #region PunRPC
+
+        #region Start
+>>>>>>> parent of 58de95d... U
         /// <summary>
         ///Setting Lobby PhotonPlayer Array position,call by master client
         /// </summary>

@@ -20,9 +20,10 @@ MonoBehaviour:
     name: 
     email: 
   lobbyScene: Lobby
-  setupTime: 15
-  playtingTime: 30
-  extraTime: 10
+  readyingTime: 15
+  playingTime: 30
+  compingTime: 10
+  transitionTime: 3
   heroTypes:
   - {fileID: 5930743233098492543, guid: 178907bd0a9632548a40e7281d7bcf41, type: 3}
   - {fileID: 2368161567066149855, guid: adadc077eccbfaf4abc6baf426f5488b, type: 3}

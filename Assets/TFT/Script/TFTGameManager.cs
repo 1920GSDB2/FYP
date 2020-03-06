@@ -6,14 +6,9 @@ using TMPro;
 using System.Linq;
 using Main;
 
-public enum GameStatus
-{
-    Setup,
-    Playing,
-    Extra
-}
 public class TFTGameManager : MonoBehaviour
 {
+    public GameStatus LastGameStatus;
     private GameStatus gameStatus;
     public GameStatus GameStatus
     {
@@ -23,7 +18,7 @@ public class TFTGameManager : MonoBehaviour
             gameStatus = value;
             switch (value)
             {
-                case GameStatus.Setup:
+                case GameStatus.Readying:
                     foreach(Hero gbHero in gbHeros)
                     {
                         gbHero.transform.parent = gbHero.HeroPlace.transform;

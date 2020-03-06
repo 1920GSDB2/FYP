@@ -679,7 +679,7 @@ public class LobbyManager : MonoBehaviour
         }
     }
     [PunRPC]
-    public void RPC_SyncPlayerHeroes(int _playerId, string _name, int _heroPos, HeroLevel _heroLevel, TFT.SyncHeroMethod _syncMethod)
+    public void RPC_SyncPlayerHeroes(int _playerId, string _name, int _heroPos, HeroLevel _heroLevel, SyncHeroMethod _syncMethod)
     {
         Debug.Log("RPC_SyncPlayerHeroes");
         
