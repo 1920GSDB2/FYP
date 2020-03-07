@@ -18,7 +18,7 @@ namespace TFT
         public GameObject[] PlayerArenas;           //PlayerArenas Location (The Data are hard coded in scene)
         public OpponentManager[] OpponentManagers;  //Player's Opponent Data
         public Camera[] Cameras;                    //Cameras of Focusing Game Arena (The Data are hard coded in scene)
-
+      
         void Awake()
         {
             Instance = this;
@@ -145,11 +145,11 @@ namespace TFT
         /// <param name="_placeId"></param>
         /// <param name="_isEnemy"></param>
         /// <returns></returns>
-        public HeroPlace GetPlayerHeroPlace(int _posId, int _placeId, bool _isEnemy)
+        public HeroPlace GetPlayerHeroPlace(int _posId, int _placeId)
         {
-            if (_isEnemy)
+            if (this.posId== _posId)
                 return PlayerArenas[_posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(_placeId).GetComponent<HeroPlace>();
-            else
+            else               
                 return PlayerArenas[_posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(_placeId).GetComponent<HeroPlace>();
         }
         #endregion
@@ -486,20 +486,20 @@ namespace TFT
         #endregion
 
         [PunRPC]
-        void RPC_Battle(int pos1Id, int pos2Id)
+        void RPC_Battle(int player1Id, int player2Id)
         {
-
-            Cameras[pos1Id].enabled = true;
-            Cameras[pos2Id].enabled = false;
-            List<Hero> hero;
-            foreach (NetworkHero networkHero in PlayerHeroes[pos2Id].GameBoardHeroes)
+            if (playerId == player2Id)
             {
-                bool isEnemy = false;
-                Hero heroObject = GameManager.Instance.SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
-                if (posId == pos1Id)
-                    isEnemy = true;
+                PlayerArenas[player1Id].GetComponent<PlayerArena>().Camera.SetActive(true);
+                PlayerArenas[player2Id].GetComponent<PlayerArena>().Camera.SetActive(false);
 
-                heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, pos1Id, networkHero.position, isEnemy);
+                foreach (NetworkHero networkHero in PlayerHeroes[player2Id].GameBoardHeroes)
+                {
+                    Hero heroObject = GameManager.Instance.SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
+
+
+                    heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, PlayerHeroes[player1Id].posId, networkHero.position);
+                }
             }
 
         }

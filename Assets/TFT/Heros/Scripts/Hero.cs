@@ -79,7 +79,7 @@ public class Hero : MonoBehaviour
               }*/
             //photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
-        if (Input.GetKeyDown(KeyCode.L))
+     /*   if (Input.GetKeyDown(KeyCode.L))
         {
             targetEnemy = testHero;
             if (targetEnemy != null)
@@ -88,7 +88,7 @@ public class Hero : MonoBehaviour
 
                 // targetEnemy = null;
             }
-        }
+        }*/
 
     }
     [PunRPC]
@@ -207,9 +207,9 @@ public class Hero : MonoBehaviour
         // enemyArena.GameBoard.GetChild(_heroPos).GetChild(0).parent = enemyArena.HeroList.GetChild(_newPos);
     }
     [PunRPC]
-    public void RPC_MoveToThePlayerHeroPlace(int posId, int placeId, bool isEnemy)
+    public void RPC_MoveToThePlayerHeroPlace(int posId, int placeId)
     {
-        HeroPlace heroPlace = NetworkManager.Instance.GetPlayerHeroPlace(posId, placeId, isEnemy);
+        HeroPlace heroPlace = NetworkManager.Instance.GetPlayerHeroPlace(posId, placeId);
         SetHeroPlace(heroPlace);
         // Debug.Log( this.name + " become enemy? " + isEnemy+" Pos "+heroPlace.gridX+" "+heroPlace.gridY);
     }
