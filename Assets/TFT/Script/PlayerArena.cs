@@ -6,6 +6,7 @@ public class PlayerArena : MonoBehaviour
 {
     public GameObject FightArena;
     public GamePlace SelfArena, EnemyArena;
+    public GameObject Camera;
     Vector3 leftTop, rightTop, leftDown, rightDown;
     int GridSizeY = 8;
     int GridSizeX = 7;
