@@ -74,6 +74,8 @@ public enum HeroLevel
 
 public enum HeroState
 {
+    Nothing,
     Idle,
-    Fight
+    Fight,
+    Walking
 }

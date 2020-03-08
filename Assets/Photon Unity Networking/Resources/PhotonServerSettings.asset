@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3758f8f58fdef43803eb9be1df0608, type: 3}
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
-  AppID: 
+  AppID: c82ff058-d290-4778-8fc3-0ef82bce260c
   VoiceAppID: 
   ChatAppID: 
-  HostType: 0
+  HostType: 1
   PreferredRegion: 0
   EnabledRegions: -1
   Protocol: 0
@@ -27,5 +27,40 @@ MonoBehaviour:
   PunLogging: 0
   NetworkLogging: 1
   RunInBackground: 1
-  RpcList: []
+  RpcList:
+  - Chat
+  - ColorRpc
+  - DestroyRpc
+  - DoJump
+  - Flash
+  - InstantiateRpc
+  - Marco
+  - PickupItemInit
+  - Polo
+  - PunPickup
+  - PunPickupSimple
+  - PunRespawn
+  - RequestForPickupItems
+  - RequestForPickupTimes
+  - RPC_AddToGameBoard
+  - RPC_AddToHeroList
+  - RPC_Animation
+  - RPC_Battle
+  - RPC_CreatePlayer
+  - RPC_LoadedGameScene
+  - RPC_MoveToThePlayerHeroPlace
+  - RPC_OnLeftRoom
+  - RPC_PlayerJoinRoom
+  - RPC_Ready
+  - RPC_SetPlayerId
+  - RPC_SetupPlayerPosition
+  - RPC_StartGame
+  - RPC_SyncPlayerHeroes
+  - RPC_SyncPlayerHeroPlace
+  - RPC_SyncPlayersOpponent
+  - RPC_Test
+  - RPC_testHeroes
+  - TaggedPlayer
+  - test
+  - RPC_SyncPlayerPosition
   DisableAutoOpenWizard: 1

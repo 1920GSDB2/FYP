@@ -30,6 +30,7 @@ public class Hero : MonoBehaviour
     [Range(0, 10)]
     public int BasicMagicDefense;
 
+    float attackRange = 1.75f;
     public float Health { get; set; }
     public float AttackDamage { get; set; }
     public float AttackSpeed { get; set; }
@@ -57,39 +58,78 @@ public class Hero : MonoBehaviour
         MouseSelect = GameManager.Instance.GetComponent<MouseSelect>();
         HeroPlace = transform.parent.GetComponent<HeroPlace>();
 
-
+        //HeroState = HeroState.Idle;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (HeroState == HeroState.Idle) {
+            if (targetEnemy == null)
+                targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(isEnemy, transform);
+            else {
+                HeroState = HeroState.Walking;
+                GetComponent<PhotonView>().RPC("RPC_test", PhotonTargets.All);
+                followEnemy();
+            }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            /*  targetEnemy = testHero;
-              if (targetEnemy != null)
-              {
-
-                  if (HeroStatus == HeroStatus.Standby)
-                  {
-                      PathFindingManager.Instance.requestNextStep(HeroPlace, targetEnemy.HeroPlace, onStepFind);
-
-                  }                
-                  targetEnemy = null;
-              }*/
-            //photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
-     /*   if (Input.GetKeyDown(KeyCode.L))
+        /* if (HeroState==HeroState.Idle)
+         {
+             if (targetEnemy != null)
+             {
+                 //  followEnemy();
+                 HeroState = HeroState.Walking;
+                 // PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
+                 followEnemy();
+                 //  targetEnemy = null;
+
+             }
+         }*/
+
+
+
+
+        if (Input.GetKeyDown(KeyCode.I))
         {
             targetEnemy = testHero;
-            if (targetEnemy != null)
-            {
-                PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
 
-                // targetEnemy = null;
-            }
-        }*/
+            /*    if (targetEnemy != null)
+                {
 
+                    if (HeroStatus == HeroStatus.Standby)
+                    {
+                        PathFindingManager.Instance.requestNextStep(HeroPlace, targetEnemy.HeroPlace, onStepFind);
+
+                    }                
+                    targetEnemy = null;
+                }*/
+            //photonView.RPC("RPC_Animation", PhotonTargets.All);
+        }
+        /*   if (Input.GetKeyDown(KeyCode.L))
+           {
+               targetEnemy = testHero;
+               if (targetEnemy != null)
+               {
+                   PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
+
+                   // targetEnemy = null;
+               }
+           }*/
+
+    }
+    void followEnemy() {
+        float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
+
+       // Debug.Log("Distance " + dis + " AttackRange " + attackRange);
+        if (dis > attackRange)
+        {
+            // Debug.Log("Distance " + dis + " AttackRange " + attackRange);
+            //  Debug.Log("followEnemy");
+            PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
+        }
+        else
+            HeroState = HeroState.Fight;
     }
     [PunRPC]
     public void RPC_Animation()
@@ -98,33 +138,27 @@ public class Hero : MonoBehaviour
         Debug.Log("anim");
     }
     //called by OathfindingManager when request a path
+    #region pathFinding Method
     public void OnPathFind(List<Node> path, bool isFindPath)
     {
         if (isFindPath)
         {
-            foreach (Node node in path)
-            {
-                node.heroPlace.settColor(Color.blue);
-
-            }
-            // StartCoroutine(followPath());
             if (path != null)
-                StartCoroutine(FollowPath(path));
-            //  StartCoroutine(followStep(path[0]));
-            //path = null;
+                StartCoroutine(FollowStep(path[0]));
         }
     }
     //called by OathfindingManager when request next step
     public void OnStepFind(Node step, bool isFindStep)
     {
+        Debug.Log(isFindStep);
         if (isFindStep)
         {
-            step.heroPlace.settColor(Color.blue);
+            // step.heroPlace.settColor(Color.blue);
             StartCoroutine(FollowStep(step));
 
         }
     }
-
+    #endregion
     private void FixedUpdate()
     {
         if (HeroStatus == HeroStatus.Fight && targetEnemy == null)
@@ -160,6 +194,11 @@ public class Hero : MonoBehaviour
         }
         lastTransform = currTransform;
     }
+    public void readyForBattle(bool isEnemy = false) {
+        HeroState = HeroState.Idle;
+        this.isEnemy = isEnemy;
+        Debug.Log("State " + HeroState + " Enemy " + isEnemy);
+    }
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
@@ -188,11 +227,11 @@ public class Hero : MonoBehaviour
     {
         HeroPlace.leavePlace();
         newHeroPlace.setHeroOnPlace(this);
-
+        //SetHeroPlace(newHeroPlace);
         LastHeroPlace = HeroPlace;
         HeroPlace = newHeroPlace;
-        Debug.Log("change");
     }
+    #region RPC move hero
     [PunRPC]
     public void RPC_AddToGameBoard(int posId, int placeId)
     {
@@ -226,7 +265,13 @@ public class Hero : MonoBehaviour
         LastHeroPlace = heroPlace;
         HeroPlace = heroPlace;
     }
+    #endregion
     // Hero will follow the whole path and walk to the destination
+    #region follow path
+    [PunRPC]
+    void RPC_test() {
+        Debug.Log(name+" test Call");
+    }
     IEnumerator FollowPath(List<Node> path)
     {
         int index = 0;
@@ -247,21 +292,35 @@ public class Hero : MonoBehaviour
     //Hero will just move to the next step
     IEnumerator FollowStep(Node step)
     {
-
-        while (true)
+        Debug.Log("FollowStep");
+        bool isLoop = true;
+        while (HeroState==HeroState.Walking)
         {
             if (transform.position != step.heroPlace.transform.position)
             {
-                transform.position = Vector3.MoveTowards(transform.position, step.heroPlace.transform.position, 5 * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, step.heroPlace.transform.position, 3 * Time.deltaTime);
+             //   Debug.Log("Move X "+step.heroPlace.gridX+" Y "+ step.heroPlace.gridY);
             }
             else
-            {
+            {                              
+              //  Debug.Log("finish");
+                // isLoop = false;                
+                StartCoroutine(FindPathAgain());
                 MoveToThePlace(step.heroPlace);
-                PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
+                //PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
+                
+                // yield return new WaitForSeconds(1);                               
                 break;
             }
             yield return null;
         }
 
     }
+    #endregion
+    IEnumerator FindPathAgain() {
+        //yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.3f);        
+        followEnemy();
+    }
+
 }

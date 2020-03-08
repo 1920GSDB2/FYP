@@ -13,21 +13,17 @@ public class GridMap : MonoBehaviour
 
     void Start()
     {
-        playerArena = GameManager.Instance.SelfPlayerArena;
+        createGrid();
+
+    }
+    public void setPlayerArena(PlayerArena playerMap) {
+        playerArena = playerMap;
 
         createGrid();
-       
     }
-    private void Update()
-    {
-       /* if (path.Count!=0) {
-            foreach(Node node in path)
-            {
-                node.heroPlace.settColor(Color.blue);
-            }
-            path = null;
-        }*/
-    }
+
+
+  
     public void createGrid() {
         grid = new Node[GridSizeX, GridSizeY];
        

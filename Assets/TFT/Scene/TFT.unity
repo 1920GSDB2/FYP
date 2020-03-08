@@ -8354,6 +8354,7 @@ MonoBehaviour:
   opponent:
     opponentId: 0
     isShadow: 0
+    hero: []
   PlayerPosition: 
   PlayerHeroes: []
   PlayerArenas:
@@ -8365,6 +8366,7 @@ MonoBehaviour:
   - {fileID: 660996047}
   OpponentManagers: []
   Cameras: []
+  map: {fileID: 1890850773}
 --- !u!4 &356606292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1742539634653316415, guid: 10c1c548cd522784f940d5ffe292db97,
@@ -38196,10 +38198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f4492064b361d459211ae9f14fd24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IdText: {fileID: 334471461}
-  ArenaIndex: {fileID: 1081296213}
-  PlayerPositionText: {fileID: 1647492609}
-  LogMessage: {fileID: 1012800411}
 --- !u!114 &1335357683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51937,7 +51935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109205349c0362e438ce6f3d7a828bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerArena: {fileID: 0}
+  playerArena: {fileID: 1978762088}
   GridSizeX: 7
   GridSizeY: 8
 --- !u!114 &1890850774

@@ -46,7 +46,7 @@ public class PathFinding : MonoBehaviour
             }
 
             foreach (Node neighbour in gridMap.getNeighbours(currentNode)) {
-                Debug.Log("Check "+(neighbour == targetNode)+" Ne "+neighbour.isWalkable+" Ta "+targetNode.isWalkable);
+              //  Debug.Log("Check "+(neighbour == targetNode)+" Ne "+neighbour.isWalkable+" Ta "+targetNode.isWalkable);
                 if (!neighbour.isWalkable || closedSet.Contains(neighbour))
                 {
                     if(!(neighbour==targetNode))
@@ -66,6 +66,11 @@ public class PathFinding : MonoBehaviour
         if (isFindPath)
         {
             path = trackPath(startNode, targetNode);
+            if (path.Count == 0)
+            {
+                path = null;
+                isFindPath = false;
+            }
         }
 
         PathFindingManager.Instance.pathFinish(path, isFindPath, callback);
@@ -130,7 +135,6 @@ public class PathFinding : MonoBehaviour
         }
         path.Reverse();
         path.RemoveAt(path.Count-1);
-
         return path;
       //  this.path = path;
         //target = null;
