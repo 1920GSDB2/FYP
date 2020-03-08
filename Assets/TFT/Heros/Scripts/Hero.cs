@@ -68,8 +68,7 @@ public class Hero : MonoBehaviour
             if (targetEnemy == null)
                 targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(isEnemy, transform);
             else {
-                HeroState = HeroState.Walking;
-                GetComponent<PhotonView>().RPC("RPC_test", PhotonTargets.All);
+                HeroState = HeroState.Walking;                
                 followEnemy();
             }
 
@@ -269,8 +268,16 @@ public class Hero : MonoBehaviour
     // Hero will follow the whole path and walk to the destination
     #region follow path
     [PunRPC]
-    void RPC_test() {
-        Debug.Log(name+" test Call");
+    void RPC_FollowStep(int placeId,int YPos) {
+     
+            bool isEnemyPlace;
+            if (YPos <= 3)
+                isEnemyPlace = true;
+            else
+                isEnemyPlace = false;
+            HeroPlace heroPlace = NetworkManager.Instance.GetOpponentHeroPlace(placeId, isEnemyPlace);
+            StartCoroutine(RPC_FollowHeroPlace(heroPlace));
+        
     }
     IEnumerator FollowPath(List<Node> path)
     {
@@ -293,7 +300,7 @@ public class Hero : MonoBehaviour
     IEnumerator FollowStep(Node step)
     {
         Debug.Log("FollowStep");
-        bool isLoop = true;
+        GetComponent<PhotonView>().RPC("RPC_FollowStep", PhotonTargets.Others, step.heroPlace.PlaceId, step.heroPlace.gridY);
         while (HeroState==HeroState.Walking)
         {
             if (transform.position != step.heroPlace.transform.position)
@@ -307,9 +314,7 @@ public class Hero : MonoBehaviour
                 // isLoop = false;                
                 StartCoroutine(FindPathAgain());
                 MoveToThePlace(step.heroPlace);
-                //PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
-                
-                // yield return new WaitForSeconds(1);                               
+                //PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);                          
                 break;
             }
             yield return null;
@@ -317,6 +322,15 @@ public class Hero : MonoBehaviour
 
     }
     #endregion
+    IEnumerator RPC_FollowHeroPlace(HeroPlace step)
+    {
+        while (transform.position != step.transform.position)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, step.transform.position, 3 * Time.deltaTime);
+            yield return null;
+        }
+
+    }
     IEnumerator FindPathAgain() {
         //yield return new WaitForSeconds(2);
         yield return new WaitForSeconds(0.3f);        

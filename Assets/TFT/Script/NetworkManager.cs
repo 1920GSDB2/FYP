@@ -161,6 +161,12 @@ namespace TFT
             else               
                 return PlayerArenas[_posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(_placeId).GetComponent<HeroPlace>();
         }
+        public HeroPlace GetOpponentHeroPlace(int placeId,bool isEnemyPlace) {
+            if(isEnemyPlace)
+                return PlayerArenas[PlayerHeroes[opponent.opponentId].posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
+            else
+                return PlayerArenas[PlayerHeroes[opponent.opponentId].posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
+        }
         #endregion
 
         public Hero getCloestEnemyTarget(bool isEnemy,Transform heroPos) {
@@ -529,9 +535,10 @@ namespace TFT
             {
                 PlayerArenas[PlayerHeroes[player2Id].posId].GetComponent<PlayerArena>().Camera.SetActive(false);
                 PlayerArenas[PlayerHeroes[player1Id].posId].GetComponent<PlayerArena>().Camera.SetActive(true);
-               
+                opponent.opponentId = player1Id;
             }
             if (playerId == player1Id) {
+                opponent.opponentId = player2Id;
                 foreach (NetworkHero networkHero in PlayerHeroes[player2Id].GameBoardHeroes)
                 {
                       Hero heroObject = PlayerArenas[PlayerHeroes[player2Id].posId].
