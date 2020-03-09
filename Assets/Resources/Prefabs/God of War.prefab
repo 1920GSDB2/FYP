@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4152605548084733200}
   - component: {fileID: 514254030503593033}
   - component: {fileID: -948351031149719962}
+  - component: {fileID: 1091829782}
   m_Layer: 8
   m_Name: God of War
   m_TagString: Untagged
@@ -184,6 +185,25 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &1091829782
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2177598673675532546}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: bf39294e5fbf9314281585172bbdf671, type: 3}
+  m_Controller: {fileID: 9100000, guid: 69b90d053303d5d4781a5b7d48ff867f, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1933865740524829575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -267,6 +287,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: bf39294e5fbf9314281585172bbdf671, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: bf39294e5fbf9314281585172bbdf671, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 69b90d053303d5d4781a5b7d48ff867f, type: 2}
     - target: {fileID: 100138, guid: bf39294e5fbf9314281585172bbdf671, type: 3}
       propertyPath: m_Layer
       value: 8

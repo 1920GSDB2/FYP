@@ -898,7 +898,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4375544366826969915}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 9eb0ecb939056c9429be58057008a4a1, type: 2}
   m_Controller: {fileID: 9100000, guid: f3ef2b86fe5b3ae42b78006c7b5b9fdb, type: 2}
   m_CullingMode: 1
@@ -1109,6 +1109,7 @@ GameObject:
   - component: {fileID: 4949484980057757309}
   - component: {fileID: 3894332839455746854}
   - component: {fileID: 4147353497950118424}
+  - component: {fileID: 1794603302}
   m_Layer: 8
   m_Name: Heavy Crossbowman
   m_TagString: Untagged
@@ -1280,3 +1281,22 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &1794603302
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8761755023450044505}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 9eb0ecb939056c9429be58057008a4a1, type: 2}
+  m_Controller: {fileID: 9100000, guid: f3ef2b86fe5b3ae42b78006c7b5b9fdb, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

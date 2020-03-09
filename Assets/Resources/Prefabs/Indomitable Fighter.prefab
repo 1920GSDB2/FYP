@@ -630,7 +630,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2245907555467798785}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 387bcf7daba64ee4288af0a4ad266b63, type: 3}
   m_Controller: {fileID: 9100000, guid: a9c097b8acbc09148ac380e1ac5922b1, type: 2}
   m_CullingMode: 1
@@ -878,6 +878,7 @@ GameObject:
   - component: {fileID: 3583561605422280160}
   - component: {fileID: -2846283415158833638}
   - component: {fileID: 5360361258353623382}
+  - component: {fileID: 1413441630}
   m_Layer: 8
   m_Name: Indomitable Fighter
   m_TagString: Untagged
@@ -1049,3 +1050,22 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &1413441630
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3322668236466147926}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 387bcf7daba64ee4288af0a4ad266b63, type: 3}
+  m_Controller: {fileID: 9100000, guid: a9c097b8acbc09148ac380e1ac5922b1, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

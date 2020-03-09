@@ -73,7 +73,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2245907555923637769}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 387bcf7daba64ee4288af0a4ad266b63, type: 3}
   m_Controller: {fileID: 9100000, guid: 88e0e1f796b6e884a8f1dabaf86ae31a, type: 2}
   m_CullingMode: 0
@@ -988,6 +988,7 @@ GameObject:
   - component: {fileID: 3950419788356003188}
   - component: {fileID: -7744073463604170942}
   - component: {fileID: -1809362017781643254}
+  - component: {fileID: 1378478711}
   m_Layer: 8
   m_Name: Kira Mage
   m_TagString: Untagged
@@ -1159,3 +1160,22 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &1378478711
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3781009245937362578}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 387bcf7daba64ee4288af0a4ad266b63, type: 3}
+  m_Controller: {fileID: 9100000, guid: 88e0e1f796b6e884a8f1dabaf86ae31a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

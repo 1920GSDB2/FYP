@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5962815392396024270}
   - component: {fileID: 8970938517062683952}
   - component: {fileID: 4011029171114128530}
+  - component: {fileID: 1740548846}
   m_Layer: 8
   m_Name: Executioner
   m_TagString: Untagged
@@ -184,6 +185,25 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &1740548846
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694415606609498838}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 7567bf51107fd54428b82190de974a44, type: 3}
+  m_Controller: {fileID: 9100000, guid: 69d2741192537e84e8353e1cf41f47fb, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &394130195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,6 +298,11 @@ PrefabInstance:
     - target: {fileID: 1957509452852060, guid: afe27acb40e015c4389b7d20828e092c, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 95102722239972308, guid: afe27acb40e015c4389b7d20828e092c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1550327583372032, guid: afe27acb40e015c4389b7d20828e092c, type: 3}
       propertyPath: m_Layer

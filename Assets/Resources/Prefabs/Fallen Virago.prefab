@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -8946775248976867941}
   - component: {fileID: 3325670493119701891}
   - component: {fileID: 7859863292879948659}
+  - component: {fileID: 1519848210}
   m_Layer: 8
   m_Name: Fallen Virago
   m_TagString: Untagged
@@ -184,6 +185,25 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &1519848210
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7224144585367575149}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: be1376e55930c6e43afbff91f7b45bac, type: 3}
+  m_Controller: {fileID: 9100000, guid: b3b6e512056d8c04d95b5fe4ccb916c7, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5663058370360268871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,6 +298,11 @@ PrefabInstance:
     - target: {fileID: 1124944386086894, guid: 3a00b7ebcef405346a7295fbd013d4de, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 95965537420241746, guid: 3a00b7ebcef405346a7295fbd013d4de,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1510991409815118, guid: 3a00b7ebcef405346a7295fbd013d4de, type: 3}
       propertyPath: m_Layer
