@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -1419592061133791969}
   - component: {fileID: -1167332581234433422}
   - component: {fileID: -227883860334457362}
+  - component: {fileID: 559717406}
   m_Layer: 8
   m_Name: Dark Hunter
   m_TagString: Untagged
@@ -184,6 +185,25 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &559717406
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8676289404948478351}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: f755677b972c038458515d7244900502, type: 3}
+  m_Controller: {fileID: 9100000, guid: 8b10f96a702f8054d843d2be8a3db3a7, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &942195546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,6 +261,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4895588176664270, guid: 21f5716ea38f3f94cb22955ed524d1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95551385028183300, guid: 21f5716ea38f3f94cb22955ed524d1e0,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 609750903207584571, guid: 21f5716ea38f3f94cb22955ed524d1e0,

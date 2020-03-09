@@ -38,6 +38,7 @@ public class Hero : MonoBehaviour
     public float PhysicalDefense { get; set; }
     public float MagicDefense { get; set; }
 
+    bool isAttackCooldown;
     string lastTransform;
     public Animator animator;
     //TFTGameManager gameManager;
@@ -73,6 +74,11 @@ public class Hero : MonoBehaviour
             }
 
         }
+        if (HeroState == HeroState.Fight) {
+            if (!isAttackCooldown)
+                photonView.RPC("RPC_Attack", PhotonTargets.All);
+
+        }
         /* if (HeroState==HeroState.Idle)
          {
              if (targetEnemy != null)
@@ -91,20 +97,12 @@ public class Hero : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            targetEnemy = testHero;
+            //  targetEnemy = testHero;
 
-            /*    if (targetEnemy != null)
-                {
-
-                    if (HeroStatus == HeroStatus.Standby)
-                    {
-                        PathFindingManager.Instance.requestNextStep(HeroPlace, targetEnemy.HeroPlace, onStepFind);
-
-                    }                
-                    targetEnemy = null;
-                }*/
-            //photonView.RPC("RPC_Animation", PhotonTargets.All);
+            animator.SetTrigger("Attack");
+          //  photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
+      
         /*   if (Input.GetKeyDown(KeyCode.L))
            {
                targetEnemy = testHero;
@@ -131,10 +129,10 @@ public class Hero : MonoBehaviour
             HeroState = HeroState.Fight;
     }
     [PunRPC]
-    public void RPC_Animation()
+    public void RPC_Attack()
     {
         animator.SetTrigger("Attack");
-        Debug.Log("anim");
+        
     }
     //called by OathfindingManager when request a path
     #region pathFinding Method
@@ -198,7 +196,7 @@ public class Hero : MonoBehaviour
         this.isEnemy = isEnemy;
         Debug.Log("State " + HeroState + " Enemy " + isEnemy);
     }
-    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+   /* void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
@@ -210,7 +208,7 @@ public class Hero : MonoBehaviour
             transform.position = (Vector3)stream.ReceiveNext();
             transform.rotation = (Quaternion)stream.ReceiveNext();
         }
-    }
+    }*/
     private void OnMouseEnter()
     {
         if (HeroStatus == HeroStatus.Standby)
@@ -267,6 +265,7 @@ public class Hero : MonoBehaviour
     #endregion
     // Hero will follow the whole path and walk to the destination
     #region follow path
+
     [PunRPC]
     void RPC_FollowStep(int placeId,int YPos) {
      
@@ -301,6 +300,7 @@ public class Hero : MonoBehaviour
     {
         Debug.Log("FollowStep");
         GetComponent<PhotonView>().RPC("RPC_FollowStep", PhotonTargets.Others, step.heroPlace.PlaceId, step.heroPlace.gridY);
+        MoveToThePlace(step.heroPlace);
         while (HeroState==HeroState.Walking)
         {
             if (transform.position != step.heroPlace.transform.position)
@@ -312,8 +312,7 @@ public class Hero : MonoBehaviour
             {                              
               //  Debug.Log("finish");
                 // isLoop = false;                
-                StartCoroutine(FindPathAgain());
-                MoveToThePlace(step.heroPlace);
+                StartCoroutine(FindPathAgain());               
                 //PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);                          
                 break;
             }
@@ -321,7 +320,7 @@ public class Hero : MonoBehaviour
         }
 
     }
-    #endregion
+    
     IEnumerator RPC_FollowHeroPlace(HeroPlace step)
     {
         while (transform.position != step.transform.position)
@@ -329,12 +328,18 @@ public class Hero : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, step.transform.position, 3 * Time.deltaTime);
             yield return null;
         }
-
     }
     IEnumerator FindPathAgain() {
         //yield return new WaitForSeconds(2);
         yield return new WaitForSeconds(0.3f);        
         followEnemy();
+    }
+    #endregion
+    IEnumerator basicAttackCoolDown()
+    {
+        isAttackCooldown = true;
+        yield return new WaitForSeconds(1/(AttackSpeed*2.5f));
+        isAttackCooldown = false;
     }
 
 }

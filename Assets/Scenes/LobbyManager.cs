@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
+using System.IO;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -155,6 +156,7 @@ public class LobbyManager : MonoBehaviour
         #endregion
 
         SwitchFunctionPanel(FunctionPanelType.LobbyPanel);
+       
         //DontDestroyOnLoad(this);
     }
 
@@ -166,7 +168,9 @@ public class LobbyManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 // PhotonView.RPC("test", PhotonTargets.Others, "others");
-
+                PhotonNetwork.Instantiate(Path.Combine("Prefabs", "God of Wizard"), Vector3.zero, Quaternion.identity, 0);
+                
+                
                 for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
                 {
                     PhotonView.RPC("test", PhotonTargets.All, PhotonNetwork.playerList[i].NickName);

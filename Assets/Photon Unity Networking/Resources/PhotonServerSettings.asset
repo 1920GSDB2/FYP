@@ -63,4 +63,7 @@ MonoBehaviour:
   - TaggedPlayer
   - test
   - RPC_SyncPlayerPosition
+  - RPC_test
+  - RPC_FollowStep
+  - RPC_Attack
   DisableAutoOpenWizard: 1
