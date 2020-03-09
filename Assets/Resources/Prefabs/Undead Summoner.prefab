@@ -5982,6 +5982,7 @@ GameObject:
   - component: {fileID: 6460941090475133376}
   - component: {fileID: 2781586166001582805}
   - component: {fileID: 5945760518067782067}
+  - component: {fileID: 2108254164}
   m_Layer: 8
   m_Name: Undead Summoner
   m_TagString: Untagged
@@ -6032,7 +6033,7 @@ MonoBehaviour:
   BasicSkillPower: 5
   BasicPhysicalDefense: 5
   BasicMagicDefense: 5
-  animator: {fileID: 0}
+  animator: {fileID: 116028391879399844}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
 --- !u!65 &6460941090475133376
@@ -6153,3 +6154,22 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &2108254164
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7353492059728343620}
+  m_Enabled: 0
+  m_Avatar: {fileID: 9000000, guid: e916d96ad0382e84da26e70656038058, type: 3}
+  m_Controller: {fileID: 9100000, guid: 545037f1de83d53409856d6368073dab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

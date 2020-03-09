@@ -48,6 +48,7 @@ public class Hero : MonoBehaviour
 
     private void Awake()
     {
+        if(animator==null)
         animator = GetComponent<Animator>();
         photonView = GetComponent<PhotonView>();
     }

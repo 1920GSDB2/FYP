@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8919417818969249094}
   - component: {fileID: 5372965408473565523}
   - component: {fileID: -1882276160546441457}
+  - component: {fileID: 2091495330}
   m_Layer: 8
   m_Name: Stone Spirit
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MonoBehaviour:
   BasicSkillPower: 4
   BasicPhysicalDefense: 7
   BasicMagicDefense: 7
-  animator: {fileID: 0}
+  animator: {fileID: 6945732913743096348}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
 --- !u!65 &8919417818969249094
@@ -184,6 +185,25 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &2091495330
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374238844570507508}
+  m_Enabled: 0
+  m_Avatar: {fileID: 9000000, guid: 8b2d11d64877f0b4cad5d45ec7d53473, type: 3}
+  m_Controller: {fileID: 9100000, guid: 64e2ef14a02f69a4b94edbee54ca296a, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7005042346177770208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -344,6 +364,12 @@ PrefabInstance:
 --- !u!4 &7005702939323786454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4408297863206454, guid: 6bbfea6690ef7724ba495c866081f855,
+    type: 3}
+  m_PrefabInstance: {fileID: 7005042346177770208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6945732913743096348 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95380085654935804, guid: 6bbfea6690ef7724ba495c866081f855,
     type: 3}
   m_PrefabInstance: {fileID: 7005042346177770208}
   m_PrefabAsset: {fileID: 0}

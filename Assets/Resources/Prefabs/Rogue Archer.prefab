@@ -1046,6 +1046,7 @@ GameObject:
   - component: {fileID: 4811886118126160282}
   - component: {fileID: -822741971253739390}
   - component: {fileID: -4702839854796712197}
+  - component: {fileID: 1566622148}
   m_Layer: 8
   m_Name: Rogue Archer
   m_TagString: Untagged
@@ -1096,7 +1097,7 @@ MonoBehaviour:
   BasicSkillPower: 5
   BasicPhysicalDefense: 2
   BasicMagicDefense: 4
-  animator: {fileID: 0}
+  animator: {fileID: 116028391879387220}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
 --- !u!65 &4811886118126160282
@@ -1217,3 +1218,22 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &1566622148
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278330036816956974}
+  m_Enabled: 0
+  m_Avatar: {fileID: 9000000, guid: e916d96ad0382e84da26e70656038058, type: 3}
+  m_Controller: {fileID: 9100000, guid: b20b0d1f4c9cb57479b0ff56b1047ae7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

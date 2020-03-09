@@ -64,7 +64,7 @@ MonoBehaviour:
   BasicSkillPower: 5
   BasicPhysicalDefense: 4
   BasicMagicDefense: 4
-  animator: {fileID: 0}
+  animator: {fileID: 6067690246874877847}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
 --- !u!65 &5162250091634261234
@@ -193,7 +193,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044099201925630234}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 9eb0ecb939056c9429be58057008a4a1, type: 2}
   m_Controller: {fileID: 9100000, guid: 5bad786e25046394695e99601ea8e113, type: 2}
   m_CullingMode: 1
@@ -1162,7 +1162,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6067690246882441353}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9eb0ecb939056c9429be58057008a4a1, type: 2}
   m_Controller: {fileID: 9100000, guid: 5bad786e25046394695e99601ea8e113, type: 2}
   m_CullingMode: 1

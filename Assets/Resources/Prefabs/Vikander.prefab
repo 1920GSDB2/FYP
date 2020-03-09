@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7029798159808997857}
   - component: {fileID: 2116652914697253963}
   - component: {fileID: -2069233899172027974}
+  - component: {fileID: 2112745038}
   m_Layer: 8
   m_Name: Vikander
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MonoBehaviour:
   BasicSkillPower: 0
   BasicPhysicalDefense: 0
   BasicMagicDefense: 0
-  animator: {fileID: 0}
+  animator: {fileID: 95878766296516437}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
 --- !u!65 &7029798159808997857
@@ -184,6 +185,25 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &2112745038
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910431118531152809}
+  m_Enabled: 0
+  m_Avatar: {fileID: 9000000, guid: 03aa7147587bc014793f0f49bd9cb00c, type: 3}
+  m_Controller: {fileID: 9100000, guid: 83a63787aa79c5e47a7480fa6ac41602, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1549910441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -302,6 +322,11 @@ PrefabInstance:
     - target: {fileID: 1953868698666202, guid: 391d0d0fa64f40a458aaeb5e875ef33e, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 95878764759254780, guid: 391d0d0fa64f40a458aaeb5e875ef33e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1040760660315132, guid: 391d0d0fa64f40a458aaeb5e875ef33e, type: 3}
       propertyPath: m_Layer
@@ -564,6 +589,12 @@ PrefabInstance:
 --- !u!4 &4384605701304303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4384606705921606, guid: 391d0d0fa64f40a458aaeb5e875ef33e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1549910441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &95878766296516437 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95878764759254780, guid: 391d0d0fa64f40a458aaeb5e875ef33e,
     type: 3}
   m_PrefabInstance: {fileID: 1549910441}
   m_PrefabAsset: {fileID: 0}

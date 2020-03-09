@@ -64,7 +64,7 @@ MonoBehaviour:
   BasicSkillPower: 0
   BasicPhysicalDefense: 0
   BasicMagicDefense: 0
-  animator: {fileID: 0}
+  animator: {fileID: 95102722624499911}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
 --- !u!65 &5962815392396024270
@@ -193,7 +193,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694415606609498838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 7567bf51107fd54428b82190de974a44, type: 3}
   m_Controller: {fileID: 9100000, guid: 69d2741192537e84e8353e1cf41f47fb, type: 2}
   m_CullingMode: 1
@@ -302,7 +302,7 @@ PrefabInstance:
     - target: {fileID: 95102722239972308, guid: afe27acb40e015c4389b7d20828e092c,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1550327583372032, guid: afe27acb40e015c4389b7d20828e092c, type: 3}
       propertyPath: m_Layer
@@ -585,6 +585,12 @@ PrefabInstance:
 --- !u!4 &4227196819015029 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4227196532487782, guid: afe27acb40e015c4389b7d20828e092c,
+    type: 3}
+  m_PrefabInstance: {fileID: 394130195}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &95102722624499911 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95102722239972308, guid: afe27acb40e015c4389b7d20828e092c,
     type: 3}
   m_PrefabInstance: {fileID: 394130195}
   m_PrefabAsset: {fileID: 0}
