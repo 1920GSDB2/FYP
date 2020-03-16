@@ -119,7 +119,7 @@ public class Hero : MonoBehaviour
     void followEnemy() {
         float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
 
-       // Debug.Log("Distance " + dis + " AttackRange " + attackRange);
+        // Debug.Log("Distance " + dis + " AttackRange " + attackRange);
         if (dis > attackRange)
         {
             // Debug.Log("Distance " + dis + " AttackRange " + attackRange);
@@ -127,13 +127,16 @@ public class Hero : MonoBehaviour
             PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
         }
         else
+        {
+            animator.SetBool("Walk", false);
             HeroState = HeroState.Fight;
+        }
     }
     [PunRPC]
     public void RPC_Attack()
     {
-        animator.SetTrigger("Attack");
-        
+        transform.LookAt(targetEnemy.transform);
+        animator.SetTrigger("Attack");        
     }
     //called by OathfindingManager when request a path
     #region pathFinding Method
@@ -254,6 +257,8 @@ public class Hero : MonoBehaviour
     public void RPC_AddToHeroList(int posId, int placeId)
     {
         HeroPlace heroPlace = NetworkManager.Instance.GetHeroListHeroPlace(posId, placeId);
+        if (!photonView.isMine)
+            transform.Rotate(new Vector3(0, 180, 0));
         SetHeroPlace(heroPlace);
     }
     void SetHeroPlace(HeroPlace heroPlace)
@@ -302,10 +307,12 @@ public class Hero : MonoBehaviour
         Debug.Log("FollowStep");
         GetComponent<PhotonView>().RPC("RPC_FollowStep", PhotonTargets.Others, step.heroPlace.PlaceId, step.heroPlace.gridY);
         MoveToThePlace(step.heroPlace);
+        transform.LookAt(step.heroPlace.transform);
+        animator.SetBool("Walk", true);
         while (HeroState==HeroState.Walking)
         {
             if (transform.position != step.heroPlace.transform.position)
-            {
+            {                
                 transform.position = Vector3.MoveTowards(transform.position, step.heroPlace.transform.position, 3 * Time.deltaTime);
              //   Debug.Log("Move X "+step.heroPlace.gridX+" Y "+ step.heroPlace.gridY);
             }
@@ -324,6 +331,8 @@ public class Hero : MonoBehaviour
     
     IEnumerator RPC_FollowHeroPlace(HeroPlace step)
     {
+        transform.LookAt(step.transform);
+        animator.SetBool("Walk", true);
         while (transform.position != step.transform.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, step.transform.position, 3 * Time.deltaTime);
