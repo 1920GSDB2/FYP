@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using System.Collections;
+using System.IO;
 
 namespace TFT
 {
@@ -37,7 +38,8 @@ namespace TFT
             #region PhotonNetwork Debugging
             if (Input.GetKeyDown(KeyCode.L))
             {
-                PhotonView.RPC("RPC_testHeroes", PhotonTargets.All);
+                //  PhotonView.RPC("RPC_Test", PhotonTargets.All);
+                RPC_Test();
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
@@ -571,6 +573,13 @@ namespace TFT
 
             foreach (Hero hero in opponent.hero)
                 hero.readyForBattle(true, posId);
+        }
+        
+        void RPC_Test() {
+            Hero newHero = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Executioner"), Vector3.zero, Quaternion.identity, 0)).GetComponent<Hero>();
+            // newHero.photonView.RPC("RPC_AddToHeroList", PhotonTargets.All,0,1);
+            newHero.name = "Executioner";
+            if (TFT.GameManager.Instance.BuyHero(newHero));
         }
     }
 }

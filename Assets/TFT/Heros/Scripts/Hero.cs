@@ -17,7 +17,7 @@ public class Hero : MonoBehaviour
     public HeroRace[] HeroRaces;
     public HeroLevel HeroLevel;
     public HeroState HeroState;
-    PhotonView photonView;
+    public PhotonView photonView;
     [Range(0, 10)]
     public int BasicHealth;
     [Range(0, 10)]
@@ -33,6 +33,7 @@ public class Hero : MonoBehaviour
 
     float attackRange = 1.75f;
     public float Health { get; set; }
+    public float MaxHealth { get; private set; }
     public float AttackDamage { get; set; }
     public float AttackSpeed { get; set; }
     public float SkillPower { get; set; }
@@ -68,6 +69,10 @@ public class Hero : MonoBehaviour
         MouseSelect = GameManager.Instance.GetComponent<MouseSelect>();
 
         HeroPlace = transform.parent.GetComponent<HeroPlace>();
+
+        MaxHealth = 100 * BasicHealth;
+        Health = MaxHealth;
+        AttackDamage = 5 * BasicAttackDamage;
         
         //HeroState = HeroState.Idle;
     }
@@ -86,7 +91,7 @@ public class Hero : MonoBehaviour
         }
         if (HeroState == HeroState.Fight) {
             if (!isAttackCooldown)
-                photonView.RPC("RPC_Attack", PhotonTargets.All);
+                photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
 
         }
         /* if (HeroState==HeroState.Idle)
@@ -110,8 +115,12 @@ public class Hero : MonoBehaviour
             //  targetEnemy = testHero;
 
             animator.SetTrigger("Attack");
+            
+
             //  photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+            Debug.Log("Finish");
 
         /*   if (Input.GetKeyDown(KeyCode.L))
            {
@@ -125,7 +134,8 @@ public class Hero : MonoBehaviour
            }*/
 
     }
-    void followEnemy() {
+    
+        void followEnemy() {
         float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
 
         // Debug.Log("Distance " + dis + " AttackRange " + attackRange);
@@ -147,10 +157,23 @@ public class Hero : MonoBehaviour
         }
     }
     [PunRPC]
-    public void RPC_Attack()
+    public void RPC_AttackAnimation()
     {        
         animator.SetTrigger("Attack");
         //transform.LookAt(targetEnemy.transform);
+    }
+    
+    void attackTarget() {
+        Debug.Log(1313132);
+        targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
+    }
+    [PunRPC]
+    void RPC_TargetTakeDamage(float damage) {
+        syncAdjustHp(damage);
+    }
+    void syncAdjustHp(float damage) {
+        Health -= damage;
+        hpBar.fillAmount = Health / MaxHealth;
     }
     //called by OathfindingManager when request a path
     #region pathFinding Method
