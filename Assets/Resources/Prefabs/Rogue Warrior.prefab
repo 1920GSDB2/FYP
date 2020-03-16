@@ -66,6 +66,9 @@ MonoBehaviour:
   BasicPhysicalDefense: 0
   BasicMagicDefense: 0
   animator: {fileID: 95533343260038528}
+  HeroBar: {fileID: 5199439086908400112}
+  hpBar: {fileID: 0}
+  mpBar: {fileID: 0}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
 --- !u!65 &-6970540809840325581
@@ -217,6 +220,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroHpbar
       objectReference: {fileID: 0}
+    - target: {fileID: 5199439087991323091, guid: 44de83aff51977a479f23105dc7f114e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -324,6 +332,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44de83aff51977a479f23105dc7f114e, type: 3}
+--- !u!1 &5199439086908400112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5199439087991323091, guid: 44de83aff51977a479f23105dc7f114e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1098127395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5199439086908400113 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,

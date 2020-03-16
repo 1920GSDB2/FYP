@@ -66,4 +66,8 @@ MonoBehaviour:
   - RPC_test
   - RPC_FollowStep
   - RPC_Attack
+  - showHpBar
+  - RPC_ShowHpBar
+  - RPC_ChangeHeroStatus
+  - RPC_StopWalk
   DisableAutoOpenWizard: 1

@@ -66,6 +66,9 @@ MonoBehaviour:
   BasicPhysicalDefense: 4
   BasicMagicDefense: 4
   animator: {fileID: 6067690246874877847}
+  HeroBar: {fileID: 1780288177}
+  hpBar: {fileID: 0}
+  mpBar: {fileID: 0}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
 --- !u!65 &5162250091634261234
@@ -1313,6 +1316,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroHpbar
       objectReference: {fileID: 0}
+    - target: {fileID: 5199439087991323091, guid: 44de83aff51977a479f23105dc7f114e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1418,18 +1426,14 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5199439086023746519, guid: 44de83aff51977a479f23105dc7f114e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199439086023746519, guid: 44de83aff51977a479f23105dc7f114e,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44de83aff51977a479f23105dc7f114e, type: 3}
+--- !u!1 &1780288177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5199439087991323091, guid: 44de83aff51977a479f23105dc7f114e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5199439086214837090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1780288176 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,

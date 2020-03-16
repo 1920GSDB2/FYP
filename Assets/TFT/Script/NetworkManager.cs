@@ -191,6 +191,9 @@ namespace TFT
             }
             return null;
         }
+        public GameObject getCamera(int id) {
+            return PlayerArenas[id].GetComponent<PlayerArena>().Camera;
+        }
         #region Set Player Opponent
         /// <summary>
         /// Match Player Opponent, Called by Master Client
@@ -305,6 +308,7 @@ namespace TFT
         public void RPC_SyncPlayerPosition(int SyncPlayerId,int SyncPosId) {
             PlayerHeroes[SyncPlayerId].posId = SyncPosId;
         }
+
         #endregion
 
         /// <summary>
@@ -547,21 +551,26 @@ namespace TFT
                     //Hero heroObject = GameManager.Instance.SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>(); 
                     opponent.hero.Add(heroObject);
                     heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, PlayerHeroes[player1Id].posId, networkHero.position);
+                    
+
+
 
                 }
-                StartCoroutine(startBattle());
+                StartCoroutine(startBattle(PlayerHeroes[player1Id].posId));
+                
             }
 
         }
         #endregion
-        IEnumerator startBattle() {
+        IEnumerator startBattle(int posId) {
             yield return new WaitForSeconds(2);
             Debug.Log("Hero battle");
             foreach (Hero hero in selfGameBoardHero)
-                hero.readyForBattle();
+                hero.readyForBattle(false,posId);
+
 
             foreach (Hero hero in opponent.hero)
-                hero.readyForBattle(true);
+                hero.readyForBattle(true, posId);
         }
     }
 }
