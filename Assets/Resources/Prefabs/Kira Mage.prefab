@@ -403,9 +403,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2245907555923677329}
-  m_LocalRotation: {x: 0.0000000032917422, y: -0.000000006787646, z: -0.07879011,
-    w: 0.99689126}
-  m_LocalPosition: {x: -0.024545593, y: -0.0018779957, z: -0.000000004660869}
+  m_LocalRotation: {x: 0.000000014901161, y: -0, z: -0.0787901, w: 0.99689126}
+  m_LocalPosition: {x: -0.024545606, y: -0.0018779952, z: -0.000000005499937}
   m_LocalScale: {x: 1.0000001, y: 1, z: 0.99999994}
   m_Children:
   - {fileID: 2245907555923987439}
@@ -557,9 +556,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2245907555923683119}
-  m_LocalRotation: {x: -0.0000000012643155, y: -0.0000000249398, z: 0.0025766732,
-    w: 0.9999967}
-  m_LocalPosition: {x: -0.08930115, y: 0, z: 9.094947e-15}
+  m_LocalRotation: {x: -0.000000014901159, y: -0.000000029802319, z: 0.0025766639,
+    w: 0.99999666}
+  m_LocalPosition: {x: -0.08930115, y: -0.0000000058665974, z: -0.0000000029332998}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 2245907555923920803}
@@ -934,6 +933,7 @@ GameObject:
   - component: {fileID: 3781009245937362577}
   - component: {fileID: 3950419788356003188}
   - component: {fileID: -7744073463604170942}
+  - component: {fileID: 1815434953}
   m_Layer: 8
   m_Name: Kira Mage
   m_TagString: Untagged
@@ -948,7 +948,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3781009245937362578}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1043,17 +1043,50 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 0
+  synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 1815434953}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &1815434953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3781009245937362578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 0
+    Name: Speed
+  - Type: 4
+    SynchronizeType: 0
+    Name: isAttacking
+  - Type: 9
+    SynchronizeType: 0
+    Name: isDead
+  - Type: 9
+    SynchronizeType: 1
+    Name: Attack
+  - Type: 4
+    SynchronizeType: 1
+    Name: Walk
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1001 &2081068453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1175,6 +1208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5199439085999198283, guid: 44de83aff51977a479f23105dc7f114e,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44de83aff51977a479f23105dc7f114e, type: 3}

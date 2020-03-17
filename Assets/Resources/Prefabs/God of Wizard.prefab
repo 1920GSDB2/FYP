@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 6576506948909579284}
   - component: {fileID: 6576506948909579285}
   - component: {fileID: 6576506948909579286}
+  - component: {fileID: 951758110}
   m_Layer: 8
   m_Name: God of Wizard
   m_TagString: Untagged
@@ -356,7 +357,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195672865090304797}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
@@ -451,17 +452,50 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 0
+  synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 951758110}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &951758110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195672865090304797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 0
+    Name: Speed
+  - Type: 4
+    SynchronizeType: 0
+    Name: isAttacking
+  - Type: 9
+    SynchronizeType: 0
+    Name: isDead
+  - Type: 9
+    SynchronizeType: 1
+    Name: Attack
+  - Type: 4
+    SynchronizeType: 1
+    Name: Walk
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &195672865104347878
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195672865631620274}
   m_LocalRotation: {x: 0.000000014901161, y: -0, z: -0.0787901, w: 0.99689126}
-  m_LocalPosition: {x: -0.024545606, y: -0.0018779966, z: -0.0000000058665988}
+  m_LocalPosition: {x: -0.024545606, y: -0.0018779952, z: -0.000000005499937}
   m_LocalScale: {x: 1.0000001, y: 1, z: 0.99999994}
   m_Children:
   - {fileID: 195672866180704669}
@@ -902,7 +936,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
@@ -1197,9 +1231,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195672866501328347}
-  m_LocalRotation: {x: -0.000000029802322, y: -0.000000029802322, z: 0.0025767237,
-    w: 0.9999967}
-  m_LocalPosition: {x: -0.08930115, y: -0.0000000058665974, z: 0}
+  m_LocalRotation: {x: -0.000000014901159, y: -0.000000029802319, z: 0.0025766639,
+    w: 0.99999666}
+  m_LocalPosition: {x: -0.08930115, y: -0.0000000058665974, z: -0.0000000029332998}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 195672864576672604}

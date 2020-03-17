@@ -56,6 +56,9 @@ public class Hero : MonoBehaviour
         if (animator == null)
             animator = GetComponent<Animator>();
         photonView = GetComponent<PhotonView>();
+       // PhotonNetwork.sendRate = 30;
+      //  PhotonNetwork.sendRateOnSerialize = 30;
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -91,7 +94,8 @@ public class Hero : MonoBehaviour
         }
         if (HeroState == HeroState.Fight) {
             if (!isAttackCooldown)
-                photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
+                 photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
+                animator.SetTrigger("Attack");
 
         }
         /* if (HeroState==HeroState.Idle)
@@ -114,24 +118,24 @@ public class Hero : MonoBehaviour
         {
             //  targetEnemy = testHero;
 
-            animator.SetTrigger("Attack");
+            animator.SetBool("Attack",true);
             
 
             //  photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-            Debug.Log("Finish");
+      
 
-        /*   if (Input.GetKeyDown(KeyCode.L))
+           if (Input.GetKeyDown(KeyCode.O))
            {
-               targetEnemy = testHero;
-               if (targetEnemy != null)
-               {
-                   PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
+            /*  targetEnemy = testHero;
+              if (targetEnemy != null)
+              {
+                  PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
 
-                   // targetEnemy = null;
-               }
-           }*/
+                  // targetEnemy = null;
+              }*/
+            Debug.Log(animator.GetBool("Attack"));
+           }
 
     }
     
@@ -150,6 +154,7 @@ public class Hero : MonoBehaviour
             if (HeroState != HeroState.Fight)
             {
                 HeroState = HeroState.Fight;
+               // animator.SetBool("Walk", false);
                 photonView.RPC("RPC_StopWalk", PhotonTargets.All);
                 
             }
@@ -164,16 +169,35 @@ public class Hero : MonoBehaviour
     }
     
     void attackTarget() {
-        Debug.Log(1313132);
-        targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
+  
+            //Debug.Log(targetEnemy.name + " Take Damage");
+           if(targetEnemy!=null)
+            targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
+        Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
+        if (targetEnemy.Health <= 0)
+        {
+            targetEnemy = null;
+            HeroState = HeroState.Idle;
+            Debug.Log("Kill");
+        }
     }
     [PunRPC]
     void RPC_TargetTakeDamage(float damage) {
         syncAdjustHp(damage);
     }
     void syncAdjustHp(float damage) {
+      //  Debug.Log(name+" HP "+Health+" damage "+damage);
         Health -= damage;
+        if (Health <= 0)
+        {
+            die();
+        }
         hpBar.fillAmount = Health / MaxHealth;
+        
+    }
+    void die() {
+        this.gameObject.SetActive(false);
+        HeroPlace.leavePlace();
     }
     //called by OathfindingManager when request a path
     #region pathFinding Method
@@ -238,17 +262,15 @@ public class Hero : MonoBehaviour
         photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
         Debug.Log("State " + HeroState + " Enemy " + isEnemy);
     }
-    /* void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+   /*  void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
      {
          if (stream.isWriting)
          {
-             stream.SendNext(transform.position);
-             stream.SendNext(transform.rotation);
+            stream.SendNext(animator.GetBool("Attack"));
          }
          else
          {
-             transform.position = (Vector3)stream.ReceiveNext();
-             transform.rotation = (Quaternion)stream.ReceiveNext();
+            animator.SetBool("Attack", (bool)stream.ReceiveNext());
          }
      }*/
     private void OnMouseEnter()
@@ -343,7 +365,7 @@ public class Hero : MonoBehaviour
     //Hero will just move to the next step
     IEnumerator FollowStep(Node step)
     {
-        Debug.Log("FollowStep");
+        //Debug.Log("FollowStep");
         GetComponent<PhotonView>().RPC("RPC_FollowStep", PhotonTargets.Others, step.heroPlace.PlaceId, step.heroPlace.gridY);
         MoveToThePlace(step.heroPlace);
         transform.LookAt(step.heroPlace.transform);
