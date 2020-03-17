@@ -576,7 +576,7 @@ namespace TFT
         }
         
         void RPC_Test() {
-            Hero newHero = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Executioner"), Vector3.zero, Quaternion.identity, 0)).GetComponent<Hero>();
+            Hero newHero = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "God of Wizard"), Vector3.zero, Quaternion.identity, 0)).GetComponentInChildren<Hero>();
             // newHero.photonView.RPC("RPC_AddToHeroList", PhotonTargets.All,0,1);
             newHero.name = "Executioner";
             if (TFT.GameManager.Instance.BuyHero(newHero));
