@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TFT;
 using UnityEngine;
 
 public class Node
@@ -16,7 +17,7 @@ public class Node
         get { return gCost + hCost; }
     }
 
-    public Node(int x, int y,HeroPlace heroPlace)
+    public Node(int x, int y, HeroPlace heroPlace)
     {
         gridX = x;
         gridY = y;

@@ -14,6 +14,7 @@ public enum SyncHeroMethod
 
 public enum SyncMoveHero
 {
+    Undefined,
     AddGameboard,
     RemoveGameboard,
     MoveHero
