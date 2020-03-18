@@ -8,6 +8,7 @@ namespace TFT
     public class Shop : MonoBehaviour
     {
         private Main.GameManager GameManager;
+        GameManager TFTGameManager;
         public static Shop Instance;
 
         public Asset asset;
@@ -22,6 +23,7 @@ namespace TFT
         void Start()
         {
             GameManager = TFT.GameManager.Instance.MainGameManager;
+            TFTGameManager = TFT.GameManager.Instance;
 
             ExpPrice = GameManager.ExpPrice;
             RefreshPrice = GameManager.RefreshPrice;
@@ -54,10 +56,10 @@ namespace TFT
 
         public void BuyExp()
         {
-            if (asset.AssetValue >= ExpPrice)
+            if (asset.AssetValue >= ExpPrice && !TFTGameManager.LevelManager.IsMaxLevel)
             {
                 asset.AssetValue -= ExpPrice;
-                TFT.GameManager.Instance.PlayerLevel.BuyExp(ExpPrice);
+                TFTGameManager.LevelManager.BuyExp(ExpPrice);
             }
         }
 

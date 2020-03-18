@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TFT;
 using UnityEngine;
 
 public class PathFinding : MonoBehaviour
@@ -21,39 +22,45 @@ public class PathFinding : MonoBehaviour
       
 
     }
-    public void findPath(HeroPlace startPoint,HeroPlace endPoint,Action<List<Node>, bool> callback) {        
+    public void findPath(HeroPlace startPoint, HeroPlace endPoint, Action<List<Node>, bool> callback)
+    {
         Node startNode = gridMap.getHeroPlaceGrid(startPoint);
         Node targetNode = gridMap.getHeroPlaceGrid(endPoint);
         List<Node> openSet = new List<Node>();
         HashSet<Node> closedSet = new HashSet<Node>();
-        List<Node> path=null;
+        List<Node> path = null;
         openSet.Add(startNode);
         bool isFindPath = false;
-        
-        while (openSet.Count > 0) {
+
+        while (openSet.Count > 0)
+        {
             Node currentNode = openSet[0];
-            for (int i = 1; i < openSet.Count; i++) {
-                if (openSet[i].fCost < currentNode.fCost ||openSet[i].fCost==currentNode.fCost&& openSet[i].hCost <= currentNode.hCost) {
+            for (int i = 1; i < openSet.Count; i++)
+            {
+                if (openSet[i].fCost < currentNode.fCost || openSet[i].fCost == currentNode.fCost && openSet[i].hCost <= currentNode.hCost)
+                {
                     currentNode = openSet[i];
                 }
             }
             openSet.Remove(currentNode);
             closedSet.Add(currentNode);
             if (currentNode == targetNode)
-            {               
+            {
                 isFindPath = true;
                 break;
             }
 
-            foreach (Node neighbour in gridMap.getNeighbours(currentNode)) {
-              //  Debug.Log("Check "+(neighbour == targetNode)+" Ne "+neighbour.isWalkable+" Ta "+targetNode.isWalkable);
+            foreach (Node neighbour in gridMap.getNeighbours(currentNode))
+            {
+                //  Debug.Log("Check "+(neighbour == targetNode)+" Ne "+neighbour.isWalkable+" Ta "+targetNode.isWalkable);
                 if (!neighbour.isWalkable || closedSet.Contains(neighbour))
                 {
-                    if(!(neighbour==targetNode))
-                    continue;
+                    if (!(neighbour == targetNode))
+                        continue;
                 }
                 int neighbourDis = currentNode.gCost + GetDistance(currentNode, neighbour);
-                if (neighbourDis < neighbour.gCost || !openSet.Contains(neighbour)) {
+                if (neighbourDis < neighbour.gCost || !openSet.Contains(neighbour))
+                {
                     neighbour.gCost = neighbourDis;
                     neighbour.hCost = GetDistance(neighbour, targetNode);
                     neighbour.parent = currentNode;

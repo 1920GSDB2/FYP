@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameManager
   m_EditorClassIdentifier: 
   databaseIP: https://script.google.com/macros/s/AKfycby9xgypoTEsywirNtCpzWB-x43PUoMRQ54AAiXjIFbv4aePYQ/exec
-  MaxRoomPlayer: 2
+  MaxRoomPlayer: 1
   userData:
     id: 
     pw: 
@@ -42,3 +42,6 @@ MonoBehaviour:
   - {fileID: 3374238844570507511, guid: 116e2e24b37f2e740870a4a144c73fa3, type: 3}
   - {fileID: 7353492059728343627, guid: 7d652645723b02b4e80a1fae6cb4c7f8, type: 3}
   - {fileID: 3910431118531152814, guid: 8f40a91e1f17eb34ba542b3a0460ed98, type: 3}
+  ExpPrice: 4
+  RefreshPrice: 2
+  TFTExpCurve: 02000000040000000c0000001400000028000000480000007a000000be000000

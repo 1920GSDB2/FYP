@@ -24,6 +24,8 @@ namespace TFT
         private readonly int[] ExperienceCurve;         //Level Curve
         private readonly int MaxLevel;                  //Maximum Level
 
+        public bool IsMaxLevel { get { return Level > MaxLevel ? true : false; } }
+
         /// <summary>
         /// Constructor of initializing
         /// </summary>
@@ -61,15 +63,21 @@ namespace TFT
         /// <returns></returns>
         private bool CheckLevelUp()
         {
-            if (Level < MaxLevel)
+            if (!IsMaxLevel)
             {
-                if (Experience >= ExperienceCurve[Level--])
+                if (Experience >= ExperienceCurve[Level - 1])
                 {
+                    Debug.Log("Previous Level" + Level);
                     Level++;
+                    Debug.Log("Current Level" + Level);
+                    Debug.Log("Level UP");
                     return true;
+
                 }
             }
+            Debug.Log("Level Not UP");
             return false;
         }
+
     }
 }

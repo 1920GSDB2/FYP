@@ -16,7 +16,7 @@ namespace TFT
         public PlayerHero PlayerHero;           //Hero List for Player
         public PlayerArena SelfPlayerArena;     //Game Arena for Player
         public HeroPlace[] Place;               //I don't know
-        public LevelManager PlayerLevel;        //Player Level State
+        public LevelManager LevelManager;        //Player Level State
 
         [Header("Game Time Data")]
         public float PeriodTime;                //Whole Period Time of Game Status
@@ -84,7 +84,7 @@ namespace TFT
         void Awake()
         {
             Instance = this;
-            PlayerLevel = new LevelManager(MainGameManager.TFTExpCurve);
+            LevelManager = new LevelManager(MainGameManager.TFTExpCurve);
             #region Initialization Game Status
             GameStatus = GameStatus.Readying;
             PeriodTime = MainGameManager.readyingTime;
@@ -226,7 +226,7 @@ namespace TFT
                 moveHeroMethod = SyncMoveHero.RemoveGameboard;
             }
             //Add Hero to GameBoard
-            else if(PlayerHero.GameBoardHeroes.Count <= PlayerLevel.Level)
+            else if(PlayerHero.GameBoardHeroes.Count < LevelManager.Level)
             {
                 moveHeroMethod = SyncMoveHero.AddGameboard;
             }
@@ -273,13 +273,13 @@ namespace TFT
                         {
                             PeriodTime = MainGameManager.readyingTime;
                             GameStatus = GameStatus.Readying;
-                            PlayerLevel.RoundEnd();
+                            LevelManager.RoundEnd();
                         }
                         break;
                     case GameStatus.Comping:
                         PeriodTime = MainGameManager.readyingTime;
                         GameStatus = GameStatus.Readying;
-                        PlayerLevel.RoundEnd();
+                        LevelManager.RoundEnd();
                         break;
                 }
             }

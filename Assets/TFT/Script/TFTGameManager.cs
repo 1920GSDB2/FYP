@@ -38,7 +38,7 @@ public class TFTGameManager : MonoBehaviour
         }
     }
     public GameManager gameManager;
-    public PlayerArena[] playerArenas = new PlayerArena[6];
+    //public PlayerArena[] playerArenas = new PlayerArena[6];
     //public List<Hero> heroTypes = new List<Hero>();                           //List of total heroes
     List<Hero> gbHeros = new List<Hero>();                                      //List of gameboard's heroes
     public List<Hero> heroes = new List<Hero>();                                //List of player's Heroes
