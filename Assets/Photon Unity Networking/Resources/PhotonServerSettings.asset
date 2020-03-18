@@ -72,4 +72,6 @@ MonoBehaviour:
   - RPC_StopWalk
   - RPC_AttackAnimation
   - RPC_TargetTakeDamage
+  - RPC_SyncPlayerInformation
+  - RPC_FinishBattle
   DisableAutoOpenWizard: 1

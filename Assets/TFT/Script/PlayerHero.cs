@@ -122,6 +122,7 @@ namespace TFT
         public List<NetworkHero> GameBoardHeroes = new List<NetworkHero>();
         public HeroBuffList BuffList = new HeroBuffList();
         public int posId;
+        public PhotonPlayer player { get; private set; }
 
         /// <summary>
         /// Add hero to gameboard.
@@ -133,6 +134,14 @@ namespace TFT
             BuffList.AddHeroBuff(_addedHero);
             
             //AddHeroArray(Hero, ref GameBoardHeros);
+        }
+        public PlayerHero() { }
+        public void setPlayer(PhotonPlayer player) {
+            this.player = player;
+        }
+        public void setPersonalInformation(int posId,PhotonPlayer player) {
+            this.posId = posId;
+            this.player = player;
         }
 
         /// <summary>

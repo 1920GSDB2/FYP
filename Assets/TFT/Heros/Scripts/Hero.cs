@@ -18,6 +18,7 @@ public class Hero : MonoBehaviour
     public HeroLevel HeroLevel;
     public HeroState HeroState;
     public PhotonView photonView;
+    public int networkPlaceId;
     [Range(0, 10)]
     public int BasicHealth;
     [Range(0, 10)]
@@ -173,7 +174,7 @@ public class Hero : MonoBehaviour
             //Debug.Log(targetEnemy.name + " Take Damage");
            if(targetEnemy!=null)
             targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
-        Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
+       // Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
         if (targetEnemy.Health <= 0)
         {
             targetEnemy = null;
@@ -198,6 +199,9 @@ public class Hero : MonoBehaviour
     void die() {
         this.gameObject.SetActive(false);
         HeroPlace.leavePlace();
+        NetworkManager.Instance.battleHeroDie(isEnemy, this);
+
+
     }
     //called by OathfindingManager when request a path
     #region pathFinding Method
@@ -323,11 +327,16 @@ public class Hero : MonoBehaviour
     }
     void SetHeroPlace(HeroPlace heroPlace)
     {
-        transform.parent = heroPlace.gameObject.transform;
+        heroPlace.setHeroOnPlace(this);
+     //   HeroPlace.leavePlace();
+        // transform.parent = heroPlace.gameObject.transform;
         transform.localPosition = Vector3.zero;
         LastHeroPlace = heroPlace;
         HeroPlace = heroPlace;
+        
     }
+   
+
     #endregion
     // Hero will follow the whole path and walk to the destination
     #region follow path
