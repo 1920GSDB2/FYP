@@ -81,7 +81,7 @@ namespace TFT
                     DragHero.transform.parent = SelectPlace.transform;
                 }
 
-                camRay = Camera.main.ScreenPointToRay(Input.mousePosition); // shoot a ray at the obj from mouse screen point
+                camRay = GameManager.MainCamera.ScreenPointToRay(Input.mousePosition); // shoot a ray at the obj from mouse screen point
 
                 // finde the collision on movePlane
                 if (movePlane.Raycast(camRay, out hitDist))
@@ -89,9 +89,9 @@ namespace TFT
                     point = camRay.GetPoint(hitDist);                                       // define the point on movePlane
                     t = -(fixedDistance - camRay.origin.y) / (camRay.origin.y - point.y);   // the x,y or z plane you want to be fixed to
                     
-                    Debug.Log("MousePos: " + Input.mousePosition);
-                    Debug.Log("Point: " + point);
-                    Debug.Log("camRay: " + camRay);
+                    //Debug.Log("MousePos: " + Input.mousePosition);
+                    //Debug.Log("Point: " + point);
+                    //Debug.Log("camRay: " + camRay);
 
                     #region calculate the new point t futher along the ray
                     corPoint.x = camRay.origin.x + (point.x - camRay.origin.x) * t;
@@ -102,10 +102,10 @@ namespace TFT
                     DragHero.HeroPlace = SelectPlace;
                     DragHero.transform.position = corPoint;
 
-                    DragHero.transform.localPosition.Set(DragHero.transform.localPosition.x, 1, DragHero.transform.localPosition.z);
-                    Debug.Log("Hero Position: " + DragHero.transform.position);
-                    Debug.Log("Hero Local Position: " + DragHero.transform.localPosition);
-                    Debug.Log("Hero Local Scale: " + DragHero.transform.localScale);
+                    //DragHero.transform.localPosition.Set(DragHero.transform.localPosition.x, 1, DragHero.transform.localPosition.z);
+                    //Debug.Log("Hero Position: " + DragHero.transform.position);
+                    //Debug.Log("Hero Local Position: " + DragHero.transform.localPosition);
+                    //Debug.Log("Hero Local Scale: " + DragHero.transform.localScale);
                 }
             }
         }

@@ -309,6 +309,8 @@ namespace TFT
                     Debug.Log("playerid" + playerId + " POs "+posId+" setPOs "+ PlayerHeroes[playerId].posId);
                     //Cameras[posId].enabled = true;
                     GameManager.Instance.SelfPlayerArena.Camera.SetActive(true);
+                    GameManager.Instance.MainCamera = GameManager.Instance.SelfPlayerArena.Camera.GetComponent<Camera>();
+
                     PhotonView.RPC("RPC_SyncPlayerInformation",PhotonTargets.All,playerId,posId,PhotonNetwork.player);
                   
                     Debug.Log("Camera " + posId + " Open");

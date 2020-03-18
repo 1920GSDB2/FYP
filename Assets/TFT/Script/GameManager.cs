@@ -11,6 +11,7 @@ namespace TFT
         [Header("Game Manager")]
         public Main.GameManager MainGameManager;
         public static GameManager Instance;
+        public Camera MainCamera;
         
         [Header("Player Personal Data")]
         public PlayerHero PlayerHero;           //Hero List for Player
