@@ -11,11 +11,12 @@ namespace TFT
         [Header("Game Manager")]
         public Main.GameManager MainGameManager;
         public static GameManager Instance;
-
+        
         [Header("Player Personal Data")]
         public PlayerHero PlayerHero;           //Hero List for Player
         public PlayerArena SelfPlayerArena;     //Game Arena for Player
         public HeroPlace[] Place;               //I don't know
+        public LevelManager PlayerLevel;        //Player Level State
 
         [Header("Game Time Data")]
         public float PeriodTime;                //Whole Period Time of Game Status
@@ -83,7 +84,7 @@ namespace TFT
         void Awake()
         {
             Instance = this;
-
+            PlayerLevel = new LevelManager(MainGameManager.TFTExpCurve);
             #region Initialization Game Status
             GameStatus = GameStatus.Readying;
             PeriodTime = MainGameManager.readyingTime;
@@ -211,7 +212,7 @@ namespace TFT
         public void ChangeHeroPos(ref Hero _hero)
         {
             //Debug.Log("Last Position: [" + _hero.LastHeroPlace.PlaceId + "], current position [" + _hero.HeroPlace.PlaceId + "].");
-            SyncMoveHero moveHeroMethod;
+            SyncMoveHero moveHeroMethod = SyncMoveHero.Undefined;
 
             #region Check Hero Moving Type
             //Move Hero in Same Hero Place Type
@@ -225,14 +226,15 @@ namespace TFT
                 moveHeroMethod = SyncMoveHero.RemoveGameboard;
             }
             //Add Hero to GameBoard
-            else
+            else if(PlayerHero.GameBoardHeroes.Count <= PlayerLevel.Level)
             {
                 moveHeroMethod = SyncMoveHero.AddGameboard;
             }
             #endregion
 
             //Sync to all players
-            NetworkManager.Instance.SyncPlayerHeroPlace(_hero, moveHeroMethod);
+            if (moveHeroMethod != SyncMoveHero.Undefined)
+                NetworkManager.Instance.SyncPlayerHeroPlace(_hero, moveHeroMethod);
         }
 
         /// <summary>
@@ -271,11 +273,13 @@ namespace TFT
                         {
                             PeriodTime = MainGameManager.readyingTime;
                             GameStatus = GameStatus.Readying;
+                            PlayerLevel.RoundEnd();
                         }
                         break;
                     case GameStatus.Comping:
                         PeriodTime = MainGameManager.readyingTime;
                         GameStatus = GameStatus.Readying;
+                        PlayerLevel.RoundEnd();
                         break;
                 }
             }

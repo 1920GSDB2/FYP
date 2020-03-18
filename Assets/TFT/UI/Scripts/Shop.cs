@@ -7,22 +7,24 @@ namespace TFT
 {
     public class Shop : MonoBehaviour
     {
+        private Main.GameManager GameManager;
+        public static Shop Instance;
+
         public Asset asset;
         public HeroUI[] heroUis = new HeroUI[5];
-        Main.GameManager GameManager;
-        //TFTGameManager gameManager;
+        private int ExpPrice, RefreshPrice;
 
-        // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
-            //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TFTGameManager>();
-            GameManager = TFT.GameManager.Instance.MainGameManager;
+            Instance = this;
         }
 
-        // Update is called once per frame
-        void Update()
+        void Start()
         {
+            GameManager = TFT.GameManager.Instance.MainGameManager;
 
+            ExpPrice = GameManager.ExpPrice;
+            RefreshPrice = GameManager.RefreshPrice;
         }
 
         public void RefreshShop()
@@ -43,19 +45,19 @@ namespace TFT
 
         public void BuyRefresh()
         {
-            if (asset.AssetValue >= 2)
+            if (asset.AssetValue >= RefreshPrice)
             {
-                asset.AssetValue -= 2;
+                asset.AssetValue -= RefreshPrice;
                 RefreshShop();
             }
         }
 
         public void BuyExp()
         {
-            if (asset.AssetValue >= 4)
+            if (asset.AssetValue >= ExpPrice)
             {
-                asset.AssetValue -= 4;
-                //BuyExp
+                asset.AssetValue -= ExpPrice;
+                TFT.GameManager.Instance.PlayerLevel.BuyExp(ExpPrice);
             }
         }
 

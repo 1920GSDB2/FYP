@@ -11,10 +11,17 @@ namespace Main
         public string databaseIP = "";
         public byte MaxRoomPlayer;
         public UserData userData;
+
         public string lobbyScene;
+
         public float readyingTime, playingTime, compingTime, transitionTime;        //Sync to photon
-        public List<Hero> heroTypes = new List<Hero>();         //List of total heroes
-        //public static GameManager Instance;
+        public List<Hero> heroTypes = new List<Hero>();                             //List of total heroes
+
+        public int ExpPrice = 4;
+        public int RefreshPrice = 2;
+        
+        public int[] TFTExpCurve;
+
 
         void OnEnable()
         {
