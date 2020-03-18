@@ -9,9 +9,9 @@ namespace TFT
     {
         GameManager GameManager;
 
-        //[HideInInspector]
+        [HideInInspector]
         public Hero SelectedHero, DragHero;     //Drag Hero is the hero of dragging
-        //[HideInInspector]
+        [HideInInspector]
         public HeroPlace SelectPlace;
         bool isDrag;
         //public TFTGameManager gameManager { get; private set; }
@@ -50,13 +50,17 @@ namespace TFT
             //Put down Hero
             if (Input.GetMouseButtonUp(0) && DragHero != null )
             {
-                if (SelectPlace.PlaceType == PlaceType.OnBoard && GameManager.PlayerHero.GameBoardHeroes.Count >= GameManager.LevelManager.Level)
+                isDrag = !isDrag;
+                if (
+                    SelectPlace != null &&
+                    !(
+                        SelectPlace.PlaceType == PlaceType.OnBoard &&
+                        GameManager.PlayerHero.GameBoardHeroes.Count >= GameManager.LevelManager.Level &&
+                        DragHero.LastHeroPlace.PlaceType == PlaceType.NonBoard
+                        )
+                    )
                 {
-                    ;
-                }
-                else
-                {
-                    isDrag = !isDrag;
+
                     if (!isDrag)
                     {
                         //DragHero.ChangeStatus();
@@ -69,6 +73,10 @@ namespace TFT
                         SelectPlace = null;
 
                     }
+                }
+                else
+                {
+                    isDrag = true;
                 }
                 
 
@@ -88,10 +96,6 @@ namespace TFT
                 {
                     point = camRay.GetPoint(hitDist);                                       // define the point on movePlane
                     t = -(fixedDistance - camRay.origin.y) / (camRay.origin.y - point.y);   // the x,y or z plane you want to be fixed to
-                    
-                    //Debug.Log("MousePos: " + Input.mousePosition);
-                    //Debug.Log("Point: " + point);
-                    //Debug.Log("camRay: " + camRay);
 
                     #region calculate the new point t futher along the ray
                     corPoint.x = camRay.origin.x + (point.x - camRay.origin.x) * t;
@@ -101,11 +105,6 @@ namespace TFT
 
                     DragHero.HeroPlace = SelectPlace;
                     DragHero.transform.position = corPoint;
-
-                    //DragHero.transform.localPosition.Set(DragHero.transform.localPosition.x, 1, DragHero.transform.localPosition.z);
-                    //Debug.Log("Hero Position: " + DragHero.transform.position);
-                    //Debug.Log("Hero Local Position: " + DragHero.transform.localPosition);
-                    //Debug.Log("Hero Local Scale: " + DragHero.transform.localScale);
                 }
             }
         }

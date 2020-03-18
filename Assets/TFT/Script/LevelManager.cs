@@ -43,7 +43,6 @@ namespace TFT
         {
             Experience += 2;
             CheckLevelUp();
-            Shop.Instance.RefreshShop();
         }
 
         /// <summary>
@@ -56,7 +55,6 @@ namespace TFT
             CheckLevelUp();
         }
 
-
         /// <summary>
         /// Check the level can be up
         /// </summary>
@@ -67,15 +65,10 @@ namespace TFT
             {
                 if (Experience >= ExperienceCurve[Level - 1])
                 {
-                    Debug.Log("Previous Level" + Level);
                     Level++;
-                    Debug.Log("Current Level" + Level);
-                    Debug.Log("Level UP");
                     return true;
-
                 }
             }
-            Debug.Log("Level Not UP");
             return false;
         }
 

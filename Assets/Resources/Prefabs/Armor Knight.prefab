@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6748622600539649098}
   - component: {fileID: 2887560697528426916}
   - component: {fileID: -6183352565265573107}
+  - component: {fileID: -2476664219228979196}
   m_Layer: 8
   m_Name: Armor Knight
   m_TagString: Untagged
@@ -57,13 +58,18 @@ MonoBehaviour:
   HeroRaces: 03000000
   HeroLevel: 0
   HeroState: 0
+  photonView: {fileID: 0}
+  networkPlaceId: 0
   BasicHealth: 6
   BasicAttackDamage: 6
   BasicAttackSpeed: 4
   BasicSkillPower: 6
   BasicPhysicalDefense: 5
   BasicMagicDefense: 5
-  animator: {fileID: 0}
+  animator: {fileID: -2476664219228979196}
+  HeroBar: {fileID: 0}
+  hpBar: {fileID: 0}
+  mpBar: {fileID: 0}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
 --- !u!65 &-6748622600539649098
@@ -184,6 +190,25 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &-2476664219228979196
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368161567066149852}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3888342007968916995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -191,16 +216,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2368161567066149854}
     m_Modifications:
-    - target: {fileID: 4255537084011210875, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
-        type: 3}
-      propertyPath: m_Name
-      value: paladin
-      objectReference: {fileID: 0}
-    - target: {fileID: 4255537084011210875, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 4255537084011050075, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -255,6 +270,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255537084011210875, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
+        type: 3}
+      propertyPath: m_Name
+      value: paladin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255537084011210875, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4255537084011210791, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
         type: 3}

@@ -11,7 +11,7 @@ public class Hero : MonoBehaviour
     public bool isEnemy;
     public HeroPlace HeroPlace, LastHeroPlace;         //Current HeroPlace Position of Hero
     public MouseSelect MouseSelect;
-    public HeroStatus HeroStatus;
+    public HeroStatus HeroStatus = HeroStatus.Standby;
     public Rarity Rarity;
     public HeroClass[] HeroClasses;
     public HeroRace[] HeroRaces;

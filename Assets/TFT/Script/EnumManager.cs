@@ -1,4 +1,9 @@
-﻿public enum GameStatus
+﻿public enum OpponentType
+{
+    Player,
+    Monster
+}
+public enum GameStatus
 {
     Readying,
     Playing,

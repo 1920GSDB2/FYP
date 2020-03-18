@@ -8,16 +8,19 @@ namespace TFT
 {
     public class GameManager : MonoBehaviour
     {
-        [Header("Game Manager")]
-        public Main.GameManager MainGameManager;
         public static GameManager Instance;
         public Camera MainCamera;
-        
+
+        [Header("Manager")]
+        public Main.GameManager MainGameManager;
+        public LevelManager LevelManager;        //Player Level State
+        public RoundManager RoundManager;
+
+
         [Header("Player Personal Data")]
         public PlayerHero PlayerHero;           //Hero List for Player
         public PlayerArena SelfPlayerArena;     //Game Arena for Player
         public HeroPlace[] Place;               //I don't know
-        public LevelManager LevelManager;        //Player Level State
 
         [Header("Game Time Data")]
         public float PeriodTime;                //Whole Period Time of Game Status
@@ -63,7 +66,7 @@ namespace TFT
                 {
                     //Find the Hero by Using NetworkHero
                     Hero modifyHero = GetPlayerHero(gbHero);
-
+                    Debug.Log("Modify Hero Name: " + modifyHero.gameObject.name);
                     switch (value)
                     {
                         case GameStatus.Readying:
@@ -85,7 +88,10 @@ namespace TFT
         void Awake()
         {
             Instance = this;
+
             LevelManager = new LevelManager(MainGameManager.TFTExpCurve);
+            RoundManager = GetComponent<RoundManager>();
+
             #region Initialization Game Status
             GameStatus = GameStatus.Readying;
             PeriodTime = MainGameManager.readyingTime;
@@ -227,14 +233,14 @@ namespace TFT
                 moveHeroMethod = SyncMoveHero.RemoveGameboard;
             }
             //Add Hero to GameBoard
-            else if(PlayerHero.GameBoardHeroes.Count < LevelManager.Level)
+            else /*if(PlayerHero.GameBoardHeroes.Count < LevelManager.Level)*/
             {
                 moveHeroMethod = SyncMoveHero.AddGameboard;
             }
             #endregion
 
             //Sync to all players
-            if (moveHeroMethod != SyncMoveHero.Undefined)
+            //if (moveHeroMethod != SyncMoveHero.Undefined)
                 NetworkManager.Instance.SyncPlayerHeroPlace(_hero, moveHeroMethod);
         }
 
@@ -245,7 +251,7 @@ namespace TFT
         /// <returns></returns>
         public Hero GetPlayerHero(NetworkHero _networkHero)
         {
-            return SelfPlayerArena.SelfArena.GameBoard.GetChild(_networkHero.position).GetComponent<Hero>();
+            return SelfPlayerArena.SelfArena.GameBoard.GetChild(_networkHero.position).GetChild(0).GetComponent<Hero>();
         }
 
         /// <summary>
@@ -274,13 +280,13 @@ namespace TFT
                         {
                             PeriodTime = MainGameManager.readyingTime;
                             GameStatus = GameStatus.Readying;
-                            LevelManager.RoundEnd();
+                            RoundManager.RoundUp();
                         }
                         break;
                     case GameStatus.Comping:
                         PeriodTime = MainGameManager.readyingTime;
                         GameStatus = GameStatus.Readying;
-                        LevelManager.RoundEnd();
+                        RoundManager.RoundUp();
                         break;
                 }
             }

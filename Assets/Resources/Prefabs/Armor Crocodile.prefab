@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1495015044127256478}
   - component: {fileID: -2847313156275245358}
   - component: {fileID: 1923512531408452599}
+  - component: {fileID: -5496701062415170987}
   m_Layer: 8
   m_Name: Armor Crocodile
   m_TagString: Untagged
@@ -57,13 +58,18 @@ MonoBehaviour:
   HeroRaces: 06000000
   HeroLevel: 0
   HeroState: 0
+  photonView: {fileID: 0}
+  networkPlaceId: 0
   BasicHealth: 7
   BasicAttackDamage: 5
   BasicAttackSpeed: 4
   BasicSkillPower: 7
   BasicPhysicalDefense: 9
   BasicMagicDefense: 6
-  animator: {fileID: 0}
+  animator: {fileID: -5496701062415170987}
+  HeroBar: {fileID: 0}
+  hpBar: {fileID: 0}
+  mpBar: {fileID: 0}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
 --- !u!65 &1495015044127256478
@@ -184,6 +190,25 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &-5496701062415170987
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930743233098492528}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &326755541121866345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -191,41 +216,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5930743233098492542}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 9ee11524dc07df345a8fc6d0005c4090,
-        type: 3}
-      propertyPath: m_Name
-      value: Armor Crocodile
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 9ee11524dc07df345a8fc6d0005c4090,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702130179777180234, guid: 9ee11524dc07df345a8fc6d0005c4090,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -4997314297623637210, guid: 9ee11524dc07df345a8fc6d0005c4090,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 23956282153625457, guid: 9ee11524dc07df345a8fc6d0005c4090,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -9194519437863022239, guid: 9ee11524dc07df345a8fc6d0005c4090,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -9220393541610109001, guid: 9ee11524dc07df345a8fc6d0005c4090,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9ee11524dc07df345a8fc6d0005c4090,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -295,6 +285,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9ee11524dc07df345a8fc6d0005c4090,
+        type: 3}
+      propertyPath: m_Name
+      value: Armor Crocodile
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9ee11524dc07df345a8fc6d0005c4090,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -9220393541610109001, guid: 9ee11524dc07df345a8fc6d0005c4090,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 23956282153625457, guid: 9ee11524dc07df345a8fc6d0005c4090,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -9194519437863022239, guid: 9ee11524dc07df345a8fc6d0005c4090,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4997314297623637210, guid: 9ee11524dc07df345a8fc6d0005c4090,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702130179777180234, guid: 9ee11524dc07df345a8fc6d0005c4090,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6551021313732933885, guid: 9ee11524dc07df345a8fc6d0005c4090,
         type: 3}

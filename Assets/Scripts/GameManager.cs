@@ -21,6 +21,7 @@ namespace Main
         public int RefreshPrice = 2;
         
         public int[] TFTExpCurve;
+        public int[] TFTMonsterRound;
 
 
         void OnEnable()

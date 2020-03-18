@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameManager
   m_EditorClassIdentifier: 
   databaseIP: https://script.google.com/macros/s/AKfycby9xgypoTEsywirNtCpzWB-x43PUoMRQ54AAiXjIFbv4aePYQ/exec
-  MaxRoomPlayer: 2
+  MaxRoomPlayer: 1
   userData:
     id: 
     pw: 
@@ -45,3 +45,4 @@ MonoBehaviour:
   ExpPrice: 4
   RefreshPrice: 2
   TFTExpCurve: 02000000040000000c0000001400000028000000480000007a000000be000000
+  TFTMonsterRound: 
