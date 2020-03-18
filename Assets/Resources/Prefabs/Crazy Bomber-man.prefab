@@ -80,6 +80,7 @@ MonoBehaviour:
   HeroLevel: 0
   HeroState: 0
   photonView: {fileID: 0}
+  networkPlaceId: 0
   BasicHealth: 6
   BasicAttackDamage: 8
   BasicAttackSpeed: 3

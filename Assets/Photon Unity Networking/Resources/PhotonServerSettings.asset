@@ -74,4 +74,6 @@ MonoBehaviour:
   - RPC_TargetTakeDamage
   - RPC_SyncPlayerInformation
   - RPC_FinishBattle
+  - RPC_Heal
+  - RPC_ResetStatus
   DisableAutoOpenWizard: 1

@@ -298,12 +298,13 @@ namespace TFT
                     GameManager.Instance.SelfPlayerArena = PlayerArenas[i].GetComponent<PlayerArena>();
                     map.setPlayerArena(GameManager.Instance.SelfPlayerArena);
                     posId = i;
-
+                    Debug.Log("Start setup pos");
                     PlayerHeroes[playerId] = new PlayerHero
                     {
-                        posId = posId
+                        posId = posId,
+                        player=PhotonNetwork.player
                     };
-                    PlayerHeroes[playerId].setPlayer(PhotonNetwork.player);
+                  //  PlayerHeroes[playerId].setPlayer(PhotonNetwork.player);
                    // PlayerHeroes[playerId].posId = posId;
                     //PlayerHeroes[playerId].setPersonalInformation(posId, PhotonNetwork.player);
                     Debug.Log("playerid" + playerId + " POs "+posId+" setPOs "+ PlayerHeroes[playerId].posId);
@@ -320,7 +321,8 @@ namespace TFT
         }
         [PunRPC]
         public void RPC_SyncPlayerInformation(int SyncPlayerId,int SyncPosId,PhotonPlayer player) {
-            PlayerHeroes[SyncPlayerId].setPersonalInformation(SyncPlayerId,player);
+          //  Debug.Log("SYNC inofor player id " + SyncPlayerId + "  POsid " + SyncPosId);
+            PlayerHeroes[SyncPlayerId].setPersonalInformation(SyncPosId, player);
         }
 
         #endregion
@@ -579,30 +581,36 @@ namespace TFT
                 {
                     opponent.hero.Remove(hero);
                     if (opponent.hero.Count == 0)
-                        playerWinBattle(playerId);
+                       StartCoroutine(playerWinBattle(playerId));
                 }
                 else
                 {
                     battleGameBoardHero.Remove(hero);
                     if (battleGameBoardHero.Count == 0)
-                        playerWinBattle(opponent.opponentId);
+                        StartCoroutine(playerWinBattle(opponent.opponentId));
                 }
             }
         }
-        void playerWinBattle(int playerId) {
+        IEnumerator playerWinBattle(int playerId) {
+            yield return new WaitForSeconds(2);
+            Debug.Log("Finish");
             PhotonView.RPC("RPC_FinishBattle", PlayerHeroes[opponent.opponentId].player);
+            ResetHeroAfterBattle();
         }
         [PunRPC]
         void RPC_FinishBattle() {
-            Debug.Log("Finish Battle");
             PlayerArenas[PlayerHeroes[opponent.opponentId].posId].GetComponent<PlayerArena>().Camera.SetActive(false);
             GameManager.Instance.SelfPlayerArena.Camera.SetActive(true);
-            Debug.Log("Finish Battle2");
-            foreach (NetworkHero hero in PlayerHeroes[playerId].GameBoardHeroes) {
-                Debug.Log(hero.name + " Pos " +  hero.position);
-            }
-            foreach (Hero hero in selfGameBoardHero) {
-                Debug.Log(hero.name + " Pos " + hero.networkPlaceId);
+            ResetHeroAfterBattle();
+        }
+        void ResetHeroAfterBattle() {
+            Debug.Log("reset Position id: "+playerId+" Hero "+selfGameBoardHero.Count);          
+            foreach (Hero hero in selfGameBoardHero)
+            {
+                Debug.Log(hero.name);
+                hero.gameObject.SetActive(true);             
+                hero.photonView.RPC("RPC_AddToGameBoard", PhotonTargets.All, posId, hero.networkPlaceId);
+                hero.photonView.RPC("RPC_ResetStatus", PhotonTargets.All);
             }
         }
         #endregion

@@ -184,24 +184,31 @@ public class Hero : MonoBehaviour
     }
     [PunRPC]
     void RPC_TargetTakeDamage(float damage) {
-        syncAdjustHp(damage);
+        syncAdjustHp(-damage);
+    }
+    [PunRPC]
+    void RPC_Heal(float index) {
+        syncAdjustHp(index);
     }
     void syncAdjustHp(float damage) {
-      //  Debug.Log(name+" HP "+Health+" damage "+damage);
-        Health -= damage;
+        Health += damage;
         if (Health <= 0)
         {
             die();
         }
-        hpBar.fillAmount = Health / MaxHealth;
-        
+        hpBar.fillAmount = Health / MaxHealth;       
     }
     void die() {
         this.gameObject.SetActive(false);
         HeroPlace.leavePlace();
         NetworkManager.Instance.battleHeroDie(isEnemy, this);
-
-
+    }
+    [PunRPC]
+    public void RPC_ResetStatus() {
+        Debug.Log("Reset Status");
+        this.gameObject.SetActive(true);
+        photonView.RPC("RPC_Heal", PhotonTargets.All, MaxHealth);
+        HeroState = HeroState.Nothing;
     }
     //called by OathfindingManager when request a path
     #region pathFinding Method

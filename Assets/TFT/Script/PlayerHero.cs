@@ -122,7 +122,7 @@ namespace TFT
         public List<NetworkHero> GameBoardHeroes = new List<NetworkHero>();
         public HeroBuffList BuffList = new HeroBuffList();
         public int posId;
-        public PhotonPlayer player { get; private set; }
+        public PhotonPlayer player;
 
         /// <summary>
         /// Add hero to gameboard.
