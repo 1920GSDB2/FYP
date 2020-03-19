@@ -1,22 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum PlaceType
 {
-    NonBoard,
-    OnBoard
+    OnBoard,
+    NonBoard
 }
 
 namespace TFT
 {
 
-    [RequireComponent(typeof(SpriteRenderer))]
     public class HeroPlace : MonoBehaviour
     {
         public PlaceType PlaceType { get; private set; }
         public int PlaceId { get; private set; }
         SpriteRenderer spriteRenderer;
+        MeshRenderer currMat;
+        public Material defaultMat, hoverMat;
 
         public int gridX { get; private set; }
         public int gridY { get; private set; }
@@ -32,7 +34,7 @@ namespace TFT
         // Start is called before the first frame update
         void Start()
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
+           
             HeroPlaceSetting();
             //MouseSelect = TFT.GameManager.Instance.gameObject.GetComponent<MouseSelect>();
         }
@@ -41,7 +43,15 @@ namespace TFT
 
         void HeroPlaceSetting()
         {
-            if (name.Equals("Hexagon")) PlaceType = PlaceType.OnBoard;
+            if (name.Equals("Square"))
+            {
+                spriteRenderer = GetComponent<SpriteRenderer>();
+                PlaceType = PlaceType.NonBoard;
+            }
+            else
+            {
+                currMat = GetComponent<MeshRenderer>();
+            }
             PlaceId = transform.GetSiblingIndex();
         }
         #region HoverEffect
@@ -53,9 +63,16 @@ namespace TFT
 
         void OnMouseOver()
         {
-            if (!(TFT.GameManager.Instance.GameStatus == GameStatus.Playing && name.Equals("Hexagon")))
+            if (!(GameManager.Instance.GameStatus == GameStatus.Playing && name.Equals("Hexagon")))
             {
-                spriteRenderer.color = Color.black;
+                if (PlaceType == PlaceType.NonBoard)
+                {
+                    spriteRenderer.color = Color.black;
+                }
+                else
+                {
+                    currMat.material = hoverMat;
+                }
                 if (MouseSelect.Instance.DragHero != null)
                 {
                     MouseSelect.Instance.SelectPlace = this;
@@ -65,12 +82,27 @@ namespace TFT
 
         void OnMouseExit()
         {
-            spriteRenderer.color = Color.white;
+            //spriteRenderer.color = Color.white;
+            if (PlaceType == PlaceType.NonBoard)
+            {
+                spriteRenderer.color = Color.white;
+            }
+            else
+            {
+                currMat.material = defaultMat;
+            }
             MouseSelect.Instance.SelectPlace = null;
         }
         public void settColor(Color color)
         {
-            spriteRenderer.color = color;
+            try
+            {
+                spriteRenderer.color = color;
+            }
+            catch(Exception)
+            {
+
+            }
         }
         public void setHeroOnPlace(Hero hero)
         {
