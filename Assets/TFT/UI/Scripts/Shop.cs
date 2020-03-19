@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TFT
 {
@@ -15,6 +16,15 @@ namespace TFT
         public HeroUI[] heroUis = new HeroUI[5];
         private int ExpPrice, RefreshPrice;
 
+        public float delayTime = 0.1f;
+        public Button SwitchButton;
+        private bool isShowShop;
+        private Vector2 currrShopPos, nextShopPos;
+        private Vector3 currShopBtnRot, nextShopBtnRot;
+
+        RectTransform shopRect;
+        public RectTransform textRect;
+
         private void Awake()
         {
             Instance = this;
@@ -27,6 +37,23 @@ namespace TFT
 
             ExpPrice = GameManager.ExpPrice;
             RefreshPrice = GameManager.RefreshPrice;
+            RefreshShop();
+            shopRect = GetComponent<RectTransform>();
+
+            currrShopPos = shopRect.anchoredPosition;
+            nextShopPos = currrShopPos;
+            currShopBtnRot = textRect.eulerAngles;
+        }
+
+        void Update()
+        {
+            if (currrShopPos != nextShopPos)
+            {
+                shopRect.anchoredPosition = Vector2.Lerp(currrShopPos, nextShopPos, delayTime);
+                textRect.eulerAngles = Vector3.Slerp(currShopBtnRot, nextShopBtnRot, delayTime);
+                currrShopPos = shopRect.anchoredPosition;
+                currShopBtnRot = textRect.eulerAngles;
+            }
         }
 
         public void RefreshShop()
@@ -79,6 +106,22 @@ namespace TFT
                     heroUi.gameObject.SetActive(false);
                 }
             }
+        }
+
+        public void SwitchShop()
+        {
+            isShowShop = !isShowShop;
+            if (isShowShop)
+            {
+                nextShopPos.y = 0;
+                nextShopBtnRot.z = 180;
+            }
+            else
+            {
+                nextShopPos.y = -70;
+                nextShopBtnRot.z = 0;
+            }
+
         }
     }
 

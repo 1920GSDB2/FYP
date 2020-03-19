@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,6 @@ public class Asset : MonoBehaviour
             AssetText.text = value.ToString();
         }
     }
-    public Text AssetText;
+    public TextMeshProUGUI AssetText;
 
 }

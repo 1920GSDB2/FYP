@@ -286,7 +286,10 @@ public class Hero : MonoBehaviour
      }*/
     private void OnMouseEnter()
     {
-        if (HeroStatus == HeroStatus.Standby)
+        if (HeroStatus == HeroStatus.Standby && 
+            !(HeroPlace.PlaceType == PlaceType.OnBoard && 
+            GameManager.Instance.GameStatus == GameStatus.Transiting)
+            )
             MouseSelect.SelectedHero = this;
     }
 
