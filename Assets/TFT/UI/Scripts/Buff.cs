@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +9,9 @@ public class Buff : MonoBehaviour
 {
     public Image IconImg;
     public Image LevelImg;
-    public Text NameText;
-    public Text CurrentText;
-    public Text TotalText;
+    //public TextMeshProUGUI NameText;
+    public TextMeshProUGUI CurrentText;
+    public TextMeshProUGUI TotalText;
 
     public Sprite NewbieLevel;
     public Sprite BronzeLevel;
@@ -51,27 +52,27 @@ public class Buff : MonoBehaviour
             {
                 case HeroClass.Assassin:
                     IconImg.sprite = ClassIcons[0];
-                    NameText.text = "Assassin";
+                    //NameText.text = "Assassin";
                     break;
                 case HeroClass.Brawler:
                     IconImg.sprite = ClassIcons[1];
-                    NameText.text = "Brawler";
+                    //NameText.text = "Brawler";
                     break;
                 case HeroClass.Ranger:
                     IconImg.sprite = ClassIcons[2];
-                    NameText.text = "Ranger";
+                    //NameText.text = "Ranger";
                     break;
                 case HeroClass.Supporter:
                     IconImg.sprite = ClassIcons[3];
-                    NameText.text = "Supporter";
+                    //NameText.text = "Supporter";
                     break;
                 case HeroClass.Warrior:
                     IconImg.sprite = ClassIcons[4];
-                    NameText.text = "Warrior";
+                    //NameText.text = "Warrior";
                     break;
                 case HeroClass.Wizard:
                     IconImg.sprite = ClassIcons[5];
-                    NameText.text = "Wizard";
+                    //NameText.text = "Wizard";
                     break;
             }
         }
@@ -81,31 +82,31 @@ public class Buff : MonoBehaviour
             {
                 case HeroRace.Demon:
                     IconImg.sprite = RaceIcons[0];
-                    NameText.text = "Demon";
+                    //NameText.text = "Demon";
                     break;
                 case HeroRace.Divinity:
                     IconImg.sprite = RaceIcons[1];
-                    NameText.text = "Divinity";
+                    //NameText.text = "Divinity";
                     break;
                 case HeroRace.Human:
                     IconImg.sprite = RaceIcons[2];
-                    NameText.text = "Human";
+                    //NameText.text = "Human";
                     break;
                 case HeroRace.Rebel:
                     IconImg.sprite = RaceIcons[3];
-                    NameText.text = "Rebel";
+                    //NameText.text = "Rebel";
                     break;
                 case HeroRace.Spirit:
                     IconImg.sprite = RaceIcons[4];
-                    NameText.text = "Spirit";
+                    //NameText.text = "Spirit";
                     break;
                 case HeroRace.Wild:
                     IconImg.sprite = RaceIcons[5];
-                    NameText.text = "Wild";
+                    //NameText.text = "Wild";
                     break;
                 case HeroRace.Dwarf:
                     IconImg.sprite = RaceIcons[6];
-                    NameText.text = "Dwarf";
+                    //NameText.text = "Dwarf";
                     break;
             }
         }
