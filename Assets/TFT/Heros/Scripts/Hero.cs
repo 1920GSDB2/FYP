@@ -50,6 +50,7 @@ public class Hero : MonoBehaviour
     //TFTGameManager gameManager;
     public Hero targetEnemy;
     public Hero testHero;
+    Vector3 cameraPos;
     //  List<Node> path;
 
     private void Awake()
@@ -84,6 +85,9 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        Vector3 targetPostition = new Vector3(HeroBar.transform.position.x, cameraPos.y, HeroBar.transform.position.x);
+        HeroBar.transform.LookAt(targetPostition);
         if (HeroState == HeroState.Idle) {
             if (targetEnemy == null)
                 targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(isEnemy, transform);
@@ -432,9 +436,7 @@ public class Hero : MonoBehaviour
     [PunRPC]
     public void RPC_ShowHpBar(int posid) {
         HeroBar.SetActive(true);
-        Vector3 cameraPos = NetworkManager.Instance.getCamera(posid).transform.position;
-        Vector3 targetPostition = new Vector3(HeroBar.transform.position.x, cameraPos.y, HeroBar.transform.position.x);
-        HeroBar.transform.LookAt(targetPostition);
+        cameraPos = NetworkManager.Instance.getCamera(posid).transform.position;       
     }
     /*[PunRPC]
     public void RPC_ChangeHeroStatus(int HeroStatus) {
