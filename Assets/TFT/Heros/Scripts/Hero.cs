@@ -119,8 +119,9 @@ public class Hero : MonoBehaviour
         {
             //  targetEnemy = testHero;
 
-            animator.SetBool("Attack",true);
-            
+            //animator.SetBool("Attack",true);
+            //  gameObject.SetActive(false);
+            Debug.Log(name + " Health " + Health + " / " + MaxHealth);
 
             //  photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
@@ -192,6 +193,8 @@ public class Hero : MonoBehaviour
     }
     void syncAdjustHp(float damage) {
         Health += damage;
+        if (Health > MaxHealth)
+            Health = MaxHealth;
         if (Health <= 0)
         {
             die();

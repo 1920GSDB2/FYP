@@ -41,10 +41,8 @@ namespace TFT
             if (Input.GetKeyDown(KeyCode.L))
             {
                 // PhotonView.RPC("RPC_Test", PhotonTargets.All);
-                int testId = 0;
-                if (playerId == 0)
-                    testId = 1;
-                PhotonView.RPC("RPC_Test", PlayerHeroes[testId].player);
+               
+                PhotonView.RPC("RPC_Test", PhotonTargets.All);
                 //RPC_Test();
             }
             if (Input.GetKeyDown(KeyCode.K))
@@ -617,7 +615,7 @@ namespace TFT
         IEnumerator startBattle(int posId) {
             yield return new WaitForSeconds(2);
             Debug.Log("Hero battle");
-            battleGameBoardHero = selfGameBoardHero;
+            battleGameBoardHero = new List<Hero>(selfGameBoardHero);
             foreach (Hero hero in battleGameBoardHero)
                 hero.readyForBattle(false,posId);
 
@@ -631,7 +629,7 @@ namespace TFT
             // newHero.photonView.RPC("RPC_AddToHeroList", PhotonTargets.All,0,1);
             //  newHero.name = "Executioner";
             // if (TFT.GameManager.Instance.BuyHero(newHero));
-            Debug.Log("Reveive Message"+ playerId);
+            Debug.Log("Hero GameBoard"+ selfGameBoardHero.Count);
         }
     }
 }
