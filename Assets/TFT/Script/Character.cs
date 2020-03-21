@@ -30,14 +30,13 @@ public class Character : MonoBehaviour
     protected float attackRange = 1.75f;
 
     // Start is called before the first frame update
-    void Start()
-    {
+
       //  hpBar = HeroBar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
        // mpBar = HeroBar.transform.GetChild(0).GetChild(1).GetComponent<Image>();
-    }
+    
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         Vector3 targetPostition = new Vector3(HeroBar.transform.position.x, cameraPos.y, HeroBar.transform.position.x);
         HeroBar.transform.LookAt(targetPostition);
@@ -59,8 +58,8 @@ public class Character : MonoBehaviour
             animator.SetTrigger("Attack");
 
         }
-    }
-    void attackTarget()
+    }*/
+    public void attackTarget()
     {
 
         //Debug.Log(targetEnemy.name + " Take Damage");
@@ -73,17 +72,18 @@ public class Character : MonoBehaviour
             HeroState = HeroState.Idle;
         }
     }
+ 
     [PunRPC]
-    void RPC_TargetTakeDamage(float damage)
+    public void RPC_TargetTakeDamage(float damage)
     {
         syncAdjustHp(-damage);
     }
     [PunRPC]
-    void RPC_Heal(float index)
+    public void RPC_Heal(float index)
     {
         syncAdjustHp(index);
     }
-    void syncAdjustHp(float damage)
+    public void syncAdjustHp(float damage)
     {
         Health += damage;
         if (Health > MaxHealth)
@@ -94,9 +94,9 @@ public class Character : MonoBehaviour
         }
         hpBar.fillAmount = Health / MaxHealth;
     }
-    void die() { }
+    public virtual void die() { }
 
-    void followEnemy()
+    protected void followEnemy()
     {
         float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
 
@@ -160,11 +160,11 @@ public class Character : MonoBehaviour
         followEnemy();
     }
     [PunRPC]
-    void RPC_FollowStep(int placeId, int YPos)
+    public void RPC_FollowStep(int placeId, int YPos)
     {
         SyncFollowStep(placeId, YPos);
     }
-    void SyncFollowStep(int placeId, int YPos)
+    public void SyncFollowStep(int placeId, int YPos)
     {
         bool isEnemyPlace;
         if (YPos <= 3)
@@ -174,7 +174,7 @@ public class Character : MonoBehaviour
         HeroPlace heroPlace = NetworkManager.Instance.GetOpponentHeroPlace(placeId, isEnemyPlace);
         StartCoroutine(RPC_FollowHeroPlace(heroPlace));
     }
-    IEnumerator RPC_FollowHeroPlace(HeroPlace step)
+    public IEnumerator RPC_FollowHeroPlace(HeroPlace step)
     {
         transform.LookAt(step.transform);
         animator.SetBool("Walk", true);
@@ -208,5 +208,11 @@ public class Character : MonoBehaviour
     {
         animator.SetTrigger("Attack");
         //transform.LookAt(targetEnemy.transform);
+    }
+    public IEnumerator basicAttackCoolDown()
+    {
+        isAttackCooldown = true;
+        yield return new WaitForSeconds(1 / (AttackSpeed * 2.5f));
+        isAttackCooldown = false;
     }
 }
