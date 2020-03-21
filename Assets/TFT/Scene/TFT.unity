@@ -29203,7 +29203,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1248286672}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1846200868}
+        m_MethodName: SwitchPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1248286672
@@ -45450,6 +45461,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffList: {fileID: 1047733493}
   buff: {fileID: 4679735198529167674, guid: 470dd96e97d016249a68508a9f7ab5c7, type: 3}
+  ButtonText: {fileID: 226173201}
+  delayTime: 0.15
 --- !u!222 &1846200869
 CanvasRenderer:
   m_ObjectHideFlags: 0
