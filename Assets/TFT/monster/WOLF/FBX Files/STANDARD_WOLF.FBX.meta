@@ -1,0 +1,854 @@
+fileFormatVersion: 2
+guid: 2c2bd3d067467cd4280c1f645dda39e2
+ModelImporter:
+  serializedVersion: 25
+  internalIDToNameTable:
+  - first:
+      43: 4300000
+    second: STANDARD_WOLF
+  - first:
+      74: 7400000
+    second: Take 001 //// STANDARD_WOLF
+  - first:
+      74: 7400002
+    second: idleLookAround //// STANDARD_WOLF
+  - first:
+      74: 7400004
+    second: idleNormal //// STANDARD_WOLF
+  - first:
+      74: 7400006
+    second: howl //// STANDARD_WOLF
+  - first:
+      74: 7400008
+    second: walk //// STANDARD_WOLF
+  - first:
+      74: 7400010
+    second: run //// STANDARD_WOLF
+  - first:
+      74: 7400012
+    second: runBite //// STANDARD_WOLF
+  - first:
+      74: 7400014
+    second: standBite //// STANDARD_WOLF
+  - first:
+      74: 7400016
+    second: getHit //// STANDARD_WOLF
+  - first:
+      74: 7400018
+    second: death //// STANDARD_WOLF
+  - first:
+      74: 7400020
+    second: dead //// STANDARD_WOLF
+  - first:
+      74: 7400022
+    second: idleLookAround //// STANDARD_WOLF 1
+  - first:
+      74: 7400024
+    second: idleNormal //// STANDARD_WOLF 1
+  - first:
+      74: 7400026
+    second: howl //// STANDARD_WOLF 1
+  - first:
+      74: 7400028
+    second: walk //// STANDARD_WOLF 1
+  - first:
+      74: 7400030
+    second: run //// STANDARD_WOLF 1
+  - first:
+      74: 7400032
+    second: runBite //// STANDARD_WOLF 1
+  - first:
+      74: 7400034
+    second: standBite //// STANDARD_WOLF 1
+  - first:
+      74: 7400036
+    second: getHit //// STANDARD_WOLF 1
+  - first:
+      74: 7400038
+    second: death //// STANDARD_WOLF 1
+  - first:
+      74: 7400040
+    second: dead //// STANDARD_WOLF 1
+  - first:
+      74: 8367089041629731815
+    second: idleLookAround
+  - first:
+      74: 8283304001768263659
+    second: idleNormal
+  - first:
+      74: 4946144982554542729
+    second: howl
+  - first:
+      74: -3419257869308726280
+    second: walk
+  - first:
+      74: 6200578666267062213
+    second: run
+  - first:
+      74: 8475589240631830409
+    second: runBite
+  - first:
+      74: -2142589790326911235
+    second: standBite
+  - first:
+      74: -5345307571370069998
+    second: getHit
+  - first:
+      74: -6758483313513240000
+    second: death
+  - first:
+      74: 3308079120910726559
+    second: dead
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: STANDARD_WOLF
+    second: {fileID: 2100000, guid: 992bf6f098e1bf042bd1cd4cc427b66d, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'STANDARD_WOLF_ Pelvis' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'STANDARD_WOLF_
+      L HorseLink' is inbetween humanoid transforms and has rotation animation that
+      will be discarded.\n\t'STANDARD_WOLF_ R HorseLink' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'STANDARD_WOLF_ Neck1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'STANDARD_WOLF_
+      Neck2' is inbetween humanoid transforms and has rotation animation that will
+      be discarded.\n\t'STANDARD_WOLF_ Queue de cheval 1' has translation animation
+      that will be discarded.\n\t'STANDARD_WOLF_ L Clavicle' has translation animation
+      that will be discarded.\n\t'STANDARD_WOLF_ R Clavicle' has translation animation
+      that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths:
+    - STANDARD_WOLF_
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idleLookAround
+      takeName: 
+      internalID: 8367089041629731815
+      firstFrame: 5
+      lastFrame: 305
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: idleNormal
+      takeName: 
+      internalID: 8283304001768263659
+      firstFrame: 310
+      lastFrame: 370
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: howl
+      takeName: 
+      internalID: 4946144982554542729
+      firstFrame: 375
+      lastFrame: 460
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: walk
+      takeName: 
+      internalID: -3419257869308726280
+      firstFrame: 466
+      lastFrame: 495
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: run
+      takeName: 
+      internalID: 6200578666267062213
+      firstFrame: 506
+      lastFrame: 529
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: runBite
+      takeName: 
+      internalID: 8475589240631830409
+      firstFrame: 536
+      lastFrame: 559
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: standBite
+      takeName: 
+      internalID: -2142589790326911235
+      firstFrame: 566
+      lastFrame: 586
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: getHit
+      takeName: 
+      internalID: -5345307571370069998
+      firstFrame: 591
+      lastFrame: 613
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: death
+      takeName: 
+      internalID: -6758483313513240000
+      firstFrame: 620
+      lastFrame: 682
+      wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: dead
+      takeName: 
+      internalID: 3308079120910726559
+      firstFrame: 690
+      lastFrame: 710
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: STANDARD_WOLF_
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ L Thigh
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ R Thigh
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ L Calf
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ R Calf
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ L Foot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ R Foot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ L Clavicle
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ R Clavicle
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ L UpperArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ R UpperArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ L Forearm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ R Forearm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ L Hand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ R Hand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ L Toe0
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ R Toe0
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ Queue de cheval 1
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: STANDARD_WOLF_ Neck
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: STANDARD_WOLF(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF
+      parentName: STANDARD_WOLF(Clone)
+      position: {x: -0, y: 0.64572936, z: -0.06283665}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF_
+      parentName: STANDARD_WOLF(Clone)
+      position: {x: 0, y: 0.68346035, z: 0}
+      rotation: {x: -0.50000036, y: 0.49999967, z: 0.5000003, w: 0.4999997}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF_ Spine
+      parentName: STANDARD_WOLF_
+      position: {x: 0.00020694733, y: -8.526513e-14, z: 0.20126013}
+      rotation: {x: 0.5000007, y: -0.4999993, z: -0.5000007, w: -0.4999993}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF_ Spine1
+      parentName: STANDARD_WOLF_ Spine
+      position: {x: -0.25985727, y: -0.00027388334, z: -7.598828e-10}
+      rotation: {x: 0, y: -7.727152e-14, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF_ Neck
+      parentName: STANDARD_WOLF_ Spine1
+      position: {x: -0.3439392, y: -0.00013440847, z: -3.7266545e-10}
+      rotation: {x: 4.8771452e-14, y: -0.00000016962775, z: 0.061157953, w: 0.9981281}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF_ L Clavicle
+      parentName: STANDARD_WOLF_ Neck
+      position: {x: -0.00000011920929, y: 0.00013524294, z: 0.05941238}
+      rotation: {x: -0.68854576, y: 0.16094887, z: 0.7029846, w: -0.07624225}
+      scale: {x: 1, y: 0.9999999, z: 0.99999994}
+    - name: STANDARD_WOLF_ L UpperArm
+      parentName: STANDARD_WOLF_ L Clavicle
+      position: {x: -0.19705097, y: 0, z: 0.000000059604645}
+      rotation: {x: -0.6980708, y: 0.11795236, z: -0.117965, w: 0.69632524}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: STANDARD_WOLF_ L Forearm
+      parentName: STANDARD_WOLF_ L UpperArm
+      position: {x: -0.32166559, y: 0.000000029802322, z: 0.000000011175871}
+      rotation: {x: -0.000120729164, y: 0.000892773, z: 0.03709548, w: 0.9993113}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: STANDARD_WOLF_ L Hand
+      parentName: STANDARD_WOLF_ L Forearm
+      position: {x: -0.3599498, y: 0.000000059604645, z: 0.0000000037252903}
+      rotation: {x: 0.070410565, y: 0.028245319, z: -0.0042667063, w: 0.99710906}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: STANDARD_WOLF_ L Finger0
+      parentName: STANDARD_WOLF_ L Hand
+      position: {x: -0.14124326, y: -0.022315145, z: -0.0035811365}
+      rotation: {x: -0.00033915165, y: 0.00020857698, z: 0.5238636, w: 0.85180205}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: STANDARD_WOLF_ Neck1
+      parentName: STANDARD_WOLF_ Neck
+      position: {x: -0.1700328, y: -0.00013434887, z: -3.7243808e-10}
+      rotation: {x: 4.2946644e-14, y: -0.00000016962765, z: 0.061157953, w: 0.9981281}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF_ Neck2
+      parentName: STANDARD_WOLF_ Neck1
+      position: {x: -0.1700328, y: -0.00013434887, z: -3.7289283e-10}
+      rotation: {x: -7.4020203e-14, y: -0.00000016962764, z: 0.06115794, w: 0.9981281}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: STANDARD_WOLF_ Head
+      parentName: STANDARD_WOLF_ Neck2
+      position: {x: -0.20675087, y: 0.013788223, z: -0.000000013166641}
+      rotation: {x: -1.070056e-12, y: -0.0000014936578, z: 0.5385272, w: 0.84260815}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: STANDARD_WOLF_ Queue de cheval 1
+      parentName: STANDARD_WOLF_ Head
+      position: {x: 0.060738564, y: 0.08223057, z: -0.000000048914444}
+      rotation: {x: -1.6250314e-12, y: -0.0000024410408, z: 0.8800986, w: -0.47479102}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF_ R Clavicle
+      parentName: STANDARD_WOLF_ Neck
+      position: {x: -0.00000011920929, y: 0.00013560057, z: -0.05941238}
+      rotation: {x: 0.6885456, y: -0.16095077, z: 0.70298415, w: -0.07624418}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: STANDARD_WOLF_ R UpperArm
+      parentName: STANDARD_WOLF_ R Clavicle
+      position: {x: -0.19705097, y: 0, z: 0}
+      rotation: {x: 0.69807, y: -0.117950946, z: -0.11796585, w: 0.6963261}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: STANDARD_WOLF_ R Forearm
+      parentName: STANDARD_WOLF_ R UpperArm
+      position: {x: -0.32166553, y: 0.000000029802322, z: -0.000000022351742}
+      rotation: {x: 0.000120878176, y: -0.0008929816, z: 0.03709566, w: 0.9993114}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
+    - name: STANDARD_WOLF_ R Hand
+      parentName: STANDARD_WOLF_ R Forearm
+      position: {x: -0.3599498, y: 0.000000059604645, z: 0.000000011175871}
+      rotation: {x: -0.070410475, y: -0.028244905, z: -0.004266445, w: 0.99710906}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: STANDARD_WOLF_ R Finger0
+      parentName: STANDARD_WOLF_ R Hand
+      position: {x: -0.14124323, y: -0.022315145, z: 0.0035811365}
+      rotation: {x: 0.0003391544, y: -0.00020857963, z: 0.5238636, w: 0.85180205}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: STANDARD_WOLF_ Tail
+      parentName: STANDARD_WOLF_ Spine
+      position: {x: 0.4221847, y: -0.11573672, z: -0.00000020346533}
+      rotation: {x: 9.252655e-15, y: -0.000002705185, z: 0.9753334, w: -0.22073705}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: STANDARD_WOLF_ Tail1
+      parentName: STANDARD_WOLF_ Tail
+      position: {x: -0.17955217, y: -0.00018560886, z: -5.1522875e-10}
+      rotation: {x: -1.6237754e-13, y: -0.0000000051945324, z: 0.0018728112, w: 0.9999983}
+      scale: {x: 0.9999999, y: 0.9999999, z: 1}
+    - name: STANDARD_WOLF_ Tail2
+      parentName: STANDARD_WOLF_ Tail1
+      position: {x: -0.23310986, y: -0.00020551682, z: -5.6979843e-10}
+      rotation: {x: -1.6251455e-13, y: -0.000000005194418, z: 0.0018728259, w: 0.9999983}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF_ Tail3
+      parentName: STANDARD_WOLF_ Tail2
+      position: {x: -0.2580979, y: -0.00021588802, z: -5.984475e-10}
+      rotation: {x: 1.7857397e-13, y: -0.000000005194474, z: 0.001872811, w: 0.9999983}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF_ Tail4
+      parentName: STANDARD_WOLF_ Tail3
+      position: {x: -0.27121872, y: -0.00020349026, z: -5.6456884e-10}
+      rotation: {x: -4.9011556e-14, y: -0.000000005194361, z: 0.001872811, w: 0.9999983}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF_ Pelvis
+      parentName: STANDARD_WOLF_
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.49999967, y: 0.50000036, z: 0.49999967, w: 0.50000036}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF_ L Thigh
+      parentName: STANDARD_WOLF_ Pelvis
+      position: {x: 0.00000020861626, y: 0.00000023841858, z: 0.18457507}
+      rotation: {x: -0.09676668, y: 0.9944978, z: 0.022610575, w: 0.033155084}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: STANDARD_WOLF_ L Calf
+      parentName: STANDARD_WOLF_ L Thigh
+      position: {x: -0.4379842, y: 0, z: -0.000000014901161}
+      rotation: {x: 0.00006265774, y: 0.00027791032, z: 0.20524602, w: 0.97871035}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: STANDARD_WOLF_ L HorseLink
+      parentName: STANDARD_WOLF_ L Calf
+      position: {x: -0.24662508, y: -0.00000011920929, z: -0.000000014901161}
+      rotation: {x: -0.000000015687224, y: -0.000000012504673, z: -0.4945393, w: 0.8691553}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: STANDARD_WOLF_ L Foot
+      parentName: STANDARD_WOLF_ L HorseLink
+      position: {x: -0.1631884, y: -0.000000029802322, z: 0}
+      rotation: {x: -0.01900559, y: 0.035060644, z: -0.37101278, w: 0.9277711}
+      scale: {x: 0.99999994, y: 1, z: 0.9999999}
+    - name: STANDARD_WOLF_ L Toe0
+      parentName: STANDARD_WOLF_ L Foot
+      position: {x: -0.12598497, y: 0.11646506, z: 0}
+      rotation: {x: -0.00000001545427, y: 0.00000001545435, z: -0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: STANDARD_WOLF_ R Thigh
+      parentName: STANDARD_WOLF_ Pelvis
+      position: {x: -0.0000002682209, y: -0.00000023841858, z: -0.18457507}
+      rotation: {x: -0.096766606, y: 0.9944978, z: -0.022609813, w: -0.03315423}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: STANDARD_WOLF_ R Calf
+      parentName: STANDARD_WOLF_ R Thigh
+      position: {x: -0.43798423, y: 0.000000029802322, z: 0}
+      rotation: {x: -0.000062833766, y: -0.0002779625, z: 0.20524605, w: 0.97871035}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: STANDARD_WOLF_ R HorseLink
+      parentName: STANDARD_WOLF_ R Calf
+      position: {x: -0.24662504, y: -0.000000059604645, z: 0.000000014901161}
+      rotation: {x: 0.0000000122259936, y: 0.00000001018797, z: -0.4945393, w: 0.8691553}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: STANDARD_WOLF_ R Foot
+      parentName: STANDARD_WOLF_ R HorseLink
+      position: {x: -0.1631884, y: 0, z: 0.000000014901161}
+      rotation: {x: 0.019004425, y: -0.03505762, z: -0.371013, w: 0.9277711}
+      scale: {x: 0.99999994, y: 1, z: 0.9999999}
+    - name: STANDARD_WOLF_ R Toe0
+      parentName: STANDARD_WOLF_ R Foot
+      position: {x: -0.12598497, y: 0.11646506, z: 0}
+      rotation: {x: 0.000000015454352, y: -0.000000015454273, z: -0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

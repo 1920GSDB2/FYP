@@ -6,18 +6,18 @@ using UnityEngine.UI;
 using UnityEngine;
 
 
-public class Hero : MonoBehaviour
+public class Hero : Character
 {
-    public bool isEnemy;
-    public HeroPlace HeroPlace, LastHeroPlace;         //Current HeroPlace Position of Hero
+   // public bool isEnemy;
+   // public HeroPlace HeroPlace, LastHeroPlace;         //Current HeroPlace Position of Hero
     public MouseSelect MouseSelect;
     public HeroStatus HeroStatus = HeroStatus.Standby;
     public Rarity Rarity;
     public HeroClass[] HeroClasses;
     public HeroRace[] HeroRaces;
     public HeroLevel HeroLevel;
-    public HeroState HeroState;
-    public PhotonView photonView;
+   // public HeroState HeroState;
+   // public PhotonView photonView;
     public int networkPlaceId;
     [Range(0, 10)]
     public int BasicHealth;
@@ -32,25 +32,25 @@ public class Hero : MonoBehaviour
     [Range(0, 10)]
     public int BasicMagicDefense;
 
-    float attackRange = 1.75f;
-    public float Health { get; set; }
+    //float attackRange = 1.75f;
+    /*public float Health { get; set; }
     public float MaxHealth { get; private set; }
     public float AttackDamage { get; set; }
     public float AttackSpeed { get; set; }
     public float SkillPower { get; set; }
     public float PhysicalDefense { get; set; }
-    public float MagicDefense { get; set; }
+    public float MagicDefense { get; set; }*/
 
-    bool isAttackCooldown;
+   // bool isAttackCooldown;
     string lastTransform;
-    public Animator animator;
+    /*public Animator animator;
     public GameObject HeroBar;
     public Image hpBar;
     public Image mpBar;
     //TFTGameManager gameManager;
     public Hero targetEnemy;
     public Hero testHero;
-    Vector3 cameraPos;
+    Vector3 cameraPos;*/
     //  List<Node> path;
 
     private void Awake()
@@ -145,7 +145,7 @@ public class Hero : MonoBehaviour
 
     }
     
-        void followEnemy() {
+    void followEnemy() {
         float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
 
         // Debug.Log("Distance " + dis + " AttackRange " + attackRange);
@@ -167,12 +167,12 @@ public class Hero : MonoBehaviour
            
         }
     }
-    [PunRPC]
+   /* [PunRPC]
     public void RPC_AttackAnimation()
     {        
         animator.SetTrigger("Attack");
         //transform.LookAt(targetEnemy.transform);
-    }
+    }*/
     
     void attackTarget() {
   
@@ -219,14 +219,14 @@ public class Hero : MonoBehaviour
     }
     //called by OathfindingManager when request a path
     #region pathFinding Method
-    public void OnPathFind(List<Node> path, bool isFindPath)
+   /* public void OnPathFind(List<Node> path, bool isFindPath)
     {
         if (isFindPath)
         {
             if (path != null)
                 StartCoroutine(FollowStep(path[0]));
         }
-    }
+    }*/
     //called by OathfindingManager when request next step
     public void OnStepFind(Node step, bool isFindStep)
     {
@@ -305,14 +305,14 @@ public class Hero : MonoBehaviour
         MouseSelect.SelectedHero = null;
     }
     //a hero move to the heroplace;
-    public void MoveToThePlace(HeroPlace newHeroPlace)
+    /*public void MoveToThePlace(HeroPlace newHeroPlace)
     {
         HeroPlace.leavePlace();
         newHeroPlace.setHeroOnPlace(this);
         //SetHeroPlace(newHeroPlace);
         LastHeroPlace = HeroPlace;
         HeroPlace = newHeroPlace;
-    }
+    }*/
     #region RPC move hero
     [PunRPC]
     public void RPC_AddToGameBoard(int posId, int placeId)
@@ -433,11 +433,11 @@ public class Hero : MonoBehaviour
     }
     #endregion
 
-    [PunRPC]
+   /* [PunRPC]
     public void RPC_ShowHpBar(int posid) {
         HeroBar.SetActive(true);
         cameraPos = NetworkManager.Instance.getCamera(posid).transform.position;       
-    }
+    }*/
     /*[PunRPC]
     public void RPC_ChangeHeroStatus(int HeroStatus) {
         HeroState = (HeroState)HeroStatus;
@@ -448,10 +448,10 @@ public class Hero : MonoBehaviour
             break;
         }
     }*/
-    [PunRPC]
+    /*[PunRPC]
     public void RPC_StopWalk() {
         animator.SetBool("Walk", false);
-    }
+    }*/
     IEnumerator basicAttackCoolDown()
     {
         isAttackCooldown = true;

@@ -22,22 +22,14 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Avatar Rig Configuration mis-match. Inbetween bone rotation
-      in configuration does not match rotation in animation file:\n\t'DRAGONIDE_ L
-      HorseLink' : rotation error = 85.197136 deg\n\t'DRAGONIDE_ R HorseLink' : rotation
-      error = 98.334435 deg\n"
+    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\n\t'DRAGONIDE_ Neck1' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'DRAGONIDE_
-      L HorseLink' is inbetween humanoid transforms and has rotation animation that
-      will be discarded.\n\t'DRAGONIDE_ R HorseLink' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -384,7 +376,7 @@ ModelImporter:
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 3
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

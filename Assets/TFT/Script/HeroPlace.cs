@@ -104,7 +104,7 @@ namespace TFT
 
             }
         }
-        public void setHeroOnPlace(Hero hero)
+        public void setHeroOnPlace(Character hero)
         {
             hero.transform.parent = transform;
             isWalkable = false;
