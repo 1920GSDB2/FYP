@@ -231,17 +231,19 @@ namespace TFT
             else if (_hero.HeroPlace.gameObject.name.Equals("Square"))
             {
                 moveHeroMethod = SyncMoveHero.RemoveGameboard;
+                TeamFlag.Instance.GameboardCard.text = (PlayerHero.GameBoardHeroes.Count - 1).ToString();
             }
             //Add Hero to GameBoard
             else /*if(PlayerHero.GameBoardHeroes.Count < LevelManager.Level)*/
             {
                 moveHeroMethod = SyncMoveHero.AddGameboard;
+                TeamFlag.Instance.GameboardCard.text = (PlayerHero.GameBoardHeroes.Count + 1).ToString();
             }
             #endregion
 
             //Sync to all players
             //if (moveHeroMethod != SyncMoveHero.Undefined)
-                NetworkManager.Instance.SyncPlayerHeroPlace(_hero, moveHeroMethod);
+            NetworkManager.Instance.SyncPlayerHeroPlace(_hero, moveHeroMethod);
         }
 
         /// <summary>

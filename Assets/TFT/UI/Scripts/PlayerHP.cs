@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class PlayerHP : MonoBehaviour
 {
     private const int TOTAL_HP = 100;
     public Image imageSlider;
-    public Text hpText;
+    public TextMeshProUGUI hpText;
     [Range(0, TOTAL_HP)]
     public int hpValue = TOTAL_HP;
     public PlayerType playerType;
