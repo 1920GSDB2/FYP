@@ -26,6 +26,7 @@ namespace TFT
         }
         private void setGridPosition()
         {
+
             int child = SelfArena.GameBoard.childCount - 1;
             for (int y = GridSizeY - 1; y >= 0; y--)
             {
@@ -33,6 +34,8 @@ namespace TFT
                 {
                     if (y > 3)
                     {
+                        Debug.Log(child);
+                        Debug.Log("Place "+EnemyArena.GameBoard.GetChild(child).GetComponent<HeroPlace>().PlaceId+" x "+x+" y "+y);
                         EnemyArena.GameBoard.GetChild(child).GetComponent<HeroPlace>().setGridPosition(x, y);
                         if (child != 0)
                             child--;

@@ -178,24 +178,11 @@ public class Hero : Character
     #region RPC move hero
     [PunRPC]
     public void RPC_AddToGameBoard(int posId, int placeId)
-    {
-        /*   HeroPlace.leavePlace();
-           place.setHeroOnPlace(this);
-
-           LastHeroPlace = HeroPlace;
-           HeroPlace = place;*/
-        //Debug.Log(placeId);
+    {  
         HeroPlace heroPlace = NetworkManager.Instance.GetGameboardHeroPlace(posId, placeId);
         SetHeroPlace(heroPlace);
-        // enemyArena.GameBoard.GetChild(_heroPos).GetChild(0).parent = enemyArena.HeroList.GetChild(_newPos);
     }
-    [PunRPC]
-    public void RPC_MoveToThePlayerHeroPlace(int posId, int placeId)
-    {
-        HeroPlace heroPlace = NetworkManager.Instance.GetPlayerHeroPlace(posId, placeId);
-        SetHeroPlace(heroPlace);
-        // Debug.Log( this.name + " become enemy? " + isEnemy+" Pos "+heroPlace.gridX+" "+heroPlace.gridY);
-    }
+   
     [PunRPC]
     public void RPC_AddToHeroList(int posId, int placeId)
     {
@@ -204,15 +191,7 @@ public class Hero : Character
             transform.Rotate(new Vector3(0, 180, 0));
         SetHeroPlace(heroPlace);
     }
-    void SetHeroPlace(HeroPlace heroPlace)
-    {
-        heroPlace.setHeroOnPlace(this);
-     //   HeroPlace.leavePlace();
-        // transform.parent = heroPlace.gameObject.transform;
-        transform.localPosition = Vector3.zero;
-        LastHeroPlace = heroPlace;
-        HeroPlace = heroPlace;
-        
-    }
+    
+
     #endregion
 }

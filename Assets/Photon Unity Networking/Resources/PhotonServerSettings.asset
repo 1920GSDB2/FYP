@@ -76,4 +76,5 @@ MonoBehaviour:
   - RPC_FinishBattle
   - RPC_Heal
   - RPC_ResetStatus
+  - testC
   DisableAutoOpenWizard: 1

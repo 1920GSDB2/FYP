@@ -6370,7 +6370,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -15141,8 +15141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FightArena: {fileID: 219025307}
-  SelfArena: {fileID: 0}
-  EnemyArena: {fileID: 0}
+  SelfArena: {fileID: 1746899422}
+  EnemyArena: {fileID: 238729535}
   Camera: {fileID: 1105797194}
 --- !u!1001 &669712606
 PrefabInstance:
@@ -15691,7 +15691,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -16534,7 +16534,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -17032,7 +17032,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -17207,6 +17207,70 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 750865555}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &753610494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 753610495}
+  - component: {fileID: 753610496}
+  - component: {fileID: 753610497}
+  m_Layer: 0
+  m_Name: MonsterManager(temp)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &753610495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753610494}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.12947273, y: 0.7797779, z: -0.3265934}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &753610496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753610494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63eddfe587a8d347b26f5f00812e02d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Wave:
+  - waveNumber: 0
+    monster:
+    - name: GOBLIN
+      position: 19
+--- !u!114 &753610497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753610494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMat: {fileID: 2100000, guid: 54c9df9350a7e4a4284ffea6b96e5135, type: 2}
+  hoverMat: {fileID: 2100000, guid: 90aa09f748a2e004884ef5748f435d45, type: 2}
+  isWalkable: 1
 --- !u!1001 &753628274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18481,7 +18545,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -18635,7 +18699,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -21118,8 +21182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FightArena: {fileID: 2100120921}
-  SelfArena: {fileID: 0}
-  EnemyArena: {fileID: 0}
+  SelfArena: {fileID: 1864262540}
+  EnemyArena: {fileID: 2064615970}
   Camera: {fileID: 888107769}
 --- !u!1 &888107769
 GameObject:
@@ -21293,7 +21357,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -22710,7 +22774,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -22785,7 +22849,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -34192,7 +34256,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -34871,7 +34935,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -35507,7 +35571,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3624017819417239484, guid: 8a0ba05707546d24295bc5996d7fbfc9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0ba05707546d24295bc5996d7fbfc9, type: 3}
 --- !u!4 &1447017245 stripped
 Transform:
@@ -35790,7 +35855,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -37221,7 +37286,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -46504,7 +46569,7 @@ PrefabInstance:
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
         type: 3}
@@ -47853,7 +47918,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1892794311
 PrefabInstance:

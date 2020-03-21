@@ -209,6 +209,23 @@ public class Character : MonoBehaviour
         animator.SetTrigger("Attack");
         //transform.LookAt(targetEnemy.transform);
     }
+    [PunRPC]
+    public void RPC_MoveToThePlayerHeroPlace(int posId, int placeId)
+    {
+        HeroPlace heroPlace = NetworkManager.Instance.GetPlayerHeroPlace(posId, placeId);
+        SetHeroPlace(heroPlace);
+        // Debug.Log( this.name + " become enemy? " + isEnemy+" Pos "+heroPlace.gridX+" "+heroPlace.gridY);
+    }
+    public void SetHeroPlace(HeroPlace heroPlace)
+    {
+        heroPlace.setHeroOnPlace(this);
+        //   HeroPlace.leavePlace();
+        // transform.parent = heroPlace.gameObject.transform;
+        transform.localPosition = Vector3.zero;
+        LastHeroPlace = heroPlace;
+        HeroPlace = heroPlace;
+
+    }
     public IEnumerator basicAttackCoolDown()
     {
         isAttackCooldown = true;
