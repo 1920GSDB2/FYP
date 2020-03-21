@@ -8,14 +8,17 @@ using UnityEngine;
 
 public class Hero : Character
 {
-   // public bool isEnemy;
-   // public HeroPlace HeroPlace, LastHeroPlace;         //Current HeroPlace Position of Hero
+    // public bool isEnemy;
+    // public HeroPlace HeroPlace, LastHeroPlace;         //Current HeroPlace Position of Hero
+    public GameObject SelectingBox;
     public MouseSelect MouseSelect;
     public HeroStatus HeroStatus = HeroStatus.Standby;
     public Rarity Rarity;
     public HeroClass[] HeroClasses;
     public HeroRace[] HeroRaces;
     public HeroLevel HeroLevel;
+
+    public EquirementManager EquirementManager;
 
     public int networkPlaceId;
     [Range(0, 10)]

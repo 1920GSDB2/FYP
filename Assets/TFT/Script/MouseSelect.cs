@@ -42,6 +42,7 @@ namespace TFT
                 DragHero = SelectedHero;
                 DragHero.GetComponent<Collider>().enabled = false;
                 DragHero.LastHeroPlace = DragHero.HeroPlace;
+                DragHero.SelectingBox.SetActive(true);
 
                 startPos = DragHero.transform.position; // save position in case draged to invalid place
                 movePlane = new Plane(-Camera.main.transform.forward, DragHero.transform.position);
@@ -68,6 +69,7 @@ namespace TFT
                         GameManager.ChangeHeroPos(ref DragHero);
                         DragHero.GetComponent<Collider>().enabled = true;
                         DragHero.transform.localPosition = Vector3.zero;
+                        DragHero.SelectingBox.SetActive(false);
                         DragHero = null;
                         SelectPlace = null;
 

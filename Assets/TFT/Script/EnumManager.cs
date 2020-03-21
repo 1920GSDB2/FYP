@@ -1,4 +1,19 @@
-﻿public enum OpponentType
+﻿public enum HeroAttribute
+{
+    Attack,
+    Attack_Speed,
+    Critical_Cahnce,
+    Magic_Defense,
+    Mana,
+    Max_Health,
+    Skill_Damage,
+    Physic_Defense
+}
+public enum EquirementType
+{
+
+}
+public enum OpponentType
 {
     Player,
     Monster
