@@ -41,7 +41,7 @@ public class Buff : MonoBehaviour
     {
         LoadBuffer();
         if (TotalText != null) TotalText.text = TotalValue.ToString();
-        if (CurrentText != null) CurrentText.text = CurrentValue.ToString();
+        if (CurrentText != null) CurrentText.text = CurrentValue.ToString();    
     }
 
     void LoadBuffer()

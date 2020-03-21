@@ -66,6 +66,7 @@ namespace TFT
                 if (Experience >= ExperienceCurve[Level - 1])
                 {
                     Level++;
+                    TeamFlag.Instance.Level.text = Level.ToString();
                     return true;
                 }
             }

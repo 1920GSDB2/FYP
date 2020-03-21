@@ -21,7 +21,6 @@ namespace TFT
         float fixedDistance = 0f;
         float hitDist, t;
         Ray camRay;
-        [SerializeField]
         Vector3 startPos, point, corPoint;
 
         public static MouseSelect Instance;
