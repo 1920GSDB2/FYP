@@ -42,6 +42,7 @@ MonoBehaviour:
   - {fileID: 967753490529474786, guid: 116e2e24b37f2e740870a4a144c73fa3, type: 3}
   - {fileID: 3185575528144418977, guid: 7d652645723b02b4e80a1fae6cb4c7f8, type: 3}
   - {fileID: 6298167509573960341, guid: 8f40a91e1f17eb34ba542b3a0460ed98, type: 3}
+  BlendItemTypes: []
   ExpPrice: 4
   RefreshPrice: 2
   TFTExpCurve: 02000000040000000c0000001400000028000000480000007a000000be000000

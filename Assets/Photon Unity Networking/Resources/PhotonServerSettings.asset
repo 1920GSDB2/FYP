@@ -77,4 +77,5 @@ MonoBehaviour:
   - RPC_Heal
   - RPC_ResetStatus
   - testC
+  - MonsterBattle
   DisableAutoOpenWizard: 1

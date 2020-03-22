@@ -158,12 +158,7 @@ public class Hero : Character
         }
         lastTransform = currTransform;
     }
-    public void readyForBattle(bool isEnemy, int posId) {
-        HeroState = HeroState.Idle;
-        this.isEnemy = isEnemy;
-        photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
-        Debug.Log("State " + HeroState + " Enemy " + isEnemy);
-    }
+    
  
     private void OnMouseEnter()
     {

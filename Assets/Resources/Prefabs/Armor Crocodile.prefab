@@ -737,6 +737,7 @@ GameObject:
   - component: {fileID: 2376330296371579353}
   - component: {fileID: 3082748687415496052}
   - component: {fileID: 8085597518234950194}
+  - component: {fileID: 1828351680}
   m_Layer: 8
   m_Name: Armor Crocodile
   m_TagString: Untagged
@@ -814,12 +815,12 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 0
+  synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 1828351680}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -875,6 +876,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Equirements: []
   ItemList: {fileID: 2276139628514076304}
+--- !u!114 &1828351680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082748687415496059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 9
+    SynchronizeType: 1
+    Name: Attack
+  - Type: 4
+    SynchronizeType: 1
+    Name: Walk
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &3296872043140798332
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,15 +2988,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44de83aff51977a479f23105dc7f114e, type: 3}
---- !u!1 &1592578679760100804 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5199439087991323091, guid: 44de83aff51977a479f23105dc7f114e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6787460729503409175}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1592578679760100805 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6787460729503409175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1592578679760100804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5199439087991323091, guid: 44de83aff51977a479f23105dc7f114e,
     type: 3}
   m_PrefabInstance: {fileID: 6787460729503409175}
   m_PrefabAsset: {fileID: 0}

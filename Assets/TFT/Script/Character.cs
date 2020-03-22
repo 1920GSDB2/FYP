@@ -197,6 +197,13 @@ public class Character : MonoBehaviour
     {
         animator.SetBool("Walk", false);
     }
+    public void readyForBattle(bool isEnemy, int posId)
+    {
+        HeroState = HeroState.Idle;
+        this.isEnemy = isEnemy;
+        photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
+        Debug.Log("State " + HeroState + " Enemy " + isEnemy);
+    }
     [PunRPC]
     public void RPC_ShowHpBar(int posid)
     {

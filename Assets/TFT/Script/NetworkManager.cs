@@ -40,8 +40,8 @@ namespace TFT
             #region PhotonNetwork Debugging
             if (Input.GetKeyDown(KeyCode.L))
             {
-            //    PhotonView.RPC("RPC_Test", PhotonTargets.All);
-                  MonsterWaveManager.Instance.spawnCurrentWaveAllMonster();
+                 PhotonView.RPC("MonsterBattle", PhotonTargets.All);
+                                
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
@@ -571,7 +571,7 @@ namespace TFT
             }
 
         }
-        public void battleHeroDie(bool isEnemy,Hero hero) {
+        public void battleHeroDie(bool isEnemy,Character hero) {
             if (isHomeTeam)
             {
                 if (isEnemy)
@@ -591,6 +591,7 @@ namespace TFT
         IEnumerator playerWinBattle(int playerId) {
             yield return new WaitForSeconds(2);
             Debug.Log("Finish");
+            if(opponent.opponentId!=-1)
             PhotonView.RPC("RPC_FinishBattle", PlayerHeroes[opponent.opponentId].player);
             opponent.hero.Clear();
             ResetHeroAfterBattle();
@@ -621,23 +622,25 @@ namespace TFT
                 hero.readyForBattle(false,posId);
 
 
-            foreach (Hero hero in opponent.hero)
+            foreach (Character hero in opponent.hero)
                 hero.readyForBattle(true, posId);
         }
         #endregion
         #region monster
+        [PunRPC]
+        public void MonsterBattle() {
+            isHomeTeam = true;
+            opponent.opponentId = -1;
+            MonsterWaveManager.Instance.spawnCurrentWaveAllMonster();
+        }
         public void spawnMonster(string name,int placeId) {
             Monster monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", name), Vector3.zero, Quaternion.identity, 0)).GetComponent<Monster>();
             monster.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, NetworkManager.Instance.posId, placeId);
             opponent.hero.Add(monster);
         }
 
-        public IEnumerator BattleWithMonster() {
-            yield return new WaitForSeconds(2);
-            Debug.Log("Monster battle");
-            battleGameBoardHero = new List<Character>(selfGameBoardHero);
-            foreach (Hero hero in battleGameBoardHero)
-                hero.readyForBattle(false, posId);
+        public void BattleWithMonsters() {
+            StartCoroutine(startBattle(posId));
         }
         #endregion
         [PunRPC]

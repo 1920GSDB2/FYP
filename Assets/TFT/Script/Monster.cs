@@ -13,6 +13,8 @@ public class Monster : Character
     private void Start()
     {
 
+        MaxHealth = 200;
+        Health = MaxHealth;
         photonView = GetComponent<PhotonView>();
         hpBar = HeroBar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
         mpBar = HeroBar.transform.GetChild(0).GetChild(1).GetComponent<Image>();
@@ -60,8 +62,9 @@ public class Monster : Character
     }
     public override void die()
     {
-
-        base.die();
+        this.gameObject.SetActive(false);
+        HeroPlace.leavePlace();
+        NetworkManager.Instance.battleHeroDie(isEnemy, this);
     }
 
 
