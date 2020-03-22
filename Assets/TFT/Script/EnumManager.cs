@@ -9,9 +9,16 @@
     Skill_Damage,
     Physic_Defense
 }
-public enum EquirementType
+public enum ItemType
 {
-
+    Axe,
+    Belt,
+    Bow,
+    Cloak,
+    Shield,
+    Shoulder,
+    Staff,
+    Sword
 }
 public enum OpponentType
 {
