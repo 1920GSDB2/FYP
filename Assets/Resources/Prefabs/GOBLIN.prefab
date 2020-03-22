@@ -2389,6 +2389,7 @@ GameObject:
   - component: {fileID: 4948787981852251945}
   - component: {fileID: 8737985243135915504}
   - component: {fileID: 829765922}
+  - component: {fileID: 2079996099}
   m_Layer: 0
   m_Name: GOBLIN
   m_TagString: Untagged
@@ -2454,8 +2455,34 @@ MonoBehaviour:
   animator: {fileID: 0}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
-  HeroBar: {fileID: 0}
-  spawnHeroPlace: {fileID: 0}
+  HeroBar: {fileID: 5199439087192499516}
+--- !u!114 &2079996099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8284083081465324858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1 &8307353637587774820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2874,6 +2901,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44de83aff51977a479f23105dc7f114e, type: 3}
+--- !u!1 &5199439087192499516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5199439087991323091, guid: 44de83aff51977a479f23105dc7f114e,
+    type: 3}
+  m_PrefabInstance: {fileID: 811801839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5199439087192499517 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,

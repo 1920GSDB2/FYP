@@ -40,10 +40,8 @@ namespace TFT
             #region PhotonNetwork Debugging
             if (Input.GetKeyDown(KeyCode.L))
             {
-                // PhotonView.RPC("RPC_Test", PhotonTargets.All);
-               
-                PhotonView.RPC("RPC_Test", PhotonTargets.All);
-                //RPC_Test();
+            //    PhotonView.RPC("RPC_Test", PhotonTargets.All);
+                  MonsterWaveManager.Instance.spawnCurrentWaveAllMonster();
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
@@ -161,7 +159,7 @@ namespace TFT
         /// <param name="_placeId"></param>
         /// <param name="_isEnemy"></param>
         /// <returns></returns>
-        public HeroPlace GetPlayerHeroPlace(int _posId, int _placeId)
+        public HeroPlace GetMyGameBoardEnemyHeroPlace(int _posId, int _placeId)
         {
             if (this.posId== _posId)
                 return PlayerArenas[_posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(_placeId).GetComponent<HeroPlace>();
@@ -265,7 +263,6 @@ namespace TFT
             return data.OrderBy(x => r.Next()).ToArray();
         }
 
-        #region PunRPC
 
         #region Start Photon Method, Called by Master Client
 
@@ -545,6 +542,8 @@ namespace TFT
 
         #endregion
 
+        #region Battle
+
         [PunRPC]
         void RPC_Battle(int player1Id, int player2Id)
         {
@@ -611,7 +610,7 @@ namespace TFT
                 hero.photonView.RPC("RPC_ResetStatus", PhotonTargets.All);
             }
         }
-        #endregion
+      
         IEnumerator startBattle(int posId) {
             yield return new WaitForSeconds(2);
             Debug.Log("Hero battle");
@@ -623,13 +622,18 @@ namespace TFT
             foreach (Hero hero in opponent.hero)
                 hero.readyForBattle(true, posId);
         }
+        #endregion
+        public void spawnMonster(string name,int placeId) {
+            Monster monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", name), Vector3.zero, Quaternion.identity, 0)).GetComponent<Monster>();
+            monster.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, NetworkManager.Instance.posId, placeId);
+        }
         [PunRPC]
         void RPC_Test() {
-            // Hero newHero = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "God of Wizard"), Vector3.zero, Quaternion.identity, 0)).GetComponentInChildren<Hero>();
+             Monster monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "GOBLIN"), Vector3.zero, Quaternion.identity, 0)).GetComponentInChildren<Monster>();
             // newHero.photonView.RPC("RPC_AddToHeroList", PhotonTargets.All,0,1);
             //  newHero.name = "Executioner";
             // if (TFT.GameManager.Instance.BuyHero(newHero));
-            Debug.Log("Hero GameBoard"+ selfGameBoardHero.Count);
+           // Debug.Log("Hero GameBoard"+ selfGameBoardHero.Count);
         }
     }
 }

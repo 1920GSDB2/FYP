@@ -212,7 +212,7 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_MoveToThePlayerHeroPlace(int posId, int placeId)
     {
-        HeroPlace heroPlace = NetworkManager.Instance.GetPlayerHeroPlace(posId, placeId);
+        HeroPlace heroPlace = NetworkManager.Instance.GetMyGameBoardEnemyHeroPlace(posId, placeId);
         SetHeroPlace(heroPlace);
         // Debug.Log( this.name + " become enemy? " + isEnemy+" Pos "+heroPlace.gridX+" "+heroPlace.gridY);
     }
