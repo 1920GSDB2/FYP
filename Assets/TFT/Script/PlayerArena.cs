@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +27,8 @@ namespace TFT
         }
         private void setGridPosition()
         {
-
+            
+           // Debug.Log("Place " + EnemyArena.GameBoard.GetChild(11).GetComponent<HeroPlace>().PlaceId + " x " + 1 + " y " + 1);
             int child = SelfArena.GameBoard.childCount - 1;
             for (int y = GridSizeY - 1; y >= 0; y--)
             {
@@ -34,9 +36,13 @@ namespace TFT
                 {
                     if (y > 3)
                     {
-                        Debug.Log(child);
-                        Debug.Log("Place "+EnemyArena.GameBoard.GetChild(child).GetComponent<HeroPlace>().PlaceId+" x "+x+" y "+y);
-                        EnemyArena.GameBoard.GetChild(child).GetComponent<HeroPlace>().setGridPosition(x, y);
+                        try
+                        {      
+                            EnemyArena.GameBoard.GetChild(child).GetComponent<HeroPlace>().setGridPosition(x, y);
+                        }
+                        catch (NullReferenceException) {
+                            Debug.Log(" X " + x + " Y " + y + " child " + child);
+                        }
                         if (child != 0)
                             child--;
                     }
