@@ -29,7 +29,7 @@ public class MonsterWaveManager : MonoBehaviour
 
            
         }
-        NetworkManager.Instance.StartCoroutine(BattleWithMonster);
+       // NetworkManager.Instance.StartCoroutine(BattleWithMonster);
         currentIndex++;
     }
     
