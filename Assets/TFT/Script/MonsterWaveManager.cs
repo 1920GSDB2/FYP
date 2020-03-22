@@ -10,12 +10,26 @@ public class MonsterWaveManager : MonoBehaviour
    
     public MonsterWave[] Wave;
     int currentIndex;
+    public static MonsterWaveManager Instance;
     // Start is called before the first frame update
-
+    private void Awake()
+    {
+        Instance = this;
+    }
     public void spawnCurrentWaveAllMonster() {
+        if (currentIndex == Wave.Length)
+            return;
         for (int i = 0; i < getCurrentTotalMonsterCount(); i++) {
-            Monster monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", getMonsterName(i)), Vector3.zero, Quaternion.identity, 0)).GetComponent<Monster>();
+            
+           
+            // Debug.Log(monster.name+" "+ NetworkManager.Instance.posId+" "+ getMonsterPosition(i));
+            NetworkManager.Instance.spawnMonster(getMonsterName(i), getMonsterPosition(i));
+             
+          //  monster.GetComponent<PhotonView>().RPC("RPC_ShowHpBar", PhotonTargets.All, NetworkManager.Instance.posId);
+
+           
         }
+        currentIndex++;
     }
     
     public int getMonsterPosition(int number) {
