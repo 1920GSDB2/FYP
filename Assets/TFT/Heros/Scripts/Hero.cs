@@ -120,6 +120,7 @@ public class Hero : Character
         this.gameObject.SetActive(true);
         photonView.RPC("RPC_Heal", PhotonTargets.All, MaxHealth);
         HeroState = HeroState.Nothing;
+        isEnemy = false;
     }
 
     private void FixedUpdate()

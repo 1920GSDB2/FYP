@@ -21,8 +21,8 @@ namespace TFT
         public OpponentManager[] OpponentManagers;  //Player's Opponent Data
         public Camera[] Cameras;                    //Cameras of Focusing Game Arena (The Data are hard coded in scene)
         public GridMap map;
-        List<Hero> selfGameBoardHero=new List<Hero>();
-        List<Hero> battleGameBoardHero;
+        List<Character> selfGameBoardHero=new List<Character>();
+        List<Character> battleGameBoardHero;
         bool isHomeTeam;
         void Awake()
         {
@@ -174,19 +174,19 @@ namespace TFT
         }
         #endregion
 
-        public Hero getCloestEnemyTarget(bool isEnemy,Transform heroPos) {
+        public Character getCloestEnemyTarget(bool isEnemy,Transform heroPos) {
             if (isEnemy)
                 return calculateClosestDistance(battleGameBoardHero, heroPos);
             else
                 return calculateClosestDistance(opponent.hero, heroPos);
 
         }
-        Hero calculateClosestDistance(List<Hero> targetHeros,Transform heroPos) {
-            Hero[] hero = targetHeros.ToArray<Hero>();
+        Character calculateClosestDistance(List<Character> targetHeros,Transform heroPos) {
+            Character[] hero = targetHeros.ToArray<Character>();
            
             if (hero.Length != 0) {
                 float closestDis = Vector3.Distance(hero[0].transform.position, heroPos.position);
-                Hero closestHero = hero[0];
+                Character closestHero = hero[0];
                 for (int i = 1; i < hero.Length; i++) {
                     float dis = Vector3.Distance(hero[i].transform.position, heroPos.position);
                     if (dis < closestDis)
@@ -592,7 +592,9 @@ namespace TFT
             yield return new WaitForSeconds(2);
             Debug.Log("Finish");
             PhotonView.RPC("RPC_FinishBattle", PlayerHeroes[opponent.opponentId].player);
+            opponent.hero.Clear();
             ResetHeroAfterBattle();
+
         }
         [PunRPC]
         void RPC_FinishBattle() {
@@ -601,7 +603,7 @@ namespace TFT
             ResetHeroAfterBattle();
         }
         void ResetHeroAfterBattle() {
-            Debug.Log("reset Position id: "+playerId+" Hero "+selfGameBoardHero.Count);          
+     //       Debug.Log("reset Position id: "+playerId+" Hero "+selfGameBoardHero.Count);          
             foreach (Hero hero in selfGameBoardHero)
             {
                 Debug.Log(hero.name);
@@ -614,7 +616,7 @@ namespace TFT
         IEnumerator startBattle(int posId) {
             yield return new WaitForSeconds(2);
             Debug.Log("Hero battle");
-            battleGameBoardHero = new List<Hero>(selfGameBoardHero);
+            battleGameBoardHero = new List<Character>(selfGameBoardHero);
             foreach (Hero hero in battleGameBoardHero)
                 hero.readyForBattle(false,posId);
 
@@ -623,10 +625,21 @@ namespace TFT
                 hero.readyForBattle(true, posId);
         }
         #endregion
+        #region monster
         public void spawnMonster(string name,int placeId) {
             Monster monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", name), Vector3.zero, Quaternion.identity, 0)).GetComponent<Monster>();
             monster.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, NetworkManager.Instance.posId, placeId);
+            opponent.hero.Add(monster);
         }
+
+        public IEnumerator BattleWithMonster() {
+            yield return new WaitForSeconds(2);
+            Debug.Log("Monster battle");
+            battleGameBoardHero = new List<Character>(selfGameBoardHero);
+            foreach (Hero hero in battleGameBoardHero)
+                hero.readyForBattle(false, posId);
+        }
+        #endregion
         [PunRPC]
         void RPC_Test() {
              Monster monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "GOBLIN"), Vector3.zero, Quaternion.identity, 0)).GetComponentInChildren<Monster>();

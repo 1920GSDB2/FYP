@@ -21,8 +21,8 @@ public class Character : MonoBehaviour
     public Animator animator;    
     protected bool isAttackCooldown;
     protected Vector3 cameraPos;
-    public Hero targetEnemy;
-    public Hero testHero;
+    public Character targetEnemy;
+    public Character testHero;
     public GameObject HeroBar;
     protected Image hpBar;
     protected Image mpBar;
