@@ -16,6 +16,7 @@ namespace Main
 
         public float readyingTime, playingTime, compingTime, transitionTime;        //Sync to photon
         public List<Hero> heroTypes = new List<Hero>();                             //List of total heroes
+        public BlendItem[] BlendItemTypes;
 
         public int ExpPrice = 4;
         public int RefreshPrice = 2;
