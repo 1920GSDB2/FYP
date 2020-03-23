@@ -63,7 +63,11 @@ public class Character : MonoBehaviour
     }*/
     public void attackTarget()
     {
-
+        if (targetEnemy.Health <= 0)
+        {
+            targetEnemy = null;
+            HeroState = HeroState.Idle;
+        }
         //Debug.Log(targetEnemy.name + " Take Damage");
         if (targetEnemy != null)
         {
@@ -72,11 +76,7 @@ public class Character : MonoBehaviour
             targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
         }
         // Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
-        if (targetEnemy.Health <= 0)
-        {
-            targetEnemy = null;
-            HeroState = HeroState.Idle;
-        }
+       
     }
  
     [PunRPC]
@@ -108,7 +108,7 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_ReduceMp(float index)
     {
-        syncAdjustMp(index);
+        syncAdjustMp(-index);
     }
     public void syncAdjustMp(float mp)
     {
@@ -163,7 +163,7 @@ public class Character : MonoBehaviour
         {
             if (path != null)
             {
-                Debug.Log("Find path? " + isFindPath + " Hero " + name);
+                //Debug.Log("Find path? " + isFindPath + " Hero " + name);
                 StartCoroutine(FollowStep(path[0]));
             }
         }       

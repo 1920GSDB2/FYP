@@ -77,17 +77,20 @@ public class Hero : Character
         
         Vector3 targetPostition = new Vector3(HeroBar.transform.position.x, cameraPos.y, HeroBar.transform.position.x);
         HeroBar.transform.LookAt(targetPostition);
+        
         if (HeroState == HeroState.Idle) {
             if (targetEnemy == null)
                 targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(isEnemy, transform);
             else {
                 HeroState = HeroState.Walking;
+                checkWithInAttackRange();
                 followEnemy();
             }
 
         }
         if (HeroState == HeroState.Walking)
             checkWithInAttackRange();
+
         if (HeroState == HeroState.Fight) {
             if (!isAttackCooldown)
                  photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);

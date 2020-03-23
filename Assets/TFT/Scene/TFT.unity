@@ -17330,6 +17330,10 @@ MonoBehaviour:
     monster:
     - name: GOBLIN
       position: 19
+    - name: WEREWOLF
+      position: 22
+    - name: WOLF
+      position: 10
 --- !u!114 &753610497
 MonoBehaviour:
   m_ObjectHideFlags: 0

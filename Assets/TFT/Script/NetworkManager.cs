@@ -175,6 +175,7 @@ namespace TFT
         #endregion
 
         public Character getCloestEnemyTarget(bool isEnemy,Transform heroPos) {
+            Debug.Log("GET Cloest");
             if (isEnemy)
                 return calculateClosestDistance(battleGameBoardHero, heroPos);
             else
@@ -577,8 +578,12 @@ namespace TFT
                 if (isEnemy)
                 {
                     opponent.hero.Remove(hero);
+                    Debug.Log("Enemy die" + opponent.hero.Count);
                     if (opponent.hero.Count == 0)
-                       StartCoroutine(playerWinBattle(playerId));
+                    {
+                        StartCoroutine(playerWinBattle(playerId));
+                        Debug.Log("Win Battle");
+                    }
                 }
                 else
                 {
@@ -638,6 +643,7 @@ namespace TFT
             Monster monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", name), Vector3.zero, Quaternion.identity, 0)).GetComponent<Monster>();
             monster.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, NetworkManager.Instance.posId, placeId);
             opponent.hero.Add(monster);
+            Debug.Log("MOnster Count" + opponent.hero.Count);
         }
 
         public void BattleWithMonsters() {
