@@ -595,6 +595,7 @@ namespace TFT
             PhotonView.RPC("RPC_FinishBattle", PlayerHeroes[opponent.opponentId].player);
             opponent.hero.Clear();
             ResetHeroAfterBattle();
+            map.resetMap();
 
         }
         [PunRPC]

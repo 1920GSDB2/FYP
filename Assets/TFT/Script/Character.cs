@@ -9,6 +9,8 @@ public class Character : MonoBehaviour
 {
     public float Health { get; set; }
     protected float MaxHealth { get;  set; }
+    public float MaxMp;
+    protected float Mp { get; set; }
     public float AttackDamage { get; set; }
     public float AttackSpeed { get; set; }
     public float SkillPower { get; set; }
@@ -64,7 +66,11 @@ public class Character : MonoBehaviour
 
         //Debug.Log(targetEnemy.name + " Take Damage");
         if (targetEnemy != null)
+        {
+            photonView.RPC("RPC_IncreaseMp", PhotonTargets.All,10f);
+            //GetComponent<PhotonView>().RPC("RPC_IncreaseMp", PhotonTargets.All,10);
             targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
+        }
         // Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
         if (targetEnemy.Health <= 0)
         {
@@ -94,14 +100,36 @@ public class Character : MonoBehaviour
         }
         hpBar.fillAmount = Health / MaxHealth;
     }
+    [PunRPC]
+    public void RPC_IncreaseMp(float index)
+    {
+        syncAdjustMp(index);
+    }
+    [PunRPC]
+    public void RPC_ReduceMp(float index)
+    {
+        syncAdjustMp(index);
+    }
+    public void syncAdjustMp(float mp)
+    {
+        Mp += mp;
+        if (Mp > MaxMp)
+            Mp = MaxMp;
+        if (Mp <= 0)
+        {
+            Mp = 0;
+        }
+        mpBar.fillAmount = Mp / MaxMp;
+    }
     public virtual void die() { }
 
     protected void followEnemy()
     {
-        float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
+        PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
+      //  float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
 
         // Debug.Log("Distance " + dis + " AttackRange " + attackRange);
-        if (dis > attackRange)
+      /*  if (dis > attackRange)
         {
             // Debug.Log("Distance " + dis + " AttackRange " + attackRange);
             //  Debug.Log("followEnemy");
@@ -117,27 +145,44 @@ public class Character : MonoBehaviour
 
             }
 
-        }
+        }*/
     }
+    public void checkWithInAttackRange() {
+        float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
+        if (dis <= attackRange) {
+              HeroState = HeroState.Fight;         
+              photonView.RPC("RPC_StopWalk", PhotonTargets.All);
+      //      return true;
+        }
+       // return false;
+    }
+    
     public void OnPathFind(List<Node> path, bool isFindPath)
     {
         if (isFindPath)
         {
             if (path != null)
+            {
+                Debug.Log("Find path? " + isFindPath + " Hero " + name);
                 StartCoroutine(FollowStep(path[0]));
-        }
+            }
+        }       
+
     }
     IEnumerator FollowStep(Node step)
     {
         //Debug.Log("FollowStep");
+       // withInAttackRange();
+
         GetComponent<PhotonView>().RPC("RPC_FollowStep", PhotonTargets.Others, step.heroPlace.PlaceId, step.heroPlace.gridY);
         MoveToThePlace(step.heroPlace);
         transform.LookAt(step.heroPlace.transform);
-        animator.SetBool("Walk", true);
+        animator.SetBool("Walk", true); 
         while (HeroState == HeroState.Walking)
-        {
+        {           
             if (transform.position != step.heroPlace.transform.position)
             {
+               
                 transform.position = Vector3.MoveTowards(transform.position, step.heroPlace.transform.position, 3 * Time.deltaTime);
                 //   Debug.Log("Move X "+step.heroPlace.gridX+" Y "+ step.heroPlace.gridY);
             }
