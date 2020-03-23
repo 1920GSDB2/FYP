@@ -11,7 +11,11 @@ public class Hero : Character
     // public bool isEnemy;
     // public HeroPlace HeroPlace, LastHeroPlace;         //Current HeroPlace Position of Hero
     public GameObject SelectingBox;
-    public MouseSelect MouseSelect;
+    //public MouseSelect MouseSelect;
+
+    private GameManager GameManager;
+    private SelectManager SelectManager;
+
     public HeroStatus HeroStatus = HeroStatus.Standby;
     public Rarity Rarity;
     public HeroClass[] HeroClasses;
@@ -59,7 +63,10 @@ public class Hero : Character
 
         lastTransform = transform.parent.name;
         //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TFTGameManager>();
-        MouseSelect = GameManager.Instance.GetComponent<MouseSelect>();
+        //MouseSelect = GameManager.Instance.GetComponent<MouseSelect>();
+
+        GameManager = GameManager.Instance;
+        SelectManager = SelectManager.Instance;
 
         HeroPlace = transform.parent.GetComponent<HeroPlace>();
 
@@ -162,16 +169,34 @@ public class Hero : Character
  
     private void OnMouseEnter()
     {
-        if (HeroStatus == HeroStatus.Standby && 
-            !(HeroPlace.PlaceType == PlaceType.OnBoard && 
-            GameManager.Instance.GameStatus == GameStatus.Transiting)
-            )
-            MouseSelect.SelectedHero = this;
+
+        //if (HeroStatus == HeroStatus.Standby && 
+        //    !(HeroPlace.PlaceType == PlaceType.OnBoard && 
+        //    GameManager.Instance.GameStatus == GameStatus.Transiting)
+        //    )
+        //    MouseSelect.SelectedHero = this;
+        if (HeroStatus == HeroStatus.Standby &&
+            GameManager.PlayerHero.GameBoardHeroes.Count >= GameManager.LevelManager.Level)
+        {
+            SelectManager.SelectedObject = gameObject;
+        }
+        else if (SelectManager.DragObject != null && SelectManager.DragObject.GetComponent<Hero>() != null)
+        {
+            SelectManager.ParentObject = gameObject;
+        }
     }
 
     private void OnMouseExit()
     {
-        MouseSelect.SelectedHero = null;
+        //MouseSelect.SelectedHero = null;
+        if (SelectManager.SelectedObject == gameObject)
+        {
+            SelectManager.SelectedObject = null;
+        }
+        if(SelectManager.ParentObject == gameObject)
+        {
+            SelectManager.ParentObject = null;
+        }
     }
 
     #region RPC move hero

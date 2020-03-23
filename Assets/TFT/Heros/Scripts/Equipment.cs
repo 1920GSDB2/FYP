@@ -54,18 +54,16 @@ public class Equipment : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        isDrag = true;
-        movePlane = new Plane(-Camera.main.transform.forward, 1);
+        TFT.SelectManager.Instance.SelectedObject = gameObject;
     }
 
     private void OnMouseExit()
     {
-        isDrag = false;
+        if(TFT.SelectManager.Instance.SelectedObject == gameObject)
+        {
+            TFT.SelectManager.Instance.SelectedObject = null;
+        }
     }
-
-    private void OnMouseDrag()
-    {
-        transform.position = Input.mousePosition;
-    }
+    
     
 }
