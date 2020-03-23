@@ -78,4 +78,7 @@ MonoBehaviour:
   - RPC_ResetStatus
   - testC
   - MonsterBattle
+  - ReduceMp
+  - RPC_IncreaseMp
+  - RPC_ReduceMp
   DisableAutoOpenWizard: 1

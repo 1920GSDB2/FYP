@@ -32,10 +32,13 @@ public class Monster : Character
             else
             {
                 HeroState = HeroState.Walking;
+                checkWithInAttackRange();
                 followEnemy();
             }
 
         }
+        if (HeroState == HeroState.Walking)
+            checkWithInAttackRange();
         if (HeroState == HeroState.Fight)
         {
             if (!isAttackCooldown)

@@ -86,5 +86,28 @@ public class GridMap : MonoBehaviour
             }
         }
         return neighbours;
-    }    
+    }
+    public void resetMap() {
+        int child = playerArena.SelfArena.GameBoard.childCount - 1;
+        for (int y = GridSizeY - 1; y >= 0; y--)
+        {
+            for (int x = 0; x < GridSizeX; x++)
+            {
+                HeroPlace heroPlace;
+                if (y > 3)
+                {
+                    heroPlace = playerArena.EnemyArena.GameBoard.GetChild(child).GetComponent<HeroPlace>();
+                    
+                    if (child != 0)
+                        child--;
+                }
+                else
+                {
+                    heroPlace = playerArena.SelfArena.GameBoard.GetChild(child).GetComponent<HeroPlace>();
+                    child++;
+                }
+                heroPlace.isWalkable = true;
+            }
+        }
+    }
 }

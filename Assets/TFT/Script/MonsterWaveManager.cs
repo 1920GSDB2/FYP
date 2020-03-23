@@ -30,7 +30,7 @@ public class MonsterWaveManager : MonoBehaviour
            
         }
         NetworkManager.Instance.BattleWithMonsters();
-        currentIndex++;
+      //  currentIndex++;
     }
     
     public int getMonsterPosition(int number) {

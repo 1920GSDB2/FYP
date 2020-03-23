@@ -555,6 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxMp: 0
   isEnemy: 0
   HeroState: 0
   HeroPlace: {fileID: 0}
@@ -571,14 +572,14 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
-  EquirementManager: {fileID: 0}
+  EquipmentManager: {fileID: 0}
   networkPlaceId: 0
-  BasicHealth: 0
-  BasicAttackDamage: 0
-  BasicAttackSpeed: 0
-  BasicSkillPower: 0
-  BasicPhysicalDefense: 0
-  BasicMagicDefense: 0
+  BasicHealth: 5
+  BasicAttackDamage: 8
+  BasicAttackSpeed: 6
+  BasicSkillPower: 8
+  BasicPhysicalDefense: 2
+  BasicMagicDefense: 2
 --- !u!114 &5141945359779156635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b0de9905ea8a549a2ac1172b9725ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Equirements: []
+  Equipments: []
   ItemList: {fileID: 1853355858314251383}
 --- !u!1 &4552185994983980912
 GameObject:
@@ -3753,11 +3754,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199439085999198283, guid: 44de83aff51977a479f23105dc7f114e,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44de83aff51977a479f23105dc7f114e, type: 3}

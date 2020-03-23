@@ -71,8 +71,9 @@ public class Hero : Character
         HeroPlace = transform.parent.GetComponent<HeroPlace>();
 
         MaxHealth = 100 * BasicHealth;
+        MaxMp = 100;
         Health = MaxHealth;
-        AttackDamage = 5 * BasicAttackDamage;
+        AttackDamage = 10 * BasicAttackDamage;
         
         //HeroState = HeroState.Idle;
     }
@@ -83,30 +84,36 @@ public class Hero : Character
         
         Vector3 targetPostition = new Vector3(HeroBar.transform.position.x, cameraPos.y, HeroBar.transform.position.x);
         HeroBar.transform.LookAt(targetPostition);
+        
         if (HeroState == HeroState.Idle) {
             if (targetEnemy == null)
                 targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(isEnemy, transform);
             else {
                 HeroState = HeroState.Walking;
+                checkWithInAttackRange();
                 followEnemy();
             }
 
         }
+        if (HeroState == HeroState.Walking)
+            checkWithInAttackRange();
+
         if (HeroState == HeroState.Fight) {
             if (!isAttackCooldown)
                  photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
                 animator.SetTrigger("Attack");
 
         }
-        
         if (Input.GetKeyDown(KeyCode.I))
         {
             //  targetEnemy = testHero;
 
             //animator.SetBool("Attack",true);
             //  gameObject.SetActive(false);
-              Debug.Log(name + " Health " + Health + " / " + MaxHealth);
-         //   photonView.RPC("test", PhotonTargets.All);
+            //    Debug.Log(name + " Health " + Health + " / " + MaxHealth);
+            float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
+            Debug.Log(name + " State " + HeroState+" Distance "+dis);
+            //   photonView.RPC("test", PhotonTargets.All);
 
             //  photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
@@ -125,7 +132,9 @@ public class Hero : Character
     public void RPC_ResetStatus() {
         Debug.Log("Reset Status");
         this.gameObject.SetActive(true);
+        HeroBar.SetActive(false);
         photonView.RPC("RPC_Heal", PhotonTargets.All, MaxHealth);
+        photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
         HeroState = HeroState.Nothing;
         isEnemy = false;
     }

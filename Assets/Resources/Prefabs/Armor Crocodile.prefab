@@ -734,10 +734,10 @@ GameObject:
   - component: {fileID: 3082748687415496053}
   - component: {fileID: 5418375249830585694}
   - component: {fileID: 7798396547724544149}
-  - component: {fileID: 2376330296371579353}
   - component: {fileID: 3082748687415496052}
-  - component: {fileID: 8085597518234950194}
+  - component: {fileID: 2376330296371579353}
   - component: {fileID: 1828351680}
+  - component: {fileID: 8085597518234950194}
   m_Layer: 8
   m_Name: Armor Crocodile
   m_TagString: Untagged
@@ -799,6 +799,43 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2, z: 1.5}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &3082748687415496052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082748687415496059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxMp: 0
+  isEnemy: 0
+  HeroState: 0
+  HeroPlace: {fileID: 0}
+  LastHeroPlace: {fileID: 0}
+  photonView: {fileID: 0}
+  animator: {fileID: 5418375249830585694}
+  targetEnemy: {fileID: 0}
+  testHero: {fileID: 0}
+  HeroBar: {fileID: 1592578679760100804}
+  SelectingBox: {fileID: 2167274966950737570}
+  MouseSelect: {fileID: 0}
+  HeroStatus: 0
+  Rarity: 3
+  HeroClasses: 02000000
+  HeroRaces: 06000000
+  HeroLevel: 0
+  EquipmentManager: {fileID: 0}
+  networkPlaceId: 0
+  BasicHealth: 7
+  BasicAttackDamage: 5
+  BasicAttackSpeed: 4
+  BasicSkillPower: 7
+  BasicPhysicalDefense: 9
+  BasicMagicDefense: 6
 --- !u!114 &2376330296371579353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -826,56 +863,6 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
---- !u!114 &3082748687415496052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3082748687415496059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEnemy: 0
-  HeroState: 0
-  HeroPlace: {fileID: 0}
-  LastHeroPlace: {fileID: 0}
-  photonView: {fileID: 0}
-  animator: {fileID: 0}
-  targetEnemy: {fileID: 0}
-  testHero: {fileID: 0}
-  HeroBar: {fileID: 1592578679760100804}
-  SelectingBox: {fileID: 2167274966950737570}
-  MouseSelect: {fileID: 0}
-  HeroStatus: 0
-  Rarity: 3
-  HeroClasses: 02000000
-  HeroRaces: 06000000
-  HeroLevel: 0
-  EquirementManager: {fileID: 0}
-  networkPlaceId: 0
-  BasicHealth: 7
-  BasicAttackDamage: 5
-  BasicAttackSpeed: 4
-  BasicSkillPower: 7
-  BasicPhysicalDefense: 9
-  BasicMagicDefense: 6
---- !u!114 &8085597518234950194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3082748687415496059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8b0de9905ea8a549a2ac1172b9725ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Equirements: []
-  ItemList: {fileID: 2276139628514076304}
 --- !u!114 &1828351680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,6 +887,20 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &8085597518234950194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082748687415496059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8b0de9905ea8a549a2ac1172b9725ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Equipments: []
+  ItemList: {fileID: 2276139628514076304}
 --- !u!1 &3296872043140798332
 GameObject:
   m_ObjectHideFlags: 0
