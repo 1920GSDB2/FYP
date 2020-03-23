@@ -10,12 +10,16 @@ namespace TFT
         public Transform ItemList;
         public Dictionary<HeroAttribute, int> ItemAttribute;
 
-
+        Plane movePlane;
+        float fixedDistance = 0f;
+        float hitDist, t;
+        Ray camRay;
+        Vector3 startPos, point, corPoint;
 
         public bool AddEquirement(Equipment _addEquirement)
         {
             if (Equipments.Count == 3 && !Equipments[2].isComponent) return false;
-            else if (!Equipments[Equipments.Count - 1].isComponent)
+            if(Equipments.Count == 0 || !Equipments[Equipments.Count - 1].isComponent)
             {
                 AddAttribute(_addEquirement);
                 return true;
@@ -68,7 +72,6 @@ namespace TFT
             }
             return _blendItem;
         }
-
     }
 }
 

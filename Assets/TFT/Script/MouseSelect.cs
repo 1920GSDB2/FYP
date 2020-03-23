@@ -66,7 +66,7 @@ namespace TFT
                         //DragHero.ChangeStatus();
                         DragHero.HeroPlace = DragHero.transform.parent.GetComponent<HeroPlace>();
 
-                        GameManager.ChangeHeroPos(ref DragHero);
+                        //GameManager.ChangeHeroPos(ref DragHero);
                         DragHero.GetComponent<Collider>().enabled = true;
                         DragHero.transform.localPosition = Vector3.zero;
                         DragHero.SelectingBox.SetActive(false);

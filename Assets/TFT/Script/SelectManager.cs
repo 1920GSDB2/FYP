@@ -12,29 +12,28 @@ namespace TFT
     {
         GameManager GameManager;
 
-        [HideInInspector]
-        //public Hero SelectedHero, DragHero;     //Drag Hero is the hero of dragging
+        //[HideInInspector]
         public GameObject SelectedObject, DragObject, ParentObject;
-        [HideInInspector]
-        //public HeroPlace SelectPlace;
         bool isDrag;
-        //public TFTGameManager gameManager { get; private set; }
 
-        Plane movePlane;
         [SerializeField]
-        float fixedDistance = 0f;
+        readonly float fixedDistance = 0f;
+        Plane movePlane;
         float hitDist, t;
         Ray camRay;
         Vector3 startPos, point, corPoint;
 
         public static SelectManager Instance;
 
+        void Awake()
+        {
+            Instance = this;
+        }
+
         // Start is called before the first frame update
         void Start()
         {
-            Instance = this;
             GameManager = GameManager.Instance;
-            //gameManager = GetComponent<TFTGameManager>();
         }
 
         // Update is called once per frame
@@ -45,47 +44,35 @@ namespace TFT
             {
                 DragObject = SelectedObject;
                 DragObject.GetComponent<Collider>().enabled = false;
-                DragHero.LastHeroPlace = DragHero.HeroPlace;
-                DragHero.SelectingBox.SetActive(true);
 
                 startPos = DragObject.transform.position; // save position in case draged to invalid place
                 movePlane = new Plane(-Camera.main.transform.forward, DragObject.transform.position);
             }
+
             //Put down Hero
             if (Input.GetMouseButtonUp(0) && DragObject != null)
             {
                 isDrag = !isDrag;
                 if (ParentObject != null)
-                    //!(
-                    //    SelectPlace.PlaceType == PlaceType.OnBoard &&
-                    //    GameManager.PlayerHero.GameBoardHeroes.Count >= GameManager.LevelManager.Level &&
-                    //    DragHero.LastHeroPlace.PlaceType == PlaceType.NonBoard
-                    //    )
-                    //)
                 {
 
                     if (!isDrag)
                     {
-                        //DragHero.ChangeStatus();
-                        DragHero.HeroPlace = DragHero.transform.parent.GetComponent<HeroPlace>();
-
-                        GameManager.ChangeHeroPos(ref DragHero);
-                        DragHero.GetComponent<Collider>().enabled = true;
+                        DragObject.transform.parent = ParentObject.transform;
+                        DragObject.GetComponent<Collider>().enabled = true;
                         DragObject.transform.localPosition = Vector3.zero;
-                        DragHero.SelectingBox.SetActive(false);
 
                         DragObject = null;
                         ParentObject = null;
-
                     }
                 }
                 else
                 {
                     isDrag = true;
                 }
-
-
+                
             }
+
             //Dragging Hero Place
             else if (isDrag && DragObject != null)
             {
@@ -114,5 +101,4 @@ namespace TFT
             }
         }
     }
-
 }

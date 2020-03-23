@@ -21,7 +21,7 @@ namespace TFT
         public OpponentManager[] OpponentManagers;  //Player's Opponent Data
         public Camera[] Cameras;                    //Cameras of Focusing Game Arena (The Data are hard coded in scene)
         public GridMap map;
-        List<Character> selfGameBoardHero=new List<Character>();
+        List<Character> selfGameBoardHero = new List<Character>();
         List<Character> battleGameBoardHero;
         bool isHomeTeam;
         void Awake()
@@ -114,7 +114,8 @@ namespace TFT
                     break;
             }
             _hero.networkPlaceId = _hero.HeroPlace.PlaceId;
-                    PhotonView.RPC("RPC_SyncPlayerHeroPlace", PhotonTargets.All, posId,
+
+            PhotonView.RPC("RPC_SyncPlayerHeroPlace", PhotonTargets.All, posId,
                 playerId, _hero.name, _hero.LastHeroPlace.PlaceId, _hero.HeroLevel, _hero.HeroPlace.PlaceId, _syncMoveHero);
         }
         #endregion

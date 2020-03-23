@@ -8826,6 +8826,7 @@ GameObject:
   - component: {fileID: 355347624}
   - component: {fileID: 355347621}
   - component: {fileID: 355347622}
+  - component: {fileID: 355347625}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -8949,7 +8950,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355347616}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5afd94240e522c546958305394b14f0d, type: 3}
   m_Name: 
@@ -9056,6 +9057,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Opponent: {fileID: 843359580}
   Round: {fileID: 1220232712}
+--- !u!114 &355347625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355347616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc4f76074d19d64589bb774b4c2176f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedObject: {fileID: 0}
+  DragObject: {fileID: 0}
+  ParentObject: {fileID: 0}
+  fixedDistance: 1
 --- !u!1 &357755994
 GameObject:
   m_ObjectHideFlags: 0

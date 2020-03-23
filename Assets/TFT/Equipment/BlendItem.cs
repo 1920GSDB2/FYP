@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlendItem : Equipment
+namespace TFT
 {
-    public Item[] components;
-    // Start is called before the first frame update
-    void Start()
+    public class BlendItem : Equipment
     {
-        isComponent = false;
+        public Item[] components;
+        // Start is called before the first frame update
+        public override void Start()
+        {
+            base.Start();
+            isComponent = false;
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

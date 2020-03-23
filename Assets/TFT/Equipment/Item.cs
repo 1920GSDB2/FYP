@@ -1,14 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using TFT;
 using UnityEngine;
 
-public class Item : Equipment
+namespace TFT
 {
-    public ItemType ItemType;
-    // Start is called before the first frame update
-    public override void Start()
+    public class Item : Equipment
     {
-        isComponent = true;
+        public ItemType ItemType;
+        // Start is called before the first frame update
+        public override void Start()
+        {
+            base.Start();
+            isComponent = true;
+        }
     }
-    
 }
+

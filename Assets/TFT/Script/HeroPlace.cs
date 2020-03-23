@@ -23,6 +23,9 @@ namespace TFT
         public int gridX { get; private set; }
         public int gridY { get; private set; }
         public bool isWalkable = true;
+
+        GameManager GameManager;
+        SelectManager SelectManager;
         //MouseSelect MouseSelect;
 
         public void setGridPosition(int x, int y)
@@ -34,7 +37,8 @@ namespace TFT
         // Start is called before the first frame update
         void Start()
         {
-           
+            GameManager = GameManager.Instance;
+            SelectManager = SelectManager.Instance;
             HeroPlaceSetting();
             //MouseSelect = TFT.GameManager.Instance.gameObject.GetComponent<MouseSelect>();
         }
@@ -60,10 +64,10 @@ namespace TFT
             if (!isWalkable)
                 settColor(Color.green);
         }
-
+        
         void OnMouseOver()
         {
-            if (!(GameManager.Instance.GameStatus == GameStatus.Playing && name.Equals("Hexagon")))
+            if (!(GameManager.GameStatus == GameStatus.Playing && name.Equals("Hexagon")))
             {
                 if (PlaceType == PlaceType.NonBoard)
                 {
@@ -73,9 +77,14 @@ namespace TFT
                 {
                     currMat.material = hoverMat;
                 }
-                if (MouseSelect.Instance.DragHero != null)
+                if(PlaceType == PlaceType.OnBoard &&
+                    GameManager.PlayerHero.GameBoardHeroes.Count >= GameManager.LevelManager.Level)
                 {
-                    MouseSelect.Instance.SelectPlace = this;
+                    return;
+                }
+                if (SelectManager.DragObject != null)
+                {
+                    SelectManager.ParentObject = gameObject;
                 }
             }
         }
@@ -91,7 +100,7 @@ namespace TFT
             {
                 currMat.material = defaultMat;
             }
-            MouseSelect.Instance.SelectPlace = null;
+            SelectManager.Instance.ParentObject = null;
         }
         public void settColor(Color color)
         {

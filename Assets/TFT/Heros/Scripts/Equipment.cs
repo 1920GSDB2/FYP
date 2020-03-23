@@ -3,67 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Equipment : MonoBehaviour
+namespace TFT
 {
-    public Image Icon;
-    public HeroAttribute[] HeroAttributes;
-    public int[] AttributeValues;
-    //[HideInInspector]
-    public bool isComponent;
-
-    public bool isDrag;
-
-    Plane movePlane;
-    float fixedDistance = 0f;
-    float hitDist, t;
-    Ray camRay;
-    Vector3 startPos, point, corPoint;
-
-    public virtual void Start()
+    public class Equipment : MonoBehaviour
     {
+        private SelectManager SelectManager;
+        public Image Icon;
+        public HeroAttribute[] HeroAttributes;
+        public int[] AttributeValues;
+        //[HideInInspector]
+        public bool isComponent;
+        Transform lastTransform, currTransform;
 
-    }
-    // Update is called once per frame
-    public virtual void Update()
-    {
-        if (isDrag)
+        public bool isDrag;
+
+        Plane movePlane;
+        float fixedDistance = 0f;
+        float hitDist, t;
+        Ray camRay;
+        Vector3 startPos, point, corPoint;
+
+        public virtual void Start()
         {
-            Debug.Log("Drag Object");
-            camRay = TFT.GameManager.Instance.MainCamera.ScreenPointToRay(Input.mousePosition); // shoot a ray at the obj from mouse screen point
-
-            // finde the collision on movePlane
-            if (movePlane.Raycast(camRay, out hitDist))
+            SelectManager = SelectManager.Instance;
+        }
+        // Update is called once per frame
+        public virtual void Update()
+        {
+            if (SelectManager.DragObject != gameObject && transform.parent != lastTransform)
             {
-                point = camRay.GetPoint(hitDist);                                       // define the point on movePlane
-                t = -(fixedDistance - camRay.origin.y) / (camRay.origin.y - point.y);   // the x,y or z plane you want to be fixed to
+                currTransform = transform.parent;
+                currTransform.parent.parent.GetComponent<EquipmentManager>().AddEquirement(this);
+                lastTransform = currTransform;
+            }
+        }
 
-                #region calculate the new point t futher along the ray
-                corPoint.x = camRay.origin.x + (point.x - camRay.origin.x) * t;
-                corPoint.y = camRay.origin.y + (point.y - camRay.origin.y) * t;
-                corPoint.z = camRay.origin.z + (point.z - camRay.origin.z) * t;
-                #endregion
+        private void OnMouseEnter()
+        {
+            SelectManager.SelectedObject = gameObject;
+        }
 
+        private void OnMouseExit()
+        {
+            if (TFT.SelectManager.Instance.SelectedObject == gameObject)
+            {
+                TFT.SelectManager.Instance.SelectedObject = null;
             }
         }
     }
-    public void DraggingObject()
-    {
-        Debug.Log("DraggingObject");
-        isDrag = !isDrag;
-    }
-
-    private void OnMouseEnter()
-    {
-        TFT.SelectManager.Instance.SelectedObject = gameObject;
-    }
-
-    private void OnMouseExit()
-    {
-        if(TFT.SelectManager.Instance.SelectedObject == gameObject)
-        {
-            TFT.SelectManager.Instance.SelectedObject = null;
-        }
-    }
-    
-    
 }

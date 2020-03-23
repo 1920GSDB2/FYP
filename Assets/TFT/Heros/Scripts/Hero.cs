@@ -11,6 +11,7 @@ public class Hero : Character
     // public bool isEnemy;
     // public HeroPlace HeroPlace, LastHeroPlace;         //Current HeroPlace Position of Hero
     public GameObject SelectingBox;
+    private Collider BoxCollider;
     //public MouseSelect MouseSelect;
 
     private GameManager GameManager;
@@ -22,7 +23,7 @@ public class Hero : Character
     public HeroRace[] HeroRaces;
     public HeroLevel HeroLevel;
 
-    public TFT.EquipmentManager EquipmentManager;
+    public EquipmentManager EquipmentManager;
 
     public int networkPlaceId;
     [Range(0, 10)]
@@ -67,6 +68,7 @@ public class Hero : Character
 
         GameManager = GameManager.Instance;
         SelectManager = SelectManager.Instance;
+        EquipmentManager = GetComponent<EquipmentManager>();
 
         HeroPlace = transform.parent.GetComponent<HeroPlace>();
 
@@ -74,14 +76,14 @@ public class Hero : Character
         MaxMp = 100;
         Health = MaxHealth;
         AttackDamage = 10 * BasicAttackDamage;
-        
+
+        BoxCollider = GetComponent<Collider>();
         //HeroState = HeroState.Idle;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         Vector3 targetPostition = new Vector3(HeroBar.transform.position.x, cameraPos.y, HeroBar.transform.position.x);
         HeroBar.transform.LookAt(targetPostition);
         
@@ -117,10 +119,21 @@ public class Hero : Character
 
             //  photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
-     
-           if (Input.GetKeyDown(KeyCode.O))
-           {           
-           }
+
+        SelectingBox.SetActive(!BoxCollider.enabled);
+        
+
+        if (SelectManager.DragObject != gameObject && transform.parent != LastHeroPlace.transform)
+        {
+
+            HeroPlace = transform.parent.GetComponent<HeroPlace>();
+            GameManager.ChangeHeroPos(this);
+            LastHeroPlace = HeroPlace;
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {           
+        }
     }
   
     public override void die() {
@@ -184,14 +197,18 @@ public class Hero : Character
         //    GameManager.Instance.GameStatus == GameStatus.Transiting)
         //    )
         //    MouseSelect.SelectedHero = this;
-        if (HeroStatus == HeroStatus.Standby &&
-            GameManager.PlayerHero.GameBoardHeroes.Count >= GameManager.LevelManager.Level)
+        if (HeroStatus == HeroStatus.Fight || HeroStatus == HeroStatus.Dead) 
+        {
+            return;
+        }
+        else if (SelectManager.DragObject != null && SelectManager.DragObject.GetComponent<Hero>() == null)
+        {
+            SelectManager.ParentObject = EquipmentManager.ItemList.gameObject;
+        }
+        else
         {
             SelectManager.SelectedObject = gameObject;
-        }
-        else if (SelectManager.DragObject != null && SelectManager.DragObject.GetComponent<Hero>() != null)
-        {
-            SelectManager.ParentObject = gameObject;
+            LastHeroPlace = HeroPlace;
         }
     }
 

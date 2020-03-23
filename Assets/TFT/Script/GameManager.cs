@@ -109,24 +109,7 @@ namespace TFT
         {
 
         }
-
-        void FixedUpdate()
-        {
-            ////Loop player's heroes
-            //for (int i = 0; i < PlayerHeroes.Length; i++)
-            //{
-            //    if (i == playerId) continue;
-            //    for (int j = 0; j < playerPosition.Length; j++)
-            //    {
-            //        //Get the exact game arena position
-            //        if(i == playerPosition[j])
-            //        {
-            //            GamePlace enemyArena = PlayerArenas[j].GetComponent<PlayerArena>().EnemyArena;
-            //        }
-            //    }
-            //}
-        }
-
+        
         /// <summary>
         /// Check whether player can buy a hero.
         /// </summary>
@@ -216,7 +199,7 @@ namespace TFT
         /// Put or take hero from the gameboard
         /// </summary>
         /// <param name="hero"></param>
-        public void ChangeHeroPos(ref Hero _hero)
+        public void ChangeHeroPos(Hero _hero)
         {
             //Debug.Log("Last Position: [" + _hero.LastHeroPlace.PlaceId + "], current position [" + _hero.HeroPlace.PlaceId + "].");
             SyncMoveHero moveHeroMethod = SyncMoveHero.Undefined;
@@ -240,7 +223,7 @@ namespace TFT
                 TeamFlag.Instance.GameboardCard.text = (PlayerHero.GameBoardHeroes.Count + 1).ToString();
             }
             #endregion
-
+            Debug.Log("Moving method: " + moveHeroMethod);
             //Sync to all players
             //if (moveHeroMethod != SyncMoveHero.Undefined)
             NetworkManager.Instance.SyncPlayerHeroPlace(_hero, moveHeroMethod);
