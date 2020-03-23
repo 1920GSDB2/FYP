@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlendItem : Equirement
+public class BlendItem : Equipment
 {
     public Item[] components;
     // Start is called before the first frame update

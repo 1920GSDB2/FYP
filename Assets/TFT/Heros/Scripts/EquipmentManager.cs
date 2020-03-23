@@ -4,16 +4,18 @@ using UnityEngine;
 
 namespace TFT
 {
-    public class EquirementManager : MonoBehaviour
+    public class EquipmentManager : MonoBehaviour
     {
-        public List<Equirement> Equirements = new List<Equirement>(3);
+        public List<Equipment> Equipments = new List<Equipment>(3);
         public Transform ItemList;
         public Dictionary<HeroAttribute, int> ItemAttribute;
 
-        public bool AddEquirement(Equirement _addEquirement)
+
+
+        public bool AddEquirement(Equipment _addEquirement)
         {
-            if (Equirements.Count == 3 && !Equirements[2].isComponent) return false;
-            else if (!Equirements[Equirements.Count - 1].isComponent)
+            if (Equipments.Count == 3 && !Equipments[2].isComponent) return false;
+            else if (!Equipments[Equipments.Count - 1].isComponent)
             {
                 AddAttribute(_addEquirement);
                 return true;
@@ -21,17 +23,17 @@ namespace TFT
             else
             {
                 //Equirement Composite
-                BlendItem newItem = Composite(((Item)Equirements[Equirements.Count - 1]).ItemType, ((Item)_addEquirement).ItemType);
+                BlendItem newItem = Composite(((Item)Equipments[Equipments.Count - 1]).ItemType, ((Item)_addEquirement).ItemType);
                 if (newItem != null)
                 {
                     GameObject item = Instantiate(newItem.gameObject,ItemList);
-                    AddAttribute(item.GetComponent<Equirement>());
+                    AddAttribute(item.GetComponent<Equipment>());
                 }
                 return true;
             }
         }
 
-        private void AddAttribute(Equirement _addEquirement)
+        private void AddAttribute(Equipment _addEquirement)
         {
             for(int i = 0; i < _addEquirement.HeroAttributes.Length; i++)
             {
@@ -47,7 +49,7 @@ namespace TFT
                     ItemAttribute[_heroAttribute] += _attributeValue;
                 }
             }
-            Equirements.Add(_addEquirement);
+            Equipments.Add(_addEquirement);
             _addEquirement.transform.parent = ItemList;
         }
 
@@ -66,6 +68,7 @@ namespace TFT
             }
             return _blendItem;
         }
+
     }
 }
 

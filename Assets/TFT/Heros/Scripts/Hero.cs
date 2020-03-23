@@ -18,7 +18,7 @@ public class Hero : Character
     public HeroRace[] HeroRaces;
     public HeroLevel HeroLevel;
 
-    public EquirementManager EquirementManager;
+    public TFT.EquipmentManager EquipmentManager;
 
     public int networkPlaceId;
     [Range(0, 10)]
