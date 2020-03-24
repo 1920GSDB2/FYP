@@ -203,11 +203,15 @@ public class Hero : Character
         }
         else if (SelectManager.DragObject != null && SelectManager.DragObject.GetComponent<Hero>() == null)
         {
-            SelectManager.ParentObject = EquipmentManager.ItemList.gameObject;
+            int index = EquipmentManager.Equipments.Count;
+            if (index < 3)
+            { 
+                SelectManager.ParentObject = EquipmentManager.ItemList.GetChild(index);
+            }
         }
         else
         {
-            SelectManager.SelectedObject = gameObject;
+            SelectManager.SelectedObject = gameObject.transform;
             LastHeroPlace = HeroPlace;
         }
     }

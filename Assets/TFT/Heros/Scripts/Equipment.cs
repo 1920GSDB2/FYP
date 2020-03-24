@@ -7,13 +7,13 @@ namespace TFT
 {
     public class Equipment : MonoBehaviour
     {
-        private SelectManager SelectManager;
+        public SelectManager SelectManager;
         public Image Icon;
         public HeroAttribute[] HeroAttributes;
         public int[] AttributeValues;
         //[HideInInspector]
         public bool isComponent;
-        Transform lastTransform, currTransform;
+        public Transform lastTransform, currTransform;
 
         public bool isDrag;
 
@@ -26,28 +26,35 @@ namespace TFT
         public virtual void Start()
         {
             SelectManager = SelectManager.Instance;
+            currTransform = transform;
         }
         // Update is called once per frame
         public virtual void Update()
         {
-            if (SelectManager.DragObject != gameObject && transform.parent != lastTransform)
+            if (SelectManager.DragObject != null &&
+                SelectManager.DragObject != gameObject &&
+                transform.parent.parent.GetComponent<EquipmentManager>() != null&&
+                transform.parent != lastTransform)
             {
+                //GetComponent<MeshRenderer>().enabled = false;
                 currTransform = transform.parent;
-                currTransform.parent.parent.GetComponent<EquipmentManager>().AddEquirement(this);
+                //currTransform.parent.parent.GetComponent<EquipmentManager>().AddEquirement(this);
                 lastTransform = currTransform;
+                Debug.Log("Test");
             }
         }
 
         private void OnMouseEnter()
         {
-            SelectManager.SelectedObject = gameObject;
+            SelectManager.SelectedObject = gameObject.transform;
+            lastTransform = transform;
         }
 
         private void OnMouseExit()
         {
-            if (TFT.SelectManager.Instance.SelectedObject == gameObject)
+            if (SelectManager.Instance.SelectedObject == gameObject)
             {
-                TFT.SelectManager.Instance.SelectedObject = null;
+                SelectManager.Instance.SelectedObject = null;
             }
         }
     }

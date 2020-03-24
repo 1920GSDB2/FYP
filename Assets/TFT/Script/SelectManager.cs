@@ -13,7 +13,7 @@ namespace TFT
         GameManager GameManager;
 
         //[HideInInspector]
-        public GameObject SelectedObject, DragObject, ParentObject;
+        public Transform SelectedObject, DragObject, ParentObject;
         bool isDrag;
 
         [SerializeField]
@@ -45,8 +45,8 @@ namespace TFT
                 DragObject = SelectedObject;
                 DragObject.GetComponent<Collider>().enabled = false;
 
-                startPos = DragObject.transform.position; // save position in case draged to invalid place
-                movePlane = new Plane(-Camera.main.transform.forward, DragObject.transform.position);
+                startPos = DragObject.position; // save position in case draged to invalid place
+                movePlane = new Plane(-Camera.main.transform.forward, DragObject.position);
             }
 
             //Put down Hero
@@ -58,9 +58,9 @@ namespace TFT
 
                     if (!isDrag)
                     {
-                        DragObject.transform.parent = ParentObject.transform;
+                        DragObject.parent = ParentObject;
                         DragObject.GetComponent<Collider>().enabled = true;
-                        DragObject.transform.localPosition = Vector3.zero;
+                        DragObject.localPosition = Vector3.zero;
 
                         DragObject = null;
                         ParentObject = null;
@@ -76,9 +76,9 @@ namespace TFT
             //Dragging Hero Place
             else if (isDrag && DragObject != null)
             {
-                if (DragObject != null && DragObject.transform.childCount == 0)
+                if (DragObject != null && DragObject.childCount == 0)
                 {
-                    DragObject.transform.parent = ParentObject.transform;
+                    DragObject.parent = ParentObject;
                 }
 
                 camRay = GameManager.MainCamera.ScreenPointToRay(Input.mousePosition); // shoot a ray at the obj from mouse screen point
@@ -96,7 +96,7 @@ namespace TFT
                     #endregion
 
                     //DragObject.HeroPlace = ParentObject;
-                    DragObject.transform.position = corPoint;
+                    DragObject.position = corPoint;
                 }
             }
         }

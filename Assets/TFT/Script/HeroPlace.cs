@@ -84,7 +84,7 @@ namespace TFT
                 }
                 if (SelectManager.DragObject != null)
                 {
-                    SelectManager.ParentObject = gameObject;
+                    SelectManager.ParentObject = gameObject.transform;
                 }
             }
         }

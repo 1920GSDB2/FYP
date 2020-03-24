@@ -9072,7 +9072,6 @@ MonoBehaviour:
   SelectedObject: {fileID: 0}
   DragObject: {fileID: 0}
   ParentObject: {fileID: 0}
-  fixedDistance: 1
 --- !u!1 &357755994
 GameObject:
   m_ObjectHideFlags: 0
@@ -31939,7 +31938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306419596}
   m_LocalRotation: {x: -0, y: -0.19154117, z: -0, w: -0.98148453}
-  m_LocalPosition: {x: -17.25682, y: 0.58, z: 27.08}
+  m_LocalPosition: {x: -17.25682, y: 1.671, z: 27.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750329713}
@@ -31958,10 +31957,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef183086f61c5d4ba1cfe7a3c0f95c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 750329714}
   HeroAttributes: 
   AttributeValues: 
   isComponent: 0
+  lastTransform: {fileID: 0}
+  currTransform: {fileID: 0}
   isDrag: 0
   ItemType: 0
 --- !u!1001 &1307809450

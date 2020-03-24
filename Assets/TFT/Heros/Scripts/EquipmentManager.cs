@@ -20,7 +20,7 @@ namespace TFT
         {
             if (Equipments.Count == 3 && !Equipments[2].isComponent) return false;
             if(Equipments.Count == 0 || !Equipments[Equipments.Count - 1].isComponent)
-            {
+            { 
                 AddAttribute(_addEquirement);
                 return true;
             }
@@ -54,7 +54,7 @@ namespace TFT
                 }
             }
             Equipments.Add(_addEquirement);
-            _addEquirement.transform.parent = ItemList;
+            //_addEquirement.transform.parent = ItemList;
         }
 
         private BlendItem Composite(ItemType _lastEquirementType, ItemType _addEquirement)
