@@ -80,7 +80,7 @@ namespace TFT
                 {
                     return;
                 }
-                if (SelectManager.DragObject != null)
+                if (SelectManager.DragObject != null && SelectManager.DragObject.GetComponent<Hero>() != null)
                 {
                     SelectManager.ParentObject = gameObject.transform;
                 }

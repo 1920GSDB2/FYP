@@ -62,7 +62,7 @@ namespace TFT
                         DragObject.GetComponent<Collider>().enabled = true;
                         DragObject.localPosition = Vector3.zero;
 
-                        DragObject = null;
+                        //DragObject = null;
                         ParentObject = null;
                     }
                 }

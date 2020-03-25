@@ -121,11 +121,12 @@ public class Hero : Character
         }
 
         SelectingBox.SetActive(!BoxCollider.enabled);
-        
 
-        if (SelectManager.DragObject != gameObject && transform.parent != LastHeroPlace.transform)
+        if (SelectManager.DragObject != null &&
+            SelectManager.DragObject.transform == transform &&
+            transform.parent != LastHeroPlace.transform)
         {
-
+            SelectManager.DragObject = null;
             HeroPlace = transform.parent.GetComponent<HeroPlace>();
             GameManager.ChangeHeroPos(this);
             Debug.Log("GameManager.ChangeHeroPos");

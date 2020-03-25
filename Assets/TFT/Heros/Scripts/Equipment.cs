@@ -16,6 +16,16 @@ namespace TFT
         public Transform lastTransform, currTransform;
 
         public bool isDrag;
+        private bool isUse;
+        public bool IsUse
+        {
+            get { return isUse; }
+            set
+            {
+                isUse = value;
+                
+            }
+        }
 
         Plane movePlane;
         float fixedDistance = 0f;
@@ -32,11 +42,13 @@ namespace TFT
         public virtual void Update()
         {
             if (SelectManager.DragObject != null &&
-                SelectManager.DragObject != gameObject &&
-                transform.parent.parent.GetComponent<EquipmentManager>() != null&&
+                SelectManager.DragObject.transform == transform &&
+                //SelectManager.DragObject != gameObject &&
+                transform.parent.parent.GetComponent<EquipmentManager>() != null &&
                 transform.parent != lastTransform)
             {
                 //GetComponent<MeshRenderer>().enabled = false;
+                SelectManager.DragObject = null;
                 currTransform = transform.parent;
                 //currTransform.parent.parent.GetComponent<EquipmentManager>().AddEquirement(this);
                 lastTransform = currTransform;
@@ -52,10 +64,8 @@ namespace TFT
 
         private void OnMouseExit()
         {
-            if (SelectManager.Instance.SelectedObject == gameObject)
-            {
-                SelectManager.Instance.SelectedObject = null;
-            }
+            SelectManager.SelectedObject = null;
+            Debug.Log("Equipment Select Object is Null");
         }
     }
 }
