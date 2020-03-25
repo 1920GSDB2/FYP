@@ -24,6 +24,7 @@ namespace TFT
             {
                 isUse = value;
                 GetComponent<Collider>().enabled = false;
+                transform.localScale = Vector3.one;
             }
         }
 
@@ -49,7 +50,7 @@ namespace TFT
                 //GetComponent<MeshRenderer>().enabled = false;
                 SelectManager.DragObject = null;
                 currTransform = transform.parent;
-                //currTransform.parent.parent.GetComponent<EquipmentManager>().AddEquirement(this);
+                currTransform.parent.parent.GetComponent<EquipmentManager>().AddEquirement(this);
                 lastTransform = currTransform;
                 IsUse = false;
             }

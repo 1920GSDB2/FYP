@@ -30,8 +30,9 @@ namespace TFT
                 BlendItem newItem = Composite(((Item)Equipments[Equipments.Count - 1]).ItemType, ((Item)_addEquirement).ItemType);
                 if (newItem != null)
                 {
-                    GameObject item = Instantiate(newItem.gameObject,ItemList);
-                    AddAttribute(item.GetComponent<Equipment>());
+                    //GameObject item = Instantiate(newItem.gameObject,ItemList);
+                    //AddAttribute(item.GetComponent<Equipment>());
+                    AddAttribute(newItem);
                 }
                 return true;
             }
