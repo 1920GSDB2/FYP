@@ -177,9 +177,11 @@ public class Character : MonoBehaviour
         GetComponent<PhotonView>().RPC("RPC_FollowStep", PhotonTargets.Others, step.heroPlace.PlaceId, step.heroPlace.gridY);
         MoveToThePlace(step.heroPlace);
         transform.LookAt(step.heroPlace.transform);
-        animator.SetBool("Walk", true); 
+        animator.SetBool("Walk", true);
+       // Vector3 destination = new Vector3(step.heroPlace.transform.position.x, transform.position.y, step.heroPlace.transform.position.z);
         while (HeroState == HeroState.Walking)
-        {           
+        {
+
             if (transform.position != step.heroPlace.transform.position)
             {
                

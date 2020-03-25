@@ -21,8 +21,8 @@ namespace TFT
         public OpponentManager[] OpponentManagers;  //Player's Opponent Data
         public Camera[] Cameras;                    //Cameras of Focusing Game Arena (The Data are hard coded in scene)
         public GridMap map;
-        List<Character> selfGameBoardHero = new List<Character>();
-        List<Character> battleGameBoardHero;
+        public List<Character> selfGameBoardHero = new List<Character>();
+        public List<Character> battleGameBoardHero;
         bool isHomeTeam;
         void Awake()
         {
@@ -46,6 +46,7 @@ namespace TFT
             if (Input.GetKeyDown(KeyCode.K))
             {
                 PhotonView.RPC("RPC_Battle", PhotonTargets.All, 0, 1);
+             //   PhotonView.RPC("RPC_Test", PhotonTargets.All);
             }
             #endregion
 
@@ -176,12 +177,17 @@ namespace TFT
         #endregion
 
         public Character getCloestEnemyTarget(bool isEnemy,Transform heroPos) {
-            Debug.Log("GET Cloest");
-            if (isEnemy)
-                return calculateClosestDistance(battleGameBoardHero, heroPos);
-            else
-                return calculateClosestDistance(opponent.hero, heroPos);
 
+            if (isEnemy)
+            {
+                Debug.Log("Get battleGame " + isEnemy);
+                return calculateClosestDistance(battleGameBoardHero, heroPos);
+            }
+            else
+            {
+                Debug.Log("Get opponent " + isEnemy);
+                return calculateClosestDistance(opponent.hero, heroPos);
+            }
         }
         Character calculateClosestDistance(List<Character> targetHeros,Transform heroPos) {
             Character[] hero = targetHeros.ToArray<Character>();
@@ -653,9 +659,10 @@ namespace TFT
         #endregion
         [PunRPC]
         void RPC_Test() {
-             Monster monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "GOBLIN"), Vector3.zero, Quaternion.identity, 0)).GetComponentInChildren<Monster>();
-            // newHero.photonView.RPC("RPC_AddToHeroList", PhotonTargets.All,0,1);
-            //  newHero.name = "Executioner";
+            Hero newhero = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Armor Crocodile"), Vector3.zero, Quaternion.identity, 0)).GetComponentInChildren<Hero>();
+            //  Monster monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "GOBLIN"), Vector3.zero, Quaternion.identity, 0)).GetComponentInChildren<Monster>();
+            newhero.photonView.RPC("RPC_AddToHeroList", PhotonTargets.All,0,1);
+            newhero.name = "Armor Crocodile";
             // if (TFT.GameManager.Instance.BuyHero(newHero));
            // Debug.Log("Hero GameBoard"+ selfGameBoardHero.Count);
         }

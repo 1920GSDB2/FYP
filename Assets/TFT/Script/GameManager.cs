@@ -131,8 +131,7 @@ namespace TFT
 
                     //Cannot level up
                     if (networkHero.HeroLevel == HeroLevel.Level1)
-                    {
-
+                    {                      
                         NetworkManager.Instance.SyncPlayerHero(networkHero, SyncHeroMethod.AddHero);
                     }
                     //Can level up and destroy extra hero
