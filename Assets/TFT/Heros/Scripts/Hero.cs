@@ -128,6 +128,7 @@ public class Hero : Character
 
             HeroPlace = transform.parent.GetComponent<HeroPlace>();
             GameManager.ChangeHeroPos(this);
+            Debug.Log("GameManager.ChangeHeroPos");
             LastHeroPlace = HeroPlace;
         }
 
@@ -227,6 +228,8 @@ public class Hero : Character
         {
             SelectManager.ParentObject = null;
         }
+        SelectManager.ParentObject = null;
+        SelectManager.SelectedObject = null;
     }
 
     #region RPC move hero

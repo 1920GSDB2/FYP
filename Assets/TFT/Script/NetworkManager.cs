@@ -462,6 +462,8 @@ namespace TFT
                 }
             }
             GameManager.Instance.PlayerHero = PlayerHeroes[playerId];
+            TeamFlag.Instance.GameboardCard.text = GameManager.Instance.PlayerHero.GameBoardHeroes.Count.ToString();
+
         }
 
         /// <summary>

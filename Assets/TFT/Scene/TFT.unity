@@ -9043,6 +9043,8 @@ MonoBehaviour:
   OpponentManagers: []
   Cameras: []
   map: {fileID: 1890850773}
+  selfGameBoardHero: []
+  battleGameBoardHero: []
 --- !u!114 &355347624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31871,7 +31873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1306419597
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31957,6 +31959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef183086f61c5d4ba1cfe7a3c0f95c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SelectManager: {fileID: 0}
   Icon: {fileID: 750329714}
   HeroAttributes: 
   AttributeValues: 
