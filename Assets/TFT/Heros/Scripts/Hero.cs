@@ -123,7 +123,7 @@ public class Hero : Character
         SelectingBox.SetActive(!BoxCollider.enabled);
 
         if (SelectManager.DragObject != null &&
-            SelectManager.DragObject.transform == transform &&
+            SelectManager.DragObject == gameObject &&
             transform.parent != LastHeroPlace.transform)
         {
             SelectManager.DragObject = null;
@@ -208,12 +208,12 @@ public class Hero : Character
             int index = EquipmentManager.Equipments.Count;
             if (index < 3)
             { 
-                SelectManager.ParentObject = EquipmentManager.ItemList.GetChild(index);
+                SelectManager.ParentObject = EquipmentManager.ItemList.GetChild(index).gameObject;
             }
         }
         else
         {
-            SelectManager.SelectedObject = gameObject.transform;
+            SelectManager.SelectedObject = gameObject;
             LastHeroPlace = HeroPlace;
         }
     }
@@ -229,8 +229,6 @@ public class Hero : Character
         {
             SelectManager.ParentObject = null;
         }
-        SelectManager.ParentObject = null;
-        SelectManager.SelectedObject = null;
     }
 
     #region RPC move hero

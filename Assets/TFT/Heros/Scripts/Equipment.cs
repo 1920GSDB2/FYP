@@ -23,7 +23,7 @@ namespace TFT
             set
             {
                 isUse = value;
-                
+                GetComponent<Collider>().enabled = false;
             }
         }
 
@@ -36,15 +36,14 @@ namespace TFT
         public virtual void Start()
         {
             SelectManager = SelectManager.Instance;
-            currTransform = transform;
+            currTransform = transform.parent;
         }
         // Update is called once per frame
         public virtual void Update()
         {
-            if (SelectManager.DragObject != null &&
-                SelectManager.DragObject.transform == transform &&
-                //SelectManager.DragObject != gameObject &&
-                transform.parent.parent.GetComponent<EquipmentManager>() != null &&
+            if (!IsUse && SelectManager.DragObject != null &&
+                SelectManager.DragObject == gameObject &&
+                //transform.parent.parent.GetComponent<EquipmentManager>() != null &&
                 transform.parent != lastTransform)
             {
                 //GetComponent<MeshRenderer>().enabled = false;
@@ -52,20 +51,22 @@ namespace TFT
                 currTransform = transform.parent;
                 //currTransform.parent.parent.GetComponent<EquipmentManager>().AddEquirement(this);
                 lastTransform = currTransform;
-                Debug.Log("Test");
+                IsUse = false;
             }
         }
 
         private void OnMouseEnter()
         {
-            SelectManager.SelectedObject = gameObject.transform;
-            lastTransform = transform;
+            SelectManager.SelectedObject = gameObject;
+            lastTransform = transform.parent;
         }
 
         private void OnMouseExit()
         {
-            SelectManager.SelectedObject = null;
-            Debug.Log("Equipment Select Object is Null");
+            if (SelectManager.SelectedObject == gameObject)
+            {
+                SelectManager.SelectedObject = null;
+            }
         }
     }
 }
