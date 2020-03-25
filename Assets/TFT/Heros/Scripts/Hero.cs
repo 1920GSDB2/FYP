@@ -113,10 +113,10 @@ public class Hero : Character
             //animator.SetBool("Attack",true);
             //  gameObject.SetActive(false);
             //    Debug.Log(name + " Health " + Health + " / " + MaxHealth);
-            float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
-            Debug.Log(name + " State " + HeroState+" Distance "+dis);
-            //   photonView.RPC("test", PhotonTargets.All);
 
+               float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
+               Debug.Log(name + " State " + HeroState+" Distance "+dis);
+            //   photonView.RPC("test", PhotonTargets.All);
             //  photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
 
