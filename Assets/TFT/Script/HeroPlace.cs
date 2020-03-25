@@ -43,8 +43,6 @@ namespace TFT
             //MouseSelect = TFT.GameManager.Instance.gameObject.GetComponent<MouseSelect>();
         }
 
-
-
         void HeroPlaceSetting()
         {
             if (name.Equals("Square"))
