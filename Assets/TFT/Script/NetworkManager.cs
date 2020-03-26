@@ -563,23 +563,27 @@ namespace TFT
                 PlayerArenas[PlayerHeroes[player2Id].posId].GetComponent<PlayerArena>().Camera.SetActive(false);
                 PlayerArenas[PlayerHeroes[player1Id].posId].GetComponent<PlayerArena>().Camera.SetActive(true);
                 opponent.opponentId = player1Id;
+                setOppoentHero(player1Id, player1Id);
                 isHomeTeam = false;
             }
             if (playerId == player1Id) {
                 isHomeTeam = true;
                 opponent.opponentId = player2Id;
-                foreach (NetworkHero networkHero in PlayerHeroes[player2Id].GameBoardHeroes)
-                {
-                      Hero heroObject = PlayerArenas[PlayerHeroes[player2Id].posId].
-                                        GetComponent<PlayerArena>().EnemyArena.GameBoard.
-                                        GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
-                    //Hero heroObject = GameManager.Instance.SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>(); 
-                    opponent.hero.Add(heroObject);
-                    heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, PlayerHeroes[player1Id].posId, networkHero.position);
-                }
+                setOppoentHero(player1Id, player2Id);
                 StartCoroutine(startBattle(PlayerHeroes[player1Id].posId));               
             }
-
+        }
+        void setOppoentHero(int homePlayerId,int OpponentPlayerId) {
+            foreach (NetworkHero networkHero in PlayerHeroes[OpponentPlayerId].GameBoardHeroes)
+            {
+                Hero heroObject = PlayerArenas[PlayerHeroes[OpponentPlayerId].posId].
+                                  GetComponent<PlayerArena>().EnemyArena.GameBoard.
+                                  GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
+                //Hero heroObject = GameManager.Instance.SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>(); 
+                opponent.hero.Add(heroObject);
+                if(playerId==homePlayerId)
+                heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, PlayerHeroes[homePlayerId].posId, networkHero.position);
+            }
         }
         public void battleHeroDie(bool isEnemy,Character hero) {
             if (isHomeTeam)
@@ -587,11 +591,9 @@ namespace TFT
                 if (isEnemy)
                 {
                     opponent.hero.Remove(hero);
-                    Debug.Log("Enemy die" + opponent.hero.Count);
                     if (opponent.hero.Count == 0)
                     {
                         StartCoroutine(playerWinBattle(playerId));
-                        Debug.Log("Win Battle");
                     }
                 }
                 else
@@ -607,7 +609,6 @@ namespace TFT
             Debug.Log("Finish");
             if(opponent.opponentId!=-1)
             PhotonView.RPC("RPC_FinishBattle", PlayerHeroes[opponent.opponentId].player);
-            opponent.hero.Clear();
             ResetHeroAfterBattle();
             map.resetMap();
 
@@ -622,23 +623,27 @@ namespace TFT
      //       Debug.Log("reset Position id: "+playerId+" Hero "+selfGameBoardHero.Count);          
             foreach (Hero hero in selfGameBoardHero)
             {
-                Debug.Log(hero.name);
                 hero.gameObject.SetActive(true);             
                 hero.photonView.RPC("RPC_AddToGameBoard", PhotonTargets.All, posId, hero.networkPlaceId);
                 hero.photonView.RPC("RPC_ResetStatus", PhotonTargets.All);
             }
+            opponent.hero.Clear();
         }
-      
+
         IEnumerator startBattle(int posId) {
             yield return new WaitForSeconds(2);
-            Debug.Log("Hero battle");
             battleGameBoardHero = new List<Character>(selfGameBoardHero);
             foreach (Hero hero in battleGameBoardHero)
-                hero.readyForBattle(false,posId);
+            {
+                //hero
+                hero.readyForBattle(false, posId);
+            }
 
 
             foreach (Character hero in opponent.hero)
+            {
                 hero.readyForBattle(true, posId);
+            }
         }
         #endregion
         #region monster

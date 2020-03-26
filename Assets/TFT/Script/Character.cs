@@ -228,7 +228,6 @@ public class Character : MonoBehaviour
     }
     public IEnumerator RPC_FollowHeroPlace(HeroPlace step)
     {
-        transform.LookAt(step.transform);
         animator.SetBool("Walk", true);
         while (transform.position != step.transform.position)
         {
@@ -253,18 +252,21 @@ public class Character : MonoBehaviour
     {
         HeroState = HeroState.Idle;
         this.isEnemy = isEnemy;
+        //Debug.Log("State " + HeroState + " Enemy " + isEnemy);
         photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
-        Debug.Log("State " + HeroState + " Enemy " + isEnemy);
+        
     }
     [PunRPC]
     public void RPC_ShowHpBar(int posid)
     {
         HeroBar.SetActive(true);
         cameraPos = NetworkManager.Instance.getCamera(posid).transform.position;
+
     }
     [PunRPC]
     public void RPC_AttackAnimation()
     {
+       // transform.LookAt(targetEnemy.transform);
         animator.SetTrigger("Attack");
         //transform.LookAt(targetEnemy.transform);
     }
@@ -284,6 +286,9 @@ public class Character : MonoBehaviour
         LastHeroPlace = heroPlace;
         HeroPlace = heroPlace;
 
+    }
+    public void setHpBarColor(Color color) {
+        hpBar.color = color;
     }
     public IEnumerator basicAttackCoolDown()
     {

@@ -103,8 +103,9 @@ public class Hero : Character
 
         if (HeroState == HeroState.Fight) {
             if (!isAttackCooldown)
-                 photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
+                 photonView.RPC("RPC_AttackAnimation", PhotonTargets.Others);
                 animator.SetTrigger("Attack");
+                transform.LookAt(targetEnemy.transform);
 
         }
         if (Input.GetKeyDown(KeyCode.I))
