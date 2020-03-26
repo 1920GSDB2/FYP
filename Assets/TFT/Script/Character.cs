@@ -29,7 +29,7 @@ public class Character : MonoBehaviour
     protected Image hpBar;
     protected Image mpBar;
     
-    protected float attackRange = 1.75f;
+    protected float attackRange = 1.7f;
 
     // Start is called before the first frame update
 
@@ -125,6 +125,8 @@ public class Character : MonoBehaviour
 
     protected void followEnemy()
     {
+        checkWithInAttackRange();
+        if(HeroState!=HeroState.Fight)
         PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
       //  float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
 
@@ -148,7 +150,8 @@ public class Character : MonoBehaviour
         }*/
     }
     public void checkWithInAttackRange() {
-        float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
+       
+        float dis = Vector3.Distance(HeroPlace.transform.position,targetEnemy.HeroPlace.transform.position);
         if (dis <= attackRange) {
               HeroState = HeroState.Fight;         
               photonView.RPC("RPC_StopWalk", PhotonTargets.All);
@@ -191,7 +194,9 @@ public class Character : MonoBehaviour
             else
             {
                 //  Debug.Log("finish");
-                // isLoop = false;                
+                // isLoop = false;               
+                photonView.RPC("RPC_StopWalk", PhotonTargets.All);
+               
                 StartCoroutine(FindPathAgain());
                 //PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);                          
                 break;
