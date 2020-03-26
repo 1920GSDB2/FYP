@@ -26,6 +26,7 @@ public class Hero : Character
     public EquipmentManager EquipmentManager;
 
     public int networkPlaceId;
+
     [Range(0, 10)]
     public int BasicHealth;
     [Range(0, 10)]
@@ -38,9 +39,11 @@ public class Hero : Character
     public int BasicPhysicalDefense;
     [Range(0, 10)]
     public int BasicMagicDefense;
+    [Range(0, 10)]
+    public int BasicCritcalChance;
 
 
-   // bool isAttackCooldown;
+    // bool isAttackCooldown;
     string lastTransform;
 
     //  List<Node> path;

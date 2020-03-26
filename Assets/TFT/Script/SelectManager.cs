@@ -15,6 +15,20 @@ namespace TFT
         //[HideInInspector]
         public GameObject SelectedObject, DragObject, ParentObject;
         bool isDrag;
+        public bool IsFinishDrag
+        {
+            get
+            {
+                if (DragObject != null && ParentObject == null && !isDrag)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
 
         [SerializeField]
         readonly float fixedDistance = 0f;

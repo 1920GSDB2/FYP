@@ -9,7 +9,8 @@ namespace TFT
     public class Shop : MonoBehaviour
     {
         private Main.GameManager GameManager;
-        GameManager TFTGameManager;
+        private SelectManager SelectManager;
+        private GameManager TFTGameManager;
         public static Shop Instance;
 
         public Asset asset;
@@ -18,7 +19,7 @@ namespace TFT
 
         public float delayTime = 0.1f;
         public Button SwitchButton;
-        private bool isShowShop;
+        public bool isShowShop = true;
         private Vector2 currrShopPos, nextShopPos;
         private Vector3 currShopBtnRot, nextShopBtnRot;
 
@@ -32,8 +33,10 @@ namespace TFT
 
         void Start()
         {
+            
             GameManager = TFT.GameManager.Instance.MainGameManager;
             TFTGameManager = TFT.GameManager.Instance;
+            SelectManager = SelectManager.Instance;
 
             ExpPrice = GameManager.ExpPrice;
             RefreshPrice = GameManager.RefreshPrice;
@@ -47,6 +50,10 @@ namespace TFT
 
         void Update()
         {
+            if (SelectManager.DragObject != null && isShowShop)
+            {
+                SwitchShop();
+            }
             if (currrShopPos != nextShopPos)
             {
                 shopRect.anchoredPosition = Vector2.Lerp(currrShopPos, nextShopPos, delayTime);
