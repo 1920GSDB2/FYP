@@ -63,14 +63,10 @@ public class Character : MonoBehaviour
     }*/
     public void attackTarget()
     {
-        if (targetEnemy.Health <= 0)
-        {
-            targetEnemy = null;
-            HeroState = HeroState.Idle;
-        }
+        
         //Debug.Log(targetEnemy.name + " Take Damage");
         if (targetEnemy != null)
-        {
+        {            
             photonView.RPC("RPC_IncreaseMp", PhotonTargets.All,10f);
             //GetComponent<PhotonView>().RPC("RPC_IncreaseMp", PhotonTargets.All,10);
             targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
@@ -259,9 +255,10 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_ShowHpBar(int posid)
     {
+        if (NetworkManager.Instance.opponent.hero.Contains(this))
+            setHpBarColor(Color.red);
         HeroBar.SetActive(true);
         cameraPos = NetworkManager.Instance.getCamera(posid).transform.position;
-
     }
     [PunRPC]
     public void RPC_AttackAnimation()
@@ -293,7 +290,9 @@ public class Character : MonoBehaviour
     public IEnumerator basicAttackCoolDown()
     {
         isAttackCooldown = true;
+        Debug.Log(name+"Coolown");
         yield return new WaitForSeconds(1 / (AttackSpeed * 2.5f));
+        Debug.Log(name+"Cool Finish");
         isAttackCooldown = false;
     }
 }

@@ -76,6 +76,7 @@ public class Hero : Character
         MaxMp = 100;
         Health = MaxHealth;
         AttackDamage = 10 * BasicAttackDamage;
+        AttackSpeed = 0.1f * BasicAttackSpeed;
 
         BoxCollider = GetComponent<Collider>();
         //HeroState = HeroState.Idle;
@@ -103,9 +104,19 @@ public class Hero : Character
 
         if (HeroState == HeroState.Fight) {
             if (!isAttackCooldown)
-                 photonView.RPC("RPC_AttackAnimation", PhotonTargets.Others);
-                animator.SetTrigger("Attack");
-                transform.LookAt(targetEnemy.transform);
+                if (targetEnemy.Health <= 0)
+                {
+                    targetEnemy = null;
+                    HeroState = HeroState.Idle;
+                }
+                else
+                {
+                    // isAttackCooldown = true;
+                    StartCoroutine(basicAttackCoolDown());
+                    photonView.RPC("RPC_AttackAnimation", PhotonTargets.Others);
+                    animator.SetTrigger("Attack");
+                    transform.LookAt(targetEnemy.transform);
+                }
 
         }
         if (Input.GetKeyDown(KeyCode.I))
@@ -167,6 +178,7 @@ public class Hero : Character
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
         HeroState = HeroState.Nothing;
         isEnemy = false;
+        isAttackCooldown = false;
     }
 
     private void FixedUpdate()
