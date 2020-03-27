@@ -10,6 +10,7 @@ public class Hero : Character
 {
     // public bool isEnemy;
     // public HeroPlace HeroPlace, LastHeroPlace;         //Current HeroPlace Position of Hero
+    public Sprite Icon;
     public GameObject SelectingBox;
     private Collider BoxCollider;
     //public MouseSelect MouseSelect;
