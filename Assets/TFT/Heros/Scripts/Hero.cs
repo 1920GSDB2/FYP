@@ -153,7 +153,8 @@ public class Hero : Character
 
         if (SelectManager.DragObject != null &&
             SelectManager.DragObject == gameObject &&
-            transform.parent != LastHeroPlace.transform)
+            //transform.parent != LastHeroPlace.transform)
+            SelectManager.IsFinishDrag)
         {
             SelectManager.DragObject = null;
             HeroPlace = transform.parent.GetComponent<HeroPlace>();

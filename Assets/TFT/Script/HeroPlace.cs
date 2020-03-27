@@ -75,12 +75,16 @@ namespace TFT
                 {
                     currMat.material = hoverMat;
                 }
-                if(PlaceType == PlaceType.OnBoard &&
-                    GameManager.PlayerHero.GameBoardHeroes.Count >= GameManager.LevelManager.Level)
+                if (SelectManager.DragObject == null ||
+                    SelectManager.DragObject.GetComponent<Hero>() == null ||
+                    GameManager.PlayerHero.GameBoardHeroes.Count >= GameManager.LevelManager.Level &&
+                    SelectManager.DragObject.GetComponent<Hero>().HeroPlace.PlaceType != PlaceType &&
+                    PlaceType == PlaceType.OnBoard)
                 {
                     return;
                 }
-                if (SelectManager.DragObject != null && SelectManager.DragObject.GetComponent<Hero>() != null)
+                //if (SelectManager.DragObject != null && SelectManager.DragObject.GetComponent<Hero>() != null)
+                else
                 {
                     SelectManager.ParentObject = gameObject;
                 }

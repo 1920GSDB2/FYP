@@ -14,21 +14,8 @@ namespace TFT
 
         //[HideInInspector]
         public GameObject SelectedObject, DragObject, ParentObject;
-        bool isDrag;
-        public bool IsFinishDrag
-        {
-            get
-            {
-                if (DragObject != null && ParentObject == null && !isDrag)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
+        public bool isDrag;
+        public bool IsFinishDrag;
 
         [SerializeField]
         readonly float fixedDistance = 0f;
@@ -61,12 +48,15 @@ namespace TFT
 
                 startPos = DragObject.transform.position; // save position in case draged to invalid place
                 movePlane = new Plane(-Camera.main.transform.forward, DragObject.transform.position);
+                IsFinishDrag = false;
+
             }
 
             //Put down Hero
             if (Input.GetMouseButtonUp(0) && DragObject != null)
             {
                 isDrag = !isDrag;
+                IsFinishDrag = false;
                 if (ParentObject != null)
                 {
 
@@ -78,6 +68,7 @@ namespace TFT
 
                         //DragObject = null;
                         ParentObject = null;
+                        IsFinishDrag = true;
                     }
                 }
                 else
