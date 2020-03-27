@@ -28362,8 +28362,8 @@ RectTransform:
   m_Father: {fileID: 2085590419}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.92}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 185, y: 180}
   m_Pivot: {x: 0, y: 0}
@@ -51890,6 +51890,7 @@ MonoBehaviour:
   - {fileID: 1589330083}
   delayTime: 0.1
   SwitchButton: {fileID: 1732153232}
+  isShowShop: 1
   textRect: {fileID: 1218298863}
 --- !u!1 &1916848015
 GameObject:
