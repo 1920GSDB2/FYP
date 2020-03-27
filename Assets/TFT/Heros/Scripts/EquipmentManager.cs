@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,15 +7,21 @@ namespace TFT
 {
     public class EquipmentManager : MonoBehaviour
     {
+        private Hero Hero;
         public List<Equipment> Equipments = new List<Equipment>(3);
         public Transform ItemList;
-        public Dictionary<HeroAttribute, int> ItemAttribute;
+        public Dictionary<HeroAttribute, int> ItemAttribute = new Dictionary<HeroAttribute, int>();
 
         Plane movePlane;
         float fixedDistance = 0f;
         float hitDist, t;
         Ray camRay;
         Vector3 startPos, point, corPoint;
+
+        private void Start()
+        {
+            Hero = GetComponent<Hero>();
+        }
 
         public bool AddEquirement(Equipment _addEquirement)
         {
@@ -55,9 +62,51 @@ namespace TFT
                 }
             }
             Equipments.Add(_addEquirement);
+            AttributeHandler();
+
             //_addEquirement.transform.parent = ItemList;
         }
-
+        private void AttributeHandler()
+        {
+            //Reset Added Attribute
+            foreach (HeroAttribute attriType in Enum.GetValues(typeof(HeroAttribute)))
+            {
+                if (ItemAttribute.ContainsKey(attriType))
+                {
+                    AddHeroAttribute(attriType, ItemAttribute[attriType]);
+                }
+            }
+        }
+        private void AddHeroAttribute(HeroAttribute _type, int _value)
+        {
+            switch (_type)
+            {
+                case HeroAttribute.Attack:
+                    GetComponent<Hero>().AttackDamage += _value;
+                    break;
+                case HeroAttribute.Attack_Speed:
+                    GetComponent<Hero>().AttackSpeed += _value;
+                    break;
+                case HeroAttribute.Critical_Cahnce:
+                    GetComponent<Hero>().BasicCritcalChance += _value;
+                    break;
+                case HeroAttribute.Magic_Defense:
+                    GetComponent<Hero>().MagicDefense += _value;
+                    break;
+                case HeroAttribute.Mana:
+                    GetComponent<Hero>().MaxMp += _value;
+                    break;
+                case HeroAttribute.Health:
+                    GetComponent<Hero>().Health += _value;
+                    break;
+                case HeroAttribute.Physic_Defense:
+                    GetComponent<Hero>().PhysicalDefense += _value;
+                    break;
+                case HeroAttribute.Skill_Damage:
+                    GetComponent<Hero>().SkillPower += _value;
+                    break;
+            }
+        }
         private BlendItem Composite(ItemType _lastEquirementType, ItemType _addEquirement)
         {
             BlendItem[] _blendItemTypes = GameManager.Instance.MainGameManager.BlendItemTypes;

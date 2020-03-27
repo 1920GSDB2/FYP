@@ -16,6 +16,7 @@ namespace TFT
         public Opponent opponent;                   //Player's Opponent
 
         public int[] PlayerPosition;                //Player's Position Represent to PlayerArenas
+        public RankManager RankManager;
         public PlayerHero[] PlayerHeroes;           //Players' Heroes List
         public GameObject[] PlayerArenas;           //PlayerArenas Location (The Data are hard coded in scene)
         public OpponentManager[] OpponentManagers;  //Player's Opponent Data
@@ -31,6 +32,7 @@ namespace TFT
 
         void Start()
         {
+            RankManager = RankManager.Instance;
             PhotonNetworkSetup();
         }
         
@@ -295,6 +297,7 @@ namespace TFT
             PlayerPosition = _playerPosition;
             for (int i = 0; i < _playerPosition.Length; i++)
             {
+                RankManager.PlayersName.Add(PhotonNetwork.playerList[i].NickName);
                 PlayerHeroes[i] = new PlayerHero();
                 if (_playerPosition[i] == playerId)
                 {
@@ -307,11 +310,10 @@ namespace TFT
                         posId = posId,
                         player=PhotonNetwork.player
                     };
-                  //  PlayerHeroes[playerId].setPlayer(PhotonNetwork.player);
-                   // PlayerHeroes[playerId].posId = posId;
-                    //PlayerHeroes[playerId].setPersonalInformation(posId, PhotonNetwork.player);
+
                     Debug.Log("playerid" + playerId + " POs "+posId+" setPOs "+ PlayerHeroes[playerId].posId);
                     //Cameras[posId].enabled = true;
+
                     GameManager.Instance.SelfPlayerArena.Camera.SetActive(true);
                     GameManager.Instance.MainCamera = GameManager.Instance.SelfPlayerArena.Camera.GetComponent<Camera>();
 
@@ -321,7 +323,9 @@ namespace TFT
                     //PlayerHeroes[playerId] = PlayerHero;
                 }
             }
+            RankManager.PlayerCollectionSetup();
         }
+
         [PunRPC]
         public void RPC_SyncPlayerInformation(int SyncPlayerId,int SyncPosId,PhotonPlayer player) {
           //  Debug.Log("SYNC inofor player id " + SyncPlayerId + "  POsid " + SyncPosId);
@@ -672,6 +676,12 @@ namespace TFT
             newhero.name = "Armor Crocodile";
             // if (TFT.GameManager.Instance.BuyHero(newHero));
            // Debug.Log("Hero GameBoard"+ selfGameBoardHero.Count);
+        }
+
+        [PunRPC]
+        public void RankChange(string _playerName, int _value)
+        {
+            RankManager.DeductHP(_playerName, _value);
         }
     }
 }

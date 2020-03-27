@@ -15,6 +15,7 @@ namespace Main
 
         public string lobbyScene;
 
+        public int PlayerInitHP;
         public float readyingTime, playingTime, compingTime, transitionTime;        //Sync to photon
         public List<Hero> heroTypes = new List<Hero>();                             //List of total heroes
         public BlendItem[] BlendItemTypes;

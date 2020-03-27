@@ -81,4 +81,5 @@ MonoBehaviour:
   - ReduceMp
   - RPC_IncreaseMp
   - RPC_ReduceMp
+  - RankChange
   DisableAutoOpenWizard: 1

@@ -18,7 +18,16 @@ public class Hero : Character
     private GameManager GameManager;
     private SelectManager SelectManager;
 
-    public HeroStatus HeroStatus = HeroStatus.Standby;
+    private HeroStatus heroStatus = HeroStatus.Standby;
+    public HeroStatus HeroStatus
+    {
+        get { return heroStatus; }
+        set
+        {
+            heroStatus = value;
+            EquipmentManager.ItemList.gameObject.SetActive(value == HeroStatus.Standby);
+        }
+    }
     public Rarity Rarity;
     public HeroClass[] HeroClasses;
     public HeroRace[] HeroRaces;

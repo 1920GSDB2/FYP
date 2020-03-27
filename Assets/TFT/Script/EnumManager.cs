@@ -5,7 +5,7 @@
     Critical_Cahnce,
     Magic_Defense,
     Mana,
-    Max_Health,
+    Health,
     Skill_Damage,
     Physic_Defense
 }

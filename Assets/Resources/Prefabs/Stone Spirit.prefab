@@ -122,6 +122,7 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBar: {fileID: 7752257069270439507}
+  Icon: {fileID: 0}
   SelectingBox: {fileID: 5941775734666665796}
   HeroStatus: 0
   Rarity: 1
@@ -136,6 +137,7 @@ MonoBehaviour:
   BasicSkillPower: 4
   BasicPhysicalDefense: 7
   BasicMagicDefense: 7
+  BasicCritcalChance: 0
 --- !u!114 &2575376147947601886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,7 +1148,7 @@ PrefabInstance:
     - target: {fileID: 6529561468463626486, guid: fa70520fd39f60d4b83f9756e96634d3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 6529561468463626486, guid: fa70520fd39f60d4b83f9756e96634d3,
         type: 3}
