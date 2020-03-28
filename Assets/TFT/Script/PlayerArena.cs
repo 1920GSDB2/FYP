@@ -10,6 +10,7 @@ namespace TFT
         public GameObject FightArena;
         public GamePlace SelfArena, EnemyArena;
         public GameObject Camera;
+        public Transform playerCharacterSlot, opponentCharacterSlot;
         Vector3 leftTop, rightTop, leftDown, rightDown;
         int GridSizeY = 8;
         int GridSizeX = 7;

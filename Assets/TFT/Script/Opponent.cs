@@ -8,6 +8,7 @@ public class Opponent
     public int opponentId;
     public bool isShadow;
     public List<Character> hero = new List<Character>() ;
+    public TFTPlayerCharacter playerCharacter { get; private set; }
     public Opponent(int _opponentId, bool? _isShadow = null)
     {
         opponentId = _opponentId;

@@ -169,15 +169,15 @@ public class LobbyManager : MonoBehaviour
             {
                 // PhotonView.RPC("test", PhotonTargets.Others, "others");
                 //PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Crazy Bomber-man"), Vector3.zero, Quaternion.identity, 0);
-                
-                
+
+
                 /*for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
                 {
                     PhotonView.RPC("test", PhotonTargets.All, PhotonNetwork.playerList[i].NickName);
 
                 }*/
-
-                PhotonView.RPC("test", PhotonTargets.OthersBuffered, "OthersBuffered");
+              //  GameObject.Instantiate(Path.Combine("Effect", "heroHitPlayerEffect"), Vector3.zero, Quaternion.identity);
+                //PhotonView.RPC("test", PhotonTargets.OthersBuffered, "OthersBuffered");
             }
         }
     }

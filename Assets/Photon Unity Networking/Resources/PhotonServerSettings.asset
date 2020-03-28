@@ -85,4 +85,5 @@ MonoBehaviour:
   - RPC_Shoot
   - RPC_SyncTargetEnemy
   - syncNetworkPlaceId
+  - RPC_SyncPlayerCharacterPosition
   DisableAutoOpenWizard: 1
