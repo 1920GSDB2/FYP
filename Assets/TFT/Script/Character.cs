@@ -102,7 +102,7 @@ public class Character : MonoBehaviour
     public void RPC_Shoot()
     {
         Bullet b = Instantiate(bullet, transform.position+Vector3.up, transform.rotation).GetComponent<Bullet>();
-        b.setBullet(targetEnemy, AttackDamage, !isMirror);
+        b.setBullet(targetEnemy.gameObject, AttackDamage, !isMirror);
     }
     [PunRPC]
     public void RPC_TargetTakeDamage(float damage)
@@ -316,6 +316,19 @@ public class Character : MonoBehaviour
     }
     public void setHpBarColor(Color color) {
         hpBar.color = color;
+    }
+    [PunRPC]
+    public void hitPlayerCharacter(int playerId) {
+        UnityEngine.Object pPrefab = Resources.Load("Effect/heroHitPlayerEffect");
+        Bullet b= Instantiate(pPrefab, Vector3.zero, Quaternion.identity)as Bullet;
+        GameObject opponentPlayer = NetworkManager.Instance.PlayerArenas[NetworkManager.Instance.battlePosId].
+                                    GetComponent<PlayerArena>().opponentCharacterSlot.GetChild(0).gameObject;
+        if (NetworkManager.Instance.playerId!=playerId)
+        {
+            opponentPlayer = NetworkManager.Instance.PlayerArenas[NetworkManager.Instance.battlePosId].
+                                    GetComponent<PlayerArena>().playerCharacterSlot.GetChild(0).gameObject;
+        }
+        b.setBullet(opponentPlayer);
     }
     public IEnumerator basicAttackCoolDown()
     {

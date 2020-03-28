@@ -86,4 +86,9 @@ MonoBehaviour:
   - RPC_SyncTargetEnemy
   - syncNetworkPlaceId
   - RPC_SyncPlayerCharacterPosition
+  - RPC_PlayerCharacterMoveToGameBoard
+  - RPC_PlayerCharacterBackToGameBoard
+  - hitPlayerCharacter
+  - RPC_HitOpponent
+  - RPC_SyncBattleHero
   DisableAutoOpenWizard: 1

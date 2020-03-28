@@ -123,6 +123,7 @@ namespace TFT
         public HeroBuffList BuffList = new HeroBuffList();
         public int posId;
         public PhotonPlayer player;
+        public TFTPlayerCharacter playerCharacter;
 
         /// <summary>
         /// Add hero to gameboard.

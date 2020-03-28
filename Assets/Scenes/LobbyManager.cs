@@ -176,7 +176,8 @@ public class LobbyManager : MonoBehaviour
                     PhotonView.RPC("test", PhotonTargets.All, PhotonNetwork.playerList[i].NickName);
 
                 }*/
-              //  GameObject.Instantiate(Path.Combine("Effect", "heroHitPlayerEffect"), Vector3.zero, Quaternion.identity);
+                UnityEngine.Object pPrefab = Resources.Load("Effect/heroHitPlayerEffect");
+                Instantiate(pPrefab, Vector3.zero, Quaternion.identity);
                 //PhotonView.RPC("test", PhotonTargets.OthersBuffered, "OthersBuffered");
             }
         }

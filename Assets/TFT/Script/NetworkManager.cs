@@ -11,7 +11,7 @@ namespace TFT
         public static NetworkManager Instance;
         public static PhotonView PhotonView;
 
-        public int playerId, posId;                 //Player Id and Position Id for Networking
+        public int playerId, posId,battlePosId;                 //Player Id and Position Id for Networking
         [SerializeField]
         public Opponent opponent;                   //Player's Opponent
 
@@ -562,7 +562,7 @@ namespace TFT
         [PunRPC]
         void RPC_Battle(int player1Id, int player2Id)
         {
-
+            battlePosId = PlayerHeroes[player1Id].posId;
             if (playerId == player2Id)
             {
                 PlayerArenas[PlayerHeroes[player2Id].posId].GetComponent<PlayerArena>().Camera.SetActive(false);
@@ -590,6 +590,8 @@ namespace TFT
                 if(playerId==homePlayerId)
                 heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, PlayerHeroes[homePlayerId].posId, networkHero.position);
             }
+            if(playerId==OpponentPlayerId)
+                battleGameBoardHero = new List<Character>(selfGameBoardHero);
         }
         public void battleHeroDie(bool isEnemy,Character hero) {
             if (isHomeTeam)
@@ -597,6 +599,8 @@ namespace TFT
                 if (isEnemy)
                 {
                     opponent.hero.Remove(hero);
+                    if(opponent.opponentId!=-1)
+                    PhotonView.RPC("RPC_SyncBattleHero", PlayerHeroes[opponent.opponentId].player,hero.networkPlaceId,true);
                     if (opponent.hero.Count == 0)
                     {
                         StartCoroutine(playerWinBattle(playerId,opponent.opponentId));
@@ -605,13 +609,29 @@ namespace TFT
                 else
                 {
                     battleGameBoardHero.Remove(hero);
+                    PhotonView.RPC("RPC_SyncBattleHero", PlayerHeroes[opponent.opponentId].player, hero.networkPlaceId, false);
                     if (battleGameBoardHero.Count == 0)
                         StartCoroutine(playerWinBattle(opponent.opponentId,playerId));
                 }
             }
         }
         IEnumerator playerWinBattle(int playerId,int loserId) {
-            yield return new WaitForSeconds(2);
+
+             PhotonView.RPC("RPC_HitOpponent", PlayerHeroes[playerId].player);
+         /*   if (this.playerId == playerId)
+            {
+                for (int i = 0; i < battleGameBoardHero.Count; i++)
+                {
+                    battleGameBoardHero[i].GetComponent<PhotonView>().RPC("hitPlayerCharacter", PhotonTargets.All);
+                }
+            }
+            else {
+                for (int i = 0; i < opponent.hero.Count; i++)
+                {
+                    opponent.hero[i].GetComponent<PhotonView>().RPC("hitPlayerCharacter", PhotonTargets.All);
+                }
+            }*/
+             yield return new WaitForSeconds(3.5f);
             if (opponent.opponentId != -1)
             {
                 PhotonView.RPC("RPC_FinishBattle", PlayerHeroes[opponent.opponentId].player);
@@ -620,6 +640,30 @@ namespace TFT
             ResetHeroAfterBattle();
             map.resetMap();
 
+        }
+        [PunRPC]
+        public void RPC_HitOpponent() {
+            for (int i = 0; i < battleGameBoardHero.Count; i++)
+            {
+               battleGameBoardHero[i].GetComponent<PhotonView>().RPC("hitPlayerCharacter", PhotonTargets.All,playerId);
+            }
+        }
+       
+        [PunRPC]
+        public void RPC_SyncBattleHero(int id,bool isSelf) {
+            int index;
+            if (isSelf)
+            {
+                index = NetworkManager.Instance.selfGameBoardHero.FindIndex(x => x.networkPlaceId == posId);
+                if (index != 1)
+                    selfGameBoardHero.RemoveAt(index);
+            }
+            else
+            {
+                index = NetworkManager.Instance.opponent.hero.FindIndex(x => x.networkPlaceId == posId);
+                if (index != 1)
+                    opponent.hero.RemoveAt(index);
+            }
         }
         [PunRPC]
         void RPC_FinishBattle() {
