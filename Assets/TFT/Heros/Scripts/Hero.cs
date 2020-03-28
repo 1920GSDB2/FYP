@@ -87,13 +87,8 @@ public class Hero : Character
 
         HeroPlace = transform.parent.GetComponent<HeroPlace>();
 
-        MaxHealth = 100 * BasicHealth;
-        MaxMp = 100;
-        Health = MaxHealth;
-        AttackDamage = 10 * BasicAttackDamage;
-        AttackSpeed = 0.1f * BasicAttackSpeed;
-        attackRange = attackRange * BasicAttackRange;
-        BoxCollider = GetComponent<Collider>();
+        resetAttribute();
+         BoxCollider = GetComponent<Collider>();
         //HeroState = HeroState.Idle;
     }
 
@@ -107,6 +102,7 @@ public class Hero : Character
             if (targetEnemy == null)
             {
                 targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(isEnemy, transform);
+                if(targetEnemy!=null)
                 photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, targetEnemy.networkPlaceId,isEnemy);
             }
             else
@@ -183,7 +179,15 @@ public class Hero : Character
         {           
         }
     }
-  
+    public void resetAttribute() {
+        MaxHealth = 100 * BasicHealth;
+        MaxMp = 100;
+        Health = MaxHealth;
+        AttackDamage = 10 * BasicAttackDamage;
+        AttackSpeed = 0.1f * BasicAttackSpeed;
+        attackRange = attackRange * BasicAttackRange;
+        BoxCollider = GetComponent<Collider>();
+    }
     public override void die() {
         this.gameObject.SetActive(false);
         HeroPlace.leavePlace();

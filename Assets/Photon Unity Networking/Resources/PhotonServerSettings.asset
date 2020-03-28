@@ -91,4 +91,5 @@ MonoBehaviour:
   - hitPlayerCharacter
   - RPC_HitOpponent
   - RPC_SyncBattleHero
+  - RPC_HitPlayerCharacter
   DisableAutoOpenWizard: 1

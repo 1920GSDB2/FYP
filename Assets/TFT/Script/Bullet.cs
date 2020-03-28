@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    GameObject target;
+    public GameObject target;
     public float speed=30f;
     float attackDamage;
     bool canDamage;
@@ -30,9 +30,10 @@ public class Bullet : MonoBehaviour
         attackDamage = damage;
         canDamage = isDamage;
     }
-    public void setBullet(GameObject c)
+    public void setBullet(GameObject c,float speed)
     {
         target = c;
+        this.speed = speed;
         canDamage = false;
     }
 
@@ -51,6 +52,8 @@ public class Bullet : MonoBehaviour
         {
             if (canDamage)
                 target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage);
+
+            Debug.Log("Hit Character");
             Destroy(this.gameObject);
         }
     }

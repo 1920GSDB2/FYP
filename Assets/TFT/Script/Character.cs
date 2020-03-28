@@ -318,17 +318,27 @@ public class Character : MonoBehaviour
         hpBar.color = color;
     }
     [PunRPC]
-    public void hitPlayerCharacter(int playerId) {
+    public void RPC_HitPlayerCharacter(int playerId) {
+        hitopponentCharacter(playerId);
+    }
+    void hitopponentCharacter(int playerId) {
         UnityEngine.Object pPrefab = Resources.Load("Effect/heroHitPlayerEffect");
-        Bullet b= Instantiate(pPrefab, Vector3.zero, Quaternion.identity)as Bullet;
-        GameObject opponentPlayer = NetworkManager.Instance.PlayerArenas[NetworkManager.Instance.battlePosId].
-                                    GetComponent<PlayerArena>().opponentCharacterSlot.GetChild(0).gameObject;
-        if (NetworkManager.Instance.playerId!=playerId)
+        GameObject b = Instantiate(pPrefab, transform.position, transform.rotation) as GameObject;
+        GameObject opponentPlayer=null;
+
+        if (NetworkManager.Instance.playerId == playerId)
+        {
+            opponentPlayer = NetworkManager.Instance.PlayerArenas[NetworkManager.Instance.battlePosId].
+                                        GetComponent<PlayerArena>().opponentCharacterSlot.GetChild(0).gameObject;
+          
+        }
+        else
         {
             opponentPlayer = NetworkManager.Instance.PlayerArenas[NetworkManager.Instance.battlePosId].
                                     GetComponent<PlayerArena>().playerCharacterSlot.GetChild(0).gameObject;
+          
         }
-        b.setBullet(opponentPlayer);
+        b.GetComponent<Bullet>().setBullet(opponentPlayer,2f);
     }
     public IEnumerator basicAttackCoolDown()
     {

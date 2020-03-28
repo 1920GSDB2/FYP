@@ -11,7 +11,7 @@ namespace TFT
         public static NetworkManager Instance;
         public static PhotonView PhotonView;
 
-        public int playerId, posId,battlePosId;                 //Player Id and Position Id for Networking
+        public int playerId, posId, battlePosId;                 //Player Id and Position Id for Networking
         [SerializeField]
         public Opponent opponent;                   //Player's Opponent
 
@@ -24,7 +24,7 @@ namespace TFT
         public GridMap map;
         public List<Character> selfGameBoardHero = new List<Character>();
         public List<Character> battleGameBoardHero;
-        TFTPlayerCharacter playerCharacter; 
+        TFTPlayerCharacter playerCharacter;
         bool isHomeTeam;
         void Awake()
         {
@@ -36,27 +36,27 @@ namespace TFT
             RankManager = RankManager.Instance;
             PhotonNetworkSetup();
         }
-        
+
         void Update()
         {
 
             #region PhotonNetwork Debugging
             if (Input.GetKeyDown(KeyCode.L))
             {
-                 PhotonView.RPC("MonsterBattle", PhotonTargets.All);
-                                
+                PhotonView.RPC("MonsterBattle", PhotonTargets.All);
+
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
 
-               
-                 PhotonView.RPC("RPC_Battle", PhotonTargets.All, 0, 1);
+
+                PhotonView.RPC("RPC_Battle", PhotonTargets.All, 0, 1);
                 //   PhotonView.RPC("RPC_Test", PhotonTargets.All);
             }
             #endregion
 
         }
-        
+
         #region Photon Network Setup
         /// <summary>
         /// Photon Connection Setup, It will be called by Start
@@ -99,7 +99,7 @@ namespace TFT
         /// <param name="_syncHeroMethod"></param>
         public void SyncPlayerHero(NetworkHero _syncHero, SyncHeroMethod _syncHeroMethod)
         {
-            PhotonView.RPC("RPC_SyncPlayerHeroes", PhotonTargets.All, posId, 
+            PhotonView.RPC("RPC_SyncPlayerHeroes", PhotonTargets.All, posId,
                 playerId, _syncHero.name, _syncHero.position, _syncHero.HeroLevel, _syncHeroMethod);
         }
 
@@ -125,7 +125,7 @@ namespace TFT
                 playerId, _hero.name, _hero.LastHeroPlace.PlaceId, _hero.HeroLevel, _hero.HeroPlace.PlaceId, _syncMoveHero);
         }
         #endregion
-        
+
         #region Get Hero Place
         /// <summary>
         /// Get Gameboard Hero place by Id
@@ -168,20 +168,20 @@ namespace TFT
         /// <returns></returns>
         public HeroPlace GetMyGameBoardEnemyHeroPlace(int _posId, int _placeId)
         {
-            if (this.posId== _posId)
+            if (this.posId == _posId)
                 return PlayerArenas[_posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(_placeId).GetComponent<HeroPlace>();
-            else               
+            else
                 return PlayerArenas[_posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(_placeId).GetComponent<HeroPlace>();
         }
-        public HeroPlace GetOpponentHeroPlace(int placeId,bool isEnemyPlace) {
-            if(isEnemyPlace)
+        public HeroPlace GetOpponentHeroPlace(int placeId, bool isEnemyPlace) {
+            if (isEnemyPlace)
                 return PlayerArenas[PlayerHeroes[opponent.opponentId].posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
             else
                 return PlayerArenas[PlayerHeroes[opponent.opponentId].posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
         }
         #endregion
 
-        public Character getCloestEnemyTarget(bool isEnemy,Transform heroPos) {
+        public Character getCloestEnemyTarget(bool isEnemy, Transform heroPos) {
 
             if (isEnemy)
             {
@@ -194,9 +194,9 @@ namespace TFT
                 return calculateClosestDistance(opponent.hero, heroPos);
             }
         }
-        Character calculateClosestDistance(List<Character> targetHeros,Transform heroPos) {
+        Character calculateClosestDistance(List<Character> targetHeros, Transform heroPos) {
             Character[] hero = targetHeros.ToArray<Character>();
-           
+
             if (hero.Length != 0) {
                 float closestDis = Vector3.Distance(hero[0].transform.position, heroPos.position);
                 Character closestHero = hero[0];
@@ -310,7 +310,7 @@ namespace TFT
                     PlayerHeroes[playerId] = new PlayerHero
                     {
                         posId = posId,
-                        player=PhotonNetwork.player
+                        player = PhotonNetwork.player
                     };
 
                     //Cameras[posId].enabled = true;
@@ -318,8 +318,8 @@ namespace TFT
                     GameManager.Instance.SelfPlayerArena.Camera.SetActive(true);
                     GameManager.Instance.MainCamera = GameManager.Instance.SelfPlayerArena.Camera.GetComponent<Camera>();
 
-                    PhotonView.RPC("RPC_SyncPlayerInformation",PhotonTargets.All,playerId,posId,PhotonNetwork.player);
-                     playerCharacter = PhotonNetwork.Instantiate(Path.Combine("otherPrefabs", "LifeStone"), Vector3.zero,Quaternion.identity, 0).GetComponent<TFTPlayerCharacter>();
+                    PhotonView.RPC("RPC_SyncPlayerInformation", PhotonTargets.All, playerId, posId, PhotonNetwork.player);
+                    playerCharacter = PhotonNetwork.Instantiate(Path.Combine("otherPrefabs", "LifeStone"), Vector3.zero, Quaternion.identity, 0).GetComponent<TFTPlayerCharacter>();
                     playerCharacter.GetComponent<PhotonView>().RPC("RPC_SyncPlayerCharacterPosition", PhotonTargets.All, posId)
 ;                    //PlayerHeroes[playerId] = PlayerHero;
                 }
@@ -328,8 +328,8 @@ namespace TFT
         }
 
         [PunRPC]
-        public void RPC_SyncPlayerInformation(int SyncPlayerId,int SyncPosId,PhotonPlayer player) {
-          //  Debug.Log("SYNC inofor player id " + SyncPlayerId + "  POsid " + SyncPosId);
+        public void RPC_SyncPlayerInformation(int SyncPlayerId, int SyncPosId, PhotonPlayer player) {
+            //  Debug.Log("SYNC inofor player id " + SyncPlayerId + "  POsid " + SyncPosId);
             PlayerHeroes[SyncPlayerId].setPersonalInformation(SyncPosId, player);
         }
 
@@ -570,16 +570,17 @@ namespace TFT
                 opponent.opponentId = player1Id;
                 setOppoentHero(player1Id, player1Id);
                 isHomeTeam = false;
+                setBattleGameBoardHero();
                 playerCharacter.GetComponent<PhotonView>().RPC("RPC_PlayerCharacterMoveToGameBoard", PhotonTargets.All, PlayerHeroes[player1Id].posId);
             }
             if (playerId == player1Id) {
                 isHomeTeam = true;
                 opponent.opponentId = player2Id;
                 setOppoentHero(player1Id, player2Id);
-                StartCoroutine(startBattle(PlayerHeroes[player1Id].posId));               
+                StartCoroutine(startBattle(PlayerHeroes[player1Id].posId));
             }
         }
-        void setOppoentHero(int homePlayerId,int OpponentPlayerId) {
+        void setOppoentHero(int homePlayerId, int OpponentPlayerId) {
             foreach (NetworkHero networkHero in PlayerHeroes[OpponentPlayerId].GameBoardHeroes)
             {
                 Hero heroObject = PlayerArenas[PlayerHeroes[OpponentPlayerId].posId].
@@ -587,10 +588,12 @@ namespace TFT
                                   GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
                 //Hero heroObject = GameManager.Instance.SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>(); 
                 opponent.hero.Add(heroObject);
-                if(playerId==homePlayerId)
-                heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, PlayerHeroes[homePlayerId].posId, networkHero.position);
+                if (playerId == homePlayerId)
+                    heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, PlayerHeroes[homePlayerId].posId, networkHero.position);
             }
-            if(playerId==OpponentPlayerId)
+
+        }
+        void setBattleGameBoardHero(){
                 battleGameBoardHero = new List<Character>(selfGameBoardHero);
         }
         public void battleHeroDie(bool isEnemy,Character hero) {
@@ -618,20 +621,21 @@ namespace TFT
         IEnumerator playerWinBattle(int playerId,int loserId) {
 
              PhotonView.RPC("RPC_HitOpponent", PlayerHeroes[playerId].player);
-         /*   if (this.playerId == playerId)
-            {
-                for (int i = 0; i < battleGameBoardHero.Count; i++)
-                {
-                    battleGameBoardHero[i].GetComponent<PhotonView>().RPC("hitPlayerCharacter", PhotonTargets.All);
-                }
-            }
-            else {
-                for (int i = 0; i < opponent.hero.Count; i++)
-                {
-                    opponent.hero[i].GetComponent<PhotonView>().RPC("hitPlayerCharacter", PhotonTargets.All);
-                }
-            }*/
-             yield return new WaitForSeconds(3.5f);
+            Debug.Log("player win Battle");
+            /*   if (this.playerId == playerId)
+               {
+                   for (int i = 0; i < battleGameBoardHero.Count; i++)
+                   {
+                       battleGameBoardHero[i].GetComponent<PhotonView>().RPC("hitPlayerCharacter", PhotonTargets.All);
+                   }
+               }
+               else {
+                   for (int i = 0; i < opponent.hero.Count; i++)
+                   {
+                       opponent.hero[i].GetComponent<PhotonView>().RPC("hitPlayerCharacter", PhotonTargets.All);
+                   }
+               }*/
+            yield return new WaitForSeconds(4f);
             if (opponent.opponentId != -1)
             {
                 PhotonView.RPC("RPC_FinishBattle", PlayerHeroes[opponent.opponentId].player);
@@ -643,12 +647,15 @@ namespace TFT
         }
         [PunRPC]
         public void RPC_HitOpponent() {
+            hitOpponent();
+        }
+        void hitOpponent() {
+            Debug.Log("Newwork site hit oppoent");
             for (int i = 0; i < battleGameBoardHero.Count; i++)
             {
-               battleGameBoardHero[i].GetComponent<PhotonView>().RPC("hitPlayerCharacter", PhotonTargets.All,playerId);
+                battleGameBoardHero[i].GetComponent<PhotonView>().RPC("RPC_HitPlayerCharacter", PhotonTargets.All, playerId);
             }
         }
-       
         [PunRPC]
         public void RPC_SyncBattleHero(int id,bool isSelf) {
             int index;
