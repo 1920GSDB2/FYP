@@ -47,10 +47,10 @@ namespace TFT
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
+
                
-                
-               PhotonView.RPC("RPC_Battle", PhotonTargets.All, 0, 1);
-             //   PhotonView.RPC("RPC_Test", PhotonTargets.All);
+                 PhotonView.RPC("RPC_Battle", PhotonTargets.All, 0, 1);
+                //   PhotonView.RPC("RPC_Test", PhotonTargets.All);
             }
             #endregion
 
@@ -119,7 +119,7 @@ namespace TFT
                     break;
             }
             _hero.networkPlaceId = _hero.HeroPlace.PlaceId;
-            _hero.GetComponent<PhotonView>().RPC("syncNetworkPlaceId", PhotonTargets.Others, _hero.networkPlaceId);
+            _hero.GetComponent<PhotonView>().RPC("syncNetworkPlaceId", PhotonTargets.All, _hero.networkPlaceId);
             PhotonView.RPC("RPC_SyncPlayerHeroPlace", PhotonTargets.All, posId,
                 playerId, _hero.name, _hero.LastHeroPlace.PlaceId, _hero.HeroLevel, _hero.HeroPlace.PlaceId, _syncMoveHero);
         }
@@ -563,7 +563,7 @@ namespace TFT
         [PunRPC]
         void RPC_Battle(int player1Id, int player2Id)
         {
-            Debug.Log("PlayerId:0 pos host" + PlayerHeroes[player1Id].posId + " playerId:1 away pos " + PlayerHeroes[player2Id].posId);
+
             if (playerId == player2Id)
             {
                 PlayerArenas[PlayerHeroes[player2Id].posId].GetComponent<PlayerArena>().Camera.SetActive(false);

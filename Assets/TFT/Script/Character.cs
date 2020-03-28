@@ -32,7 +32,7 @@ public class Character : MonoBehaviour
     public int networkPlaceId;
     protected bool isMirror = true;
     
-    protected float attackRange = 1.7f;
+    public float attackRange = 1.7f;
 
     // Start is called before the first frame update
 
@@ -89,7 +89,9 @@ public class Character : MonoBehaviour
             if (targetEnemy != null)
             {
                 photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f);
-                photonView.RPC("RPC_Shoot", PhotonTargets.All);
+               // Bullet b = PhotonNetwork.Instantiate(Path.Combine("Bullet", bullet.name), transform.position+Vector3.up*2, transform.rotation, 0).GetComponent<Bullet>();              
+               // b.setBullet(targetEnemy, AttackDamage, !isMirror);
+                 photonView.RPC("RPC_Shoot", PhotonTargets.All);
                 //targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
             }
         }
@@ -99,8 +101,8 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_Shoot()
     {
-        Bullet b = PhotonNetwork.Instantiate(Path.Combine("Bullet", bullet.name), transform.position, transform.rotation, 0).GetComponent<Bullet>();
-        b.setBullet(targetEnemy, AttackDamage,!isMirror);
+        Bullet b = Instantiate(bullet, transform.position+Vector3.up, transform.rotation).GetComponent<Bullet>();
+        b.setBullet(targetEnemy, AttackDamage, !isMirror);
     }
     [PunRPC]
     public void RPC_TargetTakeDamage(float damage)

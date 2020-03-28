@@ -212,19 +212,20 @@ public class Hero : Character
         syncTargetEnemy(posId, isEnemy);
     }
     void syncTargetEnemy(int posId,bool isEnemy) {
-        int index=-1;
+        int index;
         if (isEnemy)
         {
-            Debug.Log(name + " find oppoent hero");
             index = NetworkManager.Instance.opponent.hero.FindIndex(x => x.networkPlaceId == posId);
+            if (index != 1)
+                targetEnemy = NetworkManager.Instance.opponent.hero[index];
         }
         else
         {
-            Debug.Log(name + " find my hero");
             index = NetworkManager.Instance.selfGameBoardHero.FindIndex(x => x.networkPlaceId == posId);
+            if(index!=1)
+            targetEnemy = NetworkManager.Instance.selfGameBoardHero[index];
         }
-        if (index!=-1)
-        targetEnemy = NetworkManager.Instance.opponent.hero[index];
+        
     }
     private void FixedUpdate()
     {

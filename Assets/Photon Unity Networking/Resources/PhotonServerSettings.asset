@@ -82,4 +82,7 @@ MonoBehaviour:
   - RPC_IncreaseMp
   - RPC_ReduceMp
   - RankChange
+  - RPC_Shoot
+  - RPC_SyncTargetEnemy
+  - syncNetworkPlaceId
   DisableAutoOpenWizard: 1
