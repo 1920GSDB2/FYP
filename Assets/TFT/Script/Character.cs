@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TFT;
 using UnityEngine.UI;
-
+using System.IO;
 
 public class Character : MonoBehaviour
 {
@@ -28,6 +28,7 @@ public class Character : MonoBehaviour
     public GameObject HeroBar;
     protected Image hpBar;
     protected Image mpBar;
+    public GameObject bullet;
     
     protected float attackRange = 1.7f;
 
@@ -74,7 +75,20 @@ public class Character : MonoBehaviour
         // Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
        
     }
- 
+    public void shootTarget()
+    {
+
+        //Debug.Log(targetEnemy.name + " Take Damage");
+        if (targetEnemy != null)
+        {
+            photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f);
+            PhotonNetwork.Instantiate(Path.Combine("Bullet", bullet.name), Vector3.zero, Quaternion.identity, 0);
+            //targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
+        }
+        // Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
+
+    }
+
     [PunRPC]
     public void RPC_TargetTakeDamage(float damage)
     {

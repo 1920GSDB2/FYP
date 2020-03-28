@@ -47,7 +47,9 @@ namespace TFT
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
-                PhotonView.RPC("RPC_Battle", PhotonTargets.All, 0, 1);
+               
+                
+               PhotonView.RPC("RPC_Battle", PhotonTargets.All, 0, 1);
              //   PhotonView.RPC("RPC_Test", PhotonTargets.All);
             }
             #endregion
@@ -597,22 +599,25 @@ namespace TFT
                     opponent.hero.Remove(hero);
                     if (opponent.hero.Count == 0)
                     {
-                        StartCoroutine(playerWinBattle(playerId));
+                        StartCoroutine(playerWinBattle(playerId,opponent.opponentId));
                     }
                 }
                 else
                 {
                     battleGameBoardHero.Remove(hero);
                     if (battleGameBoardHero.Count == 0)
-                        StartCoroutine(playerWinBattle(opponent.opponentId));
+                        StartCoroutine(playerWinBattle(opponent.opponentId,playerId));
                 }
             }
         }
-        IEnumerator playerWinBattle(int playerId) {
+        IEnumerator playerWinBattle(int playerId,int loserId) {
             yield return new WaitForSeconds(2);
             Debug.Log("Finish");
-            if(opponent.opponentId!=-1)
-            PhotonView.RPC("RPC_FinishBattle", PlayerHeroes[opponent.opponentId].player);
+            if (opponent.opponentId != -1)
+            {
+                PhotonView.RPC("RPC_FinishBattle", PlayerHeroes[opponent.opponentId].player);
+                PhotonView.RPC("RankChange",PhotonTargets.All, PlayerHeroes[loserId].player.NickName,5);
+            }
             ResetHeroAfterBattle();
             map.resetMap();
 

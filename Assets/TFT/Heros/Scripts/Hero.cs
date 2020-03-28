@@ -51,6 +51,8 @@ public class Hero : Character
     public int BasicMagicDefense;
     [Range(0, 10)]
     public int BasicCritcalChance;
+    [Range(1, 4)]
+    public int BasicAttackRange;
 
 
     // bool isAttackCooldown;
@@ -90,7 +92,7 @@ public class Hero : Character
         Health = MaxHealth;
         AttackDamage = 10 * BasicAttackDamage;
         AttackSpeed = 0.1f * BasicAttackSpeed;
-
+        attackRange = attackRange * BasicAttackRange;
         BoxCollider = GetComponent<Collider>();
         //HeroState = HeroState.Idle;
     }
