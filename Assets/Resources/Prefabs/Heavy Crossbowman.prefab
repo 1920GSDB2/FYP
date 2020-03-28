@@ -159,9 +159,9 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBar: {fileID: 3122561197029365879}
+  bullet: {fileID: 7168150683983435948, guid: f2a41c59fb3591a4998570f294398d87, type: 3}
   Icon: {fileID: 0}
   SelectingBox: {fileID: 2630317763280131601}
-  HeroStatus: 0
   Rarity: 1
   HeroClasses: 03000000
   HeroRaces: 05000000
@@ -175,6 +175,7 @@ MonoBehaviour:
   BasicPhysicalDefense: 4
   BasicMagicDefense: 4
   BasicCritcalChance: 0
+  BasicAttackRange: 3
 --- !u!65 &504693422554299968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1442,11 +1443,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199439085999198283, guid: 44de83aff51977a479f23105dc7f114e,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44de83aff51977a479f23105dc7f114e, type: 3}

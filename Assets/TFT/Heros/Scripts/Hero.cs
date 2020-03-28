@@ -35,7 +35,7 @@ public class Hero : Character
 
     public EquipmentManager EquipmentManager;
 
-    public int networkPlaceId;
+    
 
     [Range(0, 10)]
     public int BasicHealth;
@@ -105,8 +105,12 @@ public class Hero : Character
         
         if (HeroState == HeroState.Idle) {
             if (targetEnemy == null)
+            {
                 targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(isEnemy, transform);
-            else {
+                photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, targetEnemy.networkPlaceId,isEnemy);
+            }
+            else
+            {
                 HeroState = HeroState.Walking;
                 followEnemy();
             }
@@ -195,8 +199,33 @@ public class Hero : Character
         HeroState = HeroState.Nothing;
         isEnemy = false;
         isAttackCooldown = false;
+        isMirror = true;
     }
-
+    [PunRPC]
+    public void syncNetworkPlaceId(int id)
+    {
+        networkPlaceId = id;
+    }
+    [PunRPC]
+    public void RPC_SyncTargetEnemy(int posId,bool isEnemy)
+    {
+        syncTargetEnemy(posId, isEnemy);
+    }
+    void syncTargetEnemy(int posId,bool isEnemy) {
+        int index=-1;
+        if (isEnemy)
+        {
+            Debug.Log(name + " find oppoent hero");
+            index = NetworkManager.Instance.opponent.hero.FindIndex(x => x.networkPlaceId == posId);
+        }
+        else
+        {
+            Debug.Log(name + " find my hero");
+            index = NetworkManager.Instance.selfGameBoardHero.FindIndex(x => x.networkPlaceId == posId);
+        }
+        if (index!=-1)
+        targetEnemy = NetworkManager.Instance.opponent.hero[index];
+    }
     private void FixedUpdate()
     {
         if (HeroStatus == HeroStatus.Fight && targetEnemy == null)

@@ -29,6 +29,8 @@ public class Character : MonoBehaviour
     protected Image hpBar;
     protected Image mpBar;
     public GameObject bullet;
+    public int networkPlaceId;
+    protected bool isMirror = true;
     
     protected float attackRange = 1.7f;
 
@@ -64,13 +66,16 @@ public class Character : MonoBehaviour
     }*/
     public void attackTarget()
     {
-        
+
         //Debug.Log(targetEnemy.name + " Take Damage");
-        if (targetEnemy != null)
-        {            
-            photonView.RPC("RPC_IncreaseMp", PhotonTargets.All,10f);
-            //GetComponent<PhotonView>().RPC("RPC_IncreaseMp", PhotonTargets.All,10);
-            targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
+        if (!isMirror)
+        {
+            if (targetEnemy != null)
+            {
+                photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f);
+                //GetComponent<PhotonView>().RPC("RPC_IncreaseMp", PhotonTargets.All,10);
+                targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
+            }
         }
         // Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
        
@@ -79,16 +84,24 @@ public class Character : MonoBehaviour
     {
 
         //Debug.Log(targetEnemy.name + " Take Damage");
-        if (targetEnemy != null)
+        if (!isMirror)
         {
-            photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f);
-            PhotonNetwork.Instantiate(Path.Combine("Bullet", bullet.name), Vector3.zero, Quaternion.identity, 0);
-            //targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
+            if (targetEnemy != null)
+            {
+                photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f);
+                photonView.RPC("RPC_Shoot", PhotonTargets.All);
+                //targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
+            }
         }
         // Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
 
     }
-
+    [PunRPC]
+    public void RPC_Shoot()
+    {
+        Bullet b = PhotonNetwork.Instantiate(Path.Combine("Bullet", bullet.name), transform.position, transform.rotation, 0).GetComponent<Bullet>();
+        b.setBullet(targetEnemy, AttackDamage,!isMirror);
+    }
     [PunRPC]
     public void RPC_TargetTakeDamage(float damage)
     {
@@ -262,6 +275,7 @@ public class Character : MonoBehaviour
     {
         HeroState = HeroState.Idle;
         this.isEnemy = isEnemy;
+        isMirror = false;
         //Debug.Log("State " + HeroState + " Enemy " + isEnemy);
         photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
         
@@ -277,7 +291,7 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_AttackAnimation()
     {
-       // transform.LookAt(targetEnemy.transform);
+        transform.LookAt(targetEnemy.transform);
         animator.SetTrigger("Attack");
         //transform.LookAt(targetEnemy.transform);
     }
@@ -304,9 +318,7 @@ public class Character : MonoBehaviour
     public IEnumerator basicAttackCoolDown()
     {
         isAttackCooldown = true;
-        Debug.Log(name+"Coolown");
         yield return new WaitForSeconds(1 / (AttackSpeed * 2.5f));
-        Debug.Log(name+"Cool Finish");
         isAttackCooldown = false;
     }
 }

@@ -2803,9 +2803,9 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBar: {fileID: 3044259792267156926}
+  bullet: {fileID: 0}
   Icon: {fileID: 0}
   SelectingBox: {fileID: 8417192808997703802}
-  HeroStatus: 0
   Rarity: 1
   HeroClasses: 04000000
   HeroRaces: 06000000
@@ -2819,6 +2819,7 @@ MonoBehaviour:
   BasicPhysicalDefense: 2
   BasicMagicDefense: 8
   BasicCritcalChance: 0
+  BasicAttackRange: 1
 --- !u!114 &2272459340759288924
 MonoBehaviour:
   m_ObjectHideFlags: 0

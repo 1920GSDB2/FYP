@@ -33703,7 +33703,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.4
-    functionName: attackTarget
+    functionName: shootTarget
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -119,12 +119,12 @@ namespace TFT
                     break;
             }
             _hero.networkPlaceId = _hero.HeroPlace.PlaceId;
-
+            _hero.GetComponent<PhotonView>().RPC("syncNetworkPlaceId", PhotonTargets.Others, _hero.networkPlaceId);
             PhotonView.RPC("RPC_SyncPlayerHeroPlace", PhotonTargets.All, posId,
                 playerId, _hero.name, _hero.LastHeroPlace.PlaceId, _hero.HeroLevel, _hero.HeroPlace.PlaceId, _syncMoveHero);
         }
         #endregion
-
+        
         #region Get Hero Place
         /// <summary>
         /// Get Gameboard Hero place by Id
