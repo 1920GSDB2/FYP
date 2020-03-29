@@ -195,13 +195,13 @@ public class Hero : Character, ISelectable
         if (isEnemy)
         {
             index = NetworkManager.Instance.opponent.hero.FindIndex(x => x.networkPlaceId == posId);
-            if (index != 1)
+            if (index != -1)
                 targetEnemy = NetworkManager.Instance.opponent.hero[index];
         }
         else
         {
             index = NetworkManager.Instance.selfGameBoardHero.FindIndex(x => x.networkPlaceId == posId);
-            if(index!=1)
+            if(index!=-1)
             targetEnemy = NetworkManager.Instance.selfGameBoardHero[index];
         }
         

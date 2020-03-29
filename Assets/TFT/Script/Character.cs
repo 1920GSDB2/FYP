@@ -212,7 +212,7 @@ public class Character : MonoBehaviour
 
             if (transform.position != step.heroPlace.transform.position)
             {
-               
+                Debug.Log(name + "Follow step");
                 transform.position = Vector3.MoveTowards(transform.position, step.heroPlace.transform.position, 3 * Time.deltaTime);
                 //   Debug.Log("Move X "+step.heroPlace.gridX+" Y "+ step.heroPlace.gridY);
             }
@@ -254,7 +254,7 @@ public class Character : MonoBehaviour
     public IEnumerator RPC_FollowHeroPlace(HeroPlace step)
     {
         animator.SetBool("Walk", true);
-        while (transform.position != step.transform.position)
+        while (transform.position != step.transform.position&&HeroState!=HeroState.Nothing)
         {
             transform.position = Vector3.MoveTowards(transform.position, step.transform.position, 3 * Time.deltaTime);
             yield return null;
