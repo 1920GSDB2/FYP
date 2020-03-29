@@ -625,7 +625,7 @@ namespace TFT
             }
         }
         IEnumerator playerWinBattle(int playerId,int loserId) {
-
+            if(loserId!=-1)
              PhotonView.RPC("RPC_HitOpponent", PlayerHeroes[playerId].player);
             Debug.Log("player win Battle");
             /*   if (this.playerId == playerId)

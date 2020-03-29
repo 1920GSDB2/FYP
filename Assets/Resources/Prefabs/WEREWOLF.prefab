@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7020487332571008142}
   - component: {fileID: 1429418213}
   - component: {fileID: 1429418212}
+  - component: {fileID: 1270944744}
   m_Layer: 0
   m_Name: WEREWOLF
   m_TagString: Untagged
@@ -66,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c0462131efb9f41bfde2b1683c415f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxMp: 0
   isEnemy: 1
   HeroState: 0
   HeroPlace: {fileID: 0}
@@ -75,6 +77,9 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBar: {fileID: 5199439085954230556}
+  bullet: {fileID: 0}
+  networkPlaceId: 0
+  attackRange: 1.7
 --- !u!114 &1429418212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +107,19 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!65 &1270944744
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4160360758192116711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.84, y: 3.3, z: 1}
+  m_Center: {x: 0, y: 1.66, z: 0}
 --- !u!1 &6686393752596363228
 GameObject:
   m_ObjectHideFlags: 0

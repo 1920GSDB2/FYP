@@ -13,7 +13,7 @@ public class MonsterWaveManager : MonoBehaviour
     bool isDropEquipment;
     int dropRate;
     Award[] awardType= { Award.Equipment };
-
+    public GameObject[] awardEquipment;
     
     // Start is called before the first frame update
     private void Awake()
@@ -54,9 +54,16 @@ public class MonsterWaveManager : MonoBehaviour
 
     }
     void award(Award type) {
-        if (type == Award.Equipment) {
-            isDropEquipment = true;
+        switch (type)
+        {
+        case Award.Equipment:
+                isDropEquipment = true;
+                int index = UnityEngine.Random.Range(0, awardEquipment.Length);
+                GameObject equipment = Instantiate(awardEquipment[index], awardEquipment[index].transform.position, awardEquipment[index].transform.rotation) as GameObject;
+                equipmentBoard.addEquipmentToSlot(equipment);
+        break;
         }
+
     }
     public int getMonsterPosition(int number) {
         return Wave[currentIndex].monster[number].position;

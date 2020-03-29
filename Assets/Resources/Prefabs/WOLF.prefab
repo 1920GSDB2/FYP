@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 4023061458307578024}
   - component: {fileID: 993992148}
   - component: {fileID: 993992147}
+  - component: {fileID: 1459190079}
   m_Layer: 0
   m_Name: WOLF
   m_TagString: Untagged
@@ -204,6 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c0462131efb9f41bfde2b1683c415f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxMp: 0
   isEnemy: 0
   HeroState: 0
   HeroPlace: {fileID: 0}
@@ -213,6 +215,22 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBar: {fileID: 5199439086518964142}
+  bullet: {fileID: 0}
+  networkPlaceId: 0
+  attackRange: 1.7
+--- !u!65 &1459190079
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999961999460968385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.93, z: 1}
+  m_Center: {x: 0, y: 1.09, z: 0}
 --- !u!1001 &1480488573
 PrefabInstance:
   m_ObjectHideFlags: 0
