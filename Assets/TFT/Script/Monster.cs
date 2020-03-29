@@ -65,10 +65,11 @@ public class Monster : Character
     }
     public override void die()
     {
-        this.gameObject.SetActive(false);
+        
         HeroPlace.leavePlace();
         NetworkManager.Instance.battleHeroDie(isEnemy, this);
         MonsterWaveManager.Instance.monsterDie();
+        PhotonNetwork.Destroy(this.gameObject);
     }
 
 

@@ -49,7 +49,7 @@ namespace TFT
             if (Input.GetKeyDown(KeyCode.K))
             {
 
-
+               
                 PhotonView.RPC("RPC_Battle", PhotonTargets.All, 0, 1);
                 //   PhotonView.RPC("RPC_Test", PhotonTargets.All);
             }

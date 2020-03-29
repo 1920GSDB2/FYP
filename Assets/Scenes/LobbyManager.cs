@@ -167,7 +167,6 @@ public class LobbyManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-
                 // PhotonView.RPC("test", PhotonTargets.Others, "others");              
                 /*for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
                 {

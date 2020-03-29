@@ -107,3 +107,7 @@ public enum HeroState
     Fight,
     Walking
 }
+public enum Award
+{
+    Equipment
+}
