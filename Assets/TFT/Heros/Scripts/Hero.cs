@@ -142,19 +142,7 @@ public class Hero : Character
             //  gameObject.SetActive(false);
             //    Debug.Log(name + " Health " + Health + " / " + MaxHealth);
 
-            Vector3 worldSelf = transform.TransformPoint(transform.position);
-            Vector3 enemy = targetEnemy.transform.TransformPoint(targetEnemy.transform.position);
-            float worldDis = Vector3.Distance(worldSelf, enemy);
-            float heroPlaceDis = Vector3.Distance(HeroPlace.transform.position, targetEnemy.HeroPlace.transform.position);
-
-            Vector3 worldSelf2 = transform.TransformPoint(HeroPlace.transform.position);
-            Vector3 enemy2 = targetEnemy.transform.TransformPoint(targetEnemy.HeroPlace.transform.position);
-
-            float worldDis2 = Vector3.Distance(worldSelf2, enemy2);
-
-            float Vector3dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
-            // Debug.Log(name + "world DIS "+ worldDis + " Vector3Dis "+Vector3dis+" Hero place"+ heroPlaceDis+" World HeroPlace"+ worldDis2);
-            Debug.Log(name + " Vector3Dis " + Vector3dis + " Hero place" + heroPlaceDis );
+        
             //Debug.Log(name+" Position "+transform.position+" Target POs"+targetEnemy.transform.position);
             //Debug.Log(name + " Hero Pace " + HeroPlace.transform.position + " Target Hero pLace" + targetEnemy.HeroPlace.transform.position);
             //   photonView.RPC("test", PhotonTargets.All);

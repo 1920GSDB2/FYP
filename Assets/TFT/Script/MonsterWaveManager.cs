@@ -21,9 +21,9 @@ public class MonsterWaveManager : MonoBehaviour
         Instance = this;
     }
     public void spawnCurrentWaveAllMonster() {
-        dropRate = currentIndex * 10;
         if (currentIndex == Wave.Length)
             return;
+        dropRate = currentIndex * 10;      
         monsterCount = getCurrentTotalMonsterCount();
         for (int i = 0; i < monsterCount; i++) {
             
@@ -36,7 +36,7 @@ public class MonsterWaveManager : MonoBehaviour
         }
 
         NetworkManager.Instance.BattleWithMonsters();
-      //  currentIndex++;
+        currentIndex++;
     }
     public void monsterDie() {
         dieCount++;       
@@ -46,6 +46,9 @@ public class MonsterWaveManager : MonoBehaviour
 
         if (dieCount == monsterCount && !isDropEquipment)
             award(Award.Equipment);
+
+        if (dieCount == monsterCount)
+            finishWave();
 
     }
     void randomAward() {
@@ -63,6 +66,10 @@ public class MonsterWaveManager : MonoBehaviour
         break;
         }
 
+    }
+    void finishWave() {
+        isDropEquipment = false;
+        dieCount = 0;
     }
     public int getMonsterPosition(int number) {
         return Wave[currentIndex].monster[number].position;

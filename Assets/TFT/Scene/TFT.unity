@@ -17493,13 +17493,21 @@ MonoBehaviour:
   - waveNumber: 0
     monster:
     - name: GOBLIN
-      position: 19
+      position: 18
   - waveNumber: 0
     monster:
     - name: GOBLIN
       position: 17
     - name: GOBLIN
       position: 19
+  - waveNumber: 0
+    monster:
+    - name: GOBLIN
+      position: 16
+    - name: GOBLIN
+      position: 18
+    - name: GOBLIN
+      position: 20
   awardEquipment:
   - {fileID: 8932993913939470869, guid: d8bca175ae222394dae88fb135b06ccd, type: 3}
 --- !u!114 &753610497
@@ -20244,7 +20252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &840839311
 Camera:
   m_ObjectHideFlags: 0

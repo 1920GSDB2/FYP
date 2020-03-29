@@ -49,14 +49,14 @@ public class Monster : Character
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            //  targetEnemy = testHero;
-
+            //  targetEnemy = testHero;        
             //animator.SetBool("Attack",true);
             //  gameObject.SetActive(false);
-          //  Debug.Log(name + " Health " + Health + " / " + MaxHealth);
+            //  Debug.Log(name + " Health " + Health + " / " + MaxHealth);
             //   photonView.RPC("test", PhotonTargets.All);
-
+            Debug.Log("Moster " + Health);
             //  photonView.RPC("RPC_Animation", PhotonTargets.All);
+
         }
 
         if (Input.GetKeyDown(KeyCode.O))

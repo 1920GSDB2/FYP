@@ -15,7 +15,10 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        float dis = Vector3.Distance(transform.position, target.transform.position + Vector3.up);
+        float dis = 0;
+        if (target!=null)
+            dis = Vector3.Distance(transform.position, target.transform.position + Vector3.up);
+
         float time = dis /( speed*Time.deltaTime*60);
         //Debug.Log("bullet exist TIMe"+time);
         Destroy(this.gameObject, time);
