@@ -167,10 +167,8 @@ public class LobbyManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                // PhotonView.RPC("test", PhotonTargets.Others, "others");
-                //PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Crazy Bomber-man"), Vector3.zero, Quaternion.identity, 0);
 
-
+                // PhotonView.RPC("test", PhotonTargets.Others, "others");              
                 /*for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
                 {
                     PhotonView.RPC("test", PhotonTargets.All, PhotonNetwork.playerList[i].NickName);
@@ -179,8 +177,8 @@ public class LobbyManager : MonoBehaviour
                 //   UnityEngine.Object pPrefab = Resources.Load("Effect/heroHitPlayerEffect");
                 // Instantiate(pPrefab, Vector3.zero, Quaternion.identity);
                 //PhotonView.RPC("test", PhotonTargets.OthersBuffered, "OthersBuffered");
-               
-            }
+
+            }        
         }
     }
 
