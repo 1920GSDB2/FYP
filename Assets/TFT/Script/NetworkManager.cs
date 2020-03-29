@@ -234,7 +234,7 @@ namespace TFT
                 OpponentManagers[OpponentManagers.Length - 1] = new OpponentManager(matchResult[matchResult.Length / 2], matchResult[0], true);
                 if (matchResult[matchResult.Length / 2] == playerId)
                 {
-                 //   opponent = new Opponent(matchResult[0], true);
+                    opponent = new Opponent(matchResult[0], true);
                 }
             }
             else
@@ -248,11 +248,11 @@ namespace TFT
                 Debug.Log("Player " + matchResult[i] + " vs  Player" + matchResult[matchResult.Length - 1 - i]);
                 if (matchResult[i] == playerId)
                 {
-                 //   opponent = new Opponent(matchResult[matchResult.Length - 1 - i]);
+                    opponent = new Opponent(matchResult[matchResult.Length - 1 - i]);
                 }
                 else if (matchResult[matchResult.Length - 1 - i] == playerId)
                 {
-                //    opponent = new Opponent(matchResult[i]);
+                    opponent = new Opponent(matchResult[i]);
                 }
             }
         }
