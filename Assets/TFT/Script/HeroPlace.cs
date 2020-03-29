@@ -76,9 +76,9 @@ namespace TFT
                     currMat.material = hoverMat;
                 }
                 if (SelectManager.DragObject == null ||
-                    SelectManager.DragObject.GetComponent<Hero>() == null ||
+                    SelectManager.DragObject as Hero == null ||
                     GameManager.PlayerHero.GameBoardHeroes.Count >= GameManager.LevelManager.Level &&
-                    SelectManager.DragObject.GetComponent<Hero>().HeroPlace.PlaceType != PlaceType &&
+                    (SelectManager.DragObject as Hero ).HeroPlace.PlaceType != PlaceType &&
                     PlaceType == PlaceType.OnBoard)
                 {
                     return;
@@ -102,7 +102,7 @@ namespace TFT
             {
                 currMat.material = defaultMat;
             }
-            SelectManager.Instance.ParentObject = null;
+            SelectManager.ParentObject = null;
         }
         public void settColor(Color color)
         {

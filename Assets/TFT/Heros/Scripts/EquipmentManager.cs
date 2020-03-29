@@ -37,9 +37,19 @@ namespace TFT
                 BlendItem newItem = Composite(((Item)Equipments[Equipments.Count - 1]).ItemType, ((Item)_addEquirement).ItemType);
                 if (newItem != null)
                 {
-                    //GameObject item = Instantiate(newItem.gameObject,ItemList);
-                    //AddAttribute(item.GetComponent<Equipment>());
+                    int _pos = Equipments.Count - 1;
+                    GameObject _item = Instantiate(newItem.gameObject,ItemList.GetChild(_pos));
+                    _item.transform.localScale = Vector3.one;
+
+                    Destroy(Equipments[Equipments.Count - 1].gameObject);
+                    Destroy(_addEquirement.gameObject);
+                    Equipments.RemoveAt(Equipments.Count - 1);
+
                     AddAttribute(newItem);
+                }
+                else
+                {
+                    AddAttribute(_addEquirement);
                 }
                 return true;
             }
@@ -110,7 +120,7 @@ namespace TFT
         }
         private BlendItem Composite(ItemType _lastEquirementType, ItemType _addEquirement)
         {
-            BlendItem[] _blendItemTypes = GameManager.Instance.MainGameManager.BlendItemTypes;
+            BlendItem[] _blendItemTypes = (BlendItem[]) GameManager.Instance.MainGameManager.BlendItemTypes;
             BlendItem _blendItem = null;
             foreach (BlendItem blendItem in _blendItemTypes)
             {

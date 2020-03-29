@@ -15,6 +15,7 @@ public enum ItemType
     Belt,
     Bow,
     Cloak,
+    Crystal,
     Shield,
     Shoulder,
     Staff,

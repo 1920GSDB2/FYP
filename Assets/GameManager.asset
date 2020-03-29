@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameManager
   m_EditorClassIdentifier: 
   databaseIP: https://script.google.com/macros/s/AKfycby9xgypoTEsywirNtCpzWB-x43PUoMRQ54AAiXjIFbv4aePYQ/exec
-  MaxRoomPlayer: 2
+  MaxRoomPlayer: 1
   userData:
     id: 
     pw: 
@@ -43,7 +43,19 @@ MonoBehaviour:
   - {fileID: 967753490529474786, guid: 116e2e24b37f2e740870a4a144c73fa3, type: 3}
   - {fileID: 3185575528144418977, guid: 7d652645723b02b4e80a1fae6cb4c7f8, type: 3}
   - {fileID: 6298167509573960341, guid: 8f40a91e1f17eb34ba542b3a0460ed98, type: 3}
-  BlendItemTypes: []
+  ItemTypes:
+  - {fileID: 8932993913939470856, guid: d8bca175ae222394dae88fb135b06ccd, type: 3}
+  - {fileID: 8932993913939470856, guid: ce07958d02690f34e8fafbcb90d2f736, type: 3}
+  - {fileID: 8932993913939470856, guid: b44a563359e014743826ce2e7c9af3c4, type: 3}
+  - {fileID: 8932993913939470856, guid: 44fdfd5e75c058042bb00e812dfa68a2, type: 3}
+  - {fileID: 8932993913939470856, guid: 4dfe0689d679c9446b71ca0448fc4a9a, type: 3}
+  - {fileID: 8932993913939470856, guid: 0ed8555264e594d498d689ce26f62e14, type: 3}
+  - {fileID: 8932993913939470856, guid: be5be64da3443d342bc5b8b3647c7ea0, type: 3}
+  - {fileID: 8932993913939470856, guid: 6390a3995f27bf3478f8f8f9932a161b, type: 3}
+  - {fileID: 8932993913939470856, guid: 0928c6ec10a9842488ed2f3650ca5e2b, type: 3}
+  BlendItemTypes:
+  - {fileID: 8308798088053607716, guid: 944a835b6667345429180d275ece78c5, type: 3}
+  - {fileID: 5749619450255861281, guid: ae1a03388030d214580fb86a8c3fc040, type: 3}
   ExpPrice: 4
   RefreshPrice: 2
   TFTExpCurve: 02000000040000000c0000001400000028000000480000007a000000be000000

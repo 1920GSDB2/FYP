@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine;
 
 
-public class Hero : Character
+public class Hero : Character, ISelectable
 {
     // public bool isEnemy;
     // public HeroPlace HeroPlace, LastHeroPlace;         //Current HeroPlace Position of Hero
@@ -15,6 +15,7 @@ public class Hero : Character
     private Collider BoxCollider;
     //public MouseSelect MouseSelect;
 
+    private HeroStatusUI HeroStatusUI;
     private GameManager GameManager;
     private SelectManager SelectManager;
 
@@ -59,7 +60,7 @@ public class Hero : Character
     string lastTransform;
 
     //  List<Node> path;
-
+    
     private void Awake()
     {
         if (animator == null)
@@ -78,9 +79,8 @@ public class Hero : Character
         //  HeroBar.transform.LookAt(NetworkManager.Instance.getCamera().transform);
 
         lastTransform = transform.parent.name;
-        //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TFTGameManager>();
-        //MouseSelect = GameManager.Instance.GetComponent<MouseSelect>();
 
+        HeroStatusUI = HeroStatusUI.Instance;
         GameManager = GameManager.Instance;
         SelectManager = SelectManager.Instance;
         EquipmentManager = GetComponent<EquipmentManager>();
@@ -88,8 +88,8 @@ public class Hero : Character
         HeroPlace = transform.parent.GetComponent<HeroPlace>();
 
         resetAttribute();
-         BoxCollider = GetComponent<Collider>();
-        //HeroState = HeroState.Idle;
+        BoxCollider = GetComponent<Collider>();
+        SelectingBox.SetActive(false);
     }
 
     // Update is called once per frame
@@ -149,24 +149,11 @@ public class Hero : Character
             //  photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
 
-        SelectingBox.SetActive(!BoxCollider.enabled);
-
-        if (SelectManager.DragObject != null &&
-            SelectManager.DragObject == gameObject &&
-            //transform.parent != LastHeroPlace.transform)
-            SelectManager.IsFinishDrag)
-        {
-            SelectManager.DragObject = null;
-            HeroPlace = transform.parent.GetComponent<HeroPlace>();
-            GameManager.ChangeHeroPos(this);
-            Debug.Log("GameManager.ChangeHeroPos");
-            LastHeroPlace = HeroPlace;
-        }
-
         if (Input.GetKeyDown(KeyCode.O))
         {           
         }
     }
+    
     public void resetAttribute() {
         MaxHealth = 100 * BasicHealth;
         MaxMp = 100;
@@ -184,7 +171,7 @@ public class Hero : Character
     [PunRPC]
     public void RPC_ResetStatus() {
         Debug.Log("Reset Status");
-        this.gameObject.SetActive(true);
+        gameObject.SetActive(true);
         HeroBar.SetActive(false);
         photonView.RPC("RPC_Heal", PhotonTargets.All, MaxHealth);
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
@@ -254,48 +241,58 @@ public class Hero : Character
         }
         lastTransform = currTransform;
     }
-    
- 
+    public Transform GetEquipmentSlot()
+    {
+        int index = EquipmentManager.Equipments.Count;
+        return EquipmentManager.ItemList.GetChild(index).gameObject.transform;
+    }
     private void OnMouseEnter()
     {
-
-        //if (HeroStatus == HeroStatus.Standby && 
-        //    !(HeroPlace.PlaceType == PlaceType.OnBoard && 
-        //    GameManager.Instance.GameStatus == GameStatus.Transiting)
-        //    )
-        //    MouseSelect.SelectedHero = this;
         if (HeroStatus == HeroStatus.Fight || HeroStatus == HeroStatus.Dead) 
         {
             return;
         }
-        else if (SelectManager.DragObject != null && SelectManager.DragObject.GetComponent<Hero>() == null)
+        else if (SelectManager.DragObject != null && SelectManager.DragObject as Hero == null)
         {
             int index = EquipmentManager.Equipments.Count;
             if (index < 3)
             { 
-                SelectManager.ParentObject = EquipmentManager.ItemList.GetChild(index).gameObject;
+                SelectManager.ParentObject = gameObject;
             }
         }
         else
         {
-            SelectManager.SelectedObject = gameObject;
+            SelectManager.SelectedObject = this;
             LastHeroPlace = HeroPlace;
         }
     }
 
     private void OnMouseExit()
     {
-        //MouseSelect.SelectedHero = null;
-        if (SelectManager.SelectedObject == gameObject)
-        {
-            SelectManager.SelectedObject = null;
-        }
-        if(SelectManager.ParentObject == gameObject)
-        {
-            SelectManager.ParentObject = null;
-        }
+        SelectManager.ParentObject = null;
+        SelectManager.SelectedObject = null;
+    }
+    public void PutDown()
+    {
+        //SelectManager.DragObject = null;
+        transform.parent = SelectManager.ParentObject.transform;
+        transform.localPosition = Vector3.zero;
+
+        HeroPlace = transform.parent.GetComponent<HeroPlace>();
+        GameManager.ChangeHeroPos(this);
+        LastHeroPlace = HeroPlace;
+
+        BoxCollider.enabled = true;
+        SelectingBox.SetActive(false);
+        HeroStatusUI.OffPanelUI();
     }
 
+    public void DragUp()
+    {
+        BoxCollider.enabled = false;
+        SelectingBox.SetActive(true);
+        HeroStatusUI.ShowPanelUI(this);
+    }
     #region RPC move hero
     [PunRPC]
     public void RPC_AddToGameBoard(int posId, int placeId)
