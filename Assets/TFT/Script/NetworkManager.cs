@@ -320,13 +320,19 @@ namespace TFT
 
                     PhotonView.RPC("RPC_SyncPlayerInformation", PhotonTargets.All, playerId, posId, PhotonNetwork.player);
                     playerCharacter = PhotonNetwork.Instantiate(Path.Combine("otherPrefabs", "LifeStone"), Vector3.zero, Quaternion.identity, 0).GetComponent<TFTPlayerCharacter>();
-                    playerCharacter.GetComponent<PhotonView>().RPC("RPC_SyncPlayerCharacterPosition", PhotonTargets.All, posId)
+                    playerCharacter.GetComponent<PhotonView>().RPC("RPC_SyncPlayerCharacterPosition", PhotonTargets.All, posId);
+                    createEquipmentBoard();
 ;                    //PlayerHeroes[playerId] = PlayerHero;
                 }
             }
             RankManager.PlayerCollectionSetup();
         }
-
+        void createEquipmentBoard() {
+            UnityEngine.Object pPrefab = Resources.Load("otherPrefabs/GameBoard Prefabs");
+            GameObject gameObject = Instantiate(pPrefab, transform.position, transform.rotation) as GameObject;
+            gameObject.transform.parent = PlayerArenas[posId].GetComponent<PlayerArena>().equipmentBoard;
+            gameObject.transform.localPosition = Vector3.zero;
+        }
         [PunRPC]
         public void RPC_SyncPlayerInformation(int SyncPlayerId, int SyncPosId, PhotonPlayer player) {
             //  Debug.Log("SYNC inofor player id " + SyncPlayerId + "  POsid " + SyncPosId);

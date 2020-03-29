@@ -2535,6 +2535,7 @@ Transform:
   - {fileID: 1270810177}
   - {fileID: 1414883586}
   - {fileID: 1884160862}
+  - {fileID: 945246133}
   m_Father: {fileID: 96143131}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2556,6 +2557,7 @@ MonoBehaviour:
   Camera: {fileID: 1381503853}
   playerCharacterSlot: {fileID: 1414883586}
   opponentCharacterSlot: {fileID: 1884160862}
+  equipmentBoard: {fileID: 945246133}
 --- !u!1 &96143130
 GameObject:
   m_ObjectHideFlags: 0
@@ -4478,6 +4480,7 @@ Transform:
   - {fileID: 1881736694}
   - {fileID: 1891117708}
   - {fileID: 2015979386}
+  - {fileID: 1901834981}
   m_Father: {fileID: 96143131}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4499,6 +4502,7 @@ MonoBehaviour:
   Camera: {fileID: 1605232393}
   playerCharacterSlot: {fileID: 1891117708}
   opponentCharacterSlot: {fileID: 2015979386}
+  equipmentBoard: {fileID: 1901834981}
 --- !u!1001 &200754478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8934,6 +8938,7 @@ MonoBehaviour:
     UsableHeroes: []
     GameBoardHeroes: []
     posId: 0
+    playerCharacter: {fileID: 0}
   SelfPlayerArena: {fileID: 0}
   Place: []
   PeriodTime: 0
@@ -8980,6 +8985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerId: 0
   posId: 0
+  battlePosId: 0
   opponent:
     opponentId: 0
     isShadow: 0
@@ -10867,6 +10873,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 439602271}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &439635782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439635783}
+  m_Layer: 0
+  m_Name: Equipment board
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &439635783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439635782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.43, y: 0, z: -2.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 660996048}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &445635524
 GameObject:
   m_ObjectHideFlags: 0
@@ -12749,6 +12785,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552413058}
   m_CullTransparentMesh: 0
+--- !u!1 &556403861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 556403862}
+  m_Layer: 0
+  m_Name: Equipment board
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &556403862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556403861}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.43, y: 0, z: -2.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 885365092}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &560782511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15293,6 +15359,7 @@ Transform:
   - {fileID: 238729534}
   - {fileID: 1796958912}
   - {fileID: 1242141150}
+  - {fileID: 439635783}
   m_Father: {fileID: 96143131}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15314,6 +15381,7 @@ MonoBehaviour:
   Camera: {fileID: 1105797194}
   playerCharacterSlot: {fileID: 1796958912}
   opponentCharacterSlot: {fileID: 1242141150}
+  equipmentBoard: {fileID: 439635783}
 --- !u!1001 &669712606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21675,6 +21743,7 @@ Transform:
   - {fileID: 2064615969}
   - {fileID: 1909790356}
   - {fileID: 1009201127}
+  - {fileID: 556403862}
   m_Father: {fileID: 96143131}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21696,6 +21765,7 @@ MonoBehaviour:
   Camera: {fileID: 888107769}
   playerCharacterSlot: {fileID: 1909790356}
   opponentCharacterSlot: {fileID: 1009201127}
+  equipmentBoard: {fileID: 556403862}
 --- !u!1 &888107769
 GameObject:
   m_ObjectHideFlags: 0
@@ -22633,6 +22703,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &945246132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 945246133}
+  m_Layer: 0
+  m_Name: Equipment board
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &945246133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945246132}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.43, y: 0, z: -2.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 95907603}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &946810060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41138,6 +41238,7 @@ Transform:
   - {fileID: 1280418971}
   - {fileID: 914704009}
   - {fileID: 1898085432}
+  - {fileID: 2016253436}
   m_Father: {fileID: 96143131}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -41159,6 +41260,7 @@ MonoBehaviour:
   Camera: {fileID: 1272541016}
   playerCharacterSlot: {fileID: 914704009}
   opponentCharacterSlot: {fileID: 1898085432}
+  equipmentBoard: {fileID: 2016253436}
 --- !u!1 &1593777180
 GameObject:
   m_ObjectHideFlags: 0
@@ -50666,6 +50768,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assetValue: 999
   AssetText: {fileID: 407376104}
+--- !u!1 &1901834980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901834981}
+  m_Layer: 0
+  m_Name: Equipment board
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901834981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901834980}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.43, y: 0, z: -2.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 199140835}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1903545473
 GameObject:
   m_ObjectHideFlags: 0
@@ -52696,6 +52828,7 @@ Transform:
   - {fileID: 1895204730}
   - {fileID: 1197030977}
   - {fileID: 487195859}
+  - {fileID: 2086476439}
   m_Father: {fileID: 96143131}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52717,6 +52850,7 @@ MonoBehaviour:
   Camera: {fileID: 840839310}
   playerCharacterSlot: {fileID: 1197030977}
   opponentCharacterSlot: {fileID: 487195859}
+  equipmentBoard: {fileID: 2086476439}
 --- !u!1001 &1981133530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53304,6 +53438,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 199140835}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2016253435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2016253436}
+  m_Layer: 0
+  m_Name: Equipment board
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2016253436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016253435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.43, y: 0, z: -2.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1592640234}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2017111718
 Transform:
@@ -55021,6 +55185,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2086476438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2086476439}
+  m_Layer: 0
+  m_Name: Equipment board
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2086476439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086476438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.43, y: 0, z: -2.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1978762087}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2090543084
 PrefabInstance:
   m_ObjectHideFlags: 0

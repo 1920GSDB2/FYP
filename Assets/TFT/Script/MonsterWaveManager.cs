@@ -11,6 +11,7 @@ public class MonsterWaveManager : MonoBehaviour
     public MonsterWave[] Wave;
     int currentIndex;
     public static MonsterWaveManager Instance;
+    int monsterCount;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -19,7 +20,8 @@ public class MonsterWaveManager : MonoBehaviour
     public void spawnCurrentWaveAllMonster() {
         if (currentIndex == Wave.Length)
             return;
-        for (int i = 0; i < getCurrentTotalMonsterCount(); i++) {
+        monsterCount = getCurrentTotalMonsterCount();
+        for (int i = 0; i < monsterCount; i++) {
             
            
             // Debug.Log(monster.name+" "+ NetworkManager.Instance.posId+" "+ getMonsterPosition(i));
@@ -29,10 +31,13 @@ public class MonsterWaveManager : MonoBehaviour
 
            
         }
+
         NetworkManager.Instance.BattleWithMonsters();
       //  currentIndex++;
     }
-    
+    public void monsterDie() {
+
+    }
     public int getMonsterPosition(int number) {
         return Wave[currentIndex].monster[number].position;
     }

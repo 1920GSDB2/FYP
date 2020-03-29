@@ -68,6 +68,7 @@ public class Monster : Character
         this.gameObject.SetActive(false);
         HeroPlace.leavePlace();
         NetworkManager.Instance.battleHeroDie(isEnemy, this);
+        MonsterWaveManager.Instance.monsterDie();
     }
 
 
