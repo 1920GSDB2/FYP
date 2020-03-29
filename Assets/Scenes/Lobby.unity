@@ -907,7 +907,6 @@ MonoBehaviour:
     type: 3}
   LobbyRoomPrefab: {fileID: 5038765207003947278, guid: 692cc8e4e167a2e4e92c4596fb39aebc,
     type: 3}
-  rotateObj: {fileID: 1340351487}
 --- !u!4 &159746826
 Transform:
   m_ObjectHideFlags: 0
