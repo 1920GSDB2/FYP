@@ -60,7 +60,6 @@ public class MonsterWaveManager : MonoBehaviour
                 isDropEquipment = true;
                 int index = UnityEngine.Random.Range(0, awardEquipment.Length);
                 GameObject equipment = Instantiate(awardEquipment[index], awardEquipment[index].transform.position, awardEquipment[index].transform.rotation) as GameObject;
-                equipmentBoard.addEquipmentToSlot(equipment);
         break;
         }
 

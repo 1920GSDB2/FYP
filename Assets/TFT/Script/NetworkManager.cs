@@ -328,7 +328,7 @@ namespace TFT
             RankManager.PlayerCollectionSetup();
         }
         void createEquipmentBoard() {
-            UnityEngine.Object pPrefab = Resources.Load("otherPrefabs/GameBoard Prefabs");
+            UnityEngine.Object pPrefab = Resources.Load("otherPrefabs/EquipmentBoard");
             GameObject gameObject = Instantiate(pPrefab, transform.position, transform.rotation) as GameObject;
             gameObject.transform.parent = PlayerArenas[posId].GetComponent<PlayerArena>().equipmentBoard;
             gameObject.transform.localPosition = Vector3.zero;
