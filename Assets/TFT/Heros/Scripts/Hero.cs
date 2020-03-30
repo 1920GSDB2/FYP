@@ -178,7 +178,7 @@ public class Hero : Character, ISelectable
         HeroState = HeroState.Nothing;
         isEnemy = false;
         isAttackCooldown = false;
-        isMirror = true;
+        isMirror = false;
     }
     [PunRPC]
     public void syncNetworkPlaceId(int id)

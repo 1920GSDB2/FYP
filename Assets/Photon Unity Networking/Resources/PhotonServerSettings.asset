@@ -94,4 +94,5 @@ MonoBehaviour:
   - RPC_HitPlayerCharacter
   - rotate
   - setPosition
+  - RPC_Mirror
   DisableAutoOpenWizard: 1
