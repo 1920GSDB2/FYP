@@ -105,8 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectManager: {fileID: 0}
-  HeroAttributes: 
-  AttributeValues: 
+  HeroAttributes: 00000000
+  AttributeValues: 46000000
   isComponent: 0
   components:
   - {fileID: 8932993913939470856, guid: 0928c6ec10a9842488ed2f3650ca5e2b, type: 3}
