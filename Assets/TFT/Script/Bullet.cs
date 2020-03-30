@@ -56,7 +56,6 @@ public class Bullet : MonoBehaviour
             if (canDamage)
                 target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage);
 
-            Debug.Log("Hit Character");
             Destroy(this.gameObject);
         }
     }

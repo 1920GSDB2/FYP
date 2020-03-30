@@ -30,7 +30,7 @@ public class Character : MonoBehaviour
     protected Image mpBar;
     public GameObject bullet;
     public int networkPlaceId;
-    protected bool isMirror = true;
+    protected bool isMirror = false;
     
     public float attackRange = 1.7f;
 
@@ -70,8 +70,9 @@ public class Character : MonoBehaviour
         //Debug.Log(targetEnemy.name + " Take Damage");
         if (!isMirror)
         {
-            if (targetEnemy != null)
+            if (targetEnemy != null&&targetEnemy.Health>0)
             {
+
                 photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f);
                 //GetComponent<PhotonView>().RPC("RPC_IncreaseMp", PhotonTargets.All,10);
                 targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
@@ -212,7 +213,6 @@ public class Character : MonoBehaviour
 
             if (transform.position != step.heroPlace.transform.position)
             {
-                Debug.Log(name + "Follow step");
                 transform.position = Vector3.MoveTowards(transform.position, step.heroPlace.transform.position, 3 * Time.deltaTime);
                 //   Debug.Log("Move X "+step.heroPlace.gridX+" Y "+ step.heroPlace.gridY);
             }
@@ -254,7 +254,7 @@ public class Character : MonoBehaviour
     public IEnumerator RPC_FollowHeroPlace(HeroPlace step)
     {
         animator.SetBool("Walk", true);
-        while (transform.position != step.transform.position&&HeroState!=HeroState.Nothing)
+        while (transform.position != step.transform.position&&isMirror)
         {
             transform.position = Vector3.MoveTowards(transform.position, step.transform.position, 3 * Time.deltaTime);
             yield return null;
@@ -280,7 +280,11 @@ public class Character : MonoBehaviour
         isMirror = false;
         //Debug.Log("State " + HeroState + " Enemy " + isEnemy);
         photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
-        
+        photonView.RPC("RPC_Mirror", PhotonTargets.Others);
+    }
+    [PunRPC]
+    public void RPC_Mirror() {
+        isMirror = true;
     }
     [PunRPC]
     public void RPC_ShowHpBar(int posid)
