@@ -95,4 +95,5 @@ MonoBehaviour:
   - rotate
   - setPosition
   - RPC_Mirror
+  - setTransformView
   DisableAutoOpenWizard: 1

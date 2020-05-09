@@ -8,7 +8,7 @@ using System.IO;
 public class Character : MonoBehaviour
 {
     public float Health { get; set; }
-    protected float MaxHealth { get;  set; }
+    protected float MaxHealth { get; set; }
     public float MaxMp;
     protected float Mp { get; set; }
     public float AttackDamage { get; set; }
@@ -19,8 +19,8 @@ public class Character : MonoBehaviour
     public bool isEnemy;
     public HeroState HeroState;
     public HeroPlace HeroPlace, LastHeroPlace;
-    public PhotonView photonView;  
-    public Animator animator;    
+    public PhotonView photonView;
+    public Animator animator;
     protected bool isAttackCooldown;
     protected Vector3 cameraPos;
     public Character targetEnemy;
@@ -31,14 +31,14 @@ public class Character : MonoBehaviour
     public GameObject bullet;
     public int networkPlaceId;
     protected bool isMirror = false;
-    
+
     public float attackRange = 1.7f;
 
     // Start is called before the first frame update
 
-      //  hpBar = HeroBar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
-       // mpBar = HeroBar.transform.GetChild(0).GetChild(1).GetComponent<Image>();
-    
+    //  hpBar = HeroBar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+    // mpBar = HeroBar.transform.GetChild(0).GetChild(1).GetComponent<Image>();
+
 
     // Update is called once per frame
     /*void Update()
@@ -70,7 +70,7 @@ public class Character : MonoBehaviour
         //Debug.Log(targetEnemy.name + " Take Damage");
         if (!isMirror)
         {
-            if (targetEnemy != null&&targetEnemy.Health>0)
+            if (targetEnemy != null && targetEnemy.Health > 0)
             {
 
                 photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f);
@@ -79,7 +79,7 @@ public class Character : MonoBehaviour
             }
         }
         // Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
-       
+
     }
     public void shootTarget()
     {
@@ -90,9 +90,9 @@ public class Character : MonoBehaviour
             if (targetEnemy != null)
             {
                 photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f);
-               // Bullet b = PhotonNetwork.Instantiate(Path.Combine("Bullet", bullet.name), transform.position+Vector3.up*2, transform.rotation, 0).GetComponent<Bullet>();              
-               // b.setBullet(targetEnemy, AttackDamage, !isMirror);
-                 photonView.RPC("RPC_Shoot", PhotonTargets.All);
+                // Bullet b = PhotonNetwork.Instantiate(Path.Combine("Bullet", bullet.name), transform.position+Vector3.up*2, transform.rotation, 0).GetComponent<Bullet>();              
+                // b.setBullet(targetEnemy, AttackDamage, !isMirror);
+                photonView.RPC("RPC_Shoot", PhotonTargets.All);
                 //targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
             }
         }
@@ -102,7 +102,7 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_Shoot()
     {
-        Bullet b = Instantiate(bullet, transform.position+Vector3.up, transform.rotation).GetComponent<Bullet>();
+        Bullet b = Instantiate(bullet, transform.position + Vector3.up, transform.rotation).GetComponent<Bullet>();
         b.setBullet(targetEnemy.gameObject, AttackDamage, !isMirror);
     }
     [PunRPC]
@@ -152,40 +152,40 @@ public class Character : MonoBehaviour
     protected void FollowEnemy()
     {
         checkWithInAttackRange();
-        if(HeroState!=HeroState.Fight)
-        PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
-      //  float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
+        if (HeroState != HeroState.Fight)
+            PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
+        //  float dis = Vector3.Distance(transform.position, targetEnemy.transform.position);
 
         // Debug.Log("Distance " + dis + " AttackRange " + attackRange);
-      /*  if (dis > attackRange)
-        {
-            // Debug.Log("Distance " + dis + " AttackRange " + attackRange);
-            //  Debug.Log("followEnemy");
-            PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
-        }
-        else
-        {
-            if (HeroState != HeroState.Fight)
-            {
-                HeroState = HeroState.Fight;
-                // animator.SetBool("Walk", false);
-                photonView.RPC("RPC_StopWalk", PhotonTargets.All);
+        /*  if (dis > attackRange)
+          {
+              // Debug.Log("Distance " + dis + " AttackRange " + attackRange);
+              //  Debug.Log("followEnemy");
+              PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);
+          }
+          else
+          {
+              if (HeroState != HeroState.Fight)
+              {
+                  HeroState = HeroState.Fight;
+                  // animator.SetBool("Walk", false);
+                  photonView.RPC("RPC_StopWalk", PhotonTargets.All);
 
-            }
+              }
 
-        }*/
+          }*/
     }
     public void checkWithInAttackRange() {
-       
-        float dis = Vector3.Distance(HeroPlace.transform.position,targetEnemy.HeroPlace.transform.position);
+
+        float dis = Vector3.Distance(HeroPlace.transform.position, targetEnemy.HeroPlace.transform.position);
         if (dis <= attackRange) {
-              HeroState = HeroState.Fight;         
-              photonView.RPC("RPC_StopWalk", PhotonTargets.All);
-      //      return true;
+            HeroState = HeroState.Fight;
+            photonView.RPC("RPC_StopWalk", PhotonTargets.All);
+            //      return true;
         }
-       // return false;
+        // return false;
     }
-    
+
     public void OnPathFind(List<Node> path, bool isFindPath)
     {
         if (isFindPath)
@@ -195,19 +195,19 @@ public class Character : MonoBehaviour
                 //Debug.Log("Find path? " + isFindPath + " Hero " + name);
                 StartCoroutine(FollowStep(path[0]));
             }
-        }       
+        }
 
     }
     IEnumerator FollowStep(Node step)
     {
         //Debug.Log("FollowStep");
-       // withInAttackRange();
+        // withInAttackRange();
 
-        GetComponent<PhotonView>().RPC("RPC_FollowStep", PhotonTargets.Others, step.heroPlace.PlaceId, step.heroPlace.gridY);
+        // GetComponent<PhotonView>().RPC("RPC_FollowStep", PhotonTargets.Others, step.heroPlace.PlaceId, step.heroPlace.gridY);
         MoveToThePlace(step.heroPlace);
         transform.LookAt(step.heroPlace.transform);
         animator.SetBool("Walk", true);
-       // Vector3 destination = new Vector3(step.heroPlace.transform.position.x, transform.position.y, step.heroPlace.transform.position.z);
+        // Vector3 destination = new Vector3(step.heroPlace.transform.position.x, transform.position.y, step.heroPlace.transform.position.z);
         while (HeroState == HeroState.Walking)
         {
 
@@ -221,7 +221,7 @@ public class Character : MonoBehaviour
                 //  Debug.Log("finish");
                 // isLoop = false;               
                 photonView.RPC("RPC_StopWalk", PhotonTargets.All);
-               
+
                 StartCoroutine(FindPathAgain());
                 //PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);                          
                 break;
@@ -245,16 +245,16 @@ public class Character : MonoBehaviour
     {
         bool isEnemyPlace;
         if (YPos <= 3)
-            isEnemyPlace = true;
+            isEnemyPlace = false;  // isEnemyPlace = true;
         else
-            isEnemyPlace = false;
+            isEnemyPlace = true;// isEnemyPlace = false;
         HeroPlace heroPlace = NetworkManager.Instance.GetOpponentHeroPlace(placeId, isEnemyPlace);
         StartCoroutine(RPC_FollowHeroPlace(heroPlace));
     }
     public IEnumerator RPC_FollowHeroPlace(HeroPlace step)
     {
         animator.SetBool("Walk", true);
-        while (transform.position != step.transform.position&&isMirror)
+        while (transform.position != step.transform.position && isMirror)
         {
             transform.position = Vector3.MoveTowards(transform.position, step.transform.position, 3 * Time.deltaTime);
             yield return null;
@@ -279,9 +279,15 @@ public class Character : MonoBehaviour
         this.isEnemy = isEnemy;
         isMirror = false;
         //Debug.Log("State " + HeroState + " Enemy " + isEnemy);
+        photonView.RPC("setTransformView", PhotonTargets.All);
         photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
         photonView.RPC("RPC_Mirror", PhotonTargets.Others);
     }
+    [PunRPC]
+    public void setTransformView(){
+        GetComponent<PhotonTransformView>().enabled = true;
+    }
+
     [PunRPC]
     public void RPC_Mirror() {
         isMirror = true;
@@ -292,7 +298,9 @@ public class Character : MonoBehaviour
         if (NetworkManager.Instance.opponent.hero.Contains(this))
             setHpBarColor(Color.red);
         HeroBar.SetActive(true);
+        GameObject camera = NetworkManager.Instance.getCamera(posid);
         cameraPos = NetworkManager.Instance.getCamera(posid).transform.position;
+        Debug.Log(name+" "+camera.name);
     }
     [PunRPC]
     public void RPC_AttackAnimation()

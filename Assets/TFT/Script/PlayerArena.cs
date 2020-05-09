@@ -10,6 +10,7 @@ namespace TFT
         public GameObject FightArena;
         public GamePlace SelfArena, EnemyArena;
         public GameObject Camera;
+        public GameObject enemyCamera;
         public Transform playerCharacterSlot, opponentCharacterSlot;
         public Transform equipmentBoard;
         Vector3 leftTop, rightTop, leftDown, rightDown;

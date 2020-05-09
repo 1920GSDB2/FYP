@@ -33,6 +33,7 @@ public class Hero : Character, ISelectable
     public HeroClass[] HeroClasses;
     public HeroRace[] HeroRaces;
     public HeroLevel HeroLevel;
+    bool test;
 
     public EquipmentManager EquipmentManager;
 
@@ -97,7 +98,9 @@ public class Hero : Character, ISelectable
     {
         Vector3 targetPostition = new Vector3(HeroBar.transform.position.x, cameraPos.y, HeroBar.transform.position.x);
         HeroBar.transform.LookAt(targetPostition);
-        
+        if(test)
+            transform.position += Vector3.forward*Time.deltaTime;
+
         if (HeroState == HeroState.Idle) {
             if (targetEnemy == null)
             {
@@ -141,7 +144,7 @@ public class Hero : Character, ISelectable
             //animator.SetBool("Attack",true);
             //  gameObject.SetActive(false);
             //    Debug.Log(name + " Health " + Health + " / " + MaxHealth);
-
+            test = !test;
         
             //Debug.Log(name+" Position "+transform.position+" Target POs"+targetEnemy.transform.position);
             //Debug.Log(name + " Hero Pace " + HeroPlace.transform.position + " Target Hero pLace" + targetEnemy.HeroPlace.transform.position);
@@ -150,7 +153,8 @@ public class Hero : Character, ISelectable
         }
 
         if (Input.GetKeyDown(KeyCode.O))
-        {           
+        {
+            photonView.RPC("setTransformView", PhotonTargets.All);
         }
     }
     
@@ -173,6 +177,7 @@ public class Hero : Character, ISelectable
         Debug.Log("Reset Status");
         gameObject.SetActive(true);
         HeroBar.SetActive(false);
+        GetComponent<PhotonTransformView>().enabled = false;
         photonView.RPC("RPC_Heal", PhotonTargets.All, MaxHealth);
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
         HeroState = HeroState.Nothing;
@@ -305,8 +310,8 @@ public class Hero : Character, ISelectable
     public void RPC_AddToHeroList(int posId, int placeId)
     {
         HeroPlace heroPlace = NetworkManager.Instance.GetHeroListHeroPlace(posId, placeId);
-        if (!photonView.isMine)
-            transform.Rotate(new Vector3(0, 180, 0));
+       // if (!photonView.isMine)
+        //    transform.Rotate(new Vector3(0, 180, 0));
         SetHeroPlace(heroPlace);
     }
     

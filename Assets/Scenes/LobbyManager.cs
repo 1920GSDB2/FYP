@@ -168,7 +168,7 @@ public class LobbyManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Monster monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "GOBLIN"), Vector3.zero, Quaternion.identity, 0)).GetComponent<Monster>();
+                Hero monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "God of Wizard"), Vector3.zero, Quaternion.identity, 0)).GetComponent<Hero>();
                 // PhotonView.RPC("test", PhotonTargets.Others, "others");              
                 /*for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
                 {
