@@ -114,6 +114,7 @@ public class LobbyManager : MonoBehaviour
         {
             print("Connecting to server..");
             PhotonNetwork.ConnectUsingSettings("0.0.0");
+            PhotonNetwork.autoCleanUpPlayerObjects = false;
         }
         #endregion
 
