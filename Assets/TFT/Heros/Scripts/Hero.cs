@@ -108,7 +108,7 @@ public class Hero : Character, ISelectable
             else
             {
                 HeroState = HeroState.Walking;
-                followEnemy();
+                FollowEnemy();
             }
 
         }

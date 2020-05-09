@@ -149,7 +149,7 @@ public class Character : MonoBehaviour
     }
     public virtual void die() { }
 
-    protected void followEnemy()
+    protected void FollowEnemy()
     {
         checkWithInAttackRange();
         if(HeroState!=HeroState.Fight)
@@ -234,7 +234,7 @@ public class Character : MonoBehaviour
     {
         //yield return new WaitForSeconds(2);
         yield return new WaitForSeconds(0.3f);
-        followEnemy();
+        FollowEnemy();
     }
     [PunRPC]
     public void RPC_FollowStep(int placeId, int YPos)

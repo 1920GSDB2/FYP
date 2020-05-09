@@ -565,24 +565,24 @@ namespace TFT
         #region Battle
 
         [PunRPC]
-        void RPC_Battle(int player1Id, int player2Id)
+        void RPC_Battle(int hostID, int guestID)
         {
-            battlePosId = PlayerHeroes[player1Id].posId;
-            if (playerId == player2Id)
+            battlePosId = PlayerHeroes[hostID].posId;
+            if (playerId == guestID)
             {
-                PlayerArenas[PlayerHeroes[player2Id].posId].GetComponent<PlayerArena>().Camera.SetActive(false);
-                PlayerArenas[PlayerHeroes[player1Id].posId].GetComponent<PlayerArena>().Camera.SetActive(true);
-                opponent.opponentId = player1Id;
-                setOppoentHero(player1Id, player1Id);
+                PlayerArenas[PlayerHeroes[guestID].posId].GetComponent<PlayerArena>().Camera.SetActive(false);
+                PlayerArenas[PlayerHeroes[hostID].posId].GetComponent<PlayerArena>().Camera.SetActive(true);
+                opponent.opponentId = hostID;
+                setOppoentHero(hostID, hostID);
                 isHomeTeam = false;
                 setBattleGameBoardHero();
-                playerCharacter.GetComponent<PhotonView>().RPC("RPC_PlayerCharacterMoveToGameBoard", PhotonTargets.All, PlayerHeroes[player1Id].posId);
+                playerCharacter.GetComponent<PhotonView>().RPC("RPC_PlayerCharacterMoveToGameBoard", PhotonTargets.All, PlayerHeroes[hostID].posId);
             }
-            if (playerId == player1Id) {
+            if (playerId == hostID) {
                 isHomeTeam = true;
-                opponent.opponentId = player2Id;
-                setOppoentHero(player1Id, player2Id);
-                StartCoroutine(startBattle(PlayerHeroes[player1Id].posId));
+                opponent.opponentId = guestID;
+                setOppoentHero(hostID, guestID);
+                StartCoroutine(startBattle(PlayerHeroes[hostID].posId));
             }
         }
         void setOppoentHero(int homePlayerId, int OpponentPlayerId) {
@@ -698,19 +698,19 @@ namespace TFT
             opponent.hero.Clear();
         }
 
-        IEnumerator startBattle(int posId) {
+        IEnumerator startBattle(int playerPosId) {
             yield return new WaitForSeconds(2);
             battleGameBoardHero = new List<Character>(selfGameBoardHero);
             foreach (Hero hero in battleGameBoardHero)
             {
                 //hero
-                hero.readyForBattle(false, posId);
+                hero.readyForBattle(false, playerPosId);
             }
 
 
             foreach (Character hero in opponent.hero)
             {
-                hero.readyForBattle(true, posId);
+                hero.readyForBattle(true, playerPosId);
             }
         }
         #endregion

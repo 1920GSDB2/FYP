@@ -33,7 +33,7 @@ public class Monster : Character
             {
                 HeroState = HeroState.Walking;
                 checkWithInAttackRange();
-                followEnemy();
+                FollowEnemy();
             }
 
         }
