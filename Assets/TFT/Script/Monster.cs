@@ -25,26 +25,29 @@ public class Monster : Character
 
         Vector3 targetPostition = new Vector3(HeroBar.transform.position.x, cameraPos.y, HeroBar.transform.position.x);
         HeroBar.transform.LookAt(targetPostition);
-        if (HeroState == HeroState.Idle)
+        if (photonView.isMine)
         {
-            if (targetEnemy == null)
-                targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(isEnemy, transform);
-            else
+            if (HeroState == HeroState.Idle)
             {
-                HeroState = HeroState.Walking;
-                checkWithInAttackRange();
-                FollowEnemy();
+                if (targetEnemy == null)
+                    targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(isEnemy, transform);
+                else
+                {
+                    HeroState = HeroState.Walking;
+                    checkWithInAttackRange();
+                    FollowEnemy();
+                }
+
             }
+            if (HeroState == HeroState.Walking)
+                checkWithInAttackRange();
+            if (HeroState == HeroState.Fight)
+            {
+                if (!isAttackCooldown)
+                    photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
+                animator.SetTrigger("Attack");
 
-        }
-        if (HeroState == HeroState.Walking)
-            checkWithInAttackRange();
-        if (HeroState == HeroState.Fight)
-        {
-            if (!isAttackCooldown)
-                photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
-            animator.SetTrigger("Attack");
-
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.I))
@@ -54,7 +57,9 @@ public class Monster : Character
             //  gameObject.SetActive(false);
             //  Debug.Log(name + " Health " + Health + " / " + MaxHealth);
             //   photonView.RPC("test", PhotonTargets.All);
-            Debug.Log("Moster " + Health);
+            
+            Health = 0;
+            photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All,200f);
             //  photonView.RPC("RPC_Animation", PhotonTargets.All);
 
         }
@@ -65,11 +70,14 @@ public class Monster : Character
     }
     public override void die()
     {
-        
-        HeroPlace.leavePlace();
-        NetworkManager.Instance.battleHeroDie(isEnemy, this);
-        MonsterWaveManager.Instance.monsterDie();
-        PhotonNetwork.Destroy(this.gameObject);
+        if (photonView.isMine)
+        {
+            HeroState = HeroState.Die;
+               HeroPlace.leavePlace();
+               NetworkManager.Instance.battleHeroDie(isEnemy, this);
+               MonsterWaveManager.Instance.monsterDie();
+            PhotonNetwork.Destroy(this.gameObject);
+        }
     }
 
 

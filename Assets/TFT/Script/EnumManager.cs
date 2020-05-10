@@ -106,7 +106,8 @@ public enum HeroState
     Nothing,
     Idle,
     Fight,
-    Walking
+    Walking,
+    Die
 }
 public enum Award
 {

@@ -96,4 +96,7 @@ MonoBehaviour:
   - setPosition
   - RPC_Mirror
   - setTransformView
+  - RPC_endWave
+  - RPC_Response
+  - RPC_resetResponse
   DisableAutoOpenWizard: 1

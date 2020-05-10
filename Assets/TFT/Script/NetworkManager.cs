@@ -3,6 +3,8 @@ using System.Linq;
 using UnityEngine;
 using System.Collections;
 using System.IO;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+
 
 namespace TFT
 {
@@ -25,7 +27,11 @@ namespace TFT
         public List<Character> selfGameBoardHero = new List<Character>();
         public List<Character> battleGameBoardHero;
         TFTPlayerCharacter playerCharacter;
-        bool isHomeTeam;
+        public bool isHomeTeam { get; private set;}
+        int waveFinishResponse;
+
+
+        
         void Awake()
         {
             Instance = this;
@@ -35,6 +41,7 @@ namespace TFT
         {
             RankManager = RankManager.Instance;
             PhotonNetworkSetup();
+            
         }
 
         void Update()
@@ -43,20 +50,20 @@ namespace TFT
             #region PhotonNetwork Debugging
             if (Input.GetKeyDown(KeyCode.L))
             {
+                PhotonView.RPC("RPC_resetResponse", PhotonTargets.All);
                 PhotonView.RPC("MonsterBattle", PhotonTargets.All);
-
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
 
-               
+                PhotonView.RPC("RPC_resetResponse", PhotonTargets.All);
                 PhotonView.RPC("RPC_Battle", PhotonTargets.All, 0, 1);
                 //   PhotonView.RPC("RPC_Test", PhotonTargets.All);
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Hero monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "God of Wizard"), Vector3.zero, Quaternion.identity, 0)).GetComponent<Hero>();
-  
+                //  Hero monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "God of Wizard"), Vector3.zero, Quaternion.identity, 0)).GetComponent<Hero>();
+                PhotonView.RPC("RPC_Test", PhotonTargets.Others);
             }
             #endregion
 
@@ -183,6 +190,13 @@ namespace TFT
                 return PlayerArenas[PlayerHeroes[opponent.opponentId].posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
             else
                 return PlayerArenas[PlayerHeroes[opponent.opponentId].posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
+        }
+        public HeroPlace GetBattleHeroPlace(int posId,int placeId, bool isEnemyPlace)
+        {
+            if (isEnemyPlace)
+                return PlayerArenas[posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
+            else
+                return PlayerArenas[posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
         }
         #endregion
 
@@ -617,12 +631,14 @@ namespace TFT
             {
                 if (isEnemy)
                 {
-                    opponent.hero.Remove(hero);
+                    Debug.Log("character die " + hero.name);
+;                    opponent.hero.Remove(hero);
                     if(opponent.opponentId!=-1)
                     PhotonView.RPC("RPC_SyncBattleHero", PlayerHeroes[opponent.opponentId].player,hero.networkPlaceId,true);
                     if (opponent.hero.Count == 0)
                     {
-                        StartCoroutine(playerWinBattle(playerId,opponent.opponentId));
+                        Debug.Log("i win ");
+                        playerWinBattle(playerId,opponent.opponentId);                    
                     }
                 }
                 else
@@ -632,12 +648,15 @@ namespace TFT
                         battleGameBoardHero.Remove(hero);
                         PhotonView.RPC("RPC_SyncBattleHero", PlayerHeroes[opponent.opponentId].player, hero.networkPlaceId, false);
                         if (battleGameBoardHero.Count == 0)
-                            StartCoroutine(playerWinBattle(opponent.opponentId, playerId));
+                        {
+                            Debug.Log("opponent win ");
+                            playerWinBattle(opponent.opponentId, playerId);                    
+                        }
                     }
                 }
             }
         }
-        IEnumerator playerWinBattle(int playerId,int loserId) {
+        public void playerWinBattle(int playerId,int loserId) {
             if(loserId!=-1)
              PhotonView.RPC("RPC_HitOpponent", PlayerHeroes[playerId].player);
             Debug.Log("player win Battle");
@@ -654,13 +673,17 @@ namespace TFT
                        opponent.hero[i].GetComponent<PhotonView>().RPC("hitPlayerCharacter", PhotonTargets.All);
                    }
                }*/
-            yield return new WaitForSeconds(4f);
+            if (playerId == -1 || loserId == -1)
+                PhotonView.RPC("RPC_Response", PhotonTargets.All, 1);
+            else
+                PhotonView.RPC("RPC_Response", PhotonTargets.All, 2);
+
             if (opponent.opponentId != -1)
             {
-                PhotonView.RPC("RPC_FinishBattle", PlayerHeroes[opponent.opponentId].player);
+               // PhotonView.RPC("RPC_FinishBattle", PlayerHeroes[opponent.opponentId].player);
                 PhotonView.RPC("RankChange",PhotonTargets.All, PlayerHeroes[loserId].player.NickName,5);
             }
-            ResetHeroAfterBattle();
+            // ResetHeroAfterBattle();
             map.resetMap();
 
         }
@@ -672,7 +695,7 @@ namespace TFT
             Debug.Log("Newwork site hit oppoent");
             for (int i = 0; i < battleGameBoardHero.Count; i++)
             {
-                battleGameBoardHero[i].GetComponent<PhotonView>().RPC("RPC_HitPlayerCharacter", PhotonTargets.All, playerId);
+                battleGameBoardHero[i].GetComponent<PhotonView>().RPC("RPC_HitPlayerCharacter", PhotonTargets.All, isHomeTeam);
             }
         }
         [PunRPC]
@@ -691,11 +714,16 @@ namespace TFT
                     opponent.hero.RemoveAt(index);
             }
         }
-        [PunRPC]
-        void RPC_FinishBattle() {
-            playerCharacter.GetComponent<PhotonView>().RPC("RPC_PlayerCharacterBackToGameBoard", PhotonTargets.All,posId);
-            PlayerArenas[PlayerHeroes[opponent.opponentId].posId].GetComponent<PlayerArena>().enemyCamera.SetActive(false);
-            GameManager.Instance.SelfPlayerArena.Camera.SetActive(true);
+      
+         IEnumerator finishBattle() {
+            yield return new WaitForSeconds(1.5f);
+            if (!isHomeTeam)
+            {
+                playerCharacter.GetComponent<PhotonView>().RPC("RPC_PlayerCharacterBackToGameBoard", PhotonTargets.All, posId);
+                PlayerArenas[PlayerHeroes[opponent.opponentId].posId].GetComponent<PlayerArena>().enemyCamera.SetActive(false);
+                GameManager.Instance.SelfPlayerArena.Camera.SetActive(true);
+            }
+        
             ResetHeroAfterBattle();
         }
         void ResetHeroAfterBattle() {
@@ -708,7 +736,29 @@ namespace TFT
             }
             opponent.hero.Clear();
         }
-
+        [PunRPC]
+        public void RPC_Response(int number) {
+            waveFinishResponse+=number;
+            Debug.Log("Response +" + number+" total "+waveFinishResponse);
+            if (PhotonNetwork.isMasterClient)
+            {
+                if (waveFinishResponse == PlayerHeroes.Length) {
+                    PhotonView.RPC("RPC_endWave", PhotonTargets.All);
+                }
+            }
+               
+        }
+        [PunRPC]
+        public void RPC_resetResponse()
+        {
+            waveFinishResponse = 0;
+        }
+        [PunRPC]
+        public void RPC_endWave()
+        {
+            StartCoroutine(finishBattle());
+        }
+        
         IEnumerator startBattle(int playerPosId) {
             yield return new WaitForSeconds(2);
             battleGameBoardHero = new List<Character>(selfGameBoardHero);
@@ -730,10 +780,11 @@ namespace TFT
         public void MonsterBattle() {
             isHomeTeam = true;
             opponent.opponentId = -1;
+            battlePosId = posId;
             MonsterWaveManager.Instance.spawnCurrentWaveAllMonster();
         }
         public void spawnMonster(string name,int placeId) {
-            Monster monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", name), Vector3.zero, Quaternion.identity, 0)).GetComponent<Monster>();
+            Monster monster = PhotonNetwork.Instantiate(Path.Combine("Prefabs", name), Vector3.zero, Quaternion.identity, 0).GetComponent<Monster>();
             monster.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, NetworkManager.Instance.posId, placeId);
             opponent.hero.Add(monster);
         }
@@ -744,10 +795,10 @@ namespace TFT
         #endregion
         [PunRPC]
         void RPC_Test() {
-            Hero newhero = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Armor Crocodile"), Vector3.zero, Quaternion.identity, 0)).GetComponentInChildren<Hero>();
+            Hero newhero = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "GOBLIN"), Vector3.zero, Quaternion.identity, 0)).GetComponentInChildren<Hero>();
             //  Monster monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "GOBLIN"), Vector3.zero, Quaternion.identity, 0)).GetComponentInChildren<Monster>();
-            newhero.photonView.RPC("RPC_AddToHeroList", PhotonTargets.All,0,1);
-            newhero.name = "Armor Crocodile";
+           // newhero.photonView.RPC("RPC_AddToHeroList", PhotonTargets.All,0,1);
+            //newhero.name = "Armor Crocodile";
             // if (TFT.GameManager.Instance.BuyHero(newHero));
            // Debug.Log("Hero GameBoard"+ selfGameBoardHero.Count);
         }

@@ -36,7 +36,7 @@ public class TFTPlayerCharacter : MonoBehaviour
     [PunRPC]
     public void RPC_PlayerCharacterBackToGameBoard(int posId)
     {
-        if (NetworkManager.Instance.posId == posId)
+        //if (NetworkManager.Instance.posId == posId)
             transform.parent = NetworkManager.Instance.PlayerArenas[posId].GetComponent<PlayerArena>().playerCharacterSlot;
        // else
           //  transform.parent = NetworkManager.Instance.PlayerArenas[posId].GetComponent<PlayerArena>().opponentCharacterSlot;

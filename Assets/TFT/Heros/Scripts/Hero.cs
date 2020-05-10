@@ -137,6 +137,8 @@ public class Hero : Character, ISelectable
                 }
 
         }
+       
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             //  targetEnemy = testHero;
@@ -159,6 +161,7 @@ public class Hero : Character, ISelectable
     }
     
     public void resetAttribute() {
+       
         MaxHealth = 100 * BasicHealth;
         MaxMp = 100;
         Health = MaxHealth;
@@ -168,6 +171,7 @@ public class Hero : Character, ISelectable
         BoxCollider = GetComponent<Collider>();
     }
     public override void die() {
+        HeroState = HeroState.Die;
         this.gameObject.SetActive(false);
         HeroPlace.leavePlace();
         NetworkManager.Instance.battleHeroDie(isEnemy, this);
@@ -175,9 +179,11 @@ public class Hero : Character, ISelectable
     [PunRPC]
     public void RPC_ResetStatus() {
         Debug.Log("Reset Status");
+        targetEnemy = null;
         gameObject.SetActive(true);
         HeroBar.SetActive(false);
-        GetComponent<PhotonTransformView>().enabled = false;
+        HeroBar.transform.Rotate(new Vector3(0, 180, 0));
+        // GetComponent<PhotonTransformView>().enabled = false;
         photonView.RPC("RPC_Heal", PhotonTargets.All, MaxHealth);
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
         HeroState = HeroState.Nothing;

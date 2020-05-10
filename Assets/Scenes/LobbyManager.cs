@@ -238,7 +238,7 @@ public class LobbyManager : MonoBehaviour
 
     #region Connect Lobby
     //When Player connect to Master called by photon
-    private void OnConnectedToMaster()
+    private void OnConnectedToMaster()  
     {
         print("Connected to master.");
         PhotonNetwork.automaticallySyncScene = false;
