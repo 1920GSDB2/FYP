@@ -649,7 +649,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3215844082107697319}
   - component: {fileID: 2277585910350345326}
-  - component: {fileID: 5809454348645531191}
+  - component: {fileID: 1898164130360084609}
+  - component: {fileID: 7526244059550853004}
   - component: {fileID: 497396836400488959}
   - component: {fileID: 4082293737930478947}
   - component: {fileID: 2892064389670478815}
@@ -702,7 +703,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5809454348645531191
+--- !u!114 &1898164130360084609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -711,7 +712,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4790525165465923861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
+  m_Script: {fileID: 11500000, guid: 77dd70fc201a7164c926a665023a9d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxMp: 0
@@ -720,7 +721,7 @@ MonoBehaviour:
   HeroPlace: {fileID: 0}
   LastHeroPlace: {fileID: 0}
   photonView: {fileID: 0}
-  animator: {fileID: 2277585910350345326}
+  animator: {fileID: 0}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBar: {fileID: 4920572509199117789}
@@ -730,8 +731,8 @@ MonoBehaviour:
   Icon: {fileID: 0}
   SelectingBox: {fileID: 99125584472732209}
   Rarity: 1
-  HeroClasses: 06000000
-  HeroRaces: 05000000
+  HeroClasses: 
+  HeroRaces: 
   HeroLevel: 0
   EquipmentManager: {fileID: 0}
   BasicHealth: 5
@@ -742,6 +743,22 @@ MonoBehaviour:
   BasicMagicDefense: 5
   BasicCritcalChance: 0
   BasicAttackRange: 3
+  skill: {fileID: 7526244059550853004}
+--- !u!114 &7526244059550853004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4790525165465923861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64005b453aadd3f48b2f2ffa91e38bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castSkillEffect: {fileID: 0}
+  skillModel: {fileID: 1548609390325136009, guid: f90deca2105bcb54d8b3eb1cf0f95aff,
+    type: 3}
 --- !u!65 &497396836400488959
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -843,7 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PositionModel:
-    SynchronizeEnabled: 1
+    SynchronizeEnabled: 0
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 2

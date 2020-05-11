@@ -99,4 +99,7 @@ MonoBehaviour:
   - RPC_endWave
   - RPC_Response
   - RPC_resetResponse
+  - RPC_userSkill
+  - RPC_SyncCastObject
+  - RPC_castUnitTargetSkill
   DisableAutoOpenWizard: 1

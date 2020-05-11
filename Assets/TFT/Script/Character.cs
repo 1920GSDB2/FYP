@@ -79,7 +79,7 @@ public class Character : MonoBehaviour
                 targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
             }
         }
-       //  Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
+        //  Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
 
     }
     public void shootTarget()
@@ -93,7 +93,9 @@ public class Character : MonoBehaviour
                 photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f);
                 // Bullet b = PhotonNetwork.Instantiate(Path.Combine("Bullet", bullet.name), transform.position+Vector3.up*2, transform.rotation, 0).GetComponent<Bullet>();              
                 // b.setBullet(targetEnemy, AttackDamage, !isMirror);
-                photonView.RPC("RPC_Shoot", PhotonTargets.All);
+                //     photonView.RPC("RPC_Shoot", PhotonTargets.All,NetworkManager.Instance.battlePosId,targetEnemy.HeroPlace.PlaceId,targetEnemy.HeroPlace.gridY,
+                //       NetworkManager.Instance.playerId,NetworkManager.Instance.opponent.opponentId);
+                photonView.RPC("RPC_Shoot", PhotonTargets.All, targetEnemy.transform.position.x, targetEnemy.transform.position.z, NetworkManager.Instance.playerId, NetworkManager.Instance.opponent.opponentId);
                 //targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
             }
         }
@@ -101,12 +103,36 @@ public class Character : MonoBehaviour
 
     }
     [PunRPC]
-    public void RPC_Shoot()
+    // public void RPC_Shoot(int battlePosId,int placeId,int YPos,int hostId,int guestId)
+    public void RPC_Shoot(float x, float z, int hostId, int guestId)
     {
-        if (targetEnemy != null)
+        //processShoot(battlePosId,placeId,YPos,hostId,guestId);
+        processShoot(x, z, hostId, guestId);
+    }
+    // void processShoot(int battlePosId, int placeId, int YPos, int hostId, int guestId) {
+    void processShoot(float x, float z, int hostId, int guestId) {
+        Debug.Log(" photon prcess shot");
+        if (NetworkManager.Instance.playerId == hostId || NetworkManager.Instance.playerId == guestId)
         {
+            if (targetEnemy != null)
+            {
+                Bullet b = Instantiate(bullet, transform.position + Vector3.up, transform.rotation).GetComponent<Bullet>();
+                b.setBullet(targetEnemy.gameObject, AttackDamage, !isMirror);
+            }
+        }
+        else {
+            /* bool isEnemySide;
+             if (YPos >= 4)
+                 isEnemySide = true;
+             else
+                 isEnemySide = false;*/
             Bullet b = Instantiate(bullet, transform.position + Vector3.up, transform.rotation).GetComponent<Bullet>();
-            b.setBullet(targetEnemy.gameObject, AttackDamage, !isMirror);
+            Debug.Log(" watch player shoot");
+            //  HeroPlace heroplace=NetworkManager.Instance.GetBattleHeroPlace(battlePosId, placeId, isEnemySide);
+            Vector3 targetPos = new Vector3(x, b.transform.position.y, z);
+            b.setBullet(targetPos);
+            //  b.setBullet(heroplace.transform.position);
+
         }
     }
     [PunRPC]
@@ -126,7 +152,7 @@ public class Character : MonoBehaviour
             Health = MaxHealth;
         if (Health <= 0)
         {
-            if(HeroState!=HeroState.Die)
+            if (HeroState != HeroState.Die)
                 die();
         }
         hpBar.fillAmount = Health / MaxHealth;
@@ -208,32 +234,32 @@ public class Character : MonoBehaviour
         //Debug.Log("FollowStep");
         // withInAttackRange();
 
-         GetComponent<PhotonView>().RPC("RPC_FollowStep", PhotonTargets.Others, NetworkManager.Instance.battlePosId,step.heroPlace.PlaceId, step.heroPlace.gridY);
+        GetComponent<PhotonView>().RPC("RPC_FollowStep", PhotonTargets.Others, NetworkManager.Instance.battlePosId, step.heroPlace.PlaceId, step.heroPlace.gridY);
         MoveToThePlace(step.heroPlace);
         transform.LookAt(step.heroPlace.transform);
         animator.SetBool("Walk", true);
         targetNode = step;
         // Vector3 destination = new Vector3(step.heroPlace.transform.position.x, transform.position.y, step.heroPlace.transform.position.z);
-          while (HeroState == HeroState.Walking)
-          {
+        while (HeroState == HeroState.Walking)
+        {
 
-              if (transform.position != step.heroPlace.transform.position)
-              {
-                  transform.position = Vector3.MoveTowards(transform.position, step.heroPlace.transform.position, 3 * Time.deltaTime);
-                  //   Debug.Log("Move X "+step.heroPlace.gridX+" Y "+ step.heroPlace.gridY);
-              }
-              else
-              {
-                  //  Debug.Log("finish");
-                  // isLoop = false;               
-                  photonView.RPC("RPC_StopWalk", PhotonTargets.All);
+            if (transform.position != step.heroPlace.transform.position)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, step.heroPlace.transform.position, 3 * Time.deltaTime);
+                //   Debug.Log("Move X "+step.heroPlace.gridX+" Y "+ step.heroPlace.gridY);
+            }
+            else
+            {
+                //  Debug.Log("finish");
+                // isLoop = false;               
+                photonView.RPC("RPC_StopWalk", PhotonTargets.All);
 
-                  StartCoroutine(FindPathAgain());
-                  //PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);                          
-                  break;
-              }
-              yield return null;
-          }
+                StartCoroutine(FindPathAgain());
+                //PathFindingManager.Instance.requestPath(HeroPlace, targetEnemy.HeroPlace, OnPathFind);                          
+                break;
+            }
+            yield return null;
+        }
         yield return null;
     }
     public IEnumerator FindPathAgain()
@@ -243,18 +269,18 @@ public class Character : MonoBehaviour
         FollowEnemy();
     }
     [PunRPC]
-    public void RPC_FollowStep(int posId,int placeId, int YPos)
+    public void RPC_FollowStep(int posId, int placeId, int YPos)
     {
-        SyncFollowStep(posId,placeId, YPos);
+        SyncFollowStep(posId, placeId, YPos);
     }
-    public void SyncFollowStep(int posId,int placeId, int YPos)
+    public void SyncFollowStep(int posId, int placeId, int YPos)
     {
         bool isEnemyPlace;
         if (YPos <= 3)
             isEnemyPlace = false;  // isEnemyPlace = true;
         else
             isEnemyPlace = true;// isEnemyPlace = false;
-        HeroPlace heroPlace = NetworkManager.Instance.GetBattleHeroPlace(posId,placeId,isEnemyPlace);
+        HeroPlace heroPlace = NetworkManager.Instance.GetBattleHeroPlace(posId, placeId, isEnemyPlace);
         StartCoroutine(RPC_FollowHeroPlace(heroPlace));
     }
     public IEnumerator RPC_FollowHeroPlace(HeroPlace step)
@@ -282,18 +308,18 @@ public class Character : MonoBehaviour
     public void readyForBattle(bool isEnemy, int posId)
     {
         HeroState = HeroState.Idle;
-        this.isEnemy = isEnemy;
+        //   this.isEnemy = isEnemy;
         isMirror = false;
         //Debug.Log("State " + HeroState + " Enemy " + isEnemy);
-       // photonView.RPC("setTransformView", PhotonTargets.All);
+        // photonView.RPC("setTransformView", PhotonTargets.All);
         photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
         photonView.RPC("RPC_Mirror", PhotonTargets.Others);
-        Debug.Log("name "+name +" ready ");
+        Debug.Log("name " + name + " ready ");
     }
     [PunRPC]
-    public void setTransformView(){
+    public void setTransformView() {
         //isMirror = !isMirror;
-        GetComponent<PhotonTransformView>().enabled = true;  
+        GetComponent<PhotonTransformView>().enabled = true;
     }
 
     [PunRPC]
@@ -307,17 +333,17 @@ public class Character : MonoBehaviour
             setHpBarColor(Color.red);
         HeroBar.SetActive(true);
         if (!NetworkManager.Instance.isHomeTeam)
-            HeroBar.transform.Rotate(new Vector3(0,180,0));
+            HeroBar.transform.Rotate(new Vector3(0, 180, 0));
 
         GameObject camera = NetworkManager.Instance.getCamera(posid);
         cameraPos = NetworkManager.Instance.getCamera(posid).transform.position;
-        Debug.Log(name+" "+camera.name);
+        Debug.Log(name + " " + camera.name);
     }
     [PunRPC]
     public void RPC_AttackAnimation()
     {
         if (targetEnemy != null)
-        transform.LookAt(targetEnemy.transform);
+            transform.LookAt(targetEnemy.transform);
         animator.SetTrigger("Attack");
         //transform.LookAt(targetEnemy.transform);
     }
@@ -348,23 +374,24 @@ public class Character : MonoBehaviour
     void hitopponentCharacter(bool isHomeTeam) {
         UnityEngine.Object pPrefab = Resources.Load("Effect/heroHitPlayerEffect");
         GameObject b = Instantiate(pPrefab, transform.position, transform.rotation) as GameObject;
-        GameObject opponentPlayer=null;
+        GameObject opponentPlayer = null;
 
         //if (NetworkManager.Instance.playerId == playerId)
-        if(isHomeTeam)
+        if (isHomeTeam)
         {
             opponentPlayer = NetworkManager.Instance.PlayerArenas[NetworkManager.Instance.battlePosId].
                                         GetComponent<PlayerArena>().opponentCharacterSlot.GetChild(0).gameObject;
-          
+
         }
         else
         {
             opponentPlayer = NetworkManager.Instance.PlayerArenas[NetworkManager.Instance.battlePosId].
                                     GetComponent<PlayerArena>().playerCharacterSlot.GetChild(0).gameObject;
-          
+
         }
-        b.GetComponent<Bullet>().setBullet(opponentPlayer,2f);
+        b.GetComponent<Bullet>().setBullet(opponentPlayer, 2f);
     }
+   
     public IEnumerator basicAttackCoolDown()
     {
         isAttackCooldown = true;

@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3185575528144418976}
   - component: {fileID: 5348492955954163006}
-  - component: {fileID: 3185575528144418977}
+  - component: {fileID: 6792197233915685761}
   - component: {fileID: 1409756087686791978}
   - component: {fileID: 7828249975964338239}
   - component: {fileID: 143003142708844941}
@@ -138,7 +138,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3185575528144418977
+--- !u!114 &6792197233915685761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3185575528144418990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
+  m_Script: {fileID: 11500000, guid: 49f87db2ba6e56b41ae15a2ec1f31390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxMp: 0
@@ -166,8 +166,8 @@ MonoBehaviour:
   Icon: {fileID: 0}
   SelectingBox: {fileID: 1898811942396278906}
   Rarity: 1
-  HeroClasses: 06000000
-  HeroRaces: 01000000
+  HeroClasses: 
+  HeroRaces: 
   HeroLevel: 0
   EquipmentManager: {fileID: 0}
   BasicHealth: 6
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PositionModel:
-    SynchronizeEnabled: 1
+    SynchronizeEnabled: 0
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 2
@@ -6397,11 +6397,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199439085999198283, guid: 44de83aff51977a479f23105dc7f114e,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44de83aff51977a479f23105dc7f114e, type: 3}

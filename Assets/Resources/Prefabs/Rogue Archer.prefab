@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3853857149654370394}
   - component: {fileID: 3938245151399643058}
-  - component: {fileID: 3853857149654370395}
   - component: {fileID: 8385761842084925420}
+  - component: {fileID: 5673969030039817892}
   - component: {fileID: 4770013014636726004}
   - component: {fileID: 3938245150593881336}
   - component: {fileID: 2930524961683840403}
@@ -61,7 +61,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3853857149654370395
+--- !u!65 &8385761842084925420
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853857149654370392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 2, z: 1.5}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5673969030039817892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,7 +83,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3853857149654370392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
+  m_Script: {fileID: 11500000, guid: 188c5dff8d632c94783f186bd2aa716d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxMp: 0
@@ -89,8 +102,8 @@ MonoBehaviour:
   Icon: {fileID: 0}
   SelectingBox: {fileID: 5942783873252722593}
   Rarity: 0
-  HeroClasses: 03000000
-  HeroRaces: 01000000
+  HeroClasses: 
+  HeroRaces: 
   HeroLevel: 0
   EquipmentManager: {fileID: 0}
   BasicHealth: 4
@@ -101,19 +114,6 @@ MonoBehaviour:
   BasicMagicDefense: 4
   BasicCritcalChance: 0
   BasicAttackRange: 4
---- !u!65 &8385761842084925420
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3853857149654370392}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 2, z: 1.5}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &4770013014636726004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PositionModel:
-    SynchronizeEnabled: 1
+    SynchronizeEnabled: 0
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 2

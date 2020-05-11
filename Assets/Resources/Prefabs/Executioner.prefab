@@ -2552,7 +2552,7 @@ GameObject:
   - component: {fileID: 1945676280149727170}
   - component: {fileID: 901749345589833720}
   - component: {fileID: 6792419177879772376}
-  - component: {fileID: 1945676280149727169}
+  - component: {fileID: 7973354537506207235}
   - component: {fileID: 169804572481835000}
   - component: {fileID: 901749346923411940}
   - component: {fileID: 2823166824408111025}
@@ -2619,7 +2619,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2, z: 1.5}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &1945676280149727169
+--- !u!114 &7973354537506207235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2628,7 +2628,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1945676280149727168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
+  m_Script: {fileID: 11500000, guid: 3aec297f0677fdc4cacac4285ea69384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxMp: 0
@@ -2646,7 +2646,7 @@ MonoBehaviour:
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 5707315226479799145}
-  Rarity: 0
+  Rarity: 3
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
@@ -2738,7 +2738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PositionModel:
-    SynchronizeEnabled: 1
+    SynchronizeEnabled: 0
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 2

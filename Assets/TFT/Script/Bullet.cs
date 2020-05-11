@@ -7,8 +7,9 @@ public class Bullet : MonoBehaviour
 {
     public GameObject target;
     public float speed=30f;
-    float attackDamage;
-    bool canDamage;
+    protected float attackDamage;
+    protected bool canDamage;
+    public Vector3 targetPos;
     // Start is called before the first frame update
 
 
@@ -16,28 +17,46 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         float dis = 0;
-        if (target!=null)
+        if (target != null) { 
             dis = Vector3.Distance(transform.position, target.transform.position + Vector3.up);
 
-        float time = dis /( speed*Time.deltaTime*60);
-        //Debug.Log("bullet exist TIMe"+time);
-        Destroy(this.gameObject, time);
+            float time = dis / (speed * Time.deltaTime * 60);
+            //Debug.Log("bullet exist TIMe"+time);
+            Destroy(this.gameObject, time);
+       }
     }
     void Update()
     {
         if(target!=null)
             transform.position = Vector3.Lerp(transform.position, target.transform.position+Vector3.up,  speed*Time.deltaTime);
+        else if(targetPos!=null)
+            transform.position = Vector3.Lerp(transform.position,targetPos + Vector3.up, speed * Time.deltaTime);
     }
     public void setBullet(GameObject c, float damage,bool isDamage) {
         target = c;
         attackDamage = damage;
         canDamage = isDamage;
     }
-    public void setBullet(GameObject c,float speed)
+    public void setBullet(Character c, float damage, bool isDamage)
+    {
+        target = c.gameObject;
+        attackDamage = damage;
+        canDamage = isDamage;
+    }
+    public void setBullet(GameObject c, float speed)
     {
         target = c;
         this.speed = speed;
         canDamage = false;
+    }
+    public void setBullet(Vector3 targetPos)
+    {
+        this.targetPos = targetPos;
+        canDamage = false;
+        float dis = Vector3.Distance(transform.position, targetPos);
+        float time = dis / (speed * Time.deltaTime * 60);
+        Destroy(this.gameObject, time);
+       
     }
 
     /*private void OnCollisionEnter(Collision collision)
@@ -49,7 +68,7 @@ public class Bullet : MonoBehaviour
                 Destroy(this.gameObject);
             }     
     }*/
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject == target.gameObject)
         {

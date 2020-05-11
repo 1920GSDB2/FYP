@@ -198,6 +198,13 @@ namespace TFT
             else
                 return PlayerArenas[posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(placeId).GetComponent<HeroPlace>();
         }
+        public Character GetBattleBoardHero(int posId, int placeId, bool isEnemyPlace)
+        {
+            if (isEnemyPlace)
+                return PlayerArenas[posId].GetComponent<PlayerArena>().EnemyArena.GameBoard.GetChild(placeId).GetChild(0).GetComponent<Hero>();
+            else
+                return PlayerArenas[posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(placeId).GetChild(0).GetComponent<Hero>();
+        }
         #endregion
 
         public Character getCloestEnemyTarget(bool isEnemy, Transform heroPos) {
@@ -205,13 +212,40 @@ namespace TFT
             if (isEnemy)
             {
                 Debug.Log("Get battleGame " + isEnemy);
+                return calculateClosestDistance(opponent.hero, heroPos);
+            }
+            else
+            {
+                Debug.Log("Get opponent " + isEnemy);            
                 return calculateClosestDistance(battleGameBoardHero, heroPos);
+            }
+        }
+        public Character getFurthestEnemyTarget(bool isEnemy, Transform heroPos)
+        {
+
+            if (isEnemy)
+            {
+                Debug.Log("Get battleGame " + isEnemy);
+                return calculateClosestDistance(opponent.hero, heroPos);
             }
             else
             {
                 Debug.Log("Get opponent " + isEnemy);
-                return calculateClosestDistance(opponent.hero, heroPos);
+                return calculateClosestDistance(battleGameBoardHero, heroPos);
             }
+        }
+        public Character getEnemyIndexById(int placeId,bool isEnemy) {
+            if (isEnemy){
+                int index = selfGameBoardHero.FindIndex(x => x.networkPlaceId == placeId);
+                if(index!=-1)
+                return selfGameBoardHero[index];
+            }
+            else{
+               int index = NetworkManager.Instance.opponent.hero.FindIndex(x => x.networkPlaceId == placeId);
+                if (index != -1)
+                  return opponent.hero[index];
+            }
+            return null;
         }
         Character calculateClosestDistance(List<Character> targetHeros, Transform heroPos) {
             Character[] hero = targetHeros.ToArray<Character>();
@@ -225,6 +259,24 @@ namespace TFT
                         closestHero = hero[i];
                 }
                 return closestHero;
+            }
+            return null;
+        }
+        Character calculateFurthestDistance(List<Character> targetHeros, Transform heroPos)
+        {
+            Character[] hero = targetHeros.ToArray<Character>();
+
+            if (hero.Length != 0)
+            {
+                float furthestDis = Vector3.Distance(hero[0].transform.position, heroPos.position);
+                Character furthestHero = hero[0];
+                for (int i = 1; i < hero.Length; i++)
+                {
+                    float dis = Vector3.Distance(hero[i].transform.position, heroPos.position);
+                    if (dis > furthestDis)
+                        furthestHero = hero[i];
+                }
+                return furthestHero;
             }
             return null;
         }
@@ -423,6 +475,7 @@ namespace TFT
                                     _newHeroPlacement.transform.localPosition = Vector3.zero;
                                     _newHeroPlacement.LastHeroPlace = _newHeroPlacement.HeroPlace;
                                     _newHeroPlacement.HeroPlace = _newHeroPlacement.transform.parent.GetComponent<HeroPlace>();
+                                   // setOtherPlayerBattleHero();
                                     #region For PhotoNetwork.instatiate
                                     //      Hero _newHeroPlacement = enemyArena.HeroList.GetChild(_heroPos).GetChild(0).GetComponent<Hero>();
                                     //     _newHeroPlacement.GetComponent<PhotonView>().RPC("RPC_AddToGameBoard", PhotonTargets.All, _posId, _newPos);
@@ -607,15 +660,26 @@ namespace TFT
                 isHomeTeam = true;
                 opponent.opponentId = guestID;
                 setOppoentHero(hostID, guestID);
+               // setBattleGameBoardHero();
                 StartCoroutine(startBattle(PlayerHeroes[hostID].posId));
             }
         }
+      /*  void setOtherPlayerBattleHero(int otherPlayerId,int otherPlayerPosId,int placeId,bool isAdd) {
+            if (isAdd)
+            {
+
+            }
+            else {
+
+            }
+        }*/
         void setOppoentHero(int homePlayerId, int OpponentPlayerId) {
             foreach (NetworkHero networkHero in PlayerHeroes[OpponentPlayerId].GameBoardHeroes)
             {
                 Hero heroObject = PlayerArenas[PlayerHeroes[OpponentPlayerId].posId].
                                   GetComponent<PlayerArena>().SelfArena.GameBoard.
                                   GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
+                heroObject.isEnemy = true;
                 //Hero heroObject = GameManager.Instance.SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>(); 
                 opponent.hero.Add(heroObject);
                 if (playerId == homePlayerId)

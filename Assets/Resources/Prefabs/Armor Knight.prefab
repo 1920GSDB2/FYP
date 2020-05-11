@@ -138,15 +138,16 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBar: {fileID: 0}
+  bullet: {fileID: 0}
+  networkPlaceId: 0
+  attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 461068480251961582}
-  HeroStatus: 0
   Rarity: 0
   HeroClasses: 05000000
   HeroRaces: 03000000
   HeroLevel: 0
   EquipmentManager: {fileID: 0}
-  networkPlaceId: 0
   BasicHealth: 6
   BasicAttackDamage: 6
   BasicAttackSpeed: 4
@@ -154,6 +155,7 @@ MonoBehaviour:
   BasicPhysicalDefense: 5
   BasicMagicDefense: 5
   BasicCritcalChance: 0
+  BasicAttackRange: 0
 --- !u!65 &4591463669310842892
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -207,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PositionModel:
-    SynchronizeEnabled: 1
+    SynchronizeEnabled: 0
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 2

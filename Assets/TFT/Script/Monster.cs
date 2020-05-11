@@ -13,7 +13,7 @@ public class Monster : Character
     private void Start()
     {
 
-        MaxHealth = 200;
+        MaxHealth = 1000;
         Health = MaxHealth;
         photonView = GetComponent<PhotonView>();
         hpBar = HeroBar.transform.GetChild(0).GetChild(0).GetComponent<Image>();

@@ -34,9 +34,9 @@ public class Hero : Character, ISelectable
     public HeroRace[] HeroRaces;
     public HeroLevel HeroLevel;
     bool test;
-
+    public Skill skill;
     public EquipmentManager EquipmentManager;
-
+  
     
 
     [Range(0, 10)]
@@ -61,7 +61,10 @@ public class Hero : Character, ISelectable
     string lastTransform;
 
     //  List<Node> path;
-    
+    public virtual void UseSkill() {
+        photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
+    }
+
     private void Awake()
     {
         if (animator == null)
@@ -104,9 +107,9 @@ public class Hero : Character, ISelectable
         if (HeroState == HeroState.Idle) {
             if (targetEnemy == null)
             {
-                targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(isEnemy, transform);
+                targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(!isEnemy, transform);
                 if(targetEnemy!=null)
-                photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, targetEnemy.networkPlaceId,isEnemy);
+                photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, targetEnemy.networkPlaceId);
             }
             else
             {
@@ -121,20 +124,27 @@ public class Hero : Character, ISelectable
         }*/
 
         if (HeroState == HeroState.Fight) {
-            if (!isAttackCooldown)
-                if (targetEnemy.Health <= 0)
-                {
-                    targetEnemy = null;
-                    HeroState = HeroState.Idle;
-                }
-                else
-                {
-                    // isAttackCooldown = true;
-                    StartCoroutine(basicAttackCoolDown());
-                    photonView.RPC("RPC_AttackAnimation", PhotonTargets.Others);
-                    animator.SetTrigger("Attack");
-                    transform.LookAt(targetEnemy.transform);
-                }
+            if (Mp >= MaxMp)
+            {
+                //  photonView.RPC("RPC_userSkill", PhotonTargets.All);
+                UseSkill();
+            }            
+            else if (!isAttackCooldown){
+
+               if (targetEnemy.Health <= 0)
+               {
+                   targetEnemy = null;
+                   HeroState = HeroState.Idle;
+               }
+               else
+               {
+                   // isAttackCooldown = true;
+                   StartCoroutine(basicAttackCoolDown());
+                   photonView.RPC("RPC_AttackAnimation", PhotonTargets.Others);
+                   animator.SetTrigger("Attack");
+                   transform.LookAt(targetEnemy.transform);
+               }
+            }
 
         }
        
@@ -159,7 +169,10 @@ public class Hero : Character, ISelectable
             photonView.RPC("setTransformView", PhotonTargets.All);
         }
     }
-    
+    [PunRPC]
+    public void RPC_userSkill() {
+        UseSkill();
+    }
     public void resetAttribute() {
        
         MaxHealth = 100 * BasicHealth;
@@ -183,7 +196,7 @@ public class Hero : Character, ISelectable
         gameObject.SetActive(true);
         HeroBar.SetActive(false);
         HeroBar.transform.Rotate(new Vector3(0, 180, 0));
-        // GetComponent<PhotonTransformView>().enabled = false;
+       // GetComponent<PhotonTransformView>().enabled = false;
         photonView.RPC("RPC_Heal", PhotonTargets.All, MaxHealth);
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
         HeroState = HeroState.Nothing;
@@ -197,13 +210,15 @@ public class Hero : Character, ISelectable
         networkPlaceId = id;
     }
     [PunRPC]
-    public void RPC_SyncTargetEnemy(int posId,bool isEnemy)
+    public void RPC_SyncTargetEnemy(int posId)
     {
-        syncTargetEnemy(posId, isEnemy);
+        syncTargetEnemy(posId);
     }
-    void syncTargetEnemy(int posId,bool isEnemy) {
-        int index;
-        if (isEnemy)
+
+    void syncTargetEnemy(int placeId) {
+        targetEnemy = NetworkManager.Instance.getEnemyIndexById(placeId, isEnemy);
+
+      /*  if (isEnemy)
         {
             index = NetworkManager.Instance.opponent.hero.FindIndex(x => x.networkPlaceId == posId);
             if (index != -1)
@@ -214,8 +229,22 @@ public class Hero : Character, ISelectable
             index = NetworkManager.Instance.selfGameBoardHero.FindIndex(x => x.networkPlaceId == posId);
             if(index!=-1)
             targetEnemy = NetworkManager.Instance.selfGameBoardHero[index];
+        }*/ 
+    }
+    [PunRPC]
+    public void RPC_castUnitTargetSkill(float x, float z, int hostId, int guestId)
+    {
+        processCastObject(x, z, hostId, guestId);
+    }
+    void processCastObject(float x, float z, int hostId, int guestId) {
+        if (NetworkManager.Instance.playerId == hostId || NetworkManager.Instance.playerId == guestId)
+        {
+            skill.shootSkill(targetEnemy, 100, isMirror);
         }
-        
+        else
+        {
+            skill.shootSkill(x,z);
+        }
     }
     private void FixedUpdate()
     {

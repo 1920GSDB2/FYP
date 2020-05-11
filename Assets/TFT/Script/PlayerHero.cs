@@ -120,6 +120,7 @@ namespace TFT
         //public List<Hero> GameBoardHeros = new List<Hero>();   //List of Heros Are into GameBoard
         public List<NetworkHero> UsableHeroes = new List<NetworkHero>();
         public List<NetworkHero> GameBoardHeroes = new List<NetworkHero>();
+        public List<Character> battleGameBoardHeroes = new List<Character>();
         public HeroBuffList BuffList = new HeroBuffList();
         public int posId;
         public PhotonPlayer player;

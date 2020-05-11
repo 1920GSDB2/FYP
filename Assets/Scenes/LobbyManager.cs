@@ -90,6 +90,7 @@ public class LobbyManager : MonoBehaviour
     public MatchAcceptance MatchAcceptPanel;
     #endregion
 
+    
     #region Text
     [Header("Text")]
     public TMP_InputField CreateRoomName;
@@ -105,6 +106,7 @@ public class LobbyManager : MonoBehaviour
     public GameObject LobbyRoomPrefab;
     #endregion
 
+    public GameObject testGameobject;
     // Start is called before the first frame update
     void Start()
     {
@@ -168,7 +170,9 @@ public class LobbyManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Hero monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "God of Wizard"), Vector3.zero, Quaternion.identity, 0)).GetComponent<Hero>();
+                   Hero monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Armor Crocodile"), Vector3.zero, Quaternion.identity, 0)).GetComponent<Hero>();
+               // Bullet bullet = (PhotonNetwork.Instantiate(Path.Combine("Skill", "soul orb"), new Vector3(20,20,33), transform.rotation, 0)).GetComponent<Bullet>();
+               // bullet.setBullet(testGameobject, 10f, true);
                 // PhotonView.RPC("test", PhotonTargets.Others, "others");              
                 /*for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
                 {
