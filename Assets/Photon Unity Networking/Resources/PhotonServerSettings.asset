@@ -102,4 +102,6 @@ MonoBehaviour:
   - RPC_userSkill
   - RPC_SyncCastObject
   - RPC_castUnitTargetSkill
+  - RPC_castSkillOnPosition
+  - RPC_castUnitTargetSkillToCharacter
   DisableAutoOpenWizard: 1

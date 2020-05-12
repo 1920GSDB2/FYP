@@ -64,6 +64,7 @@ public class Hero : Character, ISelectable
     public virtual void UseSkill() {
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
     }
+    public virtual void setAttribute() {}
 
     private void Awake()
     {
@@ -92,8 +93,10 @@ public class Hero : Character, ISelectable
         HeroPlace = transform.parent.GetComponent<HeroPlace>();
 
         resetAttribute();
+        setAttribute();
         BoxCollider = GetComponent<Collider>();
         SelectingBox.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -104,51 +107,18 @@ public class Hero : Character, ISelectable
         if(test)
             transform.position += Vector3.forward*Time.deltaTime;
 
-        if (HeroState == HeroState.Idle) {
-            if (targetEnemy == null)
-            {
-                targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(!isEnemy, transform);
-                if(targetEnemy!=null)
-                photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, targetEnemy.networkPlaceId);
-            }
-            else
-            {
-                HeroState = HeroState.Walking;
-                FollowEnemy();
-            }
-
-        }
-       /* if (HeroState == HeroState.Walking && !animator.GetBool("Walk"))
-        {           
-            checkWithInAttackRange();
-        }*/
-
-        if (HeroState == HeroState.Fight) {
-            if (Mp >= MaxMp)
-            {
-                //  photonView.RPC("RPC_userSkill", PhotonTargets.All);
-                UseSkill();
-            }            
-            else if (!isAttackCooldown){
-
-               if (targetEnemy.Health <= 0)
-               {
-                   targetEnemy = null;
-                   HeroState = HeroState.Idle;
-               }
-               else
-               {
-                   // isAttackCooldown = true;
-                   StartCoroutine(basicAttackCoolDown());
-                   photonView.RPC("RPC_AttackAnimation", PhotonTargets.Others);
-                   animator.SetTrigger("Attack");
-                   transform.LookAt(targetEnemy.transform);
-               }
-            }
-
-        }
        
 
+        switch (HeroState) {
+            case HeroState.Idle: idle();
+                break;
+            case HeroState.Fight:fight();
+                break;
+            case HeroState.Control: handleControl();
+                break;
+        }
+       
+      
         if (Input.GetKeyDown(KeyCode.I))
         {
             //  targetEnemy = testHero;
@@ -166,8 +136,49 @@ public class Hero : Character, ISelectable
 
         if (Input.GetKeyDown(KeyCode.O))
         {
-            photonView.RPC("setTransformView", PhotonTargets.All);
+            photonView.RPC("RPC_test", PhotonTargets.Others,photonView.viewID);
         }
+    }
+   
+    public void idle() {
+        if (targetEnemy == null)
+        {
+            targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(!isEnemy, transform);
+            if (targetEnemy != null)
+                photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, targetEnemy.networkPlaceId);
+        }
+        else
+        {
+            HeroState = HeroState.Walking;
+            FollowEnemy();
+        }
+    }
+    public void fight() {
+        if (Mp >= MaxMp)
+        {
+            //  photonView.RPC("RPC_userSkill", PhotonTargets.All);
+            UseSkill();
+        }
+        else if (!isAttackCooldown)
+        {
+
+            if (targetEnemy.Health <= 0)
+            {
+                targetEnemy = null;
+                HeroState = HeroState.Idle;
+            }
+            else
+            {
+                // isAttackCooldown = true;
+                StartCoroutine(basicAttackCoolDown());
+                photonView.RPC("RPC_AttackAnimation", PhotonTargets.Others);
+                animator.SetTrigger("Attack");
+                transform.LookAt(targetEnemy.transform);
+            }
+        }
+    }
+    public void handleControl() {
+        
     }
     [PunRPC]
     public void RPC_userSkill() {
@@ -232,18 +243,33 @@ public class Hero : Character, ISelectable
         }*/ 
     }
     [PunRPC]
-    public void RPC_castUnitTargetSkill(float x, float z, int hostId, int guestId)
+    public void RPC_castUnitTargetSkill(int id)
     {
-        processCastObject(x, z, hostId, guestId);
+        processShootUnitSkillObject(id);
     }
-    void processCastObject(float x, float z, int hostId, int guestId) {
+
+    void processShootUnitSkillObject(int id)
+    { 
+        Character target = PhotonView.Find(id).GetComponent<Character>();
+        skill.shootSkill(target, SkillPower * 0.5f * AttackDamage, isMirror);
+
+    }
+   
+    [PunRPC]
+    public void RPC_castSkillOnPosition(float x, float y, float z, int hostId, int guestId) {
+        processPositionSkill(x, y, z, hostId, guestId);
+    }
+    void processPositionSkill(float x, float y,float z, int hostId, int guestId)
+    {
+        //Debug.Log(name + " use skill ");
         if (NetworkManager.Instance.playerId == hostId || NetworkManager.Instance.playerId == guestId)
         {
-            skill.shootSkill(targetEnemy, 100, isMirror);
+            skill.castSkill(targetEnemy);
         }
         else
         {
-            skill.shootSkill(x,z);
+            skill.castSkill(x,y,z);
+
         }
     }
     private void FixedUpdate()
@@ -349,7 +375,7 @@ public class Hero : Character, ISelectable
         //    transform.Rotate(new Vector3(0, 180, 0));
         SetHeroPlace(heroPlace);
     }
-    
+   
 
     #endregion
 }

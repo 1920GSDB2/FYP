@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class SkillListInterface : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
+}
+interface IStunAbleSkill {
+    void stun();
+}
+interface IFearSkill
+{
+    float duration { get; set;}
+    ControlSkillType type { get; set; }
 }

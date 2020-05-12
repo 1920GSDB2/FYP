@@ -9214,6 +9214,7 @@ MonoBehaviour:
   PlayerHero:
     UsableHeroes: []
     GameBoardHeroes: []
+    battleGameBoardHeroes: []
     posId: 0
     playerCharacter: {fileID: 0}
   SelfPlayerArena: {fileID: 0}

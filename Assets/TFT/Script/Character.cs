@@ -32,7 +32,8 @@ public class Character : MonoBehaviour
     public Node targetNode;
     public int networkPlaceId;
     protected bool isMirror = false;
-
+    protected float MpRecoverRate=1;
+    public List<NegativeEffect> negativeEffects=new List<NegativeEffect>();
     public float attackRange = 1.7f;
 
     // Start is called before the first frame update
@@ -74,7 +75,7 @@ public class Character : MonoBehaviour
             if (targetEnemy != null && targetEnemy.Health > 0)
             {
 
-                photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f);
+                photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f*MpRecoverRate);
                 //GetComponent<PhotonView>().RPC("RPC_IncreaseMp", PhotonTargets.All,10);
                 targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
             }
@@ -90,7 +91,7 @@ public class Character : MonoBehaviour
         {
             if (targetEnemy != null)
             {
-                photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f);
+                photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f* MpRecoverRate);
                 // Bullet b = PhotonNetwork.Instantiate(Path.Combine("Bullet", bullet.name), transform.position+Vector3.up*2, transform.rotation, 0).GetComponent<Bullet>();              
                 // b.setBullet(targetEnemy, AttackDamage, !isMirror);
                 //     photonView.RPC("RPC_Shoot", PhotonTargets.All,NetworkManager.Instance.battlePosId,targetEnemy.HeroPlace.PlaceId,targetEnemy.HeroPlace.gridY,
@@ -139,6 +140,21 @@ public class Character : MonoBehaviour
     public void RPC_TargetTakeDamage(float damage)
     {
         syncAdjustHp(-damage);
+    }
+    [PunRPC]
+    public void RPC_TargetTakeDamage(float damage,byte controlType,float duration)
+    {
+        ControlSkillType type=(ControlSkillType)controlType;
+ 
+        syncAdjustHp(-damage);
+        addNegativeEffect(type, duration);
+    }
+    public void addNegativeEffect(ControlSkillType type,float duration) {
+        animator.Play("Idle");
+        HeroState = HeroState.Control;
+        NegativeEffect newEffect = new NegativeEffect(type, false);
+        negativeEffects.Add(newEffect);
+        StartCoroutine(controlableSkillDuration(duration, newEffect));
     }
     [PunRPC]
     public void RPC_Heal(float index)
@@ -397,5 +413,29 @@ public class Character : MonoBehaviour
         isAttackCooldown = true;
         yield return new WaitForSeconds(1 / (AttackSpeed * 2.5f));
         isAttackCooldown = false;
+    }
+    public IEnumerator controlableSkillDuration(float time,NegativeEffect type) {
+        yield return new WaitForSeconds(time);
+        negativeEffects.Remove(type);
+        CheckNegativeEffect();
+    }
+    public void CheckNegativeEffect() {
+        bool canMove=true;
+        foreach (NegativeEffect negative in negativeEffects)
+        {
+            if (!negative.canAction)
+                canMove = false;
+              
+
+        }
+        if (canMove)
+        {
+            if(isMirror)
+                HeroState = HeroState.Nothing;
+            else
+                HeroState = HeroState.Idle;
+        }
+        else
+            HeroState = HeroState.Control;
     }
 }

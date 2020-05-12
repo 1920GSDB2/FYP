@@ -2683,6 +2683,7 @@ GameObject:
   - component: {fileID: 2272459340759288924}
   - component: {fileID: 3118260843137737194}
   - component: {fileID: 6166655568687778017}
+  - component: {fileID: 666076258}
   m_Layer: 8
   m_Name: Lonnie
   m_TagString: Untagged
@@ -2779,6 +2780,7 @@ MonoBehaviour:
   HeroBar: {fileID: 3044259792267156926}
   bullet: {fileID: 0}
   networkPlaceId: 0
+  negativeEffects: []
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 2999626864568201159}
@@ -2786,6 +2788,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
+  skill: {fileID: 666076258}
   EquipmentManager: {fileID: 0}
   BasicHealth: 3
   BasicAttackDamage: 2
@@ -2939,6 +2942,21 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &666076258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8542189145416042885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64005b453aadd3f48b2f2ffa91e38bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castSkillEffect: {fileID: 0}
+  skillModel: {fileID: 4238302461691917706, guid: 9a003de19f5ed2047a7dbd3390a791a0,
+    type: 3}
 --- !u!1001 &3580134406041210932
 PrefabInstance:
   m_ObjectHideFlags: 0

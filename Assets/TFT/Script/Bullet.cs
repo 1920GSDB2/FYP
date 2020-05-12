@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public float speed=30f;
     protected float attackDamage;
     protected bool canDamage;
+    public GameObject hitEffect;
     public Vector3 targetPos;
     // Start is called before the first frame update
 
@@ -28,9 +29,9 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         if(target!=null)
-            transform.position = Vector3.Lerp(transform.position, target.transform.position+Vector3.up,  speed*Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position+Vector3.up,  speed*Time.deltaTime);
         else if(targetPos!=null)
-            transform.position = Vector3.Lerp(transform.position,targetPos + Vector3.up, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position,targetPos+Vector3.up, speed * Time.deltaTime);
     }
     public void setBullet(GameObject c, float damage,bool isDamage) {
         target = c;
@@ -68,6 +69,7 @@ public class Bullet : MonoBehaviour
                 Destroy(this.gameObject);
             }     
     }*/
+    
     private void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject == target.gameObject)
@@ -78,5 +80,20 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
+    private void OnDestroy()
+    {
+        if (hitEffect != null)
+        {
+            if (target != null)
+            {
+                GameObject effect = Instantiate(hitEffect, target.transform.position, Quaternion.identity) as GameObject;
+                Destroy(effect, 2f);
+            }
+            else {
+                GameObject effect = Instantiate(hitEffect,transform.position, Quaternion.identity) as GameObject;
+                Destroy(effect, 2f);
+            }
+        }
+        Debug.Log("skill destory");
+    }
 }

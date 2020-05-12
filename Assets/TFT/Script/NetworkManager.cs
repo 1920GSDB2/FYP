@@ -205,6 +205,19 @@ namespace TFT
             else
                 return PlayerArenas[posId].GetComponent<PlayerArena>().SelfArena.GameBoard.GetChild(placeId).GetChild(0).GetComponent<Hero>();
         }
+        public Character getRandomCharacter(bool isEnemy) {
+
+            if (isEnemy)
+            {
+                int random = Random.Range(0, opponent.hero.Count);
+                return opponent.hero[random];
+            }
+            else {
+                int random = Random.Range(0, battleGameBoardHero.Count);
+                return battleGameBoardHero[random];
+            }
+
+        }
         #endregion
 
         public Character getCloestEnemyTarget(bool isEnemy, Transform heroPos) {

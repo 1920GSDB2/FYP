@@ -107,9 +107,14 @@ public enum HeroState
     Idle,
     Fight,
     Walking,
-    Die
+    Die,
+    Control
 }
 public enum Award
 {
     Equipment
+}
+public enum ControlSkillType {
+    Stun,
+    Fear
 }

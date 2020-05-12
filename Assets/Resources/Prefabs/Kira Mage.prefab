@@ -727,6 +727,7 @@ MonoBehaviour:
   HeroBar: {fileID: 4920572509199117789}
   bullet: {fileID: 7168150683983435948, guid: f2a41c59fb3591a4998570f294398d87, type: 3}
   networkPlaceId: 0
+  negativeEffects: []
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 99125584472732209}
@@ -734,6 +735,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
+  skill: {fileID: 7526244059550853004}
   EquipmentManager: {fileID: 0}
   BasicHealth: 5
   BasicAttackDamage: 3
@@ -743,7 +745,6 @@ MonoBehaviour:
   BasicMagicDefense: 5
   BasicCritcalChance: 0
   BasicAttackRange: 3
-  skill: {fileID: 7526244059550853004}
 --- !u!114 &7526244059550853004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,6 +759,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castSkillEffect: {fileID: 0}
   skillModel: {fileID: 1548609390325136009, guid: f90deca2105bcb54d8b3eb1cf0f95aff,
+    type: 3}
+  hitEffect: {fileID: 7229928115010121434, guid: 5bcb7d25d8451e5489188067537192d5,
     type: 3}
 --- !u!65 &497396836400488959
 BoxCollider:

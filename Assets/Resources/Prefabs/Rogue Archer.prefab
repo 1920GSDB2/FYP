@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3938245150593881336}
   - component: {fileID: 2930524961683840403}
   - component: {fileID: -4152586614888134545}
+  - component: {fileID: 3807111969949568895}
   m_Layer: 8
   m_Name: Rogue Archer
   m_TagString: Untagged
@@ -105,6 +106,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
+  skill: {fileID: 3807111969949568895}
   EquipmentManager: {fileID: 0}
   BasicHealth: 4
   BasicAttackDamage: 5
@@ -267,6 +269,21 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &3807111969949568895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853857149654370392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64005b453aadd3f48b2f2ffa91e38bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castSkillEffect: {fileID: 0}
+  skillModel: {fileID: 3458946924215393961, guid: 9cdfa8c11e079c94eb9d66b18fe0b0c3,
+    type: 3}
 --- !u!1 &3979847452519861706
 GameObject:
   m_ObjectHideFlags: 0
