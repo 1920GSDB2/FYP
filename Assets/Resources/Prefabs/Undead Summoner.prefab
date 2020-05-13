@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: -508150123236027283}
   m_Layer: 8
   m_Name: Undead Summoner
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,6 +162,7 @@ MonoBehaviour:
   HeroBar: {fileID: 149098504519279941}
   bullet: {fileID: 0}
   networkPlaceId: 0
+  negativeEffects: []
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 1898811942396278906}
@@ -169,6 +170,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
+  skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
   BasicHealth: 6
   BasicAttackDamage: 4

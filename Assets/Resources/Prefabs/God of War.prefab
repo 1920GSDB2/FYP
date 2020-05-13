@@ -2268,7 +2268,7 @@ GameObject:
   - component: {fileID: 205678560874124076}
   m_Layer: 8
   m_Name: God of War
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2336,6 +2336,7 @@ MonoBehaviour:
   HeroBar: {fileID: 4642793648654919351}
   bullet: {fileID: 0}
   networkPlaceId: 0
+  negativeEffects: []
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 4486286733742409322}
@@ -2343,6 +2344,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
+  skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
   BasicHealth: 8
   BasicAttackDamage: 6

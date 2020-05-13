@@ -1043,7 +1043,7 @@ GameObject:
   - component: {fileID: -5714860627197522456}
   m_Layer: 8
   m_Name: Indomitable Fighter
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1112,6 +1112,7 @@ MonoBehaviour:
   HeroBar: {fileID: 6460237108628761825}
   bullet: {fileID: 0}
   networkPlaceId: 0
+  negativeEffects: []
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 2508822673018666309}
@@ -1119,6 +1120,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
+  skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
   BasicHealth: 7
   BasicAttackDamage: 3

@@ -13,7 +13,7 @@ public class Lonnie : Hero
     {
 
         Character target = NetworkManager.Instance.getRandomCharacter(isEnemy);
-        Debug.Log("target " + target.name + " id " + target.photonView.viewID);
+        Debug.Log("target " + target.name + " id " + target.photonView.viewID+" isEnemy "+target.isEnemy);
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
         photonView.RPC("RPC_castUnitTargetSkill", PhotonTargets.All, target.photonView.viewID);
 

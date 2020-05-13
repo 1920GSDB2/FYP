@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: -4871627908586683616}
   m_Layer: 8
   m_Name: Dark Hunter
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,6 +182,7 @@ MonoBehaviour:
   HeroBar: {fileID: 3735107781430365036}
   bullet: {fileID: 0}
   networkPlaceId: 0
+  negativeEffects: []
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 1910769965057509068}
@@ -189,6 +190,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
+  skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
   BasicHealth: 5
   BasicAttackDamage: 7

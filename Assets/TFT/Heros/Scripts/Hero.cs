@@ -192,6 +192,7 @@ public class Hero : Character, ISelectable
         AttackDamage = 10 * BasicAttackDamage;
         AttackSpeed = 0.1f * BasicAttackSpeed;
         attackRange = attackRange * BasicAttackRange;
+        SkillPower = BasicSkillPower * 1.25f;
         BoxCollider = GetComponent<Collider>();
     }
     public override void die() {
@@ -199,6 +200,7 @@ public class Hero : Character, ISelectable
         this.gameObject.SetActive(false);
         HeroPlace.leavePlace();
         NetworkManager.Instance.battleHeroDie(isEnemy, this);
+        Debug.Log("Die " + name + " state " + HeroState + "player id" + NetworkManager.Instance.playerId);
     }
     [PunRPC]
     public void RPC_ResetStatus() {
@@ -214,6 +216,7 @@ public class Hero : Character, ISelectable
         isEnemy = false;
         isAttackCooldown = false;
         isMirror = false;
+        negativeEffects.Clear();
     }
     [PunRPC]
     public void syncNetworkPlaceId(int id)
@@ -251,27 +254,41 @@ public class Hero : Character, ISelectable
     void processShootUnitSkillObject(int id)
     { 
         Character target = PhotonView.Find(id).GetComponent<Character>();
+        Debug.Log("skill power " + (SkillPower * 0.5f * AttackDamage));
         skill.shootSkill(target, SkillPower * 0.5f * AttackDamage, isMirror);
 
     }
-   
     [PunRPC]
-    public void RPC_castSkillOnPosition(float x, float y, float z, int hostId, int guestId) {
-        processPositionSkill(x, y, z, hostId, guestId);
-    }
-    void processPositionSkill(float x, float y,float z, int hostId, int guestId)
+    public void RPC_castAoeSkill(int id)
     {
-        //Debug.Log(name + " use skill ");
-        if (NetworkManager.Instance.playerId == hostId || NetworkManager.Instance.playerId == guestId)
-        {
-            skill.castSkill(targetEnemy);
-        }
-        else
-        {
-            skill.castSkill(x,y,z);
-
-        }
+        processAoeSkillObject(id);
     }
+
+    void processAoeSkillObject(int id)
+    {
+        Character target = PhotonView.Find(id).GetComponent<Character>();
+    
+        skill.castSkill(target, SkillPower * 0.5f * AttackDamage, isMirror,isEnemy);
+
+    }
+    [PunRPC]
+    public void RPC_MeleeSkill(int id)
+    {
+          processMeleeSkillt(id);
+        
+    }
+
+    void processMeleeSkillt(int id)
+    {
+        Character target = PhotonView.Find(id).GetComponent<Character>();     
+        skill.meleeHit(target, SkillPower * 0.5f * AttackDamage, isMirror);
+
+    }
+    [PunRPC]
+    public void RPC_MeleeSkillAnimation() {
+        animator.SetTrigger("Skill");
+    }
+
     private void FixedUpdate()
     {
         if (HeroStatus == HeroStatus.Fight && targetEnemy == null)

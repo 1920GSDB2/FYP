@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: -4130364975682276890}
   m_Layer: 8
   m_Name: God of Wizard
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,6 +270,7 @@ MonoBehaviour:
   HeroBar: {fileID: 5526114340586435369}
   bullet: {fileID: 0}
   networkPlaceId: 0
+  negativeEffects: []
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 2726918843920948053}
@@ -277,6 +278,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
+  skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
   BasicHealth: 6
   BasicAttackDamage: 0

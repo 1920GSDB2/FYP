@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: -384032011297315436}
   m_Layer: 8
   m_Name: Vikander
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,6 +216,7 @@ MonoBehaviour:
   HeroBar: {fileID: 755628707496702586}
   bullet: {fileID: 0}
   networkPlaceId: 0
+  negativeEffects: []
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 5428630125610194871}
@@ -223,6 +224,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
+  skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
   BasicHealth: 4
   BasicAttackDamage: 9

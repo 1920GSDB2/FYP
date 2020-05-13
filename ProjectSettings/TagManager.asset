@@ -10,6 +10,7 @@ TagManager:
   - GameManager
   - BufferList
   - PlayerArena
+  - Character
   layers:
   - Default
   - TransparentFX

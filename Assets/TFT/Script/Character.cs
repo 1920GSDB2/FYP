@@ -139,27 +139,35 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_TargetTakeDamage(float damage)
     {
+        if(Health>0)
         syncAdjustHp(-damage);
     }
     [PunRPC]
     public void RPC_TargetTakeDamage(float damage,byte controlType,float duration)
     {
         ControlSkillType type=(ControlSkillType)controlType;
- 
-        syncAdjustHp(-damage);
-        addNegativeEffect(type, duration);
+
+        if (Health > 0)
+        {
+            syncAdjustHp(-damage);
+            addNegativeEffect(type, duration);
+        }
     }
     public void addNegativeEffect(ControlSkillType type,float duration) {
-        animator.Play("Idle");
-        HeroState = HeroState.Control;
-        NegativeEffect newEffect = new NegativeEffect(type, false);
-        negativeEffects.Add(newEffect);
-        StartCoroutine(controlableSkillDuration(duration, newEffect));
+        if (HeroState != HeroState.Die)
+        {
+            animator.Play("Idle");
+            HeroState = HeroState.Control;
+            NegativeEffect newEffect = new NegativeEffect(type, false);
+            negativeEffects.Add(newEffect);
+            StartCoroutine(controlableSkillDuration(duration, newEffect));
+        }
     }
     [PunRPC]
     public void RPC_Heal(float index)
     {
         syncAdjustHp(index);
+    //    Debug.Log("Heal " + index);
     }
     public void syncAdjustHp(float damage)
     {
@@ -168,8 +176,12 @@ public class Character : MonoBehaviour
             Health = MaxHealth;
         if (Health <= 0)
         {
+            Debug.Log("before call Die " + name + " state " + HeroState + "player id");
             if (HeroState != HeroState.Die)
+            {
+                Debug.Log("call Die "+name+" state "+HeroState+"player id" );
                 die();
+            }
         }
         hpBar.fillAmount = Health / MaxHealth;
     }
@@ -421,21 +433,24 @@ public class Character : MonoBehaviour
     }
     public void CheckNegativeEffect() {
         bool canMove=true;
-        foreach (NegativeEffect negative in negativeEffects)
+        if (HeroState != HeroState.Die)
         {
-            if (!negative.canAction)
-                canMove = false;
-              
+            foreach (NegativeEffect negative in negativeEffects)
+            {
+                if (!negative.canAction)
+                    canMove = false;
 
-        }
-        if (canMove)
-        {
-            if(isMirror)
-                HeroState = HeroState.Nothing;
+
+            }
+            if (canMove)
+            {
+                if (isMirror)
+                    HeroState = HeroState.Nothing;
+                else
+                    HeroState = HeroState.Idle;
+            }
             else
-                HeroState = HeroState.Idle;
+                HeroState = HeroState.Control;
         }
-        else
-            HeroState = HeroState.Control;
     }
 }

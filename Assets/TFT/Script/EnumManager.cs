@@ -115,6 +115,7 @@ public enum Award
     Equipment
 }
 public enum ControlSkillType {
+    No,
     Stun,
     Fear
 }

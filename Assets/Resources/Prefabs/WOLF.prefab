@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 1459190079}
   m_Layer: 0
   m_Name: WOLF
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,6 +217,7 @@ MonoBehaviour:
   HeroBar: {fileID: 5199439086518964142}
   bullet: {fileID: 0}
   networkPlaceId: 0
+  negativeEffects: []
   attackRange: 1.7
 --- !u!65 &1459190079
 BoxCollider:

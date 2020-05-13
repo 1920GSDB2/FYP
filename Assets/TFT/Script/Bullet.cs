@@ -94,6 +94,6 @@ public class Bullet : MonoBehaviour
                 Destroy(effect, 2f);
             }
         }
-        Debug.Log("skill destory");
+       // Debug.Log("skill destory");
     }
 }

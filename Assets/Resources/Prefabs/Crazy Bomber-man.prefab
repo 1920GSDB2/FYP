@@ -1062,7 +1062,7 @@ GameObject:
   - component: {fileID: -344013033700755043}
   m_Layer: 8
   m_Name: Crazy Bomber-man
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1129,6 +1129,7 @@ MonoBehaviour:
   HeroBar: {fileID: 5151859945848909818}
   bullet: {fileID: 7168150683983435948, guid: f2a41c59fb3591a4998570f294398d87, type: 3}
   networkPlaceId: 0
+  negativeEffects: []
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 7589069990264606027}
@@ -1136,6 +1137,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
+  skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
   BasicHealth: 6
   BasicAttackDamage: 8

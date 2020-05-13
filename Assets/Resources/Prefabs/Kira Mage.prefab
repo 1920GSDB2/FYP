@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 387801648455012079}
   m_Layer: 8
   m_Name: Kira Mage
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -759,8 +759,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castSkillEffect: {fileID: 0}
   skillModel: {fileID: 1548609390325136009, guid: f90deca2105bcb54d8b3eb1cf0f95aff,
-    type: 3}
-  hitEffect: {fileID: 7229928115010121434, guid: 5bcb7d25d8451e5489188067537192d5,
     type: 3}
 --- !u!65 &497396836400488959
 BoxCollider:

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1270944744}
   m_Layer: 0
   m_Name: WEREWOLF
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +79,7 @@ MonoBehaviour:
   HeroBar: {fileID: 5199439085954230556}
   bullet: {fileID: 0}
   networkPlaceId: 0
+  negativeEffects: []
   attackRange: 1.7
 --- !u!114 &1429418212
 MonoBehaviour:

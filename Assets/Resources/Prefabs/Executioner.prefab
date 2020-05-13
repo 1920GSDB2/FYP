@@ -2559,7 +2559,7 @@ GameObject:
   - component: {fileID: -920549564716441352}
   m_Layer: 8
   m_Name: Executioner
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2643,6 +2643,7 @@ MonoBehaviour:
   HeroBar: {fileID: 3457161959090384451}
   bullet: {fileID: 0}
   networkPlaceId: 0
+  negativeEffects: []
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 5707315226479799145}
@@ -2650,6 +2651,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
+  skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
   BasicHealth: 9
   BasicAttackDamage: 5

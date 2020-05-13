@@ -2686,7 +2686,7 @@ GameObject:
   - component: {fileID: 666076258}
   m_Layer: 8
   m_Name: Lonnie
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
