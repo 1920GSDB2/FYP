@@ -11,7 +11,7 @@ public class AoeSkill : Skill
 
         Aoe effect = Instantiate(hitEffect, target.transform.position, target.transform.rotation).GetComponent<Aoe>();
         effect.setDamage(damage,isMirror,isEnemy);
-        Destroy(effect, 3f);
+        Destroy(effect.gameObject, 3f);
     }
 
 }

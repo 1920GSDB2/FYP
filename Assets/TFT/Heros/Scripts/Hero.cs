@@ -112,7 +112,16 @@ public class Hero : Character, ISelectable
         switch (HeroState) {
             case HeroState.Idle: idle();
                 break;
-            case HeroState.Fight:fight();
+            case HeroState.Fight:
+                if (targetEnemy.Health <= 0)
+                {
+                    targetEnemy = null;
+                    HeroState = HeroState.Idle;
+                }
+                else
+                {
+                    fight();
+                }
                 break;
             case HeroState.Control: handleControl();
                 break;
@@ -161,7 +170,6 @@ public class Hero : Character, ISelectable
         }
         else if (!isAttackCooldown)
         {
-
             if (targetEnemy.Health <= 0)
             {
                 targetEnemy = null;
@@ -200,22 +208,31 @@ public class Hero : Character, ISelectable
         this.gameObject.SetActive(false);
         HeroPlace.leavePlace();
         NetworkManager.Instance.battleHeroDie(isEnemy, this);
-        Debug.Log("Die " + name + " state " + HeroState + "player id" + NetworkManager.Instance.playerId);
+       // Debug.Log("Die " + name + " state " + HeroState + "player id" + NetworkManager.Instance.playerId);
     }
     [PunRPC]
     public void RPC_ResetStatus() {
-        Debug.Log("Reset Status");
         targetEnemy = null;
+        tag = "Character";
         gameObject.SetActive(true);
         HeroBar.SetActive(false);
         HeroBar.transform.Rotate(new Vector3(0, 180, 0));
-       // GetComponent<PhotonTransformView>().enabled = false;
-        photonView.RPC("RPC_Heal", PhotonTargets.All, MaxHealth);
+        StartCoroutine(resetStatus());
+    }
+    IEnumerator resetStatus() {
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Reset Status");
+       HeroState = HeroState.Nothing;
+        // GetComponent<PhotonTransformView>().enabled = false;
+        float recoverHealth = MaxHealth;
+        if (Health < 0)
+            recoverHealth += Health * -1;
+        photonView.RPC("RPC_Heal", PhotonTargets.All, recoverHealth);
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
-        HeroState = HeroState.Nothing;
         isEnemy = false;
         isAttackCooldown = false;
         isMirror = false;
+       
         negativeEffects.Clear();
     }
     [PunRPC]
@@ -254,7 +271,7 @@ public class Hero : Character, ISelectable
     void processShootUnitSkillObject(int id)
     { 
         Character target = PhotonView.Find(id).GetComponent<Character>();
-        Debug.Log("skill power " + (SkillPower * 0.5f * AttackDamage));
+       // Debug.Log("skill power " + (SkillPower * 0.5f * AttackDamage));
         skill.shootSkill(target, SkillPower * 0.5f * AttackDamage, isMirror);
 
     }
@@ -274,15 +291,15 @@ public class Hero : Character, ISelectable
     [PunRPC]
     public void RPC_MeleeSkill(int id)
     {
-          processMeleeSkillt(id);
+          processMeleeSkill(id);
         
     }
 
-    void processMeleeSkillt(int id)
+    public virtual void processMeleeSkill(int id)
     {
         Character target = PhotonView.Find(id).GetComponent<Character>();     
-        skill.meleeHit(target, SkillPower * 0.5f * AttackDamage, isMirror);
-
+        skill.meleeHit(target, SkillPower, isMirror);
+        Debug.Log("process Melee");
     }
     [PunRPC]
     public void RPC_MeleeSkillAnimation() {

@@ -28,15 +28,19 @@ public class Aoe : MonoBehaviour
     {
         if (!isMirror)
         {
-            if (other.tag == "Character")
+            if (other.tag == "BattleCharacter")
             {
+              
                 bool target = other.GetComponent<Character>().isEnemy;
+                Debug.Log("Collider " + other.name +" isEnemy "+target+" isAlly "+isAlly);
                 if (target!=isAlly)
                 {
                     other.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage);
                 }
             }
         }
+       
         //  target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage, (byte)type, duration);
     }
+  
 }

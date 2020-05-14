@@ -8,15 +8,19 @@ public class StunGroundSkill : Aoe
     {
         if (!isMirror)
         {
-            if (other.tag == "Character")
+            if (other.tag == "BattleCharacter")
             {
                 bool target = other.GetComponent<Character>().isEnemy;
+               //    Debug.Log("Collider " + other.name + " isEnemy " + target + " isAlly " + isAlly);
                 if (target != isAlly)
                 {
                     other.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage);
+                  //  Debug.Log("Stone Skill Hit enemy"+other.name);
                 }
             }
         }
+      //  Debug.Log("Stone Skill enter" + other.name);
+
         //  target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage, (byte)type, duration);
     }
 }

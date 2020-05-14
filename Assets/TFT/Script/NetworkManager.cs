@@ -224,12 +224,12 @@ namespace TFT
 
             if (isEnemy)
             {
-                Debug.Log("Get battleGame " + isEnemy);
+             //   Debug.Log("Get battleGame " + isEnemy);
                 return calculateClosestDistance(opponent.hero, heroPos);
             }
             else
             {
-                Debug.Log("Get opponent " + isEnemy);            
+                //Debug.Log("Get opponent " + isEnemy);            
                 return calculateClosestDistance(battleGameBoardHero, heroPos);
             }
         }

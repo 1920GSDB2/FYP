@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castSkillEffect: {fileID: 0}
-  hitEffect: {fileID: 4579903993404703051, guid: fbaaec8a0169660408eda97124b2e32d,
+  hitEffect: {fileID: 1999088587869094233, guid: 48b5f6cd87aa6064b923295ee298aabf,
     type: 3}
 --- !u!1 &4794227767206354851
 GameObject:

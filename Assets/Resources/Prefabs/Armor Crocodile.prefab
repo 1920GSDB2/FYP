@@ -621,6 +621,7 @@ GameObject:
   - component: {fileID: 8085597518234950194}
   - component: {fileID: 6614656084906233476}
   - component: {fileID: 1828351680}
+  - component: {fileID: 1712007355}
   m_Layer: 8
   m_Name: Armor Crocodile
   m_TagString: Character
@@ -714,7 +715,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
-  skill: {fileID: 0}
+  skill: {fileID: 1712007355}
   EquipmentManager: {fileID: 0}
   BasicHealth: 7
   BasicAttackDamage: 5
@@ -773,7 +774,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3082748687415496059}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
@@ -865,9 +866,29 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: Walk
+  - Type: 9
+    SynchronizeType: 0
+    Name: Skill
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &1712007355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082748687415496059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b338e8e6e0c202d408625299cf352aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castSkillEffect: {fileID: 0}
+  type: 0
+  duration: 0
+  hitEffect: {fileID: 3468846328372182721, guid: 23dcc597c95363440b40b17035b01e1c,
+    type: 3}
 --- !u!1 &3296872043140798332
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,7 +2408,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8961009214457813523}
-  m_LocalRotation: {x: -0.50000036, y: 0.49999964, z: 0.49999964, w: 0.50000036}
+  m_LocalRotation: {x: -0.50000036, y: 0.4999996, z: 0.4999996, w: 0.50000036}
   m_LocalPosition: {x: 0, y: 1.5304385, z: 0}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
@@ -2710,15 +2731,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44de83aff51977a479f23105dc7f114e, type: 3}
---- !u!224 &1592578679760100805 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6787460729503409175}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1592578679760100804 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5199439087991323091, guid: 44de83aff51977a479f23105dc7f114e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6787460729503409175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1592578679760100805 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,
     type: 3}
   m_PrefabInstance: {fileID: 6787460729503409175}
   m_PrefabAsset: {fileID: 0}

@@ -4,7 +4,7 @@ public class RogueWarrior : Hero
 {
     public override void setAttribute()
     {
-        MpRecoverRate = 2f;
+        MpRecoverRate = 2.25f;
         SkillPower = 50 + AttackDamage * 1.5f;
     }
     public override void UseSkill()
@@ -14,7 +14,7 @@ public class RogueWarrior : Hero
 
     }
     public void SkillAttack() {
-        photonView.RPC("RPC_MeleeSkill", PhotonTargets.All, targetEnemy.photonView.viewID);
+            photonView.RPC("RPC_MeleeSkill", PhotonTargets.All, targetEnemy.photonView.viewID);
     }
    
 }

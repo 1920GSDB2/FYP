@@ -19,7 +19,10 @@ public class MeleeSkill : Skill
         }
         else {
             if (!isMirror)
+            {
                 target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage);
+                Debug.Log("deal melee dmaage");
+            }
         }
 
     }

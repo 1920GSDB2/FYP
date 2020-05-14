@@ -181,6 +181,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 10
-  hitEffect: {fileID: 7229928115010121434, guid: 5bcb7d25d8451e5489188067537192d5,
+  hitEffect: {fileID: 8069577076395848087, guid: 749b7b8b626aaac4a95c4a413146f7f1,
     type: 3}
   targetPos: {x: 0, y: 0, z: 0}

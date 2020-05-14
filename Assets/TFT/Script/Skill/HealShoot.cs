@@ -8,7 +8,7 @@ public class HealShoot : Bullet
     {
         if (other.gameObject == target.gameObject)
         {
-            Debug.Log("HIHISDIHJSDIASHDIUSADHAIUSDASDASDASD");
+           // Debug.Log("HIHISDIHJSDIASHDIUSADHAIUSDASDASDASD");
             if (canDamage)
                 target.GetComponent<PhotonView>().RPC("RPC_Heal", PhotonTargets.All, attackDamage);
 

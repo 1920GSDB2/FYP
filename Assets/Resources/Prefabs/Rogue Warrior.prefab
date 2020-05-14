@@ -60,7 +60,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 641f5d88618780e4085415ad287a6b6e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -283,7 +283,7 @@ MonoBehaviour:
   castSkillEffect: {fileID: 0}
   type: 0
   duration: 0
-  hitEffect: {fileID: 892927331891020768, guid: f72464bd59bff7a45a0b4983910459d8,
+  hitEffect: {fileID: 3468846328372182721, guid: 23dcc597c95363440b40b17035b01e1c,
     type: 3}
 --- !u!1 &4552185994983980912
 GameObject:

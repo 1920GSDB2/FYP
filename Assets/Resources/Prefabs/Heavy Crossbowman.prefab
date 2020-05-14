@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 4877712460204640639}
   - component: {fileID: 6872868726014993119}
   - component: {fileID: -6952417634600971313}
+  - component: {fileID: 1112836115}
   m_Layer: 8
   m_Name: Heavy Crossbowman
   m_TagString: Character
@@ -170,7 +171,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
-  skill: {fileID: 0}
+  skill: {fileID: 1112836115}
   EquipmentManager: {fileID: 0}
   BasicHealth: 6
   BasicAttackDamage: 5
@@ -346,6 +347,21 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &1112836115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4190912154386403428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebee607023615844bbb05a2b3b4a2a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castSkillEffect: {fileID: 0}
+  hitEffect: {fileID: 4928604066037111994, guid: 3f078a3641db9c24a94f580c5b16aedd,
+    type: 3}
 --- !u!1 &9153587994509443314
 GameObject:
   m_ObjectHideFlags: 0

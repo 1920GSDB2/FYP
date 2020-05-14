@@ -139,8 +139,11 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_TargetTakeDamage(float damage)
     {
-        if(Health>0)
-        syncAdjustHp(-damage);
+        if (Health > 0)
+        {
+           // Debug.Log("call take damage Health " + Health);
+            syncAdjustHp(-damage);
+        }
     }
     [PunRPC]
     public void RPC_TargetTakeDamage(float damage,byte controlType,float duration)
@@ -171,19 +174,23 @@ public class Character : MonoBehaviour
     }
     public void syncAdjustHp(float damage)
     {
-        Health += damage;
-        if (Health > MaxHealth)
-            Health = MaxHealth;
-        if (Health <= 0)
-        {
-            Debug.Log("before call Die " + name + " state " + HeroState + "player id");
-            if (HeroState != HeroState.Die)
+        
+            Health += damage;
+            if (Health > MaxHealth)
+                Health = MaxHealth;
+        if (Health < 0)
+            Health = 0;
+            if (Health <= 0)
             {
-                Debug.Log("call Die "+name+" state "+HeroState+"player id" );
-                die();
+            //    Debug.Log("before call Die " + name + " state " + HeroState + "Health "+Health+"damage "+damage);
+                if (HeroState != HeroState.Die)
+                {
+                  //  Debug.Log("call Die " + name + " state " + HeroState + "Health"+ Health);
+                    die();
+                }
             }
-        }
-        hpBar.fillAmount = Health / MaxHealth;
+            hpBar.fillAmount = Health / MaxHealth;
+        
     }
     [PunRPC]
     public void RPC_IncreaseMp(float index)
@@ -335,13 +342,15 @@ public class Character : MonoBehaviour
     }
     public void readyForBattle(bool isEnemy, int posId)
     {
-        HeroState = HeroState.Idle;
+           
         //   this.isEnemy = isEnemy;
         isMirror = false;
         //Debug.Log("State " + HeroState + " Enemy " + isEnemy);
         // photonView.RPC("setTransformView", PhotonTargets.All);
         photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
         photonView.RPC("RPC_Mirror", PhotonTargets.Others);
+        tag = "BattleCharacter";
+        HeroState = HeroState.Idle;       
         Debug.Log("name " + name + " ready ");
     }
     [PunRPC]
