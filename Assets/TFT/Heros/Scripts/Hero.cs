@@ -56,7 +56,7 @@ public class Hero : Character, ISelectable
     [Range(1, 4)]
     public int BasicAttackRange;
 
-
+    public GameObject testSkill;
     // bool isAttackCooldown;
     string lastTransform;
 
@@ -135,8 +135,10 @@ public class Hero : Character, ISelectable
             //animator.SetBool("Attack",true);
             //  gameObject.SetActive(false);
             //    Debug.Log(name + " Health " + Health + " / " + MaxHealth);
-            test = !test;
-        
+            // test = !test;
+           // Quaternion rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+           // Debug.Log(transform.rotation.y);
+           // Aoe effect = Instantiate(testSkill, transform.position, rotation).GetComponent<Aoe>();
             //Debug.Log(name+" Position "+transform.position+" Target POs"+targetEnemy.transform.position);
             //Debug.Log(name + " Hero Pace " + HeroPlace.transform.position + " Target Hero pLace" + targetEnemy.HeroPlace.transform.position);
             //   photonView.RPC("test", PhotonTargets.All);
