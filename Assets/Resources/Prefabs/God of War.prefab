@@ -2266,6 +2266,7 @@ GameObject:
   - component: {fileID: 596333827523519197}
   - component: {fileID: 8583358078659099278}
   - component: {fileID: 205678560874124076}
+  - component: {fileID: 963255166}
   m_Layer: 8
   m_Name: God of War
   m_TagString: Character
@@ -2344,7 +2345,7 @@ MonoBehaviour:
   HeroClasses: 
   HeroRaces: 
   HeroLevel: 0
-  skill: {fileID: 0}
+  skill: {fileID: 963255166}
   EquipmentManager: {fileID: 0}
   BasicHealth: 8
   BasicAttackDamage: 6
@@ -2416,6 +2417,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: Attack
+  - Type: 1
+    SynchronizeType: 0
+    Name: AttackSpeed
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -2511,6 +2515,21 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &963255166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621005596798848626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebee607023615844bbb05a2b3b4a2a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castSkillEffect: {fileID: 0}
+  hitEffect: {fileID: 6505566156145793958, guid: a772e46a6fa7fed43a997ea959f336b0,
+    type: 3}
 --- !u!1 &4486286733742409322
 GameObject:
   m_ObjectHideFlags: 0
