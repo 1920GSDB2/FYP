@@ -167,8 +167,8 @@ MonoBehaviour:
   Icon: {fileID: 0}
   SelectingBox: {fileID: 1898811942396278906}
   Rarity: 1
-  HeroClasses: 
-  HeroRaces: 
+  HeroClasses: 06000000
+  HeroRaces: 01000000
   HeroLevel: 0
   skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
@@ -180,6 +180,7 @@ MonoBehaviour:
   BasicMagicDefense: 5
   BasicCritcalChance: 0
   BasicAttackRange: 1
+  testSkill: {fileID: 0}
 --- !u!65 &1409756087686791978
 BoxCollider:
   m_ObjectHideFlags: 0
