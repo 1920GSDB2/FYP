@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 [System.Serializable]
 public class Buffers
@@ -10,7 +11,7 @@ public class Buffers
     public int buffTypeIndex;
     public bool isShow = true;
     public HeroClass heroClass;
-    public HeroRace heroRare;
+    public HeroRace heroRace;
     public int totalNumber;
     public int bronzeNumber;
     public int sliverNumber;
@@ -20,7 +21,7 @@ public class Buffers
 public class BuffersManager : MonoBehaviour
 {
     [SerializeField]
-    public List<Buffers> buffersClass = new List<Buffers>();
+    public List<Buffers> buffers = new List<Buffers>();
 
     public static BuffersManager Instance;
 
@@ -34,14 +35,35 @@ public class BuffersManager : MonoBehaviour
 [CustomEditor (typeof(BuffersManager))]
 public class BuffersEditor : Editor
 {
+
+    BuffersManager target;
+
+    void OnEnable()
+    {
+        target = (BuffersManager)base.target;
+    }
+
     public override void OnInspectorGUI()
     {
-        EditorGUILayout.LabelField("Buffers Manager");
-        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Buffers Manager", EditorStyles.wordWrappedLabel);
 
-        List<Buffers> buffersClass = (target as BuffersManager).buffersClass;
+        List<Buffers> bufferItems = target.buffers;
+
+        int buffItemsSize = bufferItems.Count;
+
         
-        foreach (Buffers buffer in buffersClass)
+        buffItemsSize = EditorGUILayout.IntField("Number of Buffers: ", buffItemsSize);
+        while (buffItemsSize > bufferItems.Count)
+        {
+            bufferItems.Add(new Buffers());
+        }
+        while (buffItemsSize < bufferItems.Count && buffItemsSize >= 0)
+        {
+            bufferItems.RemoveAt(bufferItems.Count - 1);
+        }
+
+
+        foreach (Buffers buffer in bufferItems)
         {
             //EditorGUILayout.Foldout(true,"Buff");
             buffer.isShow = EditorGUILayout.Foldout(buffer.isShow, buffer.buffType[buffer.buffTypeIndex]);
@@ -53,29 +75,23 @@ public class BuffersEditor : Editor
                 if (buffer.buffTypeIndex == 0)
                 {
                     buffer.heroClass = (HeroClass)EditorGUILayout.EnumPopup("HeroClass", buffer.heroClass);
-                    buffer.heroRare = HeroRace.None;
+                    buffer.heroRace = HeroRace.None;
                 }
                 else if (buffer.buffTypeIndex == 1)
                 {
-                    buffer.heroRare = (HeroRace)EditorGUILayout.EnumPopup("HeroRare", buffer.heroRare);
+                    buffer.heroRace = (HeroRace)EditorGUILayout.EnumPopup("HeroRare", buffer.heroRace);
                     buffer.heroClass = HeroClass.None;
                 }
                 buffer.totalNumber = EditorGUILayout.IntSlider("TotalNumber", buffer.totalNumber, 1, 6);
-                buffer.goldenNumber = EditorGUILayout.IntSlider("TotalNumber", buffer.goldenNumber, 1, buffer.totalNumber);
-                buffer.sliverNumber = EditorGUILayout.IntSlider("TotalNumber", buffer.sliverNumber, 1, buffer.goldenNumber);
-                buffer.bronzeNumber = EditorGUILayout.IntSlider("TotalNumber", buffer.bronzeNumber, 1, buffer.sliverNumber);
+                buffer.goldenNumber = EditorGUILayout.IntSlider("Gold", buffer.goldenNumber, 1, buffer.totalNumber);
+                buffer.sliverNumber = EditorGUILayout.IntSlider("Sliver", buffer.sliverNumber, 1, buffer.goldenNumber);
+                buffer.bronzeNumber = EditorGUILayout.IntSlider("Bronze", buffer.bronzeNumber, 1, buffer.sliverNumber);
             }
         }
-        if (GUILayout.Button("+"))
+        if (GUI.changed)
         {
-            buffersClass.Add(new Buffers());
-        }
-        if (buffersClass.Count > 0)
-        {
-            if (GUILayout.Button("-"))
-            {
-                buffersClass.Remove(buffersClass[buffersClass.Count - 1]);
-            }
+            EditorUtility.SetDirty(target);
+            EditorSceneManager.MarkSceneDirty(target.gameObject.scene);
         }
     }
 }

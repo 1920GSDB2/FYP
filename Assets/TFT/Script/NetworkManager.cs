@@ -20,6 +20,7 @@ namespace TFT
             set
             {
                 focusPlayerId = value;
+                BuffList.Instance.ClearBuff();
                 BuffList.Instance.HeroBuffList = PlayerHeroes[FocusPlayerId].BuffList;
             }
         }
@@ -39,8 +40,6 @@ namespace TFT
         public bool isHomeTeam { get; private set;}
         int waveFinishResponse;
 
-
-        
         void Awake()
         {
             Instance = this;

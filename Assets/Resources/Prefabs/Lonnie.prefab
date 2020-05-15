@@ -2783,7 +2783,7 @@ MonoBehaviour:
   negativeEffects: []
   attackRange: 1.7
   Icon: {fileID: 0}
-  SelectingBox: {fileID: 2999626864568201159}
+  SelectingBox: {fileID: 8417192808997703802}
   Rarity: 1
   HeroClasses: 04000000
   HeroRaces: 06000000
@@ -2848,6 +2848,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: Walk
+  - Type: 1
+    SynchronizeType: 0
+    Name: AttackSpeed
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -2965,11 +2968,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8542189145416042887}
     m_Modifications:
-    - target: {fileID: 1733852852825358323, guid: fa70520fd39f60d4b83f9756e96634d3,
-        type: 3}
-      propertyPath: m_Name
-      value: ItemList
-      objectReference: {fileID: 0}
     - target: {fileID: 6529561468463626486, guid: fa70520fd39f60d4b83f9756e96634d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3025,14 +3023,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1733852852825358323, guid: fa70520fd39f60d4b83f9756e96634d3,
+        type: 3}
+      propertyPath: m_Name
+      value: ItemList
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa70520fd39f60d4b83f9756e96634d3, type: 3}
---- !u!1 &2999626864568201159 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1733852852825358323, guid: fa70520fd39f60d4b83f9756e96634d3,
-    type: 3}
-  m_PrefabInstance: {fileID: 3580134406041210932}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7724404301474801858 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6529561468463626486, guid: fa70520fd39f60d4b83f9756e96634d3,
@@ -3178,15 +3175,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44de83aff51977a479f23105dc7f114e, type: 3}
---- !u!1 &3044259792267156926 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5199439087991323091, guid: 44de83aff51977a479f23105dc7f114e,
-    type: 3}
-  m_PrefabInstance: {fileID: 7068254941820118125}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3044259792267156927 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7068254941820118125}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3044259792267156926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5199439087991323091, guid: 44de83aff51977a479f23105dc7f114e,
     type: 3}
   m_PrefabInstance: {fileID: 7068254941820118125}
   m_PrefabAsset: {fileID: 0}

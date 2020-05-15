@@ -20,6 +20,22 @@ namespace TFT
         List<string> HeroType = new List<string>();         //For verifing hero type
         public Dictionary<HeroClass, int> ClassValue { get; private set; } = new Dictionary<HeroClass, int>();   //Number of class in gameboard hero
         public Dictionary<HeroRace, int> RaceValue { get; private set; } = new Dictionary<HeroRace, int>();      //Number of race in gameboard hero
+        public List<string> BuffsName
+        {
+            get
+            {
+                List<string> result = new List<string>();
+                foreach (KeyValuePair<HeroClass, int> ClassValue in ClassValue)
+                {
+                    result.Add(ClassValue.Key.ToString());
+                }
+                foreach (KeyValuePair<HeroRace, int> RaceValue in RaceValue)
+                {
+                    result.Add(RaceValue.Key.ToString());
+                }
+                return result;
+            }
+        }
 
         /// <summary>
         /// Call the method, while adding hero to the gameboard

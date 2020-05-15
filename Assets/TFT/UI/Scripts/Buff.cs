@@ -23,7 +23,7 @@ public class Buff : MonoBehaviour
     public Sprite[] RaceIcons;
 
     public HeroClass HeroClass;
-    public HeroRace HeroRare;
+    public HeroRace HeroRace;
     public BuffLevel BuffLevel;
     [Range(1, 6)]
     public int TotalValue;
@@ -76,9 +76,9 @@ public class Buff : MonoBehaviour
                     break;
             }
         }
-        else if (HeroRare != HeroRace.None)
+        else if (HeroRace != HeroRace.None)
         {
-            switch (HeroRare)
+            switch (HeroRace)
             {
                 case HeroRace.Demon:
                     IconImg.sprite = RaceIcons[0];
