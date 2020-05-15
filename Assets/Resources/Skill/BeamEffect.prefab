@@ -4776,6 +4776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayOpenCollider: 0.4
   collider: {fileID: 4928604066037111992}
+  finishTime: 0.7
 --- !u!65 &4928604066037111992
 BoxCollider:
   m_ObjectHideFlags: 0

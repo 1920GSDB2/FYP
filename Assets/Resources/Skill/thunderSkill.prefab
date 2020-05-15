@@ -9698,3 +9698,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayOpenCollider: 0
   collider: {fileID: 5418903611830760504}
+  finishTime: 0.4

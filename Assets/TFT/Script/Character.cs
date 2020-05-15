@@ -22,7 +22,7 @@ public class Character : MonoBehaviour
     public PhotonView photonView;
     public Animator animator;
     protected bool isAttackCooldown;
-    protected Vector3 cameraPos;
+    public Vector3 cameraPos;
     public Character targetEnemy;
     public Character testHero;
     public GameObject HeroBar;
@@ -369,12 +369,18 @@ public class Character : MonoBehaviour
         if (NetworkManager.Instance.opponent.hero.Contains(this))
             setHpBarColor(Color.red);
         HeroBar.SetActive(true);
-        if (!NetworkManager.Instance.isHomeTeam)
-            HeroBar.transform.Rotate(new Vector3(0, 180, 0));
+       
 
         GameObject camera = NetworkManager.Instance.getCamera(posid);
-        cameraPos = NetworkManager.Instance.getCamera(posid).transform.position;
-        Debug.Log(name + " " + camera.name);
+        if (NetworkManager.Instance.isHomeTeam)
+        {
+            cameraPos = NetworkManager.Instance.getCamera(posid).transform.position;
+        }
+        else {
+            cameraPos = NetworkManager.Instance.getCamera(posid).transform.position*-1;
+        }
+       
+       // Debug.Log(name + " " + camera.name+" home "+NetworkManager.Instance.isHomeTeam);
     }
     [PunRPC]
     public void RPC_AttackAnimation()

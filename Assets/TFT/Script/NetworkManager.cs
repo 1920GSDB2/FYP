@@ -36,7 +36,7 @@ namespace TFT
         public List<Character> selfGameBoardHero = new List<Character>();
         public List<Character> battleGameBoardHero;
         TFTPlayerCharacter playerCharacter;
-        public bool isHomeTeam { get; private set;}
+        public bool isHomeTeam { get; private set; }
         int waveFinishResponse;
 
 
