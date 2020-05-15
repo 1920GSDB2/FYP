@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace TFT
 {
@@ -26,6 +27,7 @@ namespace TFT
         /// <param name="addedHero"></param>
         public void AddHeroBuff(NetworkHero addedHero)
         {
+            
             HeroClassRace heroClassRace = GetClassRace(addedHero);
             bool isSameType = false;
             for (int j = 0; j < HeroType.Count; j++)
@@ -40,13 +42,27 @@ namespace TFT
             {
                 for (int i = 0; i < heroClassRace.HeroClasses.Length; i++)
                 {
-                    if (ClassValue.ContainsKey(heroClassRace.HeroClasses[i])) ClassValue[heroClassRace.HeroClasses[i]]++;
-                    else ClassValue.Add(heroClassRace.HeroClasses[i], 1);
+                    if (ClassValue.ContainsKey(heroClassRace.HeroClasses[i]))
+                    {
+                        ClassValue[heroClassRace.HeroClasses[i]]++;
+                    }
+                    else
+                    {
+                        ClassValue.Add(heroClassRace.HeroClasses[i], 1);
+                        Debug.Log("AddHeroBuff: " + heroClassRace.HeroClasses[i]);
+                    }
                 }
                 for (int i = 0; i < heroClassRace.HeroRaces.Length; i++)
                 {
-                    if (RaceValue.ContainsKey(heroClassRace.HeroRaces[i])) RaceValue[heroClassRace.HeroRaces[i]]++;
-                    else RaceValue.Add(heroClassRace.HeroRaces[i], 1);
+                    if (RaceValue.ContainsKey(heroClassRace.HeroRaces[i]))
+                    {
+                        RaceValue[heroClassRace.HeroRaces[i]]++;
+                    }
+                    else
+                    {
+                        RaceValue.Add(heroClassRace.HeroRaces[i], 1);
+                        Debug.Log("AddHeroBuff: " + heroClassRace.HeroRaces[i]);
+                    }
                 }
             }
             

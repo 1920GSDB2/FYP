@@ -16,7 +16,6 @@ namespace TFT
         public LevelManager LevelManager;        //Player Level State
         public RoundManager RoundManager;
 
-
         [Header("Player Personal Data")]
         public PlayerHero PlayerHero;           //Hero List for Player
         public PlayerArena SelfPlayerArena;     //Game Arena for Player

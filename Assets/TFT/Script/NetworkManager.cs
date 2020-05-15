@@ -12,8 +12,17 @@ namespace TFT
     {
         public static NetworkManager Instance;
         public static PhotonView PhotonView;
-
-        public int playerId, posId, battlePosId;                 //Player Id and Position Id for Networking
+        public int playerId, posId, battlePosId;                 //Id for Networking
+        private int focusPlayerId;
+        public int FocusPlayerId
+        {
+            get { return focusPlayerId; }
+            set
+            {
+                focusPlayerId = value;
+                BuffList.Instance.HeroBuffList = PlayerHeroes[FocusPlayerId].BuffList;
+            }
+        }
         [SerializeField]
         public Opponent opponent;                   //Player's Opponent
 
@@ -41,7 +50,8 @@ namespace TFT
         {
             RankManager = RankManager.Instance;
             PhotonNetworkSetup();
-            
+
+            FocusPlayerId = playerId;
         }
 
         void Update()

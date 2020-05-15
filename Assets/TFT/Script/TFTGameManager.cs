@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using TFT;
 using Main;
 
 public class TFTGameManager : MonoBehaviour
@@ -37,7 +38,7 @@ public class TFTGameManager : MonoBehaviour
             }
         }
     }
-    public GameManager gameManager;
+    public Main.GameManager gameManager;
     //public PlayerArena[] playerArenas = new PlayerArena[6];
     //public List<Hero> heroTypes = new List<Hero>();                           //List of total heroes
     List<Hero> gbHeros = new List<Hero>();                                      //List of gameboard's heroes

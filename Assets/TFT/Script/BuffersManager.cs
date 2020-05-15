@@ -21,6 +21,13 @@ public class BuffersManager : MonoBehaviour
 {
     [SerializeField]
     public List<Buffers> buffersClass = new List<Buffers>();
+
+    public static BuffersManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 }
 
 #if UNITY_EDITOR 
