@@ -4,33 +4,37 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHP : MonoBehaviour
+namespace TFT
 {
-    private const int TOTAL_HP = 100;
-    public Image imageSlider;
-    public TextMeshProUGUI hpText;
-    [Range(0, TOTAL_HP)]
-    public int hpValue = TOTAL_HP;
-    public PlayerType playerType;
-
-    private void Start()
+    public class PlayerHP : MonoBehaviour
     {
-        if (playerType == PlayerType.LocalPlayer)
+        private const int TOTAL_HP = 100;
+        public Image imageSlider;
+        public TextMeshProUGUI hpText;
+        [Range(0, TOTAL_HP)]
+        public int hpValue = TOTAL_HP;
+        public PlayerType playerType;
+
+        private void Start()
         {
-            imageSlider.color = Color.yellow;
+            if (playerType == PlayerType.LocalPlayer)
+            {
+                imageSlider.color = Color.yellow;
+            }
+            else
+            {
+                imageSlider.color = Color.red;
+            }
         }
-        else
+
+        void Update()
         {
-            imageSlider.color = Color.red;
+            if (hpValue >= 0)
+            {
+                imageSlider.fillAmount = (float)hpValue / TOTAL_HP;
+                hpText.text = hpValue.ToString();
+            }
         }
     }
 
-    void Update()
-    {
-        if (hpValue >= 0)
-        {
-            imageSlider.fillAmount = (float)hpValue / TOTAL_HP;
-            hpText.text = hpValue.ToString();
-        }
-    }
 }

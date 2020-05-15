@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+#if UNITY_EDITOR 
 using UnityEditor.SceneManagement;
+#endif
 
 [System.Serializable]
 public class Buffers

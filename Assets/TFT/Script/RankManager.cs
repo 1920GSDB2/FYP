@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,8 +10,9 @@ namespace TFT
     {
         public static RankManager Instance;
         public Main.GameManager MainGameManager;
+        private NetworkManager NetworkManager;
 
-        public List<string> PlayersName;
+        //public List<string> PlayersName;
         public Dictionary<string, PlayerRank> PlayersCollection = new Dictionary<string, PlayerRank>();
 
         public Transform RankList;
@@ -24,7 +26,12 @@ namespace TFT
         // Start is called before the first frame update
         void Start()
         {
-
+            NetworkManager = NetworkManager.Instance;
+            try
+            {
+                PlayerCollectionSetup();
+            }
+            catch (NullReferenceException) { }
         }
 
         // Update is called once per frame
@@ -39,7 +46,7 @@ namespace TFT
         /// <param name="_initHP"></param>
         public void PlayerCollectionSetup()
         {
-            foreach (string PlayerName in PlayersName)
+            foreach (string PlayerName in NetworkManager.PlayersName)
             {
                 PlayerInfo newPlayerInfo = Instantiate(PlayerInfo, RankList).GetComponent<PlayerInfo>();
                 bool _isRemote = PhotonNetwork.playerName.Equals(PlayerName);

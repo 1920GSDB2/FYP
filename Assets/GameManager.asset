@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: GameManager
   m_EditorClassIdentifier: 
   databaseIP: https://script.google.com/macros/s/AKfycby9xgypoTEsywirNtCpzWB-x43PUoMRQ54AAiXjIFbv4aePYQ/exec
-  MaxRoomPlayer: 1
+  MaxRoomPlayer: 2
   userData:
     id: 
     pw: 
     name: 
     email: 
   lobbyScene: Lobby
-  PlayerInitHP: 0
+  PlayerInitHP: 100
   readyingTime: 15
   playingTime: 30
   compingTime: 10
