@@ -30,7 +30,7 @@ public class Monster : Character
             if (HeroState == HeroState.Idle)
             {
                 if (targetEnemy == null)
-                    targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(isEnemy, transform);
+                    targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(!isEnemy, transform);
                 else
                 {
                     HeroState = HeroState.Walking;

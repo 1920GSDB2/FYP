@@ -75,8 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d6aa7bc3b7f3b4c86377f3cc68d56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayOpenCollider: 1
+  delayOpenCollider: 0.5
   collider: {fileID: 1999088587869094232}
+  finishTime: 3
 --- !u!1 &2353714975144438438
 GameObject:
   m_ObjectHideFlags: 0

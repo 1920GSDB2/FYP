@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TFT;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 
 public class Hero : Character, ISelectable
@@ -55,7 +56,8 @@ public class Hero : Character, ISelectable
     public int BasicCritcalChance;
     [Range(1, 4)]
     public int BasicAttackRange;
-
+    public static GameObject testCanvas;
+    public static TextMeshProUGUI text;
     public GameObject testSkill;
     // bool isAttackCooldown;
     string lastTransform;
@@ -71,13 +73,15 @@ public class Hero : Character, ISelectable
         if (animator == null)
             animator = GetComponent<Animator>();
         photonView = GetComponent<PhotonView>();
-       // PhotonNetwork.sendRate = 30;
-      //  PhotonNetwork.sendRateOnSerialize = 30;
-        
+        text = Resources.Load<TextMeshProUGUI>("otherPrefabs/damageText");
+        // PhotonNetwork.sendRate = 30;
+        //  PhotonNetwork.sendRateOnSerialize = 30;
+
     }
     // Start is called before the first frame update
     void Start()
     {
+        testCanvas = GameObject.Find("Canvas");
         hpBar = HeroBar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
         mpBar = HeroBar.transform.GetChild(0).GetChild(1).GetComponent<Image>();
         animator = GetComponent<Animator>();
@@ -104,9 +108,7 @@ public class Hero : Character, ISelectable
     {
         Vector3 targetPostition = new Vector3(HeroBar.transform.position.x, cameraPos.y, HeroBar.transform.position.x);
         HeroBar.transform.LookAt(targetPostition);
-        if(test)
-            transform.position += Vector3.forward*Time.deltaTime;
-
+      //  Debug.Log()
        
 
         switch (HeroState) {
@@ -115,7 +117,7 @@ public class Hero : Character, ISelectable
             case HeroState.Fight:
                 if (targetEnemy.Health <= 0)
                 {
-                    targetEnemy = null;
+                    targetDie();
                     HeroState = HeroState.Idle;
                 }
                 else
@@ -131,16 +133,15 @@ public class Hero : Character, ISelectable
         if (Input.GetKeyDown(KeyCode.I))
         {
             //  targetEnemy = testHero;
+            //  HeroBar.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+           
+            TextMeshProUGUI a= Instantiate(text);
+        
+            Camera camera = NetworkManager.Instance.getCamera(NetworkManager.Instance.posId).GetComponent<Camera>();
+            Vector2 screenPosition = camera.WorldToScreenPoint(transform.position);
+            a.transform.SetParent(testCanvas.transform,false);
+            a.transform.position = screenPosition;
 
-            //animator.SetBool("Attack",true);
-            //  gameObject.SetActive(false);
-            //    Debug.Log(name + " Health " + Health + " / " + MaxHealth);
-            // test = !test;
-           // Quaternion rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
-           // Debug.Log(transform.rotation.y);
-           // Aoe effect = Instantiate(testSkill, transform.position, rotation).GetComponent<Aoe>();
-            //Debug.Log(name+" Position "+transform.position+" Target POs"+targetEnemy.transform.position);
-            //Debug.Log(name + " Hero Pace " + HeroPlace.transform.position + " Target Hero pLace" + targetEnemy.HeroPlace.transform.position);
             //   photonView.RPC("test", PhotonTargets.All);
             //  photonView.RPC("RPC_Animation", PhotonTargets.All);
         }
@@ -174,7 +175,7 @@ public class Hero : Character, ISelectable
         {
             if (targetEnemy.Health <= 0)
             {
-                targetEnemy = null;
+                targetDie();
                 HeroState = HeroState.Idle;
             }
             else
@@ -189,6 +190,9 @@ public class Hero : Character, ISelectable
     }
     public void handleControl() {
         
+    }
+    public virtual void targetDie() {
+        targetEnemy = null;
     }
     [PunRPC]
     public void RPC_userSkill() {
@@ -219,13 +223,16 @@ public class Hero : Character, ISelectable
         tag = "Character";
         gameObject.SetActive(true);
         HeroBar.SetActive(false);
-        HeroBar.transform.Rotate(new Vector3(0, 180, 0));
-        StartCoroutine(resetStatus());
+        HeroBar.transform.rotation = Quaternion.identity;
+        StartCoroutine(resetStatusCount());
     }
-    IEnumerator resetStatus() {
+    IEnumerator resetStatusCount() {
         yield return new WaitForSeconds(2f);
+        resetStatus();
+    }
+    public virtual void resetStatus() {
         Debug.Log("Reset Status");
-       HeroState = HeroState.Nothing;
+        HeroState = HeroState.Nothing;
         // GetComponent<PhotonTransformView>().enabled = false;
         float recoverHealth = MaxHealth;
         if (Health < 0)
@@ -235,7 +242,6 @@ public class Hero : Character, ISelectable
         isEnemy = false;
         isAttackCooldown = false;
         isMirror = false;
-       
         negativeEffects.Clear();
     }
     [PunRPC]
@@ -336,6 +342,11 @@ public class Hero : Character, ISelectable
                 break;
             case HeroAttribute.Health:
                 Health = value;
+                break;
+            case HeroAttribute.maxHp:
+                MaxHealth = value;
+                if (Health > MaxHealth)
+                    Health = MaxHealth;
                 break;
             case HeroAttribute.Physic_Defense:
                 PhysicalDefense = value;

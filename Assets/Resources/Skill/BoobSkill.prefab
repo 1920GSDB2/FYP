@@ -14332,6 +14332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayOpenCollider: 1
   collider: {fileID: 9170500333677151342}
+  finishTime: 1.4
 --- !u!135 &9170500333677151342
 SphereCollider:
   m_ObjectHideFlags: 0

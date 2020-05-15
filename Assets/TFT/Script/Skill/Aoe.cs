@@ -8,12 +8,13 @@ public class Aoe : MonoBehaviour
     public float delayOpenCollider=0;
     public Collider collider;
     protected float damage;
+    public float finishTime;
     protected bool isMirror,isAlly;
     void Start()
     {
         collider = GetComponent<Collider>();
         StartCoroutine(openCollider());
-
+        Destroy(this.gameObject, finishTime);
     }
     public void setDamage(float damage,bool isMirror,bool isEnemy){
         this.damage = damage;
