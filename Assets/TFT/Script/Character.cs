@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
     public float Health { get; set; }
     protected float MaxHealth { get; set; }
     public float MaxMp;
-    protected float Mp { get; set; }
+    public float Mp { get; private set; }
     public float AttackDamage { get; set; }
     public float AttackSpeed { get; set; }
     public float SkillPower { get; set; }
@@ -66,7 +66,7 @@ public class Character : MonoBehaviour
 
         }
     }*/
-    public void attackTarget()
+    public virtual void attackTarget()
     {
 
         //Debug.Log(targetEnemy.name + " Take Damage");
@@ -172,7 +172,7 @@ public class Character : MonoBehaviour
         syncAdjustHp(index);
     //    Debug.Log("Heal " + index);
     }
-    public void syncAdjustHp(float damage)
+    public virtual void syncAdjustHp(float damage)
     {
         
             Health += damage;

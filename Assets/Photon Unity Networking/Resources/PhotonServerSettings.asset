@@ -107,4 +107,6 @@ MonoBehaviour:
   - RPC_MeleeSkill
   - RPC_MeleeSkillAnimation
   - RPC_castAoeSkill
+  - RPC_SyncHeroAttribute
+  - RPC_castDieSkill
   DisableAutoOpenWizard: 1

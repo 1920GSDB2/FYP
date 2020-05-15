@@ -1060,6 +1060,7 @@ GameObject:
   - component: {fileID: 5151859946512803047}
   - component: {fileID: 6891784313339780733}
   - component: {fileID: -344013033700755043}
+  - component: {fileID: 247434196}
   m_Layer: 8
   m_Name: Crazy Bomber-man
   m_TagString: Character
@@ -1147,6 +1148,7 @@ MonoBehaviour:
   BasicMagicDefense: 4
   BasicCritcalChance: 0
   BasicAttackRange: 2
+  dieSkill: {fileID: 247434196}
 --- !u!65 &62182093448829369
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1218,6 +1220,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: Walk
+  - Type: 1
+    SynchronizeType: 0
+    Name: AttackSpeed
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -1313,6 +1318,21 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &247434196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6566543165242862673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebee607023615844bbb05a2b3b4a2a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castSkillEffect: {fileID: 0}
+  hitEffect: {fileID: 9170500333677151340, guid: 32ce032ee555ee846a2a61113e282296,
+    type: 3}
 --- !u!1 &7589069990264606027
 GameObject:
   m_ObjectHideFlags: 0

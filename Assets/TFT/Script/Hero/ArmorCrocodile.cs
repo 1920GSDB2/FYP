@@ -19,7 +19,7 @@ public class ArmorCrocodile : Hero
     {
         if(!isMirror)
           photonView.RPC("RPC_MeleeSkill", PhotonTargets.All, targetEnemy.photonView.viewID);
-        Debug.Log("use melee Skill");
+     //   Debug.Log("use melee Skill");
     }
 
     public override void processMeleeSkill(int id)
@@ -28,10 +28,10 @@ public class ArmorCrocodile : Hero
         bool reset = false;
 
         if (!isMirror) {
-             Debug.Log("Target " + targetEnemy.name + " Hp " + targetEnemy.Health + " Hp predict" + (targetEnemy.Health - SkillPower) + " skill da" + SkillPower + " health " + targetEnemy.Health);
+        //     Debug.Log("Target " + targetEnemy.name + " Hp " + targetEnemy.Health + " Hp predict" + (targetEnemy.Health - SkillPower) + " skill da" + SkillPower + " health " + targetEnemy.Health);
             if (target.Health - SkillPower <= 0) {
                 reset = true;
-                Debug.Log("reset Mp " + (targetEnemy.Health - SkillPower));
+            //    Debug.Log("reset Mp " + (targetEnemy.Health - SkillPower));
             }
         }
         skill.meleeHit(target, SkillPower, isMirror);

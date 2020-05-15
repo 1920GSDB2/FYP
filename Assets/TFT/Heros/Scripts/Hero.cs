@@ -179,8 +179,8 @@ public class Hero : Character, ISelectable
             {
                 // isAttackCooldown = true;
                 StartCoroutine(basicAttackCoolDown());
-                photonView.RPC("RPC_AttackAnimation", PhotonTargets.Others);
-                animator.SetTrigger("Attack");
+                photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
+              //  animator.SetTrigger("Attack");
                 transform.LookAt(targetEnemy.transform);
             }
         }
@@ -203,6 +203,7 @@ public class Hero : Character, ISelectable
         SkillPower = BasicSkillPower * 1.25f;
         BoxCollider = GetComponent<Collider>();
     }
+
     public override void die() {
         HeroState = HeroState.Die;
         this.gameObject.SetActive(false);
@@ -285,7 +286,7 @@ public class Hero : Character, ISelectable
     {
         Character target = PhotonView.Find(id).GetComponent<Character>();
     
-        skill.castSkill(target, SkillPower * 0.5f * AttackDamage, isMirror,isEnemy);
+        skill.castSkill(target, SkillPower * 0.35f * AttackDamage, isMirror,isEnemy);
 
     }
     [PunRPC]
@@ -305,7 +306,43 @@ public class Hero : Character, ISelectable
     public void RPC_MeleeSkillAnimation() {
         animator.SetTrigger("Skill");
     }
-
+    [PunRPC]
+    public void RPC_SyncHeroAttribute(byte attributeType,float value) {
+        HeroAttribute type = (HeroAttribute)attributeType;
+        syncHeroAttribute(type, value);
+    }
+    public void syncHeroAttribute(HeroAttribute type,float value) {
+        switch (type)
+        {
+            case HeroAttribute.Attack:
+                AttackDamage = value;
+                break;
+            case HeroAttribute.Attack_Speed:
+                AttackSpeed = value;
+                if (AttackSpeed < 1)
+                    value = 1;
+                animator.SetFloat("AttackSpeed", value);
+                break;
+            case HeroAttribute.Critical_Cahnce:
+                BasicCritcalChance = (int)value;
+                break;
+            case HeroAttribute.Magic_Defense:
+                MagicDefense = value;
+                break;
+            case HeroAttribute.Mana:
+                MaxMp = value;
+                break;
+            case HeroAttribute.Health:
+                Health = value;
+                break;
+            case HeroAttribute.Physic_Defense:
+                PhysicalDefense = value;
+                break;
+            case HeroAttribute.Skill_Damage:
+                SkillPower = value;
+                break;
+        }
+    }
     private void FixedUpdate()
     {
         if (HeroStatus == HeroStatus.Fight && targetEnemy == null)
