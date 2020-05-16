@@ -20,7 +20,7 @@ MonoBehaviour:
     name: 
     email: 
   lobbyScene: Lobby
-  PlayerInitHP: 0
+  PlayerInitHP: 100
   readyingTime: 15
   playingTime: 30
   compingTime: 10

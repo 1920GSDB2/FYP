@@ -27,13 +27,11 @@ namespace Main
         public int[] TFTExpCurve;
         public int[] TFTMonsterRound;
 
-
         void OnEnable()
         {
             userData = new UserData();
             //Instance = this;
         }
-
     }
 }
 

@@ -5260,8 +5260,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8142,7 +8142,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -9110,14 +9110,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a603ddc83016d00458f0de9bbe4ec4fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffersClass:
+  buffers:
   - buffType:
     - Class
     - Race
     buffTypeIndex: 0
     isShow: 0
     heroClass: 1
-    heroRare: 0
+    heroRace: 0
     totalNumber: 6
     bronzeNumber: 1
     sliverNumber: 1
@@ -9128,7 +9128,7 @@ MonoBehaviour:
     buffTypeIndex: 0
     isShow: 0
     heroClass: 2
-    heroRare: 0
+    heroRace: 0
     totalNumber: 6
     bronzeNumber: 1
     sliverNumber: 1
@@ -9139,8 +9139,8 @@ MonoBehaviour:
     buffTypeIndex: 0
     isShow: 0
     heroClass: 3
-    heroRare: 0
-    totalNumber: 5
+    heroRace: 0
+    totalNumber: 6
     bronzeNumber: 1
     sliverNumber: 1
     goldenNumber: 1
@@ -9150,7 +9150,7 @@ MonoBehaviour:
     buffTypeIndex: 0
     isShow: 0
     heroClass: 4
-    heroRare: 0
+    heroRace: 0
     totalNumber: 6
     bronzeNumber: 1
     sliverNumber: 1
@@ -9161,7 +9161,7 @@ MonoBehaviour:
     buffTypeIndex: 0
     isShow: 0
     heroClass: 5
-    heroRare: 0
+    heroRace: 0
     totalNumber: 6
     bronzeNumber: 1
     sliverNumber: 1
@@ -9172,7 +9172,84 @@ MonoBehaviour:
     buffTypeIndex: 0
     isShow: 0
     heroClass: 6
-    heroRare: 0
+    heroRace: 0
+    totalNumber: 6
+    bronzeNumber: 1
+    sliverNumber: 1
+    goldenNumber: 1
+  - buffType:
+    - Class
+    - Race
+    buffTypeIndex: 1
+    isShow: 0
+    heroClass: 0
+    heroRace: 1
+    totalNumber: 6
+    bronzeNumber: 1
+    sliverNumber: 1
+    goldenNumber: 1
+  - buffType:
+    - Class
+    - Race
+    buffTypeIndex: 1
+    isShow: 0
+    heroClass: 0
+    heroRace: 2
+    totalNumber: 6
+    bronzeNumber: 1
+    sliverNumber: 1
+    goldenNumber: 1
+  - buffType:
+    - Class
+    - Race
+    buffTypeIndex: 1
+    isShow: 0
+    heroClass: 0
+    heroRace: 3
+    totalNumber: 6
+    bronzeNumber: 1
+    sliverNumber: 1
+    goldenNumber: 1
+  - buffType:
+    - Class
+    - Race
+    buffTypeIndex: 1
+    isShow: 0
+    heroClass: 0
+    heroRace: 4
+    totalNumber: 6
+    bronzeNumber: 1
+    sliverNumber: 1
+    goldenNumber: 1
+  - buffType:
+    - Class
+    - Race
+    buffTypeIndex: 1
+    isShow: 0
+    heroClass: 0
+    heroRace: 5
+    totalNumber: 6
+    bronzeNumber: 1
+    sliverNumber: 1
+    goldenNumber: 1
+  - buffType:
+    - Class
+    - Race
+    buffTypeIndex: 1
+    isShow: 0
+    heroClass: 0
+    heroRace: 6
+    totalNumber: 6
+    bronzeNumber: 1
+    sliverNumber: 1
+    goldenNumber: 1
+  - buffType:
+    - Class
+    - Race
+    buffTypeIndex: 1
+    isShow: 0
+    heroClass: 0
+    heroRace: 7
     totalNumber: 6
     bronzeNumber: 1
     sliverNumber: 1
@@ -13286,7 +13363,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -18913,7 +18990,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -23229,7 +23306,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -23475,7 +23552,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -24301,7 +24378,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -28694,7 +28771,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -30044,7 +30121,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -33222,7 +33299,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -37143,7 +37220,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -38039,7 +38116,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -38180,7 +38257,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -39511,7 +39588,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -40359,7 +40436,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -41640,7 +41717,7 @@ MonoBehaviour:
   ClassIcons: []
   RaceIcons: []
   HeroClass: 0
-  HeroRare: 0
+  HeroRace: 0
   BuffLevel: 0
   TotalValue: 0
   CurrentValue: 0
@@ -50011,6 +50088,7 @@ MonoBehaviour:
   buff: {fileID: 4679735198529167674, guid: 470dd96e97d016249a68508a9f7ab5c7, type: 3}
   ButtonText: {fileID: 226173201}
   delayTime: 0.15
+  isShowList: 0
 --- !u!222 &1846200869
 CanvasRenderer:
   m_ObjectHideFlags: 0

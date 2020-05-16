@@ -17,7 +17,7 @@ namespace TFT
         public TextMeshProUGUI ButtonText;
         public float delayTime = 0.2f;
 
-        private bool isShowList;
+        public bool isShowList;
         private Vector2 currPos, nextPos;
         private RectTransform RectTransform;
         private BuffersManager BuffersManager;
@@ -45,15 +45,20 @@ namespace TFT
 
         private void BuffHandler()
         {
-            HeroBuffList = NetworkManager.Instance.PlayerHeroes[NetworkManager.Instance.FocusPlayerId].BuffList;
+            //HeroBuffList = NetworkManager.Instance.PlayerHeroes[NetworkManager.Instance.FocusPlayerId].BuffList;
+            CheckAddBuff();
+            CheckRemoveBuff();
+        }
+
+        private void CheckAddBuff()
+        {
             foreach (KeyValuePair<HeroClass, int> ClassValue in HeroBuffList.ClassValue)
             {
                 HeroClass heroClass = ClassValue.Key;
-                Debug.Log(heroClass);
-
+                //Debug.Log(heroClass);
                 if (!buffList.Find(heroClass.ToString()))
                 {
-                    foreach (Buffers buffers in BuffersManager.buffersClass)
+                    foreach (Buffers buffers in BuffersManager.buffers)
                     {
                         if (buffers.heroClass == heroClass)
                         {
@@ -61,9 +66,55 @@ namespace TFT
                         }
                     }
                 }
-                else if(buffList.Find(heroClass.ToString()).GetComponent<Buff>().CurrentValue < ClassValue.Value)
+                else if (buffList.Find(heroClass.ToString()).GetComponent<Buff>().CurrentValue < ClassValue.Value)
                 {
                     UpgradeBuff(heroClass.ToString());
+                }
+            }
+
+            foreach (KeyValuePair<HeroRace, int> RaceValue in HeroBuffList.RaceValue)
+            {
+                HeroRace heroRace = RaceValue.Key;
+                if (!buffList.Find(heroRace.ToString()))
+                {
+                    foreach (Buffers buffers in BuffersManager.buffers)
+                    {
+                        if (buffers.heroRace == heroRace)
+                        {
+                            AddBuff(buffers, heroRace.ToString());
+                        }
+                    }
+                }
+                else if (buffList.Find(heroRace.ToString()).GetComponent<Buff>().CurrentValue < RaceValue.Value)
+                {
+                    UpgradeBuff(heroRace.ToString());
+                }
+            }
+
+        }
+
+        private void CheckRemoveBuff()
+        {
+            foreach(Transform buffTransform in buffList)
+            {
+                Buff buff = buffTransform.GetComponent<Buff>();
+                if (HeroBuffList.BuffsName.Contains(buffTransform.name))
+                {
+                    //The buff is Class
+                    if(buff.HeroClass != HeroClass.None)
+                    {
+                        buff.CurrentValue = HeroBuffList.ClassValue[buff.HeroClass];
+                       
+                    }
+                    //The buff is Race
+                    else if (buff.HeroRace != HeroRace.None)
+                    {
+                        buff.CurrentValue = HeroBuffList.RaceValue[buff.HeroRace];
+                    }
+                }
+                else
+                {
+                    Destroy(buffTransform.gameObject);
                 }
             }
         }
@@ -82,16 +133,19 @@ namespace TFT
             //buffList.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(75, 0);
             Buff newBuff = (Instantiate(buff.gameObject) as GameObject).GetComponent<Buff>();
             newBuff.HeroClass = buffer.heroClass;
-            newBuff.HeroRare = buffer.heroRare;
+            newBuff.HeroRace = buffer.heroRace;
             newBuff.TotalValue = buffer.totalNumber;
             newBuff.name = name;
             //newBuff.gameObject.transform.parent = buffList;
             newBuff.gameObject.transform.SetParent(buffList);
-            //newBuff.gameObject.GetComponent<RectTransform>().localScale = Vector3.one;
+            newBuff.gameObject.GetComponent<RectTransform>().localScale = Vector3.one;
             //buffList.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(75, 24 * buffList.gameObject.transform.childCount);
             if (!isShowList)
             {
-                RectTransform.anchoredPosition = new Vector2(-RectTransform.sizeDelta.x + 10, -115);
+                Debug.Log("1: " + RectTransform.anchoredPosition);
+                RectTransform.anchoredPosition = new Vector2(-RectTransform.sizeDelta.x + 10 , -115);
+                Debug.Log("2: " + RectTransform.anchoredPosition);
+
             }
 
             currPos = RectTransform.anchoredPosition;

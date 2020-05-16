@@ -12,6 +12,7 @@ namespace TFT
     {
         public static NetworkManager Instance;
         public static PhotonView PhotonView;
+        public string[] PlayersName;
         public int playerId, posId, battlePosId;                 //Id for Networking
         private int focusPlayerId;
         public int FocusPlayerId
@@ -20,6 +21,7 @@ namespace TFT
             set
             {
                 focusPlayerId = value;
+                BuffList.Instance.ClearBuff();
                 BuffList.Instance.HeroBuffList = PlayerHeroes[FocusPlayerId].BuffList;
             }
         }
@@ -31,7 +33,7 @@ namespace TFT
         public PlayerHero[] PlayerHeroes;           //Players' Heroes List
         public GameObject[] PlayerArenas;           //PlayerArenas Location (The Data are hard coded in scene)
         public OpponentManager[] OpponentManagers;  //Player's Opponent Data
-        public Camera[] Cameras;                    //Cameras of Focusing Game Arena (The Data are hard coded in scene)
+        //public Camera[] Cameras;                    //Cameras of Focusing Game Arena (The Data are hard coded in scene)
         public GridMap map;
         public List<Character> selfGameBoardHero = new List<Character>();
         public List<Character> battleGameBoardHero;
@@ -39,8 +41,6 @@ namespace TFT
         public bool isHomeTeam { get; private set; }
         int waveFinishResponse;
 
-
-        
         void Awake()
         {
             Instance = this;
@@ -50,8 +50,6 @@ namespace TFT
         {
             RankManager = RankManager.Instance;
             PhotonNetworkSetup();
-
-            FocusPlayerId = playerId;
         }
 
         void Update()
@@ -107,7 +105,13 @@ namespace TFT
             #endregion
 
             //Set Player Random Position
+            PlayersName = new string[PhotonNetwork.playerList.Length];
+            for(int i = 0; i < PhotonNetwork.playerList.Length; i++)
+            {
+                PlayersName[i] = PhotonNetwork.playerList[i].NickName;
+            }
             PhotonView.RPC("RPC_SetupPlayerPosition", PhotonTargets.All, GetRearrangeData(PhotonNetwork.playerList.Length));
+            PhotonView.RPC("RPC_SetupPlayerName", PhotonTargets.Others, PlayersName);
         }
 
         #endregion
@@ -387,6 +391,12 @@ namespace TFT
             playerId = _id;
         }
 
+        [PunRPC]
+        public void RPC_SetupPlayerName(string[] _playerName)
+        {
+            PlayersName = _playerName;
+            RankManager.PlayerCollectionSetup();
+        }
         /// <summary>
         /// Setting Lobby Player Arena Randam Positon
         /// </summary>
@@ -397,7 +407,6 @@ namespace TFT
             PlayerPosition = _playerPosition;
             for (int i = 0; i < _playerPosition.Length; i++)
             {
-                RankManager.PlayersName.Add(PhotonNetwork.playerList[i].NickName);
                 PlayerHeroes[i] = new PlayerHero();
                 if (_playerPosition[i] == playerId)
                 {
@@ -422,7 +431,6 @@ namespace TFT
 ;                    //PlayerHeroes[playerId] = PlayerHero;
                 }
             }
-            RankManager.PlayerCollectionSetup();
         }
         void createEquipmentBoard() {
             UnityEngine.Object pPrefab = Resources.Load("otherPrefabs/EquipmentBoard");
@@ -589,6 +597,8 @@ namespace TFT
         [PunRPC]
         public void RPC_SyncPlayerHeroes(int _posId, int _playerId, string _name, int _heroPos, HeroLevel _heroLevel, SyncHeroMethod _syncMethod)
         {
+            FocusPlayerId = playerId;
+
             switch (_syncMethod)
             {
                 case SyncHeroMethod.AddHero:

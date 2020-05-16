@@ -197,7 +197,7 @@ public class TFTGameManager : MonoBehaviour
                 else
                 {
                     classValue.Add(heroClass, 1);
-                    foreach (Buffers buffers in buffersManager.buffersClass)
+                    foreach (Buffers buffers in buffersManager.buffers)
                     {
                         if (buffers.heroClass == heroClass)
                         {
@@ -216,9 +216,9 @@ public class TFTGameManager : MonoBehaviour
                 else
                 {
                     raceValue.Add(heroRare, 1);
-                    foreach (Buffers buffers in buffersManager.buffersClass)
+                    foreach (Buffers buffers in buffersManager.buffers)
                     {
-                        if (buffers.heroRare == heroRare)
+                        if (buffers.heroRace == heroRare)
                         {
                             BuffList.AddBuff(buffers, heroRare.ToString());
                         }
