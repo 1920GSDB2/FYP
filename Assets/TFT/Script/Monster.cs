@@ -16,15 +16,15 @@ public class Monster : Character
         MaxHealth = 1000;
         Health = MaxHealth;
         photonView = GetComponent<PhotonView>();
-        hpBar = HeroBar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
-        mpBar = HeroBar.transform.GetChild(0).GetChild(1).GetComponent<Image>();
+        heroBar = HeroBarObject.transform.GetChild(0).GetComponent<HpBar>();
+      
         animator = GetComponent<Animator>();
     }
     void Update()
     {
 
-        Vector3 targetPostition = new Vector3(HeroBar.transform.position.x, cameraPos.y, HeroBar.transform.position.x);
-        HeroBar.transform.LookAt(targetPostition);
+        Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.x);
+        HeroBarObject.transform.LookAt(targetPostition);
         if (photonView.isMine)
         {
             if (HeroState == HeroState.Idle)

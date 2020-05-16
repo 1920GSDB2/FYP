@@ -94,9 +94,10 @@ MonoBehaviour:
   LastHeroPlace: {fileID: 0}
   photonView: {fileID: 0}
   animator: {fileID: 3938245151399643058}
+  cameraPos: {x: 0, y: 0, z: 0}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
-  HeroBar: {fileID: 9119625780015599535}
+  HeroBarObject: {fileID: 9119625780015599535}
   bullet: {fileID: 7168150683983435948, guid: f2a41c59fb3591a4998570f294398d87, type: 3}
   networkPlaceId: 0
   negativeEffects: []
@@ -176,6 +177,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: Walk
+  - Type: 1
+    SynchronizeType: 0
+    Name: AttackSpeed
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

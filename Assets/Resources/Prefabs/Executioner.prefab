@@ -2643,7 +2643,7 @@ MonoBehaviour:
   cameraPos: {x: 0, y: 0, z: 0}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
-  HeroBar: {fileID: 3457161959090384451}
+  HeroBarObject: {fileID: 3457161959090384451}
   bullet: {fileID: 0}
   networkPlaceId: 0
   negativeEffects: []

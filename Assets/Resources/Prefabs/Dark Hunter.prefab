@@ -177,9 +177,10 @@ MonoBehaviour:
   LastHeroPlace: {fileID: 0}
   photonView: {fileID: 0}
   animator: {fileID: 8934537966666804369}
+  cameraPos: {x: 0, y: 0, z: 0}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
-  HeroBar: {fileID: 3735107781430365036}
+  HeroBarObject: {fileID: 3735107781430365036}
   bullet: {fileID: 0}
   networkPlaceId: 0
   negativeEffects: []
@@ -263,6 +264,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: Attack
+  - Type: 1
+    SynchronizeType: 0
+    Name: AttackSpeed
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

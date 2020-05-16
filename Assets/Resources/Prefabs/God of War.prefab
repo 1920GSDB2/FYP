@@ -2332,9 +2332,10 @@ MonoBehaviour:
   LastHeroPlace: {fileID: 0}
   photonView: {fileID: 0}
   animator: {fileID: 596333827820042086}
+  cameraPos: {x: 0, y: 0, z: 0}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
-  HeroBar: {fileID: 4642793648654919351}
+  HeroBarObject: {fileID: 4642793648654919351}
   bullet: {fileID: 0}
   networkPlaceId: 0
   negativeEffects: []

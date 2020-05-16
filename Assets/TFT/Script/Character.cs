@@ -25,9 +25,10 @@ public class Character : MonoBehaviour
     public Vector3 cameraPos;
     public Character targetEnemy;
     public Character testHero;
-    public GameObject HeroBar;
-    protected Image hpBar;
-    protected Image mpBar;
+    public GameObject HeroBarObject;
+    protected HpBar heroBar;
+    //protected Image hpBar;
+   // protected Image mpBar;
     public GameObject bullet;
     public Node targetNode;
     public int networkPlaceId;
@@ -170,7 +171,7 @@ public class Character : MonoBehaviour
         }
     }
     [PunRPC]
-    public void RPC_Heal(float index,DamageType damageType)
+    public void RPC_Heal(float index,byte damageType)
     {
         DamageType tpye = (DamageType)damageType;
         syncAdjustHp(index, tpye);
@@ -195,7 +196,14 @@ public class Character : MonoBehaviour
                     die();
                 }
             }
-            hpBar.fillAmount = Health / MaxHealth;
+        if (damage < 0)
+        {
+            heroBar.setHpBarWithDamage(Health / MaxHealth);
+        }
+        else
+        {
+            heroBar.setHpBar(Health / MaxHealth);
+        }
         
     }
     [PunRPC]
@@ -217,7 +225,7 @@ public class Character : MonoBehaviour
         {
             Mp = 0;
         }
-        mpBar.fillAmount = Mp / MaxMp;
+        heroBar.setMpBar(Mp / MaxMp);
     }
     public virtual void die() { }
 
@@ -373,8 +381,8 @@ public class Character : MonoBehaviour
     public void RPC_ShowHpBar(int posid)
     {
         if (NetworkManager.Instance.opponent.hero.Contains(this))
-            setHpBarColor(Color.red);
-        HeroBar.SetActive(true);
+            heroBar.setHpBarColor(Color.red);
+        HeroBarObject.SetActive(true);
        
 
         //GameObject camera = NetworkManager.Instance.getCamera(posid);
@@ -413,9 +421,7 @@ public class Character : MonoBehaviour
         HeroPlace = heroPlace;
 
     }
-    public void setHpBarColor(Color color) {
-        hpBar.color = color;
-    }
+   
     [PunRPC]
     public void RPC_HitPlayerCharacter(bool isHomeTeam) {
         hitopponentCharacter(isHomeTeam);

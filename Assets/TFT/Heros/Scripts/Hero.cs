@@ -80,12 +80,10 @@ public class Hero : Character, ISelectable
     // Start is called before the first frame update
     void Start()
     {
-       
-        hpBar = HeroBar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
-        mpBar = HeroBar.transform.GetChild(0).GetChild(1).GetComponent<Image>();
+
         animator = GetComponent<Animator>();
         //  HeroBar.transform.LookAt(NetworkManager.Instance.getCamera().transform);
-
+        heroBar = HeroBarObject.transform.GetChild(0).GetComponent<HpBar>();
         lastTransform = transform.parent.name;
 
         HeroStatusUI = HeroStatusUI.Instance;
@@ -105,8 +103,8 @@ public class Hero : Character, ISelectable
     // Update is called once per frame
     void Update()
     {
-        Vector3 targetPostition = new Vector3(HeroBar.transform.position.x, cameraPos.y, HeroBar.transform.position.x);
-        HeroBar.transform.LookAt(targetPostition);
+        Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.x);
+        HeroBarObject.transform.LookAt(targetPostition);
       //  Debug.Log()
        
 
@@ -216,8 +214,8 @@ public class Hero : Character, ISelectable
         targetEnemy = null;
         tag = "Character";
         gameObject.SetActive(true);
-        HeroBar.SetActive(false);
-        HeroBar.transform.rotation = Quaternion.identity;
+        HeroBarObject.SetActive(false);
+        HeroBarObject.transform.rotation = Quaternion.identity;
         StartCoroutine(resetStatusCount());
     }
     IEnumerator resetStatusCount() {
@@ -231,7 +229,7 @@ public class Hero : Character, ISelectable
         float recoverHealth = MaxHealth;
         if (Health < 0)
             recoverHealth += Health * -1;
-        photonView.RPC("RPC_Heal", PhotonTargets.All, recoverHealth,DamageType.No);
+        photonView.RPC("RPC_Heal", PhotonTargets.All, recoverHealth,(byte)DamageType.No);
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
         isEnemy = false;
         isAttackCooldown = false;

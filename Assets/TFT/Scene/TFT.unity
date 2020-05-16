@@ -9338,6 +9338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7c1aa2ec3badf4bb7dae8a9c3f8cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayersName: []
   playerId: 0
   posId: 0
   battlePosId: 0
@@ -9356,7 +9357,6 @@ MonoBehaviour:
   - {fileID: 885365091}
   - {fileID: 660996047}
   OpponentManagers: []
-  Cameras: []
   map: {fileID: 1890850773}
   selfGameBoardHero: []
   battleGameBoardHero: []
@@ -9400,7 +9400,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainGameManager: {fileID: 11400000, guid: 81ecca96d371141469ab785dc0afe819, type: 2}
-  PlayersName: []
   RankList: {fileID: 1619401683}
   PlayerInfo: {fileID: 1215823846615662876, guid: 0a5ffa2cdb330c244919293ca25c0338,
     type: 3}

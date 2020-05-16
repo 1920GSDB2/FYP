@@ -702,9 +702,11 @@ MonoBehaviour:
   LastHeroPlace: {fileID: 0}
   photonView: {fileID: 0}
   animator: {fileID: 5418375249830585694}
+  cameraPos: {x: 0, y: 0, z: 0}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
-  HeroBar: {fileID: 1592578679760100804}
+  HeroBarObject: {fileID: 1592578679760100804}
+  heroBar: {fileID: 0}
   bullet: {fileID: 0}
   networkPlaceId: 0
   negativeEffects: []
@@ -870,6 +872,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 0
     Name: Skill
+  - Type: 1
+    SynchronizeType: 0
+    Name: AttackSpeed
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -2540,6 +2545,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3082748687415496053}
     m_Modifications:
+    - target: {fileID: 1733852852825358323, guid: fa70520fd39f60d4b83f9756e96634d3,
+        type: 3}
+      propertyPath: m_Name
+      value: ItemList
+      objectReference: {fileID: 0}
     - target: {fileID: 6529561468463626486, guid: fa70520fd39f60d4b83f9756e96634d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2594,11 +2604,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1733852852825358323, guid: fa70520fd39f60d4b83f9756e96634d3,
-        type: 3}
-      propertyPath: m_Name
-      value: ItemList
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa70520fd39f60d4b83f9756e96634d3, type: 3}
