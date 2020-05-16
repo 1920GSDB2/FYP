@@ -9,7 +9,7 @@ public class FallenVirago : Hero
         tempHealth += 300;
         tempMaxHp += 300;
         photonView.RPC("RPC_SyncHeroAttribute", PhotonTargets.All, (byte)HeroAttribute.maxHp,MaxHealth+300);
-        photonView.RPC("RPC_Heal",PhotonTargets.All,300);
+        photonView.RPC("RPC_Heal",PhotonTargets.All,300f);
       
     }
     public override void resetStatus()
