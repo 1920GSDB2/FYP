@@ -19,24 +19,10 @@ public class HpBar : MonoBehaviour
     void Update()
     {
         if (damageColor.a > 0) {
-            damageColor.a -= 1 * Time.deltaTime;
+            damageColor.a -= 0.5f*Time.deltaTime;
             damageBar.color = damageColor;
         }
       
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            float a = hpBar.fillAmount;
-            a -= 0.2f;
-            setHpBarWithDamage(a/1);
-        }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            addShieldBar(0.2f);
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            reduceShieldBar(0.2f);
-        }
     }
     public void setHpBarWithDamage(float precentage) {
         damageBar.fillAmount = hpBar.fillAmount;
@@ -51,6 +37,10 @@ public class HpBar : MonoBehaviour
     {
         mpBar.fillAmount = precentage;
     }
+    public void setShieldBar(float precentage)
+    {
+        shieldBar.fillAmount = precentage;
+    }
     public void addShieldBar(float precentage)
     {
         shieldBar.fillAmount += precentage;
@@ -61,5 +51,9 @@ public class HpBar : MonoBehaviour
     public void setHpBarColor(Color color)
     {
        hpBar.color = color;
+    }
+    public float getShieldbarFillAmount()
+    {
+        return shieldBar.fillAmount;
     }
 }

@@ -268,7 +268,7 @@ namespace TFT
                 return calculateClosestDistance(battleGameBoardHero, heroPos);
             }
         }
-        public Character getEnemyIndexById(int placeId,bool isEnemy) {
+      /*  public Character getEnemyIndexById(int placeId,bool isEnemy) {
             if (isEnemy){
                 int index = selfGameBoardHero.FindIndex(x => x.networkPlaceId == placeId);
                 if(index!=-1)
@@ -280,7 +280,7 @@ namespace TFT
                   return opponent.hero[index];
             }
             return null;
-        }
+        }*/
         Character calculateClosestDistance(List<Character> targetHeros, Transform heroPos) {
             Character[] hero = targetHeros.ToArray<Character>();
 

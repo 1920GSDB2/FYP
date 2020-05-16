@@ -110,4 +110,5 @@ MonoBehaviour:
   - RPC_SyncHeroAttribute
   - RPC_castDieSkill
   - RPC_SetupPlayerName
+  - RPC_addShield
   DisableAutoOpenWizard: 1

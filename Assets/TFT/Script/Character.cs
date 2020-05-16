@@ -4,6 +4,7 @@ using UnityEngine;
 using TFT;
 using UnityEngine.UI;
 using System.IO;
+using System;
 
 public class Character : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Character : MonoBehaviour
     public float SkillPower { get; set; }
     public float PhysicalDefense { get; set; }
     public float MagicDefense { get; set; }
+    protected float Sheild;
     public bool isEnemy;
     public HeroState HeroState;
     public HeroPlace HeroPlace, LastHeroPlace;
@@ -36,6 +38,7 @@ public class Character : MonoBehaviour
     protected float MpRecoverRate=1;
     public List<NegativeEffect> negativeEffects=new List<NegativeEffect>();
     public float attackRange = 1.7f;
+   
 
     // Start is called before the first frame update
 
@@ -95,25 +98,31 @@ public class Character : MonoBehaviour
                 photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f* MpRecoverRate);
                 // Bullet b = PhotonNetwork.Instantiate(Path.Combine("Bullet", bullet.name), transform.position+Vector3.up*2, transform.rotation, 0).GetComponent<Bullet>();              
                 // b.setBullet(targetEnemy, AttackDamage, !isMirror);
-                //     photonView.RPC("RPC_Shoot", PhotonTargets.All,NetworkManager.Instance.battlePosId,targetEnemy.HeroPlace.PlaceId,targetEnemy.HeroPlace.gridY,
+                //     photonView.RPC("f", PhotonTargets.All,NetworkManager.Instance.battlePosId,targetEnemy.HeroPlace.PlaceId,targetEnemy.HeroPlace.gridY,
                 //       NetworkManager.Instance.playerId,NetworkManager.Instance.opponent.opponentId);
-                photonView.RPC("RPC_Shoot", PhotonTargets.All, targetEnemy.transform.position.x, targetEnemy.transform.position.z, NetworkManager.Instance.playerId, NetworkManager.Instance.opponent.opponentId);
+                photonView.RPC("RPC_Shoot", PhotonTargets.All,targetEnemy.photonView.viewID);
                 //targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
             }
         }
         // Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
 
     }
-    [PunRPC]
-    // public void RPC_Shoot(int battlePosId,int placeId,int YPos,int hostId,int guestId)
-    public void RPC_Shoot(float x, float z, int hostId, int guestId)
+    [PunRPC] 
+    public void RPC_Shoot(int id)
     {
         //processShoot(battlePosId,placeId,YPos,hostId,guestId);
-        processShoot(x, z, hostId, guestId);
+        processShoot(id);
     }
     // void processShoot(int battlePosId, int placeId, int YPos, int hostId, int guestId) {
-    void processShoot(float x, float z, int hostId, int guestId) {
-        Debug.Log(" photon prcess shot");
+    void processShoot(int id) {
+
+        
+        // Debug.Log("skill power " + (SkillPower * 0.5f * AttackDamage));      
+        Bullet b = Instantiate(bullet, transform.position + Vector3.up, transform.rotation).GetComponent<Bullet>();
+        Character target = PhotonView.Find(id).GetComponent<Character>();
+        b.setBullet(target, AttackDamage, isMirror);
+        Debug.Log("target "+target.name +" photon prcess shot");
+        /*
         if (NetworkManager.Instance.playerId == hostId || NetworkManager.Instance.playerId == guestId)
         {
             if (targetEnemy != null)
@@ -127,7 +136,7 @@ public class Character : MonoBehaviour
              if (YPos >= 4)
                  isEnemySide = true;
              else
-                 isEnemySide = false;*/
+                 isEnemySide = false;
             Bullet b = Instantiate(bullet, transform.position + Vector3.up, transform.rotation).GetComponent<Bullet>();
             Debug.Log(" watch player shoot");
             //  HeroPlace heroplace=NetworkManager.Instance.GetBattleHeroPlace(battlePosId, placeId, isEnemySide);
@@ -135,7 +144,8 @@ public class Character : MonoBehaviour
             b.setBullet(targetPos);
             //  b.setBullet(heroplace.transform.position);
 
-        }
+        } 
+        */
     }
     [PunRPC]
     public void RPC_TargetTakeDamage(float damage,byte damageType)
@@ -180,6 +190,11 @@ public class Character : MonoBehaviour
     public virtual void syncAdjustHp(float damage,DamageType type)
     {
         
+        if (damage < 0) {
+            if (Sheild > 0)
+                damage = sheildDefense(damage);
+        }
+      //  Debug.Log("Shield "+Sheild+" take DAmage "+damage);
             Health += damage;
         if(type!=DamageType.No)
         NetworkManager.Instance.showDamageText(damage.ToString(),type,transform.position);
@@ -206,6 +221,7 @@ public class Character : MonoBehaviour
         }
         
     }
+    
     [PunRPC]
     public void RPC_IncreaseMp(float index)
     {
@@ -226,6 +242,38 @@ public class Character : MonoBehaviour
             Mp = 0;
         }
         heroBar.setMpBar(Mp / MaxMp);
+    }
+
+    [PunRPC]
+    public void RPC_addShield(float index)
+    {
+        syncAddShield(index);
+    }
+    public void syncAddShield(float value)
+    {
+        Sheild += value;
+        heroBar.addShieldBar(value / MaxHealth);
+        Debug.Log(value / MaxHealth);
+    }
+    public float sheildDefense(float damage)
+    {
+
+        float basicSheild = Sheild;
+        Sheild += damage;
+
+        if (Sheild > 0)
+        {
+            float precentage = damage * -1 / basicSheild * heroBar.getShieldbarFillAmount();      
+            heroBar.reduceShieldBar(precentage);
+            return 0;
+        }
+        else
+        {
+            float remainDamage = Sheild;
+            Sheild = 0;
+            heroBar.setShieldBar(0);      
+            return remainDamage;
+        }
     }
     public virtual void die() { }
 
@@ -330,7 +378,11 @@ public class Character : MonoBehaviour
         else
             isEnemyPlace = true;// isEnemyPlace = false;
         HeroPlace heroPlace = NetworkManager.Instance.GetBattleHeroPlace(posId, placeId, isEnemyPlace);
-        StartCoroutine(RPC_FollowHeroPlace(heroPlace));
+        try
+        {
+            StartCoroutine(RPC_FollowHeroPlace(heroPlace));
+        }
+        catch (Exception e) { }
     }
     public IEnumerator RPC_FollowHeroPlace(HeroPlace step)
     {
