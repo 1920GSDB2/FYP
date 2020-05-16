@@ -5,9 +5,9 @@ public class IndomitableFighter : Hero
 {
     float tempAttack,tempAttackSpeed;
    
-    public override void syncAdjustHp(float damage)
+    public override void syncAdjustHp(float damage,DamageType type)
     {
-        base.syncAdjustHp(damage);
+        base.syncAdjustHp(damage,type);
         float basicAttack= AttackDamage -tempAttack;
         float basicAttackSpeed = AttackSpeed - tempAttackSpeed;
         float lostPrecentage =Mathf.Floor((1-Health / MaxHealth)*100);

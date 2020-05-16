@@ -14,7 +14,7 @@ public class BoobSkill : Aoe
                 //    Debug.Log("Collider " + other.name + " isEnemy " + target + " isAlly " + isAlly);
                 if (target != isAlly)
                 {
-                    other.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage);
+                    other.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage,(byte)DamageType.Magic);
                     //  Debug.Log("Stone Skill Hit enemy"+other.name);
                 }
             }

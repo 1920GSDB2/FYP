@@ -15,12 +15,12 @@ public class MeleeSkill : Skill
         if (type != ControlSkillType.No && type != null)
         {
             if(!isMirror)
-            target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage, (byte)type, duration);
+            target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage, (byte)type, duration,(byte)DamageType.Magic);
         }
         else {
             if (!isMirror)
             {
-                target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage);
+                target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage,(byte)DamageType.Magic);
                 Debug.Log("deal melee dmaage");
             }
         }

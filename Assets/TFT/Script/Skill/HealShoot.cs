@@ -10,7 +10,7 @@ public class HealShoot : Bullet
         {
            // Debug.Log("HIHISDIHJSDIASHDIUSADHAIUSDASDASDASD");
             if (canDamage)
-                target.GetComponent<PhotonView>().RPC("RPC_Heal", PhotonTargets.All, attackDamage);
+                target.GetComponent<PhotonView>().RPC("RPC_Heal", PhotonTargets.All, attackDamage,(byte)DamageType.Heal);
 
             Destroy(this.gameObject);
             //PhotonNetwork.Destroy(this.gameObject);

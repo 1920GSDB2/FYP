@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using System.Collections;
 using System.IO;
+using TMPro;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 
@@ -12,6 +13,7 @@ namespace TFT
     {
         public static NetworkManager Instance;
         public static PhotonView PhotonView;
+        
         public string[] PlayersName;
         public int playerId, posId, battlePosId;                 //Id for Networking
         private int focusPlayerId;
@@ -38,6 +40,9 @@ namespace TFT
         public List<Character> selfGameBoardHero = new List<Character>();
         public List<Character> battleGameBoardHero;
         TFTPlayerCharacter playerCharacter;
+        private static DamageText textPrefab;
+        private static GameObject canvas;
+        Camera currentCamera;
         public bool isHomeTeam { get; private set; }
         int waveFinishResponse;
 
@@ -50,6 +55,8 @@ namespace TFT
         {
             RankManager = RankManager.Instance;
             PhotonNetworkSetup();
+            textPrefab = Resources.Load<DamageText>("otherPrefabs/damageText");
+            canvas = GameObject.Find("Canvas");
         }
 
         void Update()
@@ -307,11 +314,24 @@ namespace TFT
             }
             return null;
         }
-        public GameObject getCamera(int id) {
-            if(isHomeTeam)
-                return PlayerArenas[id].GetComponent<PlayerArena>().Camera;
-            else
-                return PlayerArenas[id].GetComponent<PlayerArena>().enemyCamera;
+        public GameObject getCamera(int id)
+        {
+            if (isHomeTeam)
+            {
+                currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
+                return currentCamera.gameObject;
+            }
+            else {
+                currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().enemyCamera.GetComponent<Camera>();
+                return currentCamera.gameObject;
+            }
+        }
+        public void showDamageText(string damage,DamageType type,Vector3 position) {
+            DamageText text = Instantiate(textPrefab);
+            text.setText(damage, type);
+            Vector2 screenPosition = currentCamera.WorldToScreenPoint(position);
+            text.transform.SetParent(canvas.transform, false);
+            text.transform.position = screenPosition;
         }
         #region Set Player Opponent
         /// <summary>

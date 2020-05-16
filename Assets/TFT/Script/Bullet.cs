@@ -75,7 +75,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject == target.gameObject)
         {
             if (canDamage)
-                target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage);
+                target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage,(byte)DamageType.Physical);
 
             Destroy(this.gameObject);
         }

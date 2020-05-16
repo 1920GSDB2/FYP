@@ -21,7 +21,7 @@
         float reduceMp = targetEnemy.Mp / 2;
         float heal = reduceMp * 2.5f;
         targetEnemy.photonView.RPC("RPC_ReduceMp", PhotonTargets.All, reduceMp);
-        photonView.RPC("RPC_Heal", PhotonTargets.All, heal);
+        photonView.RPC("RPC_Heal", PhotonTargets.All, heal,(byte)DamageType.Heal);
     }
     public override void UseSkill()
     {

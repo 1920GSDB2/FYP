@@ -11,7 +11,7 @@ public class FearArrow : Bullet ,IFearSkill
         {
             if (canDamage)
             {
-                target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage,(byte)type,duration);
+                target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage,(byte)type,duration,(byte)DamageType.Magic);
 
             }
 

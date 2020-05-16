@@ -77,7 +77,7 @@ public class Character : MonoBehaviour
 
                 photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f*MpRecoverRate);
                 //GetComponent<PhotonView>().RPC("RPC_IncreaseMp", PhotonTargets.All,10);
-                targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
+                targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage,(byte)DamageType.Physical);
             }
         }
         //  Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
@@ -137,23 +137,26 @@ public class Character : MonoBehaviour
         }
     }
     [PunRPC]
-    public void RPC_TargetTakeDamage(float damage)
+    public void RPC_TargetTakeDamage(float damage,byte damageType)
     {
         if (Health > 0)
         {
-           // Debug.Log("call take damage Health " + Health);
-            syncAdjustHp(-damage);
+            // Debug.Log("call take damage Health " + Health);
+            DamageType type = (DamageType)damageType;
+            syncAdjustHp(-damage,type);
         }
     }
     [PunRPC]
-    public void RPC_TargetTakeDamage(float damage,byte controlType,float duration)
+    public void RPC_TargetTakeDamage(float damage,byte controlType,float duration, byte damageType)
     {
-        ControlSkillType type=(ControlSkillType)controlType;
+     
 
         if (Health > 0)
         {
-            syncAdjustHp(-damage);
-            addNegativeEffect(type, duration);
+            ControlSkillType control = (ControlSkillType)controlType;
+            DamageType _damageType = (DamageType)damageType;
+            syncAdjustHp(-damage, _damageType);
+            addNegativeEffect(control, duration);
         }
     }
     public void addNegativeEffect(ControlSkillType type,float duration) {
@@ -167,19 +170,22 @@ public class Character : MonoBehaviour
         }
     }
     [PunRPC]
-    public void RPC_Heal(float index)
+    public void RPC_Heal(float index,DamageType damageType)
     {
-        syncAdjustHp(index);
+        DamageType tpye = (DamageType)damageType;
+        syncAdjustHp(index, tpye);
     //    Debug.Log("Heal " + index);
     }
-    public virtual void syncAdjustHp(float damage)
+    public virtual void syncAdjustHp(float damage,DamageType type)
     {
         
             Health += damage;
+        if(type!=DamageType.No)
+        NetworkManager.Instance.showDamageText(damage.ToString(),type,transform.position);
             if (Health > MaxHealth)
                 Health = MaxHealth;
-        if (Health < 0)
-            Health = 0;
+            if (Health < 0)
+               Health = 0;
             if (Health <= 0)
             {
             //    Debug.Log("before call Die " + name + " state " + HeroState + "Health "+Health+"damage "+damage);
@@ -371,7 +377,7 @@ public class Character : MonoBehaviour
         HeroBar.SetActive(true);
        
 
-        GameObject camera = NetworkManager.Instance.getCamera(posid);
+        //GameObject camera = NetworkManager.Instance.getCamera(posid);
         if (NetworkManager.Instance.isHomeTeam)
         {
             cameraPos = NetworkManager.Instance.getCamera(posid).transform.position;

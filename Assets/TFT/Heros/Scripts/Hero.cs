@@ -56,8 +56,7 @@ public class Hero : Character, ISelectable
     public int BasicCritcalChance;
     [Range(1, 4)]
     public int BasicAttackRange;
-    public static GameObject testCanvas;
-    public static TextMeshProUGUI text;
+
     public GameObject testSkill;
     // bool isAttackCooldown;
     string lastTransform;
@@ -73,7 +72,7 @@ public class Hero : Character, ISelectable
         if (animator == null)
             animator = GetComponent<Animator>();
         photonView = GetComponent<PhotonView>();
-        text = Resources.Load<TextMeshProUGUI>("otherPrefabs/damageText");
+      
         // PhotonNetwork.sendRate = 30;
         //  PhotonNetwork.sendRateOnSerialize = 30;
 
@@ -81,7 +80,7 @@ public class Hero : Character, ISelectable
     // Start is called before the first frame update
     void Start()
     {
-        testCanvas = GameObject.Find("Canvas");
+       
         hpBar = HeroBar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
         mpBar = HeroBar.transform.GetChild(0).GetChild(1).GetComponent<Image>();
         animator = GetComponent<Animator>();
@@ -135,12 +134,7 @@ public class Hero : Character, ISelectable
             //  targetEnemy = testHero;
             //  HeroBar.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
            
-            TextMeshProUGUI a= Instantiate(text);
-        
-            Camera camera = NetworkManager.Instance.getCamera(NetworkManager.Instance.posId).GetComponent<Camera>();
-            Vector2 screenPosition = camera.WorldToScreenPoint(transform.position);
-            a.transform.SetParent(testCanvas.transform,false);
-            a.transform.position = screenPosition;
+           
 
             //   photonView.RPC("test", PhotonTargets.All);
             //  photonView.RPC("RPC_Animation", PhotonTargets.All);
@@ -237,7 +231,7 @@ public class Hero : Character, ISelectable
         float recoverHealth = MaxHealth;
         if (Health < 0)
             recoverHealth += Health * -1;
-        photonView.RPC("RPC_Heal", PhotonTargets.All, recoverHealth);
+        photonView.RPC("RPC_Heal", PhotonTargets.All, recoverHealth,DamageType.No);
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
         isEnemy = false;
         isAttackCooldown = false;

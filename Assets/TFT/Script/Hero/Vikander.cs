@@ -17,13 +17,13 @@ public class Vikander : Hero
         StartCoroutine(skillduration());
 
     }
-    public override void syncAdjustHp(float damage)
+    public override void syncAdjustHp(float damage,DamageType type)
     {
         if (isInvincible) {
             if (damage < 0)
                 damage = 0;
         }
-        base.syncAdjustHp(damage);
+        base.syncAdjustHp(damage,type);
         
     }
     IEnumerator skillduration() {

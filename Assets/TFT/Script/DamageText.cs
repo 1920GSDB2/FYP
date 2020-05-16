@@ -15,8 +15,24 @@ public class DamageText : MonoBehaviour
         Destroy(gameObject, clipInfos[0].clip.length);
   
     }
-    public void setText(string text) {
+  
+    public void setText(string text,DamageType type) {
         damageText.text = text;
+        switch (type) {
+            case DamageType.Magic:
+                damageText.faceColor = Color.blue;
+                Debug.Log("blue " + type);
+                break;
+            case DamageType.Physical:
+                damageText.faceColor = Color.red;
+                Debug.Log("Red " + type);
+                break;
+            case DamageType.TrueDamage:
+                damageText.faceColor = Color.white;
+                Debug.Log("white " + type);
+                break;
+        }
+       
     }
 
 }

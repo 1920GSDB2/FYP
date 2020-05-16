@@ -120,3 +120,10 @@ public enum ControlSkillType {
     Stun,
     Fear
 }
+public enum DamageType {
+    No,
+    Magic,
+    Physical,
+    TrueDamage,
+    Heal
+}
