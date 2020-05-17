@@ -20,7 +20,7 @@ public class Monster : Character
       
         animator = GetComponent<Animator>();
     }
-   
+    
     public override void die()
     {
         if (photonView.isMine)
