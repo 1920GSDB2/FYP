@@ -62,9 +62,7 @@ public class Hero : Character, ISelectable
     string lastTransform;
 
     //  List<Node> path;
-    public virtual void UseSkill() {
-        photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
-    }
+   
     public virtual void setAttribute() {}
 
     private void Awake()
@@ -98,95 +96,7 @@ public class Hero : Character, ISelectable
         SelectingBox.SetActive(false);
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.x);
-        HeroBarObject.transform.LookAt(targetPostition);
-      //  Debug.Log()
-       
-
-        switch (HeroState) {
-            case HeroState.Idle: idle();
-                break;
-            case HeroState.Fight:
-                if (targetEnemy.Health <= 0)
-                {
-                    targetDie();
-                    HeroState = HeroState.Idle;
-                }
-                else
-                {
-                    fight();
-                }
-                break;
-            case HeroState.Control: handleControl();
-                break;
-        }
-       
-      
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            syncAddShield(50f);
-            //  targetEnemy = testHero;
-            //  HeroBar.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
-
-
-
-            //   photonView.RPC("test", PhotonTargets.All);
-            //  photonView.RPC("RPC_Animation", PhotonTargets.All);
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            syncAdjustHp(-30f,DamageType.No);
-          //  photonView.RPC("RPC_test", PhotonTargets.Others,photonView.viewID);
-        }
-    }
    
-    public void idle() {
-        if (targetEnemy == null)
-        {
-            targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(!isEnemy, transform);
-            if (targetEnemy != null)
-                photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, targetEnemy.photonView.viewID);
-        }
-        else
-        {
-            HeroState = HeroState.Walking;
-            FollowEnemy();
-        }
-    }
-    public void fight() {
-        if (Mp >= MaxMp)
-        {
-            //  photonView.RPC("RPC_userSkill", PhotonTargets.All);
-            UseSkill();
-        }
-        else if (!isAttackCooldown)
-        {
-            if (targetEnemy.Health <= 0)
-            {
-                targetDie();
-                HeroState = HeroState.Idle;
-            }
-            else
-            {
-                // isAttackCooldown = true;
-                StartCoroutine(basicAttackCoolDown());
-                photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
-              //  animator.SetTrigger("Attack");
-                transform.LookAt(targetEnemy.transform);
-            }
-        }
-    }
-    public void handleControl() {
-        
-    }
-    public virtual void targetDie() {
-        targetEnemy = null;
-    }
     [PunRPC]
     public void RPC_userSkill() {
         UseSkill();
@@ -244,29 +154,7 @@ public class Hero : Character, ISelectable
     {
         networkPlaceId = id;
     }
-    [PunRPC]
-    public void RPC_SyncTargetEnemy(int id)
-    {
-        syncTargetEnemy(id);
-    }
-
-    void syncTargetEnemy(int id) {
-
-        //targetEnemy = NetworkManager.Instance.getEnemyIndexById(placeId, isEnemy);
-        targetEnemy = PhotonView.Find(id).GetComponent<Character>();
-        /*  if (isEnemy)
-          {
-              index = NetworkManager.Instance.opponent.hero.FindIndex(x => x.networkPlaceId == posId);
-              if (index != -1)
-                  targetEnemy = NetworkManager.Instance.opponent.hero[index];
-          }
-          else
-          {
-              index = NetworkManager.Instance.selfGameBoardHero.FindIndex(x => x.networkPlaceId == posId);
-              if(index!=-1)
-              targetEnemy = NetworkManager.Instance.selfGameBoardHero[index];
-          }*/
-    }
+   
     [PunRPC]
     public void RPC_castUnitTargetSkill(int id)
     {
