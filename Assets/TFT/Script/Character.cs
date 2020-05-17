@@ -38,38 +38,6 @@ public class Character : MonoBehaviour
     protected float MpRecoverRate=1;
     public List<NegativeEffect> negativeEffects=new List<NegativeEffect>();
     public float attackRange = 1.7f;
-   
-
-    // Start is called before the first frame update
-
-    //  hpBar = HeroBar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
-    // mpBar = HeroBar.transform.GetChild(0).GetChild(1).GetComponent<Image>();
-
-
-    // Update is called once per frame
-    /*void Update()
-    {
-        Vector3 targetPostition = new Vector3(HeroBar.transform.position.x, cameraPos.y, HeroBar.transform.position.x);
-        HeroBar.transform.LookAt(targetPostition);
-        if (HeroState == HeroState.Idle)
-        {
-            if (targetEnemy == null)
-                targetEnemy = NetworkManager.Instance.getCloestEnemyTarget(isEnemy, transform);
-            else
-            {
-                HeroState = HeroState.Walking;
-                followEnemy();
-            }
-
-        }
-        if (HeroState == HeroState.Fight)
-        {
-            if (!isAttackCooldown)
-                photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
-            animator.SetTrigger("Attack");
-
-        }
-    }*/
     public virtual void attackTarget()
     {
 
@@ -78,33 +46,22 @@ public class Character : MonoBehaviour
         {
             if (targetEnemy != null && targetEnemy.Health > 0)
             {
-
                 photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f*MpRecoverRate);
-                //GetComponent<PhotonView>().RPC("RPC_IncreaseMp", PhotonTargets.All,10);
                 targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage,(byte)DamageType.Physical);
             }
         }
-        //  Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
-
     }
     public void shootTarget()
     {
-
         //Debug.Log(targetEnemy.name + " Take Damage");
         if (!isMirror)
         {
             if (targetEnemy != null)
             {
                 photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f* MpRecoverRate);
-                // Bullet b = PhotonNetwork.Instantiate(Path.Combine("Bullet", bullet.name), transform.position+Vector3.up*2, transform.rotation, 0).GetComponent<Bullet>();              
-                // b.setBullet(targetEnemy, AttackDamage, !isMirror);
-                //     photonView.RPC("f", PhotonTargets.All,NetworkManager.Instance.battlePosId,targetEnemy.HeroPlace.PlaceId,targetEnemy.HeroPlace.gridY,
-                //       NetworkManager.Instance.playerId,NetworkManager.Instance.opponent.opponentId);
                 photonView.RPC("RPC_Shoot", PhotonTargets.All,targetEnemy.photonView.viewID);
-                //targetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage);
             }
         }
-        // Debug.Log(targetEnemy.name+" have hp: "+ targetEnemy.Health);
 
     }
     [PunRPC] 
@@ -122,37 +79,12 @@ public class Character : MonoBehaviour
         Character target = PhotonView.Find(id).GetComponent<Character>();
         b.setBullet(target, AttackDamage, isMirror);
         Debug.Log("target "+target.name +" photon prcess shot");
-        /*
-        if (NetworkManager.Instance.playerId == hostId || NetworkManager.Instance.playerId == guestId)
-        {
-            if (targetEnemy != null)
-            {
-                Bullet b = Instantiate(bullet, transform.position + Vector3.up, transform.rotation).GetComponent<Bullet>();
-                b.setBullet(targetEnemy.gameObject, AttackDamage, !isMirror);
-            }
-        }
-        else {
-            /* bool isEnemySide;
-             if (YPos >= 4)
-                 isEnemySide = true;
-             else
-                 isEnemySide = false;
-            Bullet b = Instantiate(bullet, transform.position + Vector3.up, transform.rotation).GetComponent<Bullet>();
-            Debug.Log(" watch player shoot");
-            //  HeroPlace heroplace=NetworkManager.Instance.GetBattleHeroPlace(battlePosId, placeId, isEnemySide);
-            Vector3 targetPos = new Vector3(x, b.transform.position.y, z);
-            b.setBullet(targetPos);
-            //  b.setBullet(heroplace.transform.position);
-
-        } 
-        */
     }
     [PunRPC]
     public void RPC_TargetTakeDamage(float damage,byte damageType)
     {
         if (Health > 0)
         {
-            // Debug.Log("call take damage Health " + Health);
             DamageType type = (DamageType)damageType;
             syncAdjustHp(-damage,type);
         }
@@ -160,8 +92,6 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_TargetTakeDamage(float damage,byte controlType,float duration, byte damageType)
     {
-     
-
         if (Health > 0)
         {
             ControlSkillType control = (ControlSkillType)controlType;
