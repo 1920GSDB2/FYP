@@ -14,6 +14,7 @@ public class ThunderSkill : Aoe
                 if (target != isAlly)
                 {
                     other.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage,(byte)DamageType.Magic);
+                    
                 }
             }
         }
