@@ -35,7 +35,9 @@ public class NegativeEffectManager : MonoBehaviour
             StopCoroutine(StunIEnumerator);
         }
         SlientIEnumerator = StunExcue(_time);
+        Debug.Log("Stun name "+Character.name);
         StartCoroutine(StunIEnumerator);
+
     }
 
     public void Knock(float _time)
@@ -71,9 +73,10 @@ public class NegativeEffectManager : MonoBehaviour
 
     public IEnumerator SlientExcue(float _time)
     {
+        Debug.Log("    finish     ");
         Character.isSlience = true;
         yield return new WaitForSeconds(_time);
-        Character.isSlience = false;
+        Character.isSlience = false;        
     }
 
     public IEnumerator StunExcue(float _time)

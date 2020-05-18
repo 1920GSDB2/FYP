@@ -6,17 +6,20 @@ public class ThunderSkill : Aoe
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (!isMirror)
-        {
-            if (other.tag == "BattleCharacter")
-            {
-                bool target = other.GetComponent<Character>().isEnemy;
-                if (target != isAlly)
-                {
-                    other.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage,(byte)DamageType.Magic);
-                    
-                }
-            }
+        Character Target = other.GetComponent<Character>();
+        if (other.tag == "BattleCharacter"){
+                
+              bool target = other.GetComponent<Character>().isEnemy;
+              if (target != isAlly)
+              {
+                    if (!isMirror)
+                    {
+                        Target.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage, (byte)DamageType.Magic);
+                    }
+                    Target.AddNegativeEffect(2f, Target.NegativeEffectManager.Stun);
+             }
+                       
         }
+      
     }
 }
