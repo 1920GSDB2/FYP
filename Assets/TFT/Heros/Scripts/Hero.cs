@@ -39,24 +39,6 @@ public class Hero : Character, ISelectable
     public Skill skill;
     public EquipmentManager EquipmentManager;
   
-    
-
-    [Range(0, 10)]
-    public int BasicHealth;
-    [Range(0, 10)]
-    public int BasicAttackDamage;
-    [Range(0, 10)]
-    public int BasicAttackSpeed;
-    [Range(0, 10)]
-    public int BasicSkillPower;
-    [Range(0, 10)]
-    public int BasicPhysicalDefense;
-    [Range(0, 10)]
-    public int BasicMagicDefense;
-    [Range(0, 10)]
-    public int BasicCritcalChance;
-    [Range(1, 4)]
-    public int BasicAttackRange;   
     public GameObject testSkill;
     // bool isAttackCooldown;
     string lastTransform;
@@ -104,7 +86,7 @@ public class Hero : Character, ISelectable
     public void resetAttribute() {
        
         MaxHealth = 100 * BasicHealth;
-        MaxMp = 100;
+        MaxMp = MaxMana;
         Health = MaxHealth;
         AttackDamage = 10 * BasicAttackDamage;
         AttackSpeed = 0.1f * BasicAttackSpeed;
@@ -122,7 +104,7 @@ public class Hero : Character, ISelectable
     }
     [PunRPC]
     public void RPC_ResetStatus() {
-        targetEnemy = null;
+        TargetEnemy = null;
         tag = "Character";
         gameObject.SetActive(true);
         HeroBarObject.SetActive(false);
@@ -242,7 +224,7 @@ public class Hero : Character, ISelectable
     }
     private void FixedUpdate()
     {
-        if (HeroStatus == HeroStatus.Fight && targetEnemy == null)
+        if (HeroStatus == HeroStatus.Fight && TargetEnemy == null)
         {
             //EnemyDetecter();
         }
@@ -252,7 +234,7 @@ public class Hero : Character, ISelectable
     {
         LayerMask mask = LayerMask.GetMask("Enemy");
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5, mask);
-        targetEnemy = hitColliders[0].GetComponent<Hero>();
+        TargetEnemy = hitColliders[0].GetComponent<Hero>();
         //Debug.Log(hitColliders.Length);
     }
     /// <summary>

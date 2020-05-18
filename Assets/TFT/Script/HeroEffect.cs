@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Collections;
+using UnityEngine;
 
 [Serializable]
 public class NegativeEffect {
@@ -10,4 +12,5 @@ public class NegativeEffect {
         this.type = type;
         this.canAction = canAction;
     }
+    
 }
