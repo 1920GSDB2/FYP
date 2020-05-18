@@ -18,7 +18,7 @@ public class GodOfWizard : Hero
     public void godOfWizardAttack() {
         if (!isMirror)
         {
-            if (targetEnemy != null)
+            if (TargetEnemy != null)
             {
                 photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f * MpRecoverRate);
                 Character target = NetworkManager.Instance.getRandomCharacter(isEnemy);

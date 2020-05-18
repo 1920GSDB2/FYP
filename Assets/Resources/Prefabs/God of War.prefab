@@ -2267,6 +2267,7 @@ GameObject:
   - component: {fileID: 8583358078659099278}
   - component: {fileID: 205678560874124076}
   - component: {fileID: 963255166}
+  - component: {fileID: -7814692053294375443}
   m_Layer: 8
   m_Name: God of War
   m_TagString: Character
@@ -2325,7 +2326,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6b4043f0b8dd64cab576efbce7a521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  Sheild: 0
   MaxMp: 0
+  BasicHealth: 8
+  MaxMana: 100
+  Mana: 0
+  BasicAttackDamage: 6
+  BasicAttackSpeed: 4
+  BasicSkillPower: 5
+  BasicPhysicalDefense: 6
+  BasicMagicDefense: 6
+  BasicCritcalChance: 0
+  BasicAttackRange: 1
+  isStun: 0
+  isSlience: 0
+  isBlind: 0
   isEnemy: 0
   HeroState: 0
   HeroPlace: {fileID: 0}
@@ -2333,12 +2349,13 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 596333827820042086}
   cameraPos: {x: 0, y: 0, z: 0}
-  targetEnemy: {fileID: 0}
+  TargetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 4642793648654919351}
   bullet: {fileID: 0}
   networkPlaceId: 0
   negativeEffects: []
+  NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 4486286733742409322}
@@ -2348,14 +2365,6 @@ MonoBehaviour:
   HeroLevel: 0
   skill: {fileID: 963255166}
   EquipmentManager: {fileID: 0}
-  BasicHealth: 8
-  BasicAttackDamage: 6
-  BasicAttackSpeed: 4
-  BasicSkillPower: 5
-  BasicPhysicalDefense: 6
-  BasicMagicDefense: 6
-  BasicCritcalChance: 0
-  BasicAttackRange: 1
   testSkill: {fileID: 0}
 --- !u!65 &3596017418675098208
 BoxCollider:
@@ -2532,6 +2541,18 @@ MonoBehaviour:
   castSkillEffect: {fileID: 0}
   hitEffect: {fileID: 6505566156145793958, guid: a772e46a6fa7fed43a997ea959f336b0,
     type: 3}
+--- !u!114 &-7814692053294375443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621005596798848626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffef3345541a3f428fdc652a9e21d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4486286733742409322
 GameObject:
   m_ObjectHideFlags: 0

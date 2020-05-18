@@ -9,6 +9,6 @@ public class KiraMage : Hero
 
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
         //  photonView.RPC("RPC_castUnitTargetSkill", PhotonTargets.All, targetEnemy.transform.position.x, targetEnemy.transform.position.z, NetworkManager.Instance.playerId, NetworkManager.Instance.opponent.opponentId);
-        photonView.RPC("RPC_castUnitTargetSkill", PhotonTargets.All,targetEnemy.photonView.viewID);
+        photonView.RPC("RPC_castUnitTargetSkill", PhotonTargets.All,TargetEnemy.photonView.viewID);
     }
 }

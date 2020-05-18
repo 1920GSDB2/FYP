@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 1809952395852691600}
   - component: {fileID: -4130364975682276890}
   - component: {fileID: 717764228}
+  - component: {fileID: -1038885150992891795}
   m_Layer: 8
   m_Name: God of Wizard
   m_TagString: Character
@@ -259,7 +260,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ba9e50a2a97e945829386a7dc3c882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  Sheild: 0
   MaxMp: 0
+  BasicHealth: 6
+  MaxMana: 100
+  Mana: 0
+  BasicAttackDamage: 3
+  BasicAttackSpeed: 1
+  BasicSkillPower: 7
+  BasicPhysicalDefense: 8
+  BasicMagicDefense: 8
+  BasicCritcalChance: 0
+  BasicAttackRange: 3
+  isStun: 0
+  isSlience: 0
+  isBlind: 0
   isEnemy: 0
   HeroState: 0
   HeroPlace: {fileID: 0}
@@ -267,12 +283,13 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 1532326547725252060}
   cameraPos: {x: 0, y: 0, z: 0}
-  targetEnemy: {fileID: 0}
+  TargetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 4476643494026529698}
   bullet: {fileID: 5594288182232518669, guid: 5f1b1c1b72275d6418fca77e50b74ad3, type: 3}
   networkPlaceId: 0
   negativeEffects: []
+  NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 2726918843920948053}
@@ -282,14 +299,6 @@ MonoBehaviour:
   HeroLevel: 0
   skill: {fileID: 717764228}
   EquipmentManager: {fileID: 0}
-  BasicHealth: 6
-  BasicAttackDamage: 3
-  BasicAttackSpeed: 1
-  BasicSkillPower: 7
-  BasicPhysicalDefense: 8
-  BasicMagicDefense: 8
-  BasicCritcalChance: 0
-  BasicAttackRange: 3
   testSkill: {fileID: 0}
 --- !u!114 &1532326547725252057
 MonoBehaviour:
@@ -462,6 +471,18 @@ MonoBehaviour:
   castSkillEffect: {fileID: 0}
   hitEffect: {fileID: 2114138266479983155, guid: 063b02ed04cbcda4d970157e745f6e11,
     type: 3}
+--- !u!114 &-1038885150992891795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5526114339504206546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffef3345541a3f428fdc652a9e21d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5526114339538564155
 GameObject:
   m_ObjectHideFlags: 0

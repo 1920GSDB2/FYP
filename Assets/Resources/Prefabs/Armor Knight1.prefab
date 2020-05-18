@@ -92,8 +92,9 @@ GameObject:
   - component: {fileID: 4021826596382144695}
   - component: {fileID: 4630029595765433278}
   - component: {fileID: 6975162160661645189}
+  - component: {fileID: 5739927974575047651}
   m_Layer: 8
-  m_Name: Armor Knight
+  m_Name: Armor Knight1
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,19 +130,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f33c7330657d964b8cfa6bbccc19b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  Sheild: 0
   MaxMp: 0
+  BasicHealth: 6
+  MaxMana: 100
+  Mana: 0
+  BasicAttackDamage: 6
+  BasicAttackSpeed: 4
+  BasicSkillPower: 6
+  BasicPhysicalDefense: 5
+  BasicMagicDefense: 5
+  BasicCritcalChance: 0
+  BasicAttackRange: 0
+  isStun: 0
+  isSlience: 0
+  isBlind: 0
   isEnemy: 0
   HeroState: 0
   HeroPlace: {fileID: 0}
   LastHeroPlace: {fileID: 0}
   photonView: {fileID: 0}
   animator: {fileID: 4630029595765433278}
-  targetEnemy: {fileID: 0}
+  cameraPos: {x: 0, y: 0, z: 0}
+  TargetEnemy: {fileID: 0}
   testHero: {fileID: 0}
-  HeroBar: {fileID: 5330394954872394883}
+  HeroBarObject: {fileID: 0}
   bullet: {fileID: 0}
   networkPlaceId: 0
   negativeEffects: []
+  NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 461068480251961582}
@@ -151,14 +169,6 @@ MonoBehaviour:
   HeroLevel: 0
   skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
-  BasicHealth: 6
-  BasicAttackDamage: 6
-  BasicAttackSpeed: 4
-  BasicSkillPower: 6
-  BasicPhysicalDefense: 5
-  BasicMagicDefense: 5
-  BasicCritcalChance: 0
-  BasicAttackRange: 0
   testSkill: {fileID: 0}
 --- !u!65 &4591463669310842892
 BoxCollider:
@@ -311,6 +321,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Equipments: []
   ItemList: {fileID: 3668437870114317899}
+--- !u!114 &5739927974575047651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4412773390188736614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffef3345541a3f428fdc652a9e21d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &130960309823532368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -435,12 +457,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44de83aff51977a479f23105dc7f114e, type: 3}
---- !u!1 &5330394954872394883 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5199439087991323091, guid: 44de83aff51977a479f23105dc7f114e,
-    type: 3}
-  m_PrefabInstance: {fileID: 130960309823532368}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5330394954872394882 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,
@@ -454,6 +470,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4412773390188736612}
     m_Modifications:
+    - target: {fileID: 4255537084011210875, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
+        type: 3}
+      propertyPath: m_Name
+      value: paladin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255537084011210875, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4255537084011050075, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -523,16 +549,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4255537084011210875, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
-        type: 3}
-      propertyPath: m_Name
-      value: paladin
-      objectReference: {fileID: 0}
-    - target: {fileID: 4255537084011210875, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4255537084011210797, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
         type: 3}
@@ -939,6 +955,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4412773390188736612}
     m_Modifications:
+    - target: {fileID: 1733852852825358323, guid: fa70520fd39f60d4b83f9756e96634d3,
+        type: 3}
+      propertyPath: m_Name
+      value: ItemList
+      objectReference: {fileID: 0}
     - target: {fileID: 6529561468463626486, guid: fa70520fd39f60d4b83f9756e96634d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -993,11 +1014,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1733852852825358323, guid: fa70520fd39f60d4b83f9756e96634d3,
-        type: 3}
-      propertyPath: m_Name
-      value: ItemList
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa70520fd39f60d4b83f9756e96634d3, type: 3}

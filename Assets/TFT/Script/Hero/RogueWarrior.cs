@@ -16,7 +16,7 @@ public class RogueWarrior : Hero
     }
     public void SkillAttack() {
             if(!isMirror)
-            photonView.RPC("RPC_MeleeSkill", PhotonTargets.All, targetEnemy.photonView.viewID);
+            photonView.RPC("RPC_MeleeSkill", PhotonTargets.All, TargetEnemy.photonView.viewID);
     }
    
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1429418213}
   - component: {fileID: 1429418212}
   - component: {fileID: 1270944744}
+  - component: {fileID: 8647302939190912509}
   m_Layer: 0
   m_Name: WEREWOLF
   m_TagString: Character
@@ -67,7 +68,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c0462131efb9f41bfde2b1683c415f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  Sheild: 0
   MaxMp: 0
+  BasicHealth: 0
+  MaxMana: 100
+  Mana: 0
+  BasicAttackDamage: 0
+  BasicAttackSpeed: 0
+  BasicSkillPower: 0
+  BasicPhysicalDefense: 0
+  BasicMagicDefense: 0
+  BasicCritcalChance: 0
+  BasicAttackRange: 0
+  isStun: 0
+  isSlience: 0
+  isBlind: 0
   isEnemy: 1
   HeroState: 0
   HeroPlace: {fileID: 0}
@@ -75,12 +91,13 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 0}
   cameraPos: {x: 0, y: 0, z: 0}
-  targetEnemy: {fileID: 0}
+  TargetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 5199439085954230556}
   bullet: {fileID: 0}
   networkPlaceId: 0
   negativeEffects: []
+  NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
 --- !u!114 &1429418212
 MonoBehaviour:
@@ -122,6 +139,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.84, y: 3.3, z: 1}
   m_Center: {x: 0, y: 1.66, z: 0}
+--- !u!114 &8647302939190912509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4160360758192116711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffef3345541a3f428fdc652a9e21d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6686393752596363228
 GameObject:
   m_ObjectHideFlags: 0

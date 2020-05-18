@@ -582,6 +582,7 @@ GameObject:
   - component: {fileID: 2892064389670478815}
   - component: {fileID: 1399874454800889325}
   - component: {fileID: 387801648455012079}
+  - component: {fileID: -2211790569997504896}
   m_Layer: 8
   m_Name: Kira Mage
   m_TagString: Character
@@ -641,7 +642,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77dd70fc201a7164c926a665023a9d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  Sheild: 0
   MaxMp: 0
+  BasicHealth: 5
+  MaxMana: 100
+  Mana: 0
+  BasicAttackDamage: 3
+  BasicAttackSpeed: 4
+  BasicSkillPower: 7
+  BasicPhysicalDefense: 4
+  BasicMagicDefense: 5
+  BasicCritcalChance: 0
+  BasicAttackRange: 3
+  isStun: 0
+  isSlience: 0
+  isBlind: 0
   isEnemy: 0
   HeroState: 0
   HeroPlace: {fileID: 0}
@@ -649,12 +665,13 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 0}
   cameraPos: {x: 0, y: 0, z: 0}
-  targetEnemy: {fileID: 0}
+  TargetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 2135467413981753037}
   bullet: {fileID: 7168150683983435948, guid: f2a41c59fb3591a4998570f294398d87, type: 3}
   networkPlaceId: 0
   negativeEffects: []
+  NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 99125584472732209}
@@ -664,14 +681,6 @@ MonoBehaviour:
   HeroLevel: 0
   skill: {fileID: 7526244059550853004}
   EquipmentManager: {fileID: 0}
-  BasicHealth: 5
-  BasicAttackDamage: 3
-  BasicAttackSpeed: 4
-  BasicSkillPower: 7
-  BasicPhysicalDefense: 4
-  BasicMagicDefense: 5
-  BasicCritcalChance: 0
-  BasicAttackRange: 3
   testSkill: {fileID: 0}
 --- !u!114 &7526244059550853004
 MonoBehaviour:
@@ -857,6 +866,18 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &-2211790569997504896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4790525165465923861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffef3345541a3f428fdc652a9e21d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4829597995529003369
 GameObject:
   m_ObjectHideFlags: 0

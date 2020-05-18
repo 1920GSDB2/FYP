@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 6872868726014993119}
   - component: {fileID: -6952417634600971313}
   - component: {fileID: 1112836115}
+  - component: {fileID: 7710003690621531664}
   m_Layer: 8
   m_Name: Heavy Crossbowman
   m_TagString: Character
@@ -151,7 +152,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d985d2d4d99620743aa0e33ec64840a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  Sheild: 0
   MaxMp: 0
+  BasicHealth: 6
+  MaxMana: 100
+  Mana: 0
+  BasicAttackDamage: 5
+  BasicAttackSpeed: 5
+  BasicSkillPower: 7
+  BasicPhysicalDefense: 4
+  BasicMagicDefense: 4
+  BasicCritcalChance: 0
+  BasicAttackRange: 3
+  isStun: 0
+  isSlience: 0
+  isBlind: 0
   isEnemy: 0
   HeroState: 0
   HeroPlace: {fileID: 0}
@@ -159,12 +175,13 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 4877712460160504091}
   cameraPos: {x: 0, y: 0, z: 0}
-  targetEnemy: {fileID: 0}
+  TargetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 3122561197029365879}
   bullet: {fileID: 7168150683983435948, guid: f2a41c59fb3591a4998570f294398d87, type: 3}
   networkPlaceId: 0
   negativeEffects: []
+  NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 2630317763280131601}
@@ -174,14 +191,6 @@ MonoBehaviour:
   HeroLevel: 0
   skill: {fileID: 1112836115}
   EquipmentManager: {fileID: 0}
-  BasicHealth: 6
-  BasicAttackDamage: 5
-  BasicAttackSpeed: 5
-  BasicSkillPower: 7
-  BasicPhysicalDefense: 4
-  BasicMagicDefense: 4
-  BasicCritcalChance: 0
-  BasicAttackRange: 3
   testSkill: {fileID: 0}
 --- !u!65 &504693422554299968
 BoxCollider:
@@ -367,6 +376,18 @@ MonoBehaviour:
   castSkillEffect: {fileID: 0}
   hitEffect: {fileID: 4928604066037111994, guid: 3f078a3641db9c24a94f580c5b16aedd,
     type: 3}
+--- !u!114 &7710003690621531664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4190912154386403428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffef3345541a3f428fdc652a9e21d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9153587994509443314
 GameObject:
   m_ObjectHideFlags: 0
