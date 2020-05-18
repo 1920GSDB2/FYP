@@ -66,7 +66,7 @@ namespace TFT
         private void ButtonClick()
         {
             //Debug.Log("Button Click");
-            for(int i = 0; i < NetworkManager.PlayersName.Length; i++)
+            /*for(int i = 0; i < NetworkManager.PlayersName.Length; i++)
             {
                 NetworkManager.PlayerArenas[i].GetComponent<PlayerArena>().Camera.SetActive(false);
                 if (NetworkManager.PlayersName[i].Equals(PlayerName.text))
@@ -74,7 +74,8 @@ namespace TFT
                     NetworkManager.PlayerArenas[i].GetComponent<PlayerArena>().Camera.SetActive(true);
                     BuffList.Instance.HeroBuffList = NetworkManager.PlayerHeroes[i].BuffList;
                 }
-            }
+            }*/
+             NetworkManager.Instance.watchOtherPlayer(PlayerName.text);
         }
 
         // Update is called once per frame
