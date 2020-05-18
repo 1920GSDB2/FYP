@@ -23,9 +23,12 @@ public class Character : MonoBehaviour
                 hpChange?.Invoke(this, EventArgs.Empty);
             }
             if(Health <= 0)
-            {
-                HeroState = HeroState.Die;
-                die();
+            {           
+                if (HeroState!= HeroState.Die)
+                {            
+                    die();
+                    
+                }
             }
         }
     }                              
@@ -41,7 +44,8 @@ public class Character : MonoBehaviour
                 mp = value;
                 if (Mp >= MaxMp && !isSlience)
                 {
-                    UseSkill();
+                    if(!isMirror)
+                     UseSkill();
                     useSkill?.Invoke(this, EventArgs.Empty);
                 }
                 
@@ -111,7 +115,8 @@ public class Character : MonoBehaviour
     public GameObject bullet;
     public Node targetNode;
     public int networkPlaceId;
-    protected bool isMirror = false;
+    public int battlePosId;
+    public bool isMirror = false;
     protected float MpRecoverRate = 1;
     public List<NegativeEffect> negativeEffects = new List<NegativeEffect>();
     public NegativeEffectManager NegativeEffectManager;
@@ -178,9 +183,9 @@ public class Character : MonoBehaviour
 
             if (TargetEnemy != null)
             {
-                //Add the event listener when the enemy hp is changed.
+                //Add the event listener when the enemy hp is changed.      
                 TargetEnemy.hpChange += OnEnemyHpChangeListener;
-                CharacterFight();
+               // CharacterFight();
                 photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, TargetEnemy.photonView.viewID);
             }
         }
@@ -204,7 +209,8 @@ public class Character : MonoBehaviour
         {
             TargetEnemy.hpChange -= OnEnemyHpChangeListener;
             Debug.Log("Enemy " + TargetEnemy.name + " Dead");
-            TargetEnemy = null;
+            // TargetEnemy = null;
+            targetDie();
             HeroState = HeroState.Idle;
 
         }
@@ -216,7 +222,7 @@ public class Character : MonoBehaviour
     public void CharacterFight()
     {
         StartCoroutine(Attack());
-        Debug.Log("CharacterFight");
+      
     }
     
     public virtual void targetDie()
@@ -332,7 +338,7 @@ public class Character : MonoBehaviour
         }
         Health += damage;
         if (type != DamageType.No)
-            NetworkManager.Instance.showDamageText(damage.ToString(), type, transform.position);
+            NetworkManager.Instance.showDamageText(damage.ToString(), type, transform.position,battlePosId);
         if (Health > MaxHealth)
             Health = MaxHealth;
         if (Health < 0)
@@ -419,6 +425,8 @@ public class Character : MonoBehaviour
         float dis = Vector3.Distance(HeroPlace.transform.position, TargetEnemy.HeroPlace.transform.position);
         if (dis <= attackRange) {
             HeroState = HeroState.Fight;
+            CharacterFight();
+           // CharacterFight();
             photonView.RPC("RPC_StopWalk", PhotonTargets.All);
         }
     }
@@ -486,8 +494,9 @@ public class Character : MonoBehaviour
     public IEnumerator RPC_FollowHeroPlace(HeroPlace step)
     {
         animator.SetBool("Walk", true);
+        transform.LookAt(step.transform);
         while (transform.position != step.transform.position && isMirror)
-        {
+        {          
             transform.position = Vector3.MoveTowards(transform.position, step.transform.position, 3 * Time.deltaTime);
             yield return null;
         }
@@ -507,13 +516,18 @@ public class Character : MonoBehaviour
     public void readyForBattle(bool isEnemy, int posId)
     {
         isMirror = false;
+
         photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
         photonView.RPC("RPC_Mirror", PhotonTargets.Others);
+        photonView.RPC("RPC_setPosId", PhotonTargets.All,NetworkManager.Instance.battlePosId);
         tag = "BattleCharacter";
         HeroState = HeroState.Idle;       
         Debug.Log("name " + name + " ready ");
     }
-
+    [PunRPC]
+    public void RPC_setPosId(int id) {
+        battlePosId = id;
+    }
     [PunRPC]
     public void setTransformView() {
         GetComponent<PhotonTransformView>().enabled = true;
@@ -531,10 +545,10 @@ public class Character : MonoBehaviour
         HeroBarObject.SetActive(true);
         if (NetworkManager.Instance.isHomeTeam)
         {
-            cameraPos = NetworkManager.Instance.getCamera(posid).transform.position;
+            cameraPos = NetworkManager.Instance.getCameraObject(posid).transform.position;
         }
         else {
-            cameraPos = NetworkManager.Instance.getCamera(posid).transform.position*-1;
+            cameraPos = NetworkManager.Instance.getCameraObject(posid).transform.position*-1;
         }
        
     }
@@ -598,7 +612,10 @@ public class Character : MonoBehaviour
                 photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
                 transform.LookAt(TargetEnemy.transform);
                 attack?.Invoke(this, EventArgs.Empty);
+               // if(isEnemy)
+              //  Debug.Log(name+" attack ");
                 yield return new WaitForSeconds(1 / (AttackSpeed * 2.5f));
+
             }
             else
             {

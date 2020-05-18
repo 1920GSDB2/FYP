@@ -13,14 +13,22 @@ public class Monster : Character
     private void Start()
     {
 
-        MaxHealth = 1000;
-        Health = MaxHealth;
+        
         photonView = GetComponent<PhotonView>();
         heroBar = HeroBarObject.transform.GetChild(0).GetComponent<HpBar>();
       
         animator = GetComponent<Animator>();
+        resetAttribute();
     }
-    
+    public void resetAttribute()
+    {
+
+        MaxHealth = 1000;
+        Health = MaxHealth;
+        AttackDamage = 10 * BasicAttackDamage;
+        AttackSpeed = 0.1f * BasicAttackSpeed;
+        attackRange = attackRange * BasicAttackRange;   
+    }
     public override void die()
     {
         if (photonView.isMine)

@@ -11,11 +11,15 @@ public class Vikander : Hero
     }
     public override void UseSkill()
     {
+        photonView.RPC("RPC_useSkill", PhotonTargets.All);
+       
+
+    }
+    [PunRPC]
+    public void RPC_useSkill() {
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
-        // photonView.RPC("RPC_MeleeSkillAnimation", PhotonTargets.All);
         isInvincible = true;
         StartCoroutine(skillduration());
-
     }
     public override void syncAdjustHp(float damage,DamageType type)
     {

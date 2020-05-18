@@ -23,6 +23,7 @@ namespace TFT
             set
             {
                 focusPlayerId = value;
+                currentLookPosId = PlayerHeroes[focusPlayerId].posId;
                 BuffList.Instance.ClearBuff();
                 BuffList.Instance.HeroBuffList = PlayerHeroes[FocusPlayerId].BuffList;
             }
@@ -42,9 +43,10 @@ namespace TFT
         TFTPlayerCharacter playerCharacter;
         private static DamageText textPrefab;
         private static GameObject canvas;
-        Camera currentCamera;
+        public Camera currentCamera;
         public bool isHomeTeam { get; private set; }
         int waveFinishResponse;
+        int currentLookPosId;
 
         void Awake()
         {
@@ -314,24 +316,64 @@ namespace TFT
             }
             return null;
         }
-        public GameObject getCamera(int id)
+        public GameObject getCameraObject(int id)
         {
             if (isHomeTeam)
             {
-                currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
-                return currentCamera.gameObject;
+               // currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
+                return PlayerArenas[id].GetComponent<PlayerArena>().Camera;
             }
             else {
-                currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().enemyCamera.GetComponent<Camera>();
-                return currentCamera.gameObject;
+             //   currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().enemyCamera.GetComponent<Camera>();
+                return PlayerArenas[id].GetComponent<PlayerArena>().enemyCamera;
             }
         }
-        public void showDamageText(string damage,DamageType type,Vector3 position) {
-            DamageText text = Instantiate(textPrefab);
-            text.setText(damage, type);
-            Vector2 screenPosition = currentCamera.WorldToScreenPoint(position);
-            text.transform.SetParent(canvas.transform, false);
-            text.transform.position = screenPosition;
+        public void setCurrentCamera(bool isEnemy,int id) {
+            if (!isEnemy)
+            {
+                currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
+            }
+            else
+            {
+                currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().enemyCamera.GetComponent<Camera>();
+            }
+        }
+        public void watchOtherPlayer(string name) {
+            for (int i = 0; i < PlayersName.Length; i++)
+            {
+                if(i==posId)
+                    PlayerArenas[posId].GetComponent<PlayerArena>().Camera.SetActive(false);
+                else
+                   PlayerArenas[i].GetComponent<PlayerArena>().enemyCamera.SetActive(false);          
+             
+                if (PlayersName[i].Equals(name))
+                {
+                    if (i == posId)
+                    {
+                        PlayerArenas[i].GetComponent<PlayerArena>().Camera.SetActive(true);
+                        setCurrentCamera(false, posId);
+                        currentLookPosId = posId;
+                    }
+                    else
+                    {
+                        PlayerArenas[i].GetComponent<PlayerArena>().enemyCamera.SetActive(true);
+                        setCurrentCamera(true, i);
+                        currentLookPosId = i;
+                    }
+                    BuffList.Instance.HeroBuffList = PlayerHeroes[i].BuffList;
+                }
+            }
+        }
+        public void showDamageText(string damage,DamageType type,Vector3 position,int posId) {
+            if (currentLookPosId == posId)
+            {
+                DamageText text = Instantiate(textPrefab);
+                text.setText(damage, type);
+                Vector2 screenPosition = currentCamera.WorldToScreenPoint(position);
+                text.transform.SetParent(canvas.transform, false);
+                text.transform.position = screenPosition;
+                Debug.Log("Damage "+damage+ " posid "+ posId+" current "+currentLookPosId);
+            }
         }
         #region Set Player Opponent
         /// <summary>
@@ -699,6 +741,7 @@ namespace TFT
         void RPC_Battle(int hostID, int guestID)
         {
             battlePosId = PlayerHeroes[hostID].posId;
+            currentLookPosId = battlePosId;
             if (playerId == guestID)
             {
                 PlayerArenas[PlayerHeroes[guestID].posId].GetComponent<PlayerArena>().Camera.SetActive(false);
@@ -707,13 +750,16 @@ namespace TFT
                 setOppoentHero(hostID, hostID);
                 isHomeTeam = false;
                 setBattleGameBoardHero();
+                setCurrentCamera(true,battlePosId);
                 playerCharacter.GetComponent<PhotonView>().RPC("RPC_PlayerCharacterMoveToGameBoard", PhotonTargets.All, PlayerHeroes[hostID].posId);
             }
             if (playerId == hostID) {
                 isHomeTeam = true;
                 opponent.opponentId = guestID;
                 setOppoentHero(hostID, guestID);
-               // setBattleGameBoardHero();
+                setCurrentCamera(false,battlePosId);
+                // setBattleGameBoardHero();
+                currentCamera = PlayerArenas[battlePosId].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
                 StartCoroutine(startBattle(PlayerHeroes[hostID].posId));
             }
         }
@@ -898,16 +944,18 @@ namespace TFT
             isHomeTeam = true;
             opponent.opponentId = -1;
             battlePosId = posId;
+            currentLookPosId = battlePosId;
+            setCurrentCamera(false,battlePosId);
             MonsterWaveManager.Instance.spawnCurrentWaveAllMonster();
         }
         public void spawnMonster(string name,int placeId) {
             Monster monster = PhotonNetwork.Instantiate(Path.Combine("Prefabs", name), Vector3.zero, Quaternion.identity, 0).GetComponent<Monster>();
-            monster.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, NetworkManager.Instance.posId, placeId);
+            monster.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, posId, placeId);
             opponent.hero.Add(monster);
         }
 
         public void BattleWithMonsters() {
-            StartCoroutine(startBattle(posId));
+            StartCoroutine(startBattle(battlePosId));
         }
         #endregion
         [PunRPC]

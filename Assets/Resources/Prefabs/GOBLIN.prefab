@@ -2452,16 +2452,16 @@ MonoBehaviour:
   health: 0
   Sheild: 0
   MaxMp: 0
-  BasicHealth: 0
+  BasicHealth: 3
   MaxMana: 100
   Mana: 0
   BasicAttackDamage: 0
-  BasicAttackSpeed: 0
+  BasicAttackSpeed: 1
   BasicSkillPower: 0
-  BasicPhysicalDefense: 0
-  BasicMagicDefense: 0
+  BasicPhysicalDefense: 20
+  BasicMagicDefense: 20
   BasicCritcalChance: 0
-  BasicAttackRange: 0
+  BasicAttackRange: 1
   isStun: 0
   isSlience: 0
   isBlind: 0

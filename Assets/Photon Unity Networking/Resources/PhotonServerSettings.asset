@@ -111,4 +111,6 @@ MonoBehaviour:
   - RPC_castDieSkill
   - RPC_SetupPlayerName
   - RPC_addShield
+  - RPC_setPosId
+  - RPC_useSkill
   DisableAutoOpenWizard: 1
