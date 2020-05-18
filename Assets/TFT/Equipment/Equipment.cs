@@ -5,11 +5,28 @@ using UnityEngine.UI;
 
 namespace TFT
 {
-    public class Equipment : MonoBehaviour, ISelectable
+    public abstract class Equipment : MonoBehaviour, ISelectable
     {
-        public SelectManager SelectManager;
-        public HeroAttribute[] HeroAttributes;
-        public int[] AttributeValues;
+        public string EquipmentName;
+        
+        public Attribute[] Attributes;
+        protected SelectManager SelectManager;
+        //public HeroAttribute[] HeroAttributes;
+        //public int[] AttributeValues;
+        [SerializeField]
+        private Hero attachHero;
+        public Hero AttachHero
+        {
+            get { return attachHero; }
+            set
+            {
+                attachHero = value;
+                OnInstallEquip();
+            }
+        }
+
+        public abstract void OnInstallEquip();
+        
         //[HideInInspector]
         public bool isComponent;
         
@@ -26,7 +43,7 @@ namespace TFT
             }
         }
 
-        public virtual void Start()
+        protected virtual void Start()
         {
             SelectManager = SelectManager.Instance;
         }
@@ -45,7 +62,8 @@ namespace TFT
         {
             if (SelectManager.ParentObject.GetComponent<Hero>()!=null)
             {
-                Transform parent = SelectManager.ParentObject.GetComponent<Hero>().GetEquipmentSlot();
+                AttachHero = SelectManager.ParentObject.GetComponent<Hero>();
+                Transform parent = AttachHero.GetEquipmentSlot();
                 transform.parent = parent;
                 parent.parent.parent.GetComponent<EquipmentManager>().AddEquirement(this);
                 IsUse = false;

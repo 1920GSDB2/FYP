@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &662871175345439273
+--- !u!1 &410075486893326739
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6081290704163274247}
-  - component: {fileID: 8884426729503021187}
-  - component: {fileID: 1240733978208552349}
-  - component: {fileID: 1915889063947542114}
-  - component: {fileID: 4897905409195324107}
+  - component: {fileID: 3909852017856382724}
+  - component: {fileID: 7680071484843466571}
+  - component: {fileID: 4467128900528785933}
+  - component: {fileID: 8319164333539527424}
+  - component: {fileID: 9069700453268397910}
   m_Layer: 0
-  m_Name: BeltCloak
+  m_Name: CloakSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6081290704163274247
+--- !u!4 &3909852017856382724
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662871175345439273}
+  m_GameObject: {fileID: 410075486893326739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
@@ -34,21 +34,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8884426729503021187
+--- !u!33 &7680071484843466571
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662871175345439273}
+  m_GameObject: {fileID: 410075486893326739}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1240733978208552349
+--- !u!23 &4467128900528785933
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662871175345439273}
+  m_GameObject: {fileID: 410075486893326739}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5ab061cbf3ec52b4291202bd5b3841ce, type: 2}
+  - {fileID: 2100000, guid: 1169f22c8b2a2714ca48a440e6916674, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,35 +79,37 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1915889063947542114
+--- !u!65 &8319164333539527424
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662871175345439273}
+  m_GameObject: {fileID: 410075486893326739}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4897905409195324107
+--- !u!114 &9069700453268397910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662871175345439273}
+  m_GameObject: {fileID: 410075486893326739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f85ad939ab251942bdb577e81eeffde, type: 3}
+  m_Script: {fileID: 11500000, guid: c10ed0f36a6939e49983a1a44acb6fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectManager: {fileID: 0}
-  HeroAttributes: 0500000003000000
-  AttributeValues: 2602000028000000
+  EquipmentName: Void Sword
+  Attributes:
+  - HeroAttribute: 0
+    AttributeValue: 50
+  - HeroAttribute: 3
+    AttributeValue: 40
+  attachHero: {fileID: 0}
   isComponent: 0
-  components:
-  - {fileID: 8932993913939470856, guid: ce07958d02690f34e8fafbcb90d2f736, type: 3}
-  - {fileID: 8932993913939470856, guid: 44fdfd5e75c058042bb00e812dfa68a2, type: 3}
+  vampirePercentage: 0.2

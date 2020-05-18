@@ -57,10 +57,10 @@ namespace TFT
 
         private void AddAttribute(Equipment _addEquirement)
         {
-            for(int i = 0; i < _addEquirement.HeroAttributes.Length; i++)
+            for(int i = 0; i < _addEquirement.Attributes.Length; i++)
             {
-                HeroAttribute _heroAttribute = _addEquirement.HeroAttributes[i];
-                int _attributeValue = _addEquirement.AttributeValues[i];
+                HeroAttribute _heroAttribute = _addEquirement.Attributes[i].HeroAttribute;
+                int _attributeValue = _addEquirement.Attributes[i].AttributeValue;
 
                 if (!ItemAttribute.ContainsKey(_heroAttribute))
                 {

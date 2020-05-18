@@ -9,8 +9,14 @@ namespace TFT
     public class Item : Equipment
     {
         public ItemType ItemType;
+
+        public override void OnInstallEquip()
+        {
+            
+        }
+
         // Start is called before the first frame update
-        public override void Start()
+        protected override void Start()
         {
             base.Start();
             isComponent = true;

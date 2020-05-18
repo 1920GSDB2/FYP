@@ -7,8 +7,14 @@ namespace TFT
     public class BlendItem : Equipment
     {
         public Item[] components;
+
+        public override void OnInstallEquip()
+        {
+            
+        }
+
         // Start is called before the first frame update
-        public override void Start()
+        protected override void Start()
         {
             base.Start();
             isComponent = false;

@@ -53,7 +53,7 @@ public class Character : MonoBehaviour
     #endregion
 
     public float MaxMp;
-    protected float MaxHealth { get; set; }             //MaxHealth
+    public float MaxHealth { get; set; }             //MaxHealth
     public float AttackDamage { get; set; }
     public float SkillPower { get; set; }
     public float PhysicalDefense { get; set; }
@@ -93,7 +93,17 @@ public class Character : MonoBehaviour
     protected bool isAttackCooldown;
     public Vector3 cameraPos;
     
-    public Character TargetEnemy;
+    [SerializeField]
+    private Character targetEnemy;
+    public Character TargetEnemy
+    {
+        get { return targetEnemy; }
+        set
+        {
+            targetEnemy = value;
+            targetChange?.Invoke(this, EventArgs.Empty);
+        }
+    }
 
     public Character testHero;
     public GameObject HeroBarObject;
@@ -107,7 +117,7 @@ public class Character : MonoBehaviour
     public NegativeEffectManager NegativeEffectManager;
     public float attackRange = 1.7f;
 
-    public event EventHandler hpChange, attack, beAttacked, beControlled, useSkill;
+    public event EventHandler hpChange, attack, beAttacked, beControlled, useSkill, roundStart, targetChange;
 
     public delegate void NegativeEffectHandler(float _time);
     //public delegate void CharacterHpHandler();
@@ -139,29 +149,6 @@ public class Character : MonoBehaviour
     {
         Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.x);
         HeroBarObject.transform.LookAt(targetPostition);
-        //  Debug.Log()
-
-        //switch (HeroState)
-        //{
-        //    case HeroState.Idle:
-        //        idle();
-        //        break;
-        //    case HeroState.Fight:
-        //        if (targetEnemy.Health <= 0)
-        //        {
-        //            targetDie();
-        //            HeroState = HeroState.Idle;
-        //        }
-        //        else
-        //        {
-        //            fight();
-        //        }
-        //        break;
-        //    case HeroState.Control:
-        //        handleControl();
-        //        break;
-        //}
-
         if (HeroState == HeroState.Idle && !isStun)
         {
             IdleState();
@@ -176,20 +163,6 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             syncAdjustHp(-30f, DamageType.No);
-        }
-    }
-    private void idle()
-    {
-        if (TargetEnemy == null)
-        {
-            TargetEnemy = NetworkManager.Instance.getCloestEnemyTarget(!isEnemy, transform);
-            if (TargetEnemy != null)
-                photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, TargetEnemy.photonView.viewID);
-        }
-        else
-        {
-            HeroState = HeroState.Walking;
-            FollowEnemy();
         }
     }
 
@@ -245,32 +218,7 @@ public class Character : MonoBehaviour
         StartCoroutine(Attack());
         Debug.Log("CharacterFight");
     }
-
-    public void fight()
-    {
-        if (Mp >= MaxMp)
-        {
-            UseSkill();
-        }
-        else if (!isAttackCooldown)
-        {
-            if (TargetEnemy.Health <= 0)
-            {
-                targetDie();
-                HeroState = HeroState.Idle;
-            }
-            else
-            {
-                StartCoroutine(BasicAttackCoolDown());
-                photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
-                transform.LookAt(TargetEnemy.transform);
-            }
-        }
-    }
-    public void handleControl()
-    {
-
-    }
+    
     public virtual void targetDie()
     {
         TargetEnemy = null;
@@ -359,12 +307,22 @@ public class Character : MonoBehaviour
         }
     }
     [PunRPC]
+    public void RPC_AddMaxHP(float value)
+    {
+        AddMaxHp(value);
+    }
+    [PunRPC]
     public void RPC_Heal(float index,byte damageType)
     {
         DamageType type = (DamageType)damageType;
         syncAdjustHp(index, type);
     }
 
+    public void AddMaxHp(float _value)
+    {
+        MaxHealth += _value;
+        Health += _value;
+    }
     public virtual void syncAdjustHp(float damage, DamageType type)
     {
         if (damage < 0)

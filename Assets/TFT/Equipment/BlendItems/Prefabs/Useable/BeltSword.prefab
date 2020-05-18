@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6042044171296803660}
   - component: {fileID: 2379426571167349222}
   - component: {fileID: 680101618250209624}
-  - component: {fileID: 912288784598319274}
+  - component: {fileID: 1084718487825889650}
   m_Layer: 0
   m_Name: BeltSword
   m_TagString: Untagged
@@ -92,7 +92,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &912288784598319274
+--- !u!114 &1084718487825889650
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,13 +101,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6099075805938508316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f85ad939ab251942bdb577e81eeffde, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a4f3949ae8f84947a8df3e94c8bdde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectManager: {fileID: 0}
-  HeroAttributes: 0000000005000000
-  AttributeValues: 1e00000032000000
+  EquipmentName: Sacrificial Sword
+  Attributes:
+  - HeroAttribute: 0
+    AttributeValue: 30
+  - HeroAttribute: 5
+    AttributeValue: 550
+  attachHero: {fileID: 0}
   isComponent: 0
-  components:
-  - {fileID: 8932993913939470856, guid: ce07958d02690f34e8fafbcb90d2f736, type: 3}
-  - {fileID: 8932993913939470856, guid: 0928c6ec10a9842488ed2f3650ca5e2b, type: 3}
+  extraHpValue: 0.1
