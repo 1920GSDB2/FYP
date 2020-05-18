@@ -2391,6 +2391,7 @@ GameObject:
   - component: {fileID: 829765922}
   - component: {fileID: 2079996099}
   - component: {fileID: 359449092}
+  - component: {fileID: -5714270110957668300}
   m_Layer: 0
   m_Name: GOBLIN
   m_TagString: Character
@@ -2448,7 +2449,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c0462131efb9f41bfde2b1683c415f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  Sheild: 0
   MaxMp: 0
+  BasicHealth: 0
+  MaxMana: 100
+  Mana: 0
+  BasicAttackDamage: 0
+  BasicAttackSpeed: 0
+  BasicSkillPower: 0
+  BasicPhysicalDefense: 0
+  BasicMagicDefense: 0
+  BasicCritcalChance: 0
+  BasicAttackRange: 0
+  isStun: 0
+  isSlience: 0
+  isBlind: 0
   isEnemy: 1
   HeroState: 0
   HeroPlace: {fileID: 0}
@@ -2456,12 +2472,13 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 0}
   cameraPos: {x: 0, y: 0, z: 0}
-  targetEnemy: {fileID: 0}
+  TargetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 5199439087192499516}
   bullet: {fileID: 0}
   networkPlaceId: 0
   negativeEffects: []
+  NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
 --- !u!114 &2079996099
 MonoBehaviour:
@@ -2503,6 +2520,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.87, z: 1}
   m_Center: {x: 0, y: 0.92, z: 0}
+--- !u!114 &-5714270110957668300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8284083081465324858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffef3345541a3f428fdc652a9e21d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8307353637587774820
 GameObject:
   m_ObjectHideFlags: 0

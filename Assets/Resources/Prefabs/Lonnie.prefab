@@ -2684,6 +2684,7 @@ GameObject:
   - component: {fileID: 3118260843137737194}
   - component: {fileID: 6166655568687778017}
   - component: {fileID: 666076258}
+  - component: {fileID: 4154913714125615715}
   m_Layer: 8
   m_Name: Lonnie
   m_TagString: Character
@@ -2768,7 +2769,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d827682bc7c1e418ef1eb6ea4524c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  Sheild: 0
   MaxMp: 0
+  BasicHealth: 3
+  MaxMana: 100
+  Mana: 0
+  BasicAttackDamage: 2
+  BasicAttackSpeed: 7
+  BasicSkillPower: 5
+  BasicPhysicalDefense: 2
+  BasicMagicDefense: 8
+  BasicCritcalChance: 0
+  BasicAttackRange: 1
+  isStun: 0
+  isSlience: 0
+  isBlind: 0
   isEnemy: 0
   HeroState: 0
   HeroPlace: {fileID: 0}
@@ -2776,12 +2792,13 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 7610015260449584158}
   cameraPos: {x: 0, y: 0, z: 0}
-  targetEnemy: {fileID: 0}
+  TargetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 3044259792267156926}
   bullet: {fileID: 0}
   networkPlaceId: 0
   negativeEffects: []
+  NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 8417192808997703802}
@@ -2791,14 +2808,6 @@ MonoBehaviour:
   HeroLevel: 0
   skill: {fileID: 666076258}
   EquipmentManager: {fileID: 0}
-  BasicHealth: 3
-  BasicAttackDamage: 2
-  BasicAttackSpeed: 7
-  BasicSkillPower: 5
-  BasicPhysicalDefense: 2
-  BasicMagicDefense: 8
-  BasicCritcalChance: 0
-  BasicAttackRange: 1
   testSkill: {fileID: 0}
 --- !u!114 &2135036147109931864
 MonoBehaviour:
@@ -2962,6 +2971,18 @@ MonoBehaviour:
   castSkillEffect: {fileID: 0}
   skillModel: {fileID: 4238302461691917706, guid: 9a003de19f5ed2047a7dbd3390a791a0,
     type: 3}
+--- !u!114 &4154913714125615715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8542189145416042885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffef3345541a3f428fdc652a9e21d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3580134406041210932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3176,15 +3197,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44de83aff51977a479f23105dc7f114e, type: 3}
---- !u!224 &3044259792267156927 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,
-    type: 3}
-  m_PrefabInstance: {fileID: 7068254941820118125}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3044259792267156926 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5199439087991323091, guid: 44de83aff51977a479f23105dc7f114e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7068254941820118125}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &3044259792267156927 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,
     type: 3}
   m_PrefabInstance: {fileID: 7068254941820118125}
   m_PrefabAsset: {fileID: 0}

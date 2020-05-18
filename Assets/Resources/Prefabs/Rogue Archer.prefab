@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2930524961683840403}
   - component: {fileID: -4152586614888134545}
   - component: {fileID: 3807111969949568895}
+  - component: {fileID: 2931031952111341154}
   m_Layer: 8
   m_Name: Rogue Archer
   m_TagString: Character
@@ -87,7 +88,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188c5dff8d632c94783f186bd2aa716d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  Sheild: 0
   MaxMp: 0
+  BasicHealth: 4
+  MaxMana: 100
+  Mana: 0
+  BasicAttackDamage: 5
+  BasicAttackSpeed: 8
+  BasicSkillPower: 5
+  BasicPhysicalDefense: 2
+  BasicMagicDefense: 4
+  BasicCritcalChance: 0
+  BasicAttackRange: 4
+  isStun: 0
+  isSlience: 0
+  isBlind: 0
   isEnemy: 0
   HeroState: 0
   HeroPlace: {fileID: 0}
@@ -95,12 +111,13 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 3938245151399643058}
   cameraPos: {x: 0, y: 0, z: 0}
-  targetEnemy: {fileID: 0}
+  TargetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 9119625780015599535}
   bullet: {fileID: 7168150683983435948, guid: f2a41c59fb3591a4998570f294398d87, type: 3}
   networkPlaceId: 0
   negativeEffects: []
+  NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 5942783873252722593}
@@ -110,14 +127,6 @@ MonoBehaviour:
   HeroLevel: 0
   skill: {fileID: 3807111969949568895}
   EquipmentManager: {fileID: 0}
-  BasicHealth: 4
-  BasicAttackDamage: 5
-  BasicAttackSpeed: 8
-  BasicSkillPower: 5
-  BasicPhysicalDefense: 2
-  BasicMagicDefense: 4
-  BasicCritcalChance: 0
-  BasicAttackRange: 4
   testSkill: {fileID: 0}
 --- !u!114 &4770013014636726004
 MonoBehaviour:
@@ -290,6 +299,18 @@ MonoBehaviour:
   castSkillEffect: {fileID: 0}
   skillModel: {fileID: 3458946924215393961, guid: 9cdfa8c11e079c94eb9d66b18fe0b0c3,
     type: 3}
+--- !u!114 &2931031952111341154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853857149654370392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffef3345541a3f428fdc652a9e21d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3979847452519861706
 GameObject:
   m_ObjectHideFlags: 0

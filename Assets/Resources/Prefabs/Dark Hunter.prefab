@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 8934537966666016486}
   - component: {fileID: 9190795074398427486}
   - component: {fileID: -4871627908586683616}
+  - component: {fileID: -8164635591206314257}
   m_Layer: 8
   m_Name: Dark Hunter
   m_TagString: Character
@@ -170,7 +171,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ebc12369998dbc499487f9d65dfcc07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  Sheild: 0
   MaxMp: 0
+  BasicHealth: 5
+  MaxMana: 100
+  Mana: 0
+  BasicAttackDamage: 7
+  BasicAttackSpeed: 6
+  BasicSkillPower: 6
+  BasicPhysicalDefense: 4
+  BasicMagicDefense: 4
+  BasicCritcalChance: 0
+  BasicAttackRange: 1
+  isStun: 0
+  isSlience: 0
+  isBlind: 0
   isEnemy: 0
   HeroState: 0
   HeroPlace: {fileID: 0}
@@ -178,12 +194,13 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 8934537966666804369}
   cameraPos: {x: 0, y: 0, z: 0}
-  targetEnemy: {fileID: 0}
+  TargetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 3735107781430365036}
   bullet: {fileID: 0}
   networkPlaceId: 0
   negativeEffects: []
+  NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
   Icon: {fileID: 0}
   SelectingBox: {fileID: 1910769965057509068}
@@ -193,14 +210,6 @@ MonoBehaviour:
   HeroLevel: 0
   skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
-  BasicHealth: 5
-  BasicAttackDamage: 7
-  BasicAttackSpeed: 6
-  BasicSkillPower: 6
-  BasicPhysicalDefense: 4
-  BasicMagicDefense: 4
-  BasicCritcalChance: 0
-  BasicAttackRange: 1
   testSkill: {fileID: 0}
 --- !u!65 &1707218829933882768
 BoxCollider:
@@ -362,6 +371,18 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &-8164635591206314257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258259677887236352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffef3345541a3f428fdc652a9e21d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &264330748623804586
 GameObject:
   m_ObjectHideFlags: 0
