@@ -34,8 +34,7 @@ public class NegativeEffectManager : MonoBehaviour
         {
             StopCoroutine(StunIEnumerator);
         }
-        SlientIEnumerator = StunExcue(_time);
-        Debug.Log("Stun name "+Character.name);
+        StunIEnumerator = StunExcue(_time);
         StartCoroutine(StunIEnumerator);
 
     }
@@ -73,14 +72,15 @@ public class NegativeEffectManager : MonoBehaviour
 
     public IEnumerator SlientExcue(float _time)
     {
-        Debug.Log("    finish     ");
         Character.isSlience = true;
         yield return new WaitForSeconds(_time);
-        Character.isSlience = false;        
+        Character.isSlience = false;
+        SlientIEnumerator = null;
     }
 
     public IEnumerator StunExcue(float _time)
     {
+        
         Character.isSlience = true;
         Character.isBlind = true;
         Character.isStun = true;
@@ -88,11 +88,13 @@ public class NegativeEffectManager : MonoBehaviour
         Character.isSlience = false;
         Character.isBlind = false;
         Character.isStun = false;
+        StunIEnumerator = null;
     }
 
     public IEnumerator KnockExcue(float _time)
     {
         yield return new WaitForSeconds(_time);
+        KnockIEnumerator = null;
     }
 
     public IEnumerator BurnExcue(float _time)
@@ -104,6 +106,7 @@ public class NegativeEffectManager : MonoBehaviour
             Character.TakePercentageDamage(2);
             yield return new WaitForSeconds(0.5f);
         }
+        BurnIEnumerator = null;
     }
 
     public IEnumerator BlindExcue(float _time)
@@ -111,5 +114,6 @@ public class NegativeEffectManager : MonoBehaviour
         Character.isBlind = true;
         yield return new WaitForSeconds(_time);
         Character.isBlind = false;
+        BlindIEnumerator = null;
     }
 }

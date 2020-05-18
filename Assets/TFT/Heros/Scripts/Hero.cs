@@ -58,10 +58,11 @@ public class Hero : Character, ISelectable
         resetAttribute();
         setAttribute();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
 
+    // Start is called before the first frame update
+    protected override void Start()
+    {
+        base.Start();
         animator = GetComponent<Animator>();
         //  HeroBar.transform.LookAt(NetworkManager.Instance.getCamera().transform);
         heroBar = HeroBarObject.transform.GetChild(0).GetComponent<HpBar>();

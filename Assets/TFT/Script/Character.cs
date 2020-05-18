@@ -113,6 +113,14 @@ public class Character : MonoBehaviour
     //public delegate void CharacterHpHandler();
     //public event CharacterHpHandler CharaterHpChange;
 
+    protected virtual void Start()
+    {
+        NegativeEffectManager = GetComponent<NegativeEffectManager>();
+    }
+    public void DebugTest()
+    {
+        Debug.Log("DebugTest" + name);
+    }
 
     /// <summary>
     /// Add negative effect
@@ -121,6 +129,7 @@ public class Character : MonoBehaviour
     /// <param name="_negativeEffect"></param>
     public void AddNegativeEffect(float _time, NegativeEffectHandler _negativeEffect)
     {
+        Debug.Log("AddNegativeEffect" + name);
         //TargetEnemy.AddNegativeEffect(0.5f, TargetEnemy.NegativeEffectManager.Slient);
         beControlled?.Invoke(this, EventArgs.Empty);
         _negativeEffect(_time);
@@ -161,6 +170,7 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             syncAddShield(50f);
+            AddNegativeEffect(2f, NegativeEffectManager.Stun);
         }
 
         if (Input.GetKeyDown(KeyCode.O))
