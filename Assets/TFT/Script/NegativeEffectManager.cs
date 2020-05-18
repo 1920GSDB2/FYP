@@ -9,6 +9,9 @@ public class NegativeEffectManager : MonoBehaviour
     IEnumerator KnockIEnumerator;
     IEnumerator BurnIEnumerator;
     IEnumerator BlindIEnumerator;
+
+    float up;
+
     Character Character;
 
     private void Awake()
@@ -93,7 +96,29 @@ public class NegativeEffectManager : MonoBehaviour
 
     public IEnumerator KnockExcue(float _time)
     {
-        yield return new WaitForSeconds(_time);
+        float countTime = 0;
+        //float knockSpeed = 1/(_time / Time.deltaTime / 2) + _time / 2
+        Character.isSlience = true;
+        Character.isBlind = true;
+        Character.isStun = true;
+        while (transform.position.y <= 1)
+        {
+            countTime += Time.deltaTime;
+            transform.position += transform.up * 1 * Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds(_time - countTime * 2);
+        countTime += _time - countTime * 2;
+        while (transform.position.y > 0)
+        {
+            countTime += Time.deltaTime;
+            transform.position -= transform.up * 1 * Time.deltaTime;
+            yield return null;
+        }
+        Debug.Log(countTime);
+        Character.isSlience = false;
+        Character.isBlind = false;
+        Character.isStun = false;
         KnockIEnumerator = null;
     }
 

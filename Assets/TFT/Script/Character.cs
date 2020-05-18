@@ -170,7 +170,7 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             syncAddShield(50f);
-            AddNegativeEffect(2f, NegativeEffectManager.Stun);
+            AddNegativeEffect(3f, NegativeEffectManager.Knock);
         }
 
         if (Input.GetKeyDown(KeyCode.O))
