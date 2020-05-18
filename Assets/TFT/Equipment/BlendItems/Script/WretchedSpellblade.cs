@@ -18,7 +18,7 @@ namespace TFT
 
         private void OnDestroy()
         {
-            AttachHero.attack += OnHeroAttack;
+            AttachHero.attack -= OnHeroAttack;
         }
 
         public void OnHeroAttack(object sender, EventArgs e)

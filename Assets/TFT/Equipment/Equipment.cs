@@ -27,7 +27,7 @@ namespace TFT
 
         public abstract void OnInstallEquip();
         
-        //[HideInInspector]
+        [HideInInspector]
         public bool isComponent;
         
         private bool isUse;

@@ -6,6 +6,7 @@
     Magic_Defense,
     Mana,
     Health,
+    maxHp,
     Skill_Damage,
     Physic_Defense
 }

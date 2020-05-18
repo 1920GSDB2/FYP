@@ -130,7 +130,7 @@ public class Hero : Character, ISelectable
         isEnemy = false;
         isAttackCooldown = false;
         isMirror = false;
-        negativeEffects.Clear();
+        //negativeEffects.Clear();
     }
     [PunRPC]
     public void syncNetworkPlaceId(int id)

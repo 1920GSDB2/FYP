@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1146288488967517063}
   - component: {fileID: 1799865852422243371}
   - component: {fileID: 2604580753047343213}
+  - component: {fileID: 1274635448726705090}
   m_Layer: 0
   m_Name: ShoulderStaff
   m_TagString: Untagged
@@ -91,3 +92,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1274635448726705090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211594499006062138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1933a460d8b68d4c967843ead4b24ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquipmentName: Luna Staff
+  Attributes:
+  - HeroAttribute: 7
+    AttributeValue: 35
+  - HeroAttribute: 8
+    AttributeValue: 40
+  attachHero: {fileID: 0}
+  isComponent: 0
+  components:
+  - {fileID: 8932993913939470856, guid: 6390a3995f27bf3478f8f8f9932a161b, type: 3}
+  - {fileID: 8932993913939470856, guid: be5be64da3443d342bc5b8b3647c7ea0, type: 3}
+  shieldValue: 550

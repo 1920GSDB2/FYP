@@ -113,4 +113,5 @@ MonoBehaviour:
   - RPC_addShield
   - RPC_setPosId
   - RPC_useSkill
+  - RPC_AddMaxHP
   DisableAutoOpenWizard: 1

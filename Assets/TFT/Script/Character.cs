@@ -118,11 +118,11 @@ public class Character : MonoBehaviour
     public int battlePosId;
     public bool isMirror = false;
     protected float MpRecoverRate = 1;
-    public List<NegativeEffect> negativeEffects = new List<NegativeEffect>();
+    //public List<NegativeEffect> negativeEffects = new List<NegativeEffect>();
     public NegativeEffectManager NegativeEffectManager;
     public float attackRange = 1.7f;
 
-    public event EventHandler hpChange, attack, beAttacked, beControlled, useSkill, roundStart, targetChange;
+    public event EventHandler hpChange, attack, beAttacked, beControlled, useSkill, roundStart, targetChange, combatStart;
 
     public delegate void NegativeEffectHandler(float _time);
     //public delegate void CharacterHpHandler();
@@ -291,17 +291,19 @@ public class Character : MonoBehaviour
             syncAdjustHp(-damage,type);
         }
     }
-    [PunRPC]
-    public void RPC_TargetTakeDamage(float damage,byte controlType,float duration, byte damageType)
-    {
-        if (Health > 0)
-        {
-            ControlSkillType control = (ControlSkillType)controlType;
-            DamageType _damageType = (DamageType)damageType;
-            syncAdjustHp(-damage, _damageType);
-            addNegativeEffect(control, duration);
-        }
-    }
+    
+    //[PunRPC]
+    //public void RPC_TargetTakeDamage(float damage,byte controlType,float duration, byte damageType)
+    //{
+    //    if (Health > 0)
+    //    {
+    //        ControlSkillType control = (ControlSkillType)controlType;
+    //        DamageType _damageType = (DamageType)damageType;
+    //        syncAdjustHp(-damage, _damageType);
+    //        //addNegativeEffect(control, duration);
+    //    }
+    //}
+    /*
     public void addNegativeEffect(ControlSkillType type,float duration) {
         if (HeroState != HeroState.Die)
         {
@@ -312,6 +314,7 @@ public class Character : MonoBehaviour
             StartCoroutine(controlableSkillDuration(duration, newEffect));
         }
     }
+    */
     [PunRPC]
     public void RPC_AddMaxHP(float value)
     {
@@ -631,31 +634,32 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(1 / (AttackSpeed * 2.5f));
         isAttackCooldown = false;
     }
-    public IEnumerator controlableSkillDuration(float time,NegativeEffect type) {
-        yield return new WaitForSeconds(time);
-        negativeEffects.Remove(type);
-        CheckNegativeEffect();
-    }
-    public void CheckNegativeEffect() {
-        bool canMove=true;
-        if (HeroState != HeroState.Die)
-        {
-            foreach (NegativeEffect negative in negativeEffects)
-            {
-                if (!negative.canAction)
-                    canMove = false;
+    //public IEnumerator controlableSkillDuration(float time,NegativeEffect type) {
+    //    yield return new WaitForSeconds(time);
+    //    negativeEffects.Remove(type);
+    //    CheckNegativeEffect();
+    //}
+
+    //public void CheckNegativeEffect() {
+    //    bool canMove=true;
+    //    if (HeroState != HeroState.Die)
+    //    {
+    //        foreach (NegativeEffect negative in negativeEffects)
+    //        {
+    //            if (!negative.canAction)
+    //                canMove = false;
 
 
-            }
-            if (canMove)
-            {
-                if (isMirror)
-                    HeroState = HeroState.Nothing;
-                else
-                    HeroState = HeroState.Idle;
-            }
-            else
-                HeroState = HeroState.Control;
-        }
-    }
+    //        }
+    //        if (canMove)
+    //        {
+    //            if (isMirror)
+    //                HeroState = HeroState.Nothing;
+    //            else
+    //                HeroState = HeroState.Idle;
+    //        }
+    //        else
+    //            HeroState = HeroState.Control;
+    //    }
+    //}
 }

@@ -112,4 +112,7 @@ MonoBehaviour:
     AttributeValue: 550
   attachHero: {fileID: 0}
   isComponent: 0
+  components:
+  - {fileID: 8932993913939470856, guid: 0928c6ec10a9842488ed2f3650ca5e2b, type: 3}
+  - {fileID: 8932993913939470856, guid: ce07958d02690f34e8fafbcb90d2f736, type: 3}
   extraHpValue: 0.1

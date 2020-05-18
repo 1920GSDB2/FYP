@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TFT
 {
-    public class VoidSword : Equipment
+    public class VoidSword : BlendItem
     {
         [Header("Specific Attribute")]
         [SerializeField]

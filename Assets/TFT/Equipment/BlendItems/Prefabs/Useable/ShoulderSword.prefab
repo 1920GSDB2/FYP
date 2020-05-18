@@ -112,5 +112,7 @@ MonoBehaviour:
     AttributeValue: 30
   attachHero: {fileID: 0}
   isComponent: 0
-  components: []
+  components:
+  - {fileID: 8932993913939470856, guid: be5be64da3443d342bc5b8b3647c7ea0, type: 3}
+  - {fileID: 8932993913939470856, guid: 0928c6ec10a9842488ed2f3650ca5e2b, type: 3}
   shieldValue: 10
