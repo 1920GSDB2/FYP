@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8511550153486966514}
   - component: {fileID: 5795684154216750720}
   - component: {fileID: 300887074196299210}
+  - component: {fileID: -6587018312221575921}
   m_Layer: 0
   m_Name: CloakStaff
   m_TagString: Untagged
@@ -91,3 +92,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6587018312221575921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3627953811795818924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01be47be436da08458b956b868e577f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquipmentName: Maniac Cloak
+  Attributes:
+  - HeroAttribute: 7
+    AttributeValue: 40
+  - HeroAttribute: 3
+    AttributeValue: 40
+  attachHero: {fileID: 0}
+  isComponent: 0
+  components:
+  - {fileID: 8932993913939470856, guid: 44fdfd5e75c058042bb00e812dfa68a2, type: 3}
+  - {fileID: 8932993913939470856, guid: 6390a3995f27bf3478f8f8f9932a161b, type: 3}
+  mpPercent: 2.25

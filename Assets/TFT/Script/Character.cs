@@ -604,6 +604,7 @@ public class Character : MonoBehaviour
                 photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
                 transform.LookAt(TargetEnemy.transform);
                 attack?.Invoke(this, EventArgs.Empty);
+                TargetEnemy.beAttacked?.Invoke(this, EventArgs.Empty);
                // if(isEnemy)
               //  Debug.Log(name+" attack ");
                 yield return new WaitForSeconds(1 / (AttackSpeed * 2.5f));
