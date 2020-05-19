@@ -24,7 +24,7 @@ namespace TFT
 
         public void OnUsingSkill(object sender, EventArgs e)
         {
-            AttachHero.TargetEnemy.photonView.RPC("RPC_addShield", PhotonTargets.All, shieldValue);
+            AttachHero.photonView.RPC("RPC_addShield", PhotonTargets.All, shieldValue);
         }
     }
 }
