@@ -602,6 +602,7 @@ public class Character : MonoBehaviour
             else if (HeroState == HeroState.Fight && !isBlind)
             {
                 photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
+                if(TargetEnemy!=null)
                 transform.LookAt(TargetEnemy.transform);
                 attack?.Invoke(this, EventArgs.Empty);
                 TargetEnemy.beAttacked?.Invoke(this, EventArgs.Empty);
