@@ -27,7 +27,7 @@ MonoBehaviour:
   transitionTime: 3
   heroTypes:
   - {fileID: 6516350909251360838, guid: 178907bd0a9632548a40e7281d7bcf41, type: 3}
-  - {fileID: 4412773390188736613, guid: adadc077eccbfaf4abc6baf426f5488b, type: 3}
+  - {fileID: 581460994858553897, guid: 7bf201eb93a64ab47857ce81b796a258, type: 3}
   - {fileID: 7521794557706226535, guid: 40f252f5a2534204d9830d121ff38951, type: 3}
   - {fileID: 6589384583000471314, guid: ad0f62007ed0a734db4a93d0398ec957, type: 3}
   - {fileID: 7973354537506207235, guid: b1f03ceabee81b644ba325ce84592215, type: 3}

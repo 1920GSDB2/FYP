@@ -12,11 +12,14 @@ public class MeleeSkill : Skill
     {
        GameObject effect= Instantiate(hitEffect, target.transform.position, Quaternion.identity) as GameObject;
        Destroy(effect, 1.5f);
-        if (type != ControlSkillType.No && type != null)
-        {
-            if(!isMirror)
-            target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage, (byte)type, duration,(byte)DamageType.Magic);
-        }
+            
+         if (type == ControlSkillType.Stun) {
+            if (!isMirror)
+            {
+                target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage,(byte)DamageType.Magic);
+            }
+            target.AddNegativeEffect(2f, target.NegativeEffectManager.Stun);
+         }             
         else {
             if (!isMirror)
             {
