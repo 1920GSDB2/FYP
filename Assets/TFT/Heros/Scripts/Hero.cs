@@ -110,8 +110,11 @@ public class Hero : Character, ISelectable
         tag = "Character";
         gameObject.SetActive(true);
         HeroBarObject.SetActive(false);
+        isStun = false;
+        isSlience = false;
+        isBlind = false;
         HeroBarObject.transform.rotation = Quaternion.identity;
-        StartCoroutine(resetStatusCount());
+       StartCoroutine(resetStatusCount());
     }
     IEnumerator resetStatusCount() {
         yield return new WaitForSeconds(2f);

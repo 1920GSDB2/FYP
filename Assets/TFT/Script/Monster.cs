@@ -41,6 +41,9 @@ public class Monster : Character
             
         }
     }
+    public void summonSet() {
+
+    }
     public void destory() {
         PhotonNetwork.Destroy(this.gameObject);
     }
