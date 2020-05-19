@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8002988708521123361}
   - component: {fileID: 3291763377997469005}
   - component: {fileID: 7155843427620524017}
+  - component: {fileID: 6368246468663230560}
   m_Layer: 0
   m_Name: BeltShoulder
   m_TagString: Untagged
@@ -91,3 +92,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6368246468663230560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957600688760955613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411d623fb93a8b84d9224a368a7b3897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquipmentName: Giant Armor
+  Attributes:
+  - HeroAttribute: 5
+    AttributeValue: 500
+  - HeroAttribute: 8
+    AttributeValue: 50
+  attachHero: {fileID: 0}
+  isComponent: 0
+  components:
+  - {fileID: 8932993913939470856, guid: ce07958d02690f34e8fafbcb90d2f736, type: 3}
+  - {fileID: 8932993913939470856, guid: be5be64da3443d342bc5b8b3647c7ea0, type: 3}
+  healPercentage: 0.15
+  belowHpPercentage: 0.1
+  recoverySecond: 5

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8884426729503021187}
   - component: {fileID: 1240733978208552349}
   - component: {fileID: 1915889063947542114}
+  - component: {fileID: 6340421351935853839}
   m_Layer: 0
   m_Name: BeltCloak
   m_TagString: Untagged
@@ -91,3 +92,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6340421351935853839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662871175345439273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16a231b712d0d84fa1cb3f8616ac55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquipmentName: Avoidance Cloak
+  Attributes:
+  - HeroAttribute: 3
+    AttributeValue: 40
+  - HeroAttribute: 5
+    AttributeValue: 550
+  attachHero: {fileID: 0}
+  isComponent: 0
+  components:
+  - {fileID: 8932993913939470856, guid: ce07958d02690f34e8fafbcb90d2f736, type: 3}
+  - {fileID: 8932993913939470856, guid: 44fdfd5e75c058042bb00e812dfa68a2, type: 3}
+  shieldValue: 100

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4646002113321683192}
   - component: {fileID: 8769397651456100240}
   - component: {fileID: 3029553527765350480}
+  - component: {fileID: -4446401458665196439}
   m_Layer: 0
   m_Name: 2Shoulder
   m_TagString: Untagged
@@ -91,3 +92,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4446401458665196439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056432551387190540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b074f322371c147b65f19c34c31d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquipmentName: Thorns Armor
+  Attributes:
+  - HeroAttribute: 8
+    AttributeValue: 100
+  attachHero: {fileID: 0}
+  isComponent: 0
+  components:
+  - {fileID: 8932993913939470856, guid: be5be64da3443d342bc5b8b3647c7ea0, type: 3}
+  - {fileID: 8932993913939470856, guid: be5be64da3443d342bc5b8b3647c7ea0, type: 3}

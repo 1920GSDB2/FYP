@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8658528695360909453}
   - component: {fileID: 560439348440500508}
   - component: {fileID: 848371447484521403}
+  - component: {fileID: 7271123838678384530}
   m_Layer: 0
   m_Name: CloakShoulder
   m_TagString: Untagged
@@ -91,3 +92,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7271123838678384530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590779858867715237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663a786c1528f3f4bbf0152e49058c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquipmentName: Holly Armor
+  Attributes:
+  - HeroAttribute: 3
+    AttributeValue: 45
+  - HeroAttribute: 8
+    AttributeValue: 45
+  attachHero: {fileID: 0}
+  isComponent: 0
+  components:
+  - {fileID: 8932993913939470856, guid: be5be64da3443d342bc5b8b3647c7ea0, type: 3}
+  - {fileID: 8932993913939470856, guid: 44fdfd5e75c058042bb00e812dfa68a2, type: 3}
+  healValue: 20
+  recoveryMana: 5
