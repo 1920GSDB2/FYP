@@ -65,7 +65,7 @@ namespace TFT
         
         void OnMouseOver()
         {
-            if (!(GameManager.GameStatus == GameStatus.Playing && name.Equals("Hexagon")))
+            if (!(GameManager.GameStatus == GameStatus.Playing && name.Equals("Hexagon")) || !GameManager.MainGameManager.isDebugMode)
             {
                 if (PlaceType == PlaceType.NonBoard)
                 {
@@ -78,7 +78,7 @@ namespace TFT
                 if (SelectManager.DragObject == null ||
                     SelectManager.DragObject as Hero == null ||
                     GameManager.PlayerHero.GameBoardHeroes.Count >= GameManager.LevelManager.Level &&
-                    (SelectManager.DragObject as Hero ).HeroPlace.PlaceType != PlaceType &&
+                    (SelectManager.DragObject as Hero).HeroPlace.PlaceType != PlaceType &&
                     PlaceType == PlaceType.OnBoard)
                 {
                     return;
