@@ -34,7 +34,16 @@ public class Hero : Character, ISelectable
     public Rarity Rarity;
     public HeroClass[] HeroClasses;
     public HeroRace[] HeroRaces;
-    public HeroLevel HeroLevel;
+    public HeroLevel heroLevel;
+    public HeroLevel HeroLevel
+    {
+        get { return heroLevel; }
+        set
+        {
+            heroLevel = value;
+            Debug.Log(name + " Level Set: " + value);
+        }
+    }
     bool test;
     public Skill skill;
     public EquipmentManager EquipmentManager;
@@ -99,6 +108,7 @@ public class Hero : Character, ISelectable
     public override void die() {
      //   photonView.RPC("RPC_DIE",PhotonTargets.All);
         HeroState = HeroState.Die;
+        TargetEnemy = null;
         this.gameObject.SetActive(false);
         HeroPlace.leavePlace();
         if (!isMirror)
@@ -116,16 +126,23 @@ public class Hero : Character, ISelectable
             NetworkManager.Instance.battleHeroDie(isEnemy, this);
     }
     [PunRPC]
+    public void RPC_Upgrade()
+    {
+        HeroLevel++;
+    }
+    [PunRPC]
     public void RPC_ResetStatus() {
-        TargetEnemy = null;
+
         tag = "Character";
         gameObject.SetActive(true);
         HeroBarObject.SetActive(false);
         isStun = false;
         isSlience = false;
         isBlind = false;
+
+        TargetEnemy = null;
         HeroBarObject.transform.rotation = Quaternion.identity;
-       StartCoroutine(resetStatusCount());
+        StartCoroutine(resetStatusCount());
     }
     IEnumerator resetStatusCount() {
         yield return new WaitForSeconds(2f);
@@ -349,6 +366,25 @@ public class Hero : Character, ISelectable
        // if (!photonView.isMine)
         //    transform.Rotate(new Vector3(0, 180, 0));
         SetHeroPlace(heroPlace);
+    }
+
+    [PunRPC]
+    public void RPC_InstallEquipment(int _equipId)
+    {
+        if (_equipId < 0) return;
+        Main.GameManager gm = GameManager.MainGameManager;
+        //Is Not Component
+        if (_equipId >= gm.ItemTypes.Length)
+        {
+            BlendItem spawnItem = Instantiate(gm.BlendItemTypes[_equipId - gm.ItemTypes.Length].gameObject).GetComponent<BlendItem>();
+            spawnItem.InstallEquipment(this);
+        }
+        //Is Component
+        else
+        {
+            Item spawnItem = Instantiate(gm.ItemTypes[_equipId].gameObject).GetComponent<Item>();
+            spawnItem.InstallEquipment(this);
+        }
     }
    
 

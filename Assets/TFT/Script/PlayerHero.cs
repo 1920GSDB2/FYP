@@ -129,6 +129,8 @@ namespace TFT
         public string name;
         public HeroLevel HeroLevel;
 
+        public int[] HeroEquipments = new int[3];
+
         public NetworkHero(Hero _hero)
         {
             name = _hero.name;

@@ -105,6 +105,18 @@ public class Character : MonoBehaviour
         get { return targetEnemy; }
         set
         {
+            if (value != null)
+            {
+                if (TargetEnemy != null)
+                {
+                    TargetEnemy.hpChange -= OnEnemyHpChangeListener;
+                }
+                value.hpChange += OnEnemyHpChangeListener;
+            }
+            else if (value == null && TargetEnemy != null)
+            {
+                TargetEnemy.hpChange -= OnEnemyHpChangeListener;
+            }
             targetEnemy = value;
             targetChange?.Invoke(this, EventArgs.Empty);
         }
@@ -153,8 +165,8 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.x);
-        HeroBarObject.transform.LookAt(targetPostition);
+        //Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.x);
+        //HeroBarObject.transform.LookAt(targetPostition);
         if (HeroState == HeroState.Idle && !isStun)
         {
             IdleState();
@@ -185,7 +197,7 @@ public class Character : MonoBehaviour
             if (TargetEnemy != null)
             {
                 //Add the event listener when the enemy hp is changed.      
-                TargetEnemy.hpChange += OnEnemyHpChangeListener;
+                //TargetEnemy.hpChange += OnEnemyHpChangeListener;
                // CharacterFight();
                 photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, TargetEnemy.photonView.viewID);
             }
@@ -208,11 +220,12 @@ public class Character : MonoBehaviour
         //Target Die
         if (targetHP <= 0)
         {
-      //      TargetEnemy.hpChange -= OnEnemyHpChangeListener;
           //  Debug.Log("Enemy " + TargetEnemy.name + " Dead");
             // TargetEnemy = null;
-            targetDie();
-            HeroState = HeroState.Idle;
+            //targetDie();
+            TargetEnemy = null;
+            if (!isMirror)
+                HeroState = HeroState.Idle;
 
         }
     }
@@ -602,10 +615,12 @@ public class Character : MonoBehaviour
             else if (HeroState == HeroState.Fight && !isBlind)
             {
                 photonView.RPC("RPC_AttackAnimation", PhotonTargets.All);
-                if(TargetEnemy!=null)
-                transform.LookAt(TargetEnemy.transform);
+                if (TargetEnemy != null)
+                {
+                    transform.LookAt(TargetEnemy.transform);
+                    TargetEnemy.beAttacked?.Invoke(this, EventArgs.Empty);
+                }
                 attack?.Invoke(this, EventArgs.Empty);
-                TargetEnemy.beAttacked?.Invoke(this, EventArgs.Empty);
                // if(isEnemy)
               //  Debug.Log(name+" attack ");
                 yield return new WaitForSeconds(1 / (AttackSpeed * 2.5f));

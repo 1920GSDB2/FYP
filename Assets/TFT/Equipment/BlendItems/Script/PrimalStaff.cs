@@ -18,7 +18,8 @@ namespace TFT
 
         private void OnDestroy()
         {
-            AttachHero.useSkill -= OnHeroUseSkill;
+            if (AttachHero != null)
+                AttachHero.useSkill -= OnHeroUseSkill;
         }
 
         public void OnHeroUseSkill(object sender, EventArgs e)

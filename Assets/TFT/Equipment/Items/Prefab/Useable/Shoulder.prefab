@@ -104,8 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef183086f61c5d4ba1cfe7a3c0f95c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectManager: {fileID: 0}
-  HeroAttributes: 07000000
-  AttributeValues: 19000000
+  EquipmentName: Shoulder
+  Attributes:
+  - HeroAttribute: 8
+    AttributeValue: 25
+  attachHero: {fileID: 0}
   isComponent: 1
-  ItemType: 5
+  ItemType: 6

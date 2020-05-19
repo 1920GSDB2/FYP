@@ -118,4 +118,7 @@ MonoBehaviour:
   - RPC_SummonUnit
   - RPC_addBattleHero
   - RPC_DIE
+  - RPC_Upgrade
+  - RPC_InstallEquipment
+  - Time_Sync
   DisableAutoOpenWizard: 1

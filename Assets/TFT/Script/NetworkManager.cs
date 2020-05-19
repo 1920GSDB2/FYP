@@ -43,7 +43,9 @@ namespace TFT
         TFTPlayerCharacter playerCharacter;
         private static DamageText textPrefab;
         private static GameObject canvas;
-        private Camera currentCamera;
+
+        public Camera CurrentCamera;
+        //public Camera CurrentCamera { get; private set; }
         public bool isHomeTeam { get; private set; }
         int waveFinishResponse;
         int currentLookPosId;
@@ -328,14 +330,14 @@ namespace TFT
                 return PlayerArenas[id].GetComponent<PlayerArena>().enemyCamera;
             }
         }
-        public void setCurrentCamera(bool isEnemy,int id) {
+        private void setCurrentCamera(bool isEnemy,int id) {
             if (!isEnemy)
             {
-                currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
+                CurrentCamera = PlayerArenas[id].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
             }
             else
             {
-                currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().enemyCamera.GetComponent<Camera>();
+                CurrentCamera = PlayerArenas[id].GetComponent<PlayerArena>().enemyCamera.GetComponent<Camera>();
             }
         }
         public void watchOtherPlayer(string name) {
@@ -369,7 +371,7 @@ namespace TFT
             {
                 DamageText text = Instantiate(textPrefab);
                 text.setText(damage, type);
-                Vector2 screenPosition = currentCamera.WorldToScreenPoint(position);
+                Vector2 screenPosition = CurrentCamera.WorldToScreenPoint(position);
                 text.transform.SetParent(canvas.transform, false);
                 text.transform.position = screenPosition;
                // Debug.Log("Damage "+damage+ " posid "+ posId+" current "+currentLookPosId);
@@ -681,30 +683,7 @@ namespace TFT
             switch (_syncMethod)
             {
                 case SyncHeroMethod.AddHero:
-                    //Debug.Log("Player [" + _playerId + "] add hero.");
                     PlayerHeroes[_playerId].UsableHeroes.Add(new NetworkHero(_name, _heroPos, _heroLevel));
-                    /*   if (_playerId != playerId)
-                       {
-                           #region Instantiate remote hero object
-                           //Loop hero type
-                           for (int i = 0; i < MainGameManager.heroTypes.Count; i++)
-                           {
-                               if (MainGameManager.heroTypes[i].name.Equals(_name))
-                               {
-
-                                   Debug.Log("Arena [" + _posId + "] added hero in HeroList [" + _heroPos + "].");
-                                   Transform transformParent = PlayerArenas[_posId].GetComponent<PlayerArena>().EnemyArena.HeroList.GetChild(_heroPos);
-                                //   Hero remoteHero = (Instantiate(MainGameManager.heroTypes[i].gameObject) as GameObject).GetComponent<Hero>();
-                                 //  remoteHero.name = MainGameManager.heroTypes[i].name;
-                                 //  remoteHero.transform.parent = transformParent;
-                                   //GameObject remoteHero = Instantiate(MainGameManager.heroTypes[i].gameObject, transformParent);
-                                   remoteHero.gameObject.transform.localPosition = Vector3.zero;
-                                   break;
-
-                               }
-                           }
-                           #endregion
-                       }*/
                     break;
                 case SyncHeroMethod.RemoveHero:
                     List<NetworkHero> RemoveHero = PlayerHeroes[_playerId].UsableHeroes;
@@ -717,13 +696,6 @@ namespace TFT
                             RemoveHero.Remove(RemoveHero[i]);
                             break;
                         }
-                    }
-                    if (_playerId != playerId)
-                    {
-                        #region Destroy remote hero object
-                        DestroyImmediate(PlayerArenas[_posId].GetComponent<PlayerArena>().EnemyArena.HeroList.
-                            GetChild(_heroPos).GetChild(0).gameObject);
-                        #endregion
                     }
                     break;
                 case SyncHeroMethod.HeroUpgrade:
@@ -738,13 +710,7 @@ namespace TFT
                             break;
                         }
                     }
-                    if (_playerId != playerId)
-                    {
-                        #region Updrage remote hero object
-                        PlayerArenas[_posId].GetComponent<PlayerArena>().EnemyArena.HeroList.
-                            GetChild(_heroPos).GetChild(0).GetComponent<Hero>().HeroLevel = _heroLevel;
-                        #endregion
-                    }
+
                     break;
             }
             GameManager.Instance.PlayerHero = PlayerHeroes[playerId];
@@ -777,7 +743,7 @@ namespace TFT
                 setOppoentHero(hostID, guestID);
                 setCurrentCamera(false,battlePosId);
                 // setBattleGameBoardHero();
-                currentCamera = PlayerArenas[battlePosId].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
+                CurrentCamera = PlayerArenas[battlePosId].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
                 StartCoroutine(startBattle(PlayerHeroes[hostID].posId));
             }
         }
@@ -1014,6 +980,16 @@ namespace TFT
         {
             Debug.Log("RankChange " + _playerName);
             RankManager.DeductHP(_playerName, _value);
+        }
+        [PunRPC]
+        public void RPC_Time_Sync(float _time)
+        {
+            GameManager.Instance.RemainTime = _time;
+        }
+        [PunRPC]
+        public void RPC_RoundUp()
+        {
+            GameManager.Instance.RoundManager.RoundUp();
         }
     }
 }
