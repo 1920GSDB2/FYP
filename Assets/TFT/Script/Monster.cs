@@ -25,7 +25,7 @@ public class Monster : Character
 
         MaxHealth = 1000;
         Health = MaxHealth;
-        AttackDamage = 10 * BasicAttackDamage;
+        AttackDamage = 30 * BasicAttackDamage;
         AttackSpeed = 0.1f * BasicAttackSpeed;
         attackRange = attackRange * BasicAttackRange;   
     }
@@ -38,7 +38,11 @@ public class Monster : Character
                NetworkManager.Instance.battleHeroDie(isEnemy, this);
                MonsterWaveManager.Instance.monsterDie();
             PhotonNetwork.Destroy(this.gameObject);
+            
         }
+    }
+    public void destory() {
+        PhotonNetwork.Destroy(this.gameObject);
     }
 
 

@@ -292,24 +292,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: mp Bar
       objectReference: {fileID: 0}
-    - target: {fileID: 11448154, guid: 34017cf12560c804bb2f669f00c7af91, type: 3}
-      propertyPath: m_FillAmount
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8014665856672874009, guid: 34017cf12560c804bb2f669f00c7af91,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.3773585
+      value: 0.8584906
       objectReference: {fileID: 0}
     - target: {fileID: 8014665856672874009, guid: 34017cf12560c804bb2f669f00c7af91,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.3773585
+      value: 0.69722223
       objectReference: {fileID: 0}
     - target: {fileID: 8014665856672874009, guid: 34017cf12560c804bb2f669f00c7af91,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.3773585
+      value: 0.22272164
+      objectReference: {fileID: 0}
+    - target: {fileID: 11448154, guid: 34017cf12560c804bb2f669f00c7af91, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34017cf12560c804bb2f669f00c7af91, type: 3}

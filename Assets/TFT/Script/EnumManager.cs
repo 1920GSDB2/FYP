@@ -127,3 +127,8 @@ public enum DamageType {
     TrueDamage,
     Heal
 }
+public enum WaveType
+{
+    Monster,
+    Player
+}

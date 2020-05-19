@@ -2455,7 +2455,7 @@ MonoBehaviour:
   BasicHealth: 3
   MaxMana: 100
   Mana: 0
-  BasicAttackDamage: 0
+  BasicAttackDamage: 5
   BasicAttackSpeed: 1
   BasicSkillPower: 0
   BasicPhysicalDefense: 20
@@ -2472,12 +2472,13 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 0}
   cameraPos: {x: 0, y: 0, z: 0}
-  TargetEnemy: {fileID: 0}
+  targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 5199439087192499516}
   bullet: {fileID: 0}
   networkPlaceId: 0
-  negativeEffects: []
+  battlePosId: 0
+  isMirror: 0
   NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
 --- !u!114 &2079996099

@@ -100,6 +100,7 @@ public class Hero : Character, ISelectable
         HeroState = HeroState.Die;
         this.gameObject.SetActive(false);
         HeroPlace.leavePlace();
+        if(!isMirror)
         NetworkManager.Instance.battleHeroDie(isEnemy, this);
        // Debug.Log("Die " + name + " state " + HeroState + "player id" + NetworkManager.Instance.playerId);
     }

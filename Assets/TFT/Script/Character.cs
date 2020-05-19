@@ -25,7 +25,8 @@ public class Character : MonoBehaviour
             if(Health <= 0)
             {           
                 if (HeroState!= HeroState.Die)
-                {            
+                {
+                    Debug.Log("Call Die method " +name   );
                     die();
                     
                 }
@@ -285,36 +286,10 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_TargetTakeDamage(float damage,byte damageType)
     {
-        if (Health > 0)
-        {
             DamageType type = (DamageType)damageType;
-            syncAdjustHp(-damage,type);
-        }
+            syncAdjustHp(-damage,type);    
     }
     
-    //[PunRPC]
-    //public void RPC_TargetTakeDamage(float damage,byte controlType,float duration, byte damageType)
-    //{
-    //    if (Health > 0)
-    //    {
-    //        ControlSkillType control = (ControlSkillType)controlType;
-    //        DamageType _damageType = (DamageType)damageType;
-    //        syncAdjustHp(-damage, _damageType);
-    //        //addNegativeEffect(control, duration);
-    //    }
-    //}
-    /*
-    public void addNegativeEffect(ControlSkillType type,float duration) {
-        if (HeroState != HeroState.Die)
-        {
-            animator.Play("Idle");
-            HeroState = HeroState.Control;
-            NegativeEffect newEffect = new NegativeEffect(type, false);
-            negativeEffects.Add(newEffect);
-            StartCoroutine(controlableSkillDuration(duration, newEffect));
-        }
-    }
-    */
     [PunRPC]
     public void RPC_AddMaxHP(float value)
     {
@@ -339,13 +314,15 @@ public class Character : MonoBehaviour
             if (Sheild > 0)
                 damage = sheildDefense(damage);
         }
-        Health += damage;
-        if (type != DamageType.No)
-            NetworkManager.Instance.showDamageText(damage.ToString(), type, transform.position,battlePosId);
-        if (Health > MaxHealth)
-            Health = MaxHealth;
-        if (Health < 0)
+
+        if (Health + damage > 0)
+            Health += damage;
+        else
             Health = 0;
+        if (type != DamageType.No)
+            NetworkManager.Instance.showDamageText(damage.ToString(), type, transform.position, battlePosId);
+        if (Health > MaxHealth)
+            Health = MaxHealth;      
         if (damage < 0)
         {
             heroBar.setHpBarWithDamage(Health / MaxHealth);
@@ -579,10 +556,10 @@ public class Character : MonoBehaviour
     }
    
     [PunRPC]
-    public void RPC_HitPlayerCharacter(bool isHomeTeam) {
-        hitopponentCharacter(isHomeTeam);
+    public void RPC_HitPlayerCharacter(bool isHomeTeam,int battlePos) {
+        hitopponentCharacter(isHomeTeam,battlePos);
     }
-    void hitopponentCharacter(bool isHomeTeam) {
+    void hitopponentCharacter(bool isHomeTeam,int battlePos) {
         UnityEngine.Object pPrefab = Resources.Load("Effect/heroHitPlayerEffect");
         GameObject b = Instantiate(pPrefab, transform.position, transform.rotation) as GameObject;
         GameObject opponentPlayer = null;
@@ -590,14 +567,14 @@ public class Character : MonoBehaviour
         //if (NetworkManager.Instance.playerId == playerId)
         if (isHomeTeam)
         {
-            opponentPlayer = NetworkManager.Instance.PlayerArenas[NetworkManager.Instance.battlePosId].
-                                        GetComponent<PlayerArena>().opponentCharacterSlot.GetChild(0).gameObject;
+            opponentPlayer = NetworkManager.Instance.PlayerArenas[battlePos]. GetComponent<PlayerArena>()
+                .opponentCharacterSlot.GetChild(0).gameObject;
 
         }
         else
         {
-            opponentPlayer = NetworkManager.Instance.PlayerArenas[NetworkManager.Instance.battlePosId].
-                                    GetComponent<PlayerArena>().playerCharacterSlot.GetChild(0).gameObject;
+            opponentPlayer = NetworkManager.Instance.PlayerArenas[battlePos].GetComponent<PlayerArena>()
+                .playerCharacterSlot.GetChild(0).gameObject;
 
         }
         b.GetComponent<Bullet>().setBullet(opponentPlayer, 2f);
