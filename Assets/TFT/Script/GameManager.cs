@@ -59,27 +59,30 @@ namespace TFT
                         NetworkManager.Instance.MatchPlayerOpponent();
                     return;
                 }
-
-                #region Switch Player's Gameboard's Heroes' Status
-                foreach (NetworkHero gbHero in PlayerHero.GameBoardHeroes)
+                if (!MainGameManager.isDebugMode)
                 {
-                    //Find the Hero by Using NetworkHero
-                    Hero modifyHero = GetPlayerHero(gbHero);
-                    Debug.Log("Modify Hero Name: " + modifyHero.gameObject.name);
-                    switch (value)
+
+                    #region Switch Player's Gameboard's Heroes' Status
+                    foreach (NetworkHero gbHero in PlayerHero.GameBoardHeroes)
                     {
-                        case GameStatus.Readying:
-                            modifyHero.HeroStatus = HeroStatus.Standby;
-                            break;
-                        case GameStatus.Playing:
-                            modifyHero.HeroStatus = HeroStatus.Fight;
-                            break;
-                        case GameStatus.Comping:
-                            modifyHero.HeroStatus = HeroStatus.Fight;
-                            break;
+                        //Find the Hero by Using NetworkHero
+                        Hero modifyHero = GetPlayerHero(gbHero);
+                        Debug.Log("Modify Hero Name: " + modifyHero.gameObject.name);
+                        switch (value)
+                        {
+                            case GameStatus.Readying:
+                                modifyHero.HeroStatus = HeroStatus.Standby;
+                                break;
+                            case GameStatus.Playing:
+                                modifyHero.HeroStatus = HeroStatus.Fight;
+                                break;
+                            case GameStatus.Comping:
+                                modifyHero.HeroStatus = HeroStatus.Fight;
+                                break;
+                        }
                     }
+                    #endregion
                 }
-                #endregion
 
             }
         }

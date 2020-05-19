@@ -584,7 +584,7 @@ public class LobbyManager : MonoBehaviour
     {
         PhotonPlayer[] roomPlayers = PhotonNetwork.playerList;
 
-        if (roomPlayers.Length != GameManager.MaxRoomPlayer) return false;
+        if (roomPlayers.Length != GameManager.MaxRoomPlayer && !GameManager.isDebugMode) return false;
         foreach(PhotonPlayer roomPlayer in roomPlayers)
         {
             if (!roomPlayer.CustomProperties["ReadyForStart"].Equals("Ready"))

@@ -9,6 +9,7 @@ namespace Main
     [CreateAssetMenu(menuName = "ScriptableObject/GameManager")]
     public class GameManager : ScriptableObject
     {
+        public bool isDebugMode;
         public string databaseIP = "";
         public byte MaxRoomPlayer;
         public UserData userData;
