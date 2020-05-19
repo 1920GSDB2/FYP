@@ -232,8 +232,8 @@ namespace TFT
 
             if (isEnemy)
             {
-                int random = Random.Range(0, opponent.hero.Count);
-                return opponent.hero[random];
+                int random = Random.Range(0, opponent.heroes.Count);
+                return opponent.heroes[random];
             }
             else {
                 int random = Random.Range(0, battleGameBoardHero.Count);
@@ -248,7 +248,7 @@ namespace TFT
             if (isEnemy)
             {
              //   Debug.Log("Get battleGame " + isEnemy);
-                return calculateClosestDistance(opponent.hero, heroPos);
+                return calculateClosestDistance(opponent.heroes, heroPos);
             }
             else
             {
@@ -262,7 +262,7 @@ namespace TFT
             if (isEnemy)
             {
                 Debug.Log("Get battleGame " + isEnemy);
-                return calculateClosestDistance(opponent.hero, heroPos);
+                return calculateClosestDistance(opponent.heroes, heroPos);
             }
             else
             {
@@ -781,7 +781,7 @@ namespace TFT
                                   GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
                 heroObject.isEnemy = true;
                 //Hero heroObject = GameManager.Instance.SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>(); 
-                opponent.hero.Add(heroObject);
+                opponent.heroes.Add(heroObject);
                 if (playerId == homePlayerId)
                     heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, PlayerHeroes[homePlayerId].posId, networkHero.position);
             }
@@ -796,10 +796,10 @@ namespace TFT
                 if (isEnemy)
                 {
                     Debug.Log("character die " + hero.name);
-;                    opponent.hero.Remove(hero);
+;                    opponent.heroes.Remove(hero);
                     if(opponent.opponentId!=-1)
                     PhotonView.RPC("RPC_SyncBattleHero", PlayerHeroes[opponent.opponentId].player,hero.networkPlaceId,true);
-                    if (opponent.hero.Count == 0)
+                    if (opponent.heroes.Count == 0)
                     {
                         Debug.Log("i win ");
                         playerWinBattle(playerId,opponent.opponentId);                    
@@ -863,9 +863,9 @@ namespace TFT
         void MonsterHitPlayer()
         {
             Debug.Log("monster hit oppoent");
-            for (int i = 0; i < opponent.hero.Count; i++)
+            for (int i = 0; i < opponent.heroes.Count; i++)
             {
-                opponent.hero[i].GetComponent<PhotonView>().RPC("RPC_HitPlayerCharacter", PhotonTargets.All, !isHomeTeam,battlePosId);
+                opponent.heroes[i].GetComponent<PhotonView>().RPC("RPC_HitPlayerCharacter", PhotonTargets.All, !isHomeTeam,battlePosId);
             }
         }
         [PunRPC]
@@ -879,16 +879,16 @@ namespace TFT
             }
             else
             {
-                index = NetworkManager.Instance.opponent.hero.FindIndex(x => x.networkPlaceId == id);
+                index = NetworkManager.Instance.opponent.heroes.FindIndex(x => x.networkPlaceId == id);
                 if (index != -1)
-                    opponent.hero.RemoveAt(index);
+                    opponent.heroes.RemoveAt(index);
             }
         }
       
          IEnumerator finishBattle() {
             yield return new WaitForSeconds(1.5f);
             if (waveType == WaveType.Monster) {
-                foreach (Monster monster in opponent.hero) {
+                foreach (Monster monster in opponent.heroes) {
                     monster.destory();
                 }
             }
@@ -909,7 +909,7 @@ namespace TFT
                 hero.photonView.RPC("RPC_AddToGameBoard", PhotonTargets.All, posId, hero.networkPlaceId);
                 hero.photonView.RPC("RPC_ResetStatus", PhotonTargets.All);
             }
-            opponent.hero.Clear();
+            opponent.heroes.Clear();
         }
         [PunRPC]
         public void RPC_Response(int number) {
@@ -944,7 +944,7 @@ namespace TFT
             }
 
 
-            foreach (Character hero in opponent.hero)
+            foreach (Character hero in opponent.heroes)
             {
                 hero.readyForBattle(true, playerPosId);
             }
@@ -964,7 +964,7 @@ namespace TFT
         public void spawnMonster(string name,int placeId) {
             Monster monster = PhotonNetwork.Instantiate(Path.Combine("Prefabs", name), Vector3.zero, Quaternion.identity, 0).GetComponent<Monster>();
             monster.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, posId, placeId);
-            opponent.hero.Add(monster);
+            opponent.heroes.Add(monster);
         }
 
         public void BattleWithMonsters() {
