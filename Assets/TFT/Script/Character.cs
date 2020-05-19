@@ -500,6 +500,7 @@ public class Character : MonoBehaviour
         photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
         photonView.RPC("RPC_Mirror", PhotonTargets.Others);
         photonView.RPC("RPC_setPosId", PhotonTargets.All,NetworkManager.Instance.battlePosId);
+        combatStart?.Invoke(this, EventArgs.Empty);
         tag = "BattleCharacter";
         HeroState = HeroState.Idle;       
         Debug.Log("name " + name + " ready ");

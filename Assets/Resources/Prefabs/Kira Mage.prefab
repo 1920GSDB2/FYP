@@ -665,12 +665,13 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 0}
   cameraPos: {x: 0, y: 0, z: 0}
-  TargetEnemy: {fileID: 0}
+  targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 2135467413981753037}
-  bullet: {fileID: 7168150683983435948, guid: f2a41c59fb3591a4998570f294398d87, type: 3}
+  bullet: {fileID: 3647821912568863751, guid: 54ec473d2d5922c4d93244f6b0ac8a62, type: 3}
   networkPlaceId: 0
-  negativeEffects: []
+  battlePosId: 0
+  isMirror: 0
   NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
   Icon: {fileID: 0}
