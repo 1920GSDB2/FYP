@@ -499,15 +499,17 @@ public class Character : MonoBehaviour
 
         photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
         photonView.RPC("RPC_Mirror", PhotonTargets.Others);
-        photonView.RPC("RPC_setPosId", PhotonTargets.All,NetworkManager.Instance.battlePosId);
-        combatStart?.Invoke(this, EventArgs.Empty);
-        tag = "BattleCharacter";
+        photonView.RPC("RPC_SyncInfo", PhotonTargets.All,NetworkManager.Instance.battlePosId);
+
+        combatStart?.Invoke(this, EventArgs.Empty);        
         HeroState = HeroState.Idle;       
         Debug.Log("name " + name + " ready ");
     }
     [PunRPC]
-    public void RPC_setPosId(int id) {
+    public void RPC_SyncInfo(int id)
+    {
         battlePosId = id;
+        tag = "BattleCharacter";
     }
     [PunRPC]
     public void setTransformView() {
@@ -517,6 +519,7 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_Mirror() {
         isMirror = true;
+       
     }
     [PunRPC]
     public void RPC_ShowHpBar(int posid)
@@ -541,9 +544,9 @@ public class Character : MonoBehaviour
         animator.SetTrigger("Attack");
     }
     [PunRPC]
-    public void RPC_MoveToThePlayerHeroPlace(int posId, int placeId)
+    public void RPC_MoveToThePlayerHeroPlace(int posId, int placeId,bool isEnemy)
     {
-        HeroPlace heroPlace = NetworkManager.Instance.GetMyGameBoardEnemyHeroPlace(posId, placeId);
+        HeroPlace heroPlace = NetworkManager.Instance.GetBattleHeroPlace(posId, placeId,isEnemy);
         SetHeroPlace(heroPlace);
         // Debug.Log( this.name + " become enemy? " + isEnemy+" Pos "+heroPlace.gridX+" "+heroPlace.gridY);
     }

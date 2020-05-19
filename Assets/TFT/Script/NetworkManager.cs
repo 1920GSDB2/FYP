@@ -783,7 +783,7 @@ namespace TFT
                 //Hero heroObject = GameManager.Instance.SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>(); 
                 opponent.heroes.Add(heroObject);
                 if (playerId == homePlayerId)
-                    heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, PlayerHeroes[homePlayerId].posId, networkHero.position);
+                    heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, PlayerHeroes[homePlayerId].posId, networkHero.position,true);
             }
 
         }
@@ -963,7 +963,7 @@ namespace TFT
         }
         public void spawnMonster(string name,int placeId) {
             Monster monster = PhotonNetwork.Instantiate(Path.Combine("Prefabs", name), Vector3.zero, Quaternion.identity, 0).GetComponent<Monster>();
-            monster.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, posId, placeId);
+            monster.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, posId, placeId,true);
             opponent.heroes.Add(monster);
         }
 

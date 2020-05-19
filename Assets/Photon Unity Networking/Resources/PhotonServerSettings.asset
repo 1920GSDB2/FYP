@@ -114,4 +114,5 @@ MonoBehaviour:
   - RPC_setPosId
   - RPC_useSkill
   - RPC_AddMaxHP
+  - RPC_SyncInfo
   DisableAutoOpenWizard: 1

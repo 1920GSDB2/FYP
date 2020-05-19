@@ -6,9 +6,9 @@ public class ThunderSkill : Aoe
 {
     private void OnTriggerEnter(Collider other)
     {
-        Character Target = other.GetComponent<Character>();
+       
         if (other.tag == "BattleCharacter"){
-                
+            Character Target = other.GetComponent<Character>();
             bool target = other.GetComponent<Character>().isEnemy;
             if (target != isAlly)
             {

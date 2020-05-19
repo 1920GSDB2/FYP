@@ -11,7 +11,9 @@ public class FearArrow : Bullet ,IFearSkill
         {
             if (canDamage)
             {
-                target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage,(byte)type,duration,(byte)DamageType.Magic);
+                Character TargetEnemy = other.GetComponent<Character>();
+                TargetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage,(byte)DamageType.Magic);
+                TargetEnemy.AddNegativeEffect(2.5f, TargetEnemy.NegativeEffectManager.Blind);
 
             }
 
