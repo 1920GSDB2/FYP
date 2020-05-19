@@ -506,8 +506,8 @@ public class Character : MonoBehaviour
         Debug.Log("name " + name + " ready ");
     }
     [PunRPC]
-    public void RPC_setPosId(int id)
-  {
+    public void RPC_SyncInfo(int id)
+    {
         battlePosId = id;
         tag = "BattleCharacter";
     }
@@ -546,7 +546,7 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_MoveToThePlayerHeroPlace(int posId, int placeId,bool isEnemy)
     {
-        HeroPlace heroPlace = NetworkManager.Instance.GetMyGameBoardEnemyHeroPlace(posId, placeId);
+        HeroPlace heroPlace = NetworkManager.Instance.GetBattleHeroPlace(posId, placeId,isEnemy);
         SetHeroPlace(heroPlace);
         // Debug.Log( this.name + " become enemy? " + isEnemy+" Pos "+heroPlace.gridX+" "+heroPlace.gridY);
     }
