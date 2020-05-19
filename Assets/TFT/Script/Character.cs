@@ -123,7 +123,7 @@ public class Character : MonoBehaviour
     public NegativeEffectManager NegativeEffectManager;
     public float attackRange = 1.7f;
 
-    public event EventHandler hpChange, attack, beAttacked, beControlled, useSkill, roundStart, targetChange, combatStart;
+    public event EventHandler hpChange, attack, beAttacked, beControlled, useSkill, roundStart, targetChange, combatStart, combatEnd;
 
     public delegate void NegativeEffectHandler(float _time);
     //public delegate void CharacterHpHandler();
@@ -524,7 +524,7 @@ public class Character : MonoBehaviour
     [PunRPC]
     public void RPC_ShowHpBar(int posid)
     {
-        if (NetworkManager.Instance.opponent.hero.Contains(this))
+        if (NetworkManager.Instance.opponent.heroes.Contains(this))
             heroBar.setHpBarColor(Color.red);
         HeroBarObject.SetActive(true);
         if (NetworkManager.Instance.isHomeTeam)
