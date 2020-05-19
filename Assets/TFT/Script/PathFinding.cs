@@ -13,15 +13,7 @@ public class PathFinding : MonoBehaviour
     {
         gridMap = GetComponent<GridMap>();
     }
-    private void Start()
-    {
-    }
-    private void Update()
-    {
-         
-      
-
-    }
+  
     public void findPath(HeroPlace startPoint, HeroPlace endPoint, Action<List<Node>, bool> callback)
     {
         Node startNode = gridMap.getHeroPlaceGrid(startPoint);

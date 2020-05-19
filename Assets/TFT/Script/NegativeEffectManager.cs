@@ -115,7 +115,7 @@ public class NegativeEffectManager : MonoBehaviour
             transform.position -= transform.up * 1 * Time.deltaTime;
             yield return null;
         }
-        Debug.Log(countTime);
+      //  Debug.Log(countTime);
         Character.isSlience = false;
         Character.isBlind = false;
         Character.isStun = false;

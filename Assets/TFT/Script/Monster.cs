@@ -10,10 +10,10 @@ public class Monster : Character
 {   
    // public HeroPlace spawnHeroPlace;
     //int position;
-    private void Start()
+    protected override void Start()
     {
-
-        
+        base.Start();
+      
         photonView = GetComponent<PhotonView>();
         heroBar = HeroBarObject.transform.GetChild(0).GetComponent<HpBar>();
       
@@ -40,6 +40,11 @@ public class Monster : Character
             PhotonNetwork.Destroy(this.gameObject);
             
         }
+    }
+    [PunRPC]
+    public void RPC_ResetStatus()
+    {
+        PhotonNetwork.Destroy(this.gameObject);
     }
     public void summonSet() {
 

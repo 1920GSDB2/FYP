@@ -438,6 +438,23 @@ namespace TFT
             System.Random r = new System.Random(System.DateTime.Now.Millisecond);
             return data.OrderBy(x => r.Next()).ToArray();
         }
+        public HeroPlace getNeighboursHeroPlace(HeroPlace currentHeroplace) {
+            List<Node> neighbour = map.getNeighbours(map.getHeroPlaceGrid(currentHeroplace));
+            bool isFind=false;
+            Node currentNode = null ;
+            foreach (Node n in neighbour) {
+                if (n.isWalkable)
+                {
+                    isFind = true;
+                    currentNode = n;
+                    break;
+                }
+            }
+            if (isFind)
+                return currentNode.heroPlace;
+            else
+               return getNeighboursHeroPlace(neighbour[neighbour.Count - 1].heroPlace);
+        }
 
 
         #region Start Photon Method, Called by Master Client
@@ -798,7 +815,7 @@ namespace TFT
                     Debug.Log("character die " + hero.name);
 ;                    opponent.heroes.Remove(hero);
                     if(opponent.opponentId!=-1)
-                    PhotonView.RPC("RPC_SyncBattleHero", PlayerHeroes[opponent.opponentId].player,hero.networkPlaceId,true);
+                    PhotonView.RPC("RPC_SyncBattleHero", PlayerHeroes[opponent.opponentId].player,hero.photonView.viewID,true);
                     if (opponent.heroes.Count == 0)
                     {
                         Debug.Log("i win ");
@@ -811,7 +828,7 @@ namespace TFT
                         battleGameBoardHero.Remove(hero);
                     if (opponent.opponentId != -1)
                     {
-                        PhotonView.RPC("RPC_SyncBattleHero", PlayerHeroes[opponent.opponentId].player, hero.networkPlaceId, false);
+                        PhotonView.RPC("RPC_SyncBattleHero", PlayerHeroes[opponent.opponentId].player, hero.photonView.viewID, false);
                     }
                         if (battleGameBoardHero.Count == 0)
                         {
@@ -870,22 +887,24 @@ namespace TFT
         }
         [PunRPC]
         public void RPC_SyncBattleHero(int id,bool isSelf) {
-            int index;
             if (isSelf)
             {
-                index = NetworkManager.Instance.selfGameBoardHero.FindIndex(x => x.networkPlaceId == id);
-                if (index != -1)
-                    battleGameBoardHero.RemoveAt(index);
+                Character c = PhotonView.Find(id).GetComponent<Character>();
+                battleGameBoardHero.Remove(c);
             }
             else
             {
-                index = NetworkManager.Instance.opponent.heroes.FindIndex(x => x.networkPlaceId == id);
-                if (index != -1)
-                    opponent.heroes.RemoveAt(index);
+                Character c = PhotonView.Find(id).GetComponent<Character>();
+                opponent.heroes.Remove(c);
             }
         }
-      
-         IEnumerator finishBattle() {
+        [PunRPC]
+        public void RPC_addBattleHero(int id) {
+            Character c = PhotonView.Find(id).GetComponent<Character>();
+            battleGameBoardHero.Add(c);
+        }
+
+        IEnumerator finishBattle() {
             yield return new WaitForSeconds(1.5f);
             if (waveType == WaveType.Monster) {
                 foreach (Monster monster in opponent.heroes) {
@@ -898,12 +917,21 @@ namespace TFT
                 PlayerArenas[PlayerHeroes[opponent.opponentId].posId].GetComponent<PlayerArena>().enemyCamera.SetActive(false);
                 GameManager.Instance.SelfPlayerArena.Camera.SetActive(true);
             }
+            else {
+                foreach (Monster monster in opponent.heroes.OfType<Monster>()) {
+                    monster.destory();
+                }
+                foreach (Monster monster in battleGameBoardHero.OfType<Monster>())
+                {
+                    monster.destory();
+                }
+            }
         
             ResetHeroAfterBattle();
         }
         void ResetHeroAfterBattle() {
            Debug.Log("reset Position id: "+playerId+" Hero "+selfGameBoardHero.Count);          
-            foreach (Hero hero in selfGameBoardHero)
+            foreach (Character hero in selfGameBoardHero)
             {
                 hero.gameObject.SetActive(true);             
                 hero.photonView.RPC("RPC_AddToGameBoard", PhotonTargets.All, posId, hero.networkPlaceId);

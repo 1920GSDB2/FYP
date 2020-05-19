@@ -3259,7 +3259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Equipments: []
-  ItemList: {fileID: 0}
+  ItemList: {fileID: 6529561468492255139}
 --- !u!114 &-7486661789818083767
 MonoBehaviour:
   m_ObjectHideFlags: 0

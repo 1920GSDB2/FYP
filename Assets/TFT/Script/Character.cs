@@ -27,7 +27,7 @@ public class Character : MonoBehaviour
                 if (HeroState!= HeroState.Die)
                 {
                     Debug.Log("Call Die method " +name   );
-                    die();
+                     die();
                     
                 }
             }
@@ -208,8 +208,8 @@ public class Character : MonoBehaviour
         //Target Die
         if (targetHP <= 0)
         {
-            TargetEnemy.hpChange -= OnEnemyHpChangeListener;
-            Debug.Log("Enemy " + TargetEnemy.name + " Dead");
+      //      TargetEnemy.hpChange -= OnEnemyHpChangeListener;
+          //  Debug.Log("Enemy " + TargetEnemy.name + " Dead");
             // TargetEnemy = null;
             targetDie();
             HeroState = HeroState.Idle;
@@ -222,8 +222,11 @@ public class Character : MonoBehaviour
     /// </summary>
     public void CharacterFight()
     {
-        StartCoroutine(Attack());
-      
+        try
+        {
+            StartCoroutine(Attack());
+        }
+        catch (Exception e) { }
     }
     
     public virtual void targetDie()
@@ -449,6 +452,11 @@ public class Character : MonoBehaviour
     }
     public IEnumerator FindPathAgain()
     {
+        TargetEnemy = NetworkManager.Instance.getCloestEnemyTarget(!isEnemy, transform);
+        if (TargetEnemy != null)
+        {            
+            photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, TargetEnemy.photonView.viewID);
+        }
         yield return new WaitForSeconds(0.3f);
         FollowEnemy();
     }

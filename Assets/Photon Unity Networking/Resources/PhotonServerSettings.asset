@@ -115,4 +115,7 @@ MonoBehaviour:
   - RPC_useSkill
   - RPC_AddMaxHP
   - RPC_SyncInfo
+  - RPC_SummonUnit
+  - RPC_addBattleHero
+  - RPC_DIE
   DisableAutoOpenWizard: 1

@@ -97,12 +97,23 @@ public class Hero : Character, ISelectable
     }
 
     public override void die() {
+     //   photonView.RPC("RPC_DIE",PhotonTargets.All);
         HeroState = HeroState.Die;
         this.gameObject.SetActive(false);
         HeroPlace.leavePlace();
-        if(!isMirror)
-        NetworkManager.Instance.battleHeroDie(isEnemy, this);
-       // Debug.Log("Die " + name + " state " + HeroState + "player id" + NetworkManager.Instance.playerId);
+        if (!isMirror)
+            NetworkManager.Instance.battleHeroDie(isEnemy, this);
+    }
+    [PunRPC]
+    public void RPC_DIE() {
+        callDie();
+    }
+    public void callDie() {
+        HeroState = HeroState.Die;
+        this.gameObject.SetActive(false);
+        HeroPlace.leavePlace();
+        if (!isMirror)
+            NetworkManager.Instance.battleHeroDie(isEnemy, this);
     }
     [PunRPC]
     public void RPC_ResetStatus() {
@@ -184,6 +195,15 @@ public class Hero : Character, ISelectable
     [PunRPC]
     public void RPC_MeleeSkillAnimation() {
         animator.SetTrigger("Skill");
+    }
+    [PunRPC]
+    public void RPC_SummonUnit()
+    {
+        skill.summon(HeroPlace,isMirror);
+    }
+    public void SummonUnit()
+    {
+        skill.summon(HeroPlace, isMirror);
     }
     [PunRPC]
     public void RPC_SyncHeroAttribute(byte attributeType,float value) {

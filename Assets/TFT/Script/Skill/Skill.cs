@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TFT;
 using UnityEngine;
 
 public class Skill : MonoBehaviour
@@ -12,6 +13,6 @@ public class Skill : MonoBehaviour
     public virtual void shootSkill(Character target,float damage,bool isMirror) { }
     public virtual void shootSkill(float x, float z) { }
     public virtual void meleeHit(Character target,float damage,bool isMirror) { }
-    public virtual void summon(Character target, float damage, bool isMirror) { }
+    public virtual void summon(HeroPlace heroPlace, bool isMirror) { }
 }
 

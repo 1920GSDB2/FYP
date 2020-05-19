@@ -10,7 +10,7 @@ public class StunGroundSkill : Aoe
         {
             Character TargetEnemy = other.GetComponent<Character>();
             bool target = other.GetComponent<Character>().isEnemy;
-            //    Debug.Log("Collider " + other.name + " isEnemy " + target + " isAlly " + isAlly);
+                Debug.Log("Collider " + other.name + " isEnemy " + target + " isAlly " + isAlly);
             if (target != isAlly)
             {
                 if (!isMirror)
