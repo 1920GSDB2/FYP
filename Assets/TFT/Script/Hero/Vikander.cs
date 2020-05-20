@@ -4,7 +4,7 @@ using UnityEngine;
 public class Vikander : Hero
 {
     bool isInvincible=false;
-    float time = 2;
+    float time = 4;
     public override void setAttribute()
     {
         MpRecoverRate = 2f;

@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1210653023018031979}
   - component: {fileID: -508150123236027283}
   - component: {fileID: -4026546581929942213}
-  - component: {fileID: 140266375}
+  - component: {fileID: 815998103}
   m_Layer: 8
   m_Name: Undead Summoner
   m_TagString: Character
@@ -184,13 +184,14 @@ MonoBehaviour:
   isMirror: 0
   NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
+  isTargetable: 0
   Icon: {fileID: 0}
   SelectingBox: {fileID: 1898811942396278906}
   Rarity: 1
   HeroClasses: 06000000
   HeroRaces: 01000000
-  HeroLevel: 0
-  skill: {fileID: 140266375}
+  heroLevel: 0
+  skill: {fileID: 815998103}
   EquipmentManager: {fileID: 0}
   testSkill: {fileID: 0}
 --- !u!65 &1409756087686791978
@@ -267,6 +268,9 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 0
     Name: AttackSpeed
+  - Type: 9
+    SynchronizeType: 0
+    Name: Skill
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -374,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ffef3345541a3f428fdc652a9e21d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &140266375
+--- !u!114 &815998103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -383,11 +387,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3185575528144418990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8211389832608144ba8a76c7064a6441, type: 3}
+  m_Script: {fileID: 11500000, guid: ebee607023615844bbb05a2b3b4a2a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   castSkillEffect: {fileID: 0}
-  summonName: devil
+  hitEffect: {fileID: 282712495962261591, guid: 3665be1e4b6e7e84a95e9bd1b0056885,
+    type: 3}
 --- !u!1 &5450935774285195686
 GameObject:
   m_ObjectHideFlags: 0

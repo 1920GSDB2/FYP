@@ -2452,7 +2452,7 @@ MonoBehaviour:
   health: 0
   Sheild: 0
   MaxMp: 0
-  BasicHealth: 3
+  BasicHealth: 4
   MaxMana: 100
   Mana: 0
   BasicAttackDamage: 5
@@ -2481,6 +2481,7 @@ MonoBehaviour:
   isMirror: 0
   NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
+  isTargetable: 0
 --- !u!114 &2079996099
 MonoBehaviour:
   m_ObjectHideFlags: 0

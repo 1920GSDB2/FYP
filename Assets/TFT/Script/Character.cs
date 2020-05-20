@@ -134,6 +134,7 @@ public class Character : MonoBehaviour
     //public List<NegativeEffect> negativeEffects = new List<NegativeEffect>();
     public NegativeEffectManager NegativeEffectManager;
     public float attackRange = 1.7f;
+    public bool isTargetable;
 
     public event EventHandler hpChange, attack, beAttacked, beControlled, useSkill, roundStart, targetChange, combatStart, combatEnd;
 
