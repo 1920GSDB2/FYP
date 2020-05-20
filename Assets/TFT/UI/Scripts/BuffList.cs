@@ -142,10 +142,7 @@ namespace TFT
             //buffList.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(75, 24 * buffList.gameObject.transform.childCount);
             if (!isShowList)
             {
-                Debug.Log("1: " + RectTransform.anchoredPosition);
                 RectTransform.anchoredPosition = new Vector2(-RectTransform.sizeDelta.x + 10 , -115);
-                Debug.Log("2: " + RectTransform.anchoredPosition);
-
             }
 
             currPos = RectTransform.anchoredPosition;

@@ -8,7 +8,7 @@ namespace TFT
 {
     public class Shop : MonoBehaviour
     {
-        private Main.GameManager GameManager;
+        private Main.GameManager MainGameManager;
         private SelectManager SelectManager;
         private GameManager TFTGameManager;
         public static Shop Instance;
@@ -18,7 +18,7 @@ namespace TFT
         private int ExpPrice, RefreshPrice;
 
         public float delayTime = 0.1f;
-        public Button SwitchButton;
+        public Button SwitchButton, RemoveButton;
         public bool isShowShop = true;
         private Vector2 currrShopPos, nextShopPos;
         private Vector3 currShopBtnRot, nextShopBtnRot;
@@ -34,18 +34,20 @@ namespace TFT
         void Start()
         {
             
-            GameManager = TFT.GameManager.Instance.MainGameManager;
+            MainGameManager = TFT.GameManager.Instance.MainGameManager;
             TFTGameManager = TFT.GameManager.Instance;
             SelectManager = SelectManager.Instance;
 
-            ExpPrice = GameManager.ExpPrice;
-            RefreshPrice = GameManager.RefreshPrice;
+            ExpPrice = MainGameManager.ExpPrice;
+            RefreshPrice = MainGameManager.RefreshPrice;
             RefreshShop();
             shopRect = GetComponent<RectTransform>();
 
             currrShopPos = shopRect.anchoredPosition;
             nextShopPos = currrShopPos;
             currShopBtnRot = textRect.eulerAngles;
+
+            RemoveButton.onClick.AddListener(delegate { RemoveHero(); });
         }
 
         void Update()
@@ -62,10 +64,31 @@ namespace TFT
                 currShopBtnRot = textRect.eulerAngles;
             }
         }
+        public void RemoveHero()
+        {
+            Hero selectHero = SelectManager.DragObject as Hero;
+            
+            if (selectHero != null)
+            {
+                PlayerHero playerHero = GameManager.Instance.PlayerHero;
+                for (int i = 0; i < playerHero.UsableHeroes.Count; i++)
+                {
+                    if (playerHero.UsableHeroes[i].position == selectHero.transform.parent.GetSiblingIndex() &&
+                        playerHero.UsableHeroes[i].HeroLevel == selectHero.HeroLevel)
+                    {
+                        NetworkManager.Instance.SyncPlayerHero(playerHero.UsableHeroes[i], SyncHeroMethod.RemoveHero);
+                        break;
+                    }
+                }
+                asset.AssetValue += selectHero.Price * (int)selectHero.HeroLevel + 1;
+                PhotonNetwork.Destroy(selectHero.gameObject);
+                SelectManager.DragObject = null;
+            }
+        }
 
         public void RefreshShop()
         {
-            List<Hero> heroTypes = GameManager.heroTypes;
+            List<Hero> heroTypes = MainGameManager.heroTypes;
             for (int i = 0; i < heroUis.Length; i++)
             {
                 int heroId = Random.Range(0, heroTypes.Count);
@@ -110,7 +133,12 @@ namespace TFT
                 if (TFT.GameManager.Instance.BuyHero(newHero))
                 {
                     asset.AssetValue -= heroUi.BasicInfo.price;
+                    newHero.Price = heroUi.BasicInfo.price;
                     heroUi.gameObject.SetActive(false);
+                }
+                else
+                {
+                    PhotonNetwork.Destroy(newHero.gameObject);
                 }
             }
         }

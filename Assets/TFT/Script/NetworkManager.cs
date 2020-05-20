@@ -687,12 +687,17 @@ namespace TFT
                     break;
                 case SyncHeroMethod.RemoveHero:
                     List<NetworkHero> RemoveHero = PlayerHeroes[_playerId].UsableHeroes;
+                    List<NetworkHero> RemoveGameHero = PlayerHeroes[_playerId].GameBoardHeroes;
                     for (int i = 0; i < RemoveHero.Count; i++)
                     {
                         if (RemoveHero[i].name.Equals(_name) &&
                             RemoveHero[i].position == _heroPos &&
                             RemoveHero[i].HeroLevel == _heroLevel)
                         {
+                            if (RemoveGameHero.Contains(RemoveHero[i]))
+                            {
+                                RemoveGameHero.Remove(RemoveHero[i]);
+                            }
                             RemoveHero.Remove(RemoveHero[i]);
                             break;
                         }
