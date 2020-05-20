@@ -63,10 +63,10 @@ namespace TFT
                     //Matching the opponent
                     if (PhotonNetwork.isMasterClient)
                     {
-                        if(RoundManager.CurrentOpponentType== OpponentType.Player)
-                        NetworkManager.Instance.MatchPlayerOpponent();
-                        else
-                            NetworkManager.Instance.MonsterBattle();
+                        if (RoundManager.CurrentOpponentType == OpponentType.Player) ;
+                     //   NetworkManager.Instance.MatchPlayerOpponent();
+                      //  else
+                         //   NetworkManager.Instance.MonsterBattle();
                     }
                     return;
                 }
@@ -307,7 +307,7 @@ namespace TFT
                     Debug.Log("transit before Game st" + GameStatus);
                     if (GameStatus == GameStatus.Comping&&!NetworkManager.Instance.BattleFinish()) {
                         Debug.Log("increase time no yet finish!!");
-                          NetworkManager.PhotonView.RPC("overTimeFinish", PhotonTargets.All);
+                     //     NetworkManager.PhotonView.RPC("overTimeFinish", PhotonTargets.All);
 
                     }
                     LastGameStatus = GameStatus;

@@ -21,7 +21,7 @@ public class Aoe : MonoBehaviour
         this.isMirror = isMirror;
         this.isAlly = isEnemy;
     }
-    IEnumerator openCollider() {
+    protected virtual IEnumerator openCollider() {
         yield return new WaitForSeconds(delayOpenCollider);
         collider.enabled = true;
     }

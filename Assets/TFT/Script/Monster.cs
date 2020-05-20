@@ -23,9 +23,9 @@ public class Monster : Character
     public void resetAttribute()
     {
 
-        MaxHealth = 1000;
+        MaxHealth = BasicHealth*75f;
         Health = MaxHealth;
-        AttackDamage = 30 * BasicAttackDamage;
+        AttackDamage = 10 * BasicAttackDamage;
         AttackSpeed = 0.1f * BasicAttackSpeed;
         attackRange = attackRange * BasicAttackRange;   
     }
