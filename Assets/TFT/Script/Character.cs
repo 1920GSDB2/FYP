@@ -594,6 +594,7 @@ public class Character : MonoBehaviour
         //if (NetworkManager.Instance.playerId == playerId)
         if (isHomeTeam)
         {
+            
             opponentPlayer = NetworkManager.Instance.PlayerArenas[battlePos]. GetComponent<PlayerArena>()
                 .opponentCharacterSlot.GetChild(0).gameObject;
 

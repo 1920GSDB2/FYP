@@ -5,7 +5,7 @@ using TFT;
 
 public class MonsterWaveManager : MonoBehaviour
 {
-   
+    public GameObject[] awardEquipment;
     public MonsterWave[] Wave;
     int currentIndex;
     public static MonsterWaveManager Instance;
@@ -13,8 +13,9 @@ public class MonsterWaveManager : MonoBehaviour
     bool isDropEquipment;
     int dropRate;
     Award[] awardType= { Award.Equipment };
-    public GameObject[] awardEquipment;
-    
+    EquipmentSlotManager equipmentBoard;
+
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -60,9 +61,11 @@ public class MonsterWaveManager : MonoBehaviour
         switch (type)
         {
         case Award.Equipment:
+                Debug.Log("Get Equipment");
                 isDropEquipment = true;
                 int index = UnityEngine.Random.Range(0, awardEquipment.Length);
-                GameObject equipment = Instantiate(awardEquipment[index], awardEquipment[index].transform.position, awardEquipment[index].transform.rotation) as GameObject;
+                Equipment equipment = Instantiate(awardEquipment[index]).GetComponent<Equipment>();
+                equipmentBoard.AddEquipment(equipment);
         break;
         }
 
@@ -81,7 +84,9 @@ public class MonsterWaveManager : MonoBehaviour
     public int getCurrentTotalMonsterCount() {
         return Wave[currentIndex].monster.Length;
     }
-
+    public void setEquipmentBoard(EquipmentSlotManager e) {
+        equipmentBoard = e;
+    }
 }
 [Serializable]
 public class MonsterWave{

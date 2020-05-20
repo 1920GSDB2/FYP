@@ -23,7 +23,7 @@ namespace TFT
                 if(equipmentSlot.transform.childCount <= 0)
                 {
                     _equipment.transform.parent = equipmentSlot.transform;
-                    _equipment.transform.position = Vector3.zero;
+                    _equipment.gameObject.transform.localPosition = Vector3.zero;
                     return;
                 }
             }
