@@ -121,4 +121,6 @@ MonoBehaviour:
   - RPC_Upgrade
   - RPC_InstallEquipment
   - Time_Sync
+  - RPC_Time_Sync
+  - RPC_RoundUp
   DisableAutoOpenWizard: 1
