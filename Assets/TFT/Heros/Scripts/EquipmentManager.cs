@@ -26,7 +26,7 @@ namespace TFT
         public bool AddEquirement(Equipment _addEquirement)
         {
             if (Equipments.Count == 3 && !Equipments[2].isComponent) return false;
-            if(Equipments.Count == 0 || !Equipments[Equipments.Count - 1].isComponent)
+            if(Equipments.Count == 0 || !Equipments[Equipments.Count - 1].isComponent ||!_addEquirement.isComponent)
             { 
                 AddAttribute(_addEquirement);
                 return true;

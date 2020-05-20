@@ -65,7 +65,7 @@ namespace TFT
         
         void OnMouseOver()
         {
-            if (!(GameManager.GameStatus == GameStatus.Playing && name.Equals("Hexagon")) || !GameManager.MainGameManager.isDebugMode)
+            if (!(GameManager.GameStatus == GameStatus.Playing && name.Equals("Hexagon")) || GameManager.MainGameManager.isDebugMode)
             {
                 if (PlaceType == PlaceType.NonBoard)
                 {

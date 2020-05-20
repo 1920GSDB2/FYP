@@ -29,6 +29,10 @@ namespace TFT
             get { return remainTime; }
             set
             {
+                if (PhotonNetwork.isMasterClient)
+                {
+                    NetworkManager.PhotonView.RPC("RPC_Time_Sync", PhotonTargets.Others, value);
+                }
                 if (value <= 0)
                 {
                     ChangeGameStatus();
@@ -97,7 +101,6 @@ namespace TFT
             #region Initialization Game Status
             GameStatus = GameStatus.Readying;
             PeriodTime = MainGameManager.readyingTime;
-            RemainTime = PeriodTime;
             #endregion
 
         }
@@ -105,6 +108,8 @@ namespace TFT
         void Start()
         {
             PlayerHero = new PlayerHero();
+
+            remainTime = PeriodTime;
         }
 
         void Update()
@@ -139,8 +144,7 @@ namespace TFT
                     //Can level up and destroy extra hero
                     else
                     {
-
-                        DestroyImmediate(_hero.gameObject);
+                        PhotonNetwork.Destroy(_hero.GetComponent<PhotonView>());
                     }
 
                     return true;
@@ -149,7 +153,7 @@ namespace TFT
             #endregion
 
             //Cannot buy hero and destroy extra hero
-            DestroyImmediate(_hero.gameObject);
+            //DestroyImmediate(_hero.gameObject);
 
             return false;
         }
@@ -177,14 +181,18 @@ namespace TFT
                     if (sameLvCount >= 2)
                     {
                         #region Remove Hero
-                        DestroyImmediate(SelfPlayerArena.SelfArena.HeroList.GetChild(heroes[i].position).GetChild(0).gameObject);
+                        //DestroyImmediate(SelfPlayerArena.SelfArena.HeroList.GetChild(heroes[i].position).GetChild(0).gameObject);
+                        PhotonNetwork.Destroy(SelfPlayerArena.SelfArena.HeroList.GetChild(heroes[i].position).GetChild(0).gameObject);
                         NetworkManager.Instance.SyncPlayerHero(heroes[i], SyncHeroMethod.RemoveHero);
                         #endregion
 
                         #region Upgrade Hero
                         sameLvHero.HeroLevel++;
-                        SelfPlayerArena.SelfArena.HeroList.GetChild(sameLvHero.position).GetChild(0).GetComponent<Hero>().HeroLevel++;
-                        NetworkManager.Instance.SyncPlayerHero(heroes[i], SyncHeroMethod.HeroUpgrade);
+
+                        SelfPlayerArena.SelfArena.HeroList.GetChild(sameLvHero.position)
+                            .GetChild(0).GetComponent<Hero>().photonView.RPC("RPC_Upgrade", PhotonTargets.All);
+                        //SelfPlayerArena.SelfArena.HeroList.GetChild(sameLvHero.position).GetChild(0).GetComponent<Hero>().HeroLevel++;
+                        NetworkManager.Instance.SyncPlayerHero(sameLvHero, SyncHeroMethod.HeroUpgrade);
                         #endregion
 
                         return CheckHeroLevelUp(sameLvHero);
@@ -266,13 +274,21 @@ namespace TFT
                         {
                             PeriodTime = MainGameManager.readyingTime;
                             GameStatus = GameStatus.Readying;
-                            RoundManager.RoundUp();
+                            if (PhotonNetwork.isMasterClient)
+                            {
+                                RoundManager.RoundUp();
+                                NetworkManager.PhotonView.RPC("RPC_RoundUp", PhotonTargets.Others);
+                            }
                         }
                         break;
                     case GameStatus.Comping:
                         PeriodTime = MainGameManager.readyingTime;
                         GameStatus = GameStatus.Readying;
-                        RoundManager.RoundUp();
+                        if (PhotonNetwork.isMasterClient)
+                        {
+                            RoundManager.RoundUp();
+                            NetworkManager.PhotonView.RPC("RPC_RoundUp", PhotonTargets.Others);
+                        }
                         break;
                 }
             }

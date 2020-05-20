@@ -113,4 +113,4 @@ MonoBehaviour:
   components:
   - {fileID: 8932993913939470856, guid: 6390a3995f27bf3478f8f8f9932a161b, type: 3}
   - {fileID: 8932993913939470856, guid: 6390a3995f27bf3478f8f8f9932a161b, type: 3}
-  manaValue: 50
+  manaValue: 20

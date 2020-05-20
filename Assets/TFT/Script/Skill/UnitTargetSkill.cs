@@ -8,7 +8,4 @@ public class UnitTargetSkill : Skill
     public virtual void castSkill(Character target) {
         Instantiate(skillModel, target.transform.position,Quaternion.identity);
     }
-    public virtual void castSkill(float x, float y, float z) {
-
-    }
 }
