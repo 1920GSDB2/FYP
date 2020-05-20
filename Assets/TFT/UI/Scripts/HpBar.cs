@@ -26,12 +26,12 @@ namespace TFT
                 damageColor.a -= 0.5f * Time.deltaTime;
                 damageBar.color = damageColor;
             }
-            Vector3 targetPostition = 
-                new Vector3(transform.position.x,
-                NetworkManager.Instance.CurrentCamera.transform.position.y, 
-                transform.position.x);
+            //Vector3 targetPostition = 
+            //    new Vector3(transform.position.x,
+            //    NetworkManager.Instance.CurrentCamera.transform.position.y, 
+            //    transform.position.x);
             //transform.LookAt(targetPostition);
-            transform.LookAt(NetworkManager.Instance.CurrentCamera.transform);
+            //transform.LookAt(NetworkManager.Instance.CurrentCamera.transform);
 
         }
         public void setHpBarWithDamage(float precentage)

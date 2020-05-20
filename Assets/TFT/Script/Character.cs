@@ -165,8 +165,8 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        //Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.x);
-        //HeroBarObject.transform.LookAt(targetPostition);
+        Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.x);
+        HeroBarObject.transform.LookAt(targetPostition);
         if (HeroState == HeroState.Idle && !isStun)
         {
             IdleState();
@@ -619,6 +619,7 @@ public class Character : MonoBehaviour
                 {
                     transform.LookAt(TargetEnemy.transform);
                     TargetEnemy.beAttacked?.Invoke(this, EventArgs.Empty);
+                    if (TargetEnemy.HeroState == HeroState.Die) TargetEnemy = null;
                 }
                 attack?.Invoke(this, EventArgs.Empty);
                // if(isEnemy)

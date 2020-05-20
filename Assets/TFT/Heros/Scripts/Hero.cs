@@ -109,6 +109,7 @@ public class Hero : Character, ISelectable
      //   photonView.RPC("RPC_DIE",PhotonTargets.All);
         HeroState = HeroState.Die;
         TargetEnemy = null;
+        transform.localPosition = Vector3.zero;
         this.gameObject.SetActive(false);
         HeroPlace.leavePlace();
         if (!isMirror)
@@ -139,8 +140,7 @@ public class Hero : Character, ISelectable
         isStun = false;
         isSlience = false;
         isBlind = false;
-
-        TargetEnemy = null;
+        
         HeroBarObject.transform.rotation = Quaternion.identity;
         StartCoroutine(resetStatusCount());
     }
@@ -151,6 +151,9 @@ public class Hero : Character, ISelectable
     public virtual void resetStatus() {
         Debug.Log("Reset Status");
         HeroState = HeroState.Nothing;
+        TargetEnemy = null;
+        transform.localPosition = Vector3.zero;
+        transform.localEulerAngles = Vector3.zero;
         // GetComponent<PhotonTransformView>().enabled = false;
         float recoverHealth = MaxHealth;
         if (Health < 0)
