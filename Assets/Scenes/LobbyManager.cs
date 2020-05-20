@@ -171,6 +171,7 @@ public class LobbyManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                    Hero monster = (PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Armor Crocodile"), Vector3.zero, Quaternion.identity, 0)).GetComponent<Hero>();
+                Instantiate(monster,transform.position,Quaternion.identity);
                // Bullet bullet = (PhotonNetwork.Instantiate(Path.Combine("Skill", "soul orb"), new Vector3(20,20,33), transform.rotation, 0)).GetComponent<Bullet>();
                // bullet.setBullet(testGameobject, 10f, true);
                 // PhotonView.RPC("test", PhotonTargets.Others, "others");              

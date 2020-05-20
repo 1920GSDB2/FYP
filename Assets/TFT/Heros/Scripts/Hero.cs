@@ -223,11 +223,11 @@ public class Hero : Character, ISelectable
     [PunRPC]
     public void RPC_SummonUnit()
     {
-        skill.summon(HeroPlace,isMirror);
+        skill.summon(HeroPlace,isEnemy,isMirror);
     }
     public void SummonUnit()
     {
-        skill.summon(HeroPlace, isMirror);
+        skill.summon(HeroPlace,isEnemy, isMirror);
     }
     [PunRPC]
     public void RPC_SyncHeroAttribute(byte attributeType,float value) {

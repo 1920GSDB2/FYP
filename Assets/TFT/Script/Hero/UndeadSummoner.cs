@@ -9,8 +9,8 @@ public class UndeadSummoner : Hero
     public override void UseSkill()
     {
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
-        if (!isMirror)
-            SummonUnit();
+        if (!isMirror) ;
+          //  SummonUnit();
 
     }
 }

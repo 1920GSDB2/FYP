@@ -15,7 +15,7 @@ namespace TFT
 
         private int[] MonsterRound;
         private int CurrentRound;
-        private OpponentType CurrentOpponentType
+        public OpponentType CurrentOpponentType
         {
             get
             {

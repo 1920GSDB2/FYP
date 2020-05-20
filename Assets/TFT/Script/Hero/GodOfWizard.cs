@@ -11,8 +11,11 @@ public class GodOfWizard : Hero
     {
 
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
-        Character target = NetworkManager.Instance.getRandomCharacter(isEnemy);
-        photonView.RPC("RPC_castAoeSkill", PhotonTargets.All,target.photonView.viewID);
+        if (!isMirror)
+        {
+            Character target = NetworkManager.Instance.getRandomCharacter(isEnemy);
+            photonView.RPC("RPC_castAoeSkill", PhotonTargets.All, target.photonView.viewID);
+        }
 
     }
     public void godOfWizardAttack() {
