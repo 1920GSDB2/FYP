@@ -197,6 +197,33 @@ namespace TFT
         }
 
         /// <summary>
+        /// Get Hero by NetworkHero
+        /// </summary>
+        /// <param name="_networkHero"></param>
+        /// <param name="_playerId"></param>
+        /// <returns></returns>
+        public Hero GetHeroByNetworkHero(NetworkHero _networkHero, int? _placeType = null, int? _playerId = null)
+        {
+            int placeType = _placeType ?? 0;
+            int targetPlayerId = _playerId ?? playerId;
+            //This is in Hero List
+            if(placeType == 0)
+            {
+                return PlayerArenas[PlayerHeroes[targetPlayerId].posId].
+                GetComponent<PlayerArena>().SelfArena.HeroList.
+                GetChild(_networkHero.position).GetChild(0).GetComponent<Hero>();
+            }
+            //This is in Game Board
+            else
+            {
+                return PlayerArenas[PlayerHeroes[targetPlayerId].posId].
+                GetComponent<PlayerArena>().SelfArena.GameBoard.
+                GetChild(_networkHero.position).GetChild(0).GetComponent<Hero>();
+            }
+            
+        }
+
+        /// <summary>
         /// Get Player's Hero Place by Id
         /// </summary>
         /// <param name="_posId"></param>
@@ -702,6 +729,7 @@ namespace TFT
                         {
                             if (RemoveGameHero.Contains(RemoveHero[i]))
                             {
+                                Debug.Log("RemoveGameHero index: " + RemoveGameHero.IndexOf(RemoveHero[i]));
                                 RemoveGameHero.Remove(RemoveHero[i]);
                             }
                             RemoveHero.Remove(RemoveHero[i]);
@@ -767,17 +795,22 @@ namespace TFT
 
             }
         }*/
-        void setOppoentHero(int homePlayerId, int OpponentPlayerId) {
-            foreach (NetworkHero networkHero in PlayerHeroes[OpponentPlayerId].GameBoardHeroes)
+        void setOppoentHero(int homePlayerId, int opponentPlayerId) {
+            foreach (NetworkHero networkHero in PlayerHeroes[opponentPlayerId].GameBoardHeroes)
             {
-                Hero heroObject = PlayerArenas[PlayerHeroes[OpponentPlayerId].posId].
-                                  GetComponent<PlayerArena>().SelfArena.GameBoard.
-                                  GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
+                //Hero heroObject = PlayerArenas[PlayerHeroes[opponentPlayerId].posId].
+                //                  GetComponent<PlayerArena>().SelfArena.GameBoard.
+                //                  GetChild(networkHero.position).GetChild(0).GetComponent<Hero>();
+
+                Hero heroObject = GetHeroByNetworkHero(networkHero, 1, opponentPlayerId);
+
                 heroObject.isEnemy = true;
                 //Hero heroObject = GameManager.Instance.SelfPlayerArena.SelfArena.GameBoard.GetChild(networkHero.position).GetChild(0).GetComponent<Hero>(); 
                 opponent.heroes.Add(heroObject);
                 if (playerId == homePlayerId)
-                    heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, PlayerHeroes[homePlayerId].posId, networkHero.position,true);
+                    heroObject.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace",
+                        PhotonTargets.All,
+                        PlayerHeroes[homePlayerId].posId, networkHero.position,true);
             }
 
         }
@@ -1093,6 +1126,12 @@ namespace TFT
         public void RPC_RoundUp()
         {
             GameManager.Instance.RoundManager.RoundUp();
+        }
+        [PunRPC]
+        public void RPC_ChangeStatus(GameStatus _gameStatus, GameStatus _lastGameStatus)
+        {
+            GameManager.Instance.GameStatus = _gameStatus;
+            GameManager.Instance.LastGameStatus = _lastGameStatus;
         }
     }
 }

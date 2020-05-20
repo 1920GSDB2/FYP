@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,11 +34,13 @@ namespace TFT
                 {
                     NetworkManager.PhotonView.RPC("RPC_Time_Sync", PhotonTargets.Others, value);
                 }
-              //  Debug.Log("RemainTime c "+remainTime);
                 if (value <= 0)
                 {
                     if (PhotonNetwork.isMasterClient)
+                    {
                         ChangeGameStatus();
+                        NetworkManager.PhotonView.RPC("RPC_ChangeStatus", PhotonTargets.Others, GameStatus, LastGameStatus);
+                    }
                 }
                 else
                 {
@@ -56,15 +59,18 @@ namespace TFT
             set
             {
                 gameStatus = value;
-
+                if(value == GameStatus.Readying)
+                {
+                    readying?.Invoke(this, EventArgs.Empty);
+                }
                 //Check the Next Status wheather Playing, to Match the Players' Opponent
-                if (value == GameStatus.Transiting && LastGameStatus == GameStatus.Readying)
+                else if (value == GameStatus.Transiting && LastGameStatus == GameStatus.Readying)
                 {
                     //Matching the opponent
                     if (PhotonNetwork.isMasterClient)
                     {
                         if(RoundManager.CurrentOpponentType== OpponentType.Player)
-                        NetworkManager.Instance.MatchPlayerOpponent();
+                            NetworkManager.Instance.MatchPlayerOpponent();
                         else
                             NetworkManager.Instance.MonsterBattle();
                     }
@@ -98,6 +104,11 @@ namespace TFT
             }
         }
 
+        public EventHandler readying;
+
+        [SerializeField]
+        Hero LaterUpgradeHero;
+
         void Awake()
         {
             Instance = this;
@@ -117,13 +128,33 @@ namespace TFT
             PlayerHero = new PlayerHero();
 
             remainTime = PeriodTime;
+            readying += OnReadying;
         }
 
         void Update()
         {
 
         }
-        
+
+        public void OnReadying(object sender, EventArgs e)
+        {
+            if (LaterUpgradeHero != null)
+            {
+                NetworkHero networkHero = 
+                    CheckHeroLevelUp(new NetworkHero(LaterUpgradeHero.name,
+                        LaterUpgradeHero.transform.parent.GetSiblingIndex(), 
+                        LaterUpgradeHero.HeroLevel));
+
+                //Cannot level up
+                if (networkHero.HeroLevel != HeroLevel.Level1)
+                {
+                    NetworkManager.Instance.SyncPlayerHero(networkHero, SyncHeroMethod.RemoveHero);
+                    PhotonNetwork.Destroy(LaterUpgradeHero.GetComponent<PhotonView>());
+                }
+                LaterUpgradeHero = null;
+            }
+        }
+
         /// <summary>
         /// Check whether player can buy a hero.
         /// </summary>
@@ -187,21 +218,44 @@ namespace TFT
                     sameLvCount++;
                     if (sameLvCount >= 2)
                     {
-                        #region Remove Hero
-                        //DestroyImmediate(SelfPlayerArena.SelfArena.HeroList.GetChild(heroes[i].position).GetChild(0).gameObject);
-                        PhotonNetwork.Destroy(SelfPlayerArena.SelfArena.HeroList.GetChild(heroes[i].position).GetChild(0).gameObject);
-                        NetworkManager.Instance.SyncPlayerHero(heroes[i], SyncHeroMethod.RemoveHero);
-                        #endregion
+                        if (PlayerHero.GameBoardHeroes.Contains(heroes[i]) && GameStatus != GameStatus.Readying)
+                        {
+                            Debug.Log("Add Later UpgradeHero");
+                            LaterUpgradeHero = NetworkManager.Instance.GetHeroByNetworkHero(_hero);
+                            return _hero;
+                        }
+                        else 
+                        {
+                            #region Remove Hero
+                            if (PlayerHero.GameBoardHeroes.Contains(heroes[i]))
+                            {
+                                Debug.Log("Remove Game Board Hero");
+                                PhotonNetwork.Destroy(SelfPlayerArena.SelfArena.GameBoard.GetChild(heroes[i].position).GetChild(0).gameObject);
+                            }
+                            
+                            else
+                            {
+                                PhotonNetwork.Destroy(SelfPlayerArena.SelfArena.HeroList.GetChild(heroes[i].position).GetChild(0).gameObject);
+                                Debug.Log("Remoe HeroList Hero");
 
-                        #region Upgrade Hero
-                        sameLvHero.HeroLevel++;
+                            }
 
-                        SelfPlayerArena.SelfArena.HeroList.GetChild(sameLvHero.position)
-                            .GetChild(0).GetComponent<Hero>().photonView.RPC("RPC_Upgrade", PhotonTargets.All);
-                        //SelfPlayerArena.SelfArena.HeroList.GetChild(sameLvHero.position).GetChild(0).GetComponent<Hero>().HeroLevel++;
-                        NetworkManager.Instance.SyncPlayerHero(sameLvHero, SyncHeroMethod.HeroUpgrade);
-                        #endregion
+                            //DestroyImmediate(SelfPlayerArena.SelfArena.HeroList.GetChild(heroes[i].position).GetChild(0).gameObject);
 
+                            NetworkManager.Instance.SyncPlayerHero(heroes[i], SyncHeroMethod.RemoveHero);
+                            #endregion
+
+                            #region Upgrade Hero
+                            sameLvHero.HeroLevel++;
+                            Debug.Log("sameLvHero.position: "+ sameLvHero.position);
+
+                            SelfPlayerArena.SelfArena.HeroList.GetChild(sameLvHero.position)
+                                .GetChild(0).GetComponent<Hero>().photonView.RPC("RPC_Upgrade", PhotonTargets.All);
+                            //SelfPlayerArena.SelfArena.HeroList.GetChild(sameLvHero.position).GetChild(0).GetComponent<Hero>().HeroLevel++;
+                            NetworkManager.Instance.SyncPlayerHero(sameLvHero, SyncHeroMethod.HeroUpgrade);
+                            #endregion
+                        }
+                        
                         return CheckHeroLevelUp(sameLvHero);
                     }
                     sameLvHero = heroes[i];
@@ -274,13 +328,13 @@ namespace TFT
                     case GameStatus.Playing:
                         //(move to transiting status )If some players' heroes are not die yet, it will switch to extra time status
                                         
-                            PeriodTime = MainGameManager.readyingTime;
-                            GameStatus = GameStatus.Readying;
-                            if (PhotonNetwork.isMasterClient)
-                            {
-                                RoundManager.RoundUp();
-                                NetworkManager.PhotonView.RPC("RPC_RoundUp", PhotonTargets.Others);
-                            }
+                        PeriodTime = MainGameManager.readyingTime;
+                        GameStatus = GameStatus.Readying;
+                        if (PhotonNetwork.isMasterClient)
+                        {
+                            RoundManager.RoundUp();
+                            NetworkManager.PhotonView.RPC("RPC_RoundUp", PhotonTargets.Others);
+                        }
                         break;
                     case GameStatus.Comping:
                         PeriodTime = MainGameManager.readyingTime;
