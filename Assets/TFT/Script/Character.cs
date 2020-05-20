@@ -144,6 +144,7 @@ public class Character : MonoBehaviour
     protected virtual void Start()
     {
         NegativeEffectManager = GetComponent<NegativeEffectManager>();
+
     }
     public void DebugTest()
     {
@@ -384,7 +385,7 @@ public class Character : MonoBehaviour
     {
         Sheild += value;
         heroBar.addShieldBar(value / MaxHealth);
-        Debug.Log(value / MaxHealth);
+      //  Debug.Log(value / MaxHealth);
     }
     public float sheildDefense(float damage)
     {
@@ -524,7 +525,7 @@ public class Character : MonoBehaviour
 
         combatStart?.Invoke(this, EventArgs.Empty);        
         HeroState = HeroState.Idle;       
-        Debug.Log("name " + name + " ready ");
+    //    Debug.Log("name " + name + " ready ");
     }
     [PunRPC]
     public void RPC_SyncInfo(int id)

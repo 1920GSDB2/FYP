@@ -159,6 +159,8 @@ namespace TFT
         public int posId;
         public PhotonPlayer player;
         public TFTPlayerCharacter playerCharacter;
+        public bool isResponse;
+        
 
         /// <summary>
         /// Add hero to gameboard.
@@ -171,6 +173,7 @@ namespace TFT
             
             //AddHeroArray(Hero, ref GameBoardHeros);
         }
+       
         public PlayerHero() { }
         public void setPlayer(PhotonPlayer player) {
             this.player = player;

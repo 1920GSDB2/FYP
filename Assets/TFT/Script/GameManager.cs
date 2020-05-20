@@ -33,9 +33,11 @@ namespace TFT
                 {
                     NetworkManager.PhotonView.RPC("RPC_Time_Sync", PhotonTargets.Others, value);
                 }
+              //  Debug.Log("RemainTime c "+remainTime);
                 if (value <= 0)
                 {
-                    ChangeGameStatus();
+                    if (PhotonNetwork.isMasterClient)
+                        ChangeGameStatus();
                 }
                 else
                 {
@@ -60,7 +62,12 @@ namespace TFT
                 {
                     //Matching the opponent
                     if (PhotonNetwork.isMasterClient)
+                    {
+                        if(RoundManager.CurrentOpponentType== OpponentType.Player)
                         NetworkManager.Instance.MatchPlayerOpponent();
+                        else
+                            NetworkManager.Instance.MonsterBattle();
+                    }
                     return;
                 }
                 if (!MainGameManager.isDebugMode)
@@ -256,6 +263,7 @@ namespace TFT
             //When the transiting time is finish, it will determine the next status of game
             if (GameStatus == GameStatus.Transiting)
             {
+                Debug.Log("change game berfre Game st" + GameStatus);
                 //Use the last game status to switch the next game status
                 switch (LastGameStatus)
                 {
@@ -264,14 +272,8 @@ namespace TFT
                         GameStatus = GameStatus.Playing;
                         break;
                     case GameStatus.Playing:
-                        //If some players' heroes are not die yet, it will switch to extra time status
-                        if (false/*If Player Has Hero Not Die (Not Finsih)*/)
-                        {
-                            PeriodTime = MainGameManager.compingTime;
-                            GameStatus = GameStatus.Comping;
-                        }
-                        else
-                        {
+                        //(move to transiting status )If some players' heroes are not die yet, it will switch to extra time status
+                                        
                             PeriodTime = MainGameManager.readyingTime;
                             GameStatus = GameStatus.Readying;
                             if (PhotonNetwork.isMasterClient)
@@ -279,7 +281,6 @@ namespace TFT
                                 RoundManager.RoundUp();
                                 NetworkManager.PhotonView.RPC("RPC_RoundUp", PhotonTargets.Others);
                             }
-                        }
                         break;
                     case GameStatus.Comping:
                         PeriodTime = MainGameManager.readyingTime;
@@ -291,16 +292,36 @@ namespace TFT
                         }
                         break;
                 }
+                Debug.Log("change game after Game st" + GameStatus);
             }
             //Change game status to Transiting
             else
             {
-                LastGameStatus = GameStatus;
-                PeriodTime = MainGameManager.transitionTime;
-                GameStatus = GameStatus.Transiting;
+                if (GameStatus == GameStatus.Playing && !NetworkManager.Instance.BattleFinish())
+                {
+                    PeriodTime = MainGameManager.compingTime;
+                    GameStatus = GameStatus.Comping;
+                }
+                else
+                {
+                    Debug.Log("transit before Game st" + GameStatus);
+                    if (GameStatus == GameStatus.Comping&&!NetworkManager.Instance.BattleFinish()) {
+                        Debug.Log("increase time no yet finish!!");
+                          NetworkManager.PhotonView.RPC("overTimeFinish", PhotonTargets.All);
+
+                    }
+                    LastGameStatus = GameStatus;
+                    PeriodTime = MainGameManager.transitionTime;
+                    GameStatus = GameStatus.Transiting;
+                    Debug.Log("transit after Game st" + GameStatus);
+                }
             }
 
             remainTime = PeriodTime;
+        }
+        public void finishWave() {          
+            if(LastGameStatus==GameStatus.Readying)
+            RemainTime = 0;
         }
     }
 }
