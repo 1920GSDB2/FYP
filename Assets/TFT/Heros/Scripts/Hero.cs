@@ -52,8 +52,12 @@ public class Hero : Character, ISelectable
     // bool isAttackCooldown;
     string lastTransform;
 
+    [HideInInspector]
+    public int Price;
+
+
     //  List<Node> path;
-   
+
     public virtual void setAttribute() {}
 
     private void Awake()
