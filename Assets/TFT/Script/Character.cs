@@ -306,7 +306,16 @@ public class Character : MonoBehaviour
     void processShoot(int id) {
         Bullet b = Instantiate(bullet, transform.position + Vector3.up, transform.rotation).GetComponent<Bullet>();
         Character target = PhotonView.Find(id).GetComponent<Character>();
-        b.setBullet(target, AttackDamage, isMirror);
+        int chance = UnityEngine.Random.Range(1, 101);
+        if (CriticalChance >= chance)
+        {
+            float damage = AttackDamage * 1.5f;
+            b.setBullet(target, damage, isMirror, DamageType.CriticalDamage);
+        }
+        else
+        {
+            b.setBullet(target, AttackDamage, isMirror);
+        }
         //Debug.Log("target "+target.name +" photon prcess shot");
     }
 
