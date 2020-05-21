@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -274,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -869,6 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -1360,6 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -1919,6 +1923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -2178,6 +2183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -2362,6 +2368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -2799,6 +2806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -3097,6 +3105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -3498,6 +3507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -4024,6 +4034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -4133,6 +4144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -4317,6 +4329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -4785,6 +4798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -5865,6 +5879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -6049,6 +6064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -6298,6 +6314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -6632,6 +6649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -6741,6 +6759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -8001,6 +8020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -8110,6 +8130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -8678,6 +8699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -8773,6 +8795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -9230,6 +9253,12 @@ MonoBehaviour:
   PeriodTime: 0
   LastGameStatus: 0
   gameStatus: 0
+  LaterUpgradeHero: {fileID: 0}
+  LaterUpgradeNetworkHero:
+    position: 0
+    name: 
+    HeroLevel: 0
+    HeroEquipments: 
 --- !u!114 &355347622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9758,6 +9787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -9867,6 +9897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -10362,6 +10393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -10532,6 +10564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -10716,6 +10749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -11475,6 +11509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -12472,6 +12507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -13025,6 +13061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -13541,6 +13578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -13650,6 +13688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -13759,6 +13798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -13868,6 +13908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -14130,6 +14171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -14599,6 +14641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -17514,6 +17557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -17698,6 +17742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -18040,21 +18085,45 @@ MonoBehaviour:
   - waveNumber: 0
     monster:
     - name: GOBLIN
-      position: 18
+      position: 17
   - waveNumber: 0
     monster:
+    - name: GOBLIN
+      position: 18
+    - name: GOBLIN
+      position: 16
+  - waveNumber: 0
+    monster:
+    - name: GOBLIN
+      position: 19
     - name: GOBLIN
       position: 17
     - name: GOBLIN
-      position: 19
+      position: 15
   - waveNumber: 0
     monster:
-    - name: GOBLIN
-      position: 16
-    - name: GOBLIN
+    - name: WOLF
       position: 18
-    - name: GOBLIN
+    - name: WOLF
+      position: 12
+    - name: WOLF
+      position: 15
+    - name: WOLF
+      position: 8
+  - waveNumber: 0
+    monster:
+    - name: WEREWOLF
+      position: 12
+    - name: WEREWOLF
+      position: 23
+  - waveNumber: 0
+    monster:
+    - name: devil
+      position: 21
+    - name: devil
       position: 20
+    - name: devil
+      position: 7
 --- !u!1001 &753628274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18250,6 +18319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -18359,6 +18429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -18534,6 +18605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -19363,6 +19435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -19832,6 +19905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -19941,6 +20015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -22121,6 +22196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -23192,6 +23268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -23913,6 +23990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -24563,6 +24641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -26690,6 +26769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -27028,6 +27108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -27137,6 +27218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -27232,6 +27314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -27341,6 +27424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -27625,6 +27709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -27734,6 +27819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -28961,6 +29047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -29220,6 +29307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -29544,6 +29632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -29841,6 +29930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -30924,6 +31014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -32737,6 +32828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -32893,6 +32985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -33303,6 +33396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -34166,6 +34260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -34555,6 +34650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -35005,6 +35101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -35825,6 +35922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -36537,6 +36635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -36646,6 +36745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -38543,6 +38643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -39429,6 +39530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -40718,6 +40820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -41982,6 +42085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -42240,6 +42344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -42349,6 +42454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -43013,6 +43119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -43272,6 +43379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -43705,6 +43813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -43889,6 +43998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -44614,6 +44724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -45057,6 +45168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -45713,6 +45825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -45822,6 +45935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -46273,6 +46387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -46382,6 +46497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -46538,6 +46654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -47756,6 +47873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -47940,6 +48058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -48406,6 +48525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -48673,6 +48793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -49273,6 +49394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -49487,6 +49609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -49821,6 +49944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -49930,6 +50054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -50577,6 +50702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -51664,6 +51790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -51773,6 +51900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -52174,6 +52302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -53108,6 +53237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -54170,6 +54300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -54428,6 +54559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -54537,6 +54669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -55556,6 +55689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -56601,6 +56735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -56843,6 +56978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -57238,6 +57374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1
@@ -57333,6 +57470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bdfc3695e2b334f8b413b9551addd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
   isWalkable: 1

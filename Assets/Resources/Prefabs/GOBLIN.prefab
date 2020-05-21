@@ -2455,7 +2455,7 @@ MonoBehaviour:
   BasicHealth: 4
   MaxMana: 100
   Mana: 0
-  BasicAttackDamage: 5
+  BasicAttackDamage: 3
   BasicAttackSpeed: 1
   BasicSkillPower: 0
   BasicPhysicalDefense: 20

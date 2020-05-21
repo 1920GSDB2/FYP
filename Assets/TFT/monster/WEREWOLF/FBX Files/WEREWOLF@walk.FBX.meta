@@ -22,7 +22,9 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
+      rotation in copied configuration does not match rotation in animation file:\n\t'WEREWOLF_
+      L HorseLink' : rotation error = 62.061489 deg\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar to
@@ -109,7 +111,7 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 3
     human:
@@ -274,7 +276,7 @@ ModelImporter:
         length: 0
         modified: 0
     - boneName: WEREWOLF_ Queue de cheval 1
-      humanName: Jaw
+      humanName: LeftEye
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
@@ -482,287 +484,291 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: WEREWOLF@walk(Clone)
+    - name: WEREWOLF(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
+    - name: WEREWOLF
+      parentName: WEREWOLF(Clone)
+      position: {x: -0, y: 1.3533267, z: -0.46127516}
+      rotation: {x: -0.7063636, y: 0.00000025350073, z: 0.00000058978986, w: 0.70784914}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
     - name: WEREWOLF_
-      parentName: WEREWOLF@walk(Clone)
-      position: {x: 0, y: 1.6425672, z: -0.000000059604645}
-      rotation: {x: -0.5868734, y: 0.51107186, z: 0.42758042, w: 0.45995674}
+      parentName: WEREWOLF(Clone)
+      position: {x: 0, y: 1.8798981, z: -0.00000008940697}
+      rotation: {x: -0.4015637, y: 0.40156516, z: 0.5820189, w: 0.5820189}
       scale: {x: 1.0000001, y: 1.0000001, z: 1}
     - name: WEREWOLF_ Pelvis
       parentName: WEREWOLF_
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: -0.42588654, y: 0.564465, z: 0.42588654, w: 0.564465}
-      scale: {x: 1, y: 0.99999994, z: 1}
+      rotation: {x: -0.49999967, y: 0.50000036, z: 0.49999967, w: 0.50000036}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
     - name: WEREWOLF_ R Thigh
       parentName: WEREWOLF_ Pelvis
-      position: {x: -0.00000030517577, y: -0.00000022888183, z: -0.16818938}
-      rotation: {x: -0.023733288, y: -0.8431727, z: 0.5340722, w: 0.057126984}
-      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+      position: {x: -0.00000030517577, y: -0.00000015258789, z: -0.16818938}
+      rotation: {x: -0.28553075, y: 0.9191665, z: -0.2705898, w: -0.019654905}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000001}
     - name: WEREWOLF_ R Calf
       parentName: WEREWOLF_ R Thigh
-      position: {x: -0.89380413, y: 0.000000076293944, z: 0.000000076293944}
-      rotation: {x: -0.05740073, y: 0.06426682, z: 0.473425, w: 0.8766092}
-      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+      position: {x: -0.89380413, y: 0, z: 0.000000038146972}
+      rotation: {x: -0.0023826228, y: 0.007840811, z: 0.44808373, w: 0.89395404}
+      scale: {x: 1.0000001, y: 1, z: 1}
     - name: WEREWOLF_ R HorseLink
       parentName: WEREWOLF_ R Calf
-      position: {x: -0.6564233, y: -0.000000038146972, z: -0.000000076293944}
-      rotation: {x: 0.00000007637717, y: -0.0000000030128247, z: -0.7106034, w: 0.7035928}
-      scale: {x: 0.9999999, y: 1.0000001, z: 1}
+      position: {x: -0.65642333, y: -0.000000038146972, z: 0.000000076293944}
+      rotation: {x: 0.000000015761564, y: 0.0000000014969059, z: -0.3850569, w: 0.92289287}
+      scale: {x: 0.9999998, y: 0.99999994, z: 0.9999999}
     - name: WEREWOLF_ R Foot
       parentName: WEREWOLF_ R HorseLink
-      position: {x: -0.30655062, y: -0.000000038146972, z: -0.000000038146972}
-      rotation: {x: -0.051181637, y: -0.19544034, z: 0.45015892, w: 0.86979336}
-      scale: {x: 1.0000001, y: 1.0000002, z: 1}
+      position: {x: -0.3065505, y: 0.000000028610229, z: 0}
+      rotation: {x: -0.07827644, y: -0.048882287, z: 0.055801526, w: 0.99416775}
+      scale: {x: 1.0000001, y: 1.0000002, z: 0.9999999}
     - name: WEREWOLF_ R Toe0
       parentName: WEREWOLF_ R Foot
-      position: {x: -0.14797436, y: 0.31444466, z: -0.000000076293944}
-      rotation: {x: 0.0000004262274, y: 0.0000006669546, z: 0.90177983, w: -0.43219572}
-      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+      position: {x: -0.14797434, y: 0.3144447, z: 0}
+      rotation: {x: 0.00000008370383, y: 0.00000014494843, z: -0.7071069, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
     - name: WEREWOLF_ L Thigh
       parentName: WEREWOLF_ Pelvis
-      position: {x: 0.000000076293944, y: 0.0000003814697, z: 0.16818935}
-      rotation: {x: -0.040327843, y: 0.9689571, z: 0.22459379, w: 0.09514953}
-      scale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
+      position: {x: 0.00000030517577, y: 0.0000003814697, z: 0.16818938}
+      rotation: {x: -0.28553045, y: 0.9191668, z: 0.27058905, w: 0.019653438}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1}
     - name: WEREWOLF_ L Calf
       parentName: WEREWOLF_ L Thigh
-      position: {x: -0.8938041, y: -0.000000038146972, z: 0}
-      rotation: {x: 0.034761302, y: -0.06490528, z: 0.50961447, w: 0.8572468}
-      scale: {x: 1, y: 1, z: 0.99999994}
+      position: {x: -0.8938041, y: 0, z: 0}
+      rotation: {x: 0.0023826638, y: -0.007840714, z: 0.44808364, w: 0.89395404}
+      scale: {x: 1, y: 1.0000001, z: 1}
     - name: WEREWOLF_ L HorseLink
       parentName: WEREWOLF_ L Calf
-      position: {x: -0.6564234, y: -0.000000076293944, z: -0.000000076293944}
-      rotation: {x: -0.000000059056383, y: -0.00000002029783, z: -0.8057009, w: 0.5923226}
-      scale: {x: 1, y: 1.0000001, z: 1}
+      position: {x: -0.6564233, y: 0.000000019073486, z: -0.000000076293944}
+      rotation: {x: 0.000000008885476, y: 0.0000000043658006, z: -0.38505712, w: 0.92289275}
+      scale: {x: 0.9999998, y: 0.9999998, z: 0.99999994}
     - name: WEREWOLF_ L Foot
       parentName: WEREWOLF_ L HorseLink
-      position: {x: -0.3065506, y: 0, z: -0.000000076293944}
-      rotation: {x: -0.003459943, y: 0.28900114, z: 0.29230902, w: 0.911604}
-      scale: {x: 1.0000001, y: 0.99999994, z: 0.99999994}
+      position: {x: -0.30655038, y: -0.000000014305114, z: 0}
+      rotation: {x: 0.07827719, y: 0.04888256, z: 0.055802047, w: 0.9941677}
+      scale: {x: 1.0000001, y: 1, z: 1}
     - name: WEREWOLF_ L Toe0
       parentName: WEREWOLF_ L Foot
-      position: {x: -0.14797434, y: 0.3144447, z: 0}
-      rotation: {x: -0.00000021005341, y: -0.0000010678073, z: -0.70710707, w: 0.7071066}
-      scale: {x: 1, y: 1, z: 1}
+      position: {x: -0.14797436, y: 0.31444475, z: -0.000000076293944}
+      rotation: {x: -0.000000033589345, y: -0.00000015015166, z: -0.70710695, w: 0.70710665}
+      scale: {x: 1, y: 1.0000001, z: 1}
     - name: WEREWOLF_ Tail
       parentName: WEREWOLF_ Pelvis
-      position: {x: 0.018221663, y: -0.26809713, z: 0.07653141}
-      rotation: {x: -0.379663, y: 0.23569937, z: 0.8464003, w: 0.28966948}
-      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+      position: {x: 0.018277587, y: -0.278909, z: -0.0000001845241}
+      rotation: {x: -0.0000008157052, y: -0.00000008078843, z: 0.7629583, w: 0.6464477}
+      scale: {x: 1, y: 1, z: 1}
     - name: WEREWOLF_ Tail1
       parentName: WEREWOLF_ Tail
-      position: {x: -0.22228424, y: -0.0002531433, z: 0.0001412201}
-      rotation: {x: -0.25644523, y: 0.17550962, z: 0.010240542, w: 0.95043534}
-      scale: {x: 1.0000001, y: 1.0000002, z: 0.99999994}
+      position: {x: -0.2223159, y: -0.00029190062, z: -8.1025064e-10}
+      rotation: {x: -7.587557e-14, y: -0.0000000018903286, z: 0.000681557, w: 0.99999976}
+      scale: {x: 1, y: 1, z: 1}
     - name: WEREWOLF_ Tail2
       parentName: WEREWOLF_ Tail1
-      position: {x: -0.36641502, y: -0.00023666381, z: 0.00013961791}
-      rotation: {x: -0.26122203, y: 0.013925353, z: -0.061911713, w: 0.9631906}
-      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+      position: {x: -0.36638397, y: -0.00027633665, z: -7.6717693e-10}
+      rotation: {x: 0, y: -2.842171e-14, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     - name: WEREWOLF_ Tail3
       parentName: WEREWOLF_ Tail2
-      position: {x: -0.3475271, y: -0.00029518126, z: 0.00013328552}
-      rotation: {x: -0.21415997, y: -0.07370464, z: -0.144664, w: 0.96321106}
-      scale: {x: 1, y: 0.99999994, z: 1}
+      position: {x: -0.3474211, y: -0.00034072876, z: -9.441282e-10}
+      rotation: {x: 0, y: -2.842171e-14, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     - name: WEREWOLF_ Tail4
       parentName: WEREWOLF_ Tail3
-      position: {x: -0.42804748, y: -0.0002691841, z: 0.000050811766}
-      rotation: {x: -0.11660146, y: -0.14068176, z: -0.19698326, w: 0.9632292}
-      scale: {x: 1.0000001, y: 1.0000002, z: 0.9999999}
+      position: {x: -0.42792374, y: -0.00030044554, z: -8.335337e-10}
+      rotation: {x: 0, y: -2.842171e-14, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     - name: WEREWOLF_ Spine
       parentName: WEREWOLF_
-      position: {x: 0.00036163328, y: 0.000077670884, z: 0.26859528}
-      rotation: {x: -0.5876365, y: 0.37647513, z: 0.50720793, w: 0.505658}
-      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+      position: {x: 0.00037841796, y: 1.4551915e-13, z: 0.26851517}
+      rotation: {x: 0.5000007, y: -0.4999993, z: -0.5000007, w: -0.4999993}
+      scale: {x: 1, y: 1, z: 1}
     - name: WEREWOLF_ Spine1
       parentName: WEREWOLF_ Spine
-      position: {x: -0.4755882, y: -0.00032417296, z: 0.00007701873}
-      rotation: {x: -0.10868024, y: -0.009698811, z: -0.23815249, w: 0.96507925}
-      scale: {x: 0.9999997, y: 0.9999998, z: 1}
+      position: {x: -0.47543654, y: -0.00037490844, z: -0.0000000010394433}
+      rotation: {x: -8.0790335e-14, y: 0.000000078874656, z: -0.02843761, w: 0.9995956}
+      scale: {x: 1, y: 1, z: 1}
     - name: WEREWOLF_ Neck
       parentName: WEREWOLF_ Spine1
-      position: {x: -0.4716194, y: -0.000121154786, z: 0}
-      rotation: {x: -0.0018005816, y: -0.005565793, z: 0.0071364604, w: 0.9999575}
+      position: {x: -0.4716194, y: -0.000121002195, z: -3.3571268e-10}
+      rotation: {x: 0.000000078404554, y: 0.00000046000935, z: -0.02595729, w: 0.99966305}
       scale: {x: 0.99999994, y: 1, z: 1}
-    - name: WEREWOLF_ Neck1
-      parentName: WEREWOLF_ Neck
-      position: {x: -0.18763666, y: -0.00014938354, z: 0.000000038146972}
-      rotation: {x: -0.000000007450581, y: 0.000000015832484, z: 1.179612e-16, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: WEREWOLF_ Head
-      parentName: WEREWOLF_ Neck1
-      position: {x: -0.18763666, y: 0, z: 0}
-      rotation: {x: 0.17650066, y: 0.11489623, z: 0.5744034, w: 0.7910165}
-      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000001}
-    - name: WEREWOLF_ Queue de cheval 1
-      parentName: WEREWOLF_ Head
-      position: {x: 0.03737106, y: 0.14668362, z: 0.000002670288}
-      rotation: {x: 1.5553458e-12, y: 0.0000022737531, z: -0.8197844, w: 0.57267237}
-      scale: {x: 1, y: 0.99999994, z: 1}
     - name: WEREWOLF_ L Clavicle
       parentName: WEREWOLF_ Neck
-      position: {x: -0.000000057220458, y: 0.00014907836, z: 0.11949696}
-      rotation: {x: -0.6190613, y: -0.30253276, z: 0.7121428, w: -0.13449825}
-      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000001}
+      position: {x: -0, y: 0.00014907836, z: 0.11949693}
+      rotation: {x: -0.54731953, y: -0.21128765, z: 0.7746578, w: -0.23601742}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
     - name: WEREWOLF_ L UpperArm
       parentName: WEREWOLF_ L Clavicle
-      position: {x: -0.5048305, y: -0.00000015258789, z: 0.000000076293944}
-      rotation: {x: -0.027118852, y: -0.061233595, z: 0.0015245819, w: 0.9977538}
-      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+      position: {x: -0.5048304, y: -0.00000015258789, z: 0}
+      rotation: {x: -0.27505225, y: 0.114814475, z: 0.049359366, w: 0.95327204}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
     - name: WEREWOLF_ L Forearm
       parentName: WEREWOLF_ L UpperArm
-      position: {x: -0.73099405, y: 0, z: 0.000000076293944}
-      rotation: {x: -0.016428228, y: 0.022015156, z: -0.0031962404, w: 0.99961764}
-      scale: {x: 1.0000002, y: 1.0000001, z: 1}
+      position: {x: -0.7309939, y: -0.000000038146972, z: 0}
+      rotation: {x: -0.006730317, y: 0.017137466, z: 0.061243694, w: 0.99795306}
+      scale: {x: 1, y: 0.99999994, z: 1}
     - name: WEREWOLF_ L Hand
       parentName: WEREWOLF_ L Forearm
-      position: {x: -0.67565763, y: -0.000000076293944, z: 0}
-      rotation: {x: -0.75575954, y: 0.023130976, z: -0.063290164, w: 0.651373}
-      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000001}
+      position: {x: -0.67565763, y: 0.000000038146972, z: 0}
+      rotation: {x: -0.59820455, y: 0.02258558, z: -0.01689867, w: 0.8008469}
+      scale: {x: 1, y: 1.0000001, z: 1}
     - name: WEREWOLF_ L Finger0
       parentName: WEREWOLF_ L Hand
-      position: {x: -0.13807854, y: 0.03502029, z: -0.20569126}
-      rotation: {x: 0.69182426, y: -0.21275072, z: 0.10219046, w: 0.6824027}
-      scale: {x: 1, y: 1.0000001, z: 1}
+      position: {x: -0.13807862, y: 0.03502014, z: -0.20569117}
+      rotation: {x: 0.6918242, y: -0.21275075, z: 0.10219158, w: 0.68240255}
+      scale: {x: 0.9999999, y: 1, z: 1}
     - name: WEREWOLF_ L Finger01
       parentName: WEREWOLF_ L Finger0
-      position: {x: -0.1362819, y: -0.00000015258789, z: -0.000000019073486}
-      rotation: {x: -0.0000002682208, y: -0.0000016242258, z: -0.03222242, w: 0.9994808}
-      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+      position: {x: -0.1362819, y: -0.000000076293944, z: -0.00000015258789}
+      rotation: {x: -0.00000020861616, y: -0.0000018030396, z: -0.034456566, w: 0.9994062}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
     - name: WEREWOLF_ L Finger02
       parentName: WEREWOLF_ L Finger01
-      position: {x: -0.13628197, y: 0.000000114440915, z: 0.000000057220458}
-      rotation: {x: -0.000000022945567, y: -0.0000000053490554, z: -0.092588775, w: 0.9957044}
-      scale: {x: 1, y: 1, z: 1}
+      position: {x: -0.13628173, y: 0, z: 0}
+      rotation: {x: -0.000000021833165, y: 0.0000000047867776, z: -0.2141568, w: 0.9767993}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
     - name: WEREWOLF_ L Finger1
       parentName: WEREWOLF_ L Hand
-      position: {x: -0.32362053, y: 0.01927719, z: -0.12565462}
-      rotation: {x: -0.029812524, y: -0.13998958, z: -0.09790712, w: 0.9848494}
+      position: {x: -0.3236203, y: 0.01927719, z: -0.1256546}
+      rotation: {x: -0.019029912, y: -0.11374526, z: -0.07144547, w: 0.99075496}
       scale: {x: 1.0000001, y: 0.99999994, z: 0.99999994}
     - name: WEREWOLF_ L Finger11
       parentName: WEREWOLF_ L Finger1
-      position: {x: -0.1362819, y: -0.000000076293944, z: -0.000000019073486}
-      rotation: {x: -0.000000050291394, y: -0.0000013411038, z: -0.037995763, w: 0.9992779}
-      scale: {x: 1, y: 1.0000001, z: 1}
+      position: {x: -0.13628212, y: 0, z: 0}
+      rotation: {x: 0.00000015459948, y: -0.00000038743002, z: -0.037770823, w: 0.9992864}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.99999994}
     - name: WEREWOLF_ L Finger12
       parentName: WEREWOLF_ L Finger11
-      position: {x: -0.113963164, y: -0.000000076293944, z: 0.000000038146972}
-      rotation: {x: 0, y: -0, z: -0.112063035, w: 0.9937011}
-      scale: {x: 0.99999994, y: 1, z: 0.9999999}
+      position: {x: -0.11396301, y: 0, z: 0.000000076293944}
+      rotation: {x: -0.000000008301345, y: 0.000000009177757, z: -0.11640223, w: 0.99320215}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
     - name: WEREWOLF_ L Finger2
       parentName: WEREWOLF_ L Hand
-      position: {x: -0.33401215, y: 0.019186249, z: 0.017096767}
-      rotation: {x: -0.028951135, y: -0.13097368, z: -0.08735638, w: 0.98710513}
-      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+      position: {x: -0.33401197, y: 0.019186402, z: 0.017096862}
+      rotation: {x: -0.011929241, y: -0.11221856, z: -0.059619594, w: 0.9918217}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
     - name: WEREWOLF_ L Finger21
       parentName: WEREWOLF_ L Finger2
-      position: {x: -0.13863358, y: -0.000000076293944, z: 0.000000095367426}
-      rotation: {x: 0.00000000931322, y: 0.00000049173804, z: -0.037993386, w: 0.99927807}
-      scale: {x: 1, y: 1, z: 1}
+      position: {x: -0.13863365, y: 0, z: 0.00000015258789}
+      rotation: {x: -0.000000029802312, y: 0.0000012442465, z: -0.03777333, w: 0.99928635}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
     - name: WEREWOLF_ L Finger22
       parentName: WEREWOLF_ L Finger21
-      position: {x: -0.13136658, y: 0.000000038146972, z: 0}
-      rotation: {x: -0.0000000074036497, y: 8.349348e-10, z: -0.11206306, w: 0.9937011}
-      scale: {x: 1, y: 1, z: 1}
+      position: {x: -0.13136666, y: 0, z: -0.000000076293944}
+      rotation: {x: -0.000000016449178, y: -0.000000012108905, z: -0.18205233, w: 0.9832889}
+      scale: {x: 1, y: 1.0000001, z: 0.99999994}
     - name: WEREWOLF_ L Finger3
       parentName: WEREWOLF_ L Hand
-      position: {x: -0.32157174, y: 0.038642425, z: 0.13847971}
-      rotation: {x: -0.027702503, y: -0.12610187, z: -0.07680045, w: 0.988652}
-      scale: {x: 1.0000002, y: 1.0000001, z: 0.99999994}
+      position: {x: -0.3215718, y: 0.03864212, z: 0.13847977}
+      rotation: {x: -0.0025606444, y: -0.11367776, z: -0.05062731, w: 0.9922236}
+      scale: {x: 1, y: 0.99999994, z: 1}
     - name: WEREWOLF_ L Finger31
       parentName: WEREWOLF_ L Finger3
-      position: {x: -0.11543922, y: 0, z: -0.000000038146972}
-      rotation: {x: -0.00000005774198, y: -0.00000017881388, z: -0.03798814, w: 0.99927825}
-      scale: {x: 1, y: 1, z: 0.99999994}
+      position: {x: -0.115439296, y: 0, z: 0}
+      rotation: {x: 0.0000000025611362, y: 0.00000007450578, z: -0.040826976, w: 0.9991663}
+      scale: {x: 1, y: 0.99999994, z: 1}
     - name: WEREWOLF_ L Finger32
       parentName: WEREWOLF_ L Finger31
-      position: {x: -0.12690246, y: -0.000000076293944, z: 0.000000038146972}
-      rotation: {x: 0.000000018147038, y: 0.00000002794473, z: -0.11206305, w: 0.9937011}
-      scale: {x: 1, y: 1, z: 1.0000001}
+      position: {x: -0.12690239, y: 0, z: 0}
+      rotation: {x: 0.000000011952992, y: -0.00000001578523, z: -0.20244735, w: 0.97929317}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: WEREWOLF_ Neck1
+      parentName: WEREWOLF_ Neck
+      position: {x: -0.18763672, y: -0.00014938354, z: -4.1443854e-10}
+      rotation: {x: 0, y: -5.684342e-14, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: WEREWOLF_ Head
+      parentName: WEREWOLF_ Neck1
+      position: {x: -0.18763687, y: -0.00000030517577, z: -5.820766e-13}
+      rotation: {x: -1.1457347e-12, y: -0.0000018359236, z: 0.6619285, w: 0.749567}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: WEREWOLF_ Queue de cheval 1
+      parentName: WEREWOLF_ Head
+      position: {x: 0.037436217, y: 0.14678924, z: 0.000002649736}
+      rotation: {x: 0.000000011178951, y: -0.0000024701687, z: 0.91792166, w: -0.39676172}
+      scale: {x: 1, y: 1, z: 1}
     - name: WEREWOLF_ R Clavicle
       parentName: WEREWOLF_ Neck
-      position: {x: -0.000000057220458, y: 0.0001498413, z: -0.11949696}
-      rotation: {x: 0.66423035, y: 0.22457363, z: 0.6718616, w: -0.23867704}
-      scale: {x: 1.0000001, y: 1, z: 1}
+      position: {x: -0.00000015258789, y: 0.00014953614, z: -0.11949693}
+      rotation: {x: 0.5473202, y: 0.21128574, z: 0.7746575, w: -0.23601876}
+      scale: {x: 1, y: 1, z: 1.0000001}
     - name: WEREWOLF_ R UpperArm
       parentName: WEREWOLF_ R Clavicle
-      position: {x: -0.5048303, y: -0.00000015258789, z: 0}
-      rotation: {x: -0.09404753, y: -0.058863595, z: 0.14396177, w: 0.9833439}
-      scale: {x: 0.9999998, y: 1, z: 1}
+      position: {x: -0.50483054, y: -0.00000015258789, z: 0.00000030517577}
+      rotation: {x: 0.27505225, y: -0.114814185, z: 0.04935873, w: 0.95327204}
+      scale: {x: 1, y: 1.0000001, z: 0.99999994}
     - name: WEREWOLF_ R Forearm
       parentName: WEREWOLF_ R UpperArm
-      position: {x: -0.73099387, y: -0.00000015258789, z: 0.00000015258789}
-      rotation: {x: 0.014791664, y: -0.021450864, z: -0.000025102398, w: 0.99966055}
-      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+      position: {x: -0.7309939, y: 0, z: 0.00000030517577}
+      rotation: {x: 0.006730169, y: -0.017137669, z: 0.06124353, w: 0.99795306}
+      scale: {x: 1, y: 0.99999994, z: 1}
     - name: WEREWOLF_ R Hand
       parentName: WEREWOLF_ R Forearm
-      position: {x: -0.6756575, y: 0, z: -0.00000015258789}
-      rotation: {x: 0.89811367, y: 0.01963497, z: -0.11072265, w: 0.42514342}
-      scale: {x: 1.0000001, y: 0.99999994, z: 0.99999994}
-    - name: WEREWOLF_ R Finger0
-      parentName: WEREWOLF_ R Hand
-      position: {x: -0.13807862, y: 0.03502014, z: 0.2056913}
-      rotation: {x: -0.6918241, y: 0.21275036, z: 0.10219034, w: 0.682403}
-      scale: {x: 1, y: 1, z: 1}
-    - name: WEREWOLF_ R Finger01
-      parentName: WEREWOLF_ R Finger0
-      position: {x: -0.1362819, y: -0.00000015258789, z: 0.000000038146972}
-      rotation: {x: -0.00000032782532, y: -0.0000010728828, z: -0.032222487, w: 0.9994807}
-      scale: {x: 1, y: 0.99999994, z: 0.99999994}
-    - name: WEREWOLF_ R Finger02
-      parentName: WEREWOLF_ R Finger01
-      position: {x: -0.13628204, y: 0, z: -0.000000076293944}
-      rotation: {x: -0.0000000074185764, y: 6.898399e-10, z: -0.092588745, w: 0.9957044}
-      scale: {x: 1, y: 1, z: 0.99999994}
-    - name: WEREWOLF_ R Finger1
-      parentName: WEREWOLF_ R Hand
-      position: {x: -0.32362053, y: 0.01927719, z: 0.12565468}
-      rotation: {x: 0.029812673, y: 0.13998912, z: -0.09790673, w: 0.98484945}
-      scale: {x: 1, y: 1.0000001, z: 1}
-    - name: WEREWOLF_ R Finger11
-      parentName: WEREWOLF_ R Finger1
-      position: {x: -0.1362819, y: 0, z: 0.000000019073486}
-      rotation: {x: 0.000000083819, y: -0.00000041723237, z: -0.03799089, w: 0.99927807}
-      scale: {x: 0.99999994, y: 1, z: 1}
-    - name: WEREWOLF_ R Finger12
-      parentName: WEREWOLF_ R Finger11
-      position: {x: -0.11396301, y: 0.000000038146972, z: -0.000000038146972}
-      rotation: {x: 0.000000008238585, y: 0.0000000065687153, z: -0.11206304, w: 0.9937011}
-      scale: {x: 1, y: 1, z: 1}
-    - name: WEREWOLF_ R Finger2
-      parentName: WEREWOLF_ R Hand
-      position: {x: -0.33401215, y: 0.019186249, z: -0.017096786}
-      rotation: {x: 0.028950978, y: 0.13097265, z: -0.08735605, w: 0.9871053}
-      scale: {x: 1, y: 1, z: 1}
-    - name: WEREWOLF_ R Finger21
-      parentName: WEREWOLF_ R Finger2
-      position: {x: -0.13863358, y: -0.000000076293944, z: -0.000000038146972}
-      rotation: {x: -0.000000046566107, y: 0.00000078976115, z: -0.037992347, w: 0.99927807}
-      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
-    - name: WEREWOLF_ R Finger22
-      parentName: WEREWOLF_ R Finger21
-      position: {x: -0.13136658, y: 0.000000076293944, z: -0.000000038146972}
-      rotation: {x: -0.0000000061789382, y: -0.0000000049265365, z: -0.112063035,
-        w: 0.9937011}
-      scale: {x: 1, y: 1, z: 0.99999994}
+      position: {x: -0.67565763, y: -0.000000038146972, z: 0}
+      rotation: {x: 0.59820455, y: -0.022585602, z: -0.016898701, w: 0.8008469}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.99999994}
     - name: WEREWOLF_ R Finger3
       parentName: WEREWOLF_ R Hand
-      position: {x: -0.3215718, y: 0.038642272, z: -0.1384796}
-      rotation: {x: 0.02770274, y: 0.12610286, z: -0.076798566, w: 0.988652}
-      scale: {x: 0.99999994, y: 1, z: 1}
+      position: {x: -0.3215718, y: 0.03864212, z: -0.1384797}
+      rotation: {x: 0.0025598994, y: 0.113677576, z: -0.050628275, w: 0.99222356}
+      scale: {x: 1, y: 1, z: 0.9999999}
     - name: WEREWOLF_ R Finger31
       parentName: WEREWOLF_ R Finger3
       position: {x: -0.115439296, y: 0, z: 0}
-      rotation: {x: -0.00000023469315, y: 0.00000008940692, z: -0.03799186, w: 0.99927807}
+      rotation: {x: 0.00000004656612, y: -0.00000038743013, z: -0.040826563, w: 0.9991663}
       scale: {x: 1, y: 1, z: 1}
     - name: WEREWOLF_ R Finger32
       parentName: WEREWOLF_ R Finger31
-      position: {x: -0.12690231, y: 0, z: 0}
-      rotation: {x: 0.0000000018509129, y: -2.0873374e-10, z: -0.11206305, w: 0.9937011}
-      scale: {x: 0.99999994, y: 0.9999998, z: 1}
+      position: {x: -0.12690231, y: 0, z: 0.000000076293944}
+      rotation: {x: -0.0000000079277545, y: 0.00000001685513, z: -0.20244731, w: 0.97929317}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: WEREWOLF_ R Finger2
+      parentName: WEREWOLF_ R Hand
+      position: {x: -0.33401182, y: 0.019186096, z: -0.01709671}
+      rotation: {x: 0.011928586, y: 0.112217, z: -0.059621286, w: 0.99182177}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: WEREWOLF_ R Finger21
+      parentName: WEREWOLF_ R Finger2
+      position: {x: -0.13863342, y: 0, z: -0.000000076293944}
+      rotation: {x: -0.000000032596287, y: 0.00000009685753, z: -0.03776713, w: 0.9992866}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: WEREWOLF_ R Finger22
+      parentName: WEREWOLF_ R Finger21
+      position: {x: -0.13136673, y: 0, z: 0.000000076293944}
+      rotation: {x: -0.0000000016619689, y: 0.0000000012548581, z: -0.1820523, w: 0.9832889}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: WEREWOLF_ R Finger1
+      parentName: WEREWOLF_ R Hand
+      position: {x: -0.32362014, y: 0.019277038, z: 0.12565476}
+      rotation: {x: 0.019030062, y: 0.11374625, z: -0.07144386, w: 0.990755}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: WEREWOLF_ R Finger11
+      parentName: WEREWOLF_ R Finger1
+      position: {x: -0.13628204, y: 0.00000030517577, z: -0.000000076293944}
+      rotation: {x: 0.000000037252885, y: -0.0000012665981, z: -0.037772153, w: 0.99928635}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: WEREWOLF_ R Finger12
+      parentName: WEREWOLF_ R Finger11
+      position: {x: -0.11396301, y: 0, z: 0.000000076293944}
+      rotation: {x: 5.526103e-10, y: -0.00000001928755, z: -0.11640223, w: 0.99320215}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: WEREWOLF_ R Finger0
+      parentName: WEREWOLF_ R Hand
+      position: {x: -0.1380783, y: 0.03502014, z: 0.2056913}
+      rotation: {x: -0.6918239, y: 0.21275236, z: 0.102191836, w: 0.6824024}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: WEREWOLF_ R Finger01
+      parentName: WEREWOLF_ R Finger0
+      position: {x: -0.1362819, y: 0.000000076293944, z: 0}
+      rotation: {x: -0.00000017881392, y: 0.0000019967554, z: -0.03445835, w: 0.9994062}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: WEREWOLF_ R Finger02
+      parentName: WEREWOLF_ R Finger01
+      position: {x: -0.13628182, y: 0, z: -0.00000015258789}
+      rotation: {x: 0.0000000040865364, y: -0.000000016151036, z: -0.2141568, w: 0.9767993}
+      scale: {x: 1, y: 1, z: 0.9999999}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -775,7 +781,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 427806e09cb866443ae4e66421bd4494,
+    type: 3}
   animationType: 3
   humanoidOversampling: 1
   additionalBone: 0
