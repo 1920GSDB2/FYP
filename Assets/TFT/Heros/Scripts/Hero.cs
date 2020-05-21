@@ -310,7 +310,12 @@ public class Hero : Character, ISelectable
     }
     public Transform GetEquipmentSlot()
     {
-        int index = EquipmentManager.Equipments.Count;
+        int index = 
+            EquipmentManager.Equipments.Count <
+            EquipmentManager.ItemList.childCount ?
+            EquipmentManager.Equipments.Count : 
+            EquipmentManager.ItemList.childCount - 1;
+        Debug.Log("Item List Index: " + index);
         return EquipmentManager.ItemList.GetChild(index).gameObject.transform;
     }
     private void OnMouseEnter()
@@ -323,8 +328,8 @@ public class Hero : Character, ISelectable
             }
             else if (SelectManager.DragObject != null && SelectManager.DragObject as Hero == null)
             {
-                int index = EquipmentManager.Equipments.Count;
-                if (index < 3)
+                //int index = EquipmentManager.Equipments.Count;
+                //if (index < 3)
                 {
                     SelectManager.ParentObject = gameObject;
                 }

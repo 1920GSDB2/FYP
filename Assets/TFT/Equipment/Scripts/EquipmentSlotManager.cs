@@ -6,7 +6,7 @@ namespace TFT
 {
     public class EquipmentSlotManager : MonoBehaviour
     {
-        public EquipmentSlotManager Instance;
+        public static EquipmentSlotManager Instance;
 
         [SerializeField]
         private EquipmentSlot[] equipmentSlots;
@@ -24,6 +24,7 @@ namespace TFT
                 {
                     _equipment.transform.parent = equipmentSlot.transform;
                     _equipment.gameObject.transform.localPosition = Vector3.zero;
+                    _equipment.GetComponent<Collider>().enabled = true;
                     return;
                 }
             }

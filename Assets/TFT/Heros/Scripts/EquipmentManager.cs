@@ -23,16 +23,24 @@ namespace TFT
             Hero = GetComponent<Hero>();
         }
 
-        public bool AddEquirement(Equipment _addEquirement)
+        public bool AddEquement(Equipment _addEquirement)
         {
-            if (Equipments.Count == 3 && !Equipments[2].isComponent) return false;
+            if (Equipments.Count == 3 && !Equipments[2].isComponent)
+            {
+                Debug.Log("Add Equipment 1");
+                return false;
+            }
             if(Equipments.Count == 0 || !Equipments[Equipments.Count - 1].isComponent ||!_addEquirement.isComponent)
-            { 
+            {
+                Debug.Log("Add Equipment 2");
+
                 AddAttribute(_addEquirement);
                 return true;
             }
             else
             {
+                Debug.Log("Add Equipment 3");
+
                 //Equirement Composite
                 BlendItem newItem = Composite(((Item)Equipments[Equipments.Count - 1]).ItemType, ((Item)_addEquirement).ItemType);
                 if (newItem != null)
