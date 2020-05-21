@@ -126,4 +126,5 @@ MonoBehaviour:
   - RPC_MonsterBattle
   - overTimeFinish
   - Sync_Skill
+  - RPC_ChangeStatus
   DisableAutoOpenWizard: 1
