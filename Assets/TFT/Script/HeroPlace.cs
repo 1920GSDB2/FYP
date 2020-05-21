@@ -15,7 +15,7 @@ namespace TFT
     public class HeroPlace : MonoBehaviour
     {
         public PlaceType PlaceType { get; private set; }
-        public int PlaceId { get; private set; }
+        public int PlaceId;
         SpriteRenderer spriteRenderer;
         MeshRenderer currMat;
         public Material defaultMat, hoverMat;
