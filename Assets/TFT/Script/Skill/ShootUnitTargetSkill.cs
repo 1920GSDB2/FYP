@@ -16,12 +16,6 @@ public class ShootUnitTargetSkill : Skill
          bullet.setBullet(target, damage, isMirror);
         // bullet.setBullet(target,damage,)
      }
-    public override void shootSkill(float x, float z)
-     {
-        Bullet bullet = Instantiate(skillModel, transform.position, transform.rotation).GetComponent<Bullet>();
-        Vector3 targetPos = new Vector3(x, bullet.transform.position.y, z);
-        bullet.setBullet(targetPos);
-    }
-    
+   
 
 }

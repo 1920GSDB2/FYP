@@ -631,7 +631,7 @@ public class Character : MonoBehaviour
                 .playerCharacterSlot.GetChild(0).gameObject;
 
         }*/
-        b.GetComponent<Bullet>().setBullet(character, 2f);
+        b.GetComponent<Bullet>().setBullet(character, 10f);
     }
     public IEnumerator Attack()
     {

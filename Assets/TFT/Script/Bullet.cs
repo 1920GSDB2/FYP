@@ -40,12 +40,7 @@ public class Bullet : MonoBehaviour
         canDamage = isDamage;
         damageType  = type;
     }
-    public void setBullet(Character c, float damage, bool isDamage, int cirtical)
-    {
-        target = c.gameObject;
-        attackDamage = damage;
-        canDamage = isDamage;
-    }
+  
     public void setBullet(Character c, float damage, bool isDamage)
     {
         target = c.gameObject;
@@ -58,15 +53,7 @@ public class Bullet : MonoBehaviour
         this.speed = speed;
         canDamage = false;
     }
-    public void setBullet(Vector3 targetPos)
-    {
-        this.targetPos = targetPos;
-        canDamage = false;
-        float dis = Vector3.Distance(transform.position, targetPos);
-        float time = dis / (speed * Time.deltaTime * 60);
-        Destroy(this.gameObject, time);
-       
-    }
+    
 
     /*private void OnCollisionEnter(Collision collision)
     {

@@ -70,8 +70,9 @@ namespace TFT
             #region PhotonNetwork Debugging
             if (Input.GetKeyDown(KeyCode.L))
             {
-                PhotonView.RPC("RPC_resetResponse", PhotonTargets.All);
-                PhotonView.RPC("MonsterBattle", PhotonTargets.All);
+                //  PhotonView.RPC("RPC_resetResponse", PhotonTargets.All);
+                // PhotonView.RPC("MonsterBattle", PhotonTargets.All);
+                MonsterBattle();
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
@@ -82,7 +83,10 @@ namespace TFT
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-              
+                int[] opponentResult = GetRearrangeData(PhotonNetwork.playerList.Length);
+                for (int i = 0; i < opponentResult.Length; i++) {
+                    Debug.Log(" data " + opponentResult[i]);
+                }
             }
             #endregion
 
@@ -536,9 +540,11 @@ namespace TFT
         [PunRPC]
         public void RPC_SetupPlayerPosition(int[] _playerPosition)
         {
+            
             PlayerPosition = _playerPosition;
             for (int i = 0; i < _playerPosition.Length; i++)
             {
+                Debug.Log("int array " + _playerPosition[i]);
                 PlayerHeroes[i] = new PlayerHero();
                 if (_playerPosition[i] == playerId)
                 {
@@ -868,7 +874,7 @@ namespace TFT
                     if (opponent.heroes.Count == 0)
                     {
                    //     Debug.Log("i win ");
-                        playerWinBattle(playerId,opponent.opponentId);                    
+                        playerWinBattle(playerId,opponent.opponentId,battleGameBoardHero);                    
                     }
                 }
                 else
@@ -882,13 +888,13 @@ namespace TFT
                         if (battleGameBoardHero.Count == 0)
                         {
                        //     Debug.Log("opponent win ");
-                            playerWinBattle(opponent.opponentId, playerId);                    
+                            playerWinBattle(opponent.opponentId, playerId,opponent.heroes);                    
                         }
                     
                 }
             }
         }
-        public void playerWinBattle(int winnerId,int loserId) {
+        public void playerWinBattle(int winnerId,int loserId,List<Character> remainHero) {
             if (winnerId == -1)
             {
                 Debug.Log("monster win Battle " + winnerId);
@@ -906,13 +912,20 @@ namespace TFT
           //  else
            //     PhotonView.RPC("RPC_Response", PhotonTargets.All, 2);
 
-            if (opponent.opponentId != -1)
-            {          
-                PhotonView.RPC("RankChange",PhotonTargets.All, PlayerHeroes[loserId].player.NickName,5);
+           if (opponent.opponentId != -1)
+            {
+                int totalDamage = 0;
+                foreach (Hero hero in remainHero) {
+                    totalDamage += (int)hero.Rarity + (int)hero.heroLevel;
+                }
+                PhotonView.RPC("RankChange",PhotonTargets.All, PlayerHeroes[loserId].player.NickName, totalDamage*10);
             }
 
             map.resetMap();
 
+        }
+        public void hitTFTPLayer(int damage,string name) {
+            PhotonView.RPC("RankChange", PhotonTargets.All,name, damage);
         }
         [PunRPC]
         public void overTimeFinish() {
@@ -954,10 +967,12 @@ namespace TFT
         void MonsterHitPlayer()
         {
             Debug.Log("monster hit oppoent");
-            for (int i = 0; i < opponent.heroes.Count; i++)
+            foreach (Monster monster in opponent.heroes)
             {
-                opponent.heroes[i].GetComponent<PhotonView>().RPC("RPC_HitPlayerCharacter", PhotonTargets.All,PlayerHeroes[playerId].TFTCharacterId);
+                monster.GetComponent<PhotonView>().RPC("RPC_HitPlayerCharacter", PhotonTargets.All, PlayerHeroes[playerId].TFTCharacterId); ;
             }
+            PhotonView.RPC("RankChange", PhotonTargets.All, PlayerHeroes[playerId].player.NickName, 30);
+            
         }
         [PunRPC]
         public void RPC_SyncBattleHero(int id,bool isSelf) {
@@ -1102,11 +1117,11 @@ namespace TFT
             }
             else if (battleGameBoardHero.Count == 0)
             {
-                playerWinBattle(opponent.opponentId,playerId);
+                playerWinBattle(opponent.opponentId,playerId,opponent.heroes);
             }
             else if (opponent.heroes.Count == 0)
             {
-                playerWinBattle(playerId,opponent.opponentId);
+                playerWinBattle(playerId,opponent.opponentId,battleGameBoardHero);
             }
             else
             {
@@ -1180,6 +1195,14 @@ namespace TFT
         {
             GameManager.Instance.GameStatus = _gameStatus;
             GameManager.Instance.LastGameStatus = _lastGameStatus;
+        }
+        public void playerDie() {
+            Debug.Log("PLayer Die");
+            PhotonView.RPC("RPC_PlayerDie",PhotonTargets.All,playerId);
+        }
+        [PunRPC]
+        public void RPC_PlayerDie(int playerId) {
+
         }
     }
 }

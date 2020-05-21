@@ -26,6 +26,12 @@ namespace TFT
         public void DeductHP(int _value)
         {
             PlayerHP -= _value;
+            if (PlayerHP <= 0) {
+                Debug.Log("player name "+ NetworkManager.Instance.PlayersName[NetworkManager.Instance.playerId]+" deduce name "+PlayerName);
+                if (PlayerName == NetworkManager.Instance.PlayersName[NetworkManager.Instance.playerId]) {
+                    NetworkManager.Instance.playerDie();
+                }
+            } 
             PlayerInfo.CurrHp = PlayerHP;
         }
     }
