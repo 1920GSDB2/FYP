@@ -131,5 +131,6 @@ public enum DamageType {
 public enum WaveType
 {
     Monster,
-    Player
+    Player,
+    Shadow
 }

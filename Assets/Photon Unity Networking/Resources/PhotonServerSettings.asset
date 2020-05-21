@@ -127,4 +127,5 @@ MonoBehaviour:
   - overTimeFinish
   - Sync_Skill
   - RPC_ChangeStatus
+  - RPC_ShadowBattle
   DisableAutoOpenWizard: 1

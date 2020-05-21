@@ -157,8 +157,8 @@ namespace TFT
         public List<Character> battleGameBoardHeroes = new List<Character>();
         public HeroBuffList BuffList = new HeroBuffList();
         public int posId;
+        public int TFTCharacterId;
         public PhotonPlayer player;
-        public TFTPlayerCharacter playerCharacter;
         public bool isResponse;
         
 
@@ -178,9 +178,10 @@ namespace TFT
         public void setPlayer(PhotonPlayer player) {
             this.player = player;
         }
-        public void setPersonalInformation(int posId,PhotonPlayer player) {
+        public void setPersonalInformation(int posId,PhotonPlayer player,int tftPlayerId) {
             this.posId = posId;
             this.player = player;
+            TFTCharacterId = tftPlayerId;
         }
 
         /// <summary>
