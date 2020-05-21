@@ -4,7 +4,7 @@ public class GodOfWar : Hero
 {
     public override void setAttribute()
     {
-        MpRecoverRate = 2f;
+        ManaRecoveryRate = 2f;
         SkillPower = 1;
     }
     public override void UseSkill()

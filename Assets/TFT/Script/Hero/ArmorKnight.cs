@@ -6,7 +6,7 @@ public class ArmorKnight : Hero
 {
     public override void setAttribute()
     {
-        MpRecoverRate = 2f;
+        ManaRecoveryRate = 2f;
         AttackDamage /= 2;
         SkillPower = 50 + AttackDamage * 1.5f;
     }

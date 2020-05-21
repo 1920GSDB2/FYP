@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TFT
@@ -37,6 +38,9 @@ namespace TFT
             }
         }
 
+        public BuffListenHandler addBuff, upgradeBuff, removeBuff;
+        public BuffListenEventArgs argsAdd, argsUpgrade, argsRemove;
+
         /// <summary>
         /// Call the method, while adding hero to the gameboard
         /// </summary>
@@ -61,11 +65,24 @@ namespace TFT
                     if (ClassValue.ContainsKey(heroClassRace.HeroClasses[i]))
                     {
                         ClassValue[heroClassRace.HeroClasses[i]]++;
+
+                        argsUpgrade= new BuffListenEventArgs();
+                        argsUpgrade.BuffType = BuffType.Class;
+                        argsUpgrade.HeroClass = heroClassRace.HeroClasses[i];
+                        argsUpgrade.BuffCount = ClassValue[heroClassRace.HeroClasses[i]];
+                        upgradeBuff?.Invoke(this, argsUpgrade);
                     }
                     else
                     {
                         ClassValue.Add(heroClassRace.HeroClasses[i], 1);
-                        Debug.Log("AddHeroBuff: " + heroClassRace.HeroClasses[i]);
+
+                        //argsAdd = new BuffListenEventArgs();
+                        //argsAdd.BuffType = BuffType.Class;
+                        //argsAdd.HeroClass = heroClassRace.HeroClasses[i];
+                        //argsAdd.BuffCount = ClassValue[heroClassRace.HeroClasses[i]];
+                        //addBuff?.Invoke(this, argsAdd);
+
+                        //Debug.Log("AddHeroBuff: " + heroClassRace.HeroClasses[i]);
                     }
                 }
                 for (int i = 0; i < heroClassRace.HeroRaces.Length; i++)
@@ -73,11 +90,23 @@ namespace TFT
                     if (RaceValue.ContainsKey(heroClassRace.HeroRaces[i]))
                     {
                         RaceValue[heroClassRace.HeroRaces[i]]++;
+
+                        argsUpgrade = new BuffListenEventArgs();
+                        argsUpgrade.BuffType = BuffType.Race;
+                        argsUpgrade.HeroRace = heroClassRace.HeroRaces[i];
+                        argsUpgrade.BuffCount = RaceValue[heroClassRace.HeroRaces[i]];
+                        upgradeBuff?.Invoke(this, argsUpgrade);
                     }
                     else
                     {
                         RaceValue.Add(heroClassRace.HeroRaces[i], 1);
-                        Debug.Log("AddHeroBuff: " + heroClassRace.HeroRaces[i]);
+                        //argsAdd = new BuffListenEventArgs();
+                        //argsAdd.BuffType = BuffType.Race;
+                        //argsAdd.HeroRace = heroClassRace.HeroRaces[i];
+                        //argsAdd.BuffCount = RaceValue[heroClassRace.HeroRaces[i]];
+                        //addBuff?.Invoke(this, argsAdd);
+
+                        //Debug.Log("AddHeroBuff: " + heroClassRace.HeroRaces[i]);
                     }
                 }
             }
@@ -93,14 +122,41 @@ namespace TFT
             HeroClassRace heroClassRace = GetClassRace(removedHero);
             for (int i = 0; i < heroClassRace.HeroClasses.Length; i++)
             {
-                if (ClassValue[heroClassRace.HeroClasses[i]] > 1) ClassValue[heroClassRace.HeroClasses[i]]--;
-                else ClassValue.Remove(heroClassRace.HeroClasses[i]);
+                argsRemove = new BuffListenEventArgs();
+                argsRemove.BuffType = BuffType.Class;
+                argsRemove.HeroClass = heroClassRace.HeroClasses[i];
+
+                if (ClassValue[heroClassRace.HeroClasses[i]] > 1)
+                {
+                    ClassValue[heroClassRace.HeroClasses[i]]--;
+                    argsRemove.BuffCount = ClassValue[heroClassRace.HeroClasses[i]];
+                }
+                else
+                {
+                    argsRemove.BuffCount = 0;
+                    ClassValue.Remove(heroClassRace.HeroClasses[i]);
+                }
+                removeBuff?.Invoke(this, argsRemove);
             }
             for (int i = 0; i < heroClassRace.HeroRaces.Length; i++)
             {
-                if (RaceValue[heroClassRace.HeroRaces[i]] > 1) RaceValue[heroClassRace.HeroRaces[i]]--;
-                else RaceValue.Remove(heroClassRace.HeroRaces[i]);
+                argsRemove = new BuffListenEventArgs();
+                argsRemove.BuffType = BuffType.Race;
+                argsRemove.HeroRace = heroClassRace.HeroRaces[i];
+
+                if (RaceValue[heroClassRace.HeroRaces[i]] > 1)
+                {
+                    RaceValue[heroClassRace.HeroRaces[i]]--;
+                    argsRemove.BuffCount = RaceValue[heroClassRace.HeroRaces[i]];
+                }
+                else
+                {
+                    argsRemove.BuffCount = 0;
+                    RaceValue.Remove(heroClassRace.HeroRaces[i]);
+                }
+                removeBuff?.Invoke(this, argsRemove);
             }
+
         }
 
         /// <summary>
@@ -160,7 +216,6 @@ namespace TFT
         public PhotonPlayer player;
         public TFTPlayerCharacter playerCharacter;
         public bool isResponse;
-        
 
         /// <summary>
         /// Add hero to gameboard.
@@ -170,7 +225,6 @@ namespace TFT
         {
             GameBoardHeroes.Add(_addedHero);
             BuffList.AddHeroBuff(_addedHero);
-            
             //AddHeroArray(Hero, ref GameBoardHeros);
         }
        

@@ -188,12 +188,14 @@ MonoBehaviour:
   Icon: {fileID: 0}
   SelectingBox: {fileID: 1898811942396278906}
   Rarity: 1
-  HeroClasses: 06000000
+  HeroClasses: 0600000004000000
   HeroRaces: 01000000
   heroLevel: 0
   skill: {fileID: 815998103}
   EquipmentManager: {fileID: 0}
   testSkill: {fileID: 0}
+  Price: 0
+  BuffStatuses: []
 --- !u!65 &1409756087686791978
 BoxCollider:
   m_ObjectHideFlags: 0

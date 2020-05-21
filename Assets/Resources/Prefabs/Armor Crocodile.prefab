@@ -728,15 +728,18 @@ MonoBehaviour:
   isMirror: 0
   NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
+  isTargetable: 0
   Icon: {fileID: 0}
   SelectingBox: {fileID: 2167274966950737570}
   Rarity: 3
-  HeroClasses: 02000000
+  HeroClasses: 05000000
   HeroRaces: 06000000
-  HeroLevel: 0
+  heroLevel: 0
   skill: {fileID: 1712007355}
   EquipmentManager: {fileID: 0}
   testSkill: {fileID: 0}
+  Price: 0
+  BuffStatuses: []
 --- !u!114 &2376330296371579353
 MonoBehaviour:
   m_ObjectHideFlags: 0

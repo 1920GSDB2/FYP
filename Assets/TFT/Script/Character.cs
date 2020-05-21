@@ -64,6 +64,11 @@ public class Character : MonoBehaviour
     public float PhysicalDefense { get; set; }
     public float MagicDefense { get; set; }
     public int CriticalChance { get; set; }
+    public float CriticalDamage { get; set; }
+    public float ManaRecoveryRate = 1;
+    public float HealthRecoveryRate = 0;
+    public float ShieldInit;
+
     #endregion
 
     #region Basic Attribute
@@ -131,7 +136,6 @@ public class Character : MonoBehaviour
     public int networkPlaceId;
     public int battlePosId;
     public bool isMirror = false;
-    protected float MpRecoverRate = 1;
     //public List<NegativeEffect> negativeEffects = new List<NegativeEffect>();
     public NegativeEffectManager NegativeEffectManager;
     public float attackRange = 1.7f;
@@ -263,12 +267,12 @@ public class Character : MonoBehaviour
                 int chance = UnityEngine.Random.Range(1,101);
                 if (CriticalChance >= chance)
                 {
-                    float damage=AttackDamage* 1.5f;
+                    float damage = AttackDamage * (CriticalDamage+1);
                     TargetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage, (byte)DamageType.CriticalDamage);
                 }
                 else
                     TargetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage, (byte)DamageType.Physical);
-                photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f*MpRecoverRate);
+                photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f*ManaRecoveryRate);
                 
             }
         }
@@ -279,7 +283,7 @@ public class Character : MonoBehaviour
         {
             if (TargetEnemy != null)
             {
-                photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f* MpRecoverRate);
+                photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f* ManaRecoveryRate);
                 photonView.RPC("RPC_Shoot", PhotonTargets.All,TargetEnemy.photonView.viewID);
             }
         }
@@ -533,7 +537,7 @@ public class Character : MonoBehaviour
     {
         animator.SetBool("Walk", false);
     }
-    public void readyForBattle(bool isEnemy, int posId)
+    public void ReadyForBattle(bool isEnemy, int posId)
     {
         isMirror = false;
 
@@ -541,7 +545,8 @@ public class Character : MonoBehaviour
         photonView.RPC("RPC_Mirror", PhotonTargets.Others);
         photonView.RPC("RPC_SyncInfo", PhotonTargets.All,NetworkManager.Instance.battlePosId);
 
-        combatStart?.Invoke(this, EventArgs.Empty);        
+        combatStart?.Invoke(this, EventArgs.Empty);
+        StartCoroutine(RecoveryHP());
         HeroState = HeroState.Idle;       
     //    Debug.Log("name " + name + " ready ");
     }
@@ -655,12 +660,23 @@ public class Character : MonoBehaviour
         
     }
 
-    public IEnumerator BasicAttackCoolDown()
+    public IEnumerator RecoveryHP()
     {
-        isAttackCooldown = true;
-        yield return new WaitForSeconds(1 / (AttackSpeed * 2.5f));
-        isAttackCooldown = false;
+        while (true)
+        {
+            if (Health < MaxHealth)
+            {
+                float recoverValue = MaxHealth * HealthRecoveryRate;
+                photonView.RPC("RPC_Heal", PhotonTargets.All, recoverValue, DamageType.Heal);
+            }
+        }
     }
+    //public IEnumerator BasicAttackCoolDown()
+    //{
+    //    isAttackCooldown = true;
+    //    yield return new WaitForSeconds(1 / (AttackSpeed * 2.5f));
+    //    isAttackCooldown = false;
+    //}
     //public IEnumerator controlableSkillDuration(float time,NegativeEffect type) {
     //    yield return new WaitForSeconds(time);
     //    negativeEffects.Remove(type);

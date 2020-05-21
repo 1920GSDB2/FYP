@@ -192,7 +192,7 @@ public class TFTGameManager : MonoBehaviour
                 if (classValue.ContainsKey(heroClass))
                 {
                     classValue[heroClass]++;
-                    BuffList.UpgradeBuff(heroClass.ToString());
+                    //BuffList.UpgradeBuff(heroClass.ToString());
                 }
                 else
                 {
@@ -211,7 +211,7 @@ public class TFTGameManager : MonoBehaviour
                 if (raceValue.ContainsKey(heroRare))
                 {
                     raceValue[heroRare]++;
-                    BuffList.UpgradeBuff(heroRare.ToString());
+                    //BuffList.UpgradeBuff(heroRare.ToString());
                 }
                 else
                 {

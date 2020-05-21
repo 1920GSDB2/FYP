@@ -5,7 +5,7 @@ public class GodOfWizard : Hero
     {
         AttackSpeed = 1.2f;
         SkillPower = 10f;
-        MpRecoverRate = 2.5f;
+        ManaRecoveryRate = 2.5f;
     }
     public override void UseSkill()
     {
@@ -23,7 +23,7 @@ public class GodOfWizard : Hero
         {
             if (TargetEnemy != null)
             {
-                photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f * MpRecoverRate);
+                photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f * ManaRecoveryRate);
                 Character target = NetworkManager.Instance.getRandomCharacter(isEnemy);
                 photonView.RPC("RPC_Shoot", PhotonTargets.All, target.photonView.viewID);
             }

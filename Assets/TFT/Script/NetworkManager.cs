@@ -537,7 +537,7 @@ namespace TFT
                         posId = posId,
                         player = PhotonNetwork.player
                     };
-
+                    GameManager.Instance.AddPlayerHeroListener(PlayerHeroes[playerId]);
                     //Cameras[posId].enabled = true;
 
                     GameManager.Instance.SelfPlayerArena.Camera.SetActive(true);
@@ -1074,13 +1074,13 @@ namespace TFT
                 foreach (Hero hero in battleGameBoardHero)
                 {
                     //hero
-                    hero.readyForBattle(false, playerPosId);
+                    hero.ReadyForBattle(false, playerPosId);
                 }
 
 
                 foreach (Character hero in opponent.heroes)
                 {
-                    hero.readyForBattle(true, playerPosId);
+                    hero.ReadyForBattle(true, playerPosId);
                 }
             }
         }

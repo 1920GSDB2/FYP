@@ -3,7 +3,7 @@ public class HeavyCrossbowman : Hero
 {
     public override void setAttribute()
     {
-        MpRecoverRate = 1.5f;
+        ManaRecoveryRate = 1.5f;
     }
     public override void UseSkill()
     {

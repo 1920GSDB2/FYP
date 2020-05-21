@@ -8,7 +8,11 @@
     Health,
     maxHp,
     Skill_Damage,
-    Physic_Defense
+    Physic_Defense,
+    Critical_Damage,
+    Shield,
+    Heal_Recovery_Rate,
+    Mana_Recovery_Rate
 }
 public enum ItemType
 {

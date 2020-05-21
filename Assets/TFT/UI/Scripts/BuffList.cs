@@ -68,7 +68,14 @@ namespace TFT
                 }
                 else if (buffList.Find(heroClass.ToString()).GetComponent<Buff>().CurrentValue < ClassValue.Value)
                 {
-                    UpgradeBuff(heroClass.ToString());
+                    foreach (Buffers buffers in BuffersManager.buffers)
+                    {
+                        if (buffers.heroClass == heroClass)
+                        {
+                            UpgradeBuff(buffers, heroClass.ToString());
+
+                        }
+                    }
                 }
             }
 
@@ -87,7 +94,13 @@ namespace TFT
                 }
                 else if (buffList.Find(heroRace.ToString()).GetComponent<Buff>().CurrentValue < RaceValue.Value)
                 {
-                    UpgradeBuff(heroRace.ToString());
+                    foreach (Buffers buffers in BuffersManager.buffers)
+                    {
+                        if (buffers.heroRace == heroRace)
+                        {
+                            UpgradeBuff(buffers, heroRace.ToString());
+                        }
+                    }
                 }
             }
 
@@ -104,12 +117,25 @@ namespace TFT
                     if(buff.HeroClass != HeroClass.None)
                     {
                         buff.CurrentValue = HeroBuffList.ClassValue[buff.HeroClass];
-                       
+                        foreach (Buffers buffers in BuffersManager.buffers)
+                        {
+                            if (buffers.heroClass == buff.HeroClass)
+                            {
+                                CheckBuffUpdate(buff, buffers);
+                            }
+                        }
                     }
                     //The buff is Race
                     else if (buff.HeroRace != HeroRace.None)
                     {
                         buff.CurrentValue = HeroBuffList.RaceValue[buff.HeroRace];
+                        foreach (Buffers buffers in BuffersManager.buffers)
+                        {
+                            if (buffers.heroRace == buff.HeroRace)
+                            {
+                                CheckBuffUpdate(buff, buffers);
+                            }
+                        }
                     }
                 }
                 else
@@ -130,16 +156,17 @@ namespace TFT
 
         public void AddBuff(Buffers buffer, string name)
         {
-            //buffList.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(75, 0);
             Buff newBuff = (Instantiate(buff.gameObject) as GameObject).GetComponent<Buff>();
             newBuff.HeroClass = buffer.heroClass;
             newBuff.HeroRace = buffer.heroRace;
-            newBuff.TotalValue = buffer.totalNumber;
             newBuff.name = name;
-            //newBuff.gameObject.transform.parent = buffList;
+            newBuff.TotalValue = buffer.bronzeNumber;
+
+            CheckBuffUpdate(newBuff, buffer);
+
             newBuff.gameObject.transform.SetParent(buffList);
             newBuff.gameObject.GetComponent<RectTransform>().localScale = Vector3.one;
-            //buffList.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(75, 24 * buffList.gameObject.transform.childCount);
+
             if (!isShowList)
             {
                 RectTransform.anchoredPosition = new Vector2(-RectTransform.sizeDelta.x + 10 , -115);
@@ -149,13 +176,41 @@ namespace TFT
             nextPos = RectTransform.anchoredPosition;
         }
 
-        public void UpgradeBuff(string buffer)
+        public void UpgradeBuff(Buffers buffer, string buffeNamer)
         {
-            Transform upgradeObject = buffList.Find(buffer);
+            Transform upgradeObject = buffList.Find(buffeNamer);
             if (upgradeObject != null)
-                upgradeObject.gameObject.GetComponent<Buff>().CurrentValue++;
+            {
+                Buff buff = upgradeObject.gameObject.GetComponent<Buff>();
+                buff.CurrentValue++;
+
+                CheckBuffUpdate(buff, buffer);
+
+            }
         }
 
+        private void CheckBuffUpdate(Buff buff, Buffers buffer)
+        {
+            if (buff.CurrentValue >= buffer.goldenNumber)
+            {
+                buff.BuffLevel = BuffLevel.Golden;
+                buff.TotalValue = buffer.totalNumber;
+            }
+            else if (buff.CurrentValue >= buffer.sliverNumber)
+            {
+                buff.BuffLevel = BuffLevel.Sliver;
+                buff.TotalValue = buffer.goldenNumber;
+            }
+            else if (buff.CurrentValue >= buffer.bronzeNumber)
+            {
+                buff.BuffLevel = BuffLevel.Bronze;
+                buff.TotalValue = buffer.sliverNumber;
+            }
+            else
+            {
+                buff.TotalValue = buffer.bronzeNumber;
+            }
+        }
         public void SwitchPanel()
         {
             if (RectTransform.sizeDelta.x <= 10) return;
