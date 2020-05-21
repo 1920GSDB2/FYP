@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     protected bool canDamage;
     public GameObject hitEffect;
     public Vector3 targetPos;
+    DamageType damageType=DamageType.Physical;
     // Start is called before the first frame update
 
 
@@ -33,8 +34,15 @@ public class Bullet : MonoBehaviour
         else if(targetPos!=null)
             transform.position = Vector3.MoveTowards(transform.position,targetPos+Vector3.up, speed * Time.deltaTime);
     }
-    public void setBullet(GameObject c, float damage,bool isDamage) {
-        target = c;
+    public void setBullet(Character c, float damage,bool isDamage,DamageType type) {
+        target = c.gameObject;
+        attackDamage = damage;
+        canDamage = isDamage;
+        damageType  = type;
+    }
+    public void setBullet(Character c, float damage, bool isDamage, int cirtical)
+    {
+        target = c.gameObject;
         attackDamage = damage;
         canDamage = isDamage;
     }
@@ -75,7 +83,9 @@ public class Bullet : MonoBehaviour
         if (other.gameObject == target.gameObject)
         {
             if (canDamage)
-                target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage,(byte)DamageType.Physical);
+            {
+                target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage, (byte)damageType);
+            }
 
             Destroy(this.gameObject);
         }

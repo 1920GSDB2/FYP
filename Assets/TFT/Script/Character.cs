@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
             {           
                 if (HeroState!= HeroState.Die)
                 {
-                    Debug.Log("Call Die method " +name   );
+                   // Debug.Log("Call Die method " +name   );
                      die();
                     
                 }
@@ -310,7 +310,16 @@ public class Character : MonoBehaviour
     void processShoot(int id) {
         Bullet b = Instantiate(bullet, transform.position + Vector3.up, transform.rotation).GetComponent<Bullet>();
         Character target = PhotonView.Find(id).GetComponent<Character>();
-        b.setBullet(target, AttackDamage, isMirror);
+        int chance = UnityEngine.Random.Range(1, 101);
+        if (CriticalChance >= chance)
+        {
+            float damage = AttackDamage * 1.5f;
+            b.setBullet(target, damage, isMirror, DamageType.CriticalDamage);
+        }
+        else
+        {
+            b.setBullet(target, AttackDamage, isMirror);
+        }
         //Debug.Log("target "+target.name +" photon prcess shot");
     }
 
@@ -484,7 +493,7 @@ public class Character : MonoBehaviour
     public IEnumerator FindPathAgain()
     {
         TargetEnemy = NetworkManager.Instance.getCloestEnemyTarget(!isEnemy, transform);
-        Debug.Log(name+" find Target "+TargetEnemy);
+       // Debug.Log(name+" find Target "+TargetEnemy);
         if (TargetEnemy != null)
         {            
             photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, TargetEnemy.photonView.viewID);
@@ -540,7 +549,7 @@ public class Character : MonoBehaviour
     public void ReadyForBattle(bool isEnemy, int posId)
     {
         isMirror = false;
-
+        this.isEnemy = isEnemy;
         photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
         photonView.RPC("RPC_Mirror", PhotonTargets.Others);
         photonView.RPC("RPC_SyncInfo", PhotonTargets.All,NetworkManager.Instance.battlePosId);
@@ -605,16 +614,16 @@ public class Character : MonoBehaviour
     }
    
     [PunRPC]
-    public void RPC_HitPlayerCharacter(bool isHomeTeam,int battlePos) {
-        hitopponentCharacter(isHomeTeam,battlePos);
+    public void RPC_HitPlayerCharacter(int id) {
+        hitopponentCharacter(id);
     }
-    void hitopponentCharacter(bool isHomeTeam,int battlePos) {
+    void hitopponentCharacter(int id) {
         UnityEngine.Object pPrefab = Resources.Load("Effect/heroHitPlayerEffect");
         GameObject b = Instantiate(pPrefab, transform.position, transform.rotation) as GameObject;
-        GameObject opponentPlayer = null;
-
+      //  GameObject opponentPlayer = null;
+        GameObject character = PhotonView.Find(id).gameObject;
         //if (NetworkManager.Instance.playerId == playerId)
-        if (isHomeTeam)
+     /*   if (isHomeTeam)
         {
             
             opponentPlayer = NetworkManager.Instance.PlayerArenas[battlePos]. GetComponent<PlayerArena>()
@@ -626,8 +635,8 @@ public class Character : MonoBehaviour
             opponentPlayer = NetworkManager.Instance.PlayerArenas[battlePos].GetComponent<PlayerArena>()
                 .playerCharacterSlot.GetChild(0).gameObject;
 
-        }
-        b.GetComponent<Bullet>().setBullet(opponentPlayer, 2f);
+        }*/
+        b.GetComponent<Bullet>().setBullet(character, 2f);
     }
     public IEnumerator Attack()
     {

@@ -24,7 +24,7 @@ public class DemoHole : Aoe
     }
     protected override IEnumerator openCollider()
     {
-        Debug.Log("open collider");
+        //Debug.Log("open collider");
         yield return new WaitForSeconds(delayOpenCollider);
         collider.enabled = true;
         StartCoroutine(durationDamage());

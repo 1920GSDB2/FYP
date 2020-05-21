@@ -69,10 +69,10 @@ namespace TFT
                     //Matching the opponent
                     if (PhotonNetwork.isMasterClient)
                     {
-                        if (RoundManager.CurrentOpponentType == OpponentType.Player) ;
-                        //  NetworkManager.Instance.MatchPlayerOpponent();
-                      //  else
-                         //   NetworkManager.Instance.MonsterBattle();
+                        if (RoundManager.CurrentOpponentType == OpponentType.Player)
+                          NetworkManager.Instance.MatchPlayerOpponent();
+                        else
+                            NetworkManager.Instance.MonsterBattle();
                     }
                     return;
                 }
@@ -368,7 +368,7 @@ namespace TFT
             //When the transiting time is finish, it will determine the next status of game
             if (GameStatus == GameStatus.Transiting)
             {
-                Debug.Log("change game berfre Game st" + GameStatus);
+               // Debug.Log("change game berfre Game st" + GameStatus);
                 //Use the last game status to switch the next game status
                 switch (LastGameStatus)
                 {
@@ -397,7 +397,7 @@ namespace TFT
                         }
                         break;
                 }
-                Debug.Log("change game after Game st" + GameStatus);
+             //   Debug.Log("change game after Game st" + GameStatus);
             }
             //Change game status to Transiting
             else
@@ -409,7 +409,7 @@ namespace TFT
                 }
                 else
                 {
-                    Debug.Log("transit before Game st" + GameStatus);
+                  //  Debug.Log("transit before Game st" + GameStatus);
                     if (GameStatus == GameStatus.Comping&&!NetworkManager.Instance.BattleFinish()) {
                         Debug.Log("increase time no yet finish!!");
                          // NetworkManager.PhotonView.RPC("overTimeFinish", PhotonTargets.All);
@@ -418,7 +418,7 @@ namespace TFT
                     LastGameStatus = GameStatus;
                     PeriodTime = MainGameManager.transitionTime;
                     GameStatus = GameStatus.Transiting;
-                    Debug.Log("transit after Game st" + GameStatus);
+                    //Debug.Log("transit after Game st" + GameStatus);
                 }
             }
 

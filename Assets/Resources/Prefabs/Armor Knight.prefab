@@ -3157,7 +3157,7 @@ MonoBehaviour:
   BasicSkillPower: 6
   BasicPhysicalDefense: 5
   BasicMagicDefense: 5
-  BasicCritcalChance: 5
+  BasicCritcalChance: 0
   BasicAttackRange: 1
   isStun: 0
   isSlience: 0

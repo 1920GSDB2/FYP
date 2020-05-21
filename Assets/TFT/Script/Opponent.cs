@@ -7,6 +7,7 @@ public class Opponent
 {
     public int opponentId;
     public bool isShadow;
+    
     public List<Character> heroes = new List<Character>() ;
     public Opponent(int _opponentId, bool? _isShadow = null)
     {

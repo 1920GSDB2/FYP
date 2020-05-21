@@ -193,6 +193,7 @@ public class Hero : Character, ISelectable
     public void RPC_ResetStatus() {
 
         tag = "Character";
+        animator.SetBool("Walk", false);
         gameObject.SetActive(true);
         HeroBarObject.SetActive(false);
         isStun = false;

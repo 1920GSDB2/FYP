@@ -5,13 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class OpponentManager
 {
-    public Opponent host;
-    public Opponent guest;
+    public int host;
+    public int guest;
+    public bool isShadow;
     
     public OpponentManager(int _hostId, int _guestId, bool? _isShadow = null)
     {
-        host = new Opponent(_hostId);
-        guest = new Opponent(_guestId, _isShadow ?? false);
+        host = _hostId;
+        guest = _guestId;
+        isShadow = _isShadow??false;
     }
 
 }
