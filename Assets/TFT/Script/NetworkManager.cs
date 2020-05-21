@@ -320,8 +320,13 @@ namespace TFT
                 Character closestHero = hero[0];
                 for (int i = 1; i < hero.Length; i++) {
                     float dis = Vector3.Distance(hero[i].transform.position, heroPos.position);
+                  //  Debug.Log("MY hero "+heroPos.name+"taget Hero "+hero[i].name+"Dis " + dis);
                     if (dis < closestDis)
+                    {
+                        closestDis = dis;
                         closestHero = hero[i];
+                   //     Debug.Log("CLOESTEST !!!! MY hero " + heroPos.name + "taget Hero " + hero[i].name + "Dis " + dis);
+                    }
                 }
                 return closestHero;
             }

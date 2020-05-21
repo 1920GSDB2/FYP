@@ -10,7 +10,6 @@ public class DamageText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         AnimatorClipInfo[] clipInfos = animator.GetCurrentAnimatorClipInfo(0);
         Destroy(gameObject, clipInfos[0].clip.length);
   
@@ -23,13 +22,16 @@ public class DamageText : MonoBehaviour
                 damageText.faceColor = Color.blue;
                 break;
             case DamageType.Physical:
-                damageText.faceColor = Color.red;
+                damageText.faceColor = new Color(1, 0.764f, 0.121f, 1);
                 break;
             case DamageType.TrueDamage:
                 damageText.faceColor = Color.white;
                 break;
             case DamageType.Heal:
                 damageText.faceColor = Color.green;
+                break;
+            case DamageType.CriticalDamage:
+                damageText.faceColor = Color.red;
                 break;
         }
        

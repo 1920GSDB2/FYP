@@ -63,6 +63,7 @@ public class Character : MonoBehaviour
     public float SkillPower { get; set; }
     public float PhysicalDefense { get; set; }
     public float MagicDefense { get; set; }
+    public int CriticalChance { get; set; }
     #endregion
 
     #region Basic Attribute
@@ -159,7 +160,7 @@ public class Character : MonoBehaviour
     /// <param name="_negativeEffect"></param>
     public void AddNegativeEffect(float _time, NegativeEffectHandler _negativeEffect)
     {
-        Debug.Log("AddNegativeEffect" + name);
+     //   Debug.Log("AddNegativeEffect" + name);
         //TargetEnemy.AddNegativeEffect(0.5f, TargetEnemy.NegativeEffectManager.Slient);
         beControlled?.Invoke(this, EventArgs.Empty);
         _negativeEffect(_time);
@@ -259,8 +260,16 @@ public class Character : MonoBehaviour
         {
             if (TargetEnemy != null && TargetEnemy.Health > 0)
             {
+                int chance = UnityEngine.Random.Range(1,101);
+                if (CriticalChance >= chance)
+                {
+                    float damage=AttackDamage* 1.5f;
+                    TargetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, damage, (byte)DamageType.CriticalDamage);
+                }
+                else
+                    TargetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage, (byte)DamageType.Physical);
                 photonView.RPC("RPC_IncreaseMp", PhotonTargets.All, 10f*MpRecoverRate);
-                TargetEnemy.photonView.RPC("RPC_TargetTakeDamage", PhotonTargets.All, AttackDamage,(byte)DamageType.Physical);
+                
             }
         }
     }
@@ -438,6 +447,9 @@ public class Character : MonoBehaviour
                 StartCoroutine(FollowStep(path[0]));
             }
         }
+        else {
+            StartCoroutine(cannotPathFind());
+        }
 
     }
     IEnumerator FollowStep(Node step)
@@ -468,6 +480,7 @@ public class Character : MonoBehaviour
     public IEnumerator FindPathAgain()
     {
         TargetEnemy = NetworkManager.Instance.getCloestEnemyTarget(!isEnemy, transform);
+        Debug.Log(name+" find Target "+TargetEnemy);
         if (TargetEnemy != null)
         {            
             photonView.RPC("RPC_SyncTargetEnemy", PhotonTargets.Others, TargetEnemy.photonView.viewID);
@@ -503,6 +516,10 @@ public class Character : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, step.transform.position, 3 * Time.deltaTime);
             yield return null;
         }
+    }
+    IEnumerator cannotPathFind() {
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(FindPathAgain());
     }
     public void MoveToThePlace(HeroPlace newHeroPlace)
     {
