@@ -5,7 +5,8 @@ using TFT;
 
 public class MonsterWaveManager : MonoBehaviour
 {
-    public GameObject[] awardEquipment;
+    [HideInInspector]
+    public Equipment[] awardEquipment;
     public MonsterWave[] Wave;
     int currentIndex;
     public static MonsterWaveManager Instance;
@@ -20,6 +21,10 @@ public class MonsterWaveManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+    private void Start()
+    {
+        awardEquipment = GameManager.Instance.MainGameManager.ItemTypes;
     }
     public void spawnCurrentWaveAllMonster() {
         if (currentIndex == Wave.Length)
@@ -64,7 +69,7 @@ public class MonsterWaveManager : MonoBehaviour
                 Debug.Log("Get Equipment");
                 isDropEquipment = true;
                 int index = UnityEngine.Random.Range(0, awardEquipment.Length);
-                Equipment equipment = Instantiate(awardEquipment[index]).GetComponent<Equipment>();
+                Equipment equipment = Instantiate(awardEquipment[index].gameObject).GetComponent<Equipment>();
                 equipmentBoard.AddEquipment(equipment);
         break;
         }

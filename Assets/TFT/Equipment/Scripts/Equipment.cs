@@ -27,9 +27,10 @@ namespace TFT
 
         public abstract void OnInstallEquip();
         
-        [HideInInspector]
+        //[HideInInspector]
         public bool isComponent;
         
+        [SerializeField]
         private bool isUse;
         public bool IsUse
         {
@@ -91,9 +92,9 @@ namespace TFT
             AttachHero = _hero;
             Transform parent = AttachHero.GetEquipmentSlot();
             transform.parent = parent;
-            parent.parent.parent.GetComponent<EquipmentManager>().AddEquirement(this);
+            parent.parent.parent.GetComponent<EquipmentManager>().AddEquement(this);
+            IsUse = true;
             transform.localPosition = Vector3.zero;
-            IsUse = false;
         }
         public void PutDown()
         {
@@ -102,9 +103,15 @@ namespace TFT
                 AttachHero = SelectManager.ParentObject.GetComponent<Hero>();
                 Transform parent = AttachHero.GetEquipmentSlot();
                 transform.parent = parent;
-                parent.parent.parent.GetComponent<EquipmentManager>().AddEquirement(this);
-                IsUse = false;
-                AttachHero.photonView.RPC("RPC_InstallEquipment", PhotonTargets.Others, ItemId);
+                if (parent.parent.parent.GetComponent<EquipmentManager>().AddEquement(this))
+                {
+                    AttachHero.photonView.RPC("RPC_InstallEquipment", PhotonTargets.Others, ItemId);
+                    IsUse = true;
+                }
+                else
+                {
+                    EquipmentSlotManager.Instance.AddEquipment(this);
+                }
             }
             else
             {
