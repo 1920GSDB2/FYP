@@ -106,6 +106,7 @@ public class Hero : Character, ISelectable
         AttackSpeed = 0.1f * BasicAttackSpeed;
         attackRange = attackRange * BasicAttackRange;
         SkillPower = BasicSkillPower * 1.25f;
+        CriticalChance = BasicCritcalChance *= 10;
         BoxCollider = GetComponent<Collider>();
     }
 

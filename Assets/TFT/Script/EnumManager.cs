@@ -125,6 +125,7 @@ public enum DamageType {
     Magic,
     Physical,
     TrueDamage,
+    CriticalDamage,
     Heal
 }
 public enum WaveType

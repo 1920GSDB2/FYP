@@ -3157,7 +3157,7 @@ MonoBehaviour:
   BasicSkillPower: 6
   BasicPhysicalDefense: 5
   BasicMagicDefense: 5
-  BasicCritcalChance: 0
+  BasicCritcalChance: 5
   BasicAttackRange: 1
   isStun: 0
   isSlience: 0
@@ -3178,15 +3178,17 @@ MonoBehaviour:
   isMirror: 0
   NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
+  isTargetable: 0
   Icon: {fileID: 0}
   SelectingBox: {fileID: 216957540}
   Rarity: 0
   HeroClasses: 05000000
   HeroRaces: 03000000
-  HeroLevel: 0
+  heroLevel: 0
   skill: {fileID: 705671629}
   EquipmentManager: {fileID: 0}
   testSkill: {fileID: 0}
+  Price: 0
 --- !u!95 &5930651934207234998
 Animator:
   serializedVersion: 3
