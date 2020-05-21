@@ -207,7 +207,7 @@ namespace TFT
             int placeType = _placeType ?? 0;
             int targetPlayerId = _playerId ?? playerId;
             //This is in Hero List
-            if(placeType == 0)
+            if (placeType == 0)
             {
                 return PlayerArenas[PlayerHeroes[targetPlayerId].posId].
                 GetComponent<PlayerArena>().SelfArena.HeroList.
@@ -607,7 +607,10 @@ namespace TFT
                     {
                         case SyncMoveHero.AddGameboard:
                             ChangedHero[i].position = _newPos;
+                            NetworkHero networkHero = ChangedHero[i];
                             PlayerHeroes[_playerId].GameboardAddHero(ChangedHero[i]);
+                            PlayerHeroes[_playerId].UsableHeroes.RemoveAt(i);
+                            PlayerHeroes[_playerId].UsableHeroes.Add(networkHero);
                             //Remote Player Game Arena Update
                             if (_playerId != playerId)
                             {

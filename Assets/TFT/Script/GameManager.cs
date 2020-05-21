@@ -108,6 +108,8 @@ namespace TFT
 
         [SerializeField]
         Hero LaterUpgradeHero;
+        [SerializeField]
+        NetworkHero LaterUpgradeNetworkHero;
 
         void Awake()
         {
@@ -140,18 +142,12 @@ namespace TFT
         {
             if (LaterUpgradeHero != null)
             {
-                NetworkHero networkHero = 
-                    CheckHeroLevelUp(new NetworkHero(LaterUpgradeHero.name,
-                        LaterUpgradeHero.transform.parent.GetSiblingIndex(), 
-                        LaterUpgradeHero.HeroLevel));
-
-                //Cannot level up
-                if (networkHero.HeroLevel != HeroLevel.Level1)
-                {
-                    NetworkManager.Instance.SyncPlayerHero(networkHero, SyncHeroMethod.RemoveHero);
-                    PhotonNetwork.Destroy(LaterUpgradeHero.GetComponent<PhotonView>());
-                }
+                CheckHeroLevelUp(LaterUpgradeNetworkHero);
+                //Debug.Log("LaterUpgradeHero Pos: "+ LaterUpgradeNetworkHero.position);
+                NetworkManager.Instance.SyncPlayerHero(LaterUpgradeNetworkHero, SyncHeroMethod.RemoveHero);
+                PhotonNetwork.Destroy(LaterUpgradeHero.GetComponent<PhotonView>());
                 LaterUpgradeHero = null;
+                LaterUpgradeNetworkHero = null;
             }
         }
 
@@ -176,7 +172,7 @@ namespace TFT
 
                     //Cannot level up
                     if (networkHero.HeroLevel == HeroLevel.Level1)
-                    {                      
+                    {
                         NetworkManager.Instance.SyncPlayerHero(networkHero, SyncHeroMethod.AddHero);
                     }
                     //Can level up and destroy extra hero
@@ -204,66 +200,171 @@ namespace TFT
         public NetworkHero CheckHeroLevelUp(NetworkHero _hero)
         {
             //If the hero reach the highest level, stop hero level up
-            if (_hero.HeroLevel == HeroLevel.Level3)
-                return _hero;
+            if (_hero.HeroLevel == HeroLevel.Level3) return _hero;
 
-            #region Check same type and level hero wheather exist in two
-            NetworkHero[] heroes = PlayerHero.UsableHeroes.ToArray();
-            int sameLvCount = 0;
-            NetworkHero sameLvHero = _hero;
-            for (int i = 0; i < heroes.Length; i++)
+            // Check same type and level hero wheather exist in two
+            List<NetworkHero> heroes = PlayerHero.UsableHeroes;
+            List<NetworkHero> sameLvHeroes = new List<NetworkHero>();
+            foreach (NetworkHero hero in heroes)
+                if (hero.name.Equals(_hero.name) && hero.HeroLevel == _hero.HeroLevel) sameLvHeroes.Add(hero);
+
+            if (sameLvHeroes.Count < 2) return _hero;
+            bool containGBHero = sameLvHeroes.Intersect(PlayerHero.GameBoardHeroes).Any();
+
+            NetworkHero temp, del;
+
+            if (sameLvHeroes.Intersect(PlayerHero.GameBoardHeroes).Any())
             {
-                if (heroes[i].name.Equals(_hero.name) && heroes[i].HeroLevel == _hero.HeroLevel)
+                //Level up heroes contains any gameboard hero and game status is not readying
+                //Don't remove hero now
+                if (GameStatus != GameStatus.Readying)
                 {
-                    sameLvCount++;
-                    if (sameLvCount >= 2)
+                    Debug.Log("LaterUpgradeHero Set Position: " + _hero.position);
+                    LaterUpgradeHero = NetworkManager.Instance.GetHeroByNetworkHero(_hero, 0);
+                    LaterUpgradeNetworkHero = _hero;
+                    //LaterUpgradeHero = NetworkManager.Instance.GetHeroByNetworkHero(_hero);
+                    return _hero;
+                }
+                //Level up heroes contains any gameboard hero and game status is readying
+                //Remove hero which is not in gameboard
+                else
+                {
+                    NetworkHero a = sameLvHeroes[0];
+                    NetworkHero b = sameLvHeroes[1];
+                    //a does not exist in gameboard
+                    if (!PlayerHero.GameBoardHeroes.Contains(a))
                     {
-                        if (PlayerHero.GameBoardHeroes.Contains(heroes[i]) && GameStatus != GameStatus.Readying)
-                        {
-                            Debug.Log("Add Later UpgradeHero");
-                            LaterUpgradeHero = NetworkManager.Instance.GetHeroByNetworkHero(_hero);
-                            return _hero;
-                        }
-                        else 
-                        {
-                            #region Remove Hero
-                            if (PlayerHero.GameBoardHeroes.Contains(heroes[i]))
-                            {
-                                Debug.Log("Remove Game Board Hero");
-                                PhotonNetwork.Destroy(SelfPlayerArena.SelfArena.GameBoard.GetChild(heroes[i].position).GetChild(0).gameObject);
-                            }
-                            
-                            else
-                            {
-                                PhotonNetwork.Destroy(SelfPlayerArena.SelfArena.HeroList.GetChild(heroes[i].position).GetChild(0).gameObject);
-                                Debug.Log("Remoe HeroList Hero");
+                        { del = a; temp = b; }
+                        Debug.Log("Del Pos: " + del.position);
+                        NetworkManager.Instance.SyncPlayerHero(del, SyncHeroMethod.RemoveHero);
+                        PhotonNetwork.Destroy(SelfPlayerArena.SelfArena.HeroList.GetChild(del.position).GetChild(0).gameObject);
 
-                            }
-
-                            //DestroyImmediate(SelfPlayerArena.SelfArena.HeroList.GetChild(heroes[i].position).GetChild(0).gameObject);
-
-                            NetworkManager.Instance.SyncPlayerHero(heroes[i], SyncHeroMethod.RemoveHero);
-                            #endregion
-
-                            #region Upgrade Hero
-                            sameLvHero.HeroLevel++;
-                            Debug.Log("sameLvHero.position: "+ sameLvHero.position);
-
-                            SelfPlayerArena.SelfArena.HeroList.GetChild(sameLvHero.position)
-                                .GetChild(0).GetComponent<Hero>().photonView.RPC("RPC_Upgrade", PhotonTargets.All);
-                            //SelfPlayerArena.SelfArena.HeroList.GetChild(sameLvHero.position).GetChild(0).GetComponent<Hero>().HeroLevel++;
-                            NetworkManager.Instance.SyncPlayerHero(sameLvHero, SyncHeroMethod.HeroUpgrade);
-                            #endregion
-                        }
-                        
-                        return CheckHeroLevelUp(sameLvHero);
+                        temp.HeroLevel++;
+                        Debug.Log("Temp Pos: " + temp.position);
+                        NetworkManager.Instance.SyncPlayerHero(temp, SyncHeroMethod.HeroUpgrade);
+                        SelfPlayerArena.SelfArena.GameBoard.GetChild(temp.position)
+                            .GetChild(0).GetComponent<Hero>().photonView.RPC("RPC_Upgrade", PhotonTargets.All);
                     }
-                    sameLvHero = heroes[i];
+                    // Both exist in gameboard, delete the smaller position id one
+                    else
+                    {
+                        if (a.position < b.position) { del = a; temp = b; }
+                        else { del = b; temp = a; }
+                        Debug.Log("Del Pos: " + del.position);
+                        NetworkManager.Instance.SyncPlayerHero(del, SyncHeroMethod.RemoveHero);
+                        PhotonNetwork.Destroy(SelfPlayerArena.SelfArena.GameBoard.GetChild(del.position).GetChild(0).gameObject);
+
+                        temp.HeroLevel++;
+                        Debug.Log("Temp Pos: " + temp.position);
+                        NetworkManager.Instance.SyncPlayerHero(temp, SyncHeroMethod.HeroUpgrade);
+                        SelfPlayerArena.SelfArena.GameBoard.GetChild(temp.position)
+                            .GetChild(0).GetComponent<Hero>().photonView.RPC("RPC_Upgrade", PhotonTargets.All);
+                    }
                 }
             }
-            #endregion
-            return _hero;
+            //Both does not exist in gameboard, delete the larger position id one
+            else
+            {
+                NetworkHero a = sameLvHeroes[0];
+                NetworkHero b = sameLvHeroes[1];
+                if (a.position > b.position) { del = a; temp = b; }
+                else { del = b; temp = a; }
+
+                Debug.Log("Del Pos: " + del.position);
+                NetworkManager.Instance.SyncPlayerHero(del, SyncHeroMethod.RemoveHero);
+                PhotonNetwork.Destroy(SelfPlayerArena.SelfArena.HeroList.GetChild(del.position).GetChild(0).gameObject);
+
+                temp.HeroLevel++;
+                Debug.Log("Temp Pos: " + temp.position);
+                NetworkManager.Instance.SyncPlayerHero(temp, SyncHeroMethod.HeroUpgrade);
+                SelfPlayerArena.SelfArena.HeroList.GetChild(temp.position)
+                    .GetChild(0).GetComponent<Hero>().photonView.RPC("RPC_Upgrade", PhotonTargets.All);
+            }
+
+           
+            return CheckHeroLevelUp(temp);
         }
+
+        ///// <summary>
+        ///// Return level upgraded hero or origin hero
+        ///// </summary>
+        ///// <param name="_hero"></param>
+        ///// <returns></returns>
+        //public NetworkHero CheckHeroLevelUp(NetworkHero _hero)
+        //{
+        //    //If the hero reach the highest level, stop hero level up
+        //    if (_hero.HeroLevel == HeroLevel.Level3)
+        //        return _hero;
+
+        //    #region Check same type and level hero wheather exist in two
+        //    NetworkHero[] heroes = PlayerHero.UsableHeroes.ToArray();
+        //    int sameLvCount = 0;
+        //    NetworkHero sameLvHero = _hero;
+        //    for (int i = 0; i < heroes.Length; i++)
+        //    {
+        //        if (heroes[i].name.Equals(_hero.name) && heroes[i].HeroLevel == _hero.HeroLevel)
+        //        {
+        //            sameLvCount++;
+        //            if (sameLvCount >= 2)
+        //            {
+        //                if (PlayerHero.GameBoardHeroes.Contains(heroes[i]) && GameStatus != GameStatus.Readying)
+        //                {
+        //                    Debug.Log("Add Later UpgradeHero");
+        //                    LaterUpgradeHero = NetworkManager.Instance.GetHeroByNetworkHero(_hero);
+        //                    return _hero;
+        //                }
+        //                else
+        //                {
+        //                    #region Remove Hero
+        //                    if (PlayerHero.GameBoardHeroes.Contains(heroes[i]))
+        //                    {
+        //                        Debug.Log("Remove Game Board Hero");
+        //                        Debug.Log(" Remove Hero 位置: " + heroes[i].position);
+
+        //                        PhotonNetwork.Destroy(SelfPlayerArena.SelfArena.GameBoard.GetChild(heroes[i].position).GetChild(0).gameObject);
+        //                    }
+        //                    else
+        //                    {
+        //                        Debug.Log("Remoe HeroList Hero");
+        //                        Debug.Log(" Remove Hero 位置: " + heroes[i].position);
+
+        //                        PhotonNetwork.Destroy(SelfPlayerArena.SelfArena.HeroList.GetChild(heroes[i].position).GetChild(0).gameObject);
+        //                    }
+
+        //                    //DestroyImmediate(SelfPlayerArena.SelfArena.HeroList.GetChild(heroes[i].position).GetChild(0).gameObject);
+
+        //                    NetworkManager.Instance.SyncPlayerHero(heroes[i], SyncHeroMethod.RemoveHero);
+        //                    #endregion
+
+
+        //                    #region Upgrade Hero
+        //                    Debug.Log("Hero 位置: " + sameLvHero.position);
+        //                    if (PlayerHero.GameBoardHeroes.Contains(sameLvHero))
+        //                    {
+        //                        sameLvHero.HeroLevel++;
+        //                        SelfPlayerArena.SelfArena.GameBoard.GetChild(sameLvHero.position)
+        //                            .GetChild(0).GetComponent<Hero>().photonView.RPC("RPC_Upgrade", PhotonTargets.All);
+        //                    }
+        //                    else
+        //                    {
+        //                        sameLvHero.HeroLevel++;
+        //                        SelfPlayerArena.SelfArena.HeroList.GetChild(sameLvHero.position)
+        //                            .GetChild(0).GetComponent<Hero>().photonView.RPC("RPC_Upgrade", PhotonTargets.All);
+        //                    }
+        //                    #endregion
+
+        //                    NetworkManager.Instance.SyncPlayerHero(sameLvHero, SyncHeroMethod.HeroUpgrade);
+
+        //                }
+
+        //                return CheckHeroLevelUp(sameLvHero);
+        //            }
+        //            sameLvHero = heroes[i];
+        //        }
+        //    }
+        //    #endregion
+        //    return _hero;
+        //}
 
         /// <summary>
         /// Put or take hero from the gameboard

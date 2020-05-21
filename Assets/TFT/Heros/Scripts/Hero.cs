@@ -313,22 +313,25 @@ public class Hero : Character, ISelectable
     }
     private void OnMouseEnter()
     {
-        if (HeroStatus == HeroStatus.Fight || HeroStatus == HeroStatus.Dead) 
+        if (photonView.isMine)
         {
-            return;
-        }
-        else if (SelectManager.DragObject != null && SelectManager.DragObject as Hero == null)
-        {
-            int index = EquipmentManager.Equipments.Count;
-            if (index < 3)
-            { 
-                SelectManager.ParentObject = gameObject;
+            if (HeroStatus == HeroStatus.Fight || HeroStatus == HeroStatus.Dead)
+            {
+                return;
             }
-        }
-        else
-        {
-            SelectManager.SelectedObject = this;
-            LastHeroPlace = HeroPlace;
+            else if (SelectManager.DragObject != null && SelectManager.DragObject as Hero == null)
+            {
+                int index = EquipmentManager.Equipments.Count;
+                if (index < 3)
+                {
+                    SelectManager.ParentObject = gameObject;
+                }
+            }
+            else
+            {
+                SelectManager.SelectedObject = this;
+                LastHeroPlace = HeroPlace;
+            }
         }
     }
 
