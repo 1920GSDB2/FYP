@@ -19,6 +19,8 @@ namespace TFT
         SpriteRenderer spriteRenderer;
         MeshRenderer currMat;
         public Material defaultMat, hoverMat;
+        [SerializeField]
+        bool isSelect;
 
         public int gridX { get; private set; }
         public int gridY { get; private set; }
@@ -41,6 +43,12 @@ namespace TFT
             SelectManager = SelectManager.Instance;
             HeroPlaceSetting();
             //MouseSelect = TFT.GameManager.Instance.gameObject.GetComponent<MouseSelect>();
+            PlayerArena playerArena = transform.parent.parent.parent.GetComponent<PlayerArena>();
+            if(transform.parent.parent.tag.Equals("SelfArena") &&
+                playerArena == GameManager.SelfPlayerArena)
+            {
+                isSelect = true;
+            }
         }
 
         void HeroPlaceSetting()
@@ -65,7 +73,9 @@ namespace TFT
         
         void OnMouseOver()
         {
-            if (!(GameManager.GameStatus == GameStatus.Playing && name.Equals("Hexagon")) || GameManager.MainGameManager.isDebugMode)
+            if ((!(GameManager.GameStatus == GameStatus.Playing && name.Equals("Hexagon")) ||
+                GameManager.MainGameManager.isDebugMode) &&
+                isSelect)
             {
                 if (PlaceType == PlaceType.NonBoard)
                 {
