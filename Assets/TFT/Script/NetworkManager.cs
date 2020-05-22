@@ -393,7 +393,7 @@ namespace TFT
             }
         }
         private void setCurrentCamera(bool isEnemy,int id) {
-            if (!isEnemy)
+            if (PlayerPosition[id] == playerId)
             {
                 CurrentCamera = PlayerArenas[id].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
             }
