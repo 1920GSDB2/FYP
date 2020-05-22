@@ -98,6 +98,14 @@ namespace TFT
                 PhotonView.RPC("RPC_Battle", PhotonTargets.All, 0, 1);
                 //   PhotonView.RPC("RPC_Test", PhotonTargets.All);
             }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+
+                PhotonView.RPC("RPC_resetResponse", PhotonTargets.All);
+                PhotonView.RPC("RPC_Battle", PhotonTargets.All, 0, 1);
+                PhotonView.RPC("RPC_Battle", PhotonTargets.All, 2, 3);
+                //   PhotonView.RPC("RPC_Test", PhotonTargets.All);
+            }
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 PhotonView.RPC("RankChange", PhotonTargets.All, PlayerHeroes[playerId].player.NickName, 15);
@@ -843,7 +851,7 @@ namespace TFT
                 setBattleGameBoardHero();
                 setCurrentCamera(true,battlePosId);
                 playerCharacter.GetComponent<PhotonView>().RPC("RPC_PlayerCharacterMoveToGameBoard", PhotonTargets.All, PlayerHeroes[hostID].posId);
-                Debug.Log("player battle");
+                Debug.Log("player battle Posid"+battlePosId);
             }
             if (playerId == hostID) {
                 isHomeTeam = true;
@@ -853,7 +861,7 @@ namespace TFT
                 // setBattleGameBoardHero();
                 CurrentCamera = PlayerArenas[battlePosId].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
                 StartCoroutine(startBattle(PlayerHeroes[hostID].posId));
-                Debug.Log("player battle");
+                Debug.Log("player battle posid "+ battlePosId);
             }
         }
         [PunRPC]
