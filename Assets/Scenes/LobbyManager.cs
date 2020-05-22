@@ -232,7 +232,8 @@ public class LobbyManager : MonoBehaviour
                 break;
             case UsingPanelType.CreateCustomPanel:
                 UsingPanelsArr[1].SetActive(true);
-                CreateRoomName.text = PhotonNetwork.playerName + "'s room";
+                string ownername = PhotonNetwork.player.CustomProperties["NAME"].ToString();
+                CreateRoomName.text = ownername + "'s room";
                 break;
             case UsingPanelType.JoinCustomPanel:
                 UsingPanelsArr[2].SetActive(true);
@@ -251,6 +252,19 @@ public class LobbyManager : MonoBehaviour
         PhotonNetwork.playerName = "player#" + Random.Range(1000, 9999); ;
         PhotonNetwork.JoinLobby(TypedLobby.Default);
         Debug.Log("Player Id" + PhotonNetwork.player.ID);
+
+        string playerName = PhotonNetwork.playerName;
+
+        if (!GameManager.userData.name.Equals(""))
+        {
+            playerName = GameManager.userData.name;
+            Debug.Log(playerName);
+        }
+
+        PhotonNetwork.player.CustomProperties = new Hashtable()
+        {
+            {"NAME", playerName}
+        };
     }
     //When Player join Lobby called by photon
     private void OnJoinedLobby()
@@ -343,7 +357,7 @@ public class LobbyManager : MonoBehaviour
         if (index != -1) 
         {
             LobbyRoom lobbyRoom = LobbyRooms[index];
-            lobbyRoom.SetRoom(room.Name, room.CustomProperties["NAME"].ToString(), room.PlayerCount);
+            lobbyRoom.SetRoom(room.Name, room.CustomProperties["NAME"].ToString(), room.PlayerCount, room.MaxPlayers);
             lobbyRoom.Updated = true;
            
         }

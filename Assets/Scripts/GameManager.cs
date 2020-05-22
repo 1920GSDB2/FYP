@@ -30,7 +30,7 @@ namespace Main
 
         void OnEnable()
         {
-            userData = new UserData();
+            //userData = new UserData();
             //Instance = this;
         }
     }

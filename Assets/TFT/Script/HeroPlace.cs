@@ -53,6 +53,7 @@ namespace TFT
         public void OnSelfPlayerArenaChange(object sender, EventArgs e)
         {
             PlayerArena playerArena = transform.parent.parent.parent.GetComponent<PlayerArena>();
+
             if (transform.parent.parent.tag.Equals("SelfArena") &&
                 playerArena == GameManager.SelfPlayerArena)
             {

@@ -29,11 +29,11 @@ public class LobbyRoom : MonoBehaviour
     {
         
     }
-    public void SetRoom(string roomId, string name, int playerNum)
+    public void SetRoom(string roomId, string name, int playerNum, int maxPlayerNum)
     {
         RoomId = roomId;
         RoomName.text = name;
-        PlayerNumber.text = playerNum.ToString() + "/8";
+        PlayerNumber.text = playerNum.ToString() + "/" + maxPlayerNum;
     }
     public void EnterRoom(string roomId)
     {
