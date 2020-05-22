@@ -8,8 +8,11 @@ public class FallenVirago : Hero
         base.targetDie();
         tempHealth += 300;
         tempMaxHp += 300;
-        photonView.RPC("RPC_SyncHeroAttribute", PhotonTargets.All, (byte)HeroAttribute.maxHp,MaxHealth+300);
-        photonView.RPC("RPC_Heal",PhotonTargets.All,300f,(byte)DamageType.Heal);
+        if (!isMirror)
+        {
+            photonView.RPC("RPC_SyncHeroAttribute", PhotonTargets.All, (byte)HeroAttribute.maxHp, MaxHealth + 300);
+            photonView.RPC("RPC_Heal", PhotonTargets.All, 300f, (byte)DamageType.Heal);
+        }
       
     }
     public override void ResetStatus()

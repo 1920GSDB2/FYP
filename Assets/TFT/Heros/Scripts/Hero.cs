@@ -160,6 +160,8 @@ public class Hero : Character, ISelectable
         attackRange = attackRange * BasicAttackRange;
         SkillPower = BasicSkillPower * 1.25f;
         CriticalChance = BasicCritcalChance *= 10;
+        PhysicalDefense = BasicPhysicalDefense * 15f;
+        MagicDefense = BasicMagicDefense * 17f;
         BoxCollider = GetComponent<Collider>();
     }
 
@@ -243,7 +245,7 @@ public class Hero : Character, ISelectable
     { 
         Character target = PhotonView.Find(id).GetComponent<Character>();
        // Debug.Log("skill power " + (SkillPower * 0.5f * AttackDamage));
-        skill.shootSkill(target, SkillPower * 0.5f * AttackDamage, isMirror);
+        skill.shootSkill(target, SkillPower * 0.5f * AttackDamage, !isMirror);
 
     }
     [PunRPC]

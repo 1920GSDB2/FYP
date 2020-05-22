@@ -229,8 +229,8 @@ public class Character : MonoBehaviour
         {
           //  Debug.Log("Enemy " + TargetEnemy.name + " Dead");
             // TargetEnemy = null;
-            //targetDie();
-            TargetEnemy = null;
+            targetDie();
+            //TargetEnemy = null;
             if (!isMirror)
                 HeroState = HeroState.Idle;
 
@@ -349,12 +349,32 @@ public class Character : MonoBehaviour
     }
     public virtual void syncAdjustHp(float damage, DamageType type)
     {
+        if (type == DamageType.Physical) {
+            if (PhysicalDefense > 0)
+            {
+                damage *= PhysicalDefense / (100 + PhysicalDefense);
+            }
+            else {
+                damage *= 2 - 100 / (100 - PhysicalDefense);
+            }
+        }
+           
+        if (type == DamageType.Magic) {
+            if (MagicDefense > 0)
+            {
+                damage *= MagicDefense / (100 + MagicDefense);
+            }
+            else {
+                damage *= 2 - 100 / (100 - MagicDefense);
+            }
+        }
+        damage = (float)Math.Floor(damage);
         if (damage < 0)
         {
             if (Sheild > 0)
                 damage = sheildDefense(damage);
         }
-
+      
         if (Health + damage > 0)
             Health += damage;
         else
@@ -453,15 +473,23 @@ public class Character : MonoBehaviour
 
     public void OnPathFind(List<Node> path, bool isFindPath)
     {
-        if (isFindPath)
+        if (targetEnemy == null)
         {
-            if (path != null)
-            {
-                StartCoroutine(FollowStep(path[0]));
-            }
+            HeroState = HeroState.Idle;
         }
-        else {
-            StartCoroutine(cannotPathFind());
+        else
+        {
+            if (isFindPath)
+            {
+                if (path != null)
+                {
+                    StartCoroutine(FollowStep(path[0]));
+                }
+            }
+            else
+            {
+                StartCoroutine(cannotPathFind());
+            }
         }
 
     }
@@ -555,7 +583,7 @@ public class Character : MonoBehaviour
         photonView.RPC("RPC_SyncInfo", PhotonTargets.All,NetworkManager.Instance.battlePosId);
 
         combatStart?.Invoke(this, EventArgs.Empty);
-     //   StartCoroutine(RecoveryHP());
+        StartCoroutine(RecoveryHP());
         HeroState = HeroState.Idle;
         //Debug.Log("raedy ");
         //    Debug.Log("name " + name + " ready ");
@@ -672,16 +700,15 @@ public class Character : MonoBehaviour
 
     public IEnumerator RecoveryHP()
     {
-        while (HeroState!=HeroState.Nothing)
-        {
+       
             if (Health < MaxHealth)
             {
                 float recoverValue = MaxHealth * HealthRecoveryRate;
                 photonView.RPC("RPC_Heal", PhotonTargets.All, recoverValue,(byte)DamageType.Heal);
 
             }
-            yield return null;
-        }
+            yield return new WaitForSeconds(1);
+        StartCoroutine(RecoveryHP());
     }
     //public IEnumerator BasicAttackCoolDown()
     //{
