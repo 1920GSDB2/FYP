@@ -464,8 +464,9 @@ public class Character : MonoBehaviour
 
         // float dis = Vector3.Distance(HeroPlace.transform.position, TargetEnemy.HeroPlace.transform.position);
         float dis = NetworkManager.Instance.getNodeDistance(HeroPlace,targetEnemy.HeroPlace);
-     //   Debug.Log("dis "+dis +" target Range "+attackRange);
+        Debug.Log("dis "+dis +" target"+targetEnemy.name +" Range "+attackRange);
         if (dis <= attackRange) {
+            Debug.Log("Within attack Range attack"+targetEnemy.HeroPlace);
             HeroState = HeroState.Fight;
             CharacterFight();
            // CharacterFight();

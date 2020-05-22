@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDebugMode: 1
   databaseIP: https://script.google.com/macros/s/AKfycby9xgypoTEsywirNtCpzWB-x43PUoMRQ54AAiXjIFbv4aePYQ/exec
-  MaxRoomPlayer: 3
+  MaxRoomPlayer: 4
   userData:
     id: 
     pw: 
