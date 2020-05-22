@@ -63,6 +63,7 @@ public class DatabaseManager : MonoBehaviour
         if (www.isNetworkError || www.isHttpError)
         {
             Debug.Log(www.error);
+            LoginUI.Instance.LoginFailed("Login Timeout");
         }
         else
         {
@@ -72,6 +73,15 @@ public class DatabaseManager : MonoBehaviour
                 GameManager.userData = JsonUtility.FromJson<UserData>(jsonString);
                 SceneManager.LoadScene(GameManager.lobbyScene);
             }
-        }   
+            else if(jsonString.Equals("Verify Account Fail, Try Again!"))
+            {
+                LoginUI.Instance.LoginFailed("Login Failed");
+            }
+            else
+            {
+                LoginUI.Instance.LoginFailed("Login Timeout");
+            }
+        }
+        LoginUI.Instance.IsLoading = false;
     }
 }
