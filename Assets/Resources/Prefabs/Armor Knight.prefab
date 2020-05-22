@@ -3149,6 +3149,9 @@ MonoBehaviour:
   health: 0
   Sheild: 0
   MaxMp: 0
+  ManaRecoveryRate: 1
+  HealthRecoveryRate: 0
+  ShieldInit: 0
   BasicHealth: 6
   MaxMana: 100
   Mana: 0
@@ -3177,7 +3180,7 @@ MonoBehaviour:
   battlePosId: 0
   isMirror: 0
   NegativeEffectManager: {fileID: 0}
-  attackRange: 1.7
+  attackRange: 11
   isTargetable: 0
   Icon: {fileID: 0}
   SelectingBox: {fileID: 216957540}
@@ -3193,11 +3196,11 @@ MonoBehaviour:
   - BuffType: 0
     HeroClass: 0
     HeroRace: 0
-    BuffState: 0
+    BuffLevel: 0
   - BuffType: 0
     HeroClass: 0
     HeroRace: 0
-    BuffState: 0
+    BuffLevel: 0
 --- !u!95 &5930651934207234998
 Animator:
   serializedVersion: 3

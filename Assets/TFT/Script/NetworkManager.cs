@@ -317,6 +317,10 @@ namespace TFT
                 return calculateClosestDistance(battleGameBoardHero, heroPos);
             }
         }
+        public float getNodeDistance(HeroPlace self,HeroPlace target) {
+           float dis= map.GetDistance(map.getHeroPlaceGrid(self), map.getHeroPlaceGrid(target));
+            return dis;
+        }
       /*  public Character getEnemyIndexById(int placeId,bool isEnemy) {
             if (isEnemy){
                 int index = selfGameBoardHero.FindIndex(x => x.networkPlaceId == placeId);

@@ -816,6 +816,9 @@ MonoBehaviour:
   health: 0
   Sheild: 0
   MaxMp: 0
+  ManaRecoveryRate: 1
+  HealthRecoveryRate: 0
+  ShieldInit: 0
   BasicHealth: 5
   MaxMana: 100
   Mana: 0
@@ -844,7 +847,7 @@ MonoBehaviour:
   battlePosId: 0
   isMirror: 0
   NegativeEffectManager: {fileID: 0}
-  attackRange: 1.7
+  attackRange: 11
   isTargetable: 0
 --- !u!65 &6452236299562885355
 BoxCollider:

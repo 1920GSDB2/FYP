@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
 
             float time = dis / (speed * Time.deltaTime * 60);
             //Debug.Log("bullet exist TIMe"+time);
-            Destroy(this.gameObject, time);
+            Destroy(this.gameObject, time+1f);
        }
     }
     void Update()

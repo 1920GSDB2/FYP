@@ -138,7 +138,7 @@ public class Character : MonoBehaviour
     public bool isMirror = false;
     //public List<NegativeEffect> negativeEffects = new List<NegativeEffect>();
     public NegativeEffectManager NegativeEffectManager;
-    public float attackRange = 1.7f;
+    public float attackRange = 11f;
     public bool isTargetable;
 
     public event EventHandler hpChange, attack, beAttacked, beControlled, useSkill, roundStart, targetChange, combatStart, combatEnd;
@@ -462,7 +462,9 @@ public class Character : MonoBehaviour
     }
     public void checkWithInAttackRange() {
 
-        float dis = Vector3.Distance(HeroPlace.transform.position, TargetEnemy.HeroPlace.transform.position);
+        // float dis = Vector3.Distance(HeroPlace.transform.position, TargetEnemy.HeroPlace.transform.position);
+        float dis = NetworkManager.Instance.getNodeDistance(HeroPlace,targetEnemy.HeroPlace);
+     //   Debug.Log("dis "+dis +" target Range "+attackRange);
         if (dis <= attackRange) {
             HeroState = HeroState.Fight;
             CharacterFight();

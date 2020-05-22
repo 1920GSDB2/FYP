@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 4190912154386403428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 9153587994509281716}
   - {fileID: 9153587994509259120}
@@ -155,6 +155,9 @@ MonoBehaviour:
   health: 0
   Sheild: 0
   MaxMp: 0
+  ManaRecoveryRate: 1
+  HealthRecoveryRate: 0
+  ShieldInit: 0
   BasicHealth: 6
   MaxMana: 100
   Mana: 0
@@ -183,7 +186,7 @@ MonoBehaviour:
   battlePosId: 0
   isMirror: 0
   NegativeEffectManager: {fileID: 0}
-  attackRange: 1.7
+  attackRange: 11
   isTargetable: 0
   Icon: {fileID: 0}
   SelectingBox: {fileID: 2630317763280131601}
@@ -1557,16 +1560,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 5199439087991323090, guid: 44de83aff51977a479f23105dc7f114e,
         type: 3}

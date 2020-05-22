@@ -110,4 +110,19 @@ public class GridMap : MonoBehaviour
             }
         }
     }
+    public int GetDistance(Node nodeA, Node nodeB)
+    {
+        int disX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
+        int disY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+        int totalDis = disY * 11;
+
+        while (disY >= 2)
+        {
+            if (disX == 0)
+                break;
+            disX--;
+            disY -= 2;
+        }
+        return totalDis + disX * 10;
+    }
 }

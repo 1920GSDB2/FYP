@@ -133,6 +133,9 @@ MonoBehaviour:
   health: 0
   Sheild: 0
   MaxMp: 0
+  ManaRecoveryRate: 1
+  HealthRecoveryRate: 0
+  ShieldInit: 0
   BasicHealth: 6
   MaxMana: 100
   Mana: 0
@@ -153,23 +156,27 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 4630029595765433278}
   cameraPos: {x: 0, y: 0, z: 0}
-  TargetEnemy: {fileID: 0}
+  targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 0}
   bullet: {fileID: 0}
   networkPlaceId: 0
-  negativeEffects: []
+  battlePosId: 0
+  isMirror: 0
   NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
+  isTargetable: 0
   Icon: {fileID: 0}
   SelectingBox: {fileID: 461068480251961582}
   Rarity: 0
   HeroClasses: 05000000
   HeroRaces: 03000000
-  HeroLevel: 0
+  heroLevel: 0
   skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
   testSkill: {fileID: 0}
+  Price: 0
+  BuffStatuses: []
 --- !u!65 &4591463669310842892
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -597,16 +604,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4255537083997611297, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
         type: 3}
-      propertyPath: m_AABB.m_Extent.y
-      value: 0.434684
-      objectReference: {fileID: 0}
-    - target: {fileID: 4255537083997611297, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.z
-      value: 0.2935747
-      objectReference: {fileID: 0}
-    - target: {fileID: 4255537083997611297, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
-        type: 3}
       propertyPath: m_AABB.m_Center.z
       value: -0.015702784
       objectReference: {fileID: 0}
@@ -614,6 +611,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AABB.m_Extent.x
       value: 0.32106972
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255537083997611297, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 0.434684
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255537083997611297, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 0.2935747
       objectReference: {fileID: 0}
     - target: {fileID: 4255537084011211185, guid: e4e5fc6d1f5f4eb4a81bde36076d9fd5,
         type: 3}
