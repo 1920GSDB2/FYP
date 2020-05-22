@@ -122,6 +122,8 @@ public class PathFinding : MonoBehaviour
             disX--;
             disY -= 2;
         }
+        if (disY == 1 && disX == 1)
+            disX = 0;
        return totalDis+disX * 10;
     }
 

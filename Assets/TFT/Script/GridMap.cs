@@ -114,6 +114,7 @@ public class GridMap : MonoBehaviour
     {
         int disX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
         int disY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+      //  Debug.Log("self X " + nodeA.gridX + "self Y" + nodeA.gridY + " target X" + nodeB.gridX + " target Y " + nodeB.gridY);
         int totalDis = disY * 11;
 
         while (disY >= 2)
@@ -123,6 +124,8 @@ public class GridMap : MonoBehaviour
             disX--;
             disY -= 2;
         }
+        if (disY == 1 && disX == 1)
+            disX = 0;
         return totalDis + disX * 10;
     }
 }
