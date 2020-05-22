@@ -3,7 +3,7 @@ public class Executioner : Hero
 {
     public override void setAttribute()
     {
-        MpRecoverRate = 4f;
+        ManaRecoveryRate = 4f;
         SkillPower = 9999;
     }
     public override void UseSkill()

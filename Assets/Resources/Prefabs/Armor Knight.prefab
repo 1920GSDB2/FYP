@@ -3183,12 +3183,21 @@ MonoBehaviour:
   SelectingBox: {fileID: 216957540}
   Rarity: 0
   HeroClasses: 05000000
-  HeroRaces: 03000000
+  HeroRaces: 0300000002000000
   heroLevel: 0
   skill: {fileID: 705671629}
   EquipmentManager: {fileID: 0}
   testSkill: {fileID: 0}
   Price: 0
+  BuffStatuses:
+  - BuffType: 0
+    HeroClass: 0
+    HeroRace: 0
+    BuffState: 0
+  - BuffType: 0
+    HeroClass: 0
+    HeroRace: 0
+    BuffState: 0
 --- !u!95 &5930651934207234998
 Animator:
   serializedVersion: 3

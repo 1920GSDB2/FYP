@@ -87,7 +87,7 @@ namespace TFT
         private void AttributeHandler()
         {
             //Reset Added Attribute
-            Hero.resetAttribute();
+            Hero.ResetAttribute();
             foreach (HeroAttribute attriType in Enum.GetValues(typeof(HeroAttribute)))
             {
                 if (ItemAttribute.ContainsKey(attriType))

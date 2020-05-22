@@ -12,9 +12,9 @@ public class FallenVirago : Hero
         photonView.RPC("RPC_Heal",PhotonTargets.All,300f,(byte)DamageType.Heal);
       
     }
-    public override void resetStatus()
+    public override void ResetStatus()
     {
-        base.resetStatus();
+        base.ResetStatus();
         photonView.RPC("RPC_SyncHeroAttribute", PhotonTargets.All, (byte)HeroAttribute.maxHp, MaxHealth -tempHealth);
     }
 }

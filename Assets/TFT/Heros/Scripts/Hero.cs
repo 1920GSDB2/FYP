@@ -55,6 +55,7 @@ public class Hero : Character, ISelectable
     [HideInInspector]
     public int Price;
 
+    public List<BuffStatus> BuffStatuses = new List<BuffStatus>();
 
     //  List<Node> path;
 
@@ -68,7 +69,7 @@ public class Hero : Character, ISelectable
 
         // PhotonNetwork.sendRate = 30;
         //  PhotonNetwork.sendRateOnSerialize = 30;
-        resetAttribute();
+        ResetAttribute();
         setAttribute();
     }
 
@@ -90,14 +91,66 @@ public class Hero : Character, ISelectable
         HeroPlace = transform.parent.GetComponent<HeroPlace>();
         BoxCollider = GetComponent<Collider>();
         SelectingBox.SetActive(false);
-        
+
+        foreach(HeroClass heroClass in HeroClasses)
+        {
+            BuffStatuses.Add(new BuffStatus(heroClass));
+        }
+        foreach (HeroRace heroRace in HeroRaces)
+        {
+            BuffStatuses.Add(new BuffStatus(heroRace));
+        }
     }
-   
+    [PunRPC]
+    public void RPC_SyncAttribute(HeroAttribute attribute, float value)
+    {
+        switch (attribute)
+        {
+            case HeroAttribute.Attack:
+                AttackDamage = value;
+                break;
+            case HeroAttribute.Attack_Speed:
+                AttackSpeed = value;
+                break;
+            case HeroAttribute.Critical_Cahnce:
+                CriticalChance = (int)value;
+                break;
+            case HeroAttribute.Critical_Damage:
+                CriticalDamage = value;
+                break;
+            case HeroAttribute.Health:
+                MaxHealth = value;
+                break;
+            case HeroAttribute.Heal_Recovery_Rate:
+                HealthRecoveryRate = value;
+                break;
+            case HeroAttribute.Magic_Defense:
+                MagicDefense = value;
+                break;
+            case HeroAttribute.Mana:
+                Mana = (int)value;
+                break;
+            case HeroAttribute.Mana_Recovery_Rate:
+                ManaRecoveryRate = value;
+                break;
+            case HeroAttribute.Physic_Defense:
+                PhysicalDefense = value;
+                break;
+            case HeroAttribute.Shield:
+                ShieldInit = value;
+                break;
+            case HeroAttribute.Skill_Damage:
+                SkillPower = value;
+                break;
+
+        }
+    }
+
     [PunRPC]
     public void RPC_userSkill() {
         UseSkill();
     }
-    public void resetAttribute() {
+    public void ResetAttribute() {
        
         MaxHealth = 100 * BasicHealth;
         MaxMp = MaxMana;
@@ -148,13 +201,13 @@ public class Hero : Character, ISelectable
         isBlind = false;
         
         HeroBarObject.transform.rotation = Quaternion.identity;
-        StartCoroutine(resetStatusCount());
+        StartCoroutine(routine: resetStatusCount());
     }
     IEnumerator resetStatusCount() {
         yield return new WaitForSeconds(2f);
-        resetStatus();
+        ResetStatus();
     }
-    public virtual void resetStatus() {
+    public virtual void ResetStatus() {
         Debug.Log("Reset Status");
         HeroState = HeroState.Nothing;
         TargetEnemy = null;
@@ -166,11 +219,12 @@ public class Hero : Character, ISelectable
             recoverHealth += Health * -1;
         photonView.RPC("RPC_Heal", PhotonTargets.All, recoverHealth,(byte)DamageType.No);
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
-        Sheild = 0;
+        Sheild = ShieldInit;
         heroBar.setShieldBar(0);
         isEnemy = false;
         isAttackCooldown = false;
         isMirror = false;
+        StopAllCoroutines();
         //negativeEffects.Clear();
     }
     [PunRPC]
@@ -347,6 +401,26 @@ public class Hero : Character, ISelectable
         SelectManager.ParentObject = null;
         SelectManager.SelectedObject = null;
     }
+    public void OnBuffChange(object sender, BuffEventArgs e)
+    {
+        foreach (BuffStatus buffStatus in BuffStatuses)
+        {
+            if ((e.BuffStatus.HeroClass == buffStatus.HeroClass &&
+                e.BuffStatus.BuffType == BuffType.Class) ||
+               (e.BuffStatus.HeroRace == buffStatus.HeroRace &&
+               e.BuffStatus.BuffType == BuffType.Race))
+            {
+                if (e.BuffStatus.BuffLevel != buffStatus.BuffLevel)
+                {
+                    Debug.Log(e.BuffStatus.BuffType + " Buff change" + buffStatus.BuffLevel);
+                    e.BuffHandler(this, e.BuffStatus.BuffLevel);
+                    buffStatus.BuffLevel = e.BuffStatus.BuffLevel;
+                }
+                break;
+            }
+        }
+    }
+    
     public void PutDown()
     {
         //SelectManager.DragObject = null;
@@ -354,6 +428,14 @@ public class Hero : Character, ISelectable
         transform.localPosition = Vector3.zero;
 
         HeroPlace = transform.parent.GetComponent<HeroPlace>();
+        if(LastHeroPlace!=HeroPlace && HeroPlace.PlaceType == PlaceType.OnBoard)
+        {
+            BuffersManager.Instance.buffChange += OnBuffChange;
+        }
+        else if (LastHeroPlace != HeroPlace && HeroPlace.PlaceType == PlaceType.NonBoard)
+        {
+            BuffersManager.Instance.buffChange -= OnBuffChange;
+        }
         GameManager.ChangeHeroPos(this);
         LastHeroPlace = HeroPlace;
 

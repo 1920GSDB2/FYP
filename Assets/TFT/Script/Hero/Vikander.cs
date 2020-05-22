@@ -7,7 +7,7 @@ public class Vikander : Hero
     float time = 4;
     public override void setAttribute()
     {
-        MpRecoverRate = 2f;
+        ManaRecoveryRate = 2f;
     }
     public override void UseSkill()
     {

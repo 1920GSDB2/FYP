@@ -2,7 +2,7 @@
 {
     public override void setAttribute()
     {
-        MpRecoverRate = 3f;
+        ManaRecoveryRate = 3f;
     }
     public override void UseSkill()
     {

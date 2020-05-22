@@ -2657,23 +2657,27 @@ MonoBehaviour:
   photonView: {fileID: 0}
   animator: {fileID: 901749345589833720}
   cameraPos: {x: 0, y: 0, z: 0}
-  TargetEnemy: {fileID: 0}
+  targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
   HeroBarObject: {fileID: 3457161959090384451}
   bullet: {fileID: 0}
   networkPlaceId: 0
-  negativeEffects: []
+  battlePosId: 0
+  isMirror: 0
   NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
+  isTargetable: 0
   Icon: {fileID: 0}
   SelectingBox: {fileID: 5707315226479799145}
   Rarity: 3
-  HeroClasses: 02000000
+  HeroClasses: 05000000
   HeroRaces: 01000000
-  HeroLevel: 0
+  heroLevel: 0
   skill: {fileID: 4250042289196888235}
   EquipmentManager: {fileID: 0}
   testSkill: {fileID: 0}
+  Price: 0
+  BuffStatuses: []
 --- !u!114 &169804572481835000
 MonoBehaviour:
   m_ObjectHideFlags: 0

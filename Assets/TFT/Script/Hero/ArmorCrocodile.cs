@@ -5,7 +5,7 @@ public class ArmorCrocodile : Hero
 {
     public override void setAttribute()
     {
-        MpRecoverRate = 1f;
+        ManaRecoveryRate = 1f;
         AttackDamage /= 2;
         SkillPower = 200;
     }

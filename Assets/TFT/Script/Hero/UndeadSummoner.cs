@@ -7,7 +7,7 @@ public class UndeadSummoner : Hero
     public override void setAttribute()
     {
    
-        MpRecoverRate = 2f;
+        ManaRecoveryRate = 2f;
         SkillPower = 2f;
     }
     public override void UseSkill()

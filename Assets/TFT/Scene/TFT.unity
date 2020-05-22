@@ -9005,9 +9005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 355347618}
-  - component: {fileID: 355347617}
   - component: {fileID: 355347619}
-  - component: {fileID: 355347620}
   - component: {fileID: 355347623}
   - component: {fileID: 355347624}
   - component: {fileID: 355347621}
@@ -9021,22 +9019,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &355347617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355347616}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 679867f21fff24f41b26422f626e6b77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LastGameStatus: 0
-  gameManager: {fileID: 11400000, guid: 81ecca96d371141469ab785dc0afe819, type: 2}
-  heroes: []
-  BuffList: {fileID: 1846200868}
 --- !u!4 &355347618
 Transform:
   m_ObjectHideFlags: 0
@@ -9064,20 +9046,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffers:
-  - buffType:
-    - Class
-    - Race
+  - BuffType: 0
     buffTypeIndex: 0
     isShow: 0
     heroClass: 1
     heroRace: 0
-    totalNumber: 6
+    totalNumber: 4
     bronzeNumber: 1
-    sliverNumber: 1
-    goldenNumber: 1
-  - buffType:
-    - Class
-    - Race
+    sliverNumber: 2
+    goldenNumber: 4
+  - BuffType: 0
     buffTypeIndex: 0
     isShow: 0
     heroClass: 2
@@ -9086,86 +9064,70 @@ MonoBehaviour:
     bronzeNumber: 1
     sliverNumber: 1
     goldenNumber: 1
-  - buffType:
-    - Class
-    - Race
+  - BuffType: 0
     buffTypeIndex: 0
     isShow: 0
     heroClass: 3
     heroRace: 0
-    totalNumber: 6
+    totalNumber: 4
     bronzeNumber: 1
-    sliverNumber: 1
-    goldenNumber: 1
-  - buffType:
-    - Class
-    - Race
+    sliverNumber: 2
+    goldenNumber: 4
+  - BuffType: 0
     buffTypeIndex: 0
     isShow: 0
     heroClass: 4
     heroRace: 0
-    totalNumber: 6
+    totalNumber: 4
     bronzeNumber: 1
-    sliverNumber: 1
-    goldenNumber: 1
-  - buffType:
-    - Class
-    - Race
+    sliverNumber: 2
+    goldenNumber: 4
+  - BuffType: 0
     buffTypeIndex: 0
     isShow: 0
     heroClass: 5
     heroRace: 0
     totalNumber: 6
-    bronzeNumber: 1
-    sliverNumber: 1
-    goldenNumber: 1
-  - buffType:
-    - Class
-    - Race
+    bronzeNumber: 2
+    sliverNumber: 4
+    goldenNumber: 6
+  - BuffType: 0
     buffTypeIndex: 0
     isShow: 0
     heroClass: 6
     heroRace: 0
-    totalNumber: 6
+    totalNumber: 4
     bronzeNumber: 1
-    sliverNumber: 1
-    goldenNumber: 1
-  - buffType:
-    - Class
-    - Race
+    sliverNumber: 2
+    goldenNumber: 4
+  - BuffType: 1
     buffTypeIndex: 1
     isShow: 0
     heroClass: 0
     heroRace: 1
-    totalNumber: 6
+    totalNumber: 5
     bronzeNumber: 1
-    sliverNumber: 1
-    goldenNumber: 1
-  - buffType:
-    - Class
-    - Race
+    sliverNumber: 3
+    goldenNumber: 5
+  - BuffType: 1
     buffTypeIndex: 1
     isShow: 0
     heroClass: 0
     heroRace: 2
-    totalNumber: 6
+    totalNumber: 5
     bronzeNumber: 1
-    sliverNumber: 1
-    goldenNumber: 1
-  - buffType:
-    - Class
-    - Race
+    sliverNumber: 3
+    goldenNumber: 5
+  - BuffType: 1
     buffTypeIndex: 1
     isShow: 0
     heroClass: 0
     heroRace: 3
     totalNumber: 6
-    bronzeNumber: 1
-    sliverNumber: 1
-    goldenNumber: 1
-  - buffType:
-    - Class
-    - Race
+    bronzeNumber: 2
+    sliverNumber: 4
+    goldenNumber: 6
+  - BuffType: 1
     buffTypeIndex: 1
     isShow: 0
     heroClass: 0
@@ -9174,9 +9136,7 @@ MonoBehaviour:
     bronzeNumber: 1
     sliverNumber: 1
     goldenNumber: 1
-  - buffType:
-    - Class
-    - Race
+  - BuffType: 1
     buffTypeIndex: 1
     isShow: 0
     heroClass: 0
@@ -9185,20 +9145,16 @@ MonoBehaviour:
     bronzeNumber: 1
     sliverNumber: 1
     goldenNumber: 1
-  - buffType:
-    - Class
-    - Race
+  - BuffType: 1
     buffTypeIndex: 1
     isShow: 0
     heroClass: 0
     heroRace: 6
-    totalNumber: 6
+    totalNumber: 5
     bronzeNumber: 1
-    sliverNumber: 1
-    goldenNumber: 1
-  - buffType:
-    - Class
-    - Race
+    sliverNumber: 3
+    goldenNumber: 5
+  - BuffType: 1
     buffTypeIndex: 1
     isShow: 0
     heroClass: 0
@@ -9207,22 +9163,6 @@ MonoBehaviour:
     bronzeNumber: 1
     sliverNumber: 1
     goldenNumber: 1
---- !u!114 &355347620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355347616}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5afd94240e522c546958305394b14f0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectedHero: {fileID: 0}
-  DragHero: {fileID: 0}
-  SelectPlace: {fileID: 0}
-  fixedDistance: 1
 --- !u!114 &355347621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11624,7 +11564,7 @@ PrefabInstance:
     - target: {fileID: 8932993913939470857, guid: 6390a3995f27bf3478f8f8f9932a161b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8932993913939470857, guid: 6390a3995f27bf3478f8f8f9932a161b,
         type: 3}
@@ -12309,7 +12249,7 @@ PrefabInstance:
     - target: {fileID: 8932993913939470857, guid: 44fdfd5e75c058042bb00e812dfa68a2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8932993913939470857, guid: 44fdfd5e75c058042bb00e812dfa68a2,
         type: 3}
@@ -19494,7 +19434,7 @@ PrefabInstance:
     - target: {fileID: 8932993913939470857, guid: 0928c6ec10a9842488ed2f3650ca5e2b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8932993913939470857, guid: 0928c6ec10a9842488ed2f3650ca5e2b,
         type: 3}
@@ -24307,7 +24247,7 @@ PrefabInstance:
     - target: {fileID: 8932993913939470857, guid: be5be64da3443d342bc5b8b3647c7ea0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8932993913939470857, guid: be5be64da3443d342bc5b8b3647c7ea0,
         type: 3}
@@ -24773,7 +24713,7 @@ PrefabInstance:
     - target: {fileID: 8932993913939470857, guid: 44fdfd5e75c058042bb00e812dfa68a2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8932993913939470857, guid: 44fdfd5e75c058042bb00e812dfa68a2,
         type: 3}

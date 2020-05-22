@@ -6,7 +6,7 @@ public class Lonnie : Hero
 {
     public override void setAttribute()
     {
-        MpRecoverRate = 2.5f;
+        ManaRecoveryRate = 2.5f;
     }
  
     public override void UseSkill()
