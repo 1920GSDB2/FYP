@@ -231,7 +231,8 @@ public class LobbyManager : MonoBehaviour
                 UsingPanelsArr[0].SetActive(true);
                 break;
             case UsingPanelType.CreateCustomPanel:
-                UsingPanelsArr[1].SetActive(true);                
+                UsingPanelsArr[1].SetActive(true);
+                CreateRoomName.text = PhotonNetwork.playerName + "'s room";
                 break;
             case UsingPanelType.JoinCustomPanel:
                 UsingPanelsArr[2].SetActive(true);
@@ -249,6 +250,7 @@ public class LobbyManager : MonoBehaviour
         PhotonNetwork.automaticallySyncScene = false;
         PhotonNetwork.playerName = "player#" + Random.Range(1000, 9999); ;
         PhotonNetwork.JoinLobby(TypedLobby.Default);
+        Debug.Log("Player Id" + PhotonNetwork.player.ID);
     }
     //When Player join Lobby called by photon
     private void OnJoinedLobby()

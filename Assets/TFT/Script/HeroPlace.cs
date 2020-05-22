@@ -43,8 +43,17 @@ namespace TFT
             SelectManager = SelectManager.Instance;
             HeroPlaceSetting();
             //MouseSelect = TFT.GameManager.Instance.gameObject.GetComponent<MouseSelect>();
+            GameManager.selfPlayerArenaChange += OnSelfPlayerArenaChange;            
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.selfPlayerArenaChange -= OnSelfPlayerArenaChange;
+        }
+        public void OnSelfPlayerArenaChange(object sender, EventArgs e)
+        {
             PlayerArena playerArena = transform.parent.parent.parent.GetComponent<PlayerArena>();
-            if(transform.parent.parent.tag.Equals("SelfArena") &&
+            if (transform.parent.parent.tag.Equals("SelfArena") &&
                 playerArena == GameManager.SelfPlayerArena)
             {
                 isSelect = true;

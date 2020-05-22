@@ -19,7 +19,16 @@ namespace TFT
 
         [Header("Player Personal Data")]
         public PlayerHero PlayerHero;           //Hero List for Player
-        public PlayerArena SelfPlayerArena;     //Game Arena for Player
+        private PlayerArena selfPlayerArena;     //Game Arena for Player
+        public PlayerArena SelfPlayerArena
+        {
+            get { return selfPlayerArena; }
+            set
+            {
+                selfPlayerArena = value;
+                selfPlayerArenaChange?.Invoke(this, EventArgs.Empty);
+            }
+        }
         public HeroPlace[] Place;               //I don't know
 
         [Header("Game Time Data")]
@@ -104,7 +113,7 @@ namespace TFT
             }
         }
 
-        public EventHandler readying;
+        public EventHandler readying, selfPlayerArenaChange;
 
         [SerializeField]
         Hero LaterUpgradeHero;
