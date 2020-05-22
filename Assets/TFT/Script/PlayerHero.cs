@@ -216,6 +216,7 @@ namespace TFT
         public int TFTCharacterId;
         public PhotonPlayer player;
         public bool isResponse;
+        public bool isDead;
 
         /// <summary>
         /// Add hero to gameboard.

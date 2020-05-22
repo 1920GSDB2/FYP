@@ -28,6 +28,21 @@ namespace TFT
                 BuffList.Instance.HeroBuffList = PlayerHeroes[FocusPlayerId].BuffList;
             }
         }
+       
+        private int remainPlayer;
+        public int RemainPlayer
+        {
+            get { return remainPlayer; }
+            set
+            {
+                remainPlayer = value;
+                if (remainPlayer <= 1) {
+                    if (!PlayerHeroes[playerId].isDead) {
+                        PhotonView.RPC("PlayerTFTWin",PhotonTargets.All);
+                    }
+                }
+            }
+        }
         [SerializeField]
         public Opponent opponent;                   //Player's Opponent
 
@@ -45,11 +60,13 @@ namespace TFT
         private static DamageText textPrefab;
         private static GameObject canvas;
 
+        public GameObject testButton;
         public Camera CurrentCamera;
         //public Camera CurrentCamera { get; private set; }
         public bool isHomeTeam { get; private set; }
         int waveFinishResponse;
         int currentLookPosId;
+        
         WaveType waveType;
         void Awake()
         {
@@ -83,10 +100,7 @@ namespace TFT
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                int[] opponentResult = GetRearrangeData(PhotonNetwork.playerList.Length);
-                for (int i = 0; i < opponentResult.Length; i++) {
-                    Debug.Log(" data " + opponentResult[i]);
-                }
+                PhotonView.RPC("RankChange", PhotonTargets.All, PlayerHeroes[playerId].player.NickName, 15);
             }
             #endregion
 
@@ -420,7 +434,8 @@ namespace TFT
         public void MatchPlayerOpponent()
         {
             //Get the surival players list
-            int[] opponentResult = GetRearrangeData(PhotonNetwork.playerList.Length);
+            //int[] opponentResult = GetRearrangeData(PhotonNetwork.playerList.Length);
+            int[] opponentResult = GetRemainPlayer();
             // PhotonView.RPC("RPC_SyncPlayersOpponent", PhotonTargets.All, opponentResult);
             SetPlayerOpponent(opponentResult);
         }
@@ -495,6 +510,18 @@ namespace TFT
             System.Random r = new System.Random(System.DateTime.Now.Millisecond);
             return data.OrderBy(x => r.Next()).ToArray();
         }
+        public int[] GetRemainPlayer() {
+            int []remainPlayers = new int[RemainPlayer];
+            int count = 0;
+            for (int i = 0; i < PlayerHeroes.Length; i++) {
+                if (!PlayerHeroes[i].isDead) {
+                    remainPlayers[count] = i;
+                    count++;
+                }                    
+            }
+            System.Random r = new System.Random(System.DateTime.Now.Millisecond);
+            return remainPlayers.OrderBy(x => r.Next()).ToArray();
+        }
         public HeroPlace getNeighboursHeroPlace(HeroPlace currentHeroplace) {
             List<Node> neighbour = map.getNeighbours(map.getHeroPlaceGrid(currentHeroplace));
             bool isFind=false;
@@ -540,32 +567,39 @@ namespace TFT
         [PunRPC]
         public void RPC_SetupPlayerPosition(int[] _playerPosition)
         {
-            
-            PlayerPosition = _playerPosition;
             for (int i = 0; i < _playerPosition.Length; i++)
             {
-                Debug.Log("int array " + _playerPosition[i]);
                 PlayerHeroes[i] = new PlayerHero();
+            }
+                PlayerPosition = _playerPosition;
+            RemainPlayer = PhotonNetwork.playerList.Length;
+            for (int i = 0; i < _playerPosition.Length; i++)
+            {
                 if (_playerPosition[i] == playerId)
                 {
                     GameManager.Instance.SelfPlayerArena = PlayerArenas[i].GetComponent<PlayerArena>();
                     map.setPlayerArena(GameManager.Instance.SelfPlayerArena);
                     posId = i;
-                    PlayerHeroes[playerId] = new PlayerHero
-                    {
-                        posId = posId,
-                        player = PhotonNetwork.player
-                    };
+                    /* PlayerHeroes[playerId] = new PlayerHero
+                     {
+                         posId = posId,
+                         player = PhotonNetwork.player
+                     };*/
+                   // Debug.Log("my id " + playerId + " posid " + posId);
+                    playerCharacter = PhotonNetwork.Instantiate(Path.Combine("otherPrefabs", "LifeStone"), Vector3.zero, Quaternion.identity, 0).GetComponent<TFTPlayerCharacter>();
+                    playerCharacter.GetComponent<PhotonView>().RPC("RPC_SyncPlayerCharacterPosition", PhotonTargets.All, posId);
+                    int CharacterViewId = playerCharacter.GetComponent<PhotonView>().viewID;
+                  //  Debug.Log("set my position playerid " + playerId + " posid " + posId);
+                   // PlayerHeroes[playerId].setPersonalInformation(posId, PhotonNetwork.player, CharacterViewId);
                     GameManager.Instance.AddPlayerHeroListener(PlayerHeroes[playerId]);
                     //Cameras[posId].enabled = true;
 
                     GameManager.Instance.SelfPlayerArena.Camera.SetActive(true);
                     GameManager.Instance.MainCamera = GameManager.Instance.SelfPlayerArena.Camera.GetComponent<Camera>();
 
-                   
-                    playerCharacter = PhotonNetwork.Instantiate(Path.Combine("otherPrefabs", "LifeStone"), Vector3.zero, Quaternion.identity, 0).GetComponent<TFTPlayerCharacter>();
-                    playerCharacter.GetComponent<PhotonView>().RPC("RPC_SyncPlayerCharacterPosition", PhotonTargets.All, posId);
-                    PhotonView.RPC("RPC_SyncPlayerInformation", PhotonTargets.All, playerId, posId, PhotonNetwork.player, playerCharacter.GetComponent<PhotonView>().viewID);
+            
+                 
+                    PhotonView.RPC("RPC_SyncPlayerInformation", PhotonTargets.All, playerId, posId, PhotonNetwork.player, CharacterViewId);
                     createEquipmentBoard();
 ;                    //PlayerHeroes[playerId] = PlayerHero;
                 }
@@ -918,7 +952,7 @@ namespace TFT
                 foreach (Hero hero in remainHero) {
                     totalDamage += (int)hero.Rarity + (int)hero.heroLevel;
                 }
-                PhotonView.RPC("RankChange",PhotonTargets.All, PlayerHeroes[loserId].player.NickName, totalDamage*10);
+                PhotonView.RPC("RankChange",PhotonTargets.All, PlayerHeroes[loserId].player.NickName, totalDamage);
             }
 
             map.resetMap();
@@ -967,11 +1001,13 @@ namespace TFT
         void MonsterHitPlayer()
         {
             Debug.Log("monster hit oppoent");
-            foreach (Monster monster in opponent.heroes)
+            int totalDamage = 0;
+            
+            foreach (Character monster in opponent.heroes)
             {
                 monster.GetComponent<PhotonView>().RPC("RPC_HitPlayerCharacter", PhotonTargets.All, PlayerHeroes[playerId].TFTCharacterId); ;
             }
-            PhotonView.RPC("RankChange", PhotonTargets.All, PlayerHeroes[playerId].player.NickName, 30);
+            PhotonView.RPC("RankChange", PhotonTargets.All, PlayerHeroes[playerId].player.NickName, 5);
             
         }
         [PunRPC]
@@ -1084,7 +1120,7 @@ namespace TFT
             Debug.Log("Response +" + " total "+waveFinishResponse);
             if (PhotonNetwork.isMasterClient)
             {
-                if (waveFinishResponse == PlayerHeroes.Length) {
+                if (waveFinishResponse == RemainPlayer) {
                     PhotonView.RPC("RPC_endWave", PhotonTargets.All);
                    
                 }
@@ -1109,6 +1145,7 @@ namespace TFT
         }
         
         IEnumerator startBattle(int playerPosId) {
+        //    Debug.Log("start Battle");
             yield return new WaitForSeconds(2);
             battleGameBoardHero = new List<Character>(selfGameBoardHero);
             if (battleGameBoardHero.Count == 0 && opponent.heroes.Count == 0)
@@ -1125,6 +1162,7 @@ namespace TFT
             }
             else
             {
+          //      Debug.Log("start Battle mid ");
                 foreach (Hero hero in battleGameBoardHero)
                 {
                     //hero
@@ -1137,6 +1175,7 @@ namespace TFT
                     hero.ReadyForBattle(true, playerPosId);
                 }
             }
+         //   Debug.Log("start Battle finish");
         }
         #endregion
         #region monster
@@ -1198,11 +1237,31 @@ namespace TFT
         }
         public void playerDie() {
             Debug.Log("PLayer Die");
+            
+            
             PhotonView.RPC("RPC_PlayerDie",PhotonTargets.All,playerId);
+            PhotonNetwork.DestroyPlayerObjects(PlayerHeroes[playerId].player);
         }
         [PunRPC]
         public void RPC_PlayerDie(int playerId) {
+            PlayerHeroes[playerId].isDead = true;
+            RemainPlayer--;
+           
+        }
+        [PunRPC]
+        public void PlayerTFTWin() {
+            testButton.SetActive(true);
+        }
+        public void outGame()
+        {
+            if (PhotonNetwork.isMasterClient)
+            {
+                if (PhotonNetwork.playerList.Length > 1)
+                    PhotonNetwork.SetMasterClient(PhotonNetwork.masterClient.GetNext());
 
+            }
+            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.LoadLevel("Lobby");
         }
     }
 }

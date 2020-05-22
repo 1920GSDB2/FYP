@@ -555,9 +555,10 @@ public class Character : MonoBehaviour
         photonView.RPC("RPC_SyncInfo", PhotonTargets.All,NetworkManager.Instance.battlePosId);
 
         combatStart?.Invoke(this, EventArgs.Empty);
-        StartCoroutine(RecoveryHP());
-        HeroState = HeroState.Idle;       
-    //    Debug.Log("name " + name + " ready ");
+     //   StartCoroutine(RecoveryHP());
+        HeroState = HeroState.Idle;
+        //Debug.Log("raedy ");
+        //    Debug.Log("name " + name + " ready ");
     }
     [PunRPC]
     public void RPC_SyncInfo(int id)
@@ -636,7 +637,7 @@ public class Character : MonoBehaviour
                 .playerCharacterSlot.GetChild(0).gameObject;
 
         }*/
-        b.GetComponent<Bullet>().setBullet(character, 10f);
+        b.GetComponent<Bullet>().setBullet(character, 5f);
     }
     public IEnumerator Attack()
     {
@@ -671,13 +672,15 @@ public class Character : MonoBehaviour
 
     public IEnumerator RecoveryHP()
     {
-        while (true)
+        while (HeroState!=HeroState.Nothing)
         {
             if (Health < MaxHealth)
             {
                 float recoverValue = MaxHealth * HealthRecoveryRate;
-                photonView.RPC("RPC_Heal", PhotonTargets.All, recoverValue, DamageType.Heal);
+                photonView.RPC("RPC_Heal", PhotonTargets.All, recoverValue,(byte)DamageType.Heal);
+
             }
+            yield return null;
         }
     }
     //public IEnumerator BasicAttackCoolDown()

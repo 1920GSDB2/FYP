@@ -69,10 +69,10 @@ namespace TFT
                     //Matching the opponent
                     if (PhotonNetwork.isMasterClient)
                     {
-                      /*  if (RoundManager.CurrentOpponentType == OpponentType.Player)
+                        if (RoundManager.CurrentOpponentType == OpponentType.Player)
                           NetworkManager.Instance.MatchPlayerOpponent();
                         else
-                            NetworkManager.Instance.MonsterBattle();*/
+                            NetworkManager.Instance.MonsterBattle();
                     }
                     return;
                 }

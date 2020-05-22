@@ -128,4 +128,7 @@ MonoBehaviour:
   - Sync_Skill
   - RPC_ChangeStatus
   - RPC_ShadowBattle
+  - RPC_PlayerDie
+  - RPC_SyncAttribute
+  - PlayerTFTWin
   DisableAutoOpenWizard: 1
