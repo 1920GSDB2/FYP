@@ -837,10 +837,12 @@ namespace TFT
         [PunRPC]
         void RPC_Battle(int hostID, int guestID)
         {
-           
-            waveType = WaveType.Player;
-            battlePosId = PlayerHeroes[hostID].posId;
-            currentLookPosId = battlePosId;
+            if (playerId == hostID || playerId == guestID)
+            {
+                waveType = WaveType.Player;
+                battlePosId = PlayerHeroes[hostID].posId;
+                currentLookPosId = battlePosId;
+            }
             if (playerId == guestID)
             {
                 PlayerArenas[PlayerHeroes[guestID].posId].GetComponent<PlayerArena>().Camera.SetActive(false);

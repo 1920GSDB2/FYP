@@ -168,6 +168,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &308796
 BoxCollider:
@@ -278,6 +279,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &5302913
 BoxCollider:
@@ -1210,6 +1212,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &35784771
 BoxCollider:
@@ -1702,6 +1705,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &45158921
 BoxCollider:
@@ -2346,6 +2350,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &65174331
 BoxCollider:
@@ -2611,6 +2616,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &81856566
 BoxCollider:
@@ -2796,6 +2802,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &85852004
 BoxCollider:
@@ -3334,6 +3341,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &103779715
 BoxCollider:
@@ -3633,6 +3641,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &114754942
 BoxCollider:
@@ -4177,6 +4186,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &136152238
 BoxCollider:
@@ -4710,6 +4720,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &177110300
 BoxCollider:
@@ -4820,6 +4831,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &179475334
 BoxCollider:
@@ -5005,6 +5017,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &184949910
 BoxCollider:
@@ -5569,6 +5582,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &211606011
 BoxCollider:
@@ -6655,6 +6669,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &256858091
 BoxCollider:
@@ -6840,6 +6855,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &266677333
 BoxCollider:
@@ -7090,6 +7106,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &271394571
 BoxCollider:
@@ -7350,6 +7367,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &277866303
 BoxCollider:
@@ -7460,6 +7478,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &278279224
 BoxCollider:
@@ -8646,6 +8665,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &330200027
 BoxCollider:
@@ -8756,6 +8776,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &330257625
 BoxCollider:
@@ -9325,6 +9346,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &339266417
 BoxCollider:
@@ -9421,6 +9443,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &343433698
 BoxCollider:
@@ -9913,7 +9936,6 @@ MonoBehaviour:
     TFTCharacterId: 0
     isResponse: 0
     isDead: 0
-  SelfPlayerArena: {fileID: 0}
   Place: []
   PeriodTime: 0
   LastGameStatus: 0
@@ -10456,6 +10478,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &385606748
 BoxCollider:
@@ -10566,6 +10589,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &387971585
 BoxCollider:
@@ -11062,6 +11086,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &415449532
 BoxCollider:
@@ -11233,6 +11258,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &417955122
 BoxCollider:
@@ -11418,6 +11444,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &427841918
 BoxCollider:
@@ -12143,6 +12170,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &450918149
 BoxCollider:
@@ -12403,6 +12431,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &461245486
 BoxCollider:
@@ -12588,6 +12617,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &469668062
 BoxCollider:
@@ -13444,6 +13474,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &500240361
 BoxCollider:
@@ -14082,6 +14113,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &546275294
 BoxCollider:
@@ -14605,6 +14637,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &562758515
 BoxCollider:
@@ -14715,6 +14748,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &567005754
 BoxCollider:
@@ -14825,6 +14859,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &567853313
 BoxCollider:
@@ -14935,6 +14970,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &568243180
 BoxCollider:
@@ -15198,6 +15234,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &583381407
 BoxCollider:
@@ -15870,6 +15907,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &608352748
 BoxCollider:
@@ -19074,6 +19112,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &745532613
 BoxCollider:
@@ -19270,6 +19309,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &748995102
 BoxCollider:
@@ -19847,6 +19887,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &754160753
 BoxCollider:
@@ -19957,6 +19998,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &756180258
 BoxCollider:
@@ -20133,6 +20175,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &758258795
 BoxCollider:
@@ -21058,6 +21101,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &808945058
 BoxCollider:
@@ -21322,6 +21366,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &810669918
 BoxCollider:
@@ -21638,6 +21683,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &818312741
 BoxCollider:
@@ -21748,6 +21794,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &820133593
 BoxCollider:
@@ -24007,6 +24054,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &881280571
 BoxCollider:
@@ -25274,6 +25322,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &944530803
 BoxCollider:
@@ -26085,6 +26134,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &970295682
 BoxCollider:
@@ -26667,6 +26717,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &985574469
 BoxCollider:
@@ -28827,6 +28878,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1071811409
 BoxCollider:
@@ -29169,6 +29221,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1081231265
 BoxCollider:
@@ -29433,6 +29486,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1090955439
 BoxCollider:
@@ -29627,6 +29681,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1091895303
 BoxCollider:
@@ -29723,6 +29778,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1093672619
 BoxCollider:
@@ -29833,6 +29889,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1096713961
 BoxCollider:
@@ -30118,6 +30175,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1106249496
 BoxCollider:
@@ -30228,6 +30286,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1108711167
 BoxCollider:
@@ -31488,6 +31547,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1159163791
 BoxCollider:
@@ -31673,6 +31733,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1161520118
 BoxCollider:
@@ -31864,6 +31925,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1164373157
 BoxCollider:
@@ -32189,6 +32251,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1172330745
 BoxCollider:
@@ -32487,6 +32550,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1197787660
 BoxCollider:
@@ -33845,6 +33909,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1226639135
 BoxCollider:
@@ -35743,6 +35808,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1284794118
 BoxCollider:
@@ -35900,6 +35966,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1285929223
 BoxCollider:
@@ -36311,6 +36378,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1291424324
 BoxCollider:
@@ -37195,6 +37263,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1319991713
 BoxCollider:
@@ -37585,6 +37654,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1331849667
 BoxCollider:
@@ -38036,6 +38106,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1339290131
 BoxCollider:
@@ -38966,6 +39037,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1377201204
 BoxCollider:
@@ -39649,6 +39721,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1399394488
 BoxCollider:
@@ -39759,6 +39832,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1399545709
 BoxCollider:
@@ -40537,6 +40611,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1418112644
 BoxCollider:
@@ -41956,6 +42031,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1480400416
 BoxCollider:
@@ -42883,6 +42959,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1522776024
 BoxCollider:
@@ -44132,6 +44209,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1553176757
 BoxCollider:
@@ -45538,6 +45616,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1593777183
 BoxCollider:
@@ -45797,6 +45876,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1598594802
 BoxCollider:
@@ -45907,6 +45987,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1600814184
 BoxCollider:
@@ -46333,6 +46414,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1615648482
 BoxCollider:
@@ -46765,6 +46847,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1625621091
 BoxCollider:
@@ -47025,6 +47108,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1636661583
 BoxCollider:
@@ -47459,6 +47543,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1653879610
 BoxCollider:
@@ -47569,6 +47654,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1657506938
 BoxCollider:
@@ -48396,6 +48482,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1681610800
 BoxCollider:
@@ -48840,6 +48927,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1698484766
 BoxCollider:
@@ -48950,6 +49038,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1701329133
 BoxCollider:
@@ -49607,6 +49696,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1731214955
 BoxCollider:
@@ -49717,6 +49807,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1731344937
 BoxCollider:
@@ -50025,6 +50116,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1740462752
 BoxCollider:
@@ -50135,6 +50227,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1742100556
 BoxCollider:
@@ -50292,6 +50385,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1748421775
 BoxCollider:
@@ -51617,6 +51711,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1798200620
 BoxCollider:
@@ -51802,6 +51897,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1804672622
 BoxCollider:
@@ -52274,6 +52370,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1819099309
 BoxCollider:
@@ -52542,6 +52639,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1825933272
 BoxCollider:
@@ -53238,6 +53336,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1844967987
 BoxCollider:
@@ -53453,6 +53552,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1846530441
 BoxCollider:
@@ -53788,6 +53888,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1850620639
 BoxCollider:
@@ -53898,6 +53999,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1856415833
 BoxCollider:
@@ -54546,6 +54648,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1871228866
 BoxCollider:
@@ -55659,6 +55762,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1903545476
 BoxCollider:
@@ -55769,6 +55873,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1908725535
 BoxCollider:
@@ -56171,6 +56276,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1916848018
 BoxCollider:
@@ -56966,6 +57072,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &1956354577
 BoxCollider:
@@ -58333,6 +58440,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &2012117584
 BoxCollider:
@@ -58592,6 +58700,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &2021122805
 BoxCollider:
@@ -58702,6 +58811,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &2022343855
 BoxCollider:
@@ -59584,6 +59694,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &2058964625
 BoxCollider:
@@ -59769,6 +59880,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &2059413724
 BoxCollider:
@@ -60932,6 +61044,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &2104799069
 BoxCollider:
@@ -61175,6 +61288,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &2115613223
 BoxCollider:
@@ -61571,6 +61685,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &2130917578
 BoxCollider:
@@ -61667,6 +61782,7 @@ MonoBehaviour:
   PlaceId: 0
   defaultMat: {fileID: 0}
   hoverMat: {fileID: 0}
+  isSelect: 0
   isWalkable: 1
 --- !u!65 &2131526867
 BoxCollider:
