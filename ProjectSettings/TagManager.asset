@@ -12,6 +12,9 @@ TagManager:
   - PlayerArena
   - Character
   - BattleCharacter
+  - FxTemporaire
+  - SelfArena
+  - EnemyArena
   layers:
   - Default
   - TransparentFX
