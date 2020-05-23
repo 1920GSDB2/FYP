@@ -16,7 +16,7 @@ public class CharacterSoundPlayer : MonoBehaviour
         {
             audioSource.clip = attackSound;
             audioSource.Play();
-            Debug.Log("play sound ");
+            //Debug.Log("play sound ");
         }
     }
     public void playSkillSound()

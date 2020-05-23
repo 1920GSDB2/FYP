@@ -54,6 +54,7 @@ public class NegativeEffectManager : MonoBehaviour
 
     public void Burn(float _time)
     {
+        Debug.Log(name + ": I am burning.");
         if (BurnIEnumerator != null)
         {
             StopCoroutine(BurnIEnumerator);
