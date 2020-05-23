@@ -11,6 +11,7 @@ public class MeleeSkill : Skill
     public override void meleeHit(Character target,float damage,bool isMirror)
     {
        GameObject effect= Instantiate(hitEffect, target.transform.position, Quaternion.identity) as GameObject;
+        mediaPlayer.playSkillSound();
        Destroy(effect, 1.5f);
             
          if (type == ControlSkillType.Stun) {

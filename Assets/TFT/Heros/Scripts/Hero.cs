@@ -259,7 +259,7 @@ public class Hero : Character, ISelectable
     void processAoeSkillObject(int id)
     {
         Character target = PhotonView.Find(id).GetComponent<Character>();
-    
+        
         skill.castSkill(target, SkillPower * 0.35f * AttackDamage, isMirror,isEnemy);
 
     }

@@ -10,7 +10,8 @@ public class AoeSkill : Skill
     {
         Quaternion rotation = Quaternion.Euler(0,target.transform.rotation.eulerAngles.y,0);    
         Aoe effect = Instantiate(hitEffect, target.transform.position, rotation).GetComponent<Aoe>();
-        effect.setDamage(damage,isMirror,isEnemy);     
+        effect.setDamage(damage,isMirror,isEnemy);
+        mediaPlayer.playSkillSound();
     }
 
 }

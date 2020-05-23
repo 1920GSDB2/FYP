@@ -73,7 +73,6 @@ public class Bullet : MonoBehaviour
             {
                 target.GetComponent<PhotonView>().RPC("RPC_TargetTakeDamage", PhotonTargets.All, attackDamage, (byte)damageType);
             }
-
             Destroy(this.gameObject);
         }
     }

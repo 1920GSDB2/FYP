@@ -583,6 +583,8 @@ GameObject:
   - component: {fileID: 1399874454800889325}
   - component: {fileID: 387801648455012079}
   - component: {fileID: -2211790569997504896}
+  - component: {fileID: 6845663447297785265}
+  - component: {fileID: -5884300875155299093}
   m_Layer: 8
   m_Name: Kira Mage
   m_TagString: Character
@@ -667,6 +669,7 @@ MonoBehaviour:
   LastHeroPlace: {fileID: 0}
   photonView: {fileID: 0}
   animator: {fileID: 0}
+  mediaPlayer: {fileID: 0}
   cameraPos: {x: 0, y: 0, z: 0}
   targetEnemy: {fileID: 0}
   testHero: {fileID: 0}
@@ -679,6 +682,7 @@ MonoBehaviour:
   attackRange: 11
   isTargetable: 0
   Icon: {fileID: 0}
+  SkillDescription: 
   SelectingBox: {fileID: 99125584472732209}
   Rarity: 1
   HeroClasses: 06000000
@@ -702,6 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castSkillEffect: {fileID: 0}
+  mediaPlayer: {fileID: 0}
   skillModel: {fileID: 1548609390325136009, guid: f90deca2105bcb54d8b3eb1cf0f95aff,
     type: 3}
 --- !u!65 &497396836400488959
@@ -885,6 +890,116 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ffef3345541a3f428fdc652a9e21d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &6845663447297785265
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4790525165465923861}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &-5884300875155299093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4790525165465923861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88ac2780905e2c41854907b4841c600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSound: {fileID: 0}
+  skillSound: {fileID: 8300000, guid: 7c4085f54ee771e479cb07e03c307c6a, type: 3}
 --- !u!1 &4829597995529003369
 GameObject:
   m_ObjectHideFlags: 0

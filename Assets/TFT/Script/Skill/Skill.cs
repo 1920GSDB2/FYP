@@ -8,11 +8,16 @@ using UnityEngine;
 public class Skill : MonoBehaviour
 {
     public GameObject castSkillEffect;
+    public CharacterSoundPlayer mediaPlayer;
     public virtual void castSkill(Character target,float damage,bool isMirror,bool isEnemy) { }
     public virtual void castSkill(float x,float y,float z) { }
     public virtual void shootSkill(Character target,float damage,bool isMirror) { }
     public virtual void shootSkill(float x, float z) { }
     public virtual void meleeHit(Character target,float damage,bool isMirror) { }
     public virtual void summon(HeroPlace heroPlace, bool isEnemy,bool isMirror) { }
+    public void Start()
+    {
+        mediaPlayer = GetComponent<CharacterSoundPlayer>();
+    }
 }
 

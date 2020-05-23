@@ -101,6 +101,7 @@ public class Character : MonoBehaviour
     public HeroPlace HeroPlace, LastHeroPlace;
     public PhotonView photonView;
     public Animator animator;
+    public CharacterSoundPlayer mediaPlayer;
     protected bool isAttackCooldown;
     public Vector3 cameraPos;
     
@@ -140,7 +141,7 @@ public class Character : MonoBehaviour
     public NegativeEffectManager NegativeEffectManager;
     public float attackRange = 11f;
     public bool isTargetable;
-
+    
     public event EventHandler hpChange, attack, beAttacked, beControlled, useSkill, roundStart, targetChange, combatStart, combatEnd;
 
     public delegate void NegativeEffectHandler(float _time);
@@ -150,6 +151,7 @@ public class Character : MonoBehaviour
     protected virtual void Start()
     {
         NegativeEffectManager = GetComponent<NegativeEffectManager>();
+        mediaPlayer = GetComponent<CharacterSoundPlayer>();
 
     }
     public void DebugTest()
@@ -187,7 +189,7 @@ public class Character : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.O))
         {
-            syncAdjustHp(-30f, DamageType.No);
+            mediaPlayer.playAttackSound();
         }
     }
 
@@ -276,6 +278,7 @@ public class Character : MonoBehaviour
                 
             }
         }
+        mediaPlayer.playAttackSound();
     }
     public void shootTarget()
     {
@@ -311,14 +314,15 @@ public class Character : MonoBehaviour
         Bullet b = Instantiate(bullet, transform.position + Vector3.up, transform.rotation).GetComponent<Bullet>();
         Character target = PhotonView.Find(id).GetComponent<Character>();
         int chance = UnityEngine.Random.Range(1, 101);
+        mediaPlayer.playAttackSound();
         if (CriticalChance >= chance)
         {
             float damage = AttackDamage * 1.5f;
-            b.setBullet(target, damage, isMirror, DamageType.CriticalDamage);
+            b.setBullet(target, damage, !isMirror, DamageType.CriticalDamage);
         }
         else
         {
-            b.setBullet(target, AttackDamage, isMirror);
+            b.setBullet(target, AttackDamage, !isMirror);
         }
         //Debug.Log("target "+target.name +" photon prcess shot");
     }
@@ -707,7 +711,7 @@ public class Character : MonoBehaviour
             if (Health < MaxHealth)
             {
                 float recoverValue = MaxHealth * HealthRecoveryRate;
-                photonView.RPC("RPC_Heal", PhotonTargets.All, recoverValue,(byte)DamageType.Heal);
+                photonView.RPC("RPC_Heal", PhotonTargets.All, recoverValue,(byte)DamageType.No);
 
             }
             yield return new WaitForSeconds(1);
