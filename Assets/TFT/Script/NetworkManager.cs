@@ -82,7 +82,7 @@ namespace TFT
             textPrefab = Resources.Load<DamageText>("otherPrefabs/damageText");
             canvas = GameObject.Find("Canvas");
         }
-
+      
         void Update()
         {
 

@@ -626,7 +626,7 @@ public class Character : MonoBehaviour
             
         }
         else {
-            cameraPos = NetworkManager.Instance.getCameraObject(posid,playerId).transform.position;
+            cameraPos = NetworkManager.Instance.getCameraObject(posid,playerId).transform.position*-1;
             Debug.Log(name + "Get enemy camera " + NetworkManager.Instance.getCameraObject(posid, playerId).name);
         }
        
@@ -720,9 +720,11 @@ public class Character : MonoBehaviour
        
             if (Health < MaxHealth)
             {
-                float recoverValue = MaxHealth * HealthRecoveryRate;
-                photonView.RPC("RPC_Heal", PhotonTargets.All, recoverValue,(byte)DamageType.No);
-
+                if (HealthRecoveryRate != 0)
+                {
+                    float recoverValue = MaxHealth * HealthRecoveryRate;
+                    photonView.RPC("RPC_Heal", PhotonTargets.All, recoverValue, (byte)DamageType.Heal);
+                }
             }
             yield return new WaitForSeconds(1);
         StartCoroutine(RecoveryHP());

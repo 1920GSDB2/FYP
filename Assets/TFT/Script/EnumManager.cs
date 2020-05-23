@@ -117,7 +117,8 @@ public enum HeroState
 }
 public enum Award
 {
-    Equipment
+    Equipment,
+    Money
 }
 public enum ControlSkillType {
     No,

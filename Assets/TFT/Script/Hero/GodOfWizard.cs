@@ -4,8 +4,8 @@ public class GodOfWizard : Hero
     public override void setAttribute()
     {
         AttackSpeed = 1.2f;
-        SkillPower = 10f;
-        ManaRecoveryRate = 2.5f;
+        SkillPower = 6f;
+        ManaRecoveryRate = 1f;
     }
     public override void UseSkill()
     {

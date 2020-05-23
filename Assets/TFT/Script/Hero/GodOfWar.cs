@@ -10,6 +10,7 @@ public class GodOfWar : Hero
     public override void UseSkill()
     {
         photonView.RPC("RPC_ReduceMp", PhotonTargets.All, MaxMp);
+        if(TargetEnemy!=null)
         photonView.RPC("RPC_castAoeSkill", PhotonTargets.All, TargetEnemy.photonView.viewID);
     }
 }

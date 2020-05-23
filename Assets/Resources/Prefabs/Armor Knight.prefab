@@ -3418,7 +3418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   attackSound: {fileID: 8300000, guid: 71fa89f3f7fc2b3449412e93195f7135, type: 3}
-  skillSound: {fileID: 0}
+  skillSound: {fileID: 8300000, guid: b3c89db3977ed02448a185a7c21a8e78, type: 3}
 --- !u!1 &5930651934574334249
 GameObject:
   m_ObjectHideFlags: 0

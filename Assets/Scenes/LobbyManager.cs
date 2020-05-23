@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -108,6 +109,10 @@ public class LobbyManager : MonoBehaviour
 
     public GameObject testGameobject;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneFinishedLoading;
+    }
     void Start()
     {
         #region Photon Connect
@@ -162,7 +167,9 @@ public class LobbyManager : MonoBehaviour
        
         //DontDestroyOnLoad(this);
     }
-
+    private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode) {
+        Debug.Log("finish Load Scene");
+    }
     // Update is called once per frame
     void Update()
     {

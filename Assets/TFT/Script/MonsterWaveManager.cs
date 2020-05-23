@@ -5,16 +5,19 @@ using TFT;
 
 public class MonsterWaveManager : MonoBehaviour
 {
-    [HideInInspector]
+    [HideInInspector]   
     public Equipment[] awardEquipment;
-    public MonsterWave[] Wave;
+    AudioSource audioSource;
+    public AudioClip moneySound, itemSound;
+    public Asset asset;
+    public MonsterWave[] Wave;    
     int currentIndex;
     public static MonsterWaveManager Instance;
     int monsterCount,dieCount;
     bool isDropEquipment;
     int dropRate;
     Award[] awardType= { Award.Equipment };
-    EquipmentSlotManager equipmentBoard;
+    EquipmentSlotManager equipmentBoard;   
 
 
     // Start is called before the first frame update
@@ -25,6 +28,7 @@ public class MonsterWaveManager : MonoBehaviour
     private void Start()
     {
         awardEquipment = GameManager.Instance.MainGameManager.ItemTypes;
+        audioSource = GetComponent<AudioSource>();
     }
     public void spawnCurrentWaveAllMonster() {
         if (currentIndex == Wave.Length)
@@ -71,7 +75,15 @@ public class MonsterWaveManager : MonoBehaviour
                 int index = UnityEngine.Random.Range(0, awardEquipment.Length);
                 Equipment equipment = Instantiate(awardEquipment[index].gameObject).GetComponent<Equipment>();
                 equipmentBoard.AddEquipment(equipment);
+                audioSource.clip = moneySound;
+                audioSource.Play();
+
         break;
+        case Award.Money:
+                asset.AssetValue = +3;
+                audioSource.clip = moneySound;
+                audioSource.Play();
+                break;
         }
 
     }
