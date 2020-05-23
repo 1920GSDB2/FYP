@@ -2855,7 +2855,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8542189145416042885}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
   m_Name: 
@@ -2980,6 +2980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castSkillEffect: {fileID: 0}
+  mediaPlayer: {fileID: 0}
   skillModel: {fileID: 4238302461691917706, guid: 9a003de19f5ed2047a7dbd3390a791a0,
     type: 3}
 --- !u!114 &4154913714125615715
@@ -3102,6 +3103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88ac2780905e2c41854907b4841c600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   attackSound: {fileID: 0}
   skillSound: {fileID: 0}
 --- !u!1001 &3580134406041210932

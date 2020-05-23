@@ -1070,7 +1070,13 @@ namespace TFT
         }
 
         IEnumerator finishBattle() {
-            yield return new WaitForSeconds(1.5f);
+            foreach (Character character in opponent.heroes) {
+                character.stopCharacter();
+            }
+            foreach (Character character in battleGameBoardHero) {
+                character.stopCharacter();
+            } 
+            yield return new WaitForSeconds(2f);
            if(PhotonNetwork.isMasterClient)
                 GameManager.Instance.finishWave();
            
@@ -1110,8 +1116,7 @@ namespace TFT
         void ResetHeroAfterBattle() {
            Debug.Log("reset Position id: "+playerId+" Hero "+selfGameBoardHero.Count);          
             foreach (Character hero in selfGameBoardHero)
-            {
-                hero.gameObject.SetActive(true);             
+            {       
                 hero.photonView.RPC("RPC_AddToGameBoard", PhotonTargets.All, posId, hero.networkPlaceId);
                 hero.photonView.RPC("RPC_ResetStatus", PhotonTargets.All);
             }

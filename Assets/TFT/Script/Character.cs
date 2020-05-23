@@ -141,6 +141,7 @@ public class Character : MonoBehaviour
     public NegativeEffectManager NegativeEffectManager;
     public float attackRange = 11f;
     public bool isTargetable;
+    public HeroPlace DebugHeroPlace;
     
     public event EventHandler hpChange, attack, beAttacked, beControlled, useSkill, roundStart, targetChange, combatStart, combatEnd;
 
@@ -558,6 +559,7 @@ public class Character : MonoBehaviour
     public IEnumerator RPC_FollowHeroPlace(HeroPlace step)
     {
         animator.SetBool("Walk", true);
+        DebugHeroPlace = step;
         transform.LookAt(step.transform);
         while (transform.position != step.transform.position && isMirror)
         {          
@@ -648,7 +650,12 @@ public class Character : MonoBehaviour
         HeroPlace = heroPlace;
 
     }
-   
+    public void stopCharacter()
+    {
+        HeroState = HeroState.Nothing;
+        TargetEnemy = null;
+        animator.SetBool("Walk", false);
+    }
     [PunRPC]
     public void RPC_HitPlayerCharacter(int id) {
         hitopponentCharacter(id);
@@ -672,7 +679,7 @@ public class Character : MonoBehaviour
                 .playerCharacterSlot.GetChild(0).gameObject;
 
         }*/
-        b.GetComponent<Bullet>().setBullet(character, 5f);
+        b.GetComponent<Bullet>().setBullet(character, 8f);
     }
     public IEnumerator Attack()
     {

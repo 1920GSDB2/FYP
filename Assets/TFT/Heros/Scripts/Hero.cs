@@ -211,6 +211,7 @@ public class Hero : Character, ISelectable
         yield return new WaitForSeconds(2f);
         ResetStatus();
     }
+    
     public virtual void ResetStatus() {
         Debug.Log("Reset Status");
         HeroState = HeroState.Nothing;
