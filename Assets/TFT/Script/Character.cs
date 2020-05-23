@@ -68,7 +68,7 @@ public class Character : MonoBehaviour
     public float ManaRecoveryRate = 1;
     public float HealthRecoveryRate = 0;
     public float ShieldInit;
-
+    public int hitDamage;
     #endregion
 
     #region Basic Attribute

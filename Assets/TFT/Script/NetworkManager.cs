@@ -969,7 +969,7 @@ namespace TFT
             {
                 int totalDamage = 0;
                 foreach (Hero hero in remainHero) {
-                    totalDamage += (int)hero.Rarity + (int)hero.heroLevel;
+                    totalDamage += (int)hero.Rarity+1 + (int)hero.heroLevel;
                 }
                 PhotonView.RPC("RankChange",PhotonTargets.All, PlayerHeroes[loserId].player.NickName, totalDamage);
             }
@@ -1024,9 +1024,10 @@ namespace TFT
             
             foreach (Character monster in opponent.heroes)
             {
-                monster.GetComponent<PhotonView>().RPC("RPC_HitPlayerCharacter", PhotonTargets.All, PlayerHeroes[playerId].TFTCharacterId); ;
+                monster.GetComponent<PhotonView>().RPC("RPC_HitPlayerCharacter", PhotonTargets.All, PlayerHeroes[playerId].TFTCharacterId);
+                totalDamage += monster.hitDamage;
             }
-            PhotonView.RPC("RankChange", PhotonTargets.All, PlayerHeroes[playerId].player.NickName, 5);
+            PhotonView.RPC("RankChange", PhotonTargets.All, PlayerHeroes[playerId].player.NickName, totalDamage);
             
         }
         [PunRPC]
