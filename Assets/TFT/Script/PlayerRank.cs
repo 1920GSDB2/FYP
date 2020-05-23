@@ -8,12 +8,14 @@ namespace TFT
     public class PlayerRank
     {
         private readonly string PlayerName;
+        private readonly string PlayerId;
         public int PlayerHP { get; private set; }
         private PlayerInfo PlayerInfo;
 
-        public PlayerRank(string _playerName, int _playerHP, PlayerInfo _playerList, bool _isRemote)
+        public PlayerRank(string _playerName, string _playerId, int _playerHP, PlayerInfo _playerList, bool _isRemote)
         {
             PlayerName = _playerName;
+            PlayerId = _playerId;
             PlayerHP = _playerHP;
             PlayerInfo = _playerList;
 
@@ -27,8 +29,9 @@ namespace TFT
         {
             PlayerHP -= _value;
             if (PlayerHP <= 0) {
-                Debug.Log("player name "+ NetworkManager.Instance.PlayersId[NetworkManager.Instance.playerId]+" deduce name "+PlayerName);
-                if (PlayerName == NetworkManager.Instance.PlayersId[NetworkManager.Instance.playerId]) {
+                PlayerHP = 0;
+                //Debug.Log("player name " + NetworkManager.Instance.PlayersId[NetworkManager.Instance.playerId] + " deduce name " + PlayerName);
+                if (PlayerId == NetworkManager.Instance.PlayersId[NetworkManager.Instance.playerId]) {
                     NetworkManager.Instance.playerDie();
                 }
             } 

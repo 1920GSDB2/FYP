@@ -58,7 +58,7 @@ namespace TFT
             {
                 PlayerInfo newPlayerInfo = Instantiate(PlayerInfo, RankList).GetComponent<PlayerInfo>();
                 bool _isRemote = PhotonNetwork.playerName.Equals(NetworkManager.PlayersId[i]);
-                PlayerRank newPlayerRank = new PlayerRank(NetworkManager.PlayerName[i],
+                PlayerRank newPlayerRank = new PlayerRank(NetworkManager.PlayerName[i], NetworkManager.PlayersId[i],
                     MainGameManager.PlayerInitHP, newPlayerInfo, _isRemote);
                 if (newPlayerRank != null)
                     PlayersCollection.Add(NetworkManager.PlayersId[i], newPlayerRank);
