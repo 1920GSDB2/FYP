@@ -66,7 +66,9 @@ namespace TFT
         public bool isHomeTeam { get; private set; }
         int waveFinishResponse;
         int currentLookPosId;
-        
+
+
+        public GameObject debugCamera;
         WaveType waveType;
         void Awake()
         {
@@ -380,15 +382,15 @@ namespace TFT
             }
             return null;
         }
-        public GameObject getCameraObject(int id)
+        public GameObject getCameraObject(int id,int player)
         {
-            if (isHomeTeam)
+            if (playerId==player)
             {
-               // currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
+                // currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().Camera.GetComponent<Camera>();
                 return PlayerArenas[id].GetComponent<PlayerArena>().Camera;
             }
             else {
-             //   currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().enemyCamera.GetComponent<Camera>();
+                //   currentCamera = PlayerArenas[id].GetComponent<PlayerArena>().enemyCamera.GetComponent<Camera>();             
                 return PlayerArenas[id].GetComponent<PlayerArena>().enemyCamera;
             }
         }
@@ -994,7 +996,7 @@ namespace TFT
                     MonsterHitPlayer();
             }
             PhotonView.RPC("RPC_Response", PhotonTargets.All,playerId,opponent.opponentId);
-            if (battleGameBoardHero.Count != 0)
+            if (battleGameBoardHero.Count != 0&&opponent.opponentId!=-1)
                 PhotonView.RPC("RPC_HitOpponent", PlayerHeroes[playerId].player,PlayerHeroes[opponent.opponentId].TFTCharacterId);
 
           
@@ -1185,13 +1187,13 @@ namespace TFT
                 foreach (Hero hero in battleGameBoardHero)
                 {
                     //hero
-                    hero.ReadyForBattle(false, playerPosId);
+                    hero.ReadyForBattle(false, battlePosId);
                 }
 
 
                 foreach (Character hero in opponent.heroes)
                 {
-                    hero.ReadyForBattle(true, playerPosId);
+                    hero.ReadyForBattle(true, battlePosId);
                 }
             }
          //   Debug.Log("start Battle finish");

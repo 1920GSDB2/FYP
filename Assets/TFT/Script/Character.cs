@@ -175,7 +175,7 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.x);
+        Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.z);
         HeroBarObject.transform.LookAt(targetPostition);
         if (HeroState == HeroState.Idle && !isStun)
         {
@@ -587,7 +587,7 @@ public class Character : MonoBehaviour
     {
         isMirror = false;
         this.isEnemy = isEnemy;
-        photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId);
+        photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId,NetworkManager.Instance.playerId);
         photonView.RPC("RPC_Mirror", PhotonTargets.Others);
         photonView.RPC("RPC_SyncInfo", PhotonTargets.All,NetworkManager.Instance.battlePosId);
 
@@ -614,17 +614,20 @@ public class Character : MonoBehaviour
        
     }
     [PunRPC]
-    public void RPC_ShowHpBar(int posid)
+    public void RPC_ShowHpBar(int posid,int playerId)
     {
         if (NetworkManager.Instance.opponent.heroes.Contains(this))
             heroBar.setHpBarColor(Color.red);
         HeroBarObject.SetActive(true);
         if (NetworkManager.Instance.isHomeTeam)
         {
-            cameraPos = NetworkManager.Instance.getCameraObject(posid).transform.position;
+            cameraPos = NetworkManager.Instance.getCameraObject(posid, playerId).transform.position;
+            Debug.Log(name+"Get my camera "+ NetworkManager.Instance.getCameraObject(posid, playerId).name);
+            
         }
         else {
-            cameraPos = NetworkManager.Instance.getCameraObject(posid).transform.position*-1;
+            cameraPos = NetworkManager.Instance.getCameraObject(posid,playerId).transform.position;
+            Debug.Log(name + "Get enemy camera " + NetworkManager.Instance.getCameraObject(posid, playerId).name);
         }
        
     }

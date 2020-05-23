@@ -681,6 +681,7 @@ MonoBehaviour:
   NegativeEffectManager: {fileID: 0}
   attackRange: 11
   isTargetable: 0
+  DebugHeroPlace: {fileID: 0}
   Icon: {fileID: 0}
   SkillDescription: 
   SelectingBox: {fileID: 99125584472732209}
@@ -691,7 +692,7 @@ MonoBehaviour:
   skill: {fileID: 7526244059550853004}
   EquipmentManager: {fileID: 0}
   testSkill: {fileID: 0}
-  Price: 0
+  isSelectable: 1
   BuffStatuses: []
 --- !u!114 &7526244059550853004
 MonoBehaviour:
@@ -999,7 +1000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 4b6a18acf213da54296617608c37a820, type: 3}
   skillSound: {fileID: 8300000, guid: 7c4085f54ee771e479cb07e03c307c6a, type: 3}
 --- !u!1 &4829597995529003369
 GameObject:
