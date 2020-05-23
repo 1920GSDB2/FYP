@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Void Sword
   Icon: {fileID: 21300000, guid: 87655365014eaca46989b2ce15a3391e, type: 3}
+  ItemDetail: "Attack: +50\r\nMagic Defense: +40\r\n\nBasic attacks heal the wearer
+    for 20% of damage made. \r"
   Attributes:
   - HeroAttribute: 0
     AttributeValue: 50

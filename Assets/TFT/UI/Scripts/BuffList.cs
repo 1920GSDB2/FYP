@@ -14,6 +14,9 @@ namespace TFT
         public Transform buffList;
         public Buff buff;
 
+        public GameObject BuffDetailPanel;
+        public TextMeshProUGUI BuffDetailText;
+
         public TextMeshProUGUI ButtonText;
         public float delayTime = 0.2f;
 
@@ -166,6 +169,7 @@ namespace TFT
             newBuff.HeroRace = buffer.heroRace;
             newBuff.name = name;
             newBuff.TotalValue = buffer.bronzeNumber;
+            newBuff.BuffDetail = buffer.buffDetail;
 
             CheckBuffUpdate(newBuff, buffer);
 

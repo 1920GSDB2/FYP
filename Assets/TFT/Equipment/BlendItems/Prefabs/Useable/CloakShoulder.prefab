@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Holly Armor
   Icon: {fileID: 21300000, guid: 7a1620172c031604ca3512be2afcb484, type: 3}
+  ItemDetail: "Physical Defense: +45\r\nMagic Defense: +45\r\n\r\nWhen the wearer
+    taking any damage, the chess +5 mana and heal 20 health.\r\n"
   Attributes:
   - HeroAttribute: 3
     AttributeValue: 45

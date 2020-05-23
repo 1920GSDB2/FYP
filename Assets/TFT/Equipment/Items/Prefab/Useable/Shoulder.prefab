@@ -106,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Shoulder
   Icon: {fileID: 21300000, guid: 7a5acf6f7391cbe4fa3dcf96c34bc90f, type: 3}
+  ItemDetail: 'Physical Defense: +25'
   Attributes:
   - HeroAttribute: 8
     AttributeValue: 25

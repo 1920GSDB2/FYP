@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: 
   Icon: {fileID: 21300000, guid: 68bff243d8a9bc646b9c3f472aef5355, type: 3}
+  ItemDetail: "Attack: +50\r\nPhysical defense: +30\r\n\nGaining a shield to absorb
+    10 damage during in each attack\r."
   Attributes:
   - HeroAttribute: 0
     AttributeValue: 50

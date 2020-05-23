@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Thorns Armor
   Icon: {fileID: 21300000, guid: fc04ed043fcba814f8d522f8a47aed21, type: 3}
+  ItemDetail: "Physical Defense: +100\r\n\r\nDeal magic damage equal to 22% basic
+    attack to attacker.\r\n"
   Attributes:
   - HeroAttribute: 8
     AttributeValue: 100

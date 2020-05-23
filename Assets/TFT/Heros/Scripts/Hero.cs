@@ -383,6 +383,7 @@ public class Hero : Character, ISelectable
     }
     private void OnMouseEnter()
     {
+        HeroStatusUI.ShowPanelUI(this);
         if ((photonView.isMine && isSelectable) /*||  !GameManager.MainGameManager.isDebugMode*/)
         {
             if (SelectManager.DragObject != null && SelectManager.DragObject as Hero == null)
@@ -400,10 +401,10 @@ public class Hero : Character, ISelectable
             }
         }
     }
-    private void OnMouseDown()
-    {
-        HeroStatusUI.ShowPanelUI(this);
-    }
+    //private void OnMouseDown()
+    //{
+    //    HeroStatusUI.ShowPanelUI(this);
+    //}
 
     private void OnMouseExit()
     {

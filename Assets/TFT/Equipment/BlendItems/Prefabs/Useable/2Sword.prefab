@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Godslayer
   Icon: {fileID: 21300000, guid: 54c696ee35ed38e48874e6d1f0ab57eb, type: 3}
+  ItemDetail: "Attack: +70\r\n\nDeal more 30% damage when the target health below
+    30% of max health.\r\n"
   Attributes:
   - HeroAttribute: 0
     AttributeValue: 70

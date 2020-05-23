@@ -21,7 +21,7 @@ namespace TFT
             set { experience = value; }
         }
 
-        private readonly int[] ExperienceCurve;         //Level Curve
+        public readonly int[] ExperienceCurve;         //Level Curve
         private readonly int MaxLevel;                  //Maximum Level
 
         public bool IsMaxLevel { get { return Level > MaxLevel ? true : false; } }
@@ -63,6 +63,7 @@ namespace TFT
         {
             if (!IsMaxLevel)
             {
+
                 if (Experience >= ExperienceCurve[Level - 1])
                 {
                     Level++;

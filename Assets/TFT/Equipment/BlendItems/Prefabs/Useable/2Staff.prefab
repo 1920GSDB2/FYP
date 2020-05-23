@@ -106,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Primal Staff
   Icon: {fileID: 21300000, guid: 3df83e2094a65d24583935b1ff196237, type: 3}
+  ItemDetail: "Skill Damage: +70\r\n\r\nGain 50 mana after using skill.\r\n"
   Attributes:
   - HeroAttribute: 7
     AttributeValue: 70

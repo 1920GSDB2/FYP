@@ -40,6 +40,7 @@ public class Buffers
     public bool isShow = true;
     public HeroClass heroClass;
     public HeroRace heroRace;
+    public string buffDetail;
     public int totalNumber;
     public int bronzeNumber;
     public int sliverNumber;
@@ -264,37 +265,37 @@ public class BuffersManager : MonoBehaviour
         {
             if (currBuffLevel == BuffLevel.Bronze)
             {
-                hero.Health -= 150;
+                hero.MaxHealth -= 150;
                 hero.MagicDefense -= 15;
             }
             else if (currBuffLevel == BuffLevel.Sliver)
             {
-                hero.Health -= 300;
+                hero.MaxHealth -= 300;
                 hero.MagicDefense -= 30;
             }
             else if (currBuffLevel == BuffLevel.Golden)
             {
-                hero.Health -= 600;
+                hero.MaxHealth -= 600;
                 hero.MagicDefense -= 60;
             }
 
             if (nextLevel == BuffLevel.Bronze)
             {
-                hero.Health += 150;
+                hero.MaxHealth += 150;
                 hero.MagicDefense += 15;
             }
             else if (nextLevel == BuffLevel.Sliver)
             {
-                hero.Health += 300;
+                hero.MaxHealth += 300;
                 hero.MagicDefense += 30;
             }
             else if (nextLevel == BuffLevel.Golden)
             {
-                hero.Health += 600;
+                hero.MaxHealth += 600;
                 hero.MagicDefense += 60;
             }
             hero.photonView.RPC("RPC_SyncAttribute", PhotonTargets.Others,
-                HeroAttribute.Health, hero.Health);
+                HeroAttribute.Health, hero.MaxHealth);
             hero.photonView.RPC("RPC_SyncAttribute", PhotonTargets.Others,
                 HeroAttribute.Magic_Defense, hero.MagicDefense);
         }
@@ -319,37 +320,37 @@ public class BuffersManager : MonoBehaviour
         {
             if (currBuffLevel == BuffLevel.Bronze)
             {
-                hero.Health -= 100;
+                hero.MaxHealth -= 100;
                 hero.HealthRecoveryRate -= 0.01f;
             }
             else if (currBuffLevel == BuffLevel.Sliver)
             {
-                hero.Health -= 200;
+                hero.MaxHealth -= 200;
                 hero.HealthRecoveryRate -= 0.02f;
             }
             else if (currBuffLevel == BuffLevel.Golden)
             {
-                hero.Health -= 400;
+                hero.MaxHealth -= 400;
                 hero.HealthRecoveryRate -= 0.03f;
             }
 
             if (nextLevel == BuffLevel.Bronze)
             {
-                hero.Health += 100;
+                hero.MaxHealth += 100;
                 hero.HealthRecoveryRate += 0.01f;
             }
             else if (nextLevel == BuffLevel.Sliver)
             {
-                hero.Health += 200;
+                hero.MaxHealth += 200;
                 hero.HealthRecoveryRate += 0.02f;
             }
             else if (nextLevel == BuffLevel.Golden)
             {
-                hero.Health += 400;
+                hero.MaxHealth += 400;
                 hero.HealthRecoveryRate += 0.03f;
             }
             hero.photonView.RPC("RPC_SyncAttribute", PhotonTargets.Others,
-                HeroAttribute.Health, hero.Health);
+                HeroAttribute.Health, hero.MaxHealth);
             hero.photonView.RPC("RPC_SyncAttribute", PhotonTargets.Others,
                 HeroAttribute.Heal_Recovery_Rate, hero.HealthRecoveryRate);
         }
@@ -657,6 +658,7 @@ public class BuffersEditor : Editor
                     buffer.heroRace = (HeroRace)EditorGUILayout.EnumPopup("HeroRare", buffer.heroRace);
                     buffer.heroClass = HeroClass.None;
                 }
+                buffer.buffDetail = EditorGUILayout.TextArea(buffer.buffDetail);
                 buffer.totalNumber = EditorGUILayout.IntSlider("TotalNumber", buffer.totalNumber, 1, 6);
                 buffer.goldenNumber = EditorGUILayout.IntSlider("Gold", buffer.goldenNumber, 1, buffer.totalNumber);
                 buffer.sliverNumber = EditorGUILayout.IntSlider("Sliver", buffer.sliverNumber, 1, buffer.goldenNumber);

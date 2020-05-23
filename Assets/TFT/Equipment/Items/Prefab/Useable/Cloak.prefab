@@ -106,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Cloak
   Icon: {fileID: 21300000, guid: b178146081567944cb274003083d7f6f, type: 3}
+  ItemDetail: 'Magic Defense: +25'
   Attributes:
   - HeroAttribute: 3
     AttributeValue: 25

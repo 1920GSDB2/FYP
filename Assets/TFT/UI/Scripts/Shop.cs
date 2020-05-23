@@ -27,6 +27,8 @@ namespace TFT
         RectTransform shopRect;
         public RectTransform textRect;
 
+
+
         private void Awake()
         {
             Instance = this;
