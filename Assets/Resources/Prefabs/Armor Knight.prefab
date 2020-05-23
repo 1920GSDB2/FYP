@@ -3185,6 +3185,7 @@ MonoBehaviour:
   NegativeEffectManager: {fileID: 0}
   attackRange: 11
   isTargetable: 0
+  DebugHeroPlace: {fileID: 0}
   Icon: {fileID: 0}
   SkillDescription: 
   SelectingBox: {fileID: 216957540}
@@ -3195,7 +3196,7 @@ MonoBehaviour:
   skill: {fileID: 705671629}
   EquipmentManager: {fileID: 0}
   testSkill: {fileID: 0}
-  Price: 0
+  isSelectable: 1
   BuffStatuses:
   - BuffType: 0
     HeroClass: 0
@@ -3303,6 +3304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castSkillEffect: {fileID: 0}
+  mediaPlayer: {fileID: 0}
   type: 1
   duration: 2.5
   hitEffect: {fileID: 101474, guid: 30261511100268c409cf9f527d724d36, type: 3}
@@ -3414,7 +3416,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88ac2780905e2c41854907b4841c600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSound: {fileID: 0}
+  audioSource: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 71fa89f3f7fc2b3449412e93195f7135, type: 3}
   skillSound: {fileID: 0}
 --- !u!1 &5930651934574334249
 GameObject:
