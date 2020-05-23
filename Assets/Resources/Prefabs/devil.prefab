@@ -1743,8 +1743,8 @@ MonoBehaviour:
   BasicHealth: 5
   MaxMana: 100
   Mana: 0
-  BasicAttackDamage: 3
-  BasicAttackSpeed: 1
+  BasicAttackDamage: 8
+  BasicAttackSpeed: 2
   BasicSkillPower: 0
   BasicPhysicalDefense: 50
   BasicMagicDefense: 50
@@ -1771,6 +1771,7 @@ MonoBehaviour:
   NegativeEffectManager: {fileID: 0}
   attackRange: 11
   isTargetable: 0
+  DebugHeroPlace: {fileID: 0}
 --- !u!114 &-3655929694887431130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1918,6 +1919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88ac2780905e2c41854907b4841c600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   attackSound: {fileID: 0}
   skillSound: {fileID: 0}
 --- !u!1 &1597851591213563724
