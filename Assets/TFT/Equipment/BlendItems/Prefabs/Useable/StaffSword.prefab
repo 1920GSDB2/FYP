@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipmentName: Wretched Spellblade
+  Icon: {fileID: 21300000, guid: 41c81b13fa8e7f345a9a7e1e3934dc2a, type: 3}
   Attributes:
   - HeroAttribute: 0
     AttributeValue: 40
@@ -112,6 +113,7 @@ MonoBehaviour:
     AttributeValue: 30
   attachHero: {fileID: 0}
   isComponent: 0
+  isUse: 0
   components:
   - {fileID: 8932993913939470856, guid: 6390a3995f27bf3478f8f8f9932a161b, type: 3}
   - {fileID: 8932993913939470856, guid: 0928c6ec10a9842488ed2f3650ca5e2b, type: 3}

@@ -8,7 +8,8 @@ namespace TFT
     public abstract class Equipment : MonoBehaviour, ISelectable
     {
         public string EquipmentName;
-        
+
+        public Sprite Icon;
         public Attribute[] Attributes;
         protected SelectManager SelectManager;
         //public HeroAttribute[] HeroAttributes;

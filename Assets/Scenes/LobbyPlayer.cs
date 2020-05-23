@@ -17,7 +17,7 @@ public class LobbyPlayer : MonoBehaviour
     public TextMeshProUGUI ReadyButtonText;
 
     public PhotonPlayer PhotonPlayer { get; private set; }
-    public bool IsReady { get; private set; }
+    public bool IsReady;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,12 +32,23 @@ public class LobbyPlayer : MonoBehaviour
     public void SetPhotonPlayer(PhotonPlayer photonPlayer)
     {
         PhotonPlayer = photonPlayer;
-        PlayerName.text = PhotonPlayer.NickName;
+        PlayerName.text = PhotonPlayer.CustomProperties["NAME"].ToString();
+
+        bool readyProperties = (bool)photonPlayer.CustomProperties["READY_FOR_START"];
+        Debug.Log(PlayerName.text + " Properties: "+readyProperties);
+        if (readyProperties)
+        {
+            IsReady = true;
+        }
         
         SetKickButton();
 
         if (PhotonPlayer != PhotonNetwork.player)
+        {
             ReadyButton.enabled = false;
+            GetComponent<Image>().enabled = false;
+        }
+
     }
 
     //Enable or Disable Kick Player Button
@@ -61,18 +72,22 @@ public class LobbyPlayer : MonoBehaviour
         if (IsReady)
         {
             ReadyButtonText.text = "IsReady";
-            PhotonPlayer.SetCustomProperties(new Hashtable
-            {
-                {"ReadyForStart", "Ready" }
-            });
+            //PhotonPlayer.SetCustomProperties(new Hashtable
+            //{
+            //    {"READY_FOR_START", "READY" }
+            //});
+            PhotonPlayer.CustomProperties["READY_FOR_START"] = true;
         }
         else
         {
             ReadyButtonText.text = "Ready";
-            PhotonPlayer.SetCustomProperties(new Hashtable
-            {
-                {"ReadyForStart", "NotReady" }
-            });
+            //PhotonPlayer.SetCustomProperties(new Hashtable
+            //{
+            //    {"READY_FOR_START", "NOT_READY" }
+            //});
+           // PhotonPlayer.CustomProperties["READY_FOR_START"] = "NOT_READY";
+            PhotonPlayer.CustomProperties["READY_FOR_START"] = false;
+
         }
     }
     

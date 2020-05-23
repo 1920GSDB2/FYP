@@ -18,6 +18,7 @@ namespace TFT
         private int ExpPrice, RefreshPrice;
 
         public float delayTime = 0.1f;
+        public GameObject RemovePanel;
         public Button SwitchButton, RemoveButton;
         public bool isShowShop = true;
         private Vector2 currrShopPos, nextShopPos;
@@ -55,6 +56,14 @@ namespace TFT
             if (SelectManager.DragObject != null && isShowShop)
             {
                 SwitchShop();
+            }
+            if((SelectManager.DragObject as Hero) != null)
+            {
+                RemovePanel.SetActive(true);
+            }
+            else
+            {
+                RemovePanel.SetActive(false);
             }
             if (currrShopPos != nextShopPos)
             {

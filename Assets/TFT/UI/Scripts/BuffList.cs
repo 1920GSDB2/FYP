@@ -17,9 +17,9 @@ namespace TFT
         public TextMeshProUGUI ButtonText;
         public float delayTime = 0.2f;
 
-        public bool isShowList;
+        public bool isShowList = true;
         private Vector2 currPos, nextPos;
-        private RectTransform RectTransform;
+        private RectTransform RectTransform, BuffListTranForm;
         private BuffersManager BuffersManager;
 
         private void Awake()
@@ -33,6 +33,7 @@ namespace TFT
             currPos = RectTransform.anchoredPosition;
             nextPos = RectTransform.anchoredPosition;
             BuffersManager = BuffersManager.Instance;
+            BuffListTranForm = buffList.GetComponent<RectTransform>();
         }
 
         // Update is called once per frame
@@ -48,6 +49,11 @@ namespace TFT
             //HeroBuffList = NetworkManager.Instance.PlayerHeroes[NetworkManager.Instance.FocusPlayerId].BuffList;
             CheckAddBuff();
             CheckRemoveBuff();
+
+            float buffListWidth = ((int)(buffList.transform.childCount / 4) + 1) * 30;
+            if (buffList.transform.childCount == 0) buffListWidth = 0;
+            BuffListTranForm.sizeDelta = new Vector2(buffListWidth, 155);
+
         }
 
         private void CheckAddBuff()
@@ -151,7 +157,6 @@ namespace TFT
             {
                 Destroy(child.gameObject);
             }
-            buffList.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(75, 0);
         }
 
         public void AddBuff(Buffers buffer, string name)
@@ -169,7 +174,7 @@ namespace TFT
 
             if (!isShowList)
             {
-                RectTransform.anchoredPosition = new Vector2(-RectTransform.sizeDelta.x + 10 , -115);
+                RectTransform.anchoredPosition = new Vector2(-RectTransform.sizeDelta.x + 15 , -81);
             }
 
             currPos = RectTransform.anchoredPosition;
@@ -213,7 +218,7 @@ namespace TFT
         }
         public void SwitchPanel()
         {
-            if (RectTransform.sizeDelta.x <= 10) return;
+            if (RectTransform.sizeDelta.x <= 15) return;
             isShowList = !isShowList;
             if (isShowList)
             {
@@ -222,7 +227,7 @@ namespace TFT
             }
             else
             {
-                nextPos.x = -RectTransform.sizeDelta.x + 10;
+                nextPos.x = -RectTransform.sizeDelta.x + 15;
                 ButtonText.text = ">";
             }
         }

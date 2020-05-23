@@ -27,19 +27,15 @@ namespace TFT
         {
             if (Equipments.Count == 3 && !Equipments[2].isComponent)
             {
-                Debug.Log("Add Equipment 1");
                 return false;
             }
             if(Equipments.Count == 0 || !Equipments[Equipments.Count - 1].isComponent ||!_addEquirement.isComponent)
             {
-                Debug.Log("Add Equipment 2");
-
                 AddAttribute(_addEquirement);
                 return true;
             }
             else
             {
-                Debug.Log("Add Equipment 3");
 
                 //Equirement Composite
                 BlendItem newItem = Composite(((Item)Equipments[Equipments.Count - 1]).ItemType, ((Item)_addEquirement).ItemType);

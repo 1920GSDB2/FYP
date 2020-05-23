@@ -105,11 +105,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipmentName: Tenjin Heart
+  Icon: {fileID: 21300000, guid: 11de0bca8ab3b6d4db76e0282c437560, type: 3}
   Attributes:
   - HeroAttribute: 5
     AttributeValue: 1000
   attachHero: {fileID: 0}
   isComponent: 0
+  isUse: 0
   components:
   - {fileID: 8932993913939470856, guid: ce07958d02690f34e8fafbcb90d2f736, type: 3}
   - {fileID: 8932993913939470856, guid: ce07958d02690f34e8fafbcb90d2f736, type: 3}
+  recoverPercent: 0.01

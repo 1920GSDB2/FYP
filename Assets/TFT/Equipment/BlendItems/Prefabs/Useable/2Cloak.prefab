@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipmentName: Archmage Cloak
+  Icon: {fileID: 21300000, guid: 9aecaa744668eb440a03fd087533d792, type: 3}
   Attributes:
   - HeroAttribute: 3
     AttributeValue: 100
@@ -112,6 +113,7 @@ MonoBehaviour:
     AttributeValue: 200
   attachHero: {fileID: 0}
   isComponent: 0
+  isUse: 0
   components:
   - {fileID: 8932993913939470856, guid: 44fdfd5e75c058042bb00e812dfa68a2, type: 3}
   - {fileID: 8932993913939470856, guid: 44fdfd5e75c058042bb00e812dfa68a2, type: 3}

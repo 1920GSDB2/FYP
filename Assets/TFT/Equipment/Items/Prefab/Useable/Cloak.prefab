@@ -105,9 +105,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipmentName: Cloak
+  Icon: {fileID: 21300000, guid: b178146081567944cb274003083d7f6f, type: 3}
   Attributes:
   - HeroAttribute: 3
     AttributeValue: 25
   attachHero: {fileID: 0}
   isComponent: 1
+  isUse: 0
   ItemType: 3

@@ -105,11 +105,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipmentName: Thorns Armor
+  Icon: {fileID: 21300000, guid: fc04ed043fcba814f8d522f8a47aed21, type: 3}
   Attributes:
   - HeroAttribute: 8
     AttributeValue: 100
   attachHero: {fileID: 0}
   isComponent: 0
+  isUse: 0
   components:
   - {fileID: 8932993913939470856, guid: be5be64da3443d342bc5b8b3647c7ea0, type: 3}
   - {fileID: 8932993913939470856, guid: be5be64da3443d342bc5b8b3647c7ea0, type: 3}
+  bouncePercentage: 0.22

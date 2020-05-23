@@ -245,7 +245,7 @@ MonoBehaviour:
   SelectingBox: {fileID: 5428630125610194871}
   Rarity: 3
   HeroClasses: 0100000003000000
-  HeroRaces: 04000000
+  HeroRaces: 01000000
   heroLevel: 0
   skill: {fileID: 0}
   EquipmentManager: {fileID: 0}

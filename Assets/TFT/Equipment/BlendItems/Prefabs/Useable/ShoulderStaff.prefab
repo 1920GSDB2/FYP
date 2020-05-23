@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipmentName: Luna Staff
+  Icon: {fileID: 21300000, guid: 89ecf97f17bc67f49975e788adc32610, type: 3}
   Attributes:
   - HeroAttribute: 7
     AttributeValue: 35
@@ -112,6 +113,7 @@ MonoBehaviour:
     AttributeValue: 40
   attachHero: {fileID: 0}
   isComponent: 0
+  isUse: 0
   components:
   - {fileID: 8932993913939470856, guid: 6390a3995f27bf3478f8f8f9932a161b, type: 3}
   - {fileID: 8932993913939470856, guid: be5be64da3443d342bc5b8b3647c7ea0, type: 3}

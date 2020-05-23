@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipmentName: 
+  Icon: {fileID: 21300000, guid: 68bff243d8a9bc646b9c3f472aef5355, type: 3}
   Attributes:
   - HeroAttribute: 0
     AttributeValue: 50
@@ -112,6 +113,7 @@ MonoBehaviour:
     AttributeValue: 30
   attachHero: {fileID: 0}
   isComponent: 0
+  isUse: 0
   components:
   - {fileID: 8932993913939470856, guid: be5be64da3443d342bc5b8b3647c7ea0, type: 3}
   - {fileID: 8932993913939470856, guid: 0928c6ec10a9842488ed2f3650ca5e2b, type: 3}

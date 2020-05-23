@@ -5,7 +5,7 @@ using System.Collections;
 using System.IO;
 using TMPro;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
-
+using UnityEngine.SceneManagement;
 
 namespace TFT
 {
@@ -143,9 +143,9 @@ namespace TFT
 
             //Set Player Random Position
             PlayersName = new string[PhotonNetwork.playerList.Length];
-            for(int i = 0; i < PhotonNetwork.playerList.Length; i++)
+            for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
             {
-                PlayersName[i] = PhotonNetwork.playerList[i].NickName;
+                PlayersName[i] = PhotonNetwork.playerList[i].CustomProperties["NAME"].ToString();
             }
             PhotonView.RPC("RPC_SetupPlayerPosition", PhotonTargets.All, GetRearrangeData(PhotonNetwork.playerList.Length));
             PhotonView.RPC("RPC_SetupPlayerName", PhotonTargets.Others, PlayersName);
@@ -1274,8 +1274,14 @@ namespace TFT
                     PhotonNetwork.SetMasterClient(PhotonNetwork.masterClient.GetNext());
 
             }
+            StartCoroutine(DisconnectLoading());
+        }
+        private IEnumerator DisconnectLoading()
+        {
             PhotonNetwork.LeaveRoom();
-            PhotonNetwork.LoadLevel("Lobby");
+            while (PhotonNetwork.inRoom)
+                yield return null;
+            SceneManager.LoadScene("Lobby");
         }
     }
 }

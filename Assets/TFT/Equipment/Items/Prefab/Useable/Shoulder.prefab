@@ -105,9 +105,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipmentName: Shoulder
+  Icon: {fileID: 21300000, guid: 7a5acf6f7391cbe4fa3dcf96c34bc90f, type: 3}
   Attributes:
   - HeroAttribute: 8
     AttributeValue: 25
   attachHero: {fileID: 0}
   isComponent: 1
+  isUse: 0
   ItemType: 6

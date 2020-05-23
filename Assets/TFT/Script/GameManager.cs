@@ -26,7 +26,15 @@ namespace TFT
             set
             {
                 selfPlayerArena = value;
-                selfPlayerArenaChange?.Invoke(this, EventArgs.Empty);
+                //selfPlayerArenaChange?.Invoke(this, EventArgs.Empty);
+                foreach (Transform heroList in SelfPlayerArena.SelfArena.HeroList.transform)
+                {
+                    heroList.GetComponent<HeroPlace>().isSelect = true;
+                }
+                foreach (Transform gameBoard in SelfPlayerArena.SelfArena.GameBoard.transform)
+                {
+                    gameBoard.GetComponent<HeroPlace>().isSelect = true;
+                }
             }
         }
         public HeroPlace[] Place;               //I don't know
@@ -72,6 +80,10 @@ namespace TFT
                 {
                     readying?.Invoke(this, EventArgs.Empty);
                 }
+                if (value != GameStatus.Transiting)
+                {
+                    statusChange?.Invoke(this, EventArgs.Empty);
+                }
                 //Check the Next Status wheather Playing, to Match the Players' Opponent
                 else if (value == GameStatus.Transiting && LastGameStatus == GameStatus.Readying)
                 {
@@ -113,7 +125,7 @@ namespace TFT
             }
         }
 
-        public EventHandler readying, selfPlayerArenaChange;
+        public EventHandler readying, selfPlayerArenaChange, statusChange;
 
         [SerializeField]
         Hero LaterUpgradeHero;

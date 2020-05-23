@@ -12,6 +12,8 @@ public class Hero : Character, ISelectable
     // public bool isEnemy;
     // public HeroPlace HeroPlace, LastHeroPlace;         //Current HeroPlace Position of Hero
     public Sprite Icon;
+    [TextArea]
+    public string SkillDescription;
     public GameObject SelectingBox;
    
     private Collider BoxCollider;
@@ -443,7 +445,7 @@ public class Hero : Character, ISelectable
 
         BoxCollider.enabled = true;
         SelectingBox.SetActive(false);
-        HeroStatusUI.OffPanelUI();
+        //HeroStatusUI.OffPanelUI();
     }
 
     public void DragUp()

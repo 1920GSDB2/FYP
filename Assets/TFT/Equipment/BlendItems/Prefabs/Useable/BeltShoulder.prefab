@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipmentName: Giant Armor
+  Icon: {fileID: 21300000, guid: 9af21cc3ba5b91f4b8ac9024848ae69f, type: 3}
   Attributes:
   - HeroAttribute: 5
     AttributeValue: 500
@@ -112,6 +113,7 @@ MonoBehaviour:
     AttributeValue: 50
   attachHero: {fileID: 0}
   isComponent: 0
+  isUse: 0
   components:
   - {fileID: 8932993913939470856, guid: ce07958d02690f34e8fafbcb90d2f736, type: 3}
   - {fileID: 8932993913939470856, guid: be5be64da3443d342bc5b8b3647c7ea0, type: 3}

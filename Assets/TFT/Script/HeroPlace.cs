@@ -19,8 +19,8 @@ namespace TFT
         SpriteRenderer spriteRenderer;
         MeshRenderer currMat;
         public Material defaultMat, hoverMat;
-        [SerializeField]
-        bool isSelect;
+        //[HideInInspector]
+        public bool isSelect;
 
         public int gridX { get; private set; }
         public int gridY { get; private set; }
@@ -40,26 +40,17 @@ namespace TFT
         void Start()
         {
             GameManager = GameManager.Instance;
+            GameManager.selfPlayerArenaChange += OnSelfPlayerArenaChange;
+
             SelectManager = SelectManager.Instance;
             HeroPlaceSetting();
             //MouseSelect = TFT.GameManager.Instance.gameObject.GetComponent<MouseSelect>();
-            GameManager.selfPlayerArenaChange += OnSelfPlayerArenaChange;            
         }
 
         private void OnDestroy()
         {
             GameManager.selfPlayerArenaChange -= OnSelfPlayerArenaChange;
-        }
-        public void OnSelfPlayerArenaChange(object sender, EventArgs e)
-        {
-            PlayerArena playerArena = transform.parent.parent.parent.GetComponent<PlayerArena>();
-
-            if (transform.parent.parent.tag.Equals("SelfArena") &&
-                playerArena == GameManager.SelfPlayerArena)
-            {
-                isSelect = true;
-            }
-        }
+        }       
 
         void HeroPlaceSetting()
         {
@@ -145,6 +136,22 @@ namespace TFT
             isWalkable = true;
         }
         #endregion
+
+        public void OnSelfPlayerArenaChange(object sender, EventArgs e)
+        {
+            StartCoroutine(SelfPlayerArenaChange());
+        }
+        private IEnumerator SelfPlayerArenaChange()
+        {
+            yield return new WaitForSeconds(1);
+            PlayerArena playerArena = transform.parent.parent.parent.GetComponent<PlayerArena>();
+
+            if (transform.parent.parent.tag.Equals("SelfArena") &&
+                playerArena == GameManager.SelfPlayerArena)
+            {
+                isSelect = true;
+            }
+        }
     }
 
 }
