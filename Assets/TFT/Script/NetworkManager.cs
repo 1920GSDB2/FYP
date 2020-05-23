@@ -412,14 +412,14 @@ namespace TFT
             }
         }
         public void watchOtherPlayer(string name) {
-            for (int i = 0; i < PlayersId.Length; i++)
+            for (int i = 0; i < PlayerName.Length; i++)
             {
                 if(i==posId)
                     PlayerArenas[posId].GetComponent<PlayerArena>().Camera.SetActive(false);
                 else
                    PlayerArenas[i].GetComponent<PlayerArena>().enemyCamera.SetActive(false);          
              
-                if (PlayersId[i].Equals(name))
+                if (PlayerName[i].Equals(name))
                 {
                     if (i == posId)
                     {

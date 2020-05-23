@@ -54,7 +54,7 @@ public class LoginUI : MonoBehaviour
         get
         {
             string result = username.text;
-            username.text = "";
+            //username.text = "";
             return result;
         }
     }
@@ -63,7 +63,7 @@ public class LoginUI : MonoBehaviour
         get
         {
             string result = password.text;
-            password.text = "";
+            //password.text = "";
             return result;
         }
     }
