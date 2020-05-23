@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Wretched Spellblade
   Icon: {fileID: 21300000, guid: 41c81b13fa8e7f345a9a7e1e3934dc2a, type: 3}
+  ItemDetail: "Attack: +40\r\nSkill Damage: +30%\r\n\nBasic attack will deal magic
+    damage equal to 10% of attack damage.\r"
   Attributes:
   - HeroAttribute: 0
     AttributeValue: 40

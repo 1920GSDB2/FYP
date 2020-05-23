@@ -106,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Tenjin Heart
   Icon: {fileID: 21300000, guid: 11de0bca8ab3b6d4db76e0282c437560, type: 3}
+  ItemDetail: "Health: +1000\r\n\r\nWearer restore 1% of max health every second.\r\n"
   Attributes:
   - HeroAttribute: 5
     AttributeValue: 1000

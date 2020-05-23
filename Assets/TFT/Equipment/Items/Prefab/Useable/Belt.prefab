@@ -106,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Belt
   Icon: {fileID: 21300000, guid: 63edff3d0d51526478cf321404bc07ec, type: 3}
+  ItemDetail: 'Max Health: +250'
   Attributes:
   - HeroAttribute: 5
     AttributeValue: 250

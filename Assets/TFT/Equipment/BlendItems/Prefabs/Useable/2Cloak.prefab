@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Archmage Cloak
   Icon: {fileID: 21300000, guid: 9aecaa744668eb440a03fd087533d792, type: 3}
+  ItemDetail: "Magic Defense: +100\r\nHealth: +200\r\n\r\nBlock 3 times of control
+    state except knocking.\r\n"
   Attributes:
   - HeroAttribute: 3
     AttributeValue: 100

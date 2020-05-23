@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Avoidance Cloak
   Icon: {fileID: 21300000, guid: 03617bac753860f4c8a2bfdee525cf8a, type: 3}
+  ItemDetail: "Magic Defense: + 40\r\nHealth: +550\r\n\r\nGain a shield for block
+    one skill damage every 5 seconds.\r\n"
   Attributes:
   - HeroAttribute: 3
     AttributeValue: 40

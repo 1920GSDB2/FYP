@@ -106,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Staff
   Icon: {fileID: 21300000, guid: fc7df73845e15004f91aac7384b9f212, type: 3}
+  ItemDetail: Skill Damage:+20
   Attributes:
   - HeroAttribute: 7
     AttributeValue: 20

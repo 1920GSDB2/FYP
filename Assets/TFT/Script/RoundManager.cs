@@ -41,6 +41,7 @@ namespace TFT
         {
             CurrentRound++;
             LevelManager.RoundEnd();
+            Shop.Instance.asset.AssetValue += 2;
             Shop.Instance.RefreshShop();
             UIUpdate();
         }

@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Sacrificial Sword
   Icon: {fileID: 21300000, guid: 5cceda574000d9d4f887d7285f945076, type: 3}
+  ItemDetail: "Attack: +30\r\nHealth: +550\r\n\nWearer gain 10% maximum hp when target
+    is dead.\r"
   Attributes:
   - HeroAttribute: 0
     AttributeValue: 30

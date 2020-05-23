@@ -106,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Sword
   Icon: {fileID: 21300000, guid: 8b917c6229823d7469379072ea1c4027, type: 3}
+  ItemDetail: 'Attack: +20'
   Attributes:
   - HeroAttribute: 0
     AttributeValue: 20

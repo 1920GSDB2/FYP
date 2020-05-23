@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Giant Armor
   Icon: {fileID: 21300000, guid: 9af21cc3ba5b91f4b8ac9024848ae69f, type: 3}
+  ItemDetail: "Physical Defense: +50\r\nMax Health: +500\r\n\r\nWhen wearer Health
+    under 10% of max health, restore 15% of max health for 5 seconds(one).\r\n"
   Attributes:
   - HeroAttribute: 5
     AttributeValue: 500

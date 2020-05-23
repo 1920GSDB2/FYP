@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Luna Staff
   Icon: {fileID: 21300000, guid: 89ecf97f17bc67f49975e788adc32610, type: 3}
+  ItemDetail: "Skill Damage: +35\r\nPhysical Defense: +40\r\n\r\nWearer gets a shield
+    absorb 550 damage when the combat is begun.\r\n"
   Attributes:
   - HeroAttribute: 7
     AttributeValue: 35

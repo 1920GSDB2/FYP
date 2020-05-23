@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentName: Maniac Cloak
   Icon: {fileID: 21300000, guid: 793f5706b1b361a4f94c7375f7947ecb, type: 3}
+  ItemDetail: "Skill Damage: +40\r\nMagic Defense: +40\r\n\r\nWhen enemy casted their
+    skill, they are taken magic damage of 225% of their maximum MP.\r\n"
   Attributes:
   - HeroAttribute: 7
     AttributeValue: 40
