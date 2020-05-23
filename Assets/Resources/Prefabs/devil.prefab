@@ -1772,6 +1772,7 @@ MonoBehaviour:
   attackRange: 11
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
+  hitDamage: 5
 --- !u!114 &-3655929694887431130
 MonoBehaviour:
   m_ObjectHideFlags: 0

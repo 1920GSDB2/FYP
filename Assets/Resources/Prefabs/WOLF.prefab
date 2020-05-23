@@ -899,6 +899,8 @@ MonoBehaviour:
   NegativeEffectManager: {fileID: 0}
   attackRange: 11
   isTargetable: 0
+  DebugHeroPlace: {fileID: 0}
+  hitDamage: 3
 --- !u!65 &2985206275687137400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1059,6 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88ac2780905e2c41854907b4841c600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   attackSound: {fileID: 0}
   skillSound: {fileID: 0}
 --- !u!1 &6630874381936654224

@@ -67,8 +67,7 @@ public class Character : MonoBehaviour
     public float CriticalDamage { get; set; }
     public float ManaRecoveryRate = 1;
     public float HealthRecoveryRate = 0;
-    public float ShieldInit;
-    public int hitDamage;
+    public float ShieldInit;   
     #endregion
 
     #region Basic Attribute
@@ -142,7 +141,7 @@ public class Character : MonoBehaviour
     public float attackRange = 11f;
     public bool isTargetable;
     public HeroPlace DebugHeroPlace;
-    
+    public int hitDamage;
     public event EventHandler hpChange, attack, beAttacked, beControlled, useSkill, roundStart, targetChange, combatStart, combatEnd;
 
     public delegate void NegativeEffectHandler(float _time);

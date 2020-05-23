@@ -853,6 +853,7 @@ MonoBehaviour:
   attackRange: 11
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
+  hitDamage: 4
 --- !u!65 &6452236299562885355
 BoxCollider:
   m_ObjectHideFlags: 0
