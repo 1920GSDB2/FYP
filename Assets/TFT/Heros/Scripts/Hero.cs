@@ -117,6 +117,9 @@ public class Hero : Character, ISelectable
                 break;
             case HeroAttribute.Attack_Speed:
                 AttackSpeed = value;
+                if (AttackSpeed < 1)
+                    value = 1;
+                animator.SetFloat("AttackSpeed", value);
                 break;
             case HeroAttribute.Critical_Cahnce:
                 CriticalChance = (int)value;
@@ -126,6 +129,8 @@ public class Hero : Character, ISelectable
                 break;
             case HeroAttribute.Health:
                 MaxHealth = value;
+                if (Health > MaxHealth)
+                    Health = MaxHealth;
                 break;
             case HeroAttribute.Heal_Recovery_Rate:
                 HealthRecoveryRate = value;
@@ -161,7 +166,7 @@ public class Hero : Character, ISelectable
         MaxHealth = 100 * BasicHealth;
         MaxMp = MaxMana;
         Health = MaxHealth;
-        AttackDamage = 10 * BasicAttackDamage;
+        AttackDamage = 15f * BasicAttackDamage;
         AttackSpeed = 0.1f * BasicAttackSpeed;
         attackRange = attackRange * BasicAttackRange;
         SkillPower = BasicSkillPower * 1.25f;
@@ -196,6 +201,10 @@ public class Hero : Character, ISelectable
     public void RPC_Upgrade()
     {
         HeroLevel++;
+        AttackDamage *= 1.5f;
+        MaxHealth *= 1.5f;
+        PhysicalDefense *= 1.4f;
+        MagicDefense *= 1.4f;
     }
     [PunRPC]
     public void RPC_ResetStatus() {

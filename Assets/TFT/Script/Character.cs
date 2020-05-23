@@ -357,7 +357,7 @@ public class Character : MonoBehaviour
         if (type == DamageType.Physical) {
             if (PhysicalDefense > 0)
             {
-                damage *= PhysicalDefense / (100 + PhysicalDefense);
+                damage *= PhysicalDefense / (80 + PhysicalDefense);
             }
             else {
                 damage *= 2 - 100 / (100 - PhysicalDefense);
@@ -367,7 +367,7 @@ public class Character : MonoBehaviour
         if (type == DamageType.Magic) {
             if (MagicDefense > 0)
             {
-                damage *= MagicDefense / (100 + MagicDefense);
+                damage *= MagicDefense / (50 + MagicDefense);
             }
             else {
                 damage *= 2 - 100 / (100 - MagicDefense);
