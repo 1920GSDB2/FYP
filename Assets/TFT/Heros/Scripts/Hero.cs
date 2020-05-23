@@ -55,8 +55,8 @@ public class Hero : Character, ISelectable
     string lastTransform;
 
     [HideInInspector]
-    public int Price;
-
+    //public int Price;
+    public bool isSelectable = true;
     public List<BuffStatus> BuffStatuses = new List<BuffStatus>();
 
     //  List<Node> path;
@@ -101,6 +101,10 @@ public class Hero : Character, ISelectable
         foreach (HeroRace heroRace in HeroRaces)
         {
             BuffStatuses.Add(new BuffStatus(heroRace));
+        }
+        if (photonView.isMine)
+        {
+            GameManager.statusChange += OnGameStatusChange;
         }
     }
     [PunRPC]
@@ -378,13 +382,9 @@ public class Hero : Character, ISelectable
     }
     private void OnMouseEnter()
     {
-        if (photonView.isMine)
+        if ((photonView.isMine && isSelectable) /*||  !GameManager.MainGameManager.isDebugMode*/)
         {
-            if (HeroStatus == HeroStatus.Fight || HeroStatus == HeroStatus.Dead)
-            {
-                return;
-            }
-            else if (SelectManager.DragObject != null && SelectManager.DragObject as Hero == null)
+            if (SelectManager.DragObject != null && SelectManager.DragObject as Hero == null)
             {
                 //int index = EquipmentManager.Equipments.Count;
                 //if (index < 3)
@@ -398,6 +398,10 @@ public class Hero : Character, ISelectable
                 LastHeroPlace = HeroPlace;
             }
         }
+    }
+    private void OnMouseDown()
+    {
+        HeroStatusUI.ShowPanelUI(this);
     }
 
     private void OnMouseExit()
@@ -424,7 +428,25 @@ public class Hero : Character, ISelectable
             }
         }
     }
-    
+    public void OnGameStatusChange(object sender, EventArgs e)
+    {
+        if(HeroPlace.PlaceType == PlaceType.OnBoard)
+        {
+            switch (GameManager.GameStatus)
+            {
+                case GameStatus.Readying:
+                    isSelectable = true;
+                    break;
+                case GameStatus.Playing:
+                    isSelectable = false;
+                    break;
+                case GameStatus.Comping:
+                    isSelectable = false;
+                    break;
+            }
+        }
+        
+    }
     public void PutDown()
     {
         //SelectManager.DragObject = null;
@@ -452,7 +474,6 @@ public class Hero : Character, ISelectable
     {
         BoxCollider.enabled = false;
         SelectingBox.SetActive(true);
-        HeroStatusUI.ShowPanelUI(this);
     }
     #region RPC move hero
     [PunRPC]

@@ -10,6 +10,8 @@ namespace TFT
         public string EquipmentName;
 
         public Sprite Icon;
+        [TextArea]
+        public string ItemDetail;
         public Attribute[] Attributes;
         protected SelectManager SelectManager;
         //public HeroAttribute[] HeroAttributes;
