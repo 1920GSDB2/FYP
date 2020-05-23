@@ -97,30 +97,27 @@ namespace TFT
                     }
                     return;
                 }
-                if (!MainGameManager.isDebugMode)
-                {
-
-                    #region Switch Player's Gameboard's Heroes' Status
-                    foreach (NetworkHero gbHero in PlayerHero.GameBoardHeroes)
-                    {
-                        //Find the Hero by Using NetworkHero
-                        Hero modifyHero = GetPlayerHero(gbHero);
-                        Debug.Log("Modify Hero Name: " + modifyHero.gameObject.name);
-                        switch (value)
-                        {
-                            case GameStatus.Readying:
-                                modifyHero.HeroStatus = HeroStatus.Standby;
-                                break;
-                            case GameStatus.Playing:
-                                modifyHero.HeroStatus = HeroStatus.Fight;
-                                break;
-                            case GameStatus.Comping:
-                                modifyHero.HeroStatus = HeroStatus.Fight;
-                                break;
-                        }
-                    }
-                    #endregion
-                }
+                
+                //#region Switch Player's Gameboard's Heroes' Status
+                //foreach (NetworkHero gbHero in PlayerHero.GameBoardHeroes)
+                //{
+                //    //Find the Hero by Using NetworkHero
+                //    Hero modifyHero = GetPlayerHero(gbHero);
+                //    Debug.Log("Modify Hero Name: " + modifyHero.gameObject.name);
+                //    switch (value)
+                //    {
+                //        case GameStatus.Readying:
+                //            modifyHero.HeroStatus = HeroStatus.Standby;
+                //            break;
+                //        case GameStatus.Playing:
+                //            modifyHero.HeroStatus = HeroStatus.Fight;
+                //            break;
+                //        case GameStatus.Comping:
+                //            modifyHero.HeroStatus = HeroStatus.Fight;
+                //            break;
+                //    }
+                //}
+                //#endregion
 
             }
         }

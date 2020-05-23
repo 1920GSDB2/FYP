@@ -19,7 +19,7 @@ namespace TFT
 
         public float delayTime = 0.1f;
         public GameObject RemovePanel;
-        public Button SwitchButton, RemoveButton;
+        public Button RemoveButton;
         public bool isShowShop = true;
         private Vector2 currrShopPos, nextShopPos;
         private Vector3 currShopBtnRot, nextShopBtnRot;
@@ -55,7 +55,7 @@ namespace TFT
         {
             if (SelectManager.DragObject != null && isShowShop)
             {
-                SwitchShop();
+                //SwitchShop();
             }
             if((SelectManager.DragObject as Hero) != null)
             {
@@ -89,7 +89,7 @@ namespace TFT
                         break;
                     }
                 }
-                asset.AssetValue += selectHero.Price * (int)selectHero.HeroLevel + 1;
+                asset.AssetValue += ((int)selectHero.Rarity+1) * ((int)selectHero.HeroLevel + 1);
                 PhotonNetwork.Destroy(selectHero.gameObject);
                 SelectManager.DragObject = null;
             }
@@ -142,7 +142,7 @@ namespace TFT
                 if (TFT.GameManager.Instance.BuyHero(newHero))
                 {
                     asset.AssetValue -= heroUi.BasicInfo.price;
-                    newHero.Price = heroUi.BasicInfo.price;
+                    //newHero.Price = heroUi.BasicInfo.price;
                     heroUi.gameObject.SetActive(false);
                 }
                 else
