@@ -19429,7 +19429,9 @@ MonoBehaviour:
     isShow: 0
     heroClass: 1
     heroRace: 0
-    buffDetail: Assassin Buff
+    buffDetail: "1:Critical Chance: 20%\r\n Critical Damage: 125%\r\n\n2:Critical
+      Chance: 40%\r\n Critical Damage: 150%\r\n\n4:Critical Chance: 60%\r\n Critical
+      Damage: 200%\r\n"
     totalNumber: 4
     bronzeNumber: 1
     sliverNumber: 2
@@ -19449,74 +19451,97 @@ MonoBehaviour:
     isShow: 0
     heroClass: 3
     heroRace: 0
-    buffDetail: Ranger Buff
+    buffDetail: "1:Attack Speed: 20%\n Critical Chance: 10%\n\n2:Attack Speed: 40%\n
+      Critical Chance: 20%\n\n4:Attack Speed: 60%\n Critical Chance: 50%"
     totalNumber: 4
     bronzeNumber: 1
     sliverNumber: 2
     goldenNumber: 4
   - BuffType: 0
     buffTypeIndex: 0
-    isShow: 0
+    isShow: 1
     heroClass: 4
     heroRace: 0
-    buffDetail: Supporter Buffer
+    buffDetail: "1:Physical Defense: 20\r\n    Magical Defense: 25\r\n\n2:Physical
+      Defense: 40\n    Magical Defense: 50 \n\n4:Physical Defense: 80\n    Magical
+      Defense: 100\r"
     totalNumber: 4
     bronzeNumber: 1
     sliverNumber: 2
     goldenNumber: 4
   - BuffType: 0
     buffTypeIndex: 0
-    isShow: 0
+    isShow: 1
     heroClass: 5
     heroRace: 0
-    buffDetail: Warrior Buff
+    buffDetail: "2:  Attack Damage: 20\r\nCritical Damage: 125%\r\n\n4:  Attack Damage:
+      40\r\nCritical Damage: 150%\r\n\n6:  Attack Damage: 160\nCritical Damage: 200%\r"
     totalNumber: 6
     bronzeNumber: 2
     sliverNumber: 4
     goldenNumber: 6
   - BuffType: 0
     buffTypeIndex: 0
-    isShow: 0
+    isShow: 1
     heroClass: 6
     heroRace: 0
-    buffDetail: Wizard Buff
+    buffDetail: '1: Skill Damage: 30
+
+
+      2: Skill Damage: 60
+
+
+      4: Skill Damage: 120'
     totalNumber: 4
     bronzeNumber: 1
     sliverNumber: 2
     goldenNumber: 4
   - BuffType: 1
     buffTypeIndex: 1
-    isShow: 0
+    isShow: 1
     heroClass: 0
     heroRace: 1
-    buffDetail: Demon Buff
+    buffDetail: '1: Recover MP Rate: 2%
+
+
+      3: Recover MP Rate: 4%
+
+
+      5: Recover MP Rate: 6%'
     totalNumber: 5
     bronzeNumber: 1
     sliverNumber: 3
     goldenNumber: 5
   - BuffType: 1
     buffTypeIndex: 1
-    isShow: 0
+    isShow: 1
     heroClass: 0
     heroRace: 2
-    buffDetail: Divinity Buff
+    buffDetail: '1: Shield Value: 125
+
+
+      3: Shield Value: 250
+
+
+      5: Shield Value: 500'
     totalNumber: 5
     bronzeNumber: 1
     sliverNumber: 3
     goldenNumber: 5
   - BuffType: 1
     buffTypeIndex: 1
-    isShow: 0
+    isShow: 1
     heroClass: 0
     heroRace: 3
-    buffDetail: Human Buff
+    buffDetail: "2:  Health: 150\r\nMagic Defense: 15\r\n\n4:  Health: 300\nMagic
+      Defense: 30\n\n6:  Health: 600\r\nMagic Defense: 60"
     totalNumber: 6
     bronzeNumber: 2
     sliverNumber: 4
     goldenNumber: 6
   - BuffType: 1
     buffTypeIndex: 1
-    isShow: 0
+    isShow: 1
     heroClass: 0
     heroRace: 4
     buffDetail: 
@@ -19526,7 +19551,7 @@ MonoBehaviour:
     goldenNumber: 3
   - BuffType: 1
     buffTypeIndex: 1
-    isShow: 0
+    isShow: 1
     heroClass: 0
     heroRace: 5
     buffDetail: 
@@ -19536,10 +19561,11 @@ MonoBehaviour:
     goldenNumber: 1
   - BuffType: 1
     buffTypeIndex: 1
-    isShow: 0
+    isShow: 1
     heroClass: 0
     heroRace: 6
-    buffDetail: Wild Buff
+    buffDetail: "1: Health: 100\r\nRecover HP Rate: 1%\r\n\n3: Health: 200\r\nRecover
+      HP Rate: 2%\r\n \n5: Health: 400\r\nRecover HP Rate: 4%\r"
     totalNumber: 5
     bronzeNumber: 1
     sliverNumber: 3
@@ -90975,8 +91001,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 65.5, y: -77.5}
-  m_SizeDelta: {x: 100, y: 155}
+  m_AnchoredPosition: {x: 105.5, y: -77.5}
+  m_SizeDelta: {x: 180, y: 155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1733997881
 MonoBehaviour:
@@ -111803,16 +111829,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7518734665735519743, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7518734665735519743, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 7518734666506399578, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -111838,16 +111854,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7518734666873727526, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7518734666873727526, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 7518734666294746911, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -111872,16 +111878,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7518734666479633894, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7518734666479633894, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7518734665088529325, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
         type: 3}
@@ -111913,16 +111909,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7518734667047717060, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7518734667047717060, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 7518734665193122981, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -111947,16 +111933,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7518734665205935646, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7518734665205935646, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7518734666568622815, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
         type: 3}
@@ -111987,16 +111963,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7518734665161436257, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7518734665161436257, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7518734666310472893, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
         type: 3}
@@ -112062,6 +112028,66 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518734665735519743, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518734665735519743, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518734666873727526, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518734666873727526, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518734666479633894, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518734666479633894, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518734667047717060, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518734667047717060, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518734665205935646, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518734665205935646, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518734665161436257, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518734665161436257, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a5e2a8a9d91a4b44aa5c00e4ee5cc53, type: 3}

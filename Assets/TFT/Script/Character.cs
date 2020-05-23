@@ -175,7 +175,8 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.z);
+        //  Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.x);
+        Vector3 targetPostition = new Vector3(cameraPos.x,HeroBarObject.transform.position.y, HeroBarObject.transform.position.z);
         HeroBarObject.transform.LookAt(targetPostition);
         if (HeroState == HeroState.Idle && !isStun)
         {

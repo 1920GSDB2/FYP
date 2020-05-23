@@ -319,12 +319,12 @@ namespace TFT
             if (isEnemy)
             {
                 Debug.Log("Get battleGame " + isEnemy);
-                return calculateClosestDistance(opponent.heroes, heroPos);
+                return calculateFurthestDistance(opponent.heroes, heroPos);
             }
             else
             {
                 Debug.Log("Get opponent " + isEnemy);
-                return calculateClosestDistance(battleGameBoardHero, heroPos);
+                return calculateFurthestDistance(battleGameBoardHero, heroPos);
             }
         }
         public float getNodeDistance(HeroPlace self,HeroPlace target) {
@@ -376,7 +376,10 @@ namespace TFT
                 {
                     float dis = Vector3.Distance(hero[i].transform.position, heroPos.position);
                     if (dis > furthestDis)
+                    {
                         furthestHero = hero[i];
+                        furthestDis = dis;
+                    }
                 }
                 return furthestHero;
             }
