@@ -14,7 +14,9 @@ namespace TFT
         public static NetworkManager Instance;
         public static PhotonView PhotonView;
         
-        public string[] PlayersName;
+        public string[] PlayersId;
+        public string[] PlayerName;
+        //public Dictionary<string, string> PlayersName = new Dictionary<string, string>;
         public int playerId, posId, battlePosId;                 //Id for Networking
         private int focusPlayerId;
         public int FocusPlayerId
@@ -144,13 +146,15 @@ namespace TFT
             #endregion
 
             //Set Player Random Position
-            PlayersName = new string[PhotonNetwork.playerList.Length];
+            PlayersId = new string[PhotonNetwork.playerList.Length];
+            PlayerName = new string[PhotonNetwork.playerList.Length];
             for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
             {
-                PlayersName[i] = PhotonNetwork.playerList[i].CustomProperties["NAME"].ToString();
+                PlayersId[i] = PhotonNetwork.playerList[i].NickName;
+                PlayerName[i] = PhotonNetwork.playerList[i].CustomProperties["NAME"].ToString();
             }
             PhotonView.RPC("RPC_SetupPlayerPosition", PhotonTargets.All, GetRearrangeData(PhotonNetwork.playerList.Length));
-            PhotonView.RPC("RPC_SetupPlayerName", PhotonTargets.Others, PlayersName);
+            PhotonView.RPC("RPC_SetupPlayerName", PhotonTargets.Others, PlayersId, PlayerName);
         }
 
         #endregion
@@ -408,14 +412,14 @@ namespace TFT
             }
         }
         public void watchOtherPlayer(string name) {
-            for (int i = 0; i < PlayersName.Length; i++)
+            for (int i = 0; i < PlayersId.Length; i++)
             {
                 if(i==posId)
                     PlayerArenas[posId].GetComponent<PlayerArena>().Camera.SetActive(false);
                 else
                    PlayerArenas[i].GetComponent<PlayerArena>().enemyCamera.SetActive(false);          
              
-                if (PlayersName[i].Equals(name))
+                if (PlayersId[i].Equals(name))
                 {
                     if (i == posId)
                     {
@@ -572,9 +576,10 @@ namespace TFT
         }
 
         [PunRPC]
-        public void RPC_SetupPlayerName(string[] _playerName)
+        public void RPC_SetupPlayerName(string[] _playerId, string[] _playerName)
         {
-            PlayersName = _playerName;
+            PlayersId = _playerId;
+            PlayerName = _playerName;
             RankManager.PlayerCollectionSetup();
         }
         /// <summary>

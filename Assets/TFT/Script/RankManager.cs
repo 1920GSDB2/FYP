@@ -46,13 +46,22 @@ namespace TFT
         /// <param name="_initHP"></param>
         public void PlayerCollectionSetup()
         {
-            foreach (string PlayerName in NetworkManager.PlayersName)
+            //foreach (string PlayerName in NetworkManager.PlayersId)
+            //{
+            //    PlayerInfo newPlayerInfo = Instantiate(PlayerInfo, RankList).GetComponent<PlayerInfo>();
+            //    bool _isRemote = PhotonNetwork.playerName.Equals(PlayerName);
+            //    PlayerRank newPlayerRank = new PlayerRank(PlayerName, MainGameManager.PlayerInitHP, newPlayerInfo, _isRemote);
+            //    if(newPlayerRank!=null)
+            //    PlayersCollection.Add(PlayerName, newPlayerRank);
+            //}
+            for (int i = 0; i < NetworkManager.PlayersId.Length; i++)
             {
                 PlayerInfo newPlayerInfo = Instantiate(PlayerInfo, RankList).GetComponent<PlayerInfo>();
-                bool _isRemote = PhotonNetwork.playerName.Equals(PlayerName);
-                PlayerRank newPlayerRank = new PlayerRank(PlayerName, MainGameManager.PlayerInitHP, newPlayerInfo, _isRemote);
-                if(newPlayerRank!=null)
-                PlayersCollection.Add(PlayerName, newPlayerRank);
+                bool _isRemote = PhotonNetwork.playerName.Equals(NetworkManager.PlayersId[i]);
+                PlayerRank newPlayerRank = new PlayerRank(NetworkManager.PlayerName[i],
+                    MainGameManager.PlayerInitHP, newPlayerInfo, _isRemote);
+                if (newPlayerRank != null)
+                    PlayersCollection.Add(NetworkManager.PlayersId[i], newPlayerRank);
             }
         }
 
