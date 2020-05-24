@@ -169,6 +169,8 @@ MonoBehaviour:
   NegativeEffectManager: {fileID: 0}
   attackRange: 1.7
   isTargetable: 0
+  DebugHeroPlace: {fileID: 0}
+  hitDamage: 0
   Icon: {fileID: 0}
   SkillDescription: 
   SelectingBox: {fileID: 461068480251961582}
@@ -179,7 +181,7 @@ MonoBehaviour:
   skill: {fileID: 0}
   EquipmentManager: {fileID: 0}
   testSkill: {fileID: 0}
-  Price: 0
+  isSelectable: 1
   BuffStatuses: []
 --- !u!65 &4591463669310842892
 BoxCollider:
@@ -400,7 +402,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -452,6 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88ac2780905e2c41854907b4841c600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   attackSound: {fileID: 0}
   skillSound: {fileID: 0}
 --- !u!1001 &130960309823532368

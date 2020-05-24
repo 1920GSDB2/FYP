@@ -121,6 +121,7 @@ namespace TFT
         public bool isHomeTeam { get; private set; }
         int waveFinishResponse;
         int currentLookPosId;
+        int loadPlayer;
 
 
         public GameObject debugCamera;
@@ -137,7 +138,7 @@ namespace TFT
             textPrefab = Resources.Load<DamageText>("otherPrefabs/damageText");
             canvas = GameObject.Find("Canvas");
         }
-      
+       
         void Update()
         {
 
@@ -1302,14 +1303,14 @@ namespace TFT
             PhotonView.RPC("RPC_MonsterBattle", PhotonTargets.All);
         }
         [PunRPC]
-        public void RPC_MonsterBattle() {
-            isHomeTeam = true;
-            waveType = WaveType.Monster;
-            opponent.opponentId = -1;
-            BattlePosId = PosId;
-            currentLookPosId = BattlePosId;
-            SetCurrentCamera(false,BattlePosId);
-            MonsterWaveManager.Instance.spawnCurrentWaveAllMonster();
+        public void RPC_MonsterBattle() {        
+                isHomeTeam = true;
+                waveType = WaveType.Monster;
+                opponent.opponentId = -1;
+                BattlePosId = PosId;
+                currentLookPosId = BattlePosId;
+                SetCurrentCamera(false, BattlePosId);
+                MonsterWaveManager.Instance.spawnCurrentWaveAllMonster();
         }
         public void spawnMonster(string name,int placeId) {
             Monster monster = PhotonNetwork.Instantiate(Path.Combine("Prefabs", name), Vector3.zero, Quaternion.identity, 0).GetComponent<Monster>();
@@ -1358,6 +1359,7 @@ namespace TFT
             
             
             PhotonView.RPC("RPC_PlayerDie",PhotonTargets.All,playerId);
+            Shop.Instance.gameObject.SetActive(false);
             PhotonNetwork.DestroyPlayerObjects(PlayerHeroes[playerId].player);
         }
         [PunRPC]

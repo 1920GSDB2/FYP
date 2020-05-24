@@ -146,7 +146,7 @@ namespace TFT
         void Start()
         {
             PlayerHero = new PlayerHero();
-            remainTime = PeriodTime;
+            remainTime = PeriodTime+15f;
 
             readying += OnReadying;
             

@@ -131,4 +131,6 @@ MonoBehaviour:
   - RPC_PlayerDie
   - RPC_SyncAttribute
   - PlayerTFTWin
+  - LoadScene
+  - OnStart
   DisableAutoOpenWizard: 1

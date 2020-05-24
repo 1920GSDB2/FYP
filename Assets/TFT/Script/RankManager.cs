@@ -84,7 +84,9 @@ namespace TFT
             PlayersCollection[_player].DeductHP(_value);
             SortInfoPos();
         }
-
+        public int GetHp() {
+            return PlayerInfo.GetComponent<PlayerInfo>().CurrHp;
+        }
         private void SortInfoPos()
         {
             for(int i =0; i< RankList.childCount; i++)

@@ -68,8 +68,7 @@ namespace TFT
         #region HoverEffect
         void Update()
         {
-            if (!isWalkable)
-                settColor(Color.green);
+          
         }
         
         void OnMouseOver()
