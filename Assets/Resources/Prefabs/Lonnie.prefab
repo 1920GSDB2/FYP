@@ -2810,8 +2810,8 @@ MonoBehaviour:
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
   hitDamage: 0
-  Icon: {fileID: 0}
-  SkillDescription: 
+  Icon: {fileID: 21300000, guid: c714c553b13359647966662bae5ed269, type: 3}
+  SkillDescription: 'Cast to random ally and heal them '
   SelectingBox: {fileID: 8417192808997703802}
   Rarity: 1
   HeroClasses: 0400000005000000

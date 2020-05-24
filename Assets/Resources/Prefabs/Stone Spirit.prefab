@@ -157,8 +157,8 @@ MonoBehaviour:
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
   hitDamage: 0
-  Icon: {fileID: 0}
-  SkillDescription: 
+  Icon: {fileID: 21300000, guid: cc34ede9ef5ee274285d511e9f36b23d, type: 3}
+  SkillDescription: Stone Spirit slam the ground to knockup the enemies.
   SelectingBox: {fileID: 5941775734666665796}
   Rarity: 1
   HeroClasses: 04000000

@@ -738,12 +738,8 @@ MonoBehaviour:
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
   hitDamage: 0
-  Icon: {fileID: 0}
-  SkillDescription: 'Test1234
-
-    1235
-
-    1244'
+  Icon: {fileID: 21300000, guid: 3cfccf190e907ca429436210c94e30af, type: 3}
+  SkillDescription: if the target die by skill, Armor Bear can use again.
   SelectingBox: {fileID: 2167274966950737570}
   Rarity: 3
   HeroClasses: 05000000

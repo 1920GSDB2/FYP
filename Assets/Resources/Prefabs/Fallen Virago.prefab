@@ -237,8 +237,9 @@ MonoBehaviour:
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
   hitDamage: 0
-  Icon: {fileID: 0}
-  SkillDescription: 
+  Icon: {fileID: 21300000, guid: b532906e94d9313458930a52c70378c5, type: 3}
+  SkillDescription: 'After killed the enemy, She will get extra health and attack
+    damage '
   SelectingBox: {fileID: 191879587849838386}
   Rarity: 2
   HeroClasses: 01000000

@@ -2367,8 +2367,8 @@ MonoBehaviour:
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
   hitDamage: 0
-  Icon: {fileID: 0}
-  SkillDescription: 
+  Icon: {fileID: 21300000, guid: d3202a9ecc23f5e48bececb5ee6c2bc7, type: 3}
+  SkillDescription: release thunder and stun the target
   SelectingBox: {fileID: 4486286733742409322}
   Rarity: 3
   HeroClasses: 0400000005000000
