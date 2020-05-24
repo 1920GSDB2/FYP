@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TFT;
 
 public class CharacterSoundPlayer : MonoBehaviour
 {
@@ -15,8 +16,10 @@ public class CharacterSoundPlayer : MonoBehaviour
         if (attackSound != null)
         {
             audioSource.clip = attackSound;
-            audioSource.Play();
-            //Debug.Log("play sound ");
+            Debug.Log("Network" + NetworkManager.Instance.playerId);
+            Debug.Log("play sound "+ SoundSettingManager.Instance.GameSound);
+            audioSource.PlayOneShot(attackSound,SoundSettingManager.Instance.GameSound);
+           
         }
     }
     public void playSkillSound()
@@ -24,7 +27,7 @@ public class CharacterSoundPlayer : MonoBehaviour
         if (skillSound != null)
         {
             audioSource.clip = skillSound;
-            audioSource.Play();
+            audioSource.PlayOneShot(skillSound, SoundSettingManager.Instance.GameSound);
         }
     }
 
