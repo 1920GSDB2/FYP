@@ -139,3 +139,8 @@ public enum WaveType
     Player,
     Shadow
 }
+public enum TFTCharacter {
+    EyeBat,
+    Eagle,
+    TotalCharacter
+}
