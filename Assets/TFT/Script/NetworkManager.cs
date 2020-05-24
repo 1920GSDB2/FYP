@@ -123,6 +123,7 @@ namespace TFT
         int waveFinishResponse;
         int currentLookPosId;
         int loadPlayer;
+        bool isDie;
 
 
         public GameObject debugCamera;
@@ -1357,8 +1358,8 @@ namespace TFT
         }
         public void playerDie() {
             Debug.Log("PLayer Die");
-            
-            
+
+            isDie = true;
             PhotonView.RPC("RPC_PlayerDie",PhotonTargets.All,playerId);
             Shop.Instance.gameObject.SetActive(false);
             EndGamePanel.SetActive(true);
@@ -1373,9 +1374,12 @@ namespace TFT
            
         }
         public void PlayerTFTWin() {
-            EndGamePanel.SetActive(true);
-            EndGame.Instance.OnEnd();
-            EndGame.Instance.EndText.text = "Victory";
+            if (!isDie)
+            {
+                EndGamePanel.SetActive(true);
+                EndGame.Instance.OnEnd();
+                EndGame.Instance.EndText.text = "Victory";
+            }
         }
         public void outGame()
         {
