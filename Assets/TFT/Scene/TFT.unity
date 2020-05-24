@@ -20937,7 +20937,7 @@ MonoBehaviour:
   map: {fileID: 1890850773}
   selfGameBoardHero: []
   battleGameBoardHero: []
-  testButton: {fileID: 1556495765}
+  EndGamePanel: {fileID: 785269384}
   CurrentCamera: {fileID: 0}
   debugCamera: {fileID: 0}
 --- !u!114 &355347624

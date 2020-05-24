@@ -93,7 +93,8 @@ namespace TFT
                 remainPlayer = value;
                 if (remainPlayer <= 1) {
                     if (!PlayerHeroes[playerId].isDead) {
-                        PhotonView.RPC("PlayerTFTWin",PhotonTargets.All);
+                        //  PhotonView.RPC("PlayerTFTWin",PhotonTargets.All);
+                        PlayerTFTWin();
                     }
                 }
             }
@@ -114,8 +115,8 @@ namespace TFT
         TFTPlayerCharacter playerCharacter;
         private static DamageText textPrefab;
         private static GameObject canvas;
-
-        public GameObject testButton;
+        public GameObject EndGamePanel;
+      
         public Camera CurrentCamera;
         //public Camera CurrentCamera { get; private set; }
         public bool isHomeTeam { get; private set; }
@@ -1360,6 +1361,9 @@ namespace TFT
             
             PhotonView.RPC("RPC_PlayerDie",PhotonTargets.All,playerId);
             Shop.Instance.gameObject.SetActive(false);
+            EndGamePanel.SetActive(true);
+            EndGame.Instance.OnEnd();
+            EndGame.Instance.EndText.text = "Lose";
             PhotonNetwork.DestroyPlayerObjects(PlayerHeroes[playerId].player);
         }
         [PunRPC]
@@ -1368,9 +1372,10 @@ namespace TFT
             RemainPlayer--;
            
         }
-        [PunRPC]
         public void PlayerTFTWin() {
-            testButton.SetActive(true);
+            EndGamePanel.SetActive(true);
+            EndGame.Instance.OnEnd();
+            EndGame.Instance.EndText.text = "Victory";
         }
         public void outGame()
         {
