@@ -178,8 +178,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e09067591732c41a8e1f8f86830aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spreadheetId: 1CRcC8CP_bim8Ga69UXFo1cpp39QVB7o9p9UHRONBgfQ
-  worksheetName: Users
+  GameManager: {fileID: 11400000, guid: 81ecca96d371141469ab785dc0afe819, type: 2}
+  playerId: 
+  money: 0
+  Friends:
+    FriendList: []
+  Skins:
+    SkinList: []
+  spreadsheetId: 1lPHnbJSsiZY_cFtD9HwBQ9wMSsTeYTRMh2un-T6shC8
+  worksheetName: PlayerData
 --- !u!1 &839913641
 GameObject:
   m_ObjectHideFlags: 0

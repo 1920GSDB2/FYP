@@ -17,7 +17,7 @@ public class ShopManager : MonoBehaviour
         Instance = this;
         TFTCharacter type =0;
         for (int i = 0; i < (int)TFTCharacter.TotalCharacter; i++) {
-            CreateCollection(type++,true);
+            CreateCollection(type++,false);
         }
         unLockBtn.onClick.AddListener(BuyCharacter);
         closeBtn.onClick.AddListener(ClosePurchaseMenu);
@@ -39,7 +39,9 @@ public class ShopManager : MonoBehaviour
     }
     public void BuyCharacter()
     {
-        
+        //Debuct Money
+        //Add Skin  
+        //Pass enum to database
     }
 
 
