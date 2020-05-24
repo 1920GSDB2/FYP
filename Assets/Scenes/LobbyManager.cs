@@ -271,7 +271,10 @@ public class LobbyManager : MonoBehaviour
         PhotonNetwork.player.CustomProperties = new Hashtable()
         {
             {"NAME", playerName},
-            {"READY_FOR_START", false}
+            {"READY_FOR_START", false},
+            //{"FOCUSING", 0 },
+            //{"ISHOST", true },
+            //{"POSITION", 0 },
         };
 
     }
@@ -295,7 +298,8 @@ public class LobbyManager : MonoBehaviour
         roomOptions.CustomRoomProperties = new Hashtable()
         {
             {"NAME", CreateRoomName.text},
-            {"MATCHMODE", Custom }
+            {"MATCHMODE", Custom },
+            {"FOCUSING", 0 }
         };
 
         roomOptions.CustomRoomPropertiesForLobby = new string[] { "NAME" };
@@ -695,6 +699,15 @@ public class LobbyManager : MonoBehaviour
     void RPC_StartGame()
     {
         PhotonNetwork.LoadLevel("TFT");
+        if (PhotonNetwork.player.CustomProperties["FOCUSING"] == null)
+            PhotonNetwork.player.CustomProperties.Add("FOCUSING", 0);
+
+        if (PhotonNetwork.player.CustomProperties["ISHOST"] == null)
+            PhotonNetwork.player.CustomProperties.Add("ISHOST", true);
+
+        if (PhotonNetwork.player.CustomProperties["POSITION"] == null)
+            PhotonNetwork.player.CustomProperties.Add("POSITION", true);
+
         foreach (LobbyPlayer lobbyPlayer in RoomPlayersList)
         {
             Destroy(lobbyPlayer);

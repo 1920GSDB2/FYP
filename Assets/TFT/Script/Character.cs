@@ -129,7 +129,8 @@ public class Character : MonoBehaviour
     }
 
     public Character testHero;
-    public GameObject HeroBarObject;
+    [SerializeField]
+    protected GameObject HeroBarObject;
     protected HpBar heroBar;
     public GameObject bullet;
     public Node targetNode;
@@ -175,8 +176,8 @@ public class Character : MonoBehaviour
     void Update()
     {
         //  Vector3 targetPostition = new Vector3(HeroBarObject.transform.position.x, cameraPos.y, HeroBarObject.transform.position.x);
-        Vector3 targetPostition = new Vector3(cameraPos.x,HeroBarObject.transform.position.y, HeroBarObject.transform.position.z);
-        HeroBarObject.transform.LookAt(targetPostition);
+        //Vector3 targetPostition = new Vector3(cameraPos.x,HeroBarObject.transform.position.y, HeroBarObject.transform.position.z);
+        //HeroBarObject.transform.LookAt(targetPostition);
         if (HeroState == HeroState.Idle && !isStun)
         {
             IdleState();
@@ -503,7 +504,7 @@ public class Character : MonoBehaviour
     }
     IEnumerator FollowStep(Node step)
     {
-        GetComponent<PhotonView>().RPC("RPC_FollowStep", PhotonTargets.Others, NetworkManager.Instance.battlePosId, step.heroPlace.PlaceId, step.heroPlace.gridY);
+        GetComponent<PhotonView>().RPC("RPC_FollowStep", PhotonTargets.Others, NetworkManager.Instance.BattlePosId, step.heroPlace.PlaceId, step.heroPlace.gridY);
         MoveToThePlace(step.heroPlace);
         transform.LookAt(step.heroPlace.transform);
         animator.SetBool("Walk", true);
@@ -589,7 +590,7 @@ public class Character : MonoBehaviour
         this.isEnemy = isEnemy;
         photonView.RPC("RPC_ShowHpBar", PhotonTargets.All, posId,NetworkManager.Instance.playerId);
         photonView.RPC("RPC_Mirror", PhotonTargets.Others);
-        photonView.RPC("RPC_SyncInfo", PhotonTargets.All,NetworkManager.Instance.battlePosId);
+        photonView.RPC("RPC_SyncInfo", PhotonTargets.All,NetworkManager.Instance.BattlePosId);
 
         combatStart?.Invoke(this, EventArgs.Empty);
         StartCoroutine(RecoveryHP());

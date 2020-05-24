@@ -32,6 +32,12 @@ namespace TFT
             //    transform.position.x);
             //transform.LookAt(targetPostition);
             //transform.LookAt(NetworkManager.Instance.CurrentCamera.transform);
+            Camera camera = NetworkManager.Instance.CurrentCamera;
+            //Vector3 targetPostition = new Vector3(transform.position.x, -camera.transform.position.y, transform.position.z);
+            //transform.LookAt(targetPostition);
+            transform.LookAt(transform.position + camera.transform.rotation * Vector3.back,
+                camera.transform.rotation * Vector3.up);
+
 
         }
         public void setHpBarWithDamage(float precentage)

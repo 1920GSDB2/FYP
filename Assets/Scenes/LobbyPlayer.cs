@@ -39,8 +39,9 @@ public class LobbyPlayer : MonoBehaviour
         if (readyProperties)
         {
             IsReady = true;
+            ReadyButtonText.text = "IsReady";
         }
-        
+
         SetKickButton();
 
         if (PhotonPlayer != PhotonNetwork.player)
@@ -76,7 +77,21 @@ public class LobbyPlayer : MonoBehaviour
             //{
             //    {"READY_FOR_START", "READY" }
             //});
-            PhotonPlayer.CustomProperties["READY_FOR_START"] = true;
+            Hashtable playerProp = PhotonNetwork.player.CustomProperties;
+            PhotonNetwork.player.SetCustomProperties(new Hashtable
+            {
+                {"NAME", playerProp["NAME"] },
+                {"READY_FOR_START", true}
+            });
+            //    = new Hashtable()
+            //{
+            //    {"NAME", playerName},
+            //    {"READY_FOR_START", false},
+            //    //{"FOCUSING", 0 },
+            //    //{"ISHOST", true },
+            //    //{"POSITION", 0 },
+            //};
+            //PhotonPlayer.CustomProperties["READY_FOR_START"] = true;
         }
         else
         {
@@ -85,9 +100,15 @@ public class LobbyPlayer : MonoBehaviour
             //{
             //    {"READY_FOR_START", "NOT_READY" }
             //});
-           // PhotonPlayer.CustomProperties["READY_FOR_START"] = "NOT_READY";
-            PhotonPlayer.CustomProperties["READY_FOR_START"] = false;
+            // PhotonPlayer.CustomProperties["READY_FOR_START"] = "NOT_READY";
+            //PhotonPlayer.CustomProperties["READY_FOR_START"] = false;
+            Hashtable playerProp = PhotonNetwork.player.CustomProperties;
 
+            PhotonNetwork.player.SetCustomProperties(new Hashtable
+            {
+                {"NAME", playerProp["NAME"] },
+                {"READY_FOR_START", false }
+            });
         }
     }
     
