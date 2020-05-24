@@ -50,7 +50,7 @@ public class Test : MonoBehaviour
         TestFriend test = new TestFriend();
         test.name = "ABC";
         test.friends = list1.ToArray();
-        List<string> list3 = new List<string>{
+        List<string> test5 = new List<string>{
             JsonUtility.ToJson(test),
         };
         JsonUtility.ToJson(list1);
