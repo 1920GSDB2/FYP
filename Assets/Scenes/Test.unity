@@ -179,12 +179,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 11400000, guid: 81ecca96d371141469ab785dc0afe819, type: 2}
+  defaultName: test
   playerId: 
   money: 0
   Friends:
     FriendList: []
   Skins:
     SkinList: []
+    currSkin: 
   spreadsheetId: 1lPHnbJSsiZY_cFtD9HwBQ9wMSsTeYTRMh2un-T6shC8
   worksheetName: PlayerData
 --- !u!1 &839913641

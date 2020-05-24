@@ -10,6 +10,6 @@ public struct Friends
 [System.Serializable]
 public struct Skins
 {
-    public string[] SkinList;
+    public List<string> SkinList;
     public string currSkin;
 }

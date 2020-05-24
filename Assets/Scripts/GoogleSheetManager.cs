@@ -10,6 +10,7 @@ public class GoogleSheetManager : MonoBehaviour
     public static GoogleSheetManager Instance;
     [SerializeField]
     private Main.GameManager GameManager;
+    public string defaultId = "test";
 
     public string playerId;
     public int money;
@@ -34,7 +35,7 @@ public class GoogleSheetManager : MonoBehaviour
         }
         else
         {
-            playerId = "test8999";
+            playerId = defaultId;
         }
         ReadOnStart();
     }
@@ -49,7 +50,6 @@ public class GoogleSheetManager : MonoBehaviour
         if (ss.rows.ContainsKey(playerId))
         {
             SetPlayerData(ss.rows[playerId]);
-
         }
         else
         {
@@ -63,7 +63,6 @@ public class GoogleSheetManager : MonoBehaviour
             newData.Add(JsonUtility.ToJson(Skins));
             SpreadsheetManager.Append(new GSTU_Search(spreadsheetId, worksheetName), new ValueRange(newData), null);
         }
-        //UpdateStats(ss.rows["test7"]);
     }
     private void SetPlayerData(List<GSTU_Cell> list)
     {
@@ -94,14 +93,7 @@ public class GoogleSheetManager : MonoBehaviour
             }
         }
     }
-    void UpdateStats(List<GSTU_Cell> list)
-    {
-        Debug.Log(list.Count);
-        for(int i =0;i < list.Count; i++)
-        {
-            Debug.Log(list[i].columnId + ": " + list[i].value);
-        }
-    }
+    
     private void Write()
     {
         List<string> friends = new List<string>
@@ -138,28 +130,49 @@ public class GoogleSheetManager : MonoBehaviour
         };
         SpreadsheetManager.Append(new GSTU_Search(spreadsheetId, worksheetName), new ValueRange(list), null);
     }
-
-    private void Read()
+    
+    public bool BuyCharacter(TFTCharacter character)
     {
-        SpreadsheetManager.Read(new GSTU_Search(spreadsheetId, worksheetName), ReadHandler);
-    }
-    private void ReadHandler(GstuSpreadSheet sheetRef)
-    {
-        //Debug.Log(sheetRef["test1"].ToString());
-        //int money = int.Parse();
-        foreach(var value in sheetRef["test5", "Money", true])
+        int price = CollectionStore.Instance.GetPrice(character);
+        if (money-price >= 0)
         {
-            Debug.Log("money: " + value.value.ToString());
-
+            money = money - price;
+            Debug.Log("Money: "+money);
+            if (!Skins.SkinList.Contains(character.ToString()))
+            {
+                Skins.SkinList.Add(character.ToString());
+            }
+            SpreadsheetManager.Read(new GSTU_Search(spreadsheetId, worksheetName), BuyCharacter);
+            return true;
         }
-        //sheetRef["​Badger​", ​"​Health​"].​value; ​//This will return the value of the Badgers health 
-        //foreach​ ​(​var​ value ​in​ spreadsheetRef​["​Badger​",​ ​"Items"​,​ ​true​]) {
-        //    Debug​.​log​(​value​.​value​.​ToString​()); //Debug out all the badgers items 
-        //} 
+        return false;
     }
-    // Update is called once per frame
-    void Update()
+    private void BuyCharacter(GstuSpreadSheet ss)
     {
-        
+        BatchRequestBody updateRequest = new BatchRequestBody();
+        updateRequest.Add(ss[playerId, "Money"].
+            AddCellToBatchUpdate(spreadsheetId, worksheetName, money.ToString()));
+
+        updateRequest.Add(ss[playerId, "Skins"].
+           AddCellToBatchUpdate(spreadsheetId, worksheetName, JsonUtility.ToJson(Skins)));
+
+        updateRequest.Send(spreadsheetId, worksheetName, null);
+    }
+
+    public bool ChangeCharacter(TFTCharacter character)
+    {
+        if (Skins.SkinList.Contains(character.ToString()))
+        {
+            Skins.currSkin = character.ToString();
+            SpreadsheetManager.Read(new GSTU_Search(spreadsheetId, worksheetName), ChangeCharacter);
+            return true;
+        }
+        return false;
+
+    }
+
+    private void ChangeCharacter(GstuSpreadSheet ss)
+    {
+        ss[playerId, "Skins"].UpdateCellValue(spreadsheetId, worksheetName, JsonUtility.ToJson(Skins));
     }
 }

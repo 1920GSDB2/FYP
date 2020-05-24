@@ -47,8 +47,15 @@ public class Collection : MonoBehaviour
             changeCharacter();
 
     }
-    public void BuyThisCollection(){
-        
+
+    public void BuyThisCollection()
+    {
+        Debug.Log("BuyThisCollection");
+        isLock = !GoogleSheetManager.Instance.BuyCharacter(type);
+        if (!isLock)
+        {
+            
+        }
     }
    
     public void changeCharacter() {

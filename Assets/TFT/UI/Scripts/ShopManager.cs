@@ -19,13 +19,13 @@ public class ShopManager : MonoBehaviour
     public void Start()
     {
         Instance = this;
-        TFTCharacter type =0;
-        for (int i = 0; i < (int)TFTCharacter.TotalCharacter; i++) {
-            CreateCollection(type++,false);
+        TFTCharacter type = 0;
+        for (int i = 0; i < (int)TFTCharacter.TotalCharacter; i++)
+        {
+            CreateCollection(type++, true);
         }
         closeBtn.onClick.AddListener(ClosePurchaseMenu);
         unLockBtn.onClick.AddListener(BuyCharacter);
-       
     }
     public void CreateCollection(TFTCharacter type,bool isLock) {
         Collection collection = Instantiate(collectionPrefab,collectionBag);
