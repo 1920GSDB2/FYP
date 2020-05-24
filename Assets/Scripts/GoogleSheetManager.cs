@@ -59,6 +59,7 @@ public class GoogleSheetManager : MonoBehaviour
         {
             Friends = new Friends();
             Skins = new Skins();
+            Skins.SkinList = new List<string>();
 
             List<string> newData = new List<string>();
             newData.Add(playerId);
