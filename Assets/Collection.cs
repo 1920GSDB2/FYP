@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using System;
 
 public class Collection : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class Collection : MonoBehaviour
     public Image icon;
     public Button button;
     public bool isLock;
+    
     private void Start()
     {
         button.onClick.AddListener(checkUse);
@@ -35,13 +36,21 @@ public class Collection : MonoBehaviour
         }
 
     }
+
     public void checkUse() {
         if (isLock)
-            ShopManager.Instance.OpenPurchaseMenu(type);
+        {
+            ShopManager.Instance.OpenPurchaseMenu(CollectionStore.Instance.GetPrice(type));
+            ShopManager.Instance.purchaseCollection(BuyThisCollection);
+        }
         else
             changeCharacter();
 
     }
+    public void BuyThisCollection(){
+        
+    }
+   
     public void changeCharacter() {
 
     }
