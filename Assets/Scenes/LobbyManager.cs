@@ -15,7 +15,8 @@ public class LobbyManager : MonoBehaviour
         StartPanel,
         LobbyPanel,
         InformationPanel,
-        GameRoomPanel
+        GameRoomPanel,
+        CollectionPanel
     }
     public enum UsingPanelType
     {
@@ -46,6 +47,7 @@ public class LobbyManager : MonoBehaviour
     public Button StartButton;
     public Button LobbyButton;
     public Button InformationButton;
+    public Button CollectionButton;
 
     [Header("Game Mode Buttons")]
     public Button MatchButton;
@@ -72,7 +74,8 @@ public class LobbyManager : MonoBehaviour
     public GameObject LobbyPanel;
     public GameObject InformationPanel;
     public GameObject GameRoomPanel;
-    static GameObject[] FunctionPanelsArr = new GameObject[4];
+    public GameObject collectionPanel;
+    static GameObject[] FunctionPanelsArr = new GameObject[5];
 
     [Header("Using Panels")]
     public GameObject MatchModePanel;
@@ -137,7 +140,7 @@ public class LobbyManager : MonoBehaviour
         FunctionPanelsArr[1] = LobbyPanel;
         FunctionPanelsArr[2] = InformationPanel;
         FunctionPanelsArr[3] = GameRoomPanel;
-
+        FunctionPanelsArr[4] = collectionPanel;
         //Using Panels Manage
         UsingPanelsArr[0] = MatchModePanel;
         UsingPanelsArr[1] = CreateCustomPanel;
@@ -151,6 +154,7 @@ public class LobbyManager : MonoBehaviour
         StartButton.onClick.AddListener(delegate { SwitchFunctionPanel(FunctionPanelType.StartPanel); SwitchUsingPanel(UsingPanelType.MatchModePanel); });
         LobbyButton.onClick.AddListener(delegate { SwitchFunctionPanel(FunctionPanelType.LobbyPanel); });
         InformationButton.onClick.AddListener(delegate { SwitchFunctionPanel(FunctionPanelType.InformationPanel); });
+        CollectionButton.onClick.AddListener(delegate { SwitchFunctionPanel(FunctionPanelType.CollectionPanel); });
         MatchButton.onClick.AddListener(delegate { SwitchUsingPanel(UsingPanelType.MatchModePanel); });
         CreateCustomButton.onClick.AddListener(delegate { SwitchUsingPanel(UsingPanelType.CreateCustomPanel); });
         JoinCustomButton.onClick.AddListener(delegate { SwitchUsingPanel(UsingPanelType.JoinCustomPanel); });
@@ -219,6 +223,9 @@ public class LobbyManager : MonoBehaviour
                 break;
             case FunctionPanelType.GameRoomPanel:
                 FunctionPanelsArr[3].SetActive(true);
+                break;
+            case FunctionPanelType.CollectionPanel:
+                FunctionPanelsArr[4].SetActive(true);
                 break;
         }
     }
