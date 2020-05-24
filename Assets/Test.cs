@@ -11,42 +11,13 @@ public struct TestFriend
 public class Test : MonoBehaviour
 {
     // Start is called before the first frame update
-    [HideInInspector]
-    public string associatedSheet = "1lPHnbJSsiZY_cFtD9HwBQ9wMSsTeYTRMh2un-T6shC8";
-    [HideInInspector]
-    public string associatedWorksheet = "test";
+    public string associatedSheet;
+    public string associatedWorksheet;  
 
     List<string> list;
     void Start()
     {
-        //List<string> list1 = new List<string>{
-        //    "Test1",
-        //    "Test2",
-        //    "Test3",
-        //    "Test4",
-        //    "Test5",
-        //    "Test6",
-        //};
-        //List<string> list2 = new List<string>{
-        //    "Test5",
-        //    "Test6",
-        //    "Test7",
-        //    "Test8",
-        //    "Test9",
-        //    "Test10",
-        //};
-        //List<List<string>> combineList = new List<List<string>>{
-        //    list1,
-        //    list2
-        //};
-        //TestFriend test = new TestFriend();
-        //test.name = "ABC";
-        //test.friends = list1.ToArray();
-        //List<string> list3 = new List<string>{
-        //    JsonUtility.ToJson(test),
-        //};
-        //JsonUtility.ToJson(list1);
-        //SpreadsheetManager.Append(new GSTU_Search(associatedSheet, associatedWorksheet), new ValueRange(list3), null);
+        //WriteTest();
         UpdateHandler();
 
     }
@@ -54,15 +25,45 @@ public class Test : MonoBehaviour
     {
         SpreadsheetManager.Read(new GSTU_Search(associatedSheet, associatedWorksheet), UpdateTest);
     }
-
+    private void WriteTest()
+    {
+        List<string> list1 = new List<string>{
+            "Test1",
+            "Test2",
+            "Test3",
+            "Test4",
+            "asdfTest5",
+            "Test6",
+        };
+        List<string> list2 = new List<string>{
+            "Test5",
+            "Testasdf6",
+            "Test7",
+            "Test8",
+            "Tesdafst9",
+            "Test10",
+        };
+        List<List<string>> combineList = new List<List<string>>{
+            list1,
+            list2
+        };
+        TestFriend test = new TestFriend();
+        test.name = "ABC";
+        test.friends = list1.ToArray();
+        List<string> list3 = new List<string>{
+            JsonUtility.ToJson(test),
+        };
+        JsonUtility.ToJson(list1);
+        SpreadsheetManager.Append(new GSTU_Search(associatedSheet, associatedWorksheet), new ValueRange(combineList), null);
+    }
     private void UpdateTest(GstuSpreadSheet ss)
     {
         List<string> list2 = new List<string>{
             "Test5",
-            "Test6",
+            "Testasdas6",
             "Test7",
-            "Test8",
-            "Test9",
+            "Testasd8",
+            "Tesasdasdt9",
             "Test10",
         };
         TestFriend test = new TestFriend();

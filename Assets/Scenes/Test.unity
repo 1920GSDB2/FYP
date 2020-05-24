@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc9a515f0c301e4ab7e2c697702545d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  associatedSheet: 1lPHnbJSsiZY_cFtD9HwBQ9wMSsTeYTRMh2un-T6shC8
+  associatedWorksheet: PlayerData
 --- !u!4 &562197063
 Transform:
   m_ObjectHideFlags: 0
