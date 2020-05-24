@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+
 
 public class Collection : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public TextMeshProUGUI nameText;
+    public Image icon;
+  
+    public void setCollection(Sprite icon,string name) {
+        nameText.text = name;
+        this.icon.sprite = icon;
     }
 }
