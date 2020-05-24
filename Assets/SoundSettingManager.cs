@@ -12,11 +12,17 @@ public class SoundSettingManager : MonoBehaviour
     public Slider uiSoundSlider;
     public TextMeshProUGUI gameSoundText, bgSoundText, uiSoundText;
     public Button settingMenuBtn, applyBtn, okBtn;
-    public float backGroundSound = 1f;
+    public float backGroundSound;
+    public float BackGroundSound {
+        get{ return backGroundSound; }
+        set { backGroundSound = value; }
+
+    }
     public float GameSound = 1f;
     public float UiSound = 1f;
     public GameObject Setting;
     bool isOpen;
+    AudioSource bgSound;
 
     private void Awake()
     {
@@ -24,13 +30,16 @@ public class SoundSettingManager : MonoBehaviour
     }
     public void Start()
     {
+        
         gameSoundSlider.onValueChanged.AddListener(delegate { OnGameSoundChange(); });
         bgSoundSlider.onValueChanged.AddListener(delegate { OnBackGroundSoundChange(); });
         uiSoundSlider.onValueChanged.AddListener(delegate { OnUiSoundChange(); });
         settingMenuBtn.onClick.AddListener(openSettingMenu);
         applyBtn.onClick.AddListener(applySetting);
         okBtn.onClick.AddListener(closeSettingMenu);
+        bgSound.volume = backGroundSound;
     }
+    
     public void OnGameSoundChange()
     {
         gameSoundText.text = ((int)(gameSoundSlider.value * 100)).ToString();
