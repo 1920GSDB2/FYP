@@ -18,10 +18,14 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     public ChatClient ChatClient;
     public string UserName;
     public string CurrentChannel;
-    public string[] FriendsList;                //Loaded from database
+    public string[] FriendsList { get { return GoogleSheetManager.Instance.Friends.FriendList; } }                //Loaded from database
+    public Transform FriendListTransform;
+    public GameObject FriendPrefab;
     public string[] ChannelsToJoinOnConnect;    //Usually is room Id
     public int HistoryLengthToFetch;
-    public GameObject FriendListUiItemtoInstantiate;
+
+    private readonly Dictionary<string, Friend> friendListItemLUT = new Dictionary<string, Friend>();
+    //public GameObject FriendListUiItemtoInstantiate;
 
     private void Awake()
     {
@@ -30,9 +34,10 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
         SendButon.onClick.AddListener(delegate { OnClickSend(); });
         ChatClient = new ChatClient(this);
-
+        //FriendsList = GoogleSheetManager.Instance.Friends.FriendList;
         UserName = "player#" + Random.Range(1000, 9999); 
         if (GameManager.userData.name != null && !GameManager.userData.name.Equals(""))
         {
@@ -143,8 +148,9 @@ public class ChatManager : MonoBehaviour, IChatClientListener
             // add to the UI as well
             foreach (string _friend in this.FriendsList)
             {
-                if (this.FriendListUiItemtoInstantiate != null && _friend != this.UserName)
+                if (this.FriendPrefab != null && _friend != this.UserName)
                 {
+                    Debug.Log("SetFriend");
                     this.InstantiateFriendButton(_friend);
                 }
 
@@ -185,7 +191,11 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 
     public void OnStatusUpdate(string user, int status, bool gotMessage, object message)
     {
-
+        if (this.friendListItemLUT.ContainsKey(user))
+        {
+            Friend _friendItem = this.friendListItemLUT[user];
+            if (_friendItem != null) _friendItem.OnFriendStatusUpdate(status, gotMessage, message);
+        }
     }
 
     public void OnSubscribed(string[] channels, bool[] results)
@@ -211,14 +221,17 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     
     private void InstantiateFriendButton(string friendId)
     {
-        GameObject fbtn = (GameObject)Instantiate(this.FriendListUiItemtoInstantiate);
+        GameObject fbtn = (GameObject)Instantiate(this.FriendPrefab);
         fbtn.gameObject.SetActive(true);
-        FriendItem _friendItem = fbtn.GetComponent<FriendItem>();
+        Friend _friendItem = fbtn.GetComponent<Friend>();
 
-        _friendItem.FriendId = friendId;
+        _friendItem.FriendName = friendId;
 
-        fbtn.transform.SetParent(this.FriendListUiItemtoInstantiate.transform.parent, false);
+        fbtn.transform.SetParent(this.FriendListTransform.transform);
+        FriendListTransform.gameObject.SetActive(false);
+        FriendListTransform.gameObject.SetActive(true);
 
+        friendListItemLUT[friendId] = _friendItem;
         //this.friendListItemLUT[friendId] = _friendItem;
     }
     

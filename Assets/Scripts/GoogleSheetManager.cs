@@ -17,6 +17,9 @@ public class GoogleSheetManager : MonoBehaviour
     public Friends Friends;
     public Skins Skins;
 
+    public Transform FriendListTransform;
+    public Friend FriendPrefab;
+
     public string spreadsheetId;
     public string worksheetName;
     public EventHandler finishLoad;
@@ -84,6 +87,7 @@ public class GoogleSheetManager : MonoBehaviour
                 case "Friends":
                     {
                         Friends = JsonUtility.FromJson<Friends>(list[i].value);
+                        SetFriend();
                         break;
                     }
                 case "Skins":
@@ -95,6 +99,16 @@ public class GoogleSheetManager : MonoBehaviour
         }
     }
     
+    private void SetFriend()
+    {
+        foreach(string friendName in Friends.FriendList)
+        {
+            GameObject friend = Instantiate(FriendPrefab.gameObject, FriendListTransform);
+
+            friend.GetComponent<Friend>().FriendName = friendName;
+        }
+
+    }
     private void Write()
     {
         List<string> friends = new List<string>
