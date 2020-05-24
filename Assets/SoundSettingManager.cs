@@ -15,14 +15,18 @@ public class SoundSettingManager : MonoBehaviour
     public float backGroundSound;
     public float BackGroundSound {
         get{ return backGroundSound; }
-        set { backGroundSound = value; }
+        set {
+            backGroundSound = value;
+            bgSound.volume = backGroundSound;
+            Debug.Log(bgSound.volume+"suound ");
+        }
 
     }
     public float GameSound = 1f;
     public float UiSound = 1f;
     public GameObject Setting;
     bool isOpen;
-    AudioSource bgSound;
+    public AudioSource bgSound;
 
     private void Awake()
     {
@@ -30,14 +34,15 @@ public class SoundSettingManager : MonoBehaviour
     }
     public void Start()
     {
-        
+
+        bgSound = GetComponent<AudioSource>();
         gameSoundSlider.onValueChanged.AddListener(delegate { OnGameSoundChange(); });
         bgSoundSlider.onValueChanged.AddListener(delegate { OnBackGroundSoundChange(); });
         uiSoundSlider.onValueChanged.AddListener(delegate { OnUiSoundChange(); });
         settingMenuBtn.onClick.AddListener(openSettingMenu);
         applyBtn.onClick.AddListener(applySetting);
         okBtn.onClick.AddListener(closeSettingMenu);
-        bgSound.volume = backGroundSound;
+       
     }
     
     public void OnGameSoundChange()
@@ -57,7 +62,7 @@ public class SoundSettingManager : MonoBehaviour
     {
         isOpen = !isOpen;
         gameSoundSlider.value = GameSound;
-        bgSoundSlider.value = backGroundSound;
+        bgSoundSlider.value = BackGroundSound;
         uiSoundSlider.value = UiSound;
         Setting.SetActive(isOpen);
     }
@@ -68,7 +73,7 @@ public class SoundSettingManager : MonoBehaviour
     public void applySetting()
     {
         UiSound = uiSoundSlider.value;
-        backGroundSound = bgSoundSlider.value;
+        BackGroundSound = bgSoundSlider.value;
         GameSound = gameSoundSlider.value;
     }
 }

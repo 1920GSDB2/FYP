@@ -1740,7 +1740,7 @@ MonoBehaviour:
   ManaRecoveryRate: 1
   HealthRecoveryRate: 0
   ShieldInit: 0
-  BasicHealth: 5
+  BasicHealth: 10
   MaxMana: 100
   Mana: 0
   BasicAttackDamage: 8

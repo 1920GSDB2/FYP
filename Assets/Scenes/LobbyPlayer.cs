@@ -81,7 +81,8 @@ public class LobbyPlayer : MonoBehaviour
             PhotonNetwork.player.SetCustomProperties(new Hashtable
             {
                 {"NAME", playerProp["NAME"] },
-                {"READY_FOR_START", true}
+                {"READY_FOR_START", true},
+                { "Character_Name",GoogleSheetManager.Instance.Skins.currSkin}
             });
             //    = new Hashtable()
             //{
@@ -107,7 +108,8 @@ public class LobbyPlayer : MonoBehaviour
             PhotonNetwork.player.SetCustomProperties(new Hashtable
             {
                 {"NAME", playerProp["NAME"] },
-                {"READY_FOR_START", false }
+                {"READY_FOR_START", false },
+                {"Character_Name",GoogleSheetManager.Instance.Skins.currSkin}
             });
         }
     }

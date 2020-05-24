@@ -821,10 +821,10 @@ MonoBehaviour:
   ManaRecoveryRate: 1
   HealthRecoveryRate: 0
   ShieldInit: 0
-  BasicHealth: 6
+  BasicHealth: 10
   MaxMana: 100
   Mana: 0
-  BasicAttackDamage: 5
+  BasicAttackDamage: 4
   BasicAttackSpeed: 8
   BasicSkillPower: 0
   BasicPhysicalDefense: 80

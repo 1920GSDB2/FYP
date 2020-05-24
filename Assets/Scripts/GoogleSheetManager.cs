@@ -19,7 +19,7 @@ public class GoogleSheetManager : MonoBehaviour
 
     public string spreadsheetId;
     public string worksheetName;
-
+    public EventHandler finishLoad;
     private void Awake()
     {
         Instance = this;
@@ -63,6 +63,7 @@ public class GoogleSheetManager : MonoBehaviour
             newData.Add(JsonUtility.ToJson(Skins));
             SpreadsheetManager.Append(new GSTU_Search(spreadsheetId, worksheetName), new ValueRange(newData), null);
         }
+        finishLoad?.Invoke(this,EventArgs.Empty);
     }
     private void SetPlayerData(List<GSTU_Cell> list)
     {
