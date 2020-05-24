@@ -20165,6 +20165,7 @@ MonoBehaviour:
   HeroRares: 
   BasicInfo: {fileID: 1792528174}
   Hero: {fileID: 0}
+  HeroIcon: {fileID: 307230748}
 --- !u!4 &353223857 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3158269132295923720, guid: 8a0ba05707546d24295bc5996d7fbfc9,
@@ -49393,6 +49394,7 @@ MonoBehaviour:
   HeroRares: 
   BasicInfo: {fileID: 871237905}
   Hero: {fileID: 0}
+  HeroIcon: {fileID: 1995334859}
 --- !u!1 &928878142
 GameObject:
   m_ObjectHideFlags: 0
@@ -86067,6 +86069,7 @@ MonoBehaviour:
   HeroRares: 
   BasicInfo: {fileID: 1400608466}
   Hero: {fileID: 0}
+  HeroIcon: {fileID: 1205252795}
 --- !u!1001 &1580390185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87080,6 +87083,7 @@ MonoBehaviour:
   HeroRares: 
   BasicInfo: {fileID: 445635526}
   Hero: {fileID: 0}
+  HeroIcon: {fileID: 357755996}
 --- !u!1 &1589363936
 GameObject:
   m_ObjectHideFlags: 0
@@ -87137,6 +87141,7 @@ MonoBehaviour:
   HeroRares: 
   BasicInfo: {fileID: 787183766}
   Hero: {fileID: 0}
+  HeroIcon: {fileID: 1552434485}
 --- !u!1 &1589871259
 GameObject:
   m_ObjectHideFlags: 0
