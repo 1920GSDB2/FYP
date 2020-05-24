@@ -15,6 +15,7 @@ public class SoundSettingManager : MonoBehaviour
     public float backGroundSound = 1f;
     public float GameSound = 1f;
     public float UiSound = 1f;
+    public GameObject Setting;
     bool isOpen;
 
     private void Awake()
@@ -49,11 +50,11 @@ public class SoundSettingManager : MonoBehaviour
         gameSoundSlider.value = GameSound;
         bgSoundSlider.value = backGroundSound;
         uiSoundSlider.value = UiSound;
-        gameObject.SetActive(isOpen);
+        Setting.SetActive(isOpen);
     }
     public void closeSettingMenu()
     {
-        gameObject.SetActive(false);
+        Setting.SetActive(false);
     }
     public void applySetting()
     {
