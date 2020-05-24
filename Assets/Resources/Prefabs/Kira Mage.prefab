@@ -682,6 +682,7 @@ MonoBehaviour:
   attackRange: 11
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
+  hitDamage: 0
   Icon: {fileID: 0}
   SkillDescription: 
   SelectingBox: {fileID: 99125584472732209}

@@ -127,6 +127,8 @@ MonoBehaviour:
   NegativeEffectManager: {fileID: 0}
   attackRange: 11
   isTargetable: 0
+  DebugHeroPlace: {fileID: 0}
+  hitDamage: 0
   Icon: {fileID: 0}
   SkillDescription: 
   SelectingBox: {fileID: 5942783873252722593}
@@ -137,7 +139,7 @@ MonoBehaviour:
   skill: {fileID: 3807111969949568895}
   EquipmentManager: {fileID: 0}
   testSkill: {fileID: 0}
-  Price: 0
+  isSelectable: 1
   BuffStatuses: []
 --- !u!114 &4770013014636726004
 MonoBehaviour:

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7193862426839555573
 Transform:
   m_ObjectHideFlags: 0
@@ -192,6 +192,7 @@ MonoBehaviour:
   attackRange: 11
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
+  hitDamage: 0
   Icon: {fileID: 0}
   SkillDescription: 
   SelectingBox: {fileID: 1898811942396278906}
