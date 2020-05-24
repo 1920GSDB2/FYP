@@ -10,7 +10,16 @@ namespace TFT
     {
         public static BuffList Instance;
 
+        //private HeroBuffList heroBuffList;
         public HeroBuffList HeroBuffList;
+        //{
+        //    get { return heroBuffList; }
+        //    set
+        //    {
+        //        heroBuffList = value;
+                
+        //    }
+        //}
         public Transform buffList;
         public Buff buff;
 
@@ -20,7 +29,7 @@ namespace TFT
         public TextMeshProUGUI ButtonText;
         public float delayTime = 0.2f;
 
-        public bool isShowList = true;
+        public bool isShowList;
         private Vector2 currPos, nextPos;
         private RectTransform RectTransform, BuffListTranForm;
         private BuffersManager BuffersManager;
@@ -53,10 +62,24 @@ namespace TFT
             CheckAddBuff();
             CheckRemoveBuff();
 
-            float buffListWidth = ((int)(buffList.transform.childCount / 4) + 1) * 30;
+            //float buffListWidth = ((int)(buffList.transform.childCount / 4) + 1) * 30;
+            //if (buffList.transform.childCount == 0) buffListWidth = 0;
+            //BuffListTranForm.sizeDelta = new Vector2(buffListWidth, 155);
+
+            int buffCount = HeroBuffList.ClassValue.Count + HeroBuffList.RaceValue.Count;
+            float buffListWidth = Mathf.Ceil(buffCount / 4f) * 30;
             if (buffList.transform.childCount == 0) buffListWidth = 0;
             BuffListTranForm.sizeDelta = new Vector2(buffListWidth, 155);
-
+            if (isShowList)
+            {
+                nextPos.x = 0;
+                ButtonText.text = "<";
+            }
+            else
+            {
+                nextPos.x = -RectTransform.sizeDelta.x + 15;
+                ButtonText.text = ">";
+            }
         }
 
         private void CheckAddBuff()

@@ -75,7 +75,7 @@ namespace TFT
                     BuffList.Instance.HeroBuffList = NetworkManager.PlayerHeroes[i].BuffList;
                 }
             }*/
-             NetworkManager.Instance.watchOtherPlayer(PlayerName.text);
+             NetworkManager.Instance.WatchOtherPlayer(PlayerName.text);
         }
 
         // Update is called once per frame

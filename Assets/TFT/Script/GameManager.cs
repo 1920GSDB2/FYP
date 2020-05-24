@@ -214,7 +214,7 @@ namespace TFT
                 {
                     //_hero.gameObject.transform.parent = SelfPlayerArena.SelfArena.HeroList.GetChild(i);
                     //_hero.gameObject.transform.localPosition = Vector3.zero;
-                    _hero.GetComponent<PhotonView>().RPC("RPC_AddToHeroList", PhotonTargets.All, NetworkManager.Instance.posId, i);
+                    _hero.GetComponent<PhotonView>().RPC("RPC_AddToHeroList", PhotonTargets.All, NetworkManager.Instance.PosId, i);
 
                     //Check hero weather level up
                     NetworkHero networkHero = CheckHeroLevelUp(new NetworkHero(_hero.name, i, _hero.HeroLevel));

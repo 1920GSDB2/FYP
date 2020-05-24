@@ -19,7 +19,7 @@ public class SummonSkill : Skill
             HeroPlace summonPlace = NetworkManager.Instance.getNeighboursHeroPlace(heroPlace);
             if (summonPlace.gridY >= 3)
                 isEnemyPlace = true;
-            monster.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, NetworkManager.Instance.battlePosId, summonPlace.PlaceId, isEnemyPlace);
+            monster.GetComponent<PhotonView>().RPC("RPC_MoveToThePlayerHeroPlace", PhotonTargets.All, NetworkManager.Instance.BattlePosId, summonPlace.PlaceId, isEnemyPlace);
             
         }
     }
