@@ -279,6 +279,7 @@ public class LobbyManager : MonoBehaviour
         {
             {"NAME", playerName},
             {"READY_FOR_START", false},
+            {"Character_Name",GoogleSheetManager.Instance.Skins.currSkin}
             //{"FOCUSING", 0 },
             //{"ISHOST", true },
             //{"POSITION", 0 },

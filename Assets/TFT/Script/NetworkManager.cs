@@ -690,8 +690,12 @@ namespace TFT
                          posId = posId,
                          player = PhotonNetwork.player
                      };*/
-                   // Debug.Log("my id " + playerId + " posid " + posId);
-                    playerCharacter = PhotonNetwork.Instantiate(Path.Combine("otherPrefabs", "Eagle"), Vector3.zero, Quaternion.identity, 0).GetComponent<TFTPlayerCharacter>();
+                    // Debug.Log("my id " + playerId + " posid " + posId);
+                    string characterName=PhotonNetwork.player.CustomProperties["Character_Name"].ToString();
+
+                    if (characterName == "")
+                        characterName = "LifeStone";
+                    playerCharacter = PhotonNetwork.Instantiate(Path.Combine("otherPrefabs", characterName), Vector3.zero, Quaternion.identity, 0).GetComponent<TFTPlayerCharacter>();
                     playerCharacter.GetComponent<PhotonView>().RPC("RPC_SyncPlayerCharacterPosition", PhotonTargets.All, PosId);
                     int CharacterViewId = playerCharacter.GetComponent<PhotonView>().viewID;
                   //  Debug.Log("set my position playerid " + playerId + " posid " + posId);

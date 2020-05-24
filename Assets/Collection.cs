@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using ExitGames.Client.Photon;
 
 public class Collection : MonoBehaviour
 {
@@ -54,11 +54,31 @@ public class Collection : MonoBehaviour
         isLock = !GoogleSheetManager.Instance.BuyCharacter(type);
         if (!isLock)
         {
-            
+            Unlock();
+        }
+        else{
+            ShopManager.Instance.ShowBuyFail();
         }
     }
    
     public void changeCharacter() {
-
+        GoogleSheetManager.Instance.ChangeCharacter(type);
+        ShopManager.Instance.showChangeSuccessfully();
+        Hashtable playerProp = PhotonNetwork.player.CustomProperties;
+        PhotonNetwork.player.SetCustomProperties(new Hashtable
+        {
+            {"NAME", playerProp["NAME"] },
+            {"READY_FOR_START", playerProp["READY_FOR_START"] },
+            {"Character_Name",GoogleSheetManager.Instance.Skins.currSkin}
+        });
+    }
+    public void Unlock() {
+        ShopManager.Instance.ClosePurchaseMenu();
+        ColorBlock color = button.colors;
+        color.normalColor = Color.green;
+        button.colors = color;
+        button.GetComponentInChildren<TextMeshProUGUI>().text = "Use";
+        isLock = false;
+        ShopManager.Instance.ShowBuySuccess();
     }
 }

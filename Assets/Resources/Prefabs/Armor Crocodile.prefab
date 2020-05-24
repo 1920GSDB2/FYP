@@ -422,7 +422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8678298023113272776
 Transform:
   m_ObjectHideFlags: 0
@@ -737,6 +737,7 @@ MonoBehaviour:
   attackRange: 11
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
+  hitDamage: 0
   Icon: {fileID: 0}
   SkillDescription: 'Test1234
 
