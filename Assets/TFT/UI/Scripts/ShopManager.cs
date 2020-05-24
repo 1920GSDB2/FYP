@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+
 public class ShopManager : MonoBehaviour
 {
     public static ShopManager Instance;
     public Collection collectionPrefab;
     public Transform collectionBag;
     public Button unLockBtn,closeBtn;
-    public GameObject buyPanel;
-    int currentCharacterPrice;
-    TFTCharacter currnetCharacterType;
+    public GameObject buyPanel;  
     public TextMeshProUGUI payText;
+    public delegate void Purchase();
+    Purchase buy;
+
     public void Start()
     {
         Instance = this;
@@ -20,8 +23,8 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < (int)TFTCharacter.TotalCharacter; i++) {
             CreateCollection(type++,true);
         }
-        unLockBtn.onClick.AddListener(BuyCharacter);
         closeBtn.onClick.AddListener(ClosePurchaseMenu);
+        unLockBtn.onClick.AddListener(BuyCharacter);
        
     }
     public void CreateCollection(TFTCharacter type,bool isLock) {
@@ -30,19 +33,20 @@ public class ShopManager : MonoBehaviour
 
     }
 
-    public void OpenPurchaseMenu(TFTCharacter type) {
-        currnetCharacterType = type;
-        currentCharacterPrice = CollectionStore.Instance.GetPrice(currnetCharacterType);
-        payText.text = "$ " + currentCharacterPrice + "to unlock this item";
+    public void OpenPurchaseMenu(int price ) {
+        
+        payText.text = "$ " + price + "to unlock this item";
         buyPanel.SetActive(true);
     }
     public void ClosePurchaseMenu() {
         buyPanel.SetActive(false);
     }
-    public void BuyCharacter()
-    {
-        
+    public void purchaseCollection(Purchase purchase) {
+        buy += purchase;
     }
-
-
+    public void BuyCharacter() {
+        buy();
+        buy = null;        
+    }
+   
 }
