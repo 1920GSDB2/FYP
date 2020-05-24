@@ -1,80 +1,25 @@
-﻿using GoogleSheetsToUnity;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct TestFriend
-{
-    public string name;
-    public string[] friends;
-}
-public class Test : MonoBehaviour
-{
-    // Start is called before the first frame update
-    public string associatedSheet;
-    public string associatedWorksheet;  
+public class Test : MonoBehaviour {
 
-    List<string> list;
-    void Start()
-    {
-        //WriteTest();
-        UpdateHandler();
-
+	// Use this for initialization
+	void Start () {
+        Debug.LogWarning("hello");
+        string content="";
+        SkinnedMeshRenderer[] smrs = this.GetComponentsInChildren<SkinnedMeshRenderer>();
+        for(int i=0;i<smrs.Length;i++)
+        {
+            SkinnedMeshRenderer smr = smrs[i];
+            content += string.Format("{0:}\n",smr.name);
+            for(int j=0;j<smr.sharedMesh.blendShapeCount;j++)
+            {
+                content+= string.Format("    {0}\n", smr.sharedMesh.GetBlendShapeName(j));
+            }
+        }
+        Debug.LogWarning(content);
     }
-    private void UpdateHandler()
-    {
-        SpreadsheetManager.Read(new GSTU_Search(associatedSheet, associatedWorksheet), UpdateTest);
-    }
-    private void WriteTest()
-    {
-        List<string> list1 = new List<string>{
-            "Test1",
-            "Test2",
-            "Test3",
-            "Test4",
-            "asdfTest5",
-            "Test6",
-        };
-        List<string> list2 = new List<string>{
-            "Test5",
-            "Testasdf6",
-            "Test7",
-            "Test8",
-            "Tesdafst9",
-            "Test10",
-        };
-        List<List<string>> combineList = new List<List<string>>{
-            list1,
-            list2
-        };
-        TestFriend test = new TestFriend();
-        test.name = "ABC";
-        test.friends = list1.ToArray();
-        List<string> test5 = new List<string>{
-            JsonUtility.ToJson(test),
-        };
-        JsonUtility.ToJson(list1);
-        SpreadsheetManager.Append(new GSTU_Search(associatedSheet, associatedWorksheet), new ValueRange(combineList), null);
-    }
-    private void UpdateTest(GstuSpreadSheet ss)
-    {
-        List<string> list2 = new List<string>{
-            "Test5",
-            "Testasdas6",
-            "Test7",
-            "Testasd8",
-            "Tesasdasdt9",
-            "Test10",
-        };
-        TestFriend test = new TestFriend();
-
-        test.name = "Bdd";
-        test.friends = list2.ToArray();
-        ss["Bdd", "data"].UpdateCellValue(associatedSheet, associatedWorksheet, JsonUtility.ToJson(test));
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	
+	
 }

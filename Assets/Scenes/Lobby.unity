@@ -5965,7 +5965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b230c08f864094e4baa0018871266c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectionPrefab: {fileID: 1848462652, guid: 95e60725240f49b46b57b09667d22385, type: 3}
+  collectionPrefab: {fileID: 1848462652, guid: e6519cb5ae88d4e49ad2a8ef4eb73d56, type: 3}
   collectionBag: {fileID: 262230528}
   unLockBtn: {fileID: 918843261}
   closeBtn: {fileID: 513631330}
