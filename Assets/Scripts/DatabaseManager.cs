@@ -52,8 +52,8 @@ public class DatabaseManager : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("method", "Login");
-        form.AddField("id", _id);
-        form.AddField("pw", _pw);
+        form.AddField("Id", _id);
+        form.AddField("Password", _pw);
         //WWW www = new WWW(connectManager.databaseIP, form);
         //yield return www;
         //Debug.Log(www.text);
@@ -68,6 +68,7 @@ public class DatabaseManager : MonoBehaviour
         else
         {
             string jsonString = www.downloadHandler.text;
+            //Debug.Log(jsonString);
             if (!jsonString.Equals("Verify Account Fail, Try Again!"))
             {
                 GameManager.userData = JsonUtility.FromJson<UserData>(jsonString);
