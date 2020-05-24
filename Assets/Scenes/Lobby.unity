@@ -14026,7 +14026,7 @@ MonoBehaviour:
   SendMessageField: {fileID: 3215277904343225373}
   DisplayMessageField: {fileID: 3215277903691199031}
   SendButon: {fileID: 3215277902967003875}
-  UserName: 
+  UserName: 456
   CurrentChannel: 
   FriendListTransform: {fileID: 1225845396}
   FriendPrefab: {fileID: 9050043308911836402, guid: 0fa33ff91ad67a749aac7c1c0da6ef23,
