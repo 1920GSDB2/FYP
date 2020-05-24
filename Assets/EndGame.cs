@@ -28,6 +28,7 @@ public class EndGame : MonoBehaviour
         mat = GetComponent<Image>().material;
         ContinueButton.onClick.AddListener(delegate { OnStayView(); });
         EndButton.onClick.AddListener(delegate { OnBack(); });
+        LittleBack.onClick.AddListener(delegate { OnBack(); });
     }
 
     private void Update()
@@ -52,6 +53,7 @@ public class EndGame : MonoBehaviour
 
     public void OnBack()
     {
+      
         next = 1;
 
         current = 1;
