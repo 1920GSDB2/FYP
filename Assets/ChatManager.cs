@@ -17,7 +17,7 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 
     public ChatClient ChatClient;
     public string UserName;
-    public string RoomId;
+    public string CurrentChannel;
     public string[] FriendsList;                //Loaded from database
     public string[] ChannelsToJoinOnConnect;    //Usually is room Id
     public int HistoryLengthToFetch;
@@ -75,14 +75,14 @@ public class ChatManager : MonoBehaviour, IChatClientListener
         }
 
 
-        bool doingPrivateChat = this.ChatClient.PrivateChannels.ContainsKey(this.RoomId);
+        bool doingPrivateChat = this.ChatClient.PrivateChannels.ContainsKey(this.CurrentChannel);
         string privateChatTarget = string.Empty;
         if (doingPrivateChat)
         {
             // the channel name for a private conversation is (on the client!!) always composed of both user's IDs: "this:remote"
             // so the remote ID is simple to figure out
 
-            string[] splitNames = this.RoomId.Split(new char[] { ':' });
+            string[] splitNames = this.CurrentChannel.Split(new char[] { ':' });
             privateChatTarget = splitNames[1];
         }
         //UnityEngine.Debug.Log("selectedChannelName: " + selectedChannelName + " doingPrivateChat: " + doingPrivateChat + " privateChatTarget: " + privateChatTarget);
@@ -94,7 +94,7 @@ public class ChatManager : MonoBehaviour, IChatClientListener
         }
         else
         {
-            this.ChatClient.PublishMessage(this.RoomId, inputLine);
+            this.ChatClient.PublishMessage(this.CurrentChannel, inputLine);
         }
     }
 
