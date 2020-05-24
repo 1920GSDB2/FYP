@@ -93,8 +93,12 @@ public class LobbyManager : MonoBehaviour
     public GameObject MatchStatusPanel;
     public MatchAcceptance MatchAcceptPanel;
     #endregion
+    [Header("Sound")]
+    public AudioClip clickSound;
+    public AudioClip readySound;
+    public AudioClip clickSound2;
+    AudioSource audioSource;
 
-    
     #region Text
     [Header("Text")]
     public TMP_InputField CreateRoomName;
@@ -133,6 +137,7 @@ public class LobbyManager : MonoBehaviour
         {
             instance = this;
         }
+        audioSource = GetComponent<AudioSource>();
         PhotonView = GetComponent<PhotonView>();
 
         //Function Panels Manage
@@ -228,6 +233,7 @@ public class LobbyManager : MonoBehaviour
                 FunctionPanelsArr[4].SetActive(true);
                 break;
         }
+        audioSource.PlayOneShot(clickSound,1f);
     }
 
     public void SwitchUsingPanel(UsingPanelType _type)
@@ -254,6 +260,7 @@ public class LobbyManager : MonoBehaviour
                 break;
 
         }
+        audioSource.PlayOneShot(clickSound, 1f);
     }
     #endregion
 
@@ -771,5 +778,12 @@ public class LobbyManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             countUpTime++;
         }
+    }
+    public void playReadySound() {
+        audioSource.PlayOneShot(readySound, 1f);
+    }
+    public void playClickSound2()
+    {
+        audioSource.PlayOneShot(clickSound2, 1f);
     }
 }
