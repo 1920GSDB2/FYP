@@ -509,6 +509,9 @@ public class LobbyManager : MonoBehaviour
     //Called by photon, When player join room
     private void OnJoinedRoom()
     {
+        ChatManager.Instance.ChatClient.Subscribe(new string[] { PhotonNetwork.room.Name });
+        ChatManager.Instance.CurrentChannel = PhotonNetwork.room.Name;
+
 
         if (PhotonNetwork.room.CustomProperties["MATCHMODE"].Equals(Custom))
         {
@@ -587,6 +590,8 @@ public class LobbyManager : MonoBehaviour
     #region Leave Room
     public void OnClickLeftRoom()
     {
+        ChatManager.Instance.ChatClient.Unsubscribe(new string[] { PhotonNetwork.room.Name });
+        ChatManager.Instance.CurrentChannel = "Public";
         //print("Leave room");
         //PhotonNetwork.player.CustomProperties["READY_FOR_START"] = "NOT_READY";
         if (PhotonNetwork.isMasterClient)
