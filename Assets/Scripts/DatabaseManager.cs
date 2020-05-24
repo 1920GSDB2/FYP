@@ -68,6 +68,7 @@ public class DatabaseManager : MonoBehaviour
         else
         {
             string jsonString = www.downloadHandler.text;
+            //Debug.Log(jsonString);
             if (!jsonString.Equals("Verify Account Fail, Try Again!"))
             {
                 GameManager.userData = JsonUtility.FromJson<UserData>(jsonString);
