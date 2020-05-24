@@ -59,13 +59,19 @@ public class GoogleSheetManager : MonoBehaviour
         {
             Friends = new Friends();
             Skins = new Skins();
-            Skins.SkinList = new List<string>();
+            Skins.SkinList = new List<string> { };
 
-            List<string> newData = new List<string>();
-            newData.Add(playerId);
-            newData.Add(money.ToString());
-            newData.Add(JsonUtility.ToJson(Friends));
-            newData.Add(JsonUtility.ToJson(Skins));
+            List<string> newData = new List<string>()
+            {
+                playerId,
+                money.ToString(),
+                JsonUtility.ToJson(Friends),
+                JsonUtility.ToJson(Skins)
+            };
+            //newData.Add(playerId);
+            //newData.Add(money.ToString());
+            //newData.Add(JsonUtility.ToJson(Friends));
+            //newData.Add(JsonUtility.ToJson(Skins));
             SpreadsheetManager.Append(new GSTU_Search(spreadsheetId, worksheetName), new ValueRange(newData), null);
         }
         finishLoad?.Invoke(this,EventArgs.Empty);
