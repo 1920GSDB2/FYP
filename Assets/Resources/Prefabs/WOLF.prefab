@@ -1009,7 +1009,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1062,7 +1062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 742debd6c3e568b4baf42eaa5d06ea35, type: 3}
   skillSound: {fileID: 0}
 --- !u!1 &6630874381936654224
 GameObject:
