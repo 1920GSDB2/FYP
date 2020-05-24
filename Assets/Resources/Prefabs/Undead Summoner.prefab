@@ -193,8 +193,8 @@ MonoBehaviour:
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
   hitDamage: 0
-  Icon: {fileID: 0}
-  SkillDescription: 
+  Icon: {fileID: 21300000, guid: 71e2fd8f59d60a745b436ee0ec0e086a, type: 3}
+  SkillDescription: ' sinking under the ground and deal damage to enemy.'
   SelectingBox: {fileID: 1898811942396278906}
   Rarity: 1
   HeroClasses: 0600000004000000

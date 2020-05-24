@@ -246,8 +246,8 @@ MonoBehaviour:
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
   hitDamage: 0
-  Icon: {fileID: 0}
-  SkillDescription: 
+  Icon: {fileID: 21300000, guid: f5a0c1ee89384b24ab40f56a5e7e47aa, type: 3}
+  SkillDescription: Vikander becoming invincisble for 3 seconds
   SelectingBox: {fileID: 5428630125610194871}
   Rarity: 3
   HeroClasses: 0100000003000000

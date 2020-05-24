@@ -3187,8 +3187,8 @@ MonoBehaviour:
   isTargetable: 0
   DebugHeroPlace: {fileID: 0}
   hitDamage: 0
-  Icon: {fileID: 0}
-  SkillDescription: 
+  Icon: {fileID: 21300000, guid: 249722e52543aad4ba696b14e54bcb7a, type: 3}
+  SkillDescription: Use his sheild to stun enemy.
   SelectingBox: {fileID: 216957540}
   Rarity: 0
   HeroClasses: 05000000
