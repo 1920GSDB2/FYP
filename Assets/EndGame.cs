@@ -40,6 +40,7 @@ public class EndGame : MonoBehaviour
     public void OnEnd()
     {
         next = 0;
+        GoogleSheetManager.Instance.AddMoney(10);
     }
 
     public void OnStayView()
