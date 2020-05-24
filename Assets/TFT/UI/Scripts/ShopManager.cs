@@ -11,6 +11,7 @@ public class ShopManager : MonoBehaviour
     public Button unLockBtn,closeBtn;
     public GameObject buyPanel;
     int currentCharacterPrice;
+    TFTCharacter currnetCharacterType;
     public TextMeshProUGUI payText;
     public void Start()
     {
@@ -30,7 +31,8 @@ public class ShopManager : MonoBehaviour
     }
 
     public void OpenPurchaseMenu(TFTCharacter type) {
-        currentCharacterPrice = CollectionStore.Instance.GetPrice(type);
+        currnetCharacterType = type;
+        currentCharacterPrice = CollectionStore.Instance.GetPrice(currnetCharacterType);
         payText.text = "$ " + currentCharacterPrice + "to unlock this item";
         buyPanel.SetActive(true);
     }
