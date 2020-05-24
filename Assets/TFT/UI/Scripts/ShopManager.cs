@@ -38,10 +38,12 @@ public class ShopManager : MonoBehaviour
     }
     public void ClosePurchaseMenu() {
         buyPanel.SetActive(false);
+        LobbyManager.instance.playClickSound2();
     }
     public void CloseHintMenu()
     {
         hintPanel.SetActive(false);
+        LobbyManager.instance.playClickSound2();
     }
     public void purchaseCollection(Purchase purchase) {
         buy += purchase;

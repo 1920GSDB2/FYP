@@ -59,6 +59,7 @@ public class Collection : MonoBehaviour
         else{
             ShopManager.Instance.ShowBuyFail();
         }
+        LobbyManager.instance.playClickSound2();
     }
    
     public void changeCharacter() {
@@ -71,6 +72,7 @@ public class Collection : MonoBehaviour
             {"READY_FOR_START", playerProp["READY_FOR_START"] },
             {"Character_Name",GoogleSheetManager.Instance.Skins.currSkin}
         });
+        LobbyManager.instance.playClickSound2();
     }
     public void Unlock() {
         ShopManager.Instance.ClosePurchaseMenu();
@@ -79,6 +81,6 @@ public class Collection : MonoBehaviour
         button.colors = color;
         button.GetComponentInChildren<TextMeshProUGUI>().text = "Use";
         isLock = false;
-        ShopManager.Instance.ShowBuySuccess();
+        ShopManager.Instance.ShowBuySuccess();        
     }
 }

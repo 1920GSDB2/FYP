@@ -16,6 +16,7 @@ public class LobbyPlayer : MonoBehaviour
     public Button KickButton;
     public TextMeshProUGUI ReadyButtonText;
 
+ 
     public PhotonPlayer PhotonPlayer { get; private set; }
     public bool IsReady;
     // Start is called before the first frame update
@@ -112,6 +113,7 @@ public class LobbyPlayer : MonoBehaviour
                 {"Character_Name",GoogleSheetManager.Instance.Skins.currSkin}
             });
         }
+        LobbyManager.instance.playReadySound();
     }
     
     //Kick Player
