@@ -26,8 +26,8 @@ namespace TFT
 
         RectTransform shopRect;
         public RectTransform textRect;
-
-
+        AudioSource audioSource;
+        public AudioClip buySound, refreshSound, buyExpSound,sellSound;
 
         private void Awake()
         {
@@ -36,7 +36,7 @@ namespace TFT
 
         void Start()
         {
-            
+            audioSource = GetComponent<AudioSource>();
             MainGameManager = TFT.GameManager.Instance.MainGameManager;
             TFTGameManager = TFT.GameManager.Instance;
             SelectManager = SelectManager.Instance;
@@ -49,7 +49,7 @@ namespace TFT
             currrShopPos = shopRect.anchoredPosition;
             nextShopPos = currrShopPos;
             currShopBtnRot = textRect.eulerAngles;
-
+            
             RemoveButton.onClick.AddListener(delegate { RemoveHero(); });
         }
 
@@ -94,6 +94,7 @@ namespace TFT
                 asset.AssetValue += ((int)selectHero.Rarity+1) * ((int)selectHero.HeroLevel + 1);
                 PhotonNetwork.Destroy(selectHero.gameObject);
                 SelectManager.DragObject = null;
+                audioSource.PlayOneShot(sellSound, SoundSettingManager.Instance.UiSound);
             }
         }
 
@@ -111,6 +112,8 @@ namespace TFT
                 heroUis[i].Hero = heroTypes[heroId];
                 heroUis[i].gameObject.SetActive(true);
             }
+           
+
         }
 
         public void BuyRefresh()
@@ -119,6 +122,7 @@ namespace TFT
             {
                 asset.AssetValue -= RefreshPrice;
                 RefreshShop();
+                audioSource.PlayOneShot(refreshSound, SoundSettingManager.Instance.UiSound);
             }
         }
 
@@ -128,6 +132,7 @@ namespace TFT
             {
                 asset.AssetValue -= ExpPrice;
                 TFTGameManager.LevelManager.BuyExp(ExpPrice);
+                audioSource.PlayOneShot(buyExpSound, SoundSettingManager.Instance.UiSound);
             }
         }
 
@@ -146,6 +151,7 @@ namespace TFT
                     asset.AssetValue -= heroUi.BasicInfo.price;
                     //newHero.Price = heroUi.BasicInfo.price;
                     heroUi.gameObject.SetActive(false);
+                    audioSource.PlayOneShot(buySound, SoundSettingManager.Instance.UiSound);
                 }
                 else
                 {
