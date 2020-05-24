@@ -30,6 +30,7 @@ public class GoogleSheetManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
         //Read();
         //Write();
         if (GameManager.userData.id != null && !GameManager.userData.id.Equals(""))
@@ -109,42 +110,6 @@ public class GoogleSheetManager : MonoBehaviour
         }
 
     }
-    private void Write()
-    {
-        List<string> friends = new List<string>
-        {
-            "sd",
-            "qw",
-            "gg",
-            "wp"
-        };
-        List <string> skin = new List<string>
-        {
-           "sd",
-            "qw",
-            "gg",
-            "wp",
-            "sd",
-            "qw",
-            "gg",
-            "wp"
-        };
-        List<object> writeData = new List<object>
-        {
-            "test5",
-            500.ToString(),
-            friends,
-            skin
-        };
-        List<string> list = new List<string> {
-            "2020年5月24日 上午09:10:37",
-            "test22",
-            "test22",
-            "test22",
-            "test22@gmail.com"
-        };
-        SpreadsheetManager.Append(new GSTU_Search(spreadsheetId, worksheetName), new ValueRange(list), null);
-    }
     
     public bool BuyCharacter(TFTCharacter character)
     {
@@ -189,5 +154,17 @@ public class GoogleSheetManager : MonoBehaviour
     private void ChangeCharacter(GstuSpreadSheet ss)
     {
         ss[playerId, "Skins"].UpdateCellValue(spreadsheetId, worksheetName, JsonUtility.ToJson(Skins));
+    }
+
+    public void AddMoney(int money)
+    {
+        money += money;
+        SpreadsheetManager.Read(new GSTU_Search(spreadsheetId, worksheetName), ChangeCharacter);
+
+    }
+
+    private void AddMoney(GstuSpreadSheet ss)
+    {
+        ss[playerId, "Money"].UpdateCellValue(spreadsheetId, worksheetName, money.ToString());
     }
 }
