@@ -41,18 +41,15 @@ public class ShopManager : MonoBehaviour
     public void ClosePurchaseMenu() {
         buyPanel.SetActive(false);
     }
-    public void BuyCharacter()
-    {
-        //Debuct Money
-        //Add Skin  
-        //Pass enum to database
-    }
     public void purchaseCollection(Purchase purchase) {
         buy += purchase;
     }
     public void BuyCharacter() {
         buy();
-        buy = null;        
+        buy = null;
+        //Debuct Money
+        //Add Skin  
+        //Pass enum to database
     }
-   
+
 }
