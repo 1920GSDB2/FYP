@@ -89,20 +89,20 @@ namespace TFT
         }
         private void SortInfoPos()
         {
-            for(int i =0; i< RankList.childCount; i++)
-            {
-                for(int j = i + 1; j < RankList.childCount; j++)
-                {
-                    PlayerInfo playerI = RankList.GetChild(i).GetComponent<PlayerInfo>();
-                    PlayerInfo playerJ = RankList.GetChild(j).GetComponent<PlayerInfo>();
-                    if (playerJ.CurrHp > playerI.CurrHp)
-                    {
-                        Transform temp = RankList.GetChild(j);
-                        RankList.GetChild(j).SetSiblingIndex(i);
-                        temp.SetSiblingIndex(j);
-                    }
-                }
-            }
+            //for(int i =0; i< RankList.childCount; i++)
+            //{
+            //    for(int j = i + 1; j < RankList.childCount; j++)
+            //    {
+            //        PlayerInfo playerI = RankList.GetChild(i).GetComponent<PlayerInfo>();
+            //        PlayerInfo playerJ = RankList.GetChild(j).GetComponent<PlayerInfo>();
+            //        if (playerJ.CurrHp > playerI.CurrHp)
+            //        {
+            //            Transform temp = RankList.GetChild(j);
+            //            RankList.GetChild(j).SetSiblingIndex(i);
+            //            temp.SetSiblingIndex(j);
+            //        }
+            //    }
+            //}
         }
     }
 

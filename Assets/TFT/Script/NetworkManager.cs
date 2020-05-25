@@ -498,6 +498,10 @@ namespace TFT
                     break;
                 }
             }
+            if (CurrentCamera != GameManager.Instance.MainCamera)
+            {
+                //GameManager.Instance.MainCamera.gameObject.SetActive(false);
+            }
             //for (int i = 0; i < PlayerName.Length; i++)
             //{
             //    if (i == PosId)
