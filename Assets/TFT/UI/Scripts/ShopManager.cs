@@ -76,9 +76,10 @@ public class ShopManager : MonoBehaviour
         {
             Debug.Log("i have " + s);
         }
-
+        Debug.Log("TFT chess length "+ (int)TFTCharacter.TotalCharacter);
         for (int i = 0; i < (int)TFTCharacter.TotalCharacter; i++)
         {
+            Debug.Log("create "+ CollectionStore.Instance.GetName(type));
             if (playerCharacter.Contains(CollectionStore.Instance.GetName(type)))
                 CreateCollection(type++, false);
             else
