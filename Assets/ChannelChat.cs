@@ -8,6 +8,8 @@ public class ChannelChat : MonoBehaviour
 {
     public TMP_InputField InputBox;
     public Image DisplayBackgroud;
+    public Button SendButon;
+
 
     public float slerpTime = 0.05f;
     private float currentValue, nextValue;
@@ -15,7 +17,8 @@ public class ChannelChat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SendButon.onClick.AddListener(delegate { ChatManager.Instance.OnClickSend(); });
+
     }
 
     // Update is called once per frame

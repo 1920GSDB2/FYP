@@ -492,6 +492,7 @@ namespace TFT
                     {
                         SetCurrentCamera(isHost, targetCurrPosId);
                     }
+                    Debug.Log("Camera Watching on player: " + targetCurrPosId);
                     CurrentCamera.gameObject.SetActive(true);
 
                     BuffList.Instance.HeroBuffList = PlayerHeroes[targetPosId].BuffList;

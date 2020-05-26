@@ -15,6 +15,10 @@ TagManager:
   - FxTemporaire
   - SelfArena
   - EnemyArena
+  - Display Message Box
+  - Send Message Field
+  - Send Button
+  - Chat Display Panel
   layers:
   - Default
   - TransparentFX

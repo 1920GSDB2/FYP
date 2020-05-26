@@ -10,9 +10,9 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 {
     public Main.GameManager GameManager;
     public static ChatManager Instance;
+    public GameObject ChatDisplayPanel;
     public TMP_InputField SendMessageField;
     public TextMeshProUGUI DisplayMessageField;
-    public Button SendButon;
     protected internal ChatSettings chatAppSettings;
 
     public ChatClient ChatClient;
@@ -35,7 +35,6 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     void Start()
     {
         DontDestroyOnLoad(this);
-        SendButon.onClick.AddListener(delegate { OnClickSend(); });
         ChatClient = new ChatClient(this);
         //FriendsList = GoogleSheetManager.Instance.Friends.FriendList;
         UserName = "player#" + Random.Range(1000, 9999); 
@@ -49,6 +48,14 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     void Update()
     {
         ChatClient.Service();
+        if (ChatDisplayPanel == null)
+            ChatDisplayPanel = GameObject.FindGameObjectWithTag("Chat Display Panel");
+
+        if (DisplayMessageField == null)
+            DisplayMessageField = GameObject.FindGameObjectWithTag("Display Message Box").GetComponent<TextMeshProUGUI>(); 
+
+        if (SendMessageField == null)
+            SendMessageField = GameObject.FindGameObjectWithTag("Send Message Field").GetComponent<TMP_InputField>();
     }
 
     public void OnClickSend()
@@ -172,7 +179,7 @@ public class ChatManager : MonoBehaviour, IChatClientListener
         {
             msgs = string.Format("{0}{1}={2}, ", msgs, senders[i], messages[i]);
         }
-        Debug.Log("Channel Name:" + channelName + "\n" + "Messages: " + msgs);
+        //Debug.Log("Channel Name:" + channelName + "\n" + "Messages: " + msgs);
 
         ChatChannel channel = null;
         bool found = this.ChatClient.TryGetChannel(channelName, out channel);
@@ -200,12 +207,26 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 
     public void OnSubscribed(string[] channels, bool[] results)
     {
-
+        if(ChatDisplayPanel == null)
+        {
+            ChatDisplayPanel = GameObject.FindGameObjectWithTag("Chat Display Panel");
+        }
+        if (ChatDisplayPanel != null && ChatClient.PublicChannels.Count > 0)
+        {
+            ChatDisplayPanel.SetActive(true);
+        }
     }
 
     public void OnUnsubscribed(string[] channels)
     {
-
+        if (ChatDisplayPanel == null)
+        {
+            ChatDisplayPanel = GameObject.FindGameObjectWithTag("Chat Display Panel");
+        }
+        if (ChatDisplayPanel != null && ChatClient.PublicChannels.Count <= 0)
+        {
+            ChatDisplayPanel.SetActive(false);
+        }
     }
 
     public void OnUserSubscribed(string channel, string user)
