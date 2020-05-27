@@ -12,7 +12,7 @@ public class SoundSettingManager : MonoBehaviour
     public Slider uiSoundSlider;
     public TextMeshProUGUI gameSoundText, bgSoundText, uiSoundText;
     public Button settingMenuBtn, applyBtn, okBtn;
-    public float backGroundSound;
+    private float backGroundSound;
     public float BackGroundSound {
         get{ return backGroundSound; }
         set {

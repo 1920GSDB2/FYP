@@ -1443,6 +1443,11 @@ namespace TFT
             RemainPlayer--;
 
         }
+        [PunRPC]
+        public void RPC_FinishLoading()
+        {
+            GameManager.Instance.FinishLoading();
+        }
         public void PlayerTFTWin()
         {
             if (!isDie)

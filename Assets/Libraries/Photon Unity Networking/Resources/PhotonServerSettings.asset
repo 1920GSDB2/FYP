@@ -133,4 +133,5 @@ MonoBehaviour:
   - PlayerTFTWin
   - LoadScene
   - OnStart
+  - RPC_FinishLoading
   DisableAutoOpenWizard: 1

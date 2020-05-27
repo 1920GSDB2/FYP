@@ -11,6 +11,8 @@ namespace TFT
     {
         public static GameManager Instance;
         public Camera MainCamera;
+        public int loadingTime = 15;
+        public GameObject loadingPanel;
 
         [Header("Manager")]
         public Main.GameManager MainGameManager;
@@ -146,8 +148,14 @@ namespace TFT
         void Start()
         {
             PlayerHero = new PlayerHero();
-            remainTime = PeriodTime+15f;
-
+            remainTime = PeriodTime + loadingTime;
+            SoundSettingManager.Instance.BackGroundSound = 0;
+            SoundSettingManager.Instance.GameSound = 0;
+            SoundSettingManager.Instance.UiSound = 0;
+            if (PhotonNetwork.isMasterClient)
+            {
+                StartCoroutine(StartLoading(loadingTime));
+            }
             readying += OnReadying;
             
         }
@@ -445,6 +453,18 @@ namespace TFT
         public void finishWave() {          
             if(LastGameStatus==GameStatus.Readying)
             RemainTime = 0;
+        }
+        public void FinishLoading()
+        {
+            loadingPanel.SetActive(false);
+            SoundSettingManager.Instance.BackGroundSound = 1;
+            SoundSettingManager.Instance.GameSound = 1;
+            SoundSettingManager.Instance.UiSound = 1;
+        }
+        public IEnumerator StartLoading(int loadingTime)
+        {
+            yield return new WaitForSeconds(loadingTime);
+            NetworkManager.PhotonView.RPC("RPC_FinishLoading", PhotonTargets.All);
         }
     }
 }
