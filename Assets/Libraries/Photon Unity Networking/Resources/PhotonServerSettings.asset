@@ -16,7 +16,7 @@ MonoBehaviour:
   VoiceAppID: 
   ChatAppID: 
   HostType: 1
-  PreferredRegion: 2
+  PreferredRegion: 0
   EnabledRegions: -1
   Protocol: 0
   ServerAddress: 
@@ -35,103 +35,79 @@ MonoBehaviour:
   - Flash
   - InstantiateRpc
   - Marco
+  - overTimeFinish
   - PickupItemInit
   - Polo
   - PunPickup
   - PunPickupSimple
   - PunRespawn
+  - RankChange
   - RequestForPickupItems
   - RequestForPickupTimes
+  - RPC_addBattleHero
+  - RPC_AddMaxHP
+  - RPC_addShield
   - RPC_AddToGameBoard
   - RPC_AddToHeroList
-  - RPC_Animation
-  - RPC_Battle
-  - RPC_CreatePlayer
-  - RPC_LoadedGameScene
-  - RPC_MoveToThePlayerHeroPlace
-  - RPC_OnLeftRoom
-  - RPC_PlayerJoinRoom
-  - RPC_Ready
-  - RPC_SetPlayerId
-  - RPC_SetupPlayerPosition
-  - RPC_StartGame
-  - RPC_SyncPlayerHeroes
-  - RPC_SyncPlayerHeroPlace
-  - RPC_SyncPlayersOpponent
-  - RPC_Test
-  - RPC_testHeroes
-  - TaggedPlayer
-  - test
-  - RPC_SyncPlayerPosition
-  - RPC_test
-  - RPC_FollowStep
-  - RPC_Attack
-  - showHpBar
-  - RPC_ShowHpBar
-  - RPC_ChangeHeroStatus
-  - RPC_StopWalk
   - RPC_AttackAnimation
-  - RPC_TargetTakeDamage
-  - RPC_SyncPlayerInformation
-  - RPC_FinishBattle
-  - RPC_Heal
-  - RPC_ResetStatus
-  - testC
-  - MonsterBattle
-  - ReduceMp
-  - RPC_IncreaseMp
-  - RPC_ReduceMp
-  - RankChange
-  - RPC_Shoot
-  - RPC_SyncTargetEnemy
-  - syncNetworkPlaceId
-  - RPC_SyncPlayerCharacterPosition
-  - RPC_PlayerCharacterMoveToGameBoard
-  - RPC_PlayerCharacterBackToGameBoard
-  - hitPlayerCharacter
-  - RPC_HitOpponent
-  - RPC_SyncBattleHero
-  - RPC_HitPlayerCharacter
-  - rotate
-  - setPosition
-  - RPC_Mirror
-  - setTransformView
-  - RPC_endWave
-  - RPC_Response
-  - RPC_resetResponse
-  - RPC_userSkill
-  - RPC_SyncCastObject
+  - RPC_Battle
+  - RPC_castAoeSkill
+  - RPC_castDieSkill
   - RPC_castUnitTargetSkill
-  - RPC_castSkillOnPosition
-  - RPC_castUnitTargetSkillToCharacter
+  - RPC_ChangeStatus
+  - RPC_DIE
+  - RPC_endWave
+  - RPC_FinishLoading
+  - RPC_FollowStep
+  - RPC_Heal
+  - RPC_HitOpponent
+  - RPC_HitPlayerCharacter
+  - RPC_IncreaseMp
+  - RPC_InstallEquipment
   - RPC_MeleeSkill
   - RPC_MeleeSkillAnimation
-  - RPC_castAoeSkill
-  - RPC_SyncHeroAttribute
-  - RPC_castDieSkill
-  - RPC_SetupPlayerName
-  - RPC_addShield
-  - RPC_setPosId
-  - RPC_useSkill
-  - RPC_AddMaxHP
-  - RPC_SyncInfo
-  - RPC_SummonUnit
-  - RPC_addBattleHero
-  - RPC_DIE
-  - RPC_Upgrade
-  - RPC_InstallEquipment
-  - Time_Sync
-  - RPC_RoundUp
-  - RPC_Time_Sync
+  - RPC_Mirror
   - RPC_MonsterBattle
-  - overTimeFinish
-  - Sync_Skill
-  - RPC_ChangeStatus
-  - RPC_ShadowBattle
+  - RPC_MoveToThePlayerHeroPlace
+  - RPC_OnLeftRoom
+  - RPC_PlayerCharacterBackToGameBoard
+  - RPC_PlayerCharacterMoveToGameBoard
   - RPC_PlayerDie
+  - RPC_PlayerJoinRoom
+  - RPC_Ready
+  - RPC_ReduceMp
+  - RPC_resetResponse
+  - RPC_ResetStatus
+  - RPC_Response
+  - RPC_RoundUp
+  - RPC_SetPlayerId
+  - RPC_SetupPlayerName
+  - RPC_SetupPlayerPosition
+  - RPC_ShadowBattle
+  - RPC_Shoot
+  - RPC_ShowHpBar
+  - RPC_StartGame
+  - RPC_StopWalk
+  - RPC_SummonUnit
   - RPC_SyncAttribute
-  - PlayerTFTWin
-  - LoadScene
-  - OnStart
-  - RPC_FinishLoading
+  - RPC_SyncBattleHero
+  - RPC_SyncHeroAttribute
+  - RPC_SyncInfo
+  - RPC_SyncPlayerCharacterPosition
+  - RPC_SyncPlayerHeroes
+  - RPC_SyncPlayerHeroPlace
+  - RPC_SyncPlayerInformation
+  - RPC_SyncPlayersOpponent
+  - RPC_SyncTargetEnemy
+  - RPC_TargetTakeDamage
+  - RPC_Test
+  - RPC_Time_Sync
+  - RPC_Upgrade
+  - RPC_userSkill
+  - RPC_useSkill
+  - setTransformView
+  - Sync_Skill
+  - syncNetworkPlaceId
+  - TaggedPlayer
+  - test
   DisableAutoOpenWizard: 1

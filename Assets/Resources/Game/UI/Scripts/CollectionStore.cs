@@ -8,6 +8,7 @@ public class CollectionStore : MonoBehaviour
     [Header("Character Sprite")]
     public Sprite EagleSprite;
     public Sprite EyeBatSpirte;
+    public Sprite defaultSpirte;
     public static CollectionStore Instance;
     private void Start()
     {
@@ -25,7 +26,16 @@ public class CollectionStore : MonoBehaviour
         {
             case TFTCharacter.Eagle: return EagleSprite;
             case TFTCharacter.EyeBat: return EyeBatSpirte;
-            default: return null;
+            default: return defaultSpirte;
+        }
+    }
+    public Sprite GetSprite(string name)
+    {
+        switch (name)
+        {
+            case "Eagle": return EagleSprite;
+            case "EyeBat": return EyeBatSpirte;
+            default: return defaultSpirte;
         }
     }
     public string GetName(TFTCharacter tFTCharacter)
