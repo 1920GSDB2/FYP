@@ -95,7 +95,7 @@ public class GoogleSheetManager : MonoBehaviour
                 case "Friends":
                     {
                         Friends = JsonUtility.FromJson<Friends>(list[i].value);
-                        SetFriend();
+                        //SetFriend();
                         break;
                     }
                 case "Skins":
