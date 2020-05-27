@@ -20632,7 +20632,6 @@ MonoBehaviour:
   settingMenuBtn: {fileID: 2133625448}
   applyBtn: {fileID: 748391624}
   okBtn: {fileID: 1068249757}
-  backGroundSound: 1
   GameSound: 1
   UiSound: 1
   Setting: {fileID: 1225867339}

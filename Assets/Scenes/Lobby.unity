@@ -9670,11 +9670,11 @@ RectTransform:
   m_Father: {fileID: 1455525901}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 29}
-  m_SizeDelta: {x: 200, y: 40}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -108, y: 29}
+  m_SizeDelta: {x: 100, y: 40}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1459125185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9732,7 +9732,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -14434,6 +14434,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1772308087}
     m_Modifications:
+    - target: {fileID: 37137700432128273, guid: 5401ac860ab76c24b9e2eec8dd75ca5f,
+        type: 3}
+      propertyPath: m_Name
+      value: buyPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 37137700432128238, guid: 5401ac860ab76c24b9e2eec8dd75ca5f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14539,11 +14544,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 37137700432128273, guid: 5401ac860ab76c24b9e2eec8dd75ca5f,
-        type: 3}
-      propertyPath: m_Name
-      value: buyPanel
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5401ac860ab76c24b9e2eec8dd75ca5f, type: 3}
 --- !u!1001 &1446150585564116561
@@ -14553,6 +14553,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1772308087}
     m_Modifications:
+    - target: {fileID: 1446150585146355950, guid: 0dbe4c9a5441b9048a9aa9d269f0d4bd,
+        type: 3}
+      propertyPath: m_Name
+      value: hint Panel
+      objectReference: {fileID: 0}
     - target: {fileID: 1446150585146355857, guid: 0dbe4c9a5441b9048a9aa9d269f0d4bd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14657,11 +14662,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1446150585146355950, guid: 0dbe4c9a5441b9048a9aa9d269f0d4bd,
-        type: 3}
-      propertyPath: m_Name
-      value: hint Panel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dbe4c9a5441b9048a9aa9d269f0d4bd, type: 3}
