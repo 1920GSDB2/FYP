@@ -18,12 +18,14 @@ public class ChannelChat : MonoBehaviour
     void Start()
     {
         SendButon.onClick.AddListener(delegate { ChatManager.Instance.OnClickSend(); });
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (ChatManager.Instance.CurrentChannel.Equals("")) { gameObject.gameObject.SetActive(false); }
         float value = Mathf.Lerp(currentValue, nextValue, slerpTime);
         DisplayBackgroud.color = new Color(DisplayBackgroud.color.r, DisplayBackgroud.color.g, DisplayBackgroud.color.b, value);
         currentValue = DisplayBackgroud.color.a;

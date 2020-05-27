@@ -166,12 +166,12 @@ public class GoogleSheetManager : MonoBehaviour
     public void AddMoney(int money)
     {
         this.money += money;
-        SpreadsheetManager.Read(new GSTU_Search(spreadsheetId, worksheetName), ChangeCharacter);
-
+        SpreadsheetManager.Read(new GSTU_Search(spreadsheetId, worksheetName), AddMoney);
     }
 
     private void AddMoney(GstuSpreadSheet ss)
     {
         ss[playerId, "Money"].UpdateCellValue(spreadsheetId, worksheetName, money.ToString());
+        Debug.Log("Add money");
     }
 }
