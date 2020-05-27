@@ -39,6 +39,7 @@ public class EndGame : MonoBehaviour
 
     public void OnEnd()
     {
+        Debug.Log("increase money");
         next = 0;
         GoogleSheetManager.Instance.AddMoney(10);
     }

@@ -1431,8 +1431,8 @@ namespace TFT
             isDie = true;
             PhotonView.RPC("RPC_PlayerDie", PhotonTargets.All, playerId);
             Shop.Instance.gameObject.SetActive(false);
-            EndGamePanel.SetActive(true);
             EndGame.Instance.OnEnd();
+            EndGamePanel.SetActive(true);          
             EndGame.Instance.EndText.text = "Lose";
             PhotonNetwork.DestroyPlayerObjects(PlayerHeroes[playerId].player);
         }
